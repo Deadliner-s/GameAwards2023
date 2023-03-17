@@ -51,7 +51,7 @@ public class MissileBoss : MonoBehaviour
             if (Speed >= MaxSpeed)
                 Speed = MaxSpeed;
             Locked = true;
-            if (transform.position.z >= ToPos.z + MissRange)
+            if (transform.position.z >= ToPos.z + MissRange || transform.position.x >= ToPos.x + MissRange)
             {
                 Move = ToPos - transform.position;
                 Move = Move.normalized;
