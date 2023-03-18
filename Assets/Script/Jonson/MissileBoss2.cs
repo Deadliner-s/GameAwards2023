@@ -12,6 +12,7 @@ public class MissileBoss2 : MonoBehaviour
     float range = 10.0f;
     float off;
     bool Locked;                //ミサイルがロックオンしているか
+    bool Miss;
 
     System.Random rand = new System.Random();
     float randomY;
@@ -34,18 +35,24 @@ public class MissileBoss2 : MonoBehaviour
         randomY = (rand.Next(10) - 5);
         off = 0.2f;
         Locked = false;
+        Miss = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         ToPos = GameObject.Find("Player").transform.position;
+        float distance = Vector3.Distance(transform.position, ToPos);
         if (!Locked)
-        {
-            if (transform.position.x >= FromPos.x - range)
-                Move = new Vector3(-range,randomY, 0.0f);
+        {            
+            if (distance <= range)
+            {
+                Move = new Vector3(-range, randomY, 0.0f);
+            }
             else
+            {
                 Locked = true;
+            }
             Move = Move.normalized;
             LateMove = Move;
         }
@@ -53,16 +60,21 @@ public class MissileBoss2 : MonoBehaviour
         {
             Speed += Accel;
             if (Speed >= MaxSpeed)
+            {
                 Speed = MaxSpeed;
-            if (transform.position.x <= ToPos.x - MissRange)
+            }
+            if (distance >= MissRange && !Miss)
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y, ToPos.z);
                 Move = ToPos - transform.position;
                 Move = Move.normalized;
                 LateMove = (Move - LateMove) * off + (LateMove);
             }
+            else
+            {
+                Miss = true;
+            }
         }
-
         Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
         transform.rotation = rot;
         transform.position += LateMove * Speed;

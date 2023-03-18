@@ -19,7 +19,12 @@ public class MoveTest : MonoBehaviour
         // Normalize the direction vector (optional)
         direction.Normalize();
 
-        // Move the character in the calculated direction
-        transform.position += direction * speed * Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            transform.rotation *= Quaternion.Euler(0, -speed, 0);   
+        }
+            // Move the character in the calculated direction
+            transform.position += direction * speed * Time.deltaTime;
     }
 }
