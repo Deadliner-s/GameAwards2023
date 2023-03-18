@@ -68,8 +68,8 @@ public class PlayerMoveSphere : MonoBehaviour
         y = radius * Mathf.Sin(radianTheta);
         z = radius * Mathf.Cos(radianTheta) * Mathf.Sin(radianPhi);
 
-        Debug.Log("theta:" + radianTheta);
-        Debug.Log("phi:" + radianPhi);
+        //Debug.Log("theta:" + radianTheta);
+        //Debug.Log("phi:" + radianPhi);
 
         // ç¿ïWçXêV
         transform.position = new Vector3(x, y, z);
