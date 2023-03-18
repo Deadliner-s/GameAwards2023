@@ -22,6 +22,8 @@ public class RockOnMarker : MonoBehaviour
     public float TargetRadius = 1.0f;           // 敵の半径
     public bool FrameOutDestroy = false;        // 画面外で消すか
     public int MaxRockOn = 5;                   // ロックオンできる最大数
+    public float AttractDistance = 50.0f;       // 引き寄せられ始める距離
+    public float AttractPower = 10.0f;          // 引き寄せられる力
 
     private UnityEvent OnDestroyed = new UnityEvent();
 
@@ -62,31 +64,43 @@ public class RockOnMarker : MonoBehaviour
         float ReticleRadius = 10.0f; // 照準の半径
         float r = ReticleRadius + TargetRadius;
 
-        // 当たり判定
-        if (c <= r)
+
+        // 敵に近づいたら照準を引き寄せる
+        if (c <= AttractDistance)
         {
-            // Targetタグを持つオブジェクトをカウント
-            GameObject[] tagObjects;
-            tagObjects = GameObject.FindGameObjectsWithTag("Target");
-            // ロックオンできる数以下だったら
-            if (tagObjects.Length < MaxRockOn)
+            // タグを持っていたら
+            if (this.tag == "Enemy")
             {
-                // 回転
-                Transform transform = target.transform;
-                Vector3 angle = transform.localEulerAngles;
-                angle.z = 45.0f;
-                transform.localEulerAngles = angle;
+                //reticle.transform.position = Vector2.MoveTowards(reticle.transform.position, transform.position, AttractPower);
+            }
+            reticle.transform.position = Vector2.MoveTowards(reticle.transform.position, transform.position, AttractPower);
 
-                // 色を赤に変更
-                Color color = target.GetComponent<Image>().color = Color.red; ;
 
-                //animeFlg = true;
+            // 当たり判定
+            if (c <= r)
+            {
+                // Targetタグを持つオブジェクトをカウント
+                GameObject[] tagObjects;
+                tagObjects = GameObject.FindGameObjectsWithTag("Target");
+                // ロックオンできる数以下だったら
+                if (tagObjects.Length < MaxRockOn)
+                {
+                    // 回転
+                    Transform transform = target.transform;
+                    Vector3 angle = transform.localEulerAngles;
+                    angle.z = 45.0f;
+                    transform.localEulerAngles = angle;
 
-                // 当たったらタグをTargetに変える
-                this.tag = ("Target");
+                    // 色を赤に変更
+                    Color color = target.GetComponent<Image>().color = Color.red; ;
+
+                    //animeFlg = true;
+
+                    // 当たったらタグをTargetに変える
+                    this.tag = ("Target");
+                }
             }
         }
-
         if (rockonFlg == false)
         {
             // ロックオンマークを生成
