@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.38695326, g: 0.48075515, b: 0.7325512, a: 1}
+  m_IndirectSpecularColor: {r: 0.38671416, g: 0.48058224, b: 0.7322855, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -241,6 +241,7 @@ GameObject:
   - component: {fileID: 247176457}
   - component: {fileID: 247176458}
   - component: {fileID: 247176459}
+  - component: {fileID: 247176460}
   m_Layer: 0
   m_Name: EnemyBoss
   m_TagString: Untagged
@@ -369,6 +370,19 @@ MonoBehaviour:
   Missile: {fileID: 3222784191366915875, guid: bb92e347f9a25474d9e1b03dbdf06281, type: 3}
   DestroyTime: 20
   Key: l
+--- !u!114 &247176460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247176452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de7aa4ef5a51d644f8871f0a1330771e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 786199140513531244, guid: 9aa00b7861ffd164bb5fc3af873fd230, type: 3}
 --- !u!1 &345822441
 GameObject:
   m_ObjectHideFlags: 0
