@@ -10,11 +10,11 @@ public class PlayerMoveAngle : MonoBehaviour
     [Tooltip("‰ñ“]‚ÌÅ‘å’l")]
     public float angleMax = 45; // ‰ñ“]‚ÌÅ‘å’l
     [Tooltip("‰ñ“]—Ê")]
-    public Vector3 angleAdd;  // ‰ñ“]—Ê
+    public Vector3 angleAdd = new Vector3(5,0,0);  // ‰ñ“]—Ê
     // …•½‰»
     [Header("…•½")]
     [Tooltip("…•½‚É–ß‚é‚Ì•â³—Ê")]
-    public float horizon; // …•½‚É–ß‚é‚Ì—Ê
+    public float horizon = 1; // …•½‚É–ß‚é‚Ì—Ê
     //[Tooltip("‰ñ“]—Ê‚Ì•â³\n(ãŒü‚«‚É‚È‚é‚Ì•â³—p)")]
     //public float angleCorrection; // ‰ñ“]—Ê‚Ì•â³
 
