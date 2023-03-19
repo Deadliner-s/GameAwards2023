@@ -5,18 +5,21 @@ using UnityEngine;
 public class PlayerMoveAngle : MonoBehaviour
 {
     //---- インスペクターに見せる変数 ----
-    public Vector3 angle;        // 回転
-    public float angleMax = 45;  // 回転の最大値
-    public Vector3 moveAdd;   // 移動量
+    // 回転
+    [Header("回転")]
+    [Tooltip("回転の最大値")]
+    public float angleMax = 45; // 回転の最大値
+    [Tooltip("回転量")]
     public Vector3 angleAdd;  // 回転量
-    public Vector2 TopBottom; // 画面の上限下限
-    public float angleCorrection; // 回転量の補正
-    public float horizon;         // 水平に戻る時の量
-    public float speed = 0.03f;   // 移動スピード
+    // 水平化
+    [Header("水平")]
+    [Tooltip("水平に戻る時の補正量")]
+    public float horizon; // 水平に戻る時の量
+    //[Tooltip("回転量の補正\n(上向きになる時の補正用)")]
+    //public float angleCorrection; // 回転量の補正
 
     //---- 変数宣言 ----
-    private Vector3 initPos;      // 初期位置
-    private Vector3 pos;   // 座標
+    private Vector3 angle;        // 回転
     private Myproject InputActions; // 入力
     private Vector2 inputMove;
 
@@ -29,16 +32,13 @@ public class PlayerMoveAngle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // 初期化
-        initPos = transform.position; // 座標
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         // 現在の値を代入
-        // 座標
-        pos = transform.position;
         // 回転
         angle = transform.eulerAngles;
         // そのままだと計算しにくいため、水平時を0とした数値にする
@@ -46,24 +46,14 @@ public class PlayerMoveAngle : MonoBehaviour
 
         // キー入力
         inputMove = InputActions.Player.Move.ReadValue<Vector2>();
-        // 移動
-        pos.y = pos.y + inputMove.y * speed;
+
         // 回転
         if (inputMove.y < 0.0f) {
             angle += angleAdd;
         }
         if (inputMove.y > 0.0f) {
-            angle -= angleAdd * angleCorrection;
+            angle -= angleAdd;// * angleCorrection;
         }
-
-
-        // 位置の修正
-        // 上の修正
-        //if (pos.y >= TopBottom.x) { pos.y = TopBottom.x; }
-        // 下の修正
-        //if (pos.y <= TopBottom.y) { pos.y = TopBottom.y; }
-        // 座標の代入
-        //transform.position = pos;
 
         // 水平にする
         Horizon();
@@ -79,10 +69,6 @@ public class PlayerMoveAngle : MonoBehaviour
 
         // 回転の代入
         transform.eulerAngles = angle;
-
-        // 現在の角度 = (終了時の角度) * 減速率 + 現在の角度
-        //Late = (Rotate - Late) * 0.05f + Late;
-        //transform.Rotate(new Vector3(0, rotate, 0));
     }
 
     //void FixedUpdate()
