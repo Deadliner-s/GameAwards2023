@@ -51,24 +51,34 @@ public class RockOnMarker : MonoBehaviour
         enemy2D = RectTransformUtility.WorldToScreenPoint(Camera.main, transform.position);
 
         // 三平方の定理
-        float a;                    // 辺X
-        float b;                    // 辺Y
-        float c;                    // a - b間の距離
+        float a;                     // 辺X
+        float b;                     // 辺Y
+        float c;                     // a - b間の距離
         // XとYの距離
         a = enemy2D.x - reticle2D.x;
         b = enemy2D.y - reticle2D.y;
-        a = a * a;                  // aの累乗
-        b = b * b;                  // bの累乗
-        c = a + b;                  // a + b の距離
-        c = (float)Math.Sqrt(c);    // 平方根
+        a = a * a;                   // aの累乗
+        b = b * b;                   // bの累乗
+        c = a + b;                   // a + b の距離
+        c = (float)Math.Sqrt(c);     // 平方根
         float ReticleRadius = 10.0f; // 照準の半径
         float r = ReticleRadius + TargetRadius;
 
+        // マークが生成されてなかったら
+        if (rockonFlg == false)
+        {
+            // ロックオンマークを生成
+            target = (GameObject)Resources.Load("RockOn");
+            target = Instantiate(target, transform.position, target.transform.rotation);
+            // Canvasの子オブジェクトとして生成
+            target.transform.SetParent(canvas.transform, false);
+            rockonFlg = true;
+        }
 
         // 敵に近づいたら照準を引き寄せる
         if (c <= AttractDistance)
         {
-            // タグを持っていたら
+            // タグを持っていたら    ロックオンした後のオブジェクトに寄らないように
             if (this.tag == "Enemy")
             {
                 //reticle.transform.position = Vector2.MoveTowards(reticle.transform.position, transform.position, AttractPower);
@@ -100,15 +110,6 @@ public class RockOnMarker : MonoBehaviour
                     this.tag = ("Target");
                 }
             }
-        }
-        if (rockonFlg == false)
-        {
-            // ロックオンマークを生成
-            target = (GameObject)Resources.Load("RockOn");
-            target = Instantiate(target, transform.position, target.transform.rotation);
-            // Canvasの子オブジェクトとして生成
-            target.transform.SetParent(canvas.transform, false);
-            rockonFlg = true;
         }
 
         // 敵に追従させる
