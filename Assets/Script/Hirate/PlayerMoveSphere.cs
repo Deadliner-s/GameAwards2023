@@ -12,13 +12,6 @@ public class PlayerMoveSphere : MonoBehaviour
     // 中心
     [SerializeField] GameObject center;
 
-    // デバッグ用
-#if _DEBUG
-    private bool bInput = false;
-    private bool bInputU = false;
-    private bool bInputO = false;
-#endif // _DEBUG
-
     // 球の半径
     [Header("周回時の半径")]
     [Tooltip("周回時の半径")]
@@ -40,6 +33,11 @@ public class PlayerMoveSphere : MonoBehaviour
     [Header("通常時の上下左右全ての速度補正")]
     [Tooltip("通常時の速度補正")]
     public float DefaultSpeed = 1.0f;
+
+    // 球面座標の常時横に動く時の移動速度
+    [Header("常時横に動く時の移動速度")]
+    [Tooltip("速度")]
+    public float alwaysSpeed = 0.01f;
 
     // 球面座標のシータとファイ
     private float radianTheta = 0;
@@ -90,14 +88,22 @@ public class PlayerMoveSphere : MonoBehaviour
         // 球面座標の更新
         if (maneverFlg == false)
         {
+            // 縦方向の移動
             radianTheta += thetaSpeed * inputMove.y * Mathf.Deg2Rad;
+            // 横方向の移動
             radianPhi += phiSpeed * inputMove.x * Mathf.Deg2Rad * DefaultSpeed;
+            // 横方向に常時動き続ける
+            radianPhi += alwaysSpeed;
         }
         else
         {
             // クイックマニューバ
+            // 縦方向の移動
             radianTheta += ManeverSpeed * inputMove.y * Mathf.Deg2Rad;
+            // 横方向の移動
             radianPhi += ManeverSpeed * inputMove.x * Mathf.Deg2Rad * DefaultSpeed;
+            // 横方向に常時動き続ける
+            radianPhi += alwaysSpeed;
             // マニューバ経過時間
             elapsedTime += Time.deltaTime;
         }
