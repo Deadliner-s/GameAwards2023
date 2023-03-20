@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4159345868870187542}
   - component: {fileID: 3231440488119653047}
   m_Layer: 0
-  m_Name: BossMissile2
+  m_Name: BossMissileShow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

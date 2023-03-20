@@ -19,6 +19,11 @@ public class ShootFollow : MonoBehaviour
     {
         Vector3 backDirection = Player.transform.forward;
         Vector3 upDirection   = Player.transform.up;
+        backDirection.y       = 0;
+        upDirection.x         = 0;
+        upDirection.z         = 0;
+        backDirection         = backDirection.normalized;
+        upDirection           = upDirection.normalized;
         transform.position    = Player.transform.position;
         transform.position   += backDirection * DistanceX;
         transform.position   += upDirection * DistanceY;
