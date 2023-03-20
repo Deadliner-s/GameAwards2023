@@ -8,13 +8,13 @@ public class SE : MonoBehaviour
     public AudioClip Soundeffeect;
     AudioSource audioSource;
 
-    GameAwards2023 test;
+    Myproject test;
     void Awake()
     {
-        test = new GameAwards2023();
+        test = new Myproject();
         test.Enable();
 
-        test.Player.Fire.performed += context => OnFire();
+        test.Player.Shot.performed += context => OnFire();
     }
 
     // Start is called before the first frame update
