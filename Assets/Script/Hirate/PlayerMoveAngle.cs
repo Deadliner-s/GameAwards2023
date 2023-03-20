@@ -22,6 +22,7 @@ public class PlayerMoveAngle : MonoBehaviour
     private Vector3 angle;        // ‰ñ“]
     private Myproject InputActions; // “ü—Í
     private Vector2 inputMove;
+    private GameObject cameraObj;
 
     void Awake()
     {
@@ -32,7 +33,7 @@ public class PlayerMoveAngle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        cameraObj = GameObject.Find("Main Camera");
     }
 
     // Update is called once per frame
@@ -54,6 +55,11 @@ public class PlayerMoveAngle : MonoBehaviour
         if (inputMove.y > 0.0f) {
             angle -= angleAdd;// * angleCorrection;
         }
+
+        // ƒJƒƒ‰‚É‘Î‚µ‚Ä‚¸‚Á‚Æ‰E‚ğŒü‚«‘±‚¯‚é
+        Transform cameraTransform = cameraObj.transform;
+        Vector3 cameraAngle = cameraTransform.eulerAngles;
+        angle.y = cameraAngle.y + 90.0f;
 
         // …•½‚É‚·‚é
         Horizon();

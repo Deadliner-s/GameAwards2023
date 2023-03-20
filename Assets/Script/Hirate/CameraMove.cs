@@ -90,7 +90,7 @@ public class CameraMove : MonoBehaviour
             // V‚µ‚¢ƒJƒƒ‰‚ÌˆÊ’u
             transform.position = pos;
             this.transform.LookAt(enemy.transform.position);
-            Debug.Log("no");
+            //Debug.Log("no");
         }
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.38695604, g: 0.48093158, b: 0.7327492, a: 1}
+  m_IndirectSpecularColor: {r: 0.38709256, g: 0.48094916, b: 0.7326263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1025,7 +1025,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 569983140}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a166a852e11b41e4980c010a0c7adff1, type: 3}
   m_Name: 
@@ -1068,6 +1068,9 @@ MonoBehaviour:
   radius: 8.5
   thetaSpeed: 0.1
   phiSpeed: 0.1
+  DefaultSpeed: 0.01
+  ManeverSpeed: 0.5
+  stopTime: 5
 --- !u!114 &569983148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1075,14 +1078,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 569983140}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb24e7d0edc3d814b9a79e19dbd0639a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   angleMax: 45
-  angleAdd: {x: 0, y: 0, z: 0}
-  horizon: 0
+  angleAdd: {x: 5, y: 0, z: 0}
+  horizon: 1
 --- !u!4 &569983149 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9a84bfea66e4ab744ab2ab6e83e9d8ce, type: 3}
