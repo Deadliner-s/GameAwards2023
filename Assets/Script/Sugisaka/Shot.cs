@@ -5,10 +5,22 @@ using UnityEngine.InputSystem;
 
 public class Shot : MonoBehaviour
 {
+    public static Shot instance;
+
     Myproject InputActions;
-    public GameObject PlayerMissile;    // ミサイルとして使用するオブジェクトの指定
-    private Vector3 PlayerPos;                  // プレイヤーの座標
-    public Vector3 ShiftPos;                   // 生成場所(プレイヤーの座標からどのくらいずらすか
+
+    // ミサイルのプレハブ
+    public GameObject MissilePrefab;
+
+    // 装填時間
+    public int ReloadTime;
+    // 経過時間
+    private int currenttime;
+    // 射撃フラグ
+    private bool Shotflg;
+
+    // ロックオンされたオブジェクトのリスト
+    public List<Transform> targets = new List<Transform>();
 
     void Awake()
     {
@@ -20,26 +32,53 @@ public class Shot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        currenttime = 0;    // 経過時間初期化
+        Shotflg = false;    // フラグをオフに
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Shotflg == true)
+        {
+            currenttime++;
 
+            if (currenttime > ReloadTime)
+            {
+                Shotflg = false;
+            }
+        }
     }
 
     public void OnShot()
     {
-        var TargetObj = GameObject.Find("RockOn");
-        if (TargetObj == null)
+        if (Shotflg == false)
         {
-            PlayerPos = transform.position;
-            PlayerPos.x += ShiftPos.x;
-            PlayerPos.y += ShiftPos.y;
-            PlayerPos.z += ShiftPos.z;
-            // 弾を発射する処理
-            GameObject obj = Instantiate(PlayerMissile, PlayerPos, Quaternion.identity);
-        }        
+            Vector3 PlayerPos = GameObject.Find("Player").transform.position;
+
+            // 配列にタグがTargetのオブジェクトを入れる
+            GameObject[] targetsObj = GameObject.FindGameObjectsWithTag("Target");
+            foreach (GameObject target in targetsObj)
+            {
+                // ターゲットがリストに含まれていなければ追加する
+                if (!targets.Contains(target.transform))
+                {
+                    targets.Add(target.transform);
+                }
+            }
+
+            // 各ロックオンされたターゲットにミサイルを打つ
+            foreach (Transform target in targets)
+            {
+                // 新しい誘導ミサイルプレハブをインスタンス化する
+                GameObject missile = Instantiate(MissilePrefab, PlayerPos, Quaternion.identity);
+
+                // 誘導ミサイルのターゲットを設定する
+                missile.GetComponent<TrackingBullet>().SetTarget(target);
+            }
+
+            currenttime = 0;
+        }
+        
     }
 }
