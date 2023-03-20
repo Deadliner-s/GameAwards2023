@@ -5,11 +5,14 @@ using UnityEngine;
 public class BossAnime : MonoBehaviour
 {
     Animator anime;
+    public GameObject wpobj;
+    private WeakPoint wp;
 
     // Start is called before the first frame update
     void Start()
     {
         anime = GetComponent<Animator>();
+        wp = gameObject.GetComponent<WeakPoint>();
     }
 
     // Update is called once per frame
@@ -18,12 +21,17 @@ public class BossAnime : MonoBehaviour
         if (Input.GetKey(KeyCode.Alpha1))
         {
             anime.SetBool("isMove", true);
-            anime.SetBool("isOpen", true);
+
+            wp.enabled = true;
+            //wpobj.SetActive(true);
         }
 
         if (Input.GetKey(KeyCode.Alpha2))
         {
             anime.SetBool("isMove", false);
+
+            wp.enabled = false;
+            //wpobj.SetActive(false);
         }
     }
 }
