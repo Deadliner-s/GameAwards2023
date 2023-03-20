@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 0.02
-  MaxSpeed: 2
+  MaxSpeed: 1
   Accel: 0.002
   MissRange: 3
   Height: 4
