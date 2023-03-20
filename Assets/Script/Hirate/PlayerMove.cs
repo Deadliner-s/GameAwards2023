@@ -74,7 +74,7 @@ public class PlayerMove : MonoBehaviour
         transform.position = pos;
 
         // …•½‚É‚·‚é
-        Horizon();
+        //Horizon();
 
         // ‰ñ“]‚ÌC³
         // ‰º•ûŒü‚ÌC³
