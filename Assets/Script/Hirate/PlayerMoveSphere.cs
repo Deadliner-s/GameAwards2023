@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,15 +30,27 @@ public class PlayerMoveSphere : MonoBehaviour
     // 球面座標の移動速度
     public float thetaSpeed = 0.1f;
     public float phiSpeed = 0.1f;
+    public float DefaultSpeed = 0.01f;
 
     // 球面座標のシータとファイ
     private float radianTheta = 0;
     private float radianPhi = 0;
+    private bool maneverFlg = false;
+
+    // クイックマニューバ用変数
+    public float ManerverTime = 5.0f;   // 動く時間
+    public float coolTime = 1.0f;       // 再使用できるようになる時間
+    public float ManeverSpeed = 0.5f;   // マニューバ時の速度
+
+    // マニューバカウント
+    private float elapsedTime;          // マニューバ経過時間
+    private float coolTimeCnt;          // クールタイムの経過時間
 
     void Awake()
     {
         InputActions = new Myproject();
         InputActions.Enable();
+        InputActions.Player.Boost.performed += context => OnBoost();
     }
 
     // Start is called before the first frame update
@@ -51,6 +64,8 @@ public class PlayerMoveSphere : MonoBehaviour
         radius = Mathf.Sqrt(x * x + y * y + z * z);
         radianTheta = Mathf.Atan(Mathf.Sqrt(x * x + y * y) / z);
         radianPhi = Mathf.Atan(y / x);
+        elapsedTime = ManerverTime + coolTime;
+        coolTimeCnt = 0;
     }
 
     // Update is called once per frame
@@ -60,8 +75,27 @@ public class PlayerMoveSphere : MonoBehaviour
         inputMove = InputActions.Player.Move.ReadValue<Vector2>();
 
         // 球面座標の更新
-        radianTheta += thetaSpeed * inputMove.y * Mathf.Deg2Rad;
-        radianPhi += phiSpeed * inputMove.x * Mathf.Deg2Rad;
+        if (maneverFlg == false)
+        {
+            radianTheta += thetaSpeed * inputMove.y * Mathf.Deg2Rad;
+            radianPhi += phiSpeed * inputMove.x * Mathf.Deg2Rad + DefaultSpeed;
+        }
+        else
+        {
+            // クイックマニューバ
+            radianTheta += ManeverSpeed * inputMove.y * Mathf.Deg2Rad;
+            radianPhi += ManeverSpeed * inputMove.x * Mathf.Deg2Rad + DefaultSpeed;
+            // マニューバ経過時間
+            elapsedTime += Time.deltaTime;
+        }
+        if (elapsedTime > ManerverTime)
+        {
+            // マニューバできる時間が過ぎたら
+            maneverFlg = false;
+            // クールタイムのカウントを始める
+            coolTimeCnt += Time.deltaTime;
+        }
+
 
         // 球面座標を直交座標に変換
         x = radius * Mathf.Cos(radianTheta) * Mathf.Cos(radianPhi);
@@ -125,5 +159,16 @@ public class PlayerMoveSphere : MonoBehaviour
         z = v.z;
 
         return new Vector3(x, y, z);
+    }
+
+    private void OnBoost()
+    {
+        // クールタイムが終わっていたら
+        if (coolTimeCnt > coolTime)
+        {
+            maneverFlg = true;
+            elapsedTime = 0;
+            coolTimeCnt = 0;
+        }
     }
 }

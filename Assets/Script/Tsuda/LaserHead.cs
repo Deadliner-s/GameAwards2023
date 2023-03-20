@@ -31,9 +31,13 @@ public class LaserHead : MonoBehaviour
 
     void Update()
     {
-        transform.position += transform.forward * speed * Time.deltaTime;  // 目標座標の方向に移動する
-
         timer -= Time.deltaTime;  // タイマーを減算する
+
+        if (timer <= lifetime - 1.5f)
+        {
+            transform.position += transform.forward * speed * Time.deltaTime;  // 目標座標の方向に移動する
+        }
+     
         if (timer <= 0)
         {
             Destroy(gameObject);  // オブジェクトを削除する

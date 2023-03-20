@@ -10,7 +10,7 @@ public class HPGauge : MonoBehaviour
     private Transform targetTfm;
 
     private RectTransform myRectTfm;
-    private Vector3 offset = new Vector3(0, 1.5f, 0);
+    private Vector3 offset = new Vector3(0, 0.15f, 0);
 
     void Start()
     {

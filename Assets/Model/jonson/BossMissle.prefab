@@ -107,6 +107,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4482491814637254355, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
   m_PrefabInstance: {fileID: 9221154352735593176}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-4867831459758655791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741478458244633611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 981e5429d620e214e8ec1eea03956107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2958555774321723217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,6 +134,22 @@ MonoBehaviour:
   TargetRadius: 15
   FrameOutDestroy: 0
   MaxRockOn: 5
+  AttractDistance: 50
+  AttractPower: 10
+--- !u!114 &3991838934210562174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741478458244633611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd9a54902e5542459783e3fd61909ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerDamage: 20
+  EnemyDamage: 0
 --- !u!114 &5576798137823474877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,15 +167,3 @@ MonoBehaviour:
   Accel: 0.002
   MissRange: 3
   Height: 4
---- !u!114 &-4867831459758655791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4741478458244633611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 981e5429d620e214e8ec1eea03956107, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
