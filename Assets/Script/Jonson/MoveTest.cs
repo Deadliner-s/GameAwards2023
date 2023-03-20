@@ -22,7 +22,7 @@ public class MoveTest : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            transform.rotation *= Quaternion.Euler(0, -speed, 0);   
+            transform.rotation *= Quaternion.Euler(0, 0, -speed);   
         }
             // Move the character in the calculated direction
             transform.position += direction * speed * Time.deltaTime;
