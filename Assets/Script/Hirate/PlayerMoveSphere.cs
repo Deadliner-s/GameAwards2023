@@ -25,9 +25,15 @@ public class PlayerMoveSphere : MonoBehaviour
     // 球面座標の移動
     [Header("上下左右の移動速度")]
     [Tooltip("上下移動速度")]
-    public float thetaSpeed = 0.01f;
+    public float thetaSpeed = 0.1f;
     [Tooltip("左右移動速度")]
-    public float phiSpeed = 0.01f;
+    public float phiSpeed = 0.1f;
+
+
+    [Header("アタックフェイズ時の移動速度")]
+    [Tooltip("上下移動速度")]
+    public float AtkthetaSpeed = 0.05f;
+
 
     // 球面座標の通常時の移動速度
     [Header("通常時の上下左右全ての速度補正")]
@@ -57,6 +63,11 @@ public class PlayerMoveSphere : MonoBehaviour
     private float elapsedTime;          // マニューバ経過時間
     private float coolTimeCnt;          // クールタイムの経過時間
 
+    // フェイズ切り替え用
+    [Header("フェイズ確認用オブジェクト")]
+    [SerializeField] GameObject PhaseObj;
+    private bool AtkPhaseFlg;
+
     void Awake()
     {
         InputActions = new Myproject();
@@ -77,21 +88,39 @@ public class PlayerMoveSphere : MonoBehaviour
         radianPhi = Mathf.Atan(y / x);
         elapsedTime = ManerverTime + coolTime;
         coolTimeCnt = 0;
+
+        AtkPhaseFlg = PhaseObj.activeSelf;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // フェイズ確認
+        AtkPhaseFlg = PhaseObj.activeSelf;
+
         // キー入力
         inputMove = InputActions.Player.Move.ReadValue<Vector2>();
 
         // 球面座標の更新
         if (maneverFlg == false)
         {
-            // 縦方向の移動
-            radianTheta += thetaSpeed * inputMove.y * Mathf.Deg2Rad;
-            // 横方向の移動
-            radianPhi += phiSpeed * inputMove.x * Mathf.Deg2Rad * DefaultSpeed;
+            if (AtkPhaseFlg == false)
+            {
+                // ハイスピードフェイズ
+                // 縦方向の移動
+                radianTheta += thetaSpeed * inputMove.y * Mathf.Deg2Rad;
+                // 横方向の移動
+                radianPhi += phiSpeed * inputMove.x * Mathf.Deg2Rad * DefaultSpeed;
+            }
+            else
+            {
+                // アタックフェイズ
+                // 縦方向の移動
+                radianTheta += AtkthetaSpeed * inputMove.y * Mathf.Deg2Rad;
+                // 横方向の移動
+                radianPhi += phiSpeed * inputMove.x * Mathf.Deg2Rad * DefaultSpeed;
+            }
+
             // 横方向に常時動き続ける
             radianPhi += alwaysSpeed;
         }
@@ -115,7 +144,7 @@ public class PlayerMoveSphere : MonoBehaviour
             coolTimeCnt += Time.deltaTime;
         }
 
-
+        
         // 球面座標を直交座標に変換
         x = radius * Mathf.Cos(radianTheta) * Mathf.Cos(radianPhi);
         y = radius * Mathf.Sin(radianTheta);
@@ -182,8 +211,8 @@ public class PlayerMoveSphere : MonoBehaviour
 
     private void OnBoost()
     {
-        // クールタイムが終わっていたら
-        if (coolTimeCnt > coolTime)
+        // クールタイムが終わっていたら ＆アタックフェイズではなかったら
+        if (coolTimeCnt > coolTime && AtkPhaseFlg == false)
         {
             maneverFlg = true;
             elapsedTime = 0;
