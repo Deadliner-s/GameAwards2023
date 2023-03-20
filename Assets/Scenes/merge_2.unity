@@ -1058,7 +1058,7 @@ MonoBehaviour:
   phiSpeed: 0.1
   AtkthetaSpeed: 0.05
   DefaultSpeed: 1
-  alwaysSpeed: 0.01
+  alwaysSpeed: 0.001
   ManerverTime: 0.5
   coolTime: 1
   ManeverSpeed: 0.5
@@ -1282,6 +1282,7 @@ MonoBehaviour:
   DestroyTime: 3
   Key: u
   DelayTime: 0
+  otherObject: {fileID: 0}
 --- !u!65 &652995238
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1747,6 +1748,7 @@ MonoBehaviour:
   DestroyTime: 3
   Key: n
   DelayTime: 0
+  otherObject: {fileID: 0}
 --- !u!65 &1254198061
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2091,6 +2093,7 @@ MonoBehaviour:
   DestroyTime: 3
   Key: y
   DelayTime: 0
+  otherObject: {fileID: 0}
 --- !u!65 &1370292604
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2431,6 +2434,7 @@ MonoBehaviour:
   DestroyTime: 3
   Key: m
   DelayTime: 0
+  otherObject: {fileID: 0}
 --- !u!65 &1928378419
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2560,6 +2564,7 @@ MonoBehaviour:
   DestroyTime: 3
   Key: h
   DelayTime: 0
+  otherObject: {fileID: 0}
 --- !u!65 &1963545678
 BoxCollider:
   m_ObjectHideFlags: 0
