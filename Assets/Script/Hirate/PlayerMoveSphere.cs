@@ -12,7 +12,7 @@ public class PlayerMoveSphere : MonoBehaviour
     // 中心
     [SerializeField] GameObject center;
 
-// デバッグ用
+    // デバッグ用
 #if _DEBUG
     private bool bInput = false;
     private bool bInputU = false;
@@ -20,17 +20,26 @@ public class PlayerMoveSphere : MonoBehaviour
 #endif // _DEBUG
 
     // 球の半径
+    [Header("周回時の半径")]
+    [Tooltip("周回時の半径")]
     public float radius = 2.0f;
 
     // 座標
-    float x;
-    float y;
-    float z;
+    private float x;
+    private float y;
+    private float z;
 
-    // 球面座標の移動速度
-    public float thetaSpeed = 0.1f;
-    public float phiSpeed = 0.1f;
-    public float DefaultSpeed = 0.01f;
+    // 球面座標の移動
+    [Header("上下左右の移動速度")]
+    [Tooltip("上下移動速度")]
+    public float thetaSpeed = 0.01f;
+    [Tooltip("左右移動速度")]
+    public float phiSpeed = 0.01f;
+
+    // 球面座標の通常時の移動速度
+    [Header("通常時の上下左右全ての速度補正")]
+    [Tooltip("通常時の速度補正")]
+    public float DefaultSpeed = 1.0f;
 
     // 球面座標のシータとファイ
     private float radianTheta = 0;
@@ -38,8 +47,12 @@ public class PlayerMoveSphere : MonoBehaviour
     private bool maneverFlg = false;
 
     // クイックマニューバ用変数
+    [Header("マニューバ")]
+    [Tooltip("マニューバの持続時間")]
     public float ManerverTime = 5.0f;   // 動く時間
+    [Tooltip("クールタイム")]
     public float coolTime = 1.0f;       // 再使用できるようになる時間
+    [Tooltip("速度")]
     public float ManeverSpeed = 0.5f;   // マニューバ時の速度
 
     // マニューバカウント
@@ -78,13 +91,13 @@ public class PlayerMoveSphere : MonoBehaviour
         if (maneverFlg == false)
         {
             radianTheta += thetaSpeed * inputMove.y * Mathf.Deg2Rad;
-            radianPhi += phiSpeed * inputMove.x * Mathf.Deg2Rad + DefaultSpeed;
+            radianPhi += phiSpeed * inputMove.x * Mathf.Deg2Rad * DefaultSpeed;
         }
         else
         {
             // クイックマニューバ
             radianTheta += ManeverSpeed * inputMove.y * Mathf.Deg2Rad;
-            radianPhi += ManeverSpeed * inputMove.x * Mathf.Deg2Rad + DefaultSpeed;
+            radianPhi += ManeverSpeed * inputMove.x * Mathf.Deg2Rad * DefaultSpeed;
             // マニューバ経過時間
             elapsedTime += Time.deltaTime;
         }
