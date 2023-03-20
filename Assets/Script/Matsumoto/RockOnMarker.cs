@@ -27,6 +27,10 @@ public class RockOnMarker : MonoBehaviour
 
     private UnityEvent OnDestroyed = new UnityEvent();
 
+    public GameObject RockOn;
+     Animator anime;
+
+
     // RockOnAnimeで関数を使うため
     //public static RockOnMarker instance;
 
@@ -41,6 +45,8 @@ public class RockOnMarker : MonoBehaviour
         reticle = GameObject.Find("Reticle");   // 照準のオブジェクト指定
         canvas = GameObject.Find("Canvas");     // キャンバスを指定
         target = null;
+
+        //        anime = RockOn.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -68,7 +74,7 @@ public class RockOnMarker : MonoBehaviour
         if (rockonFlg == false)
         {
             // ロックオンマークを生成
-            target = (GameObject)Resources.Load("RockOn");
+            target = (GameObject)Resources.Load("RockOnAnime");
             target = Instantiate(target, transform.position, target.transform.rotation);
             // Canvasの子オブジェクトとして生成
             target.transform.SetParent(canvas.transform, false);
@@ -102,7 +108,10 @@ public class RockOnMarker : MonoBehaviour
                     transform.localEulerAngles = angle;
 
                     // 色を赤に変更
-                    Color color = target.GetComponent<Image>().color = Color.red; ;
+                    //Color color = target.GetComponent<Image>().color = Color.red; ;
+
+                    anime = target.GetComponent<Animator>();
+                    anime.SetBool("isRockOn", true);
 
                     //animeFlg = true;
 

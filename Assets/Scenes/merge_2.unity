@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.38709256, g: 0.48094916, b: 0.7326263, a: 1}
+  m_IndirectSpecularColor: {r: 0.38695604, g: 0.48093158, b: 0.7327492, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -542,6 +542,14 @@ PrefabInstance:
     - target: {fileID: 5851085222433789076, guid: 041eb59527a745243ad3acae20abd9ca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843449495731557592, guid: 041eb59527a745243ad3acae20abd9ca, type: 3}
+      propertyPath: anime
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843449495731557592, guid: 041eb59527a745243ad3acae20abd9ca, type: 3}
+      propertyPath: RockOn
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7843449495731557592, guid: 041eb59527a745243ad3acae20abd9ca, type: 3}
       propertyPath: scale.x
@@ -1069,8 +1077,10 @@ MonoBehaviour:
   thetaSpeed: 0.1
   phiSpeed: 0.1
   DefaultSpeed: 0.01
+  alwaysSpeed: 0.01
+  ManerverTime: 5
+  coolTime: 1
   ManeverSpeed: 0.5
-  stopTime: 5
 --- !u!114 &569983148
 MonoBehaviour:
   m_ObjectHideFlags: 0
