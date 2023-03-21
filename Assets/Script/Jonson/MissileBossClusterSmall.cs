@@ -55,6 +55,7 @@ public class MissileBossClusterSmall : MonoBehaviour
         else
         {
             Miss = true;
+            Destroy(gameObject, 3.0f);
         }
         Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
         transform.rotation = rot;
