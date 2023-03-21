@@ -213,7 +213,7 @@ public class PlayerMoveSphere : MonoBehaviour
     private void OnManever()
     {
         // クールタイムが終わっていたら ＆アタックフェイズではなかったら
-        if (coolTimeCnt > coolTime && AtkPhaseFlg == false)
+        if (coolTimeCnt > coolTime)
         {
             maneverFlg = true;
             elapsedTime = 0;
