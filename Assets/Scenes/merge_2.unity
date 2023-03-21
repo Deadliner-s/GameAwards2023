@@ -383,6 +383,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 786199140513531244, guid: 9aa00b7861ffd164bb5fc3af873fd230, type: 3}
+  Interval: 2
+  Interval2: 8
 --- !u!4 &262786249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2653373171205573415, guid: 21fcd5f1e0c415f46bd73691b9282a0a, type: 3}
@@ -419,17 +421,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a166a852e11b41e4980c010a0c7adff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initPos: {x: 0, y: 0, z: 0}
-  angle: {x: 0, y: 0, z: 0}
-  moveAdd: {x: 0, y: 0.1, z: 0}
-  angleAdd: {x: 0, y: 0, z: 0}
-  TopBottom: {x: 0, y: 0}
-  angleCorrection: 0
-  horizon: 0
-  speed: 0.03
-  pos: {x: 0, y: 0, z: 0}
-  bInput: 0
-  inputMove: {x: 0, y: 0}
 --- !u!81 &345822443
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1038,8 +1029,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c786e0475d4f60e4192c732d139e019a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerMissile: {fileID: 522196463854886502, guid: b73c649aa92d23441b545fa5fc42ecb6, type: 3}
-  ShiftPos: {x: 0, y: 0, z: 0}
+  MissilePrefab: {fileID: 522196463854886502, guid: b73c649aa92d23441b545fa5fc42ecb6, type: 3}
+  ReloadTime: 0
+  targets: []
 --- !u!114 &569983146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1115,6 +1107,117 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 96
   m_CollisionDetection: 0
+--- !u!114 &569983152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569983140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3688a9327de780c429e427225334ba6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSE: {fileID: 8300000, guid: 1a30c76d716301048bc267d782ff7a58, type: 3}
+  ShotSE: {fileID: 8300000, guid: 8e6c47ec26be3cf4dac05ffe954474c4, type: 3}
+  ManeverSE: {fileID: 8300000, guid: c2d9e197d242afe4cabb7b6285ad3e61, type: 3}
+--- !u!82 &569983153
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569983140}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &593626620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1282,7 +1385,6 @@ MonoBehaviour:
   DestroyTime: 3
   Key: u
   DelayTime: 0
-  otherObject: {fileID: 0}
 --- !u!65 &652995238
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1748,7 +1850,6 @@ MonoBehaviour:
   DestroyTime: 3
   Key: n
   DelayTime: 0
-  otherObject: {fileID: 0}
 --- !u!65 &1254198061
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2093,7 +2194,6 @@ MonoBehaviour:
   DestroyTime: 3
   Key: y
   DelayTime: 0
-  otherObject: {fileID: 0}
 --- !u!65 &1370292604
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2434,7 +2534,6 @@ MonoBehaviour:
   DestroyTime: 3
   Key: m
   DelayTime: 0
-  otherObject: {fileID: 0}
 --- !u!65 &1928378419
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2564,7 +2663,6 @@ MonoBehaviour:
   DestroyTime: 3
   Key: h
   DelayTime: 0
-  otherObject: {fileID: 0}
 --- !u!65 &1963545678
 BoxCollider:
   m_ObjectHideFlags: 0

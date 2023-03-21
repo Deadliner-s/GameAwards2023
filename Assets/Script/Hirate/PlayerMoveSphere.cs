@@ -72,7 +72,7 @@ public class PlayerMoveSphere : MonoBehaviour
     {
         InputActions = new Myproject();
         InputActions.Enable();
-        InputActions.Player.Boost.performed += context => OnBoost();
+        InputActions.Player.Manever.performed += context => OnManever();
     }
 
     // Start is called before the first frame update
@@ -89,6 +89,7 @@ public class PlayerMoveSphere : MonoBehaviour
         elapsedTime = ManerverTime + coolTime;
         coolTimeCnt = 0;
 
+        // フェイズ取得
         AtkPhaseFlg = PhaseObj.activeSelf;
     }
 
@@ -209,7 +210,7 @@ public class PlayerMoveSphere : MonoBehaviour
         return new Vector3(x, y, z);
     }
 
-    private void OnBoost()
+    private void OnManever()
     {
         // クールタイムが終わっていたら ＆アタックフェイズではなかったら
         if (coolTimeCnt > coolTime && AtkPhaseFlg == false)
