@@ -30,7 +30,6 @@ public class MissileStraight : MonoBehaviour
         mainCamera = Camera.main;                             // メインカメラを取得する
         canvas = GameObject.Find("Canvas");                 　// キャンバスを指定
 
-
         //UI初期位置
         if (transform.position.x < ToPos.x)
         {
@@ -59,7 +58,6 @@ public class MissileStraight : MonoBehaviour
         Destroy(newObj, 3.0f);                                                                      // UIを消す
 
         newObj.transform.SetParent(canvas.transform, false);                                        // Canvasの子オブジェクトとして生成
-
 
         Miss = false;
         off = 0.2f;

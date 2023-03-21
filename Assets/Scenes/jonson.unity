@@ -656,7 +656,6 @@ MonoBehaviour:
   DestroyTime: 3
   Key: m
   DelayTime: 0
-  otherObject: {fileID: 7481113100926768853, guid: 6c745f242c170144e852dc37fea2b4da, type: 3}
 --- !u!114 &1054251243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,7 +669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DistanceX: 0
-  DistanceY: -10
+  DistanceY: -20
 --- !u!1 &1090972656
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,7 +785,6 @@ MonoBehaviour:
   DestroyTime: 3
   Key: y
   DelayTime: 0
-  otherObject: {fileID: 7481113100926768853, guid: 6c745f242c170144e852dc37fea2b4da, type: 3}
 --- !u!114 &1090972662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -799,8 +797,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ba20b7fecc756b41af8e2efe8333c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DistanceX: -10
-  DistanceY: 10
+  DistanceX: -20
+  DistanceY: 20
 --- !u!1001 &1190188824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -985,7 +983,6 @@ MonoBehaviour:
   DestroyTime: 3
   Key: u
   DelayTime: 0
-  otherObject: {fileID: 7481113100926768853, guid: 6c745f242c170144e852dc37fea2b4da, type: 3}
 --- !u!114 &1268597387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,7 +996,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DistanceX: 0
-  DistanceY: 10
+  DistanceY: 20
 --- !u!1001 &1860394766
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1220,7 +1217,6 @@ MonoBehaviour:
   DestroyTime: 3
   Key: n
   DelayTime: 0
-  otherObject: {fileID: 7481113100926768853, guid: 6c745f242c170144e852dc37fea2b4da, type: 3}
 --- !u!114 &1865394467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1233,8 +1229,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ba20b7fecc756b41af8e2efe8333c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DistanceX: -10
-  DistanceY: -10
+  DistanceX: -20
+  DistanceY: -20
 --- !u!1 &1972201505
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,6 +1245,7 @@ GameObject:
   - component: {fileID: 1972201506}
   - component: {fileID: 1972201510}
   - component: {fileID: 1972201511}
+  - component: {fileID: 1972201512}
   m_Layer: 0
   m_Name: Shoot (2)
   m_TagString: Untagged
@@ -1350,7 +1347,6 @@ MonoBehaviour:
   DestroyTime: 3
   Key: h
   DelayTime: 0
-  otherObject: {fileID: 7481113100926768853, guid: 6c745f242c170144e852dc37fea2b4da, type: 3}
 --- !u!114 &1972201511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1363,5 +1359,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ba20b7fecc756b41af8e2efe8333c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DistanceX: -10
+  DistanceX: -20
   DistanceY: 0
+--- !u!114 &1972201512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972201505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0519608d753d34943ab8cf3ba4a213c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Missile: {fileID: 5540224078154131618, guid: 05a76db5fa499f548b8994bdfdbb97b9, type: 3}
+  DestroyTime: 15
+  Key: i
+  DelayTime: 0

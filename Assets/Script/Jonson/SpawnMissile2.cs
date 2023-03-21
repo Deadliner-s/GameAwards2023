@@ -9,7 +9,7 @@ public class SpawnMissile2 : MonoBehaviour
     public string Key;
     GameObject obj;
 
-    public float DelayTime = 3.0f;
+    public float DelayTime = 0.0f;
 
     Vector3 ToPos;              //”­Ëæ
   
