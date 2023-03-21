@@ -328,6 +328,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 786199140513531244, guid: 9aa00b7861ffd164bb5fc3af873fd230, type: 3}
+  Interval: 2
+  Interval2: 8
 --- !u!1 &1992871106
 GameObject:
   m_ObjectHideFlags: 0

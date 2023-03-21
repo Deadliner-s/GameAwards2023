@@ -37,7 +37,7 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Boost"",
+                    ""name"": ""Manever"",
                     ""type"": ""Button"",
                     ""id"": ""53473d2c-247b-47e2-be4d-f2362fe1cb7c"",
                     ""expectedControlType"": ""Button"",
@@ -160,7 +160,7 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Boost"",
+                    ""action"": ""Manever"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -171,7 +171,7 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Boost"",
+                    ""action"": ""Manever"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -848,7 +848,7 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Boost = m_Player.FindAction("Boost", throwIfNotFound: true);
+        m_Player_Manever = m_Player.FindAction("Manever", throwIfNotFound: true);
         m_Player_Shot = m_Player.FindAction("Shot", throwIfNotFound: true);
         m_Player_Reticle = m_Player.FindAction("Reticle", throwIfNotFound: true);
         // UI
@@ -923,7 +923,7 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Boost;
+    private readonly InputAction m_Player_Manever;
     private readonly InputAction m_Player_Shot;
     private readonly InputAction m_Player_Reticle;
     public struct PlayerActions
@@ -931,7 +931,7 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
         private @Myproject m_Wrapper;
         public PlayerActions(@Myproject wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Boost => m_Wrapper.m_Player_Boost;
+        public InputAction @Manever => m_Wrapper.m_Player_Manever;
         public InputAction @Shot => m_Wrapper.m_Player_Shot;
         public InputAction @Reticle => m_Wrapper.m_Player_Reticle;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -946,9 +946,9 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Boost.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBoost;
-                @Boost.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBoost;
-                @Boost.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBoost;
+                @Manever.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnManever;
+                @Manever.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnManever;
+                @Manever.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnManever;
                 @Shot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShot;
                 @Shot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShot;
                 @Shot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShot;
@@ -962,9 +962,9 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Boost.started += instance.OnBoost;
-                @Boost.performed += instance.OnBoost;
-                @Boost.canceled += instance.OnBoost;
+                @Manever.started += instance.OnManever;
+                @Manever.performed += instance.OnManever;
+                @Manever.canceled += instance.OnManever;
                 @Shot.started += instance.OnShot;
                 @Shot.performed += instance.OnShot;
                 @Shot.canceled += instance.OnShot;
@@ -1128,7 +1128,7 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnBoost(InputAction.CallbackContext context);
+        void OnManever(InputAction.CallbackContext context);
         void OnShot(InputAction.CallbackContext context);
         void OnReticle(InputAction.CallbackContext context);
     }

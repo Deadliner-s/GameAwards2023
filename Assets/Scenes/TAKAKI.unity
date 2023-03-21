@@ -148,15 +148,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 784812756505903259, guid: 4700cfdede16cb24180c5b561aa4e645, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 784812756505903259, guid: 4700cfdede16cb24180c5b561aa4e645, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 784812756505903259, guid: 4700cfdede16cb24180c5b561aa4e645, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 784812756505903259, guid: 4700cfdede16cb24180c5b561aa4e645, type: 3}
       propertyPath: m_LocalRotation.y
@@ -168,7 +168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 784812756505903259, guid: 4700cfdede16cb24180c5b561aa4e645, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 784812756505903259, guid: 4700cfdede16cb24180c5b561aa4e645, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -178,7 +178,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7226208329339215131, guid: 4700cfdede16cb24180c5b561aa4e645, type: 3}
+      propertyPath: wpobj
+      value: 
+      objectReference: {fileID: 4027670273395097546, guid: e125b52ca68d8d34a956b7a781399c0e, type: 3}
+    - target: {fileID: 8618331067359277965, guid: 4700cfdede16cb24180c5b561aa4e645, type: 3}
+      propertyPath: wpobj
+      value: 
+      objectReference: {fileID: 4027670273395097546, guid: e125b52ca68d8d34a956b7a781399c0e, type: 3}
+    m_RemovedComponents:
+    - {fileID: 7226208329339215131, guid: 4700cfdede16cb24180c5b561aa4e645, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4700cfdede16cb24180c5b561aa4e645, type: 3}
 --- !u!1 &705507993
 GameObject:
@@ -374,7 +383,7 @@ GameObject:
   - component: {fileID: 1692611617}
   - component: {fileID: 1692611623}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: SE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

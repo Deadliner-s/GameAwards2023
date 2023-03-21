@@ -27,6 +27,8 @@ public class RockOnMarker : MonoBehaviour
 
     private UnityEvent OnDestroyed = new UnityEvent();
 
+    Animator anime;     // アニメーション制御
+
     // RockOnAnimeで関数を使うため
     //public static RockOnMarker instance;
 
@@ -68,7 +70,7 @@ public class RockOnMarker : MonoBehaviour
         if (rockonFlg == false)
         {
             // ロックオンマークを生成
-            target = (GameObject)Resources.Load("RockOn");
+            target = (GameObject)Resources.Load("RockOnAnime");
             target = Instantiate(target, transform.position, target.transform.rotation);
             // Canvasの子オブジェクトとして生成
             target.transform.SetParent(canvas.transform, false);
@@ -103,6 +105,9 @@ public class RockOnMarker : MonoBehaviour
 
                     // 色を赤に変更
                     Color color = target.GetComponent<Image>().color = Color.red; ;
+
+                    anime = target.GetComponent<Animator>();
+                    anime.SetBool("isRockOn", true);        // AnimatorにあるisRockOnをTrueに
 
                     //animeFlg = true;
 

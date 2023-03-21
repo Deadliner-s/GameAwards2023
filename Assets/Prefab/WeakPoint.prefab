@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &522196463854886502
+--- !u!1 &4027670273395097546
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6141171025463290243}
-  - component: {fileID: 6620242776710057097}
-  - component: {fileID: 4868524090716693533}
-  - component: {fileID: 756306047694829525}
-  - component: {fileID: 2504755461301558491}
-  - component: {fileID: 3958569231167126292}
+  - component: {fileID: 9142755334983574252}
+  - component: {fileID: 8411972530580723200}
+  - component: {fileID: 4842498132921982829}
+  - component: {fileID: 3516818808793263005}
+  - component: {fileID: 6253862613293384555}
+  - component: {fileID: 2068658195287927562}
   m_Layer: 0
-  m_Name: PlayerBullet
-  m_TagString: PlayerBullet
+  m_Name: WeakPoint
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6141171025463290243
+  m_IsActive: 0
+--- !u!4 &9142755334983574252
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522196463854886502}
+  m_GameObject: {fileID: 4027670273395097546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6620242776710057097
+--- !u!33 &8411972530580723200
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522196463854886502}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &4868524090716693533
+  m_GameObject: {fileID: 4027670273395097546}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &4842498132921982829
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522196463854886502}
+  m_GameObject: {fileID: 4027670273395097546}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,52 +86,45 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &756306047694829525
-CapsuleCollider:
+--- !u!135 &3516818808793263005
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522196463854886502}
+  m_GameObject: {fileID: 4027670273395097546}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &2504755461301558491
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522196463854886502}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &3958569231167126292
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6253862613293384555
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522196463854886502}
+  m_GameObject: {fileID: 4027670273395097546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14782c0b0b069b74795d1ba6b7797cc4, type: 3}
+  m_Script: {fileID: 11500000, guid: f8016614e6bd34b41aa39a0135c5c677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeed: 200
-  cnt: 0
-  Speed: 3
-  MaxSpeed: 10
-  Accel: 0.1
-  maxFlightTime: 10000
-  State: 0
+  TargetRadius: 1
+  FrameOutDestroy: 0
+  MaxRockOn: 5
+  AttractDistance: 50
+  AttractPower: 10
+--- !u!114 &2068658195287927562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4027670273395097546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 981e5429d620e214e8ec1eea03956107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
