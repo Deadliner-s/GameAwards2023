@@ -22,13 +22,21 @@ public class SpawnMissile2 : MonoBehaviour
     public float DelayTime = 0.0f;
 
     Vector3 ToPos;              //発射先
-  
+
+    //フェイズ切り替え用
+    [Header("フェイズ確認用オブジェクト")]
+    [SerializeField] GameObject PhaseObj;
+    private bool AtkPhaseFlg;
+
     // Start is called before the first frame update
     void Start()
     {
         ToPos = GameObject.Find("Player").transform.position;
 
         targetObject = GameObject.Find("AttackPhase");
+
+        // フェイズ取得
+        AtkPhaseFlg = PhaseObj.activeSelf;
     }
 
     // Update is called once per frame
@@ -50,8 +58,15 @@ public class SpawnMissile2 : MonoBehaviour
 
             if (timer >= Interval)
             {
-                Invoke("InstantiateObject", DelayTime);
-                timer = 0.0f; // タイマーをリセットする
+                // フェイズ確認
+                AtkPhaseFlg = PhaseObj.activeSelf;
+
+                // フェイズの確認
+                if (AtkPhaseFlg == false)
+                {
+                    Invoke("InstantiateObject", DelayTime);
+                    timer = 0.0f; // タイマーをリセットする
+                }
             }
             if (timer2 >= Interval2)
             {
