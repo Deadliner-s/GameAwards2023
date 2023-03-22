@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4482491814637254355, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Name
-      value: BossMissleContenaSmall
+      value: BossMissleContena
       objectReference: {fileID: 0}
     - target: {fileID: 4482491814637254355, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_TagString
@@ -45,15 +45,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.06924229
+      value: 0.13848458
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.06924229
+      value: 0.13848458
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalPosition.x
@@ -119,6 +119,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 981e5429d620e214e8ec1eea03956107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3823171164235356841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741478458244633611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 500309f31c3187042bca2ae6d04eaae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 0.01
+  MaxSpeed: 2
+  Accel: 0.001
+  ContenaRange: 6
+  Height: 5
+  ContenaNumber: 15
+  otherObject: {fileID: 4741478458244633611, guid: 8903fc1efd3881b46a8475f7fd2504ca, type: 3}
 --- !u!114 &2958555774321723217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,21 +167,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd9a54902e5542459783e3fd61909ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerDamage: 20
+  PlayerDamage: 1
   EnemyDamage: 0
---- !u!114 &7704027369108650710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4741478458244633611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc094b85e8e1944cb46fc290849a398, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 0.005
-  MaxSpeed: 2
-  Accel: 0.001
-  MissRange: 5
