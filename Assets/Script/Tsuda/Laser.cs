@@ -4,25 +4,32 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-    // 毎秒増加させる値
-    public float increasePerSecond = 1.0f;
-    private float timer;  // タイマー
+    [SerializeField] private float delay = 1.0f; // 再生までの待機時間
+    private float timer = 0.0f; // 経過時間
+    private bool played = false; // 再生したかどうかのフラグ
 
-    // 毎フレーム呼ばれる関数
+    [SerializeField] private ParticleSystem particleSystem; // 再生するパーティクルオブジェクト
+
+    void Start()
+    {
+        particleSystem.Stop();
+    }
+
     private void Update()
     {
-        timer += Time.deltaTime;  // タイマーを減算する
+        // 再生済みであれば何もしない
+        if (played) return;
 
-        // オブジェクトのTransformコンポーネントを取得
-        Transform transform = GetComponent<Transform>();
+        // 経過時間を加算
+        timer += Time.deltaTime;
 
-        if (timer >= 1.5f)
+        // 指定した時間が経過したら再生
+        if (timer >= delay)
         {
-            // Scaleプロパティのy値を増加させる
-            Vector3 scale = transform.localScale;
-            scale.y += increasePerSecond * Time.deltaTime;
-            transform.localScale = scale;
+            particleSystem.Play();
+            played = true;
         }
     }
 }
+
 

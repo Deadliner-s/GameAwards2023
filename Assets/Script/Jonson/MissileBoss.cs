@@ -16,6 +16,7 @@ public class MissileBoss : MonoBehaviour
 
     System.Random rand = new System.Random();
     float randomX;
+    float randomZ;
 
     Vector3 FromPos;            //î≠éÀå≥
     Vector3 ToPos;              //î≠éÀêÊ
@@ -33,6 +34,7 @@ public class MissileBoss : MonoBehaviour
         transform.position = FromPos;
 
         randomX = (rand.Next(10) - 5) * 0.1f;
+        randomZ = (rand.Next(10) - 5) * 0.1f;
         off = 0.2f;
         Locked = false;
         Miss = false;
@@ -44,7 +46,7 @@ public class MissileBoss : MonoBehaviour
         ToPos = GameObject.Find("Player").transform.position;
         if (transform.position.y <= FromPos.y + Height && !Locked)
         {
-            Move = new Vector3(randomX, 1.0f, -0.1f);
+            Move = new Vector3(randomX, 1.0f, randomZ);
             LateMove = Move;
         }
         else

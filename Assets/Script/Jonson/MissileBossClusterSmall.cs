@@ -9,7 +9,7 @@ public class MissileBossClusterSmall : MonoBehaviour
     public float Speed = 0.01f;        //ミサイルの速度
     public float MaxSpeed = 2.0f;      //速度制限
     public float Accel = 0.005f;       //加速度
-    public float MissRange = 3.5f;     //プレイヤーに外れるの距離
+    public float MissRange = 2.0f;     //プレイヤーに外れるの距離
     float off;
     bool Miss;
 
@@ -31,21 +31,21 @@ public class MissileBossClusterSmall : MonoBehaviour
         PlusY = PlusY.normalized;
         Miss = false;
         off = 0.2f;
-        randY = rand.Next(60);
-        randY -= 30;
-        randY *= 0.1f;
+        randY = rand.Next(30);
+        randY -= 15;
+        randY *= 0.01f;
         randY += PlusY.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckPos = GameObject.Find("Player").transform.position;   //プレイヤーの位置
+        ToPos = GameObject.Find("Player").transform.position;   //プレイヤーの位置
         Speed += Accel;                                         //加速度
         if (Speed >= MaxSpeed)                                  //速度制限
             Speed = MaxSpeed;
-        float distance = Vector3.Distance(new Vector3(transform.position.x,0, transform.position.z), new Vector3(CheckPos.x,0, CheckPos.z));  
-        if (distance >= MissRange && !Miss)               //まだ分裂してない
+        float distance = Vector3.Distance(new Vector3(transform.position.x,0, transform.position.z), new Vector3(ToPos.x,0, ToPos.z));  
+        if (distance >= MissRange && !Miss)               
         {
             Move = ToPos - transform.position;
             Move.y += randY;
@@ -55,6 +55,7 @@ public class MissileBossClusterSmall : MonoBehaviour
         else
         {
             Miss = true;
+            Destroy(gameObject, 3.0f);
         }
         Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
         transform.rotation = rot;

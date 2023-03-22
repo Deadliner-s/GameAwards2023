@@ -18,9 +18,14 @@ public class Shot : MonoBehaviour
     private int currenttime;
     // 射撃フラグ
     private bool Shotflg;
+    // ミサイル生成場所
+    public GameObject Shotpos;
+
 
     // ロックオンされたオブジェクトのリスト
-    public List<Transform> targets = new List<Transform>();
+    public List<GameObject> targets;// = new List<GameObject>();
+
+    private List<GameObject> sub = new List<GameObject>();
 
     void Awake()
     {
@@ -34,6 +39,8 @@ public class Shot : MonoBehaviour
     {
         currenttime = 0;    // 経過時間初期化
         Shotflg = false;    // フラグをオフに
+
+        
     }
 
     // Update is called once per frame
@@ -54,21 +61,28 @@ public class Shot : MonoBehaviour
     {
         if (Shotflg == false)
         {
-            Vector3 PlayerPos = GameObject.Find("Player").transform.position;
+            foreach(GameObject k in targets)
+            {
+                sub.Add(k);
+            }
+
+            Vector3 PlayerPos = Shotpos.transform.position;
+
+            targets = new List<GameObject>();
 
             // 配列にタグがTargetのオブジェクトを入れる
             GameObject[] targetsObj = GameObject.FindGameObjectsWithTag("Target");
             foreach (GameObject target in targetsObj)
             {
                 // ターゲットがリストに含まれていなければ追加する
-                if (!targets.Contains(target.transform))
+                if (!targets.Contains(target))
                 {
-                    targets.Add(target.transform);
+                    targets.Add(target);
                 }
             }
 
             // 各ロックオンされたターゲットにミサイルを打つ
-            foreach (Transform target in targets)
+            foreach (GameObject target in targets)
             {
                 // 新しい誘導ミサイルプレハブをインスタンス化する
                 GameObject missile = Instantiate(MissilePrefab, PlayerPos, Quaternion.identity);
@@ -78,6 +92,8 @@ public class Shot : MonoBehaviour
             }
 
             currenttime = 0;
+
+            Shotflg = true;
         }
         
     }

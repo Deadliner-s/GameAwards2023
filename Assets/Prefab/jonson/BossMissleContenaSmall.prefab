@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8275319220191747697
+--- !u!1001 &9221154352735593176
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -13,11 +13,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4482491814637254355, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Name
-      value: BossMissleClusterSmall
+      value: BossMissleContenaSmall
       objectReference: {fileID: 0}
     - target: {fileID: 4482491814637254355, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960448012418322811, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
+      propertyPath: To
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960448012418322811, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
+      propertyPath: From
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960448012418322811, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
+      propertyPath: Speed
+      value: 0.00005
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960448012418322811, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
+      propertyPath: Height
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960448012418322811, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
+      propertyPath: ControlPositionY
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_RootOrder
@@ -25,27 +45,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.98210585
+      value: 0.06924229
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.98210585
+      value: 0.06924229
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -11.52788
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.03399
+      value: -0.09303
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -21.567688
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalRotation.w
@@ -79,48 +99,33 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7960448012418322811, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
---- !u!1 &5540224078154131618 stripped
+--- !u!1 &4741478458244633611 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4482491814637254355, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
-  m_PrefabInstance: {fileID: 8275319220191747697}
+  m_PrefabInstance: {fileID: 9221154352735593176}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-6412714930523912235
+--- !u!114 &-4867831459758655791
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5540224078154131618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f96a14c8d5822ab43abf8bf726debb3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 0.01
-  MaxSpeed: 2
-  Accel: 0.005
-  MissRange: 3
---- !u!114 &3269853620418012009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5540224078154131618}
+  m_GameObject: {fileID: 4741478458244633611}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 981e5429d620e214e8ec1eea03956107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4044163548983055081
+--- !u!114 &2958555774321723217
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5540224078154131618}
+  m_GameObject: {fileID: 4741478458244633611}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8016614e6bd34b41aa39a0135c5c677, type: 3}
@@ -131,3 +136,33 @@ MonoBehaviour:
   MaxRockOn: 5
   AttractDistance: 50
   AttractPower: 10
+--- !u!114 &3991838934210562174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741478458244633611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd9a54902e5542459783e3fd61909ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerDamage: 1
+  EnemyDamage: 0
+--- !u!114 &7704027369108650710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741478458244633611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc094b85e8e1944cb46fc290849a398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 0.005
+  MaxSpeed: 2
+  Accel: 0.001
+  MissRange: 5

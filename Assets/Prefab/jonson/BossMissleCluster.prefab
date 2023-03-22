@@ -25,15 +25,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.98210585
+      value: 0.09821059
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.98210585
+      value: 0.09821059
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalPosition.x
@@ -98,11 +98,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be00ed3f558d35a4ebcb967e71cca6d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0.005
+  Speed: 0.001
   MaxSpeed: 2
-  Accel: 0.001
-  ClusterRange: 9
+  Accel: 0.0001
+  ClusterRange: 1
+  ClusterNumber: 6
   otherObject: {fileID: 5540224078154131618, guid: 71c89ff9c78b31840b271ed7e3e1c1b9, type: 3}
+--- !u!114 &3199757680400134780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5540224078154131618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd9a54902e5542459783e3fd61909ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerDamage: 1
+  EnemyDamage: 0
 --- !u!114 &3269853620418012009
 MonoBehaviour:
   m_ObjectHideFlags: 0

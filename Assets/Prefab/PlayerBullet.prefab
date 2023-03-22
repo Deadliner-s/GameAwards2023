@@ -128,10 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14782c0b0b069b74795d1ba6b7797cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeed: 200
-  cnt: 0
-  Speed: 3
-  MaxSpeed: 10
-  Accel: 0.1
+  Speed: 0.1
+  MaxSpeed: 5
+  Accel: 0.002
   maxFlightTime: 10000
   State: 0
