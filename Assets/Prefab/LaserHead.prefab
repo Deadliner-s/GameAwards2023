@@ -12,13 +12,14 @@ GameObject:
   - component: {fileID: 786199139589172551}
   - component: {fileID: 786199139589172548}
   - component: {fileID: 786199139589172549}
+  - component: {fileID: 8268416927075012128}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Laser
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &786199139589172570
 Transform:
   m_ObjectHideFlags: 0
@@ -27,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786199139589172571}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 60.2}
+  m_LocalScale: {x: 1, y: 60, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 786199140513531241}
@@ -49,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786199139589172571}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -94,10 +95,24 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 1
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &8268416927075012128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786199139589172571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd9a54902e5542459783e3fd61909ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerDamage: 50
+  EnemyDamage: 0
 --- !u!1 &786199140513531244
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,7 +126,7 @@ GameObject:
   - component: {fileID: 786199140513531247}
   m_Layer: 0
   m_Name: LaserHead
-  m_TagString: Laser
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -233,6 +248,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Laser_Effect
       objectReference: {fileID: 0}
+    - target: {fileID: 7653467430423080687, guid: 9b11c3e605da7434ea3ca73c4a3d1450, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 7653467431741715253, guid: 9b11c3e605da7434ea3ca73c4a3d1450, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -260,34 +279,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7653467430423080687, guid: 9b11c3e605da7434ea3ca73c4a3d1450, type: 3}
   m_PrefabInstance: {fileID: 6231727181556308205}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &2957173667796740543
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4345163088877385218}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 30
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 5}
---- !u!114 &1377826437331324540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4345163088877385218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46d537b9bfb21bd41b8d84a326d42654, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 2
-  particleSystem: {fileID: 4345163088877385228}
 --- !u!114 &488817706610032031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,6 +293,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerDamage: 50
   EnemyDamage: 0
+--- !u!114 &1377826437331324540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4345163088877385218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d537b9bfb21bd41b8d84a326d42654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 2
+  particleSystem: {fileID: 4345163088877385228}
 --- !u!198 &4345163088877385228 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 7653467430423080673, guid: 9b11c3e605da7434ea3ca73c4a3d1450, type: 3}

@@ -7,11 +7,14 @@ public class Laser : MonoBehaviour
     [SerializeField] private float delay = 1.0f; // 再生までの待機時間
     private float timer = 0.0f; // 経過時間
     private bool played = false; // 再生したかどうかのフラグ
+//    private CapsuleCollider Col;
 
     [SerializeField] private ParticleSystem particleSystem; // 再生するパーティクルオブジェクト
 
     void Start()
     {
+//        Col = GetComponent<CapsuleCollider>();
+//        Col.enabled = false;
         particleSystem.Stop();
     }
 
@@ -26,6 +29,7 @@ public class Laser : MonoBehaviour
         // 指定した時間が経過したら再生
         if (timer >= delay)
         {
+//            Col.enabled = true;
             particleSystem.Play();
             played = true;
         }
