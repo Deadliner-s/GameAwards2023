@@ -14,7 +14,7 @@ public class BossHp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Boss = GameObject.Find("Boss");
+        Boss = GameObject.Find("BOSS1");
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class BossHp : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         // もし衝突した相手オブジェクトのタグが"Enemy"ならば中の処理を実行
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("PlayerBullet"))
         {
             Boss.GetComponent<MainBossHp>().Damage(collision);
         }

@@ -31,16 +31,16 @@ public class BossAnime : MonoBehaviour
         if (AtkPhaseFlg == false)
         {
             // ハイスピードフェイズ
-            anime.SetBool("isMove", true);
+            anime.SetBool("isMove", false);
 
-            wp.enabled = true;
+            wp.enabled = false;
         }
         else
         {
             // アタックフェイズ
-            anime.SetBool("isMove", false);
+            anime.SetBool("isMove", true);
 
-            wp.enabled = false;
+            wp.enabled = true;
         }
         //if (Input.GetKey(KeyCode.Alpha1))
         //{
