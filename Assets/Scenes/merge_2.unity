@@ -1586,6 +1586,18 @@ PrefabInstance:
       propertyPath: PhaseObj
       value: 
       objectReference: {fileID: 2037204904}
+    - target: {fileID: 1180267641147467985, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267641147467985, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: DestroyTime
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267641147467986, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267641147467990, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -1606,6 +1618,10 @@ PrefabInstance:
       propertyPath: GaugeObj
       value: 
       objectReference: {fileID: 1797140990}
+    - target: {fileID: 1180267641508261405, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261406, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: PhaseObj
       value: 
@@ -1658,6 +1674,10 @@ PrefabInstance:
       propertyPath: PhaseObj
       value: 
       objectReference: {fileID: 2037204904}
+    - target: {fileID: 1180267642077531082, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: DestroyTime
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267642077531083, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -1674,6 +1694,14 @@ PrefabInstance:
       propertyPath: PhaseObj
       value: 
       objectReference: {fileID: 2037204904}
+    - target: {fileID: 1180267642640632005, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: DestroyTime
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642640632006, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267642640632010, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -1687,13 +1715,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1180267642688613139, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: Key
+      value: j
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642688613139, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: Interval
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642688613139, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: PhaseObj
       value: 
       objectReference: {fileID: 2037204904}
+    - target: {fileID: 1180267642688613139, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: Interval2
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642688613139, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: DestroyTime
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267642777113748, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: PhaseObj
       value: 
       objectReference: {fileID: 2037204904}
+    - target: {fileID: 1180267642777113748, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: DestroyTime
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267642777113749, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_IsTrigger
       value: 1
