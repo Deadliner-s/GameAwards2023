@@ -7,12 +7,19 @@ public class Blink : MonoBehaviour
     // “_–Å‚³‚¹‚é‘ÎÛ
     [SerializeField] private Renderer _target;
     // “_–ÅüŠú[s]
-    [SerializeField] private float _cycle = 1;
+    private float _cycle = 0.5f;
 
     private double _time;
 
+    private float timer = 0.0f;
+
     private void Update()
     {
+        timer += Time.deltaTime;
+
+        if (timer >= 1.0f) { _cycle = 0.2f; }        
+
+
         // “à•”‚ğŒo‰ß‚³‚¹‚é
         _time += Time.deltaTime;
 
