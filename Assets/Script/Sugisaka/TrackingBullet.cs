@@ -45,7 +45,7 @@ public class TrackingBullet : MonoBehaviour
         }
         if (target == null)
         {
-            State = 1;
+            State = 2;
         }
 
 
@@ -61,15 +61,8 @@ public class TrackingBullet : MonoBehaviour
                     break;
                 }
 
-                //var pos = transform.up * 0.1f;
-                //transform.position += pos;
-
                 Move = new Vector3(0.0f, 1.0f, 0.0f);
                 LateMove = Move;
-
-                Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
-                transform.rotation = rot;
-                transform.position += LateMove * Speed;
 
                 break;
 
@@ -96,10 +89,6 @@ public class TrackingBullet : MonoBehaviour
                 Move = Move.normalized;
                 LateMove = (Move - LateMove) * off + (LateMove);
 
-                rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
-                transform.rotation = rot;
-                transform.position += LateMove * Speed;
-
                 // îÚçséûä‘ÇëùÇ‚Ç∑
                 flightTime++;
                 break;
@@ -107,12 +96,16 @@ public class TrackingBullet : MonoBehaviour
             case (2):
                 // íºê¸à⁄ìÆ
 
-                var pos1 = transform.forward;
-                transform.position += pos1;
+                Move = new Vector3(1.0f, 0.0f, 0.0f);
+                LateMove = Move;
 
                 flightTime += 100;
                 break;
         }
+
+        Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
+        transform.rotation = rot;
+        transform.position += LateMove * Speed;
 
     }
 

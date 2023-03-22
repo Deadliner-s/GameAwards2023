@@ -23,7 +23,9 @@ public class Shot : MonoBehaviour
 
 
     // ロックオンされたオブジェクトのリスト
-    public List<GameObject> targets = new List<GameObject>();
+    public List<GameObject> targets;// = new List<GameObject>();
+
+    private List<GameObject> sub = new List<GameObject>();
 
     void Awake()
     {
@@ -59,7 +61,14 @@ public class Shot : MonoBehaviour
     {
         if (Shotflg == false)
         {
+            foreach(GameObject k in targets)
+            {
+                sub.Add(k);
+            }
+
             Vector3 PlayerPos = Shotpos.transform.position;
+
+            targets = new List<GameObject>();
 
             // 配列にタグがTargetのオブジェクトを入れる
             GameObject[] targetsObj = GameObject.FindGameObjectsWithTag("Target");
@@ -83,6 +92,8 @@ public class Shot : MonoBehaviour
             }
 
             currenttime = 0;
+
+            Shotflg = true;
         }
         
     }
