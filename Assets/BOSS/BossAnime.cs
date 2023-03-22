@@ -23,7 +23,6 @@ public class BossAnime : MonoBehaviour
             anime.SetBool("isMove", true);
 
             wp.enabled = true;
-            //wpobj.SetActive(true);
         }
 
         if (Input.GetKey(KeyCode.Alpha2))
@@ -31,7 +30,6 @@ public class BossAnime : MonoBehaviour
             anime.SetBool("isMove", false);
 
             wp.enabled = false;
-            //wpobj.SetActive(false);
         }
     }
 }
