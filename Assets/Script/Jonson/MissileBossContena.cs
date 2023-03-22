@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class MissileBoss : MonoBehaviour
+public class MissileBossContena : MonoBehaviour
 {
     public float Speed;         //ミサイルの速度
     public float MaxSpeed = 2.0f;
     public float Accel;         //加速度
-    public float MissRange;     //プレイヤーに外れるの距離
+    public float ContenaRange = 7.0f;     //コンテナする距離
     public float Height;        //ミサイルの高さ
+    public int ContenaNumber = 15;//分裂の数
     float off;
     bool Locked;                //ミサイルがロックオンしているか
-    bool Miss;
-
-    System.Random rand = new System.Random();
-    float randomX;
-    float randomZ;
+    GameObject newObj;
+    public GameObject otherObject;        // 生成するプレハブオブジェクト
 
     Vector3 FromPos;            //発射元
     Vector3 ToPos;              //発射先
@@ -26,18 +24,13 @@ public class MissileBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //EnemyBossという名前のものが存在する
-        FromPos = GameObject.Find("EnemyBoss").transform.position;
-        //Playerという名前のものが存在する
+        //プレイヤーの位置を取得
         ToPos = GameObject.Find("Player").transform.position;
-        //ミサイルの初期位置を設定
-        transform.position = FromPos;
+        //ボスの位置を取得
+        FromPos = GameObject.Find("EnemyBoss").transform.position;
 
-        randomX = (rand.Next(10) - 5) * 0.1f;
-        randomZ = (rand.Next(10) - 5) * 0.1f;
         off = 0.2f;
         Locked = false;
-        Miss = false;
     }
 
     // Update is called once per frame
@@ -46,7 +39,7 @@ public class MissileBoss : MonoBehaviour
         ToPos = GameObject.Find("Player").transform.position;
         if (transform.position.y <= FromPos.y + Height && !Locked)
         {
-            Move = new Vector3(randomX, 1.0f, randomZ);
+            Move = new Vector3(0, 1.0f, 0);
             LateMove = Move;
         }
         else
@@ -58,7 +51,7 @@ public class MissileBoss : MonoBehaviour
                 Speed = MaxSpeed;
             }
             float distance = Vector3.Distance(transform.position, ToPos);
-            if (distance >= MissRange && !Miss)
+            if (distance >= ContenaRange)
             {
                 Move = ToPos - transform.position;
                 Move = Move.normalized;
@@ -66,7 +59,11 @@ public class MissileBoss : MonoBehaviour
             }
             else
             {
-                Miss = true;
+                for (int i = 0; i < ContenaNumber; i++)
+                {
+                    newObj = Instantiate(otherObject, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                }
+                Destroy(gameObject, 0);
             }
         }
         Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
