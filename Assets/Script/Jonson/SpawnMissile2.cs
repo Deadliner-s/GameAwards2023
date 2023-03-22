@@ -13,7 +13,6 @@ public class SpawnMissile2 : MonoBehaviour
     private float timer2 = 0.0f;
 
     private bool wait = false;
-    private GameObject targetObject; // 対象オブジェクト
 
     public string Key;              //ボタンをしたら出す　時間無視
 
@@ -33,8 +32,6 @@ public class SpawnMissile2 : MonoBehaviour
     {
         ToPos = GameObject.Find("Player").transform.position;
 
-        targetObject = GameObject.Find("AttackPhase");
-
         // フェイズ取得
         AtkPhaseFlg = PhaseObj.activeSelf;
     }
@@ -47,10 +44,7 @@ public class SpawnMissile2 : MonoBehaviour
             Invoke("InstantiateObject", DelayTime);
             ToPos = GameObject.Find("Player").transform.position;
         }
-        if (targetObject == null)
-        {
-            return;
-        }
+
         if (!wait)
         {
             timer += Time.deltaTime;

@@ -13,7 +13,7 @@ public class WeakPoint : MonoBehaviour
     {
         for(int i= 0; i < 4; i++)
         {
-            weakobj[i] = Instantiate(wpobj,new Vector3(0.0f, 1.0f + i, 0.0f), Quaternion.identity);
+            weakobj[i] = Instantiate(wpobj,new Vector3(0.0f, 2.0f + i, 0.0f), Quaternion.identity);
         }
     }
 

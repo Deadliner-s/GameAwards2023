@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8016614e6bd34b41aa39a0135c5c677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetRadius: 1
+  TargetRadius: 15
   FrameOutDestroy: 0
   MaxRockOn: 5
   AttractDistance: 50
