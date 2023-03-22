@@ -17,8 +17,8 @@ public class LaserHead : MonoBehaviour
     {
         mainCamera = Camera.main;  // メインカメラを取得する
 
-        targetScreenPosition.x = Random.Range(0.0f, 1620.0f);  // 0～1920のランダムな数値
-        targetScreenPosition.y = Random.Range(0.0f, 980.0f);  // 0～1080のランダムな数値
+        targetScreenPosition.x = Random.Range(960.0f, 2600.0f);  // 0～1920のランダムな数値
+        targetScreenPosition.y = Random.Range(0.0f, 1080.0f);  // 0～1080のランダムな数値
         targetScreenPosition.z = 2.0f;
         targetWorldPosition = mainCamera.ScreenToWorldPoint(targetScreenPosition);  // 目標スクリーン座標をワールド座標に変換する
 
