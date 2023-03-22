@@ -356,6 +356,8 @@ MonoBehaviour:
   Missile: {fileID: 4741478458244633611, guid: 9fe75ba60bab56b48b5309f796a7552d, type: 3}
   DestroyTime: 5
   Key: p
+  Interval: 2
+  Interval2: 8
 --- !u!114 &247176459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,6 +373,8 @@ MonoBehaviour:
   Missile: {fileID: 3222784191366915875, guid: bb92e347f9a25474d9e1b03dbdf06281, type: 3}
   DestroyTime: 20
   Key: l
+  Interval: 2
+  Interval2: 8
 --- !u!114 &247176460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,6 +405,8 @@ MonoBehaviour:
   Missile: {fileID: 4741478458244633611, guid: a166eeb9b4e2c494f912cf907f7a4985, type: 3}
   DestroyTime: 15
   Key: k
+  Interval: 2
+  Interval2: 8
 --- !u!4 &262786249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2653373171205573415, guid: 21fcd5f1e0c415f46bd73691b9282a0a, type: 3}
@@ -1047,6 +1053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MissilePrefab: {fileID: 522196463854886502, guid: b73c649aa92d23441b545fa5fc42ecb6, type: 3}
   ReloadTime: 0
+  Shotpos: {fileID: 1406182082}
   targets: []
 --- !u!114 &569983146
 MonoBehaviour:
@@ -1399,6 +1406,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
   DestroyTime: 3
+  Interval: 2
+  Interval2: 8
   Key: u
   DelayTime: 0
 --- !u!65 &652995238
@@ -1864,6 +1873,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
   DestroyTime: 3
+  Interval: 2
+  Interval2: 8
   Key: n
   DelayTime: 0
 --- !u!65 &1254198061
@@ -2208,6 +2219,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
   DestroyTime: 3
+  Interval: 2
+  Interval2: 8
   Key: y
   DelayTime: 0
 --- !u!65 &1370292604
@@ -2383,6 +2396,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1406182082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1406182083}
+  m_Layer: 0
+  m_Name: MissileSpone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1406182083
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406182082}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0415, y: 0.044, z: -0.0048}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 569983149}
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1406777304
 GameObject:
@@ -2594,6 +2638,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
   DestroyTime: 3
+  Interval: 2
+  Interval2: 8
   Key: m
   DelayTime: 0
 --- !u!65 &1928378419
@@ -2724,6 +2770,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
   DestroyTime: 3
+  Interval: 2
+  Interval2: 8
   Key: 0
   DelayTime: 0
 --- !u!65 &1963545678
@@ -2803,6 +2851,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Missile: {fileID: 5540224078154131618, guid: 05a76db5fa499f548b8994bdfdbb97b9, type: 3}
   DestroyTime: 10
+  Interval: 2
+  Interval2: 8
   Key: i
   DelayTime: 0
 --- !u!1 &2037204904
