@@ -130,8 +130,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnSpeed: 200
   cnt: 0
-  Speed: 3
+  Speed: 0.2
   MaxSpeed: 10
-  Accel: 0.1
+  Accel: 0.002
   maxFlightTime: 10000
   State: 0
