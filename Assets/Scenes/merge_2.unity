@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 247176458}
   - component: {fileID: 247176459}
   - component: {fileID: 247176460}
+  - component: {fileID: 247176461}
   m_Layer: 0
   m_Name: EnemyBoss
   m_TagString: Untagged
@@ -385,6 +386,21 @@ MonoBehaviour:
   prefab: {fileID: 786199140513531244, guid: 9aa00b7861ffd164bb5fc3af873fd230, type: 3}
   Interval: 2
   Interval2: 8
+--- !u!114 &247176461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247176452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b4692c62de883146a534b18c0d61933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Missile: {fileID: 4741478458244633611, guid: a166eeb9b4e2c494f912cf907f7a4985, type: 3}
+  DestroyTime: 15
+  Key: k
 --- !u!4 &262786249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2653373171205573415, guid: 21fcd5f1e0c415f46bd73691b9282a0a, type: 3}
@@ -2412,7 +2428,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1414156512 stripped
 GameObject:
@@ -2818,13 +2834,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2063851570
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4018881465579555264, guid: 8b590d47223458b44807ab9765c369ea, type: 3}
-  m_PrefabInstance: {fileID: 4018881464386457192}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2106895110
 GameObject:
   m_ObjectHideFlags: 0
