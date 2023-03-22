@@ -33,7 +33,7 @@ public class LaserHead : MonoBehaviour
     {
         timer -= Time.deltaTime;  // タイマーを減算する
 
-        if (timer <= lifetime - 1.5f)
+        if (timer <= lifetime - 7.0f)
         {
             transform.position += transform.forward * speed * Time.deltaTime;  // 目標座標の方向に移動する
         }
