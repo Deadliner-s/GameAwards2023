@@ -1651,6 +1651,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8618331067359277965, guid: 4700cfdede16cb24180c5b561aa4e645, type: 3}
+      propertyPath: PhaseObj
+      value: 
+      objectReference: {fileID: 2037204904}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4700cfdede16cb24180c5b561aa4e645, type: 3}
 --- !u!1 &1366142381 stripped
