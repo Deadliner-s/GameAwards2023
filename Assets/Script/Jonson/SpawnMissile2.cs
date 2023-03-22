@@ -6,7 +6,17 @@ public class SpawnMissile2 : MonoBehaviour
 {
     public GameObject Missile;
     public float DestroyTime;
-    public string Key;
+    public float Interval = 2.0f;   //出す時間
+    public float Interval2 = 8.0f;  //出す間隔
+
+    private float timer = 0.0f;
+    private float timer2 = 0.0f;
+
+    private bool wait = false;
+    private GameObject targetObject; // 対象オブジェクト
+
+    public string Key;              //ボタンをしたら出す　時間無視
+
     GameObject obj;
 
     public float DelayTime = 0.0f;
@@ -18,6 +28,7 @@ public class SpawnMissile2 : MonoBehaviour
     {
         ToPos = GameObject.Find("Player").transform.position;
 
+        targetObject = GameObject.Find("AttackPhase");
     }
 
     // Update is called once per frame
@@ -28,7 +39,35 @@ public class SpawnMissile2 : MonoBehaviour
             Invoke("InstantiateObject", DelayTime);
             ToPos = GameObject.Find("Player").transform.position;
         }
+        if (targetObject == null)
+        {
+            return;
+        }
+        if (!wait)
+        {
+            timer += Time.deltaTime;
+            timer2 += Time.deltaTime;
 
+            if (timer >= Interval)
+            {
+                Invoke("InstantiateObject", DelayTime);
+                timer = 0.0f; // タイマーをリセットする
+            }
+            if (timer2 >= Interval2)
+            {
+                wait = true;
+                timer2 = 0.0f;
+            }
+        }
+        if (wait)
+        {
+            timer2 += Time.deltaTime;
+            if (timer2 >= Interval2)
+            {
+                wait = false;
+                timer2 = 0.0f;
+            }
+        }
     }
 
     void InstantiateObject()
