@@ -14,7 +14,6 @@ public class SpawnMissile : MonoBehaviour
     private float timer2 = 0.0f;
 
     private bool wait = false;
-    private GameObject targetObject; // 対象オブジェクト
 
     //フェイズ切り替え用
     [Header("フェイズ確認用オブジェクト")]
@@ -24,8 +23,6 @@ public class SpawnMissile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        targetObject = GameObject.Find("AttackPhase");
-
         // フェイズ取得
         AtkPhaseFlg = PhaseObj.activeSelf;
     }
@@ -42,10 +39,6 @@ public class SpawnMissile : MonoBehaviour
             Destroy(obj, DestroyTime);
         }
 
-        if (targetObject == null)
-        {
-            return;
-        }
         if (!wait)
         {
             timer += Time.deltaTime;
