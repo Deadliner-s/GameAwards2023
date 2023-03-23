@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetRadius: 15
-  FrameOutDestroy: 0
+  FrameOutDestroy: 1
   MaxRockOn: 5
   AttractDistance: 50
   AttractPower: 10

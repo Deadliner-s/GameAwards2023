@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3516818808793263005}
   - component: {fileID: 6253862613293384555}
   - component: {fileID: 2068658195287927562}
+  - component: {fileID: 5136408630552931320}
   m_Layer: 0
   m_Name: WeakPoint
   m_TagString: Enemy
@@ -111,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8016614e6bd34b41aa39a0135c5c677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetRadius: 1
+  TargetRadius: 15
   FrameOutDestroy: 0
   MaxRockOn: 5
   AttractDistance: 50
@@ -126,5 +127,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 981e5429d620e214e8ec1eea03956107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5136408630552931320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4027670273395097546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d8ce11d2fd7cb42947199e1b3c13fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

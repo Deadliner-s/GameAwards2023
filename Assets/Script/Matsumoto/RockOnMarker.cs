@@ -95,7 +95,7 @@ public class RockOnMarker : MonoBehaviour
                 GameObject[] tagObjects;
                 tagObjects = GameObject.FindGameObjectsWithTag("Target");
                 // ロックオンできる数以下だったら
-                if (tagObjects.Length < MaxRockOn)
+                if (tagObjects.Length < MaxRockOn && destroyFlg == false) 
                 {
                     // 回転
                     Transform transform = target.transform;
@@ -129,6 +129,7 @@ public class RockOnMarker : MonoBehaviour
     private void OnDestroy()
     {
         Destroy(target);
+        destroyFlg = true;
     }
 
     // 画面外に行ったら消える

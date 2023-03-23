@@ -14,27 +14,31 @@ public class SpawnMissile : MonoBehaviour
     private float timer2 = 0.0f;
 
     private bool wait = false;
-    private GameObject targetObject; // 対象オブジェクト
+
+    //フェイズ切り替え用
+    [Header("フェイズ確認用オブジェクト")]
+    [SerializeField] GameObject PhaseObj;
+    private bool AtkPhaseFlg;
 
     // Start is called before the first frame update
     void Start()
     {
-        targetObject = GameObject.Find("AttackPhase");
+        // フェイズ取得
+        AtkPhaseFlg = PhaseObj.activeSelf;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(Key))
+        // フェイズ確認
+        AtkPhaseFlg = PhaseObj.activeSelf;
+
+        if (Input.GetKeyDown(Key))
         {
             GameObject obj = Instantiate(Missile, new Vector3(0, 0, 0), Quaternion.identity);
             Destroy(obj, DestroyTime);
         }
 
-        if (targetObject == null)
-        {
-            return;
-        }
         if (!wait)
         {
             timer += Time.deltaTime;
@@ -42,9 +46,13 @@ public class SpawnMissile : MonoBehaviour
 
             if (timer >= Interval)
             {
-                GameObject obj = Instantiate(Missile, new Vector3(0, 0, 0), Quaternion.identity);
-                Destroy(obj, DestroyTime);
-                timer = 0.0f; // タイマーをリセットする
+                // フェイズの確認
+                if (AtkPhaseFlg == true)
+                {
+                    GameObject obj = Instantiate(Missile, new Vector3(0, 0, 0), Quaternion.identity);
+                    Destroy(obj, DestroyTime);
+                    timer = 0.0f; // タイマーをリセットする
+                }
             }
             if (timer2 >= Interval2)
             {

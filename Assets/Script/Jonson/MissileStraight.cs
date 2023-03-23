@@ -6,7 +6,7 @@ using System;
 public class MissileStraight : MonoBehaviour
 {
     public float Speed = 0.01f;        //ミサイルの速度
-    public float MaxSpeed = 2.0f;      //速度制限
+    public float MaxSpeed = 0.003f;      //速度制限
     public float Accel = 0.001f;       //加速度
     public float MissRange = 2.0f;     //プレイヤーに外れるの距離
     private GameObject canvas;         // キャンバス
@@ -18,14 +18,14 @@ public class MissileStraight : MonoBehaviour
     private Vector3 targetScreenPosition; // 目標スクリーン座標
     private Vector3 targetWorldPosition;  // 目標ワールド座標
 
-
+    int time;
     Vector3 ToPos;              //発射先
     Vector3 Move;               //移動方向
     Vector3 LateMove;           //滑らか動きをするためのmove変数
 
     // Start is called before the first frame update
     void Start()
-    {      
+    {
         ToPos = GameObject.Find("Player").transform.position; //Player
         mainCamera = Camera.main;                             // メインカメラを取得する
         canvas = GameObject.Find("Canvas");                 　// キャンバスを指定
@@ -55,10 +55,11 @@ public class MissileStraight : MonoBehaviour
 
         //UI生成
         newObj = Instantiate(otherObject, targetScreenPosition, transform.rotation) as GameObject;  // 警告UIの生成
-        Destroy(newObj, 3.0f);                                                                      // UIを消す
+        //Destroy(newObj, 3.0f);                                                                      
 
         newObj.transform.SetParent(canvas.transform, false);                                        // Canvasの子オブジェクトとして生成
 
+        time = 0;
         Miss = false;
         off = 0.2f;
     }
@@ -66,26 +67,32 @@ public class MissileStraight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ToPos = GameObject.Find("Player").transform.position;   //プレイヤーの位置
-        Speed += Accel;                                         //加速度
-        if (Speed >= MaxSpeed)                                  //速度制限
-            Speed = MaxSpeed;
-        float distance = Vector3.Distance(transform.position, ToPos);
-        if (distance >= MissRange && !Miss)                     //まだ外れてない
-        {
-            Move = ToPos - transform.position;
-            Move = Move.normalized;
-            LateMove = (Move - LateMove) * off + (LateMove);
-        }
-        else
-        {
-            Miss = true;
-        }
-
+        time++;
+        if (time >= 120)
+            time = 0;
         //world座標をcamera座標に変換
         targetWorldPosition = transform.position;
         targetWorldPosition = mainCamera.WorldToScreenPoint(targetWorldPosition);
         Vector3 NewPosFix = targetWorldPosition;
+
+        ToPos = GameObject.Find("Player").transform.position;   //プレイヤーの位置
+        Speed += Accel;                                         //加速度
+                                                                // if (Speed >= MaxSpeed)                                //速度制限
+                                                                //     Speed = MaxSpeed;
+
+        if (targetWorldPosition.x >= 50 && targetWorldPosition.x <= 1870 && targetWorldPosition.y >= 50 && targetWorldPosition.y <= 1030)    //画面内に入ったかどうか
+        {
+            Miss = true;            //画面内に入った
+            Speed = MaxSpeed;       //速度をMAX
+            Destroy(newObj);        //UIを消す
+        }
+        else if (!Miss)              //画面内にまだ入ってない、追尾
+        {
+            Move = ToPos - transform.position;
+            Move = Move.normalized;
+            LateMove = (Move - LateMove) * off + (LateMove);
+
+        }
 
         //UIを画面外にいかないように
         if (NewPosFix.y >= 1030)
@@ -105,13 +112,40 @@ public class MissileStraight : MonoBehaviour
             NewPosFix.x = 50;
         }
 
-        if(newObj)
+        if (newObj)
         {
             newObj.transform.position = NewPosFix;  //UIの位置を更新
-        }   
-        if(Miss)
-        {
-            Destroy(newObj);        //ミサイルがプレイヤーに外れたらUIを消す
+          
+            float distance = Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(ToPos.x, 0, ToPos.z));
+            int rate = 55;
+            if (distance <= 7)
+            {
+                rate = 45;                
+            }
+            if (distance <= 6)
+            {
+                rate = 35;
+            }
+            if (distance <= 5)
+            {
+                rate = 25;
+            }
+            if(distance <= 4)
+            {
+                rate = 15;
+            }
+            if (distance <= 3)
+            {
+                rate = 5;
+            }
+            if (time % rate <= rate/2)
+            {
+                newObj.SetActive(true);
+            }
+            else
+            {
+                newObj.SetActive(false);
+            }
         }
         Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
         transform.rotation = rot;

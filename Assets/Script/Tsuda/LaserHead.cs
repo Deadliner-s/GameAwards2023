@@ -17,8 +17,8 @@ public class LaserHead : MonoBehaviour
     {
         mainCamera = Camera.main;  // メインカメラを取得する
 
-        targetScreenPosition.x = Random.Range(960.0f, 2600.0f);  // 0～1920のランダムな数値
-        targetScreenPosition.y = Random.Range(0.0f, 1080.0f);  // 0～1080のランダムな数値
+        targetScreenPosition.x = Random.Range(960.0f, 2000.0f);  // 0～1920のランダムな数値
+        targetScreenPosition.y = Random.Range(0.0f, 980.0f);  // 0～1080のランダムな数値
         targetScreenPosition.z = 2.0f;
         targetWorldPosition = mainCamera.ScreenToWorldPoint(targetScreenPosition);  // 目標スクリーン座標をワールド座標に変換する
 
@@ -33,7 +33,11 @@ public class LaserHead : MonoBehaviour
     {
         timer -= Time.deltaTime;  // タイマーを減算する
 
-        if (timer <= lifetime - 7.0f)
+        targetWorldPosition = mainCamera.ScreenToWorldPoint(targetScreenPosition);  // 目標スクリーン座標をワールド座標に変換する
+        transform.LookAt(targetWorldPosition);
+
+
+        if (timer <= lifetime - 12.0f)
         {
             transform.position += transform.forward * speed * Time.deltaTime;  // 目標座標の方向に移動する
         }

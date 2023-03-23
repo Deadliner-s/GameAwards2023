@@ -8,28 +8,52 @@ public class BossAnime : MonoBehaviour
     public GameObject wpobj;
     private WeakPoint wp;
 
+    // フェイズ切り替え用
+    [Header("フェイズ確認用オブジェクト")]
+    [SerializeField] GameObject PhaseObj;
+    private bool AtkPhaseFlg;
+
     // Start is called before the first frame update
     void Start()
     {
         anime = GetComponent<Animator>();
         wp = gameObject.GetComponent<WeakPoint>();
+
+        AtkPhaseFlg = PhaseObj.activeSelf;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Alpha1))
-        {
-            anime.SetBool("isMove", true);
+        AtkPhaseFlg = PhaseObj.activeSelf;
 
-            wp.enabled = true;
-        }
 
-        if (Input.GetKey(KeyCode.Alpha2))
+        if (AtkPhaseFlg == false)
         {
+            // ハイスピードフェイズ
             anime.SetBool("isMove", false);
 
             wp.enabled = false;
         }
+        else
+        {
+            // アタックフェイズ
+            anime.SetBool("isMove", true);
+
+            wp.enabled = true;
+        }
+        //if (Input.GetKey(KeyCode.Alpha1))
+        //{
+        //    anime.SetBool("isMove", true);
+
+        //    wp.enabled = true;
+        //}
+
+        //if (Input.GetKey(KeyCode.Alpha2))
+        //{
+        //    anime.SetBool("isMove", false);
+
+        //    wp.enabled = false;
+        //}
     }
 }
