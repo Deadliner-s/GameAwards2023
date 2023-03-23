@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 786199139589172548}
   - component: {fileID: 786199139589172549}
   - component: {fileID: 8268416927075012128}
+  - component: {fileID: 3790010361037620435}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Enemy
@@ -113,6 +114,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerDamage: 50
   EnemyDamage: 0
+--- !u!114 &3790010361037620435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786199139589172571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcefb92b7e3ef984088c87b7c8078bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &786199140513531244
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   otherObject: {fileID: 297068203573127363, guid: 8d988d485b737b542ab9cff2b003b296, type: 3}
-  lifetime: 10
+  lifetime: 15
 --- !u!1001 &6231727181556308205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -279,20 +292,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7653467430423080687, guid: 9b11c3e605da7434ea3ca73c4a3d1450, type: 3}
   m_PrefabInstance: {fileID: 6231727181556308205}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &488817706610032031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4345163088877385218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dd9a54902e5542459783e3fd61909ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerDamage: 50
-  EnemyDamage: 0
 --- !u!114 &1377826437331324540
 MonoBehaviour:
   m_ObjectHideFlags: 0

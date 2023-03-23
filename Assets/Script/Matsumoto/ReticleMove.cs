@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class ReticleMove : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class ReticleMove : MonoBehaviour
     private float viewX;            // ビューポート座標のxの値
     private float viewY;            // ビューポート座標のyの値
     private GameObject player;     // プレイヤー
+
+
+    private GameObject[] RockOnCnt = new GameObject[5];     // ロックオンできる数オブジェクト
+    private GameObject RockOnCntPrefab;                     // ●のPrefab
 
     void Awake()
     {
@@ -32,6 +37,21 @@ public class ReticleMove : MonoBehaviour
         // 初期化
         pos = transform.position;
         nextPosition = pos;
+
+
+        // ロックオンできる数分、●を生成する
+        for (int i = 0; i < 5; i++)
+        {
+            RockOnCntPrefab = (GameObject)Resources.Load("RockOnCnt");
+            RockOnCnt[i] = Instantiate(RockOnCntPrefab, this.transform.position, Quaternion.identity, this.transform);
+        }
+        // 照準の下に表示させる
+        Vector3 thisPos = this.transform.position;
+        RockOnCnt[4].transform.position = new Vector3(thisPos.x - 50.0f, thisPos.y - 60.0f, thisPos.z);
+        RockOnCnt[3].transform.position = new Vector3(thisPos.x - 25.0f, thisPos.y -60.0f, thisPos.z);
+        RockOnCnt[2].transform.position = new Vector3(thisPos.x, thisPos.y -60.0f, thisPos.z);
+        RockOnCnt[1].transform.position = new Vector3(thisPos.x + 25.0f, thisPos.y -60.0f, thisPos.z);
+        RockOnCnt[0].transform.position = new Vector3(thisPos.x + 50.0f, thisPos.y -60.0f, thisPos.z);
     }
 
     // Update is called once per frame
@@ -52,6 +72,23 @@ public class ReticleMove : MonoBehaviour
             transform.position = nextPosition;
 
             pos = nextPosition;
+        }
+
+        // ロックオンしたターゲットタグが付いたオブジェクトをカウント
+        GameObject[] tagObj = GameObject.FindGameObjectsWithTag("Target");
+
+        // ロックオンした数によって色を変える
+        if (tagObj.Length > 0)
+        {
+            for (int i = 0; i < tagObj.Length; i++)
+            {
+                Color color = RockOnCnt[i].GetComponent<Image>().color = Color.gray;
+            }
+        }
+        // ロックオン解除されたら色を戻す
+        for (int i = tagObj.Length; i < 5; i++)
+        {
+            Color color = RockOnCnt[i].GetComponent<Image>().color = Color.white;
         }
     }
 }
