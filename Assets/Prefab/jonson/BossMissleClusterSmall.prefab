@@ -29,15 +29,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.049105294
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1
+      value: 0.015
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.049105294
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalPosition.x
@@ -81,8 +81,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9062495474639694043, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -6433595369474896684, guid: 26136c9133ad64f43b68fcd6d178146c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
 --- !u!1 &5540224078154131618 stripped
@@ -118,23 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 981e5429d620e214e8ec1eea03956107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4044163548983055081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5540224078154131618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8016614e6bd34b41aa39a0135c5c677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TargetRadius: 15
-  FrameOutDestroy: 0
-  MaxRockOn: 5
-  AttractDistance: 50
-  AttractPower: 10
 --- !u!114 &8176422193633536648
 MonoBehaviour:
   m_ObjectHideFlags: 0
