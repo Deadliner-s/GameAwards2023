@@ -117,6 +117,7 @@ MonoBehaviour:
   Interval2: 8
   Key: n
   DelayTime: 0
+  PhaseObj: {fileID: 0}
 --- !u!114 &1180267641147467984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +185,7 @@ GameObject:
   - component: {fileID: 1180267641508261400}
   - component: {fileID: 1180267641508261403}
   - component: {fileID: 1180267641508261402}
+  - component: {fileID: 2252168706981686308}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -350,7 +352,9 @@ MonoBehaviour:
   MissilePrefab: {fileID: 522196463854886502, guid: b73c649aa92d23441b545fa5fc42ecb6, type: 3}
   ReloadTime: 0
   Shotpos: {fileID: 1180267642621644567}
+  PhaseObj: {fileID: 0}
   targets: []
+  sub: []
 --- !u!114 &1180267641508261401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,6 +424,20 @@ MonoBehaviour:
   MoveSE: {fileID: 8300000, guid: 1a30c76d716301048bc267d782ff7a58, type: 3}
   ShotSE: {fileID: 8300000, guid: 8e6c47ec26be3cf4dac05ffe954474c4, type: 3}
   ManeverSE: {fileID: 8300000, guid: c2d9e197d242afe4cabb7b6285ad3e61, type: 3}
+--- !u!114 &2252168706981686308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180267641508261397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22fa49041413b124e867d81e2fb2c992, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1180267641508261397}
+  afterimageObj: {fileID: 2690093004535444241, guid: 92bdce47c57cec34d87544af1f8b7630, type: 3}
 --- !u!1 &1180267642077531079
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,6 +555,7 @@ MonoBehaviour:
   Interval2: 8
   Key: u
   DelayTime: 0
+  PhaseObj: {fileID: 0}
 --- !u!114 &1180267642077531077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -783,6 +802,7 @@ MonoBehaviour:
   Interval2: 8
   Key: y
   DelayTime: 0
+  PhaseObj: {fileID: 0}
 --- !u!114 &1180267642640632004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,6 +1019,7 @@ MonoBehaviour:
   Interval2: 8
   Key: 0
   DelayTime: 0
+  PhaseObj: {fileID: 0}
 --- !u!114 &1180267642688613138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1031,6 +1052,7 @@ MonoBehaviour:
   Interval2: 8
   Key: i
   DelayTime: 0
+  PhaseObj: {fileID: 0}
 --- !u!1 &1180267642777113745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,6 +1170,7 @@ MonoBehaviour:
   Interval2: 8
   Key: m
   DelayTime: 0
+  PhaseObj: {fileID: 0}
 --- !u!114 &1180267642777113751
 MonoBehaviour:
   m_ObjectHideFlags: 0
