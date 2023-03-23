@@ -13,6 +13,10 @@ public class BossAnime : MonoBehaviour
     [SerializeField] GameObject PhaseObj;
     private bool AtkPhaseFlg;
 
+    public AudioClip BossAnimeSE;
+    private AudioSource audioSource;
+    private bool SeFlg = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +24,9 @@ public class BossAnime : MonoBehaviour
         wp = gameObject.GetComponent<WeakPoint>();
 
         AtkPhaseFlg = PhaseObj.activeSelf;
+
+        audioSource = GetComponent<AudioSource>();
+        SeFlg = false;
     }
 
     // Update is called once per frame
@@ -34,6 +41,8 @@ public class BossAnime : MonoBehaviour
             anime.SetBool("isMove", false);
 
             wp.enabled = false;
+
+            SeFlg = false;
         }
         else
         {
@@ -41,6 +50,11 @@ public class BossAnime : MonoBehaviour
             anime.SetBool("isMove", true);
 
             wp.enabled = true;
+            if (SeFlg != true)
+            {
+                audioSource.PlayOneShot(BossAnimeSE);
+                SeFlg = true;
+            }
         }
         //if (Input.GetKey(KeyCode.Alpha1))
         //{
