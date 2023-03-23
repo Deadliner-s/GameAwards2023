@@ -33,7 +33,11 @@ public class LaserHead : MonoBehaviour
     {
         timer -= Time.deltaTime;  // タイマーを減算する
 
-        if (timer <= lifetime - 7.0f)
+        targetWorldPosition = mainCamera.ScreenToWorldPoint(targetScreenPosition);  // 目標スクリーン座標をワールド座標に変換する
+        transform.LookAt(targetWorldPosition);
+
+
+        if (timer <= lifetime - 12.0f)
         {
             transform.position += transform.forward * speed * Time.deltaTime;  // 目標座標の方向に移動する
         }
