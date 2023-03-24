@@ -30,6 +30,9 @@ public class Shot : MonoBehaviour
     // 退避用
     public List<GameObject> sub = new List<GameObject>();
 
+    public AudioClip ShotSE;
+    private AudioSource audioSource;
+
     void Awake()
     {
         InputActions = new Myproject();
@@ -45,6 +48,8 @@ public class Shot : MonoBehaviour
 
         // フェイズ取得
         AtkPhaseFlg = PhaseObj.activeSelf;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -107,6 +112,8 @@ public class Shot : MonoBehaviour
 
                     // 誘導ミサイルのターゲットを設定する
                     missile.GetComponent<TrackingBullet>().SetTarget(target);
+
+                    audioSource.PlayOneShot(ShotSE);
                 }
 
                 // 経過時間初期化
