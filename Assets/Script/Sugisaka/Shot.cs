@@ -14,7 +14,12 @@ public class Shot : MonoBehaviour
     [Tooltip("装填時間")]
     public int ReloadTime;
     [Tooltip("ミサイル生成場所")]
-    public GameObject Shotpos;
+    public GameObject Shotpos1;
+    public GameObject Shotpos2;
+    public GameObject Shotpos3;
+    public GameObject Shotpos4;
+    public GameObject Shotpos5;
+
     // 経過時間
     private int currenttime;
     // 射撃フラグ
@@ -29,6 +34,9 @@ public class Shot : MonoBehaviour
     public List<GameObject> targets;
     // 退避用
     public List<GameObject> sub = new List<GameObject>();
+
+    private int num;
+    private Vector3 PlayerPos;
 
     public AudioClip ShotSE;
     private AudioSource audioSource;
@@ -50,6 +58,8 @@ public class Shot : MonoBehaviour
         AtkPhaseFlg = PhaseObj.activeSelf;
 
         audioSource = GetComponent<AudioSource>();
+
+        num = 0;
     }
 
     // Update is called once per frame
@@ -67,6 +77,11 @@ public class Shot : MonoBehaviour
 
         // フェイズ確認
         AtkPhaseFlg = PhaseObj.activeSelf;
+        if (AtkPhaseFlg == false)
+        {
+            sub = new List<GameObject>();
+        }
+
     }
 
     public void OnShot()
@@ -89,7 +104,7 @@ public class Shot : MonoBehaviour
                 }
 
                 // 生成場所取得
-                Vector3 PlayerPos = Shotpos.transform.position;
+                Vector3 PlayerPos = Shotpos1.transform.position;
                 // リスト再生成
                 targets = new List<GameObject>();
 
@@ -107,6 +122,29 @@ public class Shot : MonoBehaviour
                 // 各ロックオンされたターゲットにミサイルを打つ
                 foreach (GameObject target in targets)
                 {
+                    switch(num)
+                    {
+                        case (0):
+                            // 生成場所取得
+                            PlayerPos = Shotpos1.transform.position;
+                            break;
+                        case (1):
+                            // 生成場所取得
+                            PlayerPos = Shotpos2.transform.position;
+                            break;
+                        case (2):
+                            // 生成場所取得
+                            PlayerPos = Shotpos3.transform.position;
+                            break;
+                        case (3):
+                            // 生成場所取得
+                            PlayerPos = Shotpos4.transform.position;
+                            break;
+                        case (4):
+                            // 生成場所取得
+                            PlayerPos = Shotpos5.transform.position;
+                            break;
+                    }
                     // 新しい誘導ミサイルプレハブをインスタンス化する
                     GameObject missile = Instantiate(MissilePrefab, PlayerPos, Quaternion.identity);
 
@@ -114,6 +152,8 @@ public class Shot : MonoBehaviour
                     missile.GetComponent<TrackingBullet>().SetTarget(target);
 
                     audioSource.PlayOneShot(ShotSE);
+
+                    num++;
                 }
 
                 // 経過時間初期化
@@ -123,4 +163,6 @@ public class Shot : MonoBehaviour
             }
         }
     }
+
+
 }
