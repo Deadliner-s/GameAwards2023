@@ -12,6 +12,7 @@ public class LaserHead : MonoBehaviour
     private Vector3 targetWorldPosition;  // 目標ワールド座標
     private Camera mainCamera;  // メインカメラ
     private float timer;  // タイマー
+    GameObject newObj;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class LaserHead : MonoBehaviour
 
         transform.LookAt(targetWorldPosition);  // 目標座標の方向を向く
 
-        GameObject newObj = Instantiate(otherObject, targetWorldPosition, transform.rotation) as GameObject;  // 警告UIの生成
+        newObj = Instantiate(otherObject, targetWorldPosition, transform.rotation);  // 警告UIの生成
 
         timer = lifetime;  // タイマーを設定する
     }
@@ -37,6 +38,9 @@ public class LaserHead : MonoBehaviour
         {
             targetWorldPosition = mainCamera.ScreenToWorldPoint(targetScreenPosition);  // 目標スクリーン座標をワールド座標に変換する
             transform.LookAt(targetWorldPosition);
+
+            newObj.transform.position = targetWorldPosition;
+            newObj.transform.LookAt(targetWorldPosition);
         }
 
 
