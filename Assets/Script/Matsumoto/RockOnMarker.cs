@@ -29,6 +29,10 @@ public class RockOnMarker : MonoBehaviour
 
     Animator anime;     // アニメーション制御
 
+    public AudioClip RockOnSE;
+    private AudioSource audioSource;
+    private bool RockOnSEflg = false;
+
     // RockOnAnimeで関数を使うため
     //public static RockOnMarker instance;
 
@@ -43,6 +47,9 @@ public class RockOnMarker : MonoBehaviour
         reticle = GameObject.Find("Reticle");   // 照準のオブジェクト指定
         canvas = GameObject.Find("Canvas");     // キャンバスを指定
         target = null;
+
+        audioSource = GetComponent<AudioSource>();
+        RockOnSEflg = false;
     }
 
     // Update is called once per frame
@@ -113,6 +120,12 @@ public class RockOnMarker : MonoBehaviour
 
                     // 当たったらタグをTargetに変える
                     this.tag = ("Target");
+
+                    if (RockOnSEflg != true)
+                    {
+                        audioSource.PlayOneShot(RockOnSE);
+                        RockOnSEflg = true;
+                    }
                 }
             }
         }

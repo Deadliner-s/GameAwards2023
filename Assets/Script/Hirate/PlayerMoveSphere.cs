@@ -68,6 +68,13 @@ public class PlayerMoveSphere : MonoBehaviour
     [SerializeField] GameObject PhaseObj;
     private bool AtkPhaseFlg;
 
+
+    [Header("SE関係")]
+    public AudioClip MoveSE;
+    public AudioClip ManeverSE;
+    private AudioSource audioSource;
+    private bool MoveSeFlg = false;
+
     void Awake()
     {
         InputActions = new Myproject();
@@ -91,6 +98,10 @@ public class PlayerMoveSphere : MonoBehaviour
 
         // フェイズ取得
         AtkPhaseFlg = PhaseObj.activeSelf;
+
+        // SE
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = MoveSE;
     }
 
     // Update is called once per frame
@@ -156,6 +167,45 @@ public class PlayerMoveSphere : MonoBehaviour
 
         // 座標更新
         transform.position = new Vector3(x, y, z);
+
+        // 動いてる時に鳴るSE
+        if (0.0f < inputMove.x)
+        {
+            if (MoveSeFlg == false)
+            {
+                audioSource.Play();
+                MoveSeFlg = true;
+            }
+        }
+        if (0.0f > inputMove.x)
+        {
+            if (MoveSeFlg == false)
+            {
+                audioSource.Play();
+                MoveSeFlg = true;
+            }
+        }
+        if (0.0f < inputMove.y)
+        {
+            if (MoveSeFlg == false)
+            {
+                audioSource.Play();
+                MoveSeFlg = true;
+            }
+        }
+        if (0.0f > inputMove.y)
+        {
+            if (MoveSeFlg == false)
+            {
+                audioSource.Play();
+                MoveSeFlg = true;
+            }
+        }
+        if (0.0f == inputMove.x && 0.0f == inputMove.y && MoveSeFlg == true)
+        {
+            audioSource.Stop();
+            MoveSeFlg = false;
+        }
     }
 
     // X軸回転
@@ -218,6 +268,7 @@ public class PlayerMoveSphere : MonoBehaviour
             maneverFlg = true;
             elapsedTime = 0;
             coolTimeCnt = 0;
+            audioSource.PlayOneShot(ManeverSE);
         }
     }
 }
