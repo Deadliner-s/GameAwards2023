@@ -5,16 +5,18 @@ using System;
 
 public class MissileBossContena : MonoBehaviour
 {
-    public float Speed;         //ミサイルの速度
-    public float MaxSpeed = 2.0f;
-    public float Accel;         //加速度
-    public float ContenaRange = 7.0f;     //コンテナする距離
-    public float Height;        //ミサイルの高さ
-    public int ContenaNumber = 15;//分裂の数
+    public float Speed;                  //ミサイルの速度
+    public float ToSpeed = 0.01f;         //ミサイルプレイヤーにいく速度
+    public float UpSpeed = 0.02f;         //ミサイル上にいく速度
+    public float ContenaRange = 7.0f;    //コンテナする距離
+    public float Height;                 //ミサイルの高さ
+    public int ContenaNumber = 15;       //分裂の数
+
     float off;
-    bool Locked;                //ミサイルがロックオンしているか
+    bool Locked;                         //ミサイルがロックオンしているか
+
     GameObject newObj;
-    public GameObject otherObject;        // 生成するプレハブオブジェクト
+    public GameObject otherObject;       //生成するプレハブオブジェクト
 
     Vector3 FromPos;            //発射元
     Vector3 ToPos;              //発射先
@@ -29,7 +31,7 @@ public class MissileBossContena : MonoBehaviour
         //ボスの位置を取得
         FromPos = GameObject.Find("EnemyBoss").transform.position;
 
-        off = 0.2f;
+        off = 0.05f;
         Locked = false;
     }
 
@@ -39,17 +41,14 @@ public class MissileBossContena : MonoBehaviour
         ToPos = GameObject.Find("Player").transform.position;
         if (transform.position.y <= FromPos.y + Height && !Locked)
         {
+            Speed = UpSpeed;
             Move = new Vector3(0, 1.0f, 0);
             LateMove = Move;
         }
         else
         {
             Locked = true;
-            Speed += Accel;
-            if (Speed >= MaxSpeed)
-            {
-                Speed = MaxSpeed;
-            }
+            Speed = ToSpeed;
             float distance = Vector3.Distance(transform.position, ToPos);
             if (distance >= ContenaRange)
             {

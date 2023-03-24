@@ -5,10 +5,9 @@ using System;
 
 public class MissileBossContenaSmall : MonoBehaviour
 {
-    public float Speed = 0.01f;        //ミサイルの速度
-    public float MaxSpeed = 2.0f;      //速度制限
-    public float Accel = 0.005f;       //加速度
-    public float MissRange = 5.0f;     //プレイヤーに外れるの距離
+    public float Speed = 0.02f;        //ミサイルの速度
+    public float MaxSpeed = 0.1f;      //速度制限
+    public float Accel = 0.001f;       //加速度
     float off;
     bool Miss;
 
@@ -27,11 +26,11 @@ public class MissileBossContenaSmall : MonoBehaviour
         PlusRandomMove = ToPos - transform.position;
         PlusRandomMove = PlusRandomMove.normalized;
 
-        randXZ = rand.Next(32);
-        randY = rand.Next(32);
+        randXZ = rand.Next(20);
+        randY = rand.Next(20);
 
-        randXZ -= 16;
-        randY -= 16;
+        randXZ -= 10;
+        randY -= 10;
 
         randXZ *= 0.1f;
         randY *= 0.1f;
@@ -51,13 +50,15 @@ public class MissileBossContenaSmall : MonoBehaviour
         if (Speed >= MaxSpeed)                                  //速度制限
             Speed = MaxSpeed;
         float distance = Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(ToPos.x, 0, ToPos.z));
-        if (distance >= MissRange && !Miss)
+        //if (distance >= MissRange && !Miss)
+        if(!Miss)
         {
             Move = ToPos - transform.position;
             Move.x += randXZ;
             Move.y += randY;
             Move = Move.normalized;
             LateMove = (Move - LateMove) * off + (LateMove);
+            Miss = true;
         }
         else
         {

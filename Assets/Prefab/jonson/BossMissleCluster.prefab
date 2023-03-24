@@ -126,10 +126,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be00ed3f558d35a4ebcb967e71cca6d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0.001
+  Speed: 0.0008
   MaxSpeed: 2
   Accel: 0.0001
-  ClusterRange: 1
+  ClusterRange: 0.8
   ClusterNumber: 6
   otherObject: {fileID: 5540224078154131618, guid: 71c89ff9c78b31840b271ed7e3e1c1b9, type: 3}
 --- !u!114 &3199757680400134780
