@@ -18,6 +18,7 @@ public class ReticleMove : MonoBehaviour
 
     private GameObject[] RockOnCnt = new GameObject[5];     // ロックオンできる数オブジェクト
     private GameObject RockOnCntPrefab;                     // ●のPrefab
+    private float offsetY = 40.0f;
 
     void Awake()
     {
@@ -47,11 +48,11 @@ public class ReticleMove : MonoBehaviour
         }
         // 照準の下に表示させる
         Vector3 thisPos = this.transform.position;
-        RockOnCnt[4].transform.position = new Vector3(thisPos.x - 50.0f, thisPos.y - 60.0f, thisPos.z);
-        RockOnCnt[3].transform.position = new Vector3(thisPos.x - 25.0f, thisPos.y -60.0f, thisPos.z);
-        RockOnCnt[2].transform.position = new Vector3(thisPos.x, thisPos.y -60.0f, thisPos.z);
-        RockOnCnt[1].transform.position = new Vector3(thisPos.x + 25.0f, thisPos.y -60.0f, thisPos.z);
-        RockOnCnt[0].transform.position = new Vector3(thisPos.x + 50.0f, thisPos.y -60.0f, thisPos.z);
+        RockOnCnt[4].transform.position = new Vector3(thisPos.x - 25.0f, thisPos.y - offsetY, thisPos.z);
+        RockOnCnt[3].transform.position = new Vector3(thisPos.x - 12.5f, thisPos.y - offsetY, thisPos.z);
+        RockOnCnt[2].transform.position = new Vector3(thisPos.x, thisPos.y - offsetY, thisPos.z);
+        RockOnCnt[1].transform.position = new Vector3(thisPos.x + 12.5f, thisPos.y - offsetY, thisPos.z);
+        RockOnCnt[0].transform.position = new Vector3(thisPos.x + 25.0f, thisPos.y - offsetY, thisPos.z);
     }
 
     // Update is called once per frame
