@@ -3,18 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TrackingBullet : MonoBehaviour
-{   
-    public float Speed;                 // ミサイルの速度
-    public float MaxSpeed;              // ミサイルの最高速度
-    public float Accel;                 // 加速度
-    private GameObject target;          // 追跡する対象  
-    public float maxFlightTime = 100f;  // ミサイルの最大飛行時間
-    private float flightTime;           // ミサイルの現在の飛行時間
-    public int State = 0;               // 状態(0:横移動  1:追跡)
-    private Vector3 Move;               //移動方向
-    private Vector3 LateMove;           //滑らか動きをするためのmove変数
+{
+    [Header("低速上昇")]
+    [Tooltip("上昇速度")]
+    public float upSpeed;
+    [Tooltip("慣性")]
+    public float inertiaSpeed;
+    [Tooltip("上昇限界")]
+    public float maxHeight;
+
+    [Header("ため")]
+    [Tooltip("ための時間(フレーム)")]
+    public int stopTime;
+
+    [Header("誘導移動")]
+    [Tooltip("誘導速度")]
+    public float MoveSpeed;
+
+    [Header("生存時間")]
+    [Tooltip("ミサイルの最大飛行時間(フレーム)")]
+    public float maxFlightTime = 100f;
+
+    // 状態(0:上昇移動  1:ため  2:追跡  3:ターゲットなくなった場合)
+    private int State = 0;
+
+    // 追跡する対象
+    private GameObject target;
+
+    // ミサイルの現在の飛行時間
+    private float flightTime;
+
+    // 生成場所
+    private Vector3 sponePoint;
+
+    // ため時間用カウント
+    private int stopCnt;
+
+    // 移動関係
+    private Vector3 Move;
+    private Vector3 LateMove;
     private float off = 0.2f;
     private Quaternion rot;
+
 
     private void Start()
     {
@@ -23,6 +53,12 @@ public class TrackingBullet : MonoBehaviour
 
         // 状態設定
         State = 0;
+
+        // ため時間初期化
+        stopCnt = 0;
+
+        // 生成場所保存
+        sponePoint = transform.position;
     }
     
     //private void FixedUpdate()
@@ -39,14 +75,7 @@ public class TrackingBullet : MonoBehaviour
         if (target == null)
         {
             // 対象がいなかったら直線移動
-            State = 2;
-        }
-
-        // スピード更新
-        Speed += Accel;
-        if (Speed >= MaxSpeed)
-        {
-            Speed = MaxSpeed;
+            State = 3;
         }
 
 
@@ -55,51 +84,70 @@ public class TrackingBullet : MonoBehaviour
             case (0):
                 // 上昇移動
 
-                // ミサイルがターゲットと同じ高さになるまでの
-                if (target.transform.position.y <= transform.position.y)
+                // 高さ確認
+                if (sponePoint.y + maxHeight <= transform.position.y)
                 {
                     State = 1;
                     break;
                 }
 
-                Move = new Vector3(0.0f, 1.0f, 0.0f);
+                Move = new Vector3(1.0f * inertiaSpeed, 1.0f * upSpeed, 0.0f);
                 LateMove = Move;
+
+                // 座標,回転更新
+
+                transform.position += LateMove;
 
                 break;
 
             case (1):
+                // ため
+                if (stopTime <= stopCnt)
+                {
+                    State = 2;
+                }
+                stopCnt++;
+
+                break;
+
+            case (2):
                 // 誘導移動
                 
                 Move = target.transform.position - transform.position;
                 Move = Move.normalized;
                 LateMove = (Move - LateMove) * off + (LateMove);
 
+                // 座標,回転更新
+                rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
+                transform.rotation = rot;
+                transform.position += LateMove * MoveSpeed;
+
                 // 飛行時間更新
                 flightTime++;
                 break;
 
-            case (2):
+            case (3):
                 // 直線移動
-
-                Move = new Vector3(1.0f, 0.0f, 0.0f);
+                
+                Move = transform.up;
                 LateMove = Move;
 
+                // 座標,回転更新
+                //rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
+                //transform.rotation = rot;
+                transform.position += LateMove * MoveSpeed;
+
+                // 飛行時間更新
                 flightTime += 100;
                 break;
         }
-
-        // 座標,回転更新
-        Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
-        transform.rotation = rot;
-        transform.position += LateMove * Speed;
-
     }
 
     // ミサイルがオブジェクトに衝突したときに呼び出される
     private void OnCollisionEnter(Collision collision)
     {       
         // タグ名と違ったら
-        if (collision.gameObject.tag != "PlayerBullet")
+        if (collision.gameObject.tag == "Enemy")
         {
             DestroyMissile();
         }
@@ -116,4 +164,11 @@ public class TrackingBullet : MonoBehaviour
     {
         target = targetObj;
     }
+
+    // 移動更新関数
+    public void MoveUpdate()
+    {
+
+    }
+
 }
