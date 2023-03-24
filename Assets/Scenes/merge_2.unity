@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.38701147, g: 0.48088223, b: 0.7326619, a: 1}
+  m_IndirectSpecularColor: {r: 0.3868998, g: 0.48085558, b: 0.7327132, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -412,6 +412,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2653373171205573415, guid: 21fcd5f1e0c415f46bd73691b9282a0a, type: 3}
   m_PrefabInstance: {fileID: 593626620}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &350274737 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2586377003224902554, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+  m_PrefabInstance: {fileID: 1180267642833530434}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &352125639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -761,6 +766,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &822541111 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7775764717261005051, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+  m_PrefabInstance: {fileID: 1180267642833530434}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &846316277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -983,6 +993,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &948656449 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 282245955279183974, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+  m_PrefabInstance: {fileID: 1180267642833530434}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1177668134
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,6 +1113,11 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!1 &1258644022 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1180267642621644567, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+  m_PrefabInstance: {fileID: 1180267642833530434}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1298380668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1528,6 +1548,11 @@ AudioSource:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3462525249532592161, guid: 9afcffff6525f2d4db51dc90cb3c6660, type: 3}
   m_PrefabInstance: {fileID: 846316277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1525888829 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4592748699010604616, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+  m_PrefabInstance: {fileID: 1180267642833530434}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1536081983
 GameObject:
@@ -2120,6 +2145,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261406, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: Second
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267641508261406, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: ShotSE
       value: 
       objectReference: {fileID: 8300000, guid: 8e6c47ec26be3cf4dac05ffe954474c4, type: 3}
@@ -2127,6 +2156,26 @@ PrefabInstance:
       propertyPath: PhaseObj
       value: 
       objectReference: {fileID: 2037204904}
+    - target: {fileID: 1180267641508261406, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: Shotpos1
+      value: 
+      objectReference: {fileID: 1258644022}
+    - target: {fileID: 1180267641508261406, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: Shotpos2
+      value: 
+      objectReference: {fileID: 948656449}
+    - target: {fileID: 1180267641508261406, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: Shotpos3
+      value: 
+      objectReference: {fileID: 350274737}
+    - target: {fileID: 1180267641508261406, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: Shotpos4
+      value: 
+      objectReference: {fileID: 1525888829}
+    - target: {fileID: 1180267641508261406, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: Shotpos5
+      value: 
+      objectReference: {fileID: 822541111}
     - target: {fileID: 1180267641508261407, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_Volume
       value: 1
@@ -2189,11 +2238,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1180267642621644564, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.311
+      value: -0.155
       objectReference: {fileID: 0}
     - target: {fileID: 1180267642621644564, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.008
+      value: 0.002
       objectReference: {fileID: 0}
     - target: {fileID: 1180267642640632005, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: PhaseObj
