@@ -111,66 +111,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4482491814637254355, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
   m_PrefabInstance: {fileID: 9221154352735593176}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-4867831459758655791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4741478458244633611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 981e5429d620e214e8ec1eea03956107, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2958555774321723217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4741478458244633611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8016614e6bd34b41aa39a0135c5c677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TargetRadius: 15
-  FrameOutDestroy: 1
-  MaxRockOn: 5
-  AttractDistance: 50
-  AttractPower: 10
-  RockOnSE: {fileID: 8300000, guid: 188a39a5b7f353f48a1568ee189ef553, type: 3}
---- !u!114 &3991838934210562174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4741478458244633611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dd9a54902e5542459783e3fd61909ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerDamage: 1
-  EnemyDamage: 0
---- !u!114 &7704027369108650710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4741478458244633611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc094b85e8e1944cb46fc290849a398, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 0.005
-  MaxSpeed: 2
-  Accel: 0.001
-  MissRange: 5
 --- !u!82 &5779849802773898835
 AudioSource:
   m_ObjectHideFlags: 0
@@ -267,3 +207,63 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-4867831459758655791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741478458244633611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 981e5429d620e214e8ec1eea03956107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2958555774321723217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741478458244633611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8016614e6bd34b41aa39a0135c5c677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetRadius: 15
+  FrameOutDestroy: 1
+  MaxRockOn: 5
+  AttractDistance: 50
+  AttractPower: 10
+  RockOnSE: {fileID: 8300000, guid: 188a39a5b7f353f48a1568ee189ef553, type: 3}
+--- !u!114 &3991838934210562174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741478458244633611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd9a54902e5542459783e3fd61909ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerDamage: 1
+  EnemyDamage: 0
+--- !u!114 &7704027369108650710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741478458244633611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc094b85e8e1944cb46fc290849a398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 0.02
+  MaxSpeed: 0.1
+  Accel: 0.001
+  MissRange: 5
