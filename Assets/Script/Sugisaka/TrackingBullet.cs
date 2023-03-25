@@ -108,13 +108,18 @@ public class TrackingBullet : MonoBehaviour
                 }
                 stopCnt++;
 
+                Move = (target.transform.position - transform.position).normalized;
+                LateMove = (Move - LateMove) * off + (LateMove);
+
+                rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
+                transform.rotation = rot;
+
                 break;
 
             case (2):
                 // 誘導移動
                 
-                Move = target.transform.position - transform.position;
-                Move = Move.normalized;
+                Move = (target.transform.position - transform.position).normalized;
                 LateMove = (Move - LateMove) * off + (LateMove);
 
                 // 座標,回転更新
@@ -133,8 +138,6 @@ public class TrackingBullet : MonoBehaviour
                 LateMove = Move;
 
                 // 座標,回転更新
-                //rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
-                //transform.rotation = rot;
                 transform.position += LateMove * MoveSpeed;
 
                 // 飛行時間更新
