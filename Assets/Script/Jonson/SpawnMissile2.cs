@@ -32,7 +32,8 @@ public class SpawnMissile2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ToPos = GameObject.Find("Player").transform.position;
+        if (GameObject.Find("Player"))//プレイヤーは生きている（存在する）
+            ToPos = GameObject.Find("Player").transform.position;
 
         // フェイズ取得
         AtkPhaseFlg = PhaseObj.activeSelf;
@@ -41,44 +42,49 @@ public class SpawnMissile2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(Key))
+        if (GameObject.Find("Player"))//プレイヤーは生きている（存在する）
         {
-            Invoke("InstantiateObject", DelayTime);
-            ToPos = GameObject.Find("Player").transform.position;
-        }
-
-        if (!wait)
-        {
-            timer += Time.deltaTime;
-            timer2 += Time.deltaTime;
-
-            if (timer >= Interval)
+            if (Input.GetKeyDown(Key))
             {
-                // フェイズ確認
-                AtkPhaseFlg = PhaseObj.activeSelf;
+                Invoke("InstantiateObject", DelayTime);
+                ToPos = GameObject.Find("Player").transform.position;
+            }
 
-                // フェイズの確認
-                if (AtkPhaseFlg == false)
+            if (!wait)
+            {
+                timer += Time.deltaTime;
+                timer2 += Time.deltaTime;
+
+                if (timer >= Interval)
                 {
-                    Invoke("InstantiateObject", DelayTime);
-                    timer = 0.0f; // タイマーをリセットする
+                    // フェイズ確認
+                    AtkPhaseFlg = PhaseObj.activeSelf;
+
+                    // フェイズの確認
+                    if (AtkPhaseFlg == false)
+                    {
+                        Invoke("InstantiateObject", DelayTime);
+                        timer = 0.0f; // タイマーをリセットする
+                    }
+                }
+                if (timer2 >= Interval2)
+                {
+                    wait = true;
+                    timer2 = 0.0f;
                 }
             }
-            if (timer2 >= Interval2)
+            if (wait)
             {
-                wait = true;
-                timer2 = 0.0f;
+                timer2 += Time.deltaTime;
+                if (timer2 >= Interval2)
+                {
+                    wait = false;
+                    timer2 = 0.0f;
+                }
             }
+
         }
-        if (wait)
-        {
-            timer2 += Time.deltaTime;
-            if (timer2 >= Interval2)
-            {
-                wait = false;
-                timer2 = 0.0f;
-            }
-        }
+           
     }
 
     void InstantiateObject()
