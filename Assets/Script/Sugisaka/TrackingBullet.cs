@@ -108,8 +108,7 @@ public class TrackingBullet : MonoBehaviour
                 }
                 stopCnt++;
 
-                Move = (target.transform.position - transform.position);
-                Move = Move.normalized;
+                Move = (target.transform.position - transform.position).normalized;
                 LateMove = (Move - LateMove) * off + (LateMove);
 
                 rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
@@ -120,8 +119,7 @@ public class TrackingBullet : MonoBehaviour
             case (2):
                 // óUì±à⁄ìÆ
                 
-                Move = (target.transform.position - transform.position);
-                Move = Move.normalized;
+                Move = (target.transform.position - transform.position).normalized;
                 LateMove = (Move - LateMove) * off + (LateMove);
 
                 // ç¿ïW,âÒì]çXêV

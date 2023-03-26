@@ -21,7 +21,7 @@ public class Shot : MonoBehaviour
     public GameObject Shotpos5;
 
     // 経過時間
-    private float currenttime;
+    private int currenttime;
     // 射撃フラグ
     private bool Shotflg;
 
@@ -51,7 +51,7 @@ public class Shot : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        currenttime = 0.0f;    // 経過時間初期化
+        currenttime = 0;    // 経過時間初期化
         Shotflg = false;    // フラグをオフに
 
         // フェイズ取得
@@ -67,7 +67,7 @@ public class Shot : MonoBehaviour
     {
         if (Shotflg == true)
         {
-            currenttime += Time.deltaTime;
+            currenttime++;
 
             if (currenttime > ReloadTime)
             {
@@ -104,7 +104,7 @@ public class Shot : MonoBehaviour
                 }
 
                 // 生成場所取得
-                //Vector3 PlayerPos = Shotpos1.transform.position;
+                Vector3 PlayerPos = Shotpos1.transform.position;
                 // リスト再生成
                 targets = new List<GameObject>();
 
@@ -160,9 +160,9 @@ public class Shot : MonoBehaviour
                 currenttime = 0;
                 // 射撃フラグを立てる
                 Shotflg = true;
-                // 生成場所初期化
-                num = 0;
             }
         }
     }
+
+
 }
