@@ -41,15 +41,18 @@ public class CameraMove : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.H)) {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
             elapsedTime = 0;
             start = this.transform.position;
             bInput = true;
         }
         // マニューバ使用時
-        if(bInput) {
+        if (bInput)
+        {
             // マニューバ終了時
-            if (bMove && elapsedTime >= moveTime) {
+            if (bMove && elapsedTime >= moveTime)
+            {
                 bInput = false;
                 bMove = false;
                 rate = 0;
@@ -57,7 +60,8 @@ public class CameraMove : MonoBehaviour
                 return;
             }
             // カメラ移動開始
-            if (bMove) {
+            if (bMove)
+            {
                 // スタート地点を現在の座標にする
                 transform.position = Vector3.Lerp(start, end, rate);
                 this.transform.LookAt(player.transform.position);
@@ -65,12 +69,14 @@ public class CameraMove : MonoBehaviour
                 //Debug.Log(rate);
             }
             // マニューバ開始時のカメラ移動停止
-            if (!bMove && elapsedTime <= stopTime) {
+            if (!bMove && elapsedTime <= stopTime)
+            {
                 this.transform.LookAt(player.transform.position);
                 //Debug.Log("stop");
             }
             // カメラ移動開始の前処理
-            if (!bMove && elapsedTime >= stopTime) {
+            if (!bMove && elapsedTime >= stopTime)
+            {
                 bMove = true;
                 elapsedTime = 0;
                 end = childObj.transform.position;
@@ -80,7 +86,8 @@ public class CameraMove : MonoBehaviour
             Debug.Log(elapsedTime);
         }
         // 通常時
-        if (!bInput) {
+        if (!bInput)
+        {
             // カメラをプレイヤーに追従させる
             // 一度プレイヤーの座標と同じにさせる
             Vector3 pos = player.transform.position;

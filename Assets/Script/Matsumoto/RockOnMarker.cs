@@ -104,14 +104,13 @@ public class RockOnMarker : MonoBehaviour
                 // ロックオンできる数以下だったら
                 if (tagObjects.Length < MaxRockOn && destroyFlg == false) 
                 {
-                    // 回転
-                    Transform transform = target.transform;
-                    Vector3 angle = transform.localEulerAngles;
-                    angle.z = 45.0f;
-                    transform.localEulerAngles = angle;
-
-                    // 色を赤に変更
-                    Color color = target.GetComponent<Image>().color = Color.red; ;
+                    //// 回転
+                    //Transform transform = target.transform;
+                    //Vector3 angle = transform.localEulerAngles;
+                    //angle.z = 45.0f;
+                    //transform.localEulerAngles = angle;
+                    //// 色を赤に変更
+                    //Color color = target.GetComponent<Image>().color = Color.red; ;
 
                     anime = target.GetComponent<Animator>();
                     anime.SetBool("isRockOn", true);        // AnimatorにあるisRockOnをTrueに

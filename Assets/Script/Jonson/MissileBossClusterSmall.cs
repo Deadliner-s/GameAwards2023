@@ -47,8 +47,9 @@ public class MissileBossClusterSmall : MonoBehaviour
         float distance = Vector3.Distance(new Vector3(transform.position.x,0, transform.position.z), new Vector3(ToPos.x,0, ToPos.z));  
         if (distance >= MissRange && !Miss)               
         {
-            Move = ToPos - transform.position;
-            Move.y += randY;
+            Move.x = ToPos.x - transform.position.x;
+            Move.z = ToPos.z - transform.position.z;
+            Move.y = randY;
             Move = Move.normalized;
             LateMove = (Move - LateMove) * off + (LateMove);
         }
