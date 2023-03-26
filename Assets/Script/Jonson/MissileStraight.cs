@@ -10,6 +10,7 @@ public class MissileStraight : MonoBehaviour
     public float MaxSpeed = 0.003f;      //速度制限
     public float Accel = 0.001f;       //加速度
     public float MissRange = 2.0f;     //プレイヤーに外れるの距離
+    public float UIFillSpeed = 0.005f;  //UIの速さ
     private GameObject canvas;         // キャンバス
     float off;
     bool Miss;
@@ -125,7 +126,7 @@ public class MissileStraight : MonoBehaviour
             {
                 newObj.transform.position = NewPosFix;  //UIの位置を更新
                 OutsideObj.transform.position = NewPosFix;  //UIの位置を更新
-                newObj.GetComponent<Image>().fillAmount += 0.005f;
+                newObj.GetComponent<Image>().fillAmount +=　UIFillSpeed;
                 if (newObj.GetComponent<Image>().fillAmount >= 1.0f)
                 {
                     newObj.GetComponent<Image>().fillAmount = 1.0f;
