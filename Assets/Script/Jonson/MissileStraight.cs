@@ -14,8 +14,10 @@ public class MissileStraight : MonoBehaviour
     float off;
     bool Miss;
     GameObject newObj;
+    GameObject OutsideObj;
     private Camera mainCamera;            // メインカメラ
     public GameObject otherObject;        // 生成するプレハブオブジェクト
+    public GameObject outsideObject;
     private Vector3 targetScreenPosition; // 目標スクリーン座標
     private Vector3 targetWorldPosition;  // 目標ワールド座標
 
@@ -60,6 +62,8 @@ public class MissileStraight : MonoBehaviour
             //UI生成
             newObj = Instantiate(otherObject, targetScreenPosition, transform.rotation) as GameObject;  // 警告UIの生成                                                           
             newObj.transform.SetParent(canvas.transform, false);                                        // Canvasの子オブジェクトとして生成
+            OutsideObj = Instantiate(outsideObject, targetScreenPosition, transform.rotation) as GameObject;  // 警告UIの生成                                                           
+            OutsideObj.transform.SetParent(canvas.transform, false);                                        // Canvasの子オブジェクトとして生成
             newObj.GetComponent<Image>().fillAmount = 0;
             time = 0;
             Miss = false;
@@ -89,6 +93,7 @@ public class MissileStraight : MonoBehaviour
                 Miss = true;            //画面内に入った
                 Speed = MaxSpeed;       //速度をMAX
                 Destroy(newObj);        //UIを消す
+                Destroy(OutsideObj);
             }
             else if (!Miss)              //画面内にまだ入ってない、追尾
             {
@@ -119,6 +124,7 @@ public class MissileStraight : MonoBehaviour
             if (newObj)
             {
                 newObj.transform.position = NewPosFix;  //UIの位置を更新
+                OutsideObj.transform.position = NewPosFix;  //UIの位置を更新
                 newObj.GetComponent<Image>().fillAmount += 0.005f;
                 if (newObj.GetComponent<Image>().fillAmount >= 1.0f)
                 {
