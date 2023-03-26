@@ -7,6 +7,8 @@ public class LaserHead : MonoBehaviour
     public float speed = 5f;  // 移動速度
     public GameObject otherObject;  // 生成するプレハブオブジェクト
     public float lifetime = 5f;  // オブジェクトの寿命（秒）
+    public float splitX = 2;
+    public float splitY = 2;
 
     private Vector3 targetScreenPosition;  // 目標スクリーン座標
     private Vector3 targetWorldPosition;  // 目標ワールド座標
@@ -18,8 +20,8 @@ public class LaserHead : MonoBehaviour
     {
         mainCamera = Camera.main;  // メインカメラを取得する
 
-        targetScreenPosition.x = Random.Range(200.0f, 1720.0f);  // 0～1920のランダムな数値
-        targetScreenPosition.y = Random.Range(150.0f, 830.0f);  // 0～1080のランダムな数値
+        targetScreenPosition.x = 320 * splitX;
+        targetScreenPosition.y = 270 * splitY;
         targetScreenPosition.z = 2.0f;
         targetWorldPosition = mainCamera.ScreenToWorldPoint(targetScreenPosition);  // 目標スクリーン座標をワールド座標に変換する
 
