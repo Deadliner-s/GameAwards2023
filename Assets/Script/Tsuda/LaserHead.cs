@@ -22,7 +22,7 @@ public class LaserHead : MonoBehaviour
 
         targetScreenPosition.x = 320 * splitX;
         targetScreenPosition.y = 270 * splitY;
-        targetScreenPosition.z = 2.0f;
+        targetScreenPosition.z = 1.5f;
         targetWorldPosition = mainCamera.ScreenToWorldPoint(targetScreenPosition);  // 目標スクリーン座標をワールド座標に変換する
 
         transform.LookAt(targetWorldPosition);  // 目標座標の方向を向く
