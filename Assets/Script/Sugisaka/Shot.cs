@@ -21,9 +21,9 @@ public class Shot : MonoBehaviour
     public GameObject Shotpos5;
 
     // 経過時間
-    private int currenttime;
+    public float currenttime;
     // 射撃フラグ
-    private bool Shotflg;
+    public bool Shotflg;
 
     //フェイズ切り替え用
     [Header("フェイズ確認用オブジェクト")]
@@ -51,7 +51,7 @@ public class Shot : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        currenttime = 0;    // 経過時間初期化
+        currenttime = 0.0f;    // 経過時間初期化
         Shotflg = false;    // フラグをオフに
 
         // フェイズ取得
@@ -67,7 +67,7 @@ public class Shot : MonoBehaviour
     {
         if (Shotflg == true)
         {
-            currenttime++;
+            currenttime += Time.deltaTime;
 
             if (currenttime > ReloadTime)
             {
@@ -157,9 +157,11 @@ public class Shot : MonoBehaviour
                 }
 
                 // 経過時間初期化
-                currenttime = 0;
+                currenttime = 0.0f;
                 // 射撃フラグを立てる
                 Shotflg = true;
+                // 生成場所初期化
+                num = 0;
             }
         }
     }

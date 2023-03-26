@@ -392,9 +392,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 786199140513531244, guid: 9aa00b7861ffd164bb5fc3af873fd230, type: 3}
-  PhaseObj: {fileID: 2037204904}
-  Interval: 5
-  Interval2: 10
 --- !u!114 &247176461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2351,6 +2348,10 @@ PrefabInstance:
       propertyPath: Shotpos5
       value: 
       objectReference: {fileID: 822541111}
+    - target: {fileID: 1180267641508261406, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: ReloadTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261407, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_Volume
       value: 1
