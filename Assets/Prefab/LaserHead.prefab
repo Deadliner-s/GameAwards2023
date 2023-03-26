@@ -190,6 +190,8 @@ MonoBehaviour:
   speed: 10
   otherObject: {fileID: 297068203573127363, guid: 8d988d485b737b542ab9cff2b003b296, type: 3}
   lifetime: 15
+  splitX: 3
+  splitY: 1
 --- !u!1001 &6231727181556308205
 PrefabInstance:
   m_ObjectHideFlags: 0
