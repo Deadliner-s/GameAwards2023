@@ -35,7 +35,8 @@ public class PlayerMove: MonoBehaviour
     // マニューバカウント
     private float elapsedTime;          // マニューバ経過時間
     private float coolTimeCnt;          // クールタイムの経過時間
-    private bool maneverFlg = false;
+    //private bool maneverFlg = false;
+    public bool maneverFlg { get; private set; } = false; // マニューバのフラグ
 
     // フェイズ切り替え用
     [Header("フェイズ確認用オブジェクト")]
