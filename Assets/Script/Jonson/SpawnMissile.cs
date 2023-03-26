@@ -30,45 +30,49 @@ public class SpawnMissile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // フェイズ確認
-        AtkPhaseFlg = PhaseObj.activeSelf;
-
-        if (Input.GetKeyDown(Key))
+        if (GameObject.Find("Player"))//プレイヤーは生きている（存在する）
         {
-            GameObject obj = Instantiate(Missile, new Vector3(0, 0, 0), Quaternion.identity);
-            Destroy(obj, DestroyTime);
-        }
+            // フェイズ確認
+            AtkPhaseFlg = PhaseObj.activeSelf;
 
-        if (!wait)
-        {
-            timer += Time.deltaTime;
-            timer2 += Time.deltaTime;
-
-            if (timer >= Interval)
+            if (Input.GetKeyDown(Key))
             {
-                // フェイズの確認
-                if (AtkPhaseFlg == true)
+                GameObject obj = Instantiate(Missile, new Vector3(0, 0, 0), Quaternion.identity);
+                Destroy(obj, DestroyTime);
+            }
+
+            if (!wait)
+            {
+                timer += Time.deltaTime;
+                timer2 += Time.deltaTime;
+
+                if (timer >= Interval)
                 {
-                    GameObject obj = Instantiate(Missile, new Vector3(0, 0, 0), Quaternion.identity);
-                    Destroy(obj, DestroyTime);
-                    timer = 0.0f; // タイマーをリセットする
+                    // フェイズの確認
+                    if (AtkPhaseFlg == true)
+                    {
+                        GameObject obj = Instantiate(Missile, new Vector3(0, 0, 0), Quaternion.identity);
+                        Destroy(obj, DestroyTime);
+                        timer = 0.0f; // タイマーをリセットする
+                    }
+                }
+                if (timer2 >= Interval2)
+                {
+                    wait = true;
+                    timer2 = 0.0f;
                 }
             }
-            if (timer2 >= Interval2)
+            if (wait)
             {
-                wait = true;
-                timer2 = 0.0f;
-            }
-        }
-        if (wait)
-        {
-            timer2 += Time.deltaTime;
+                timer2 += Time.deltaTime;
 
-            if (timer2 >= Interval2)
-            {
-                wait = false;
-                timer2 = 0.0f;
+                if (timer2 >= Interval2)
+                {
+                    wait = false;
+                    timer2 = 0.0f;
+                }
             }
         }
+          
     }
 }

@@ -22,51 +22,57 @@ public class MissileBossContenaSmall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ToPos = GameObject.Find("Player").transform.position; //Player
-        PlusRandomMove = ToPos - transform.position;
-        PlusRandomMove = PlusRandomMove.normalized;
+        if (GameObject.Find("Player"))//プレイヤーは生きている（存在する）
+        {
+            ToPos = GameObject.Find("Player").transform.position; //Player
+            PlusRandomMove = ToPos - transform.position;
+            PlusRandomMove = PlusRandomMove.normalized;
 
-        randXZ = rand.Next(20);
-        randY = rand.Next(20);
+            randXZ = rand.Next(20);
+            randY = rand.Next(20);
 
-        randXZ -= 10;
-        randY -= 10;
+            randXZ -= 10;
+            randY -= 10;
 
-        randXZ *= 0.1f;
-        randY *= 0.1f;
+            randXZ *= 0.1f;
+            randY *= 0.1f;
 
-        randXZ += PlusRandomMove.x;
-        randY += PlusRandomMove.y;
+            randXZ += PlusRandomMove.x;
+            randY += PlusRandomMove.y;
 
-        Miss = false;
-        off = 0.9f;
+            Miss = false;
+            off = 0.9f;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        ToPos = GameObject.Find("Player").transform.position;   //プレイヤーの位置
-        Speed += Accel;                                         //加速度
-        if (Speed >= MaxSpeed)                                  //速度制限
-            Speed = MaxSpeed;
-        float distance = Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(ToPos.x, 0, ToPos.z));
-        //if (distance >= MissRange && !Miss)
-        if(!Miss)
+        if (GameObject.Find("Player"))//プレイヤーは生きている（存在する）
         {
-            Move = ToPos - transform.position;
-            Move.x += randXZ;
-            Move.y += randY;
-            Move = Move.normalized;
-            LateMove = (Move - LateMove) * off + (LateMove);
-            Miss = true;
+            ToPos = GameObject.Find("Player").transform.position;   //プレイヤーの位置
+            Speed += Accel;                                         //加速度
+            if (Speed >= MaxSpeed)                                  //速度制限
+                Speed = MaxSpeed;
+            float distance = Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(ToPos.x, 0, ToPos.z));
+            //if (distance >= MissRange && !Miss)
+            if (!Miss)
+            {
+                Move = ToPos - transform.position;
+                Move.x += randXZ;
+                Move.y += randY;
+                Move = Move.normalized;
+                LateMove = (Move - LateMove) * off + (LateMove);
+                Miss = true;
+            }
+            else
+            {
+                Miss = true;
+                Destroy(gameObject, 3.0f);
+            }
+            Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
+            transform.rotation = rot;
+            transform.position += LateMove * Speed;
         }
-        else
-        {
-            Miss = true;
-            Destroy(gameObject, 3.0f);
-        }
-        Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
-        transform.rotation = rot;
-        transform.position += LateMove * Speed;
     }
 }

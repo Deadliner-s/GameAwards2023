@@ -10,7 +10,7 @@ public class AlertGauge : MonoBehaviour
     [Tooltip("増えるゲージのオブジェクト")]
     public GameObject AlertGaugeObject;
     [Tooltip("1フレームでのゲージの進み具合(MAX 1)")]
-    public float flamecount;
+    public float framecount;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +23,6 @@ public class AlertGauge : MonoBehaviour
     void Update()
     {
         // ゲージを徐々に表示させていく処理
-        AlertObject.fillAmount += flamecount;
+        AlertObject.fillAmount += framecount;
     }
 }

@@ -447,7 +447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
   DestroyTime: 30
-  Interval: 2
+  Interval: 3.2
   Interval2: 8
   Key: n
   DelayTime: 0
@@ -467,7 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Missile: {fileID: 5540224078154131618, guid: 05a76db5fa499f548b8994bdfdbb97b9, type: 3}
   DestroyTime: 10
-  Interval: 2
+  Interval: 3.1
   Interval2: 8
   Key: i
   DelayTime: 0
@@ -487,7 +487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
   DestroyTime: 30
-  Interval: 2
+  Interval: 2.8
   Interval2: 8
   Key: j
   DelayTime: 0
@@ -507,7 +507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
   DestroyTime: 30
-  Interval: 2
+  Interval: 2.5
   Interval2: 8
   Key: y
   DelayTime: 0
@@ -527,7 +527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
   DestroyTime: 30
-  Interval: 2
+  Interval: 3
   Interval2: 8
   Key: u
   DelayTime: 0
@@ -2235,6 +2235,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1180267641147467984, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: DistanceX
+      value: -2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267641147467984, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: DistanceY
+      value: -2.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267641147467985, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: PhaseObj
       value: 
@@ -2251,9 +2259,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1180267641147467987, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267641147467987, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267641147467987, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267641147467990, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267641147467991, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261397, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_Name
@@ -2375,6 +2399,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1180267642077531076, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642077531076, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642077531076, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642077531077, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: DistanceY
+      value: 2.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642077531079, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642077531080, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267642077531082, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: PhaseObj
       value: 
@@ -2399,6 +2447,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.002
       objectReference: {fileID: 0}
+    - target: {fileID: 1180267642640632004, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: DistanceX
+      value: -2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642640632004, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: DistanceY
+      value: 2.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267642640632005, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: PhaseObj
       value: 
@@ -2415,9 +2471,37 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1180267642640632007, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642640632007, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642640632007, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267642640632010, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642640632011, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642688613132, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642688613132, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642688613132, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1180267642688613133, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: PhaseObj
@@ -2430,6 +2514,14 @@ PrefabInstance:
     - target: {fileID: 1180267642688613136, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642688613137, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642688613138, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: DistanceX
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 1180267642688613139, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: Key
@@ -2471,10 +2563,35 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1180267642777113750, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642777113750, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642777113750, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642777113751, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: DistanceY
+      value: -2.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267642777113754, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1180267641508261402, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
     - {fileID: 1180267641508261401, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
     - {fileID: 1180267642077531082, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+    - {fileID: 1180267642777113748, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+    - {fileID: 1180267641147467985, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+    - {fileID: 1180267642688613139, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+    - {fileID: 1180267642688613133, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+    - {fileID: 1180267642640632005, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
 --- !u!1001 &1778316014138479965
 PrefabInstance:
