@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 1180267641147467988}
   - component: {fileID: 1180267641147467991}
   - component: {fileID: 1180267641147467990}
-  - component: {fileID: 1180267641147467985}
   - component: {fileID: 1180267641147467984}
   m_Layer: 0
   m_Name: Shoot (3)
@@ -130,25 +129,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1180267641147467985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1180267641147467986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0519608d753d34943ab8cf3ba4a213c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
-  DestroyTime: 3
-  Interval: 2
-  Interval2: 8
-  Key: n
-  DelayTime: 0
-  PhaseObj: {fileID: 0}
 --- !u!114 &1180267641147467984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,7 +468,6 @@ GameObject:
   - component: {fileID: 1180267642077531081}
   - component: {fileID: 1180267642077531080}
   - component: {fileID: 1180267642077531083}
-  - component: {fileID: 1180267642077531082}
   - component: {fileID: 1180267642077531077}
   m_Layer: 0
   m_Name: Shoot
@@ -575,25 +554,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1180267642077531082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1180267642077531079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0519608d753d34943ab8cf3ba4a213c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
-  DestroyTime: 3
-  Interval: 2
-  Interval2: 8
-  Key: u
-  DelayTime: 0
-  PhaseObj: {fileID: 0}
 --- !u!114 &1180267642077531077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -735,7 +695,6 @@ GameObject:
   - component: {fileID: 1180267642640632008}
   - component: {fileID: 1180267642640632011}
   - component: {fileID: 1180267642640632010}
-  - component: {fileID: 1180267642640632005}
   - component: {fileID: 1180267642640632004}
   m_Layer: 0
   m_Name: Shoot (1)
@@ -822,25 +781,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1180267642640632005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1180267642640632006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0519608d753d34943ab8cf3ba4a213c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
-  DestroyTime: 3
-  Interval: 2
-  Interval2: 8
-  Key: y
-  DelayTime: 0
-  PhaseObj: {fileID: 0}
 --- !u!114 &1180267642640632004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -951,9 +891,7 @@ GameObject:
   - component: {fileID: 1180267642688613142}
   - component: {fileID: 1180267642688613137}
   - component: {fileID: 1180267642688613136}
-  - component: {fileID: 1180267642688613139}
   - component: {fileID: 1180267642688613138}
-  - component: {fileID: 1180267642688613133}
   m_Layer: 0
   m_Name: Shoot (2)
   m_TagString: Untagged
@@ -1039,25 +977,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1180267642688613139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1180267642688613135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0519608d753d34943ab8cf3ba4a213c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
-  DestroyTime: 3
-  Interval: 2
-  Interval2: 8
-  Key: 0
-  DelayTime: 0
-  PhaseObj: {fileID: 0}
 --- !u!114 &1180267642688613138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1072,25 +991,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DistanceX: -5
   DistanceY: 0
---- !u!114 &1180267642688613133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1180267642688613135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0519608d753d34943ab8cf3ba4a213c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Missile: {fileID: 5540224078154131618, guid: 05a76db5fa499f548b8994bdfdbb97b9, type: 3}
-  DestroyTime: 10
-  Interval: 2
-  Interval2: 8
-  Key: i
-  DelayTime: 0
-  PhaseObj: {fileID: 0}
 --- !u!1 &1180267642777113745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,7 +1003,6 @@ GameObject:
   - component: {fileID: 1180267642777113755}
   - component: {fileID: 1180267642777113754}
   - component: {fileID: 1180267642777113749}
-  - component: {fileID: 1180267642777113748}
   - component: {fileID: 1180267642777113751}
   m_Layer: 0
   m_Name: Shoot (4)
@@ -1190,25 +1089,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1180267642777113748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1180267642777113745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0519608d753d34943ab8cf3ba4a213c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
-  DestroyTime: 3
-  Interval: 2
-  Interval2: 8
-  Key: m
-  DelayTime: 0
-  PhaseObj: {fileID: 0}
 --- !u!114 &1180267642777113751
 MonoBehaviour:
   m_ObjectHideFlags: 0
