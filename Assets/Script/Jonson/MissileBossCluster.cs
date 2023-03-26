@@ -60,7 +60,7 @@ public class MissileBossCluster : MonoBehaviour
         //newObj.transform.SetParent(canvas.transform, false);                                        // Canvasの子オブジェクトとして生成
 
         Cluster = false;
-        off = 0.2f;
+        off = 1.0f;
 
     }
 
@@ -76,14 +76,15 @@ public class MissileBossCluster : MonoBehaviour
         {
             Move = ToPos - transform.position;
             Move = Move.normalized;
-            LateMove = (Move - LateMove) * off + (LateMove);
+            LateMove.x = (Move.x - LateMove.x) * off + (LateMove.x);
+            LateMove.z = (Move.z - LateMove.z) * off + (LateMove.z);
         }
         else
         {
             Cluster = true;
             for(int i = 0; i < ClusterNumber;i++)
             {
-                newObj = Instantiate(otherObject, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                newObj = Instantiate(otherObject, transform.position, Quaternion.identity);
             }
             Destroy(gameObject, 0);
         }
@@ -121,6 +122,7 @@ public class MissileBossCluster : MonoBehaviour
         //}
         Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
         transform.rotation = rot;
+        transform.position = new Vector3(transform.position.x,ToPos.y,transform.position.z);
         transform.position += LateMove * Speed;
     }
 }   

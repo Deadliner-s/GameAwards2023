@@ -22,6 +22,8 @@ public class SpawnMissile2 : MonoBehaviour
 
     Vector3 ToPos;              //発射先
 
+    public GameObject SpawnPos;
+
     //フェイズ切り替え用
     [Header("フェイズ確認用オブジェクト")]
     [SerializeField] GameObject PhaseObj;
@@ -81,7 +83,7 @@ public class SpawnMissile2 : MonoBehaviour
 
     void InstantiateObject()
     {
-        obj = Instantiate(Missile, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+        obj = Instantiate(Missile, new Vector3(SpawnPos.transform.position.x, SpawnPos.transform.position.y, SpawnPos.transform.position.z), Quaternion.identity);
         Destroy(obj, DestroyTime);
     }
 }
