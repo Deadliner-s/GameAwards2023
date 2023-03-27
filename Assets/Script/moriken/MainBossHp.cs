@@ -7,17 +7,18 @@ using UnityEngine.UI;
 public class MainBossHp : MonoBehaviour
 {
     public GameObject GaugeObj;
-    Slider HpGauge;
+    Image HpGauge;
 
     public float BossHP;
+    float BossMaxHP;
     float damage;
 
     // Start is called before the first frame update
     void Start()
     {
-        HpGauge = GaugeObj.GetComponent<Slider>();
-        HpGauge.maxValue = BossHP;
-        HpGauge.value = BossHP;
+        BossMaxHP = BossHP;
+        HpGauge = GaugeObj.GetComponent<Image>();
+        HpGauge.fillAmount = 1;
     }
 
     // Update is called once per frame
@@ -31,6 +32,6 @@ public class MainBossHp : MonoBehaviour
         // "Enemy"タグがついているオブジェクトにある"PlayerDamage"変数を受けとる
         damage = collision.gameObject.GetComponent<Damage>().EnemyDamage;
         BossHP -= damage;
-        HpGauge.value -= damage;
+        HpGauge.fillAmount -= damage/BossMaxHP;
     }
 }
