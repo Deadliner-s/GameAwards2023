@@ -33,7 +33,7 @@ public class SpawnMissile2 : MonoBehaviour
     [Tooltip("何秒間")]
     public float Timer_1;
     [Tooltip("発射間隔")]
-    public int Interval_1;   //出す時間
+    public float Interval_1;   //出す時間
     [Tooltip("ミサイル配列")]
     public List<GameObject> h_Missile_1;
     // 確認用フラグ
@@ -226,7 +226,7 @@ public class SpawnMissile2 : MonoBehaviour
 
                         IntervalTime = 0.0f; // タイマーをリセットする
                     }
-                    if (StartTime_1 + Timer_1 >= timer)
+                    if (StartTime_1 + Timer_1 <= timer)
                     {
                         Use_flg_1 = true;
                     }
@@ -242,7 +242,7 @@ public class SpawnMissile2 : MonoBehaviour
 
                         IntervalTime = 0.0f; // タイマーをリセットする
                     }
-                    if (StartTime_2 + Timer_2 >= timer)
+                    if (StartTime_2 + Timer_2 <= timer)
                     {
                         Use_flg_2 = true;
                     }
@@ -258,7 +258,7 @@ public class SpawnMissile2 : MonoBehaviour
 
                         IntervalTime = 0.0f; // タイマーをリセットする
                     }
-                    if (StartTime_3 + Timer_3 >= timer)
+                    if (StartTime_3 + Timer_3 <= timer)
                     {
                         Use_flg_3 = true;
                     }
@@ -274,7 +274,7 @@ public class SpawnMissile2 : MonoBehaviour
 
                         IntervalTime = 0.0f; // タイマーをリセットする
                     }
-                    if (StartTime_4 + Timer_4 >= timer)
+                    if (StartTime_4 + Timer_4 <= timer)
                     {
                         Use_flg_4 = true;
                     }
@@ -290,7 +290,7 @@ public class SpawnMissile2 : MonoBehaviour
 
                         IntervalTime = 0.0f; // タイマーをリセットする
                     }
-                    if (StartTime_5 + Timer_5 >= timer)
+                    if (StartTime_5 + Timer_5 <= timer)
                     {
                         Use_flg_5 = true;
                     }
@@ -306,7 +306,7 @@ public class SpawnMissile2 : MonoBehaviour
 
                         IntervalTime = 0.0f; // タイマーをリセットする
                     }
-                    if (StartTime_6 + Timer_6 >= timer)
+                    if (StartTime_6 + Timer_6 <= timer)
                     {
                         Use_flg_6 = true;
                     }
@@ -322,7 +322,7 @@ public class SpawnMissile2 : MonoBehaviour
 
                         IntervalTime = 0.0f; // タイマーをリセットする
                     }
-                    if (StartTime_7 + Timer_7 >= timer)
+                    if (StartTime_7 + Timer_7 <= timer)
                     {
                         Use_flg_7 = true;
                     }
@@ -338,7 +338,7 @@ public class SpawnMissile2 : MonoBehaviour
 
                         IntervalTime = 0.0f; // タイマーをリセットする
                     }
-                    if (StartTime_8 + Timer_8 >= timer)
+                    if (StartTime_8 + Timer_8 <= timer)
                     {
                         Use_flg_8 = true;
                     }
@@ -354,7 +354,7 @@ public class SpawnMissile2 : MonoBehaviour
 
                         IntervalTime = 0.0f; // タイマーをリセットする
                     }
-                    if (StartTime_9 + Timer_9 >= timer)
+                    if (StartTime_9 + Timer_9 <= timer)
                     {
                         Use_flg_9 = true;
                     }
@@ -370,7 +370,7 @@ public class SpawnMissile2 : MonoBehaviour
 
                         IntervalTime = 0.0f; // タイマーをリセットする
                     }
-                    if (StartTime_10 + Timer_10 >= timer)
+                    if (StartTime_10 + Timer_10 <= timer)
                     {
                         Use_flg_10 = true;
                     }
