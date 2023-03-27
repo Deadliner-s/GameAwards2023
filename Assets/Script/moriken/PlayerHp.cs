@@ -20,6 +20,9 @@ public class PlayerHp : MonoBehaviour
 
     bool UseFlag;
 
+    [SerializeField] ParticleSystem particle;
+    [SerializeField] Color[] color = new Color[3];
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,11 +33,13 @@ public class PlayerHp : MonoBehaviour
         HpGauge.value = PlayerHP;
         //フラグを非表示判定
         UseFlag = false;
+     
     }
 
     // Update is called once per frame
     void Update()
     {
+        var main = particle.main;
         // 敵にぶつかった時にシールドを表示する
         if (UseFlag == true)
         {
@@ -50,6 +55,20 @@ public class PlayerHp : MonoBehaviour
             UseFlag = false;
             Invflame = 0;
         }
+
+        if(PlayerHP >= 66)
+        { 
+            main.startColor = color[0];
+        }
+        else if(PlayerHP >= 33)
+        {
+            main.startColor = color[1];
+        }
+        else
+        {
+            main.startColor = color[2];
+        }
+
     }
 
     void OnCollisionEnter(Collision collision)
