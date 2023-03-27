@@ -1905,6 +1905,19 @@ MonoBehaviour:
   prefab: {fileID: 2471038645104781706, guid: 5cf9fa8468c32914482248f0197e6613, type: 3}
   PlayerPos: {fileID: 1650312788}
   EffectDuration: 10
+--- !u!114 &1359347826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359347799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891bf6ba512f0654cbc767f0228dec8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EffectObj: {fileID: 2011153797}
 --- !u!1 &1406777304
 GameObject:
   m_ObjectHideFlags: 0
@@ -2303,7 +2316,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: ManeverEffectPos
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4085020094310763495, guid: 362942d8b06f4034ca6dcaf01d49a6d4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4085020094310763495, guid: 362942d8b06f4034ca6dcaf01d49a6d4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 362942d8b06f4034ca6dcaf01d49a6d4, type: 3}
 --- !u!1 &1727636782 stripped
 GameObject:
@@ -2420,6 +2438,11 @@ PrefabInstance:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1180267642077531079, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
   m_PrefabInstance: {fileID: 1180267642833530434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2011153797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4085020093639411188, guid: 362942d8b06f4034ca6dcaf01d49a6d4, type: 3}
+  m_PrefabInstance: {fileID: 1681427387}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2037204904
 GameObject:
