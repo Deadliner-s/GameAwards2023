@@ -6,26 +6,28 @@ public class EffectActiveSwitch : MonoBehaviour
 {
     [Header("アクティブ状態を切り替えるエフェクト")]
     [SerializeField] GameObject EffectObj;
-    // 切り替える時間
-    public float SwitchTime = 10.0f;
-    private float currenttime;
+
+    private PlayerMove playermove;
 
     // Start is called before the first frame update
     void Start()
     {
-        currenttime = 0.0f;
+        playermove = gameObject.GetComponent<PlayerMove>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        bool IsActive = EffectObj.activeSelf;
-        currenttime += Time.deltaTime;
+        //bool IsActive = EffectObj.activeSelf;
 
-        if(currenttime > SwitchTime)
+        if(playermove.maneverFlg == true)
         {
-            EffectObj.SetActive(!IsActive);
-            currenttime = 0.0f;
+            EffectObj.SetActive(false);
+        }
+        if(playermove.maneverFlg == false)
+        {
+            EffectObj.SetActive(true);
         }
     }
 }
