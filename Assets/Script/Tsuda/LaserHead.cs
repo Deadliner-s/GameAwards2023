@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class LaserHead : MonoBehaviour
 {
+    public static LaserHead instance;
+
     public float speed = 5f;  // 移動速度
     public GameObject otherObject;  // 生成するプレハブオブジェクト
     public float lifetime = 5f;  // オブジェクトの寿命（秒）
-    public float Split = 1;
+    public int Split;
 
 //    private PhaseManager.Phase currentPhase;  // 現在フェイズ
 
@@ -22,29 +24,6 @@ public class LaserHead : MonoBehaviour
     void Start()
     {
   //      currentPhase = PhaseManager.instance.GetPhase();  // フェイズ取得
-
-        mainCamera = Camera.main;  // メインカメラを取得する
-
-        switch(Split)
-        {
-            case 1: splitX = 1; splitY = 3; break;
-            case 2: splitX = 3; splitY = 3; break;
-            case 3: splitX = 5; splitY = 3; break;
-            case 4: splitX = 1; splitY = 1; break;
-            case 5: splitX = 3; splitY = 1; break;
-            case 6: splitX = 5; splitY = 1; break;
-        }
-
-        targetScreenPosition.x = 320 * splitX;
-        targetScreenPosition.y = 270 * splitY;
-        targetScreenPosition.z = 1.3f;
-        targetWorldPosition = mainCamera.ScreenToWorldPoint(targetScreenPosition);  // 目標スクリーン座標をワールド座標に変換する
-
-        transform.LookAt(targetWorldPosition);  // 目標座標の方向を向く
-
-        newObj = Instantiate(otherObject, targetWorldPosition, transform.rotation);  // 警告UIの生成
-
-        timer = lifetime;  // タイマーを設定する
     }
 
     void Update()
@@ -75,6 +54,34 @@ public class LaserHead : MonoBehaviour
                 Destroy(gameObject);  // オブジェクトを削除する
             }
 //        }
+    }
+
+    public void SetSplit(int num)
+    {
+        mainCamera = Camera.main;  // メインカメラを取得する
+
+        Split = num;
+
+        switch (Split)
+        {
+            case 1: splitX = 1; splitY = 3; break;
+            case 2: splitX = 3; splitY = 3; break;
+            case 3: splitX = 5; splitY = 3; break;
+            case 4: splitX = 1; splitY = 1; break;
+            case 5: splitX = 3; splitY = 1; break;
+            case 6: splitX = 5; splitY = 1; break;
+        }
+
+        targetScreenPosition.x = 320 * splitX;
+        targetScreenPosition.y = 270 * splitY;
+        targetScreenPosition.z = 1.3f;
+        targetWorldPosition = mainCamera.ScreenToWorldPoint(targetScreenPosition);  // 目標スクリーン座標をワールド座標に変換する
+
+        transform.LookAt(targetWorldPosition);  // 目標座標の方向を向く
+
+        newObj = Instantiate(otherObject, targetWorldPosition, transform.rotation);  // 警告UIの生成
+
+        timer = lifetime;  // タイマーを設定する
     }
 }
 

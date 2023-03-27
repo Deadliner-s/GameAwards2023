@@ -169,11 +169,4 @@ public class TrackingBullet : MonoBehaviour
     {
         target = targetObj;
     }
-
-    // ˆÚ“®XVŠÖ”
-    public void MoveUpdate()
-    {
-
-    }
-
 }
