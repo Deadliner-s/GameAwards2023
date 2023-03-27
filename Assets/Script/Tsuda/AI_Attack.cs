@@ -5,25 +5,28 @@ using UnityEngine;
 public class AI_Attack : MonoBehaviour
 {
     public Canvas message; // CanvasオブジェクトをInspectorから指定する
-    [Header("フェイズ確認用オブジェクト")]
-    [SerializeField] GameObject PhaseObj;
+
+    // 現在フェイズ
+    private PhaseManager.Phase currentPhase;
 
     private bool AtkPhaseFlg;
     private float timer = 0.0f;
 
     // Start is called before the first frame update
     void Start()
-    {
+    {        
         message.enabled = false;
-        AtkPhaseFlg = PhaseObj.activeSelf;        
+        // フェイズ取得
+        currentPhase = PhaseManager.instance.GetPhase();
     }
 
     // Update is called once per frame
     void Update()
     {
-        AtkPhaseFlg = PhaseObj.activeSelf;
+        // フェイズ取得
+        currentPhase = PhaseManager.instance.GetPhase();
 
-        if (AtkPhaseFlg == true)
+        if (currentPhase == PhaseManager.Phase.Attack_Phase)
         {
             timer += Time.deltaTime;
 

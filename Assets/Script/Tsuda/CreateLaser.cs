@@ -6,16 +6,26 @@ public class CreateLaser : MonoBehaviour
 {
     public GameObject prefab; // プレハブオブジェクト    
 
+    // 現在フェイズ
+    private PhaseManager.Phase currentPhase;
+
     void Start()
-    {        
-        
+    {
+        // フェイズ取得
+        currentPhase = PhaseManager.instance.GetPhase();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C)) // Cキーが押されたら
+        // フェイズ取得
+        currentPhase = PhaseManager.instance.GetPhase();
+
+        if (currentPhase == PhaseManager.Phase.Speed_Phase)
         {
-            Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
+            if (Input.GetKeyDown(KeyCode.C)) // Cキーが押されたら
+            {
+                Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
+            }
         }
     }
 }
