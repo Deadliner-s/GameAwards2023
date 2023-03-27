@@ -8,14 +8,11 @@ public class BossAnime : MonoBehaviour
     public GameObject wpobj;
     private WeakPoint wp;
 
-    // フェイズ切り替え用
-    [Header("フェイズ確認用オブジェクト")]
-    [SerializeField] GameObject PhaseObj;
-    private bool AtkPhaseFlg;
-
     public AudioClip BossAnimeSE;
     private AudioSource audioSource;
     private bool SeFlg = false;
+
+    private PhaseManager.Phase currntPhase;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +20,7 @@ public class BossAnime : MonoBehaviour
         anime = GetComponent<Animator>();
         wp = gameObject.GetComponent<WeakPoint>();
 
-        AtkPhaseFlg = PhaseObj.activeSelf;
+        currntPhase = PhaseManager.instance.GetPhase();
 
         audioSource = GetComponent<AudioSource>();
         SeFlg = false;
@@ -32,29 +29,30 @@ public class BossAnime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AtkPhaseFlg = PhaseObj.activeSelf;
+        currntPhase = PhaseManager.instance.GetPhase();
 
-
-        if (AtkPhaseFlg == false)
+        if (currntPhase == PhaseManager.Phase.Normal_Phase)
         {
-            // ハイスピードフェイズ
             anime.SetBool("isMove", false);
-
             wp.enabled = false;
-
             SeFlg = false;
         }
-        else
+        else if(currntPhase == PhaseManager.Phase.Speed_Phase) 
         {
-            // アタックフェイズ
+            // ハイスピードフェイズ
             anime.SetBool("isMove", true);
 
-            wp.enabled = true;
             if (SeFlg != true)
             {
                 audioSource.PlayOneShot(BossAnimeSE);
                 SeFlg = true;
             }
+        }
+        else if(currntPhase == PhaseManager.Phase.Attack_Phase)
+        {
+            // アタックフェイズ
+
+            wp.enabled = true;
         }
         //if (Input.GetKey(KeyCode.Alpha1))
         //{
