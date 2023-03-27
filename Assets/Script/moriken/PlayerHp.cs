@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//ƒV[ƒ“‚ÌˆÚ“®ˆ—‚ğs‚¤‹@”\
+//ã‚·ãƒ¼ãƒ³ã®ç§»å‹•å‡¦ç†ã‚’è¡Œã†æ©Ÿèƒ½
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHp : MonoBehaviour
 {
-    
     public GameObject GaugeObj;
     Slider HpGauge;
 
@@ -25,11 +24,11 @@ public class PlayerHp : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {        
+    {
         HpGauge = GaugeObj.GetComponent<Slider>();
         HpGauge.maxValue = PlayerHP;
         HpGauge.value = PlayerHP;
-        //ƒtƒ‰ƒO‚ğ”ñ•\¦”»’è
+        //ãƒ•ãƒ©ã‚°ã‚’éè¡¨ç¤ºåˆ¤å®š
         UseFlag = false;
      
     }
@@ -38,13 +37,13 @@ public class PlayerHp : MonoBehaviour
     void Update()
     {
         var main = particle.main;
-        // “G‚É‚Ô‚Â‚©‚Á‚½‚ÉƒV[ƒ‹ƒh‚ğ•\¦‚·‚é
+        // æ•µã«ã¶ã¤ã‹ã£ãŸæ™‚ã«ã‚·ãƒ¼ãƒ«ãƒ‰ã‚’è¡¨ç¤ºã™ã‚‹
         if (UseFlag == true)
-        {   
+        {
             Invflame++;
         }
 
-        // –³“GŠÔ‚ÉŠÖ‚·‚éˆ—
+        // ç„¡æ•µæ™‚é–“ã«é–¢ã™ã‚‹å‡¦ç†
         if (MaxInvflame < Invflame)
         {
             UseFlag = false;
@@ -70,10 +69,10 @@ public class PlayerHp : MonoBehaviour
     {
         if (Invflame == 0)
         {
-            // ‚à‚µÕ“Ë‚µ‚½‘ŠèƒIƒuƒWƒFƒNƒg‚Ìƒ^ƒO‚ª"Enemy"‚È‚ç‚Î’†‚Ìˆ—‚ğÀs
+            // ã‚‚ã—è¡çªã—ãŸç›¸æ‰‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¿ã‚°ãŒ"Enemy"ãªã‚‰ã°ä¸­ã®å‡¦ç†ã‚’å®Ÿè¡Œ
             if (collision.gameObject.CompareTag("Enemy"))
             {
-                // "Enemy"ƒ^ƒO‚ª‚Â‚¢‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg‚É‚ ‚é"PlayerDamage"•Ï”‚ğó‚¯‚Æ‚é
+                // "Enemy"ã‚¿ã‚°ãŒã¤ã„ã¦ã„ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã‚ã‚‹"PlayerDamage"å¤‰æ•°ã‚’å—ã‘ã¨ã‚‹
                 damage = collision.gameObject.GetComponent<Damage>().PlayerDamage;
                 PlayerHP -= damage;
                 HpGauge.value -= damage;
@@ -85,7 +84,7 @@ public class PlayerHp : MonoBehaviour
                 else
                 {
                     Destroy(this.gameObject);
-                    //ƒV[ƒ“ˆÚ“®
+                    //ã‚·ãƒ¼ãƒ³ç§»å‹•
                     SceneManager.LoadScene("SceneGameOver");
                 }
             }
