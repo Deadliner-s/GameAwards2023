@@ -4,22 +4,44 @@ using UnityEngine;
 
 public class MapRotation : MonoBehaviour
 {
-    public float rotate;
+    [Header("Bossの回転速度")]
+    [Tooltip("通常")]
+    [SerializeField] private float rotationSpeedNormal = 0.1f;
+    [Tooltip("アタック")]
+    [SerializeField] private float rotationSpeedAttack = 0.1f;
+    [Tooltip("ハイスピード")]
+    [SerializeField] private float rotationSpeedHighSpeed = 0.1f;
+
+    private float rotationSpeed; // 回転速度
+    private PhaseManager.Phase PhaseFlg; // フェーズフラグ
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        // 通常フェーズを代入
+        PhaseFlg = PhaseManager.Phase.Normal_Phase;
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
-        // 動いているように見せる
-        transform.Rotate(new Vector3(0, rotate, 0));
-    }
-
     void Update()
     {
+        // フェーズ取得用
+        PhaseFlg = PhaseManager.instance.GetPhase();
 
+        // フェーズによって切り替え
+        // 通常
+        if (PhaseFlg == PhaseManager.Phase.Normal_Phase) {
+            rotationSpeed = rotationSpeedNormal;
+        }
+        // アタック
+        if (PhaseFlg == PhaseManager.Phase.Attack_Phase) {
+            rotationSpeed = rotationSpeedAttack;
+        }
+        // ハイスピード
+        if (PhaseFlg == PhaseManager.Phase.Speed_Phase) {
+            rotationSpeed = rotationSpeedHighSpeed;
+        }
+        // 動いているように見せる
+        transform.Rotate(new Vector3(0, rotationSpeed, 0));
     }
 }
