@@ -4,42 +4,54 @@ using UnityEngine;
 
 public class PlayerHighSpeedEffect : MonoBehaviour
 {
-    [Header("フェイズ確認用オブジェクト")]
-    [SerializeField] GameObject PhaseObj;
-    private bool AtkPhaseFlg;
     [SerializeField]
-    public GameObject prefab; // プレハブオブジェクト
+    private GameObject prefab; // プレハブオブジェクト
     [SerializeField]
-    public GameObject PlayerPos; // 親オブジェクト
+    private GameObject PlayerPos; // 親オブジェクト
+
+    [Tooltip("エフェクトの持続時間")]
+    [SerializeField]
+    private float EffectDuration = 10.0f; // 親オブジェクト
 
     bool instantiateflag = true;
+
+    private PhaseManager.Phase PhaseFlg; // フェーズフラグ
+
 
     // Start is called before the first frame update
     void Start()
     {
-        AtkPhaseFlg = PhaseObj.activeSelf;
+        PhaseFlg = PhaseManager.instance.GetPhase();
         instantiateflag = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        AtkPhaseFlg = PhaseObj.activeSelf;
+        PhaseFlg = PhaseManager.instance.GetPhase();
 
         // 対象オブジェクトが存在する場合は、処理を実行しない
-        if (AtkPhaseFlg != false)
+        if (PhaseFlg == PhaseManager.Phase.Normal_Phase)
         {
             instantiateflag = true;
             return;
         }
-        else
+        if (PhaseFlg == PhaseManager.Phase.Attack_Phase)
+        {
+            instantiateflag = true;
+            return;
+        }
+        if (PhaseFlg == PhaseManager.Phase.Speed_Phase)
         {
             // ハイスピードフェーズ時に一度だけ生成
-            if (instantiateflag == true) {
+            if (instantiateflag == true)
+            {
                 var parent = PlayerPos.transform;
-                GameObject obj = Instantiate(prefab, PlayerPos.transform.position,prefab.transform.rotation,parent);
-                Destroy(obj, 10.0f);
+                GameObject obj = Instantiate(prefab, PlayerPos.transform.position, prefab.transform.rotation, parent);
+                Destroy(obj, EffectDuration);
+
                 instantiateflag = false;
+                return;
             }
         }
     }

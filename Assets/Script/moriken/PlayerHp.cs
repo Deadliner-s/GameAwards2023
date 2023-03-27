@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class PlayerHp : MonoBehaviour
 {
-    public GameObject DisplayObj;
     public GameObject GaugeObj;
     Slider HpGauge;
 
@@ -27,7 +26,6 @@ public class PlayerHp : MonoBehaviour
     void Start()
     {
         //初期状態ではメニューを非表示
-        DisplayObj.SetActive(false);
         HpGauge = GaugeObj.GetComponent<Slider>();
         HpGauge.maxValue = PlayerHP;
         HpGauge.value = PlayerHP;
@@ -43,16 +41,13 @@ public class PlayerHp : MonoBehaviour
         // 敵にぶつかった時にシールドを表示する
         if (UseFlag == true)
         {
-            DisplayObj.SetActive(true);
-            
             Invflame++;
         }
 
         // 無敵時間に関する処理
         if (MaxInvflame < Invflame)
         {
-            DisplayObj.SetActive(false);
-            UseFlag = false;
+ UseFlag = false;
             Invflame = 0;
         }
 
