@@ -6,16 +6,22 @@ public class SkyRotation : MonoBehaviour
 {
     // 背景の回転速度
     [Header("背景の回転速度")]
-    [Tooltip("回転速度")]
-    public float rotationSpeed;
-    // 背景のオブジェクト
-    [Header("背景オブジェクト設定")]
-    [Tooltip("背景のオブジェクト")]
-    public Material sky;
+    [Tooltip("通常")]
+    [SerializeField] private float rotationSpeedNormal = -0.1f;
+    [Tooltip("アタック")]
+    [SerializeField] private float rotationSpeedAttack = -0.1f;
+    [Tooltip("ハイスピード")]
+    [SerializeField] private float rotationSpeedHighSpeed = -0.1f;
+    // 背景のマテリアル
+    [Header("背景マテリアル設定")]
+    [Tooltip("背景のマテリアル")]
+    [SerializeField] Material sky;
 
     // 回転
-    private float rotation; // 現在の回転
-    private float initRotation; // 回転の初期位置
+    private float rotation;      // 現在の回転
+    private float rotationSpeed; // 回転速度
+    private float initRotation;  // 回転の初期位置
+    private PhaseManager.Phase PhaseFlg; // フェーズフラグ
 
     // Start is called before the first frame update
     void Start()
@@ -23,11 +29,34 @@ public class SkyRotation : MonoBehaviour
         // 終了時に現在の回転が上書きされるため、最初に取得
         // 回転の初期位置
         initRotation = sky.GetFloat("_Rotation");
+
+        // フェーズ取得用
+        PhaseFlg = PhaseManager.instance.GetPhase();
+
+        // 通常フェーズを代入
+        PhaseFlg = PhaseManager.Phase.Normal_Phase;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // フェーズ取得用
+        PhaseFlg = PhaseManager.instance.GetPhase();
+
+        // フェーズによって切り替え
+        // 通常
+        if (PhaseFlg == PhaseManager.Phase.Normal_Phase) {
+            rotationSpeed = rotationSpeedNormal;
+        }
+        // アタック
+        if (PhaseFlg == PhaseManager.Phase.Attack_Phase) {
+            rotationSpeed = rotationSpeedAttack;
+        }
+        // ハイスピード
+        if (PhaseFlg == PhaseManager.Phase.Speed_Phase) {
+            rotationSpeed = rotationSpeedHighSpeed;
+        }
+
         // 背景の回転
         rotation = Mathf.Repeat(sky.GetFloat("_Rotation") + rotationSpeed, 360f);
         // 処理後の回転を代入
