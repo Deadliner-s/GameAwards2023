@@ -25,10 +25,8 @@ public class Shot : MonoBehaviour
     // 射撃フラグ
     public bool Shotflg;
 
-    //フェイズ切り替え用
-    [Header("フェイズ確認用オブジェクト")]
-    [SerializeField] GameObject PhaseObj;
-    private bool AtkPhaseFlg;
+    // 現在フェイズ
+    private PhaseManager.Phase currentPhase;
 
     // ロックオンされたオブジェクトのリスト
     public List<GameObject> targets;
@@ -55,7 +53,7 @@ public class Shot : MonoBehaviour
         Shotflg = false;    // フラグをオフに
 
         // フェイズ取得
-        AtkPhaseFlg = PhaseObj.activeSelf;
+        currentPhase = PhaseManager.instance.GetPhase();
 
         audioSource = GetComponent<AudioSource>();
 
@@ -76,8 +74,9 @@ public class Shot : MonoBehaviour
         }
 
         // フェイズ確認
-        AtkPhaseFlg = PhaseObj.activeSelf;
-        if (AtkPhaseFlg == false)
+        // フェイズ取得
+        currentPhase = PhaseManager.instance.GetPhase();
+        if (currentPhase == PhaseManager.Phase.Speed_Phase)
         {
             sub = new List<GameObject>();
         }
@@ -87,7 +86,7 @@ public class Shot : MonoBehaviour
     public void OnShot()
     {
         // フェイズの確認
-        if (AtkPhaseFlg == true)
+        if (currentPhase == PhaseManager.Phase.Attack_Phase)
         {
             // アタックフェイズ    
             // フラグの確認
