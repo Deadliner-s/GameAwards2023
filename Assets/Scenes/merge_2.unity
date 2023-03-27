@@ -262,10 +262,10 @@ GameObject:
   - component: {fileID: 247176460}
   - component: {fileID: 247176458}
   - component: {fileID: 247176461}
+  - component: {fileID: 247176464}
   - component: {fileID: 247176467}
   - component: {fileID: 247176466}
   - component: {fileID: 247176465}
-  - component: {fileID: 247176464}
   - component: {fileID: 247176463}
   - component: {fileID: 247176462}
   m_Layer: 0
@@ -385,15 +385,15 @@ MonoBehaviour:
   Key: p
   StartTime_1: 7
   Timer_1: 4
-  Interval_1: 0.3
+  Interval_1: 0.4
   h_Missile_1: []
-  StartTime_2: 900
-  Timer_2: 10
-  Interval_2: 2
+  StartTime_2: 15
+  Timer_2: 4
+  Interval_2: 0.4
   h_Missile_2: []
-  StartTime_3: 900
-  Timer_3: 0
-  Interval_3: 2
+  StartTime_3: 23
+  Timer_3: 4
+  Interval_3: 0.4
   h_Missile_3: []
   StartTime_4: 900
   Timer_4: 0
@@ -451,43 +451,43 @@ MonoBehaviour:
   Missile: {fileID: 4741478458244633611, guid: a166eeb9b4e2c494f912cf907f7a4985, type: 3}
   DestroyTime: 15
   Key: k
-  StartTime_1: 0
-  Timer_1: 0
-  Interval_1: 2
+  StartTime_1: 21
+  Timer_1: 3
+  Interval_1: 1
   h_Missile_1: []
-  StartTime_2: 0
-  Timer_2: 0
-  Interval_2: 2
+  StartTime_2: 29
+  Timer_2: 3
+  Interval_2: 1
   h_Missile_2: []
-  StartTime_3: 0
+  StartTime_3: 900
   Timer_3: 0
   Interval_3: 2
   h_Missile_3: []
-  StartTime_4: 0
+  StartTime_4: 900
   Timer_4: 0
   Interval_4: 2
   h_Missile_4: []
-  StartTime_5: 0
+  StartTime_5: 900
   Timer_5: 0
   Interval_5: 2
   h_Missile_5: []
-  StartTime_6: 0
+  StartTime_6: 900
   Timer_6: 0
   Interval_6: 2
   h_Missile_6: []
-  StartTime_7: 0
+  StartTime_7: 9009
   Timer_7: 0
   Interval_7: 2
   h_Missile_7: []
-  StartTime_8: 0
+  StartTime_8: 900
   Timer_8: 0
   Interval_8: 2
   h_Missile_8: []
-  StartTime_9: 0
+  StartTime_9: 900
   Timer_9: 0
   Interval_9: 2
   h_Missile_9: []
-  StartTime_10: 0
+  StartTime_10: 900
   Timer_10: 0
   Interval_10: 2
   h_Missile_10: []
@@ -507,43 +507,43 @@ MonoBehaviour:
   DestroyTime: 30
   Key: m
   SpawnPos: {fileID: 860822590}
-  StartTime_1: 0
-  Timer_1: 0
-  Interval_1: 2
+  StartTime_1: 23
+  Timer_1: 1
+  Interval_1: 8
   h_Missile_1: []
-  StartTime_2: 0
+  StartTime_2: 900
   Timer_2: 0
   Interval_2: 2
   h_Missile_2: []
-  StartTime_3: 0
+  StartTime_3: 900
   Timer_3: 0
   Interval_3: 2
   h_Missile_3: []
-  StartTime_4: 0
+  StartTime_4: 900
   Timer_4: 0
   Interval_4: 2
   h_Missile_4: []
-  StartTime_5: 0
+  StartTime_5: 900
   Timer_5: 0
   Interval_5: 2
   h_Missile_5: []
-  StartTime_6: 0
+  StartTime_6: 900
   Timer_6: 0
   Interval_6: 2
   h_Missile_6: []
-  StartTime_7: 0
+  StartTime_7: 900
   Timer_7: 0
   Interval_7: 2
   h_Missile_7: []
-  StartTime_8: 0
+  StartTime_8: 900
   Timer_8: 0
   Interval_8: 2
   h_Missile_8: []
-  StartTime_9: 0
+  StartTime_9: 900
   Timer_9: 0
   Interval_9: 2
   h_Missile_9: []
-  StartTime_10: 0
+  StartTime_10: 900
   Timer_10: 0
   Interval_10: 2
   h_Missile_10: []
@@ -563,43 +563,43 @@ MonoBehaviour:
   DestroyTime: 30
   Key: n
   SpawnPos: {fileID: 665596463}
-  StartTime_1: 0
-  Timer_1: 0
-  Interval_1: 2
+  StartTime_1: 9
+  Timer_1: 18
+  Interval_1: 3
   h_Missile_1: []
-  StartTime_2: 0
-  Timer_2: 0
-  Interval_2: 2
+  StartTime_2: 22
+  Timer_2: 11
+  Interval_2: 3
   h_Missile_2: []
-  StartTime_3: 0
+  StartTime_3: 900
   Timer_3: 0
   Interval_3: 2
   h_Missile_3: []
-  StartTime_4: 0
+  StartTime_4: 900
   Timer_4: 0
   Interval_4: 2
   h_Missile_4: []
-  StartTime_5: 0
+  StartTime_5: 900
   Timer_5: 0
   Interval_5: 2
   h_Missile_5: []
-  StartTime_6: 0
+  StartTime_6: 900
   Timer_6: 0
   Interval_6: 2
   h_Missile_6: []
-  StartTime_7: 0
+  StartTime_7: 900
   Timer_7: 0
   Interval_7: 2
   h_Missile_7: []
-  StartTime_8: 0
+  StartTime_8: 900
   Timer_8: 0
   Interval_8: 2
   h_Missile_8: []
-  StartTime_9: 0
+  StartTime_9: 900
   Timer_9: 0
   Interval_9: 2
   h_Missile_9: []
-  StartTime_10: 0
+  StartTime_10: 900
   Timer_10: 0
   Interval_10: 2
   h_Missile_10: []
@@ -619,43 +619,43 @@ MonoBehaviour:
   DestroyTime: 10
   Key: i
   SpawnPos: {fileID: 1727636782}
-  StartTime_1: 0
-  Timer_1: 0
-  Interval_1: 2
+  StartTime_1: 19
+  Timer_1: 10
+  Interval_1: 5
   h_Missile_1: []
-  StartTime_2: 0
+  StartTime_2: 900
   Timer_2: 0
-  Interval_2: 2
+  Interval_2: 4
   h_Missile_2: []
-  StartTime_3: 0
+  StartTime_3: 900
   Timer_3: 0
   Interval_3: 2
   h_Missile_3: []
-  StartTime_4: 0
+  StartTime_4: 900
   Timer_4: 0
   Interval_4: 2
   h_Missile_4: []
-  StartTime_5: 0
+  StartTime_5: 900
   Timer_5: 0
   Interval_5: 2
   h_Missile_5: []
-  StartTime_6: 0
+  StartTime_6: 900
   Timer_6: 0
   Interval_6: 2
   h_Missile_6: []
-  StartTime_7: 0
+  StartTime_7: 900
   Timer_7: 0
   Interval_7: 2
   h_Missile_7: []
-  StartTime_8: 0
+  StartTime_8: 900
   Timer_8: 0
   Interval_8: 2
   h_Missile_8: []
-  StartTime_9: 0
+  StartTime_9: 900
   Timer_9: 0
   Interval_9: 2
   h_Missile_9: []
-  StartTime_10: 0
+  StartTime_10: 900
   Timer_10: 0
   Interval_10: 2
   h_Missile_10: []
@@ -675,43 +675,43 @@ MonoBehaviour:
   DestroyTime: 30
   Key: j
   SpawnPos: {fileID: 1727636782}
-  StartTime_1: 0
-  Timer_1: 0
-  Interval_1: 2
+  StartTime_1: 8
+  Timer_1: 11
+  Interval_1: 3
   h_Missile_1: []
-  StartTime_2: 0
-  Timer_2: 0
-  Interval_2: 2
+  StartTime_2: 20
+  Timer_2: 10
+  Interval_2: 3
   h_Missile_2: []
-  StartTime_3: 0
+  StartTime_3: 900
   Timer_3: 0
   Interval_3: 2
   h_Missile_3: []
-  StartTime_4: 0
+  StartTime_4: 900
   Timer_4: 0
   Interval_4: 2
   h_Missile_4: []
-  StartTime_5: 0
+  StartTime_5: 900
   Timer_5: 0
   Interval_5: 2
   h_Missile_5: []
-  StartTime_6: 0
+  StartTime_6: 900
   Timer_6: 0
   Interval_6: 2
   h_Missile_6: []
-  StartTime_7: 0
+  StartTime_7: 900
   Timer_7: 0
   Interval_7: 2
   h_Missile_7: []
-  StartTime_8: 0
+  StartTime_8: 900
   Timer_8: 0
   Interval_8: 2
   h_Missile_8: []
-  StartTime_9: 0
+  StartTime_9: 900
   Timer_9: 0
   Interval_9: 2
   h_Missile_9: []
-  StartTime_10: 0
+  StartTime_10: 900
   Timer_10: 0
   Interval_10: 2
   h_Missile_10: []
@@ -731,43 +731,43 @@ MonoBehaviour:
   DestroyTime: 30
   Key: y
   SpawnPos: {fileID: 615322229}
-  StartTime_1: 0
-  Timer_1: 0
-  Interval_1: 2
+  StartTime_1: 7
+  Timer_1: 10
+  Interval_1: 0.6
   h_Missile_1: []
-  StartTime_2: 0
-  Timer_2: 0
-  Interval_2: 2
+  StartTime_2: 21
+  Timer_2: 10
+  Interval_2: 3
   h_Missile_2: []
-  StartTime_3: 0
+  StartTime_3: 900
   Timer_3: 0
   Interval_3: 2
   h_Missile_3: []
-  StartTime_4: 0
+  StartTime_4: 900
   Timer_4: 0
   Interval_4: 2
   h_Missile_4: []
-  StartTime_5: 0
+  StartTime_5: 900
   Timer_5: 0
   Interval_5: 2
   h_Missile_5: []
-  StartTime_6: 0
+  StartTime_6: 900
   Timer_6: 0
   Interval_6: 2
   h_Missile_6: []
-  StartTime_7: 0
+  StartTime_7: 900
   Timer_7: 0
   Interval_7: 2
   h_Missile_7: []
-  StartTime_8: 0
+  StartTime_8: 900
   Timer_8: 0
   Interval_8: 2
   h_Missile_8: []
-  StartTime_9: 0
+  StartTime_9: 900
   Timer_9: 0
   Interval_9: 2
   h_Missile_9: []
-  StartTime_10: 0
+  StartTime_10: 900
   Timer_10: 0
   Interval_10: 2
   h_Missile_10: []
@@ -787,43 +787,43 @@ MonoBehaviour:
   DestroyTime: 30
   Key: u
   SpawnPos: {fileID: 1875399730}
-  StartTime_1: 0
-  Timer_1: 0
-  Interval_1: 2
+  StartTime_1: 7
+  Timer_1: 10
+  Interval_1: 3
   h_Missile_1: []
-  StartTime_2: 0
-  Timer_2: 0
-  Interval_2: 2
+  StartTime_2: 20
+  Timer_2: 15
+  Interval_2: 4
   h_Missile_2: []
-  StartTime_3: 0
+  StartTime_3: 900
   Timer_3: 0
   Interval_3: 2
   h_Missile_3: []
-  StartTime_4: 0
+  StartTime_4: 900
   Timer_4: 0
   Interval_4: 2
   h_Missile_4: []
-  StartTime_5: 0
+  StartTime_5: 900
   Timer_5: 0
   Interval_5: 2
   h_Missile_5: []
-  StartTime_6: 0
+  StartTime_6: 900
   Timer_6: 0
   Interval_6: 2
   h_Missile_6: []
-  StartTime_7: 0
+  StartTime_7: 900
   Timer_7: 0
   Interval_7: 2
   h_Missile_7: []
-  StartTime_8: 0
+  StartTime_8: 900
   Timer_8: 0
   Interval_8: 2
   h_Missile_8: []
-  StartTime_9: 0
+  StartTime_9: 900
   Timer_9: 0
   Interval_9: 2
   h_Missile_9: []
-  StartTime_10: 0
+  StartTime_10: 900
   Timer_10: 0
   Interval_10: 2
   h_Missile_10: []
@@ -854,7 +854,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: e5337dc73e9ce68458410b6b77a31357, type: 2}
     - target: {fileID: 5851085222433789076, guid: 041eb59527a745243ad3acae20abd9ca, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5851085222433789076, guid: 041eb59527a745243ad3acae20abd9ca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -949,7 +949,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeedNormal: -0.1
   rotationSpeedAttack: -0.1
-  rotationSpeedHighSpeed: -0.1
+  rotationSpeedHighSpeed: -0.3
   sky: {fileID: 2100000, guid: c0dad4f095027544c938052ae1b47626, type: 2}
 --- !u!4 &356418629
 Transform:
@@ -1611,7 +1611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2969251025863040514, guid: d668ee0516857414aa63578f5957c949, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2969251025863040514, guid: d668ee0516857414aa63578f5957c949, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1890,7 +1890,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1406777307
 MonoBehaviour:
@@ -1905,10 +1905,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NormalTime: 10
-  SpeedTime: 10
-  AttackTime: 10
-  currentPhase: 2
-  Debug_FixPhaseFlg: 1
+  SpeedTime: 35
+  AttackTime: 35
+  currentPhase: 0
+  Debug_FixPhaseFlg: 0
 --- !u!1 &1414156512 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 121570422160005665, guid: 4700cfdede16cb24180c5b561aa4e645, type: 3}
@@ -1928,7 +1928,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeedNormal: 0.1
   rotationSpeedAttack: 0.1
-  rotationSpeedHighSpeed: 0.1
+  rotationSpeedHighSpeed: 0.3
 --- !u!114 &1414156515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2687,6 +2687,10 @@ PrefabInstance:
       propertyPath: GaugeObj
       value: 
       objectReference: {fileID: 1797140990}
+    - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: PlayerHP
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: particle
       value: 
