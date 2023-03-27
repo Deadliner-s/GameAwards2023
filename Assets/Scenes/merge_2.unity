@@ -1505,7 +1505,6 @@ MonoBehaviour:
   ManerverTime: 0.5
   coolTime: 1
   ManeverSpeed: 0.03
-  PhaseObj: {fileID: 2037204904}
   MoveSE: {fileID: 0}
   ManeverSE: {fileID: 8300000, guid: c2d9e197d242afe4cabb7b6285ad3e61, type: 3}
 --- !u!1 &1406777304
@@ -1517,7 +1516,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1406777306}
-  - component: {fileID: 1406777305}
+  - component: {fileID: 1406777307}
   m_Layer: 0
   m_Name: PhaseManagerObj
   m_TagString: Untagged
@@ -1525,20 +1524,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1406777305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1406777304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1c920c2f5b87384b86855113919f4a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PhaseObj: {fileID: 2037204904}
-  PhaseChangeTime: 10
 --- !u!4 &1406777306
 Transform:
   m_ObjectHideFlags: 0
@@ -1554,6 +1539,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1406777307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406777304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5206886689ee4d74f98a6dc093602cd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NormalTime: 10
+  SpeedTime: 10
+  AttackTime: 10
+  currentPhase: 0
+  Debug_FixPhaseFlg: 0
 --- !u!1 &1414156512 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 121570422160005665, guid: 4700cfdede16cb24180c5b561aa4e645, type: 3}
@@ -1752,7 +1754,7 @@ PrefabInstance:
     - target: {fileID: 1816158869327730178, guid: ab8ee1ae2d46e274f8959b18cc5bb87b, type: 3}
       propertyPath: PhaseObj
       value: 
-      objectReference: {fileID: 2037204904}
+      objectReference: {fileID: 0}
     - target: {fileID: 1816158869327730179, guid: ab8ee1ae2d46e274f8959b18cc5bb87b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2243,7 +2245,7 @@ PrefabInstance:
     - target: {fileID: 1180267641147467985, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: PhaseObj
       value: 
-      objectReference: {fileID: 2037204904}
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267641147467985, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2291,7 +2293,7 @@ PrefabInstance:
     - target: {fileID: 1180267641508261401, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: PhaseObj
       value: 
-      objectReference: {fileID: 2037204904}
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261401, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: ManeverSE
       value: 
@@ -2427,7 +2429,7 @@ PrefabInstance:
     - target: {fileID: 1180267642077531082, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: PhaseObj
       value: 
-      objectReference: {fileID: 2037204904}
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267642077531082, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2459,7 +2461,7 @@ PrefabInstance:
     - target: {fileID: 1180267642640632005, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: PhaseObj
       value: 
-      objectReference: {fileID: 2037204904}
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267642640632005, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2507,7 +2509,7 @@ PrefabInstance:
     - target: {fileID: 1180267642688613133, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: PhaseObj
       value: 
-      objectReference: {fileID: 2037204904}
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267642688613133, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2535,7 +2537,7 @@ PrefabInstance:
     - target: {fileID: 1180267642688613139, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: PhaseObj
       value: 
-      objectReference: {fileID: 2037204904}
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267642688613139, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: Interval2
       value: 8
@@ -2551,7 +2553,7 @@ PrefabInstance:
     - target: {fileID: 1180267642777113748, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: PhaseObj
       value: 
-      objectReference: {fileID: 2037204904}
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267642777113748, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_Enabled
       value: 0

@@ -4,47 +4,89 @@ using UnityEngine;
 
 public class PhaseManager : MonoBehaviour
 {
-    // フェイズ切り替え用
-    [Header("フェイズ確認用オブジェクト")]
-    [SerializeField] GameObject PhaseObj;
-    private bool AtkPhaseFlg;                   // フェイズ取得用
-    private float time = 0.0f;                  // 秒数カウント用
-    private bool boolValue = false;             // フェイズ切り替え用
+    // フェイズ列挙体
+    public enum Phase
+    {
+        Normal_Phase,
+        Speed_Phase,
+        Attack_Phase,
+        MAX_Phase
+    }
 
-    // フェイズが変わる秒数
-    [Header("フェイズが変わる秒数")]
-    public float PhaseChangeTime = 10.0f;
+    [Header("フェイズの時間")]
+    public float NormalTime = 10.0f;
+    public float SpeedTime = 10.0f;
+    public float AttackTime = 10.0f;
+
+    [Header("現在のフェイズ(初期フェイズ)")]
+    public Phase currentPhase = Phase.Normal_Phase;  // 現在のフェイズ
+
+    [Header("デバッグ用 フェイズを固定する")]
+    public bool Debug_FixPhaseFlg = false;
+
+    private float time = 0.0f;                       // 秒数カウント用
+
+    // インスタンス
+    public static PhaseManager instance;
+
+    void Awake()
+    {
+        // インスタンスが存在しない場合
+        if(instance == null)
+        {
+            // インスタンス生成
+            instance = this;
+        }  
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        // 最初のフェイズ取得
-        AtkPhaseFlg = PhaseObj.activeSelf;
-        // タイマー初期化
         time = 0.0f;
-
-        // 最初のフェイズによって初期化を変える
-        if (AtkPhaseFlg == false)
-        {
-            boolValue = false;
-        }
-        else
-        {
-            boolValue = true;
-        }
+        //currentPhase = Phase.Normal_Phase;          // 初期フェイズ
     }
 
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-
-        if (time >= PhaseChangeTime)
+        // フェイズが固定されてない場合
+        if (Debug_FixPhaseFlg != true)
         {
-            boolValue = !boolValue;
-            PhaseObj.SetActive(boolValue);
-            time = 0.0f;
+            // 時間更新
+            time += Time.deltaTime;
+
+            // 通常フェイズ
+            if (currentPhase == Phase.Normal_Phase)
+            {
+                if (time >= NormalTime)
+                {
+                    currentPhase = Phase.Speed_Phase;
+                    time = 0.0f;
+                }
+            }
+            // ハイスピードフェイズ
+            else if (currentPhase == Phase.Speed_Phase)
+            {
+                if (time >= SpeedTime)
+                {
+                    currentPhase = Phase.Attack_Phase;
+                    time = 0.0f;
+                }
+            }
+            // アタックフェイズ
+            else if (currentPhase == Phase.Attack_Phase)
+            {
+                if (time >= AttackTime)
+                {
+                    currentPhase = Phase.Normal_Phase;
+                    time = 0.0f;
+                }
+            }
         }
-        
+    }
+
+    public Phase GetPhase()
+    {
+        return currentPhase;
     }
 }
