@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//ƒV[ƒ“‚ÌˆÚ“®ˆ—‚ğs‚¤‹@”\
+//ã‚·ãƒ¼ãƒ³ã®ç§»å‹•å‡¦ç†ã‚’è¡Œã†æ©Ÿèƒ½
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHp : MonoBehaviour
 {
-    public GameObject DisplayObj;
     public GameObject GaugeObj;
     Slider HpGauge;
 
@@ -20,46 +19,60 @@ public class PlayerHp : MonoBehaviour
 
     bool UseFlag;
 
+    [SerializeField] ParticleSystem particle;
+    [SerializeField] Color[] color = new Color[3];
+
     // Start is called before the first frame update
     void Start()
     {
-        //‰Šúó‘Ô‚Å‚Íƒƒjƒ…[‚ğ”ñ•\¦
-        DisplayObj.SetActive(false);
         HpGauge = GaugeObj.GetComponent<Slider>();
         HpGauge.maxValue = PlayerHP;
         HpGauge.value = PlayerHP;
-        //ƒtƒ‰ƒO‚ğ”ñ•\¦”»’è
+        //ãƒ•ãƒ©ã‚°ã‚’éè¡¨ç¤ºåˆ¤å®š
         UseFlag = false;
+     
     }
 
     // Update is called once per frame
     void Update()
     {
-        // “G‚É‚Ô‚Â‚©‚Á‚½‚ÉƒV[ƒ‹ƒh‚ğ•\¦‚·‚é
+        var main = particle.main;
+        // æ•µã«ã¶ã¤ã‹ã£ãŸæ™‚ã«ã‚·ãƒ¼ãƒ«ãƒ‰ã‚’è¡¨ç¤ºã™ã‚‹
         if (UseFlag == true)
         {
-            DisplayObj.SetActive(true);
-            
             Invflame++;
         }
 
-        // –³“GŠÔ‚ÉŠÖ‚·‚éˆ—
+        // ç„¡æ•µæ™‚é–“ã«é–¢ã™ã‚‹å‡¦ç†
         if (MaxInvflame < Invflame)
         {
-            DisplayObj.SetActive(false);
             UseFlag = false;
             Invflame = 0;
         }
+
+        if(PlayerHP >= 66)
+        { 
+            main.startColor = color[0];
+        }
+        else if(PlayerHP >= 33)
+        {
+            main.startColor = color[1];
+        }
+        else
+        {
+            main.startColor = color[2];
+        }
+
     }
 
     void OnCollisionEnter(Collision collision)
     {
         if (Invflame == 0)
         {
-            // ‚à‚µÕ“Ë‚µ‚½‘ŠèƒIƒuƒWƒFƒNƒg‚Ìƒ^ƒO‚ª"Enemy"‚È‚ç‚Î’†‚Ìˆ—‚ğÀs
+            // ã‚‚ã—è¡çªã—ãŸç›¸æ‰‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¿ã‚°ãŒ"Enemy"ãªã‚‰ã°ä¸­ã®å‡¦ç†ã‚’å®Ÿè¡Œ
             if (collision.gameObject.CompareTag("Enemy"))
             {
-                // "Enemy"ƒ^ƒO‚ª‚Â‚¢‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg‚É‚ ‚é"PlayerDamage"•Ï”‚ğó‚¯‚Æ‚é
+                // "Enemy"ã‚¿ã‚°ãŒã¤ã„ã¦ã„ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã‚ã‚‹"PlayerDamage"å¤‰æ•°ã‚’å—ã‘ã¨ã‚‹
                 damage = collision.gameObject.GetComponent<Damage>().PlayerDamage;
                 PlayerHP -= damage;
                 HpGauge.value -= damage;
@@ -71,7 +84,7 @@ public class PlayerHp : MonoBehaviour
                 else
                 {
                     Destroy(this.gameObject);
-                    //ƒV[ƒ“ˆÚ“®
+                    //ã‚·ãƒ¼ãƒ³ç§»å‹•
                     SceneManager.LoadScene("SceneGameOver");
                 }
             }
