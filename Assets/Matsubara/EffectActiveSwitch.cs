@@ -9,25 +9,25 @@ public class EffectActiveSwitch : MonoBehaviour
 
     private PlayerMove playermove;
 
+
     // Start is called before the first frame update
     void Start()
     {
         playermove = gameObject.GetComponent<PlayerMove>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        //bool IsActive = EffectObj.activeSelf;
-
-        if(playermove.maneverFlg == true)
+        if (playermove.maneverFlg == true)
         {
             EffectObj.SetActive(false);
         }
-        if(playermove.maneverFlg == false)
+
+        if (playermove.maneverFlg == false)
         {
             EffectObj.SetActive(true);
         }
+
     }
 }
