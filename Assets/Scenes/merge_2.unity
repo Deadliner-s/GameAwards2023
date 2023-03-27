@@ -376,9 +376,46 @@ MonoBehaviour:
   Missile: {fileID: 4741478458244633611, guid: 9fe75ba60bab56b48b5309f796a7552d, type: 3}
   DestroyTime: 5
   Key: p
-  Interval: 2
-  Interval2: 8
-  PhaseObj: {fileID: 2037204904}
+  StartTime_1: 0
+  Timer_1: 4
+  Interval_1: 2
+  h_Missile_1: []
+  StartTime_2: 0
+  Timer_2: 10
+  Interval_2: 2
+  h_Missile_2: []
+  StartTime_3: 0
+  Timer_3: 0
+  Interval_3: 2
+  h_Missile_3: []
+  StartTime_4: 0
+  Timer_4: 0
+  Interval_4: 2
+  h_Missile_4: []
+  StartTime_5: 0
+  Timer_5: 0
+  Interval_5: 2
+  h_Missile_5: []
+  StartTime_6: 0
+  Timer_6: 0
+  Interval_6: 2
+  h_Missile_6: []
+  StartTime_7: 0
+  Timer_7: 0
+  Interval_7: 2
+  h_Missile_7: []
+  StartTime_8: 0
+  Timer_8: 0
+  Interval_8: 2
+  h_Missile_8: []
+  StartTime_9: 0
+  Timer_9: 0
+  Interval_9: 2
+  h_Missile_9: []
+  StartTime_10: 0
+  Timer_10: 0
+  Interval_10: 2
+  h_Missile_10: []
 --- !u!114 &247176460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,9 +444,46 @@ MonoBehaviour:
   Missile: {fileID: 4741478458244633611, guid: a166eeb9b4e2c494f912cf907f7a4985, type: 3}
   DestroyTime: 15
   Key: k
-  Interval: 2
-  Interval2: 8
-  PhaseObj: {fileID: 2037204904}
+  StartTime_1: 0
+  Timer_1: 0
+  Interval_1: 2
+  h_Missile_1: []
+  StartTime_2: 0
+  Timer_2: 0
+  Interval_2: 2
+  h_Missile_2: []
+  StartTime_3: 0
+  Timer_3: 0
+  Interval_3: 2
+  h_Missile_3: []
+  StartTime_4: 0
+  Timer_4: 0
+  Interval_4: 2
+  h_Missile_4: []
+  StartTime_5: 0
+  Timer_5: 0
+  Interval_5: 2
+  h_Missile_5: []
+  StartTime_6: 0
+  Timer_6: 0
+  Interval_6: 2
+  h_Missile_6: []
+  StartTime_7: 0
+  Timer_7: 0
+  Interval_7: 2
+  h_Missile_7: []
+  StartTime_8: 0
+  Timer_8: 0
+  Interval_8: 2
+  h_Missile_8: []
+  StartTime_9: 0
+  Timer_9: 0
+  Interval_9: 2
+  h_Missile_9: []
+  StartTime_10: 0
+  Timer_10: 0
+  Interval_10: 2
+  h_Missile_10: []
 --- !u!114 &247176462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,12 +498,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
   DestroyTime: 30
-  Interval: 2
-  Interval2: 8
   Key: m
-  DelayTime: 0
   SpawnPos: {fileID: 860822590}
-  PhaseObj: {fileID: 2037204904}
+  StartTime_1: 0
+  Timer_1: 0
+  Interval_1: 2
+  h_Missile_1: []
+  StartTime_2: 0
+  Timer_2: 0
+  Interval_2: 2
+  h_Missile_2: []
+  StartTime_3: 0
+  Timer_3: 0
+  Interval_3: 2
+  h_Missile_3: []
+  StartTime_4: 0
+  Timer_4: 0
+  Interval_4: 2
+  h_Missile_4: []
+  StartTime_5: 0
+  Timer_5: 0
+  Interval_5: 2
+  h_Missile_5: []
+  StartTime_6: 0
+  Timer_6: 0
+  Interval_6: 2
+  h_Missile_6: []
+  StartTime_7: 0
+  Timer_7: 0
+  Interval_7: 2
+  h_Missile_7: []
+  StartTime_8: 0
+  Timer_8: 0
+  Interval_8: 2
+  h_Missile_8: []
+  StartTime_9: 0
+  Timer_9: 0
+  Interval_9: 2
+  h_Missile_9: []
+  StartTime_10: 0
+  Timer_10: 0
+  Interval_10: 2
+  h_Missile_10: []
 --- !u!114 &247176463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,12 +554,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
   DestroyTime: 30
-  Interval: 3.2
-  Interval2: 8
   Key: n
-  DelayTime: 0
   SpawnPos: {fileID: 665596463}
-  PhaseObj: {fileID: 2037204904}
+  StartTime_1: 0
+  Timer_1: 0
+  Interval_1: 2
+  h_Missile_1: []
+  StartTime_2: 0
+  Timer_2: 0
+  Interval_2: 2
+  h_Missile_2: []
+  StartTime_3: 0
+  Timer_3: 0
+  Interval_3: 2
+  h_Missile_3: []
+  StartTime_4: 0
+  Timer_4: 0
+  Interval_4: 2
+  h_Missile_4: []
+  StartTime_5: 0
+  Timer_5: 0
+  Interval_5: 2
+  h_Missile_5: []
+  StartTime_6: 0
+  Timer_6: 0
+  Interval_6: 2
+  h_Missile_6: []
+  StartTime_7: 0
+  Timer_7: 0
+  Interval_7: 2
+  h_Missile_7: []
+  StartTime_8: 0
+  Timer_8: 0
+  Interval_8: 2
+  h_Missile_8: []
+  StartTime_9: 0
+  Timer_9: 0
+  Interval_9: 2
+  h_Missile_9: []
+  StartTime_10: 0
+  Timer_10: 0
+  Interval_10: 2
+  h_Missile_10: []
 --- !u!114 &247176464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,12 +610,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Missile: {fileID: 5540224078154131618, guid: 05a76db5fa499f548b8994bdfdbb97b9, type: 3}
   DestroyTime: 10
-  Interval: 3.1
-  Interval2: 8
   Key: i
-  DelayTime: 0
   SpawnPos: {fileID: 1727636782}
-  PhaseObj: {fileID: 2037204904}
+  StartTime_1: 0
+  Timer_1: 0
+  Interval_1: 2
+  h_Missile_1: []
+  StartTime_2: 0
+  Timer_2: 0
+  Interval_2: 2
+  h_Missile_2: []
+  StartTime_3: 0
+  Timer_3: 0
+  Interval_3: 2
+  h_Missile_3: []
+  StartTime_4: 0
+  Timer_4: 0
+  Interval_4: 2
+  h_Missile_4: []
+  StartTime_5: 0
+  Timer_5: 0
+  Interval_5: 2
+  h_Missile_5: []
+  StartTime_6: 0
+  Timer_6: 0
+  Interval_6: 2
+  h_Missile_6: []
+  StartTime_7: 0
+  Timer_7: 0
+  Interval_7: 2
+  h_Missile_7: []
+  StartTime_8: 0
+  Timer_8: 0
+  Interval_8: 2
+  h_Missile_8: []
+  StartTime_9: 0
+  Timer_9: 0
+  Interval_9: 2
+  h_Missile_9: []
+  StartTime_10: 0
+  Timer_10: 0
+  Interval_10: 2
+  h_Missile_10: []
 --- !u!114 &247176465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -484,12 +666,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
   DestroyTime: 30
-  Interval: 2.8
-  Interval2: 8
   Key: j
-  DelayTime: 0
   SpawnPos: {fileID: 1727636782}
-  PhaseObj: {fileID: 2037204904}
+  StartTime_1: 0
+  Timer_1: 0
+  Interval_1: 2
+  h_Missile_1: []
+  StartTime_2: 0
+  Timer_2: 0
+  Interval_2: 2
+  h_Missile_2: []
+  StartTime_3: 0
+  Timer_3: 0
+  Interval_3: 2
+  h_Missile_3: []
+  StartTime_4: 0
+  Timer_4: 0
+  Interval_4: 2
+  h_Missile_4: []
+  StartTime_5: 0
+  Timer_5: 0
+  Interval_5: 2
+  h_Missile_5: []
+  StartTime_6: 0
+  Timer_6: 0
+  Interval_6: 2
+  h_Missile_6: []
+  StartTime_7: 0
+  Timer_7: 0
+  Interval_7: 2
+  h_Missile_7: []
+  StartTime_8: 0
+  Timer_8: 0
+  Interval_8: 2
+  h_Missile_8: []
+  StartTime_9: 0
+  Timer_9: 0
+  Interval_9: 2
+  h_Missile_9: []
+  StartTime_10: 0
+  Timer_10: 0
+  Interval_10: 2
+  h_Missile_10: []
 --- !u!114 &247176466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,12 +722,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
   DestroyTime: 30
-  Interval: 2.5
-  Interval2: 8
   Key: y
-  DelayTime: 0
   SpawnPos: {fileID: 615322229}
-  PhaseObj: {fileID: 2037204904}
+  StartTime_1: 0
+  Timer_1: 0
+  Interval_1: 2
+  h_Missile_1: []
+  StartTime_2: 0
+  Timer_2: 0
+  Interval_2: 2
+  h_Missile_2: []
+  StartTime_3: 0
+  Timer_3: 0
+  Interval_3: 2
+  h_Missile_3: []
+  StartTime_4: 0
+  Timer_4: 0
+  Interval_4: 2
+  h_Missile_4: []
+  StartTime_5: 0
+  Timer_5: 0
+  Interval_5: 2
+  h_Missile_5: []
+  StartTime_6: 0
+  Timer_6: 0
+  Interval_6: 2
+  h_Missile_6: []
+  StartTime_7: 0
+  Timer_7: 0
+  Interval_7: 2
+  h_Missile_7: []
+  StartTime_8: 0
+  Timer_8: 0
+  Interval_8: 2
+  h_Missile_8: []
+  StartTime_9: 0
+  Timer_9: 0
+  Interval_9: 2
+  h_Missile_9: []
+  StartTime_10: 0
+  Timer_10: 0
+  Interval_10: 2
+  h_Missile_10: []
 --- !u!114 &247176467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,12 +778,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
   DestroyTime: 30
-  Interval: 3
-  Interval2: 8
   Key: u
-  DelayTime: 0
   SpawnPos: {fileID: 1875399730}
-  PhaseObj: {fileID: 2037204904}
+  StartTime_1: 0
+  Timer_1: 0
+  Interval_1: 2
+  h_Missile_1: []
+  StartTime_2: 0
+  Timer_2: 0
+  Interval_2: 2
+  h_Missile_2: []
+  StartTime_3: 0
+  Timer_3: 0
+  Interval_3: 2
+  h_Missile_3: []
+  StartTime_4: 0
+  Timer_4: 0
+  Interval_4: 2
+  h_Missile_4: []
+  StartTime_5: 0
+  Timer_5: 0
+  Interval_5: 2
+  h_Missile_5: []
+  StartTime_6: 0
+  Timer_6: 0
+  Interval_6: 2
+  h_Missile_6: []
+  StartTime_7: 0
+  Timer_7: 0
+  Interval_7: 2
+  h_Missile_7: []
+  StartTime_8: 0
+  Timer_8: 0
+  Interval_8: 2
+  h_Missile_8: []
+  StartTime_9: 0
+  Timer_9: 0
+  Interval_9: 2
+  h_Missile_9: []
+  StartTime_10: 0
+  Timer_10: 0
+  Interval_10: 2
+  h_Missile_10: []
 --- !u!4 &262786249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2653373171205573415, guid: 21fcd5f1e0c415f46bd73691b9282a0a, type: 3}
@@ -650,7 +940,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9776caeba2ef2884d994e3262af340ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: -0.1
+  rotationSpeedNormal: -0.1
+  rotationSpeedAttack: -0.1
+  rotationSpeedHighSpeed: -0.1
   sky: {fileID: 2100000, guid: c0dad4f095027544c938052ae1b47626, type: 2}
 --- !u!4 &356418629
 Transform:
