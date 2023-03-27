@@ -38,17 +38,14 @@ public class PlayerMove: MonoBehaviour
     //private bool maneverFlg = false;
     public bool maneverFlg { get; private set; } = false; // マニューバのフラグ
 
-    // フェイズ切り替え用
-    [Header("フェイズ確認用オブジェクト")]
-    [SerializeField] GameObject PhaseObj;
-    private bool AtkPhaseFlg;
-
-
     [Header("SE関係")]
     public AudioClip MoveSE;
     public AudioClip ManeverSE;
     private AudioSource audioSource;
     private bool MoveSeFlg = false;
+
+    // 現在フェイズ
+    private PhaseManager.Phase currentPhase;
 
     void Awake()
     {
@@ -69,7 +66,7 @@ public class PlayerMove: MonoBehaviour
         coolTimeCnt = 0;
 
         // フェイズ取得
-        AtkPhaseFlg = PhaseObj.activeSelf;
+        currentPhase = PhaseManager.instance.GetPhase();
 
         // SE
         audioSource = GetComponent<AudioSource>();
@@ -79,8 +76,8 @@ public class PlayerMove: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // フェイズ確認
-        AtkPhaseFlg = PhaseObj.activeSelf;
+        // フェイズ取得
+        currentPhase = PhaseManager.instance.GetPhase();
 
         // キー入力
         inputMove = InputActions.Player.Move.ReadValue<Vector2>();
@@ -88,7 +85,15 @@ public class PlayerMove: MonoBehaviour
         // 座標計算
         if (maneverFlg == false)
         {
-            if (AtkPhaseFlg == false)
+            if(currentPhase == PhaseManager.Phase.Normal_Phase)
+            {
+                // 通常フェイズ
+                // 縦方向の移動
+                nextPosition.y = pos.y + inputMove.y * speed;
+                // 横方向の移動
+                nextPosition.x = pos.x + inputMove.x * speed;
+            }
+            else if (currentPhase == PhaseManager.Phase.Speed_Phase) 
             {
                 // ハイスピードフェイズ
                 // 縦方向の移動
@@ -96,7 +101,7 @@ public class PlayerMove: MonoBehaviour
                 // 横方向の移動
                 nextPosition.x = pos.x + inputMove.x * speed;
             }
-            else
+            else if(currentPhase == PhaseManager.Phase.Attack_Phase)
             {
                 // アタックフェイズ
                 // 縦方向の移動
