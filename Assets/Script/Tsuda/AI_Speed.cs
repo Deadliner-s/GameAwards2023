@@ -5,8 +5,9 @@ using UnityEngine;
 public class AI_Speed : MonoBehaviour
 {
     public Canvas message; // CanvasオブジェクトをInspectorから指定する
-    [Header("フェイズ確認用オブジェクト")]
-    [SerializeField] GameObject PhaseObj;
+
+    // 現在フェイズ
+    private PhaseManager.Phase currentPhase;
 
     private bool AtkPhaseFlg;
     private float timer = 0.0f;
@@ -15,15 +16,17 @@ public class AI_Speed : MonoBehaviour
     void Start()
     {
         message.enabled = false;
-        AtkPhaseFlg = PhaseObj.activeSelf;
+        // フェイズ取得
+        currentPhase = PhaseManager.instance.GetPhase();
     }
 
     // Update is called once per frame
     void Update()
     {
-        AtkPhaseFlg = PhaseObj.activeSelf;
+        // フェイズ取得
+        currentPhase = PhaseManager.instance.GetPhase();
 
-        if (AtkPhaseFlg == false)
+        if (currentPhase == PhaseManager.Phase.Speed_Phase)
         {
             timer += Time.deltaTime;
 

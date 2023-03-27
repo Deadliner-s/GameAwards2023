@@ -9,6 +9,8 @@ public class LaserHead : MonoBehaviour
     public float lifetime = 5f;  // オブジェクトの寿命（秒）
     public float Split = 1;
 
+//    private PhaseManager.Phase currentPhase;  // 現在フェイズ
+
     private float splitX;
     private float splitY;
     private Vector3 targetScreenPosition;  // 目標スクリーン座標
@@ -19,6 +21,8 @@ public class LaserHead : MonoBehaviour
 
     void Start()
     {
+  //      currentPhase = PhaseManager.instance.GetPhase();  // フェイズ取得
+
         mainCamera = Camera.main;  // メインカメラを取得する
 
         switch(Split)
@@ -44,28 +48,33 @@ public class LaserHead : MonoBehaviour
     }
 
     void Update()
-    {
-        timer -= Time.deltaTime;  // タイマーを減算する
+    {        
+//        currentPhase = PhaseManager.instance.GetPhase();  // フェイズ取得        
 
-        if (timer >= lifetime - 12.0f)
-        {
-            targetWorldPosition = mainCamera.ScreenToWorldPoint(targetScreenPosition);  // 目標スクリーン座標をワールド座標に変換する
-            transform.LookAt(targetWorldPosition);
+//        if (currentPhase == PhaseManager.Phase.Speed_Phase)
+//        {
+            timer -= Time.deltaTime;  // タイマーを減算する
 
-//            newObj.transform.position = targetWorldPosition;
- //           newObj.transform.LookAt(targetWorldPosition);
-        }
+            if (timer >= lifetime - 12.0f)
+            {
+                targetWorldPosition = mainCamera.ScreenToWorldPoint(targetScreenPosition);  // 目標スクリーン座標をワールド座標に変換する
+                transform.LookAt(targetWorldPosition);
+
+                //            newObj.transform.position = targetWorldPosition;
+                //           newObj.transform.LookAt(targetWorldPosition);
+            }
 
 
-        if (timer <= lifetime - 12.0f)
-        {
-            transform.position += transform.forward * speed * Time.deltaTime;  // 目標座標の方向に移動する
-        }
-     
-        if (timer <= 0)
-        {
-            Destroy(gameObject);  // オブジェクトを削除する
-        }
+            if (timer <= lifetime - 12.0f)
+            {
+                transform.position += transform.forward * speed * Time.deltaTime;  // 目標座標の方向に移動する
+            }
+
+            if (timer <= 0)
+            {
+                Destroy(gameObject);  // オブジェクトを削除する
+            }
+//        }
     }
 }
 
