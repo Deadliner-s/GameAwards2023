@@ -6,10 +6,13 @@ public class BossAnimeTest : MonoBehaviour
 {
     Animator anime;
 
+    private Vector3 pos;
+
     // Start is called before the first frame update
     void Start()
     {
         anime = GetComponent<Animator>();
+        pos = transform.position;
     }
 
     // Update is called once per frame
@@ -18,17 +21,12 @@ public class BossAnimeTest : MonoBehaviour
         if (Input.GetKey(KeyCode.Alpha1))
         {
             anime.SetBool("isMove", true);
-            anime.SetBool("isOpen", true);
         }
 
         if (Input.GetKey(KeyCode.Alpha2))
         {
             anime.SetBool("isMove", false);
         }
-
-        if(Input.GetKey(KeyCode.Alpha3))
-        {
-            anime.SetBool("isMove", true);
-        }
+        //transform.position = pos;
     }
 }

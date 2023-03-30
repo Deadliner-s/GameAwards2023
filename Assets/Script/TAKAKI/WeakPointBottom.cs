@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeakPoint : MonoBehaviour
+public class WeakPointBottom : MonoBehaviour
 {
     public GameObject wpobj;
     private GameObject weakobj;
-    
+
     void OnEnable()
     {
-        weakobj= Instantiate(wpobj,gameObject.transform.position, Quaternion.identity);
+        weakobj = Instantiate(wpobj, gameObject.transform.position, Quaternion.identity);
     }
 
     void OnDisable()
@@ -20,10 +20,10 @@ public class WeakPoint : MonoBehaviour
     private void Update()
     {
         weakobj.transform.position = gameObject.transform.position;
-        Vector3 pos = weakobj.transform.position;
-        pos.x +=  0.004986072f;
-        pos.y += -0.3f;
-        pos.z += -2.7f;
-        weakobj.transform.position = pos;
+        Vector3 pos = weakobj.transform.localPosition;
+        //pos.x += 0.5f;
+        //pos.y += -0.5f;
+        //pos.z += 0.0f;
+        weakobj.transform.localPosition = pos;
     }
 }
