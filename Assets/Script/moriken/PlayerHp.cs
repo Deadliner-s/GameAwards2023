@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//シーンの移動処理を行う機能
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -85,7 +84,7 @@ public class PlayerHp : MonoBehaviour
                 {
                     Destroy(this.gameObject);
                     //シーン移動
-                    SceneManager.LoadScene("SceneGameOver");
+                    SceneManager.LoadScene("GameOver");
                 }
             }
         }
