@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainBossHp : MonoBehaviour
 {
@@ -33,5 +34,11 @@ public class MainBossHp : MonoBehaviour
         damage = collision.gameObject.GetComponent<Damage>().EnemyDamage;
         BossHP -= damage;
         HpGauge.fillAmount -= damage/BossMaxHP;
+
+        if(BossHP <= 0)
+        {
+            //ƒV[ƒ“ˆÚ“®
+            SceneManager.LoadScene("GameClear");
+        }
     }
 }
