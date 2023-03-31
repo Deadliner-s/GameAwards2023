@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 5136408630552931320}
   - component: {fileID: 2908367431475959276}
   - component: {fileID: 6422349645740454184}
-  - component: {fileID: 6084261346525378926}
   - component: {fileID: -6100570325286752906}
   m_Layer: 0
   m_Name: WeakPointBottom
@@ -245,18 +244,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &6084261346525378926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4027670273395097546}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70efdbdc34004b043b2f3d0c510a2f5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-6100570325286752906
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -34,15 +34,9 @@ public class BossAnime : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         SeFlg = false;
 
-        //for (int i = 0; i < 4; i++)
-        //{
             Child = transform.GetChild(0).gameObject;
-        //}
 
-        //for (int i = 0; i < 4; i++)
-        //{
             weakpointtop = Child.GetComponent<WeakPoint>();
-        //}
     }
 
     // Update is called once per frame
@@ -57,13 +51,8 @@ public class BossAnime : MonoBehaviour
             {
                 anime.SetBool("isWing", false);
                 anime.SetBool("isBinder", false);
-                //weakanime.SetBool("isOpen", false);
-                //weakanime.SetBool("isClose", true);
 
-                //for (int i = 0; i < 4; i++)
-                //{
                 weakpointtop.enabled = false;
-                //}
 
                 SeFlg = false;
             }
@@ -71,7 +60,6 @@ public class BossAnime : MonoBehaviour
             {
                 // ハイスピードフェイズ
                 anime.SetBool("isWing", true);
-                //weakanime.SetBool("isClose", false);
 
                 if (SeFlg != true)
                 {
@@ -83,12 +71,9 @@ public class BossAnime : MonoBehaviour
             {
                 // アタックフェイズ
                 anime.SetBool("isBinder", true);
-                //weakanime.SetBool("isOpen", true);
 
-                //for (int i = 0; i < 4; i++)
-                //{
                 weakpointtop.enabled = true;
-                //}
+
                 obj = weakpointtop.Setobj();
             }
         }
@@ -98,21 +83,9 @@ public class BossAnime : MonoBehaviour
             if(obj == null)
             {
                 anime.SetBool("isBinder", false);
-                //weakanime.SetBool("isClose", true);
+
                 weakpointtop.enabled = false;
             }
         }
     }
-
-    //public void WingAnime()
-    //{
-    //    anime.SetBool("isWing", false);
-    //}
-
-    //public void CloseAnime()
-    //{
-    //    weakanime.SetBool("isOpen", false);
-    //    weakanime.SetBool("isClose", true);
-    //}
-
 }
