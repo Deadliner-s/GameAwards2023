@@ -34,7 +34,7 @@ public class LaserCS_sub : MonoBehaviour
             GetComponent<RectTransform>().Rotate(0, 0, rotate);
         }
 
-        if (timer >= 12.0f)
+        if (timer >= 6.0f)
         {
             CS.enabled = false;
         }

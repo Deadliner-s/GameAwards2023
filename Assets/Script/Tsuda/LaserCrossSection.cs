@@ -32,7 +32,7 @@ public class LaserCrossSection : MonoBehaviour
             CS.enabled = true;
         }
 
-        if (timer >= 12.0f)
+        if (timer >= 6.0f)
         {
             CS.enabled = false;
         }
