@@ -8,6 +8,9 @@ TagManager:
   - PlayerBullet
   - Target
   - RockOn
+  - Laser
+  - WeakPointTop
+  - WeakPointBottom
   layers:
   - Default
   - TransparentFX

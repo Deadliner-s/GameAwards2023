@@ -133,7 +133,7 @@ MonoBehaviour:
   inertiaSpeed: -0.0005
   maxHeight: 0.3
   stopTime: 10
-  MoveSpeed: 0.5
+  MoveSpeed: 0.1
   maxFlightTime: 10000
 --- !u!114 &4595278830560201142
 MonoBehaviour:
