@@ -5,23 +5,22 @@ using UnityEngine;
 public class BossAnimeWeak : MonoBehaviour
 {
 
-    private WeakPointBottom[] weakpointbottom = new WeakPointBottom[4];
+    private WeakPointBottom weakpointbottom;
 
     private PhaseManager.Phase currntPhase;
-    private GameObject[] Child = new GameObject[4];
+    private PhaseManager.Phase nextPhase;
+    private GameObject Child;
 
+    private GameObject obj;
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 4; i++)
-        {
-            Child[i] = transform.GetChild(0).gameObject;
-        }
+        nextPhase = currntPhase;
 
-        for (int i = 0; i < 4; i++)
-        {
-            weakpointbottom[i] = Child[i].GetComponent<WeakPointBottom>();
-        }
+        Child = transform.GetChild(0).gameObject;
+
+        weakpointbottom = Child.GetComponent<WeakPointBottom>();
+ 
     }
 
     // Update is called once per frame
@@ -30,33 +29,41 @@ public class BossAnimeWeak : MonoBehaviour
         currntPhase = PhaseManager.instance.GetPhase();
         //Debug.Log(gameObject.transform.position);
 
-        if (currntPhase == PhaseManager.Phase.Normal_Phase)
+        if (nextPhase != currntPhase)
         {
-            for (int i = 0; i < 4; i++)
+            nextPhase = currntPhase;
+            if (currntPhase == PhaseManager.Phase.Normal_Phase)
             {
-                weakpointbottom[i].enabled = false;
+                weakpointbottom.enabled = false;
+
+
+                //SeFlg = false;
+            }
+            else if (currntPhase == PhaseManager.Phase.Speed_Phase)
+            {
+                // ハイスピードフェイズ
+
+                //if (SeFlg != true)
+                //{
+                //    audioSource.PlayOneShot(BossAnimeSE);
+                //    SeFlg = true;
+                //}
+            }
+            else if (currntPhase == PhaseManager.Phase.Attack_Phase)
+            {
+                // アタックフェイズ
+
+                weakpointbottom.enabled = true;
+
             }
 
-            //SeFlg = false;
         }
-        else if (currntPhase == PhaseManager.Phase.Speed_Phase)
-        {
-            // ハイスピードフェイズ
-
-            //if (SeFlg != true)
-            //{
-            //    audioSource.PlayOneShot(BossAnimeSE);
-            //    SeFlg = true;
-            //}
-        }
-        else if (currntPhase == PhaseManager.Phase.Attack_Phase)
-        {
-            // アタックフェイズ
-
-            for (int i = 0; i < 4; i++)
-            {
-                weakpointbottom[i].enabled = true;
-            }
-        }
+        //if (currntPhase == PhaseManager.Phase.Attack_Phase)
+        //{
+        //    if (obj == null)
+        //    {
+        //        weakpointbottom.enabled = false;
+        //    }
+        //}
     }
 }

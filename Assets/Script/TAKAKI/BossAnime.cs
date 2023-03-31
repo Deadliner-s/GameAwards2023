@@ -10,15 +10,17 @@ public class BossAnime : MonoBehaviour
     public GameObject weakobj;//下
     public GameObject wpobj;//翼
  
-    private WeakPoint[] weakpointtop = new WeakPoint[4];
+    public WeakPoint weakpointtop;
 
     public AudioClip BossAnimeSE;
     private AudioSource audioSource;
     private bool SeFlg = false;
 
     private PhaseManager.Phase currntPhase;
-    private GameObject[] Child = new GameObject[4];
+    private PhaseManager.Phase nextPhase;
+    public GameObject Child;
 
+    private GameObject obj;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,19 +29,20 @@ public class BossAnime : MonoBehaviour
         weakanime = weakobj.GetComponent<Animator>();
 
         currntPhase = PhaseManager.instance.GetPhase();
+        nextPhase = currntPhase;
 
         audioSource = GetComponent<AudioSource>();
         SeFlg = false;
 
-        for (int i = 0; i < 4; i++)
-        {
-            Child[i] = transform.GetChild(0).gameObject;
-        }
+        //for (int i = 0; i < 4; i++)
+        //{
+            Child = transform.GetChild(0).gameObject;
+        //}
 
-        for (int i = 0; i < 4; i++)
-        {
-            weakpointtop[i] = Child[i].GetComponent<WeakPoint>();
-        }
+        //for (int i = 0; i < 4; i++)
+        //{
+            weakpointtop = Child.GetComponent<WeakPoint>();
+        //}
     }
 
     // Update is called once per frame
@@ -47,43 +50,69 @@ public class BossAnime : MonoBehaviour
     {
         currntPhase = PhaseManager.instance.GetPhase();
         //Debug.Log(gameObject.transform.position);
-
-        if (currntPhase == PhaseManager.Phase.Normal_Phase)
+        if (nextPhase != currntPhase)
         {
-            anime.SetBool("isWing", false);
-            anime.SetBool("isBinder", false);
-            weakanime.SetBool("isOpen", false);
-            weakanime.SetBool("isClose", true);
-
-            for (int i = 0; i < 4; i++)
+            nextPhase = currntPhase;
+            if (currntPhase == PhaseManager.Phase.Normal_Phase)
             {
-                weakpointtop[i].enabled = false;
+                anime.SetBool("isWing", false);
+                anime.SetBool("isBinder", false);
+                weakanime.SetBool("isOpen", false);
+                weakanime.SetBool("isClose", true);
+
+                //for (int i = 0; i < 4; i++)
+                //{
+                weakpointtop.enabled = false;
+                //}
+
+                SeFlg = false;
             }
-
-            SeFlg = false;
-        }
-        else if(currntPhase == PhaseManager.Phase.Speed_Phase) 
-        {
-            // ハイスピードフェイズ
-            anime.SetBool("isWing", true);
-            weakanime.SetBool("isClose", false);
-
-            if (SeFlg != true)
+            else if (currntPhase == PhaseManager.Phase.Speed_Phase)
             {
-                audioSource.PlayOneShot(BossAnimeSE);
-                SeFlg = true;
+                // ハイスピードフェイズ
+                anime.SetBool("isWing", true);
+                weakanime.SetBool("isClose", false);
+
+                if (SeFlg != true)
+                {
+                    audioSource.PlayOneShot(BossAnimeSE);
+                    SeFlg = true;
+                }
+            }
+            else if (currntPhase == PhaseManager.Phase.Attack_Phase)
+            {
+                // アタックフェイズ
+                anime.SetBool("isBinder", true);
+                weakanime.SetBool("isOpen", true);
+
+                //for (int i = 0; i < 4; i++)
+                //{
+                weakpointtop.enabled = true;
+                //}
+                obj = weakpointtop.Setobj();
             }
         }
-        else if(currntPhase == PhaseManager.Phase.Attack_Phase)
-        {
-            // アタックフェイズ
-            anime.SetBool("isBinder", true);
-            weakanime.SetBool("isOpen", true);
 
-            for (int i = 0; i < 4; i++)
+        if (currntPhase == PhaseManager.Phase.Attack_Phase)
+        {
+            if(obj == null)
             {
-                weakpointtop[i].enabled = true;
+                anime.SetBool("isBinder", false);
+                weakanime.SetBool("isClose", true);
+                weakpointtop.enabled = false;
             }
         }
     }
+
+    //public void WingAnime()
+    //{
+    //    anime.SetBool("isWing", false);
+    //}
+
+    //public void CloseAnime()
+    //{
+    //    weakanime.SetBool("isOpen", false);
+    //    weakanime.SetBool("isClose", true);
+    //}
+
 }
