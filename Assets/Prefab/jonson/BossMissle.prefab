@@ -34,7 +34,7 @@ PrefabInstance:
     - target: {fileID: 3930705679050173309, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+      objectReference: {fileID: 2100000, guid: 0b0aac254795b8a42b1f2c83055cc1cd, type: 2}
     - target: {fileID: 4482491814637254355, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Name
       value: BossMissle
@@ -126,7 +126,7 @@ PrefabInstance:
     - target: {fileID: 9062495474639694043, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: -391918848251978258, guid: 052cfcec67eaac642b7e2d91e2366c51, type: 3}
+      objectReference: {fileID: 906361331690571510, guid: e524961050ce963418ed3d123ee82293, type: 3}
     m_RemovedComponents:
     - {fileID: 7960448012418322811, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}

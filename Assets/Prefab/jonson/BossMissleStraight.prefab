@@ -31,6 +31,18 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.016311526
       objectReference: {fileID: 0}
+    - target: {fileID: 3930705679050173309, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930705679050173309, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1eb24c7c5bde7534e9cc25f24deecb97, type: 2}
+    - target: {fileID: 3930705679050173309, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1eb24c7c5bde7534e9cc25f24deecb97, type: 2}
     - target: {fileID: 4482491814637254355, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Name
       value: BossMissleStraight
@@ -69,15 +81,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.02
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.02
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.02
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalPosition.x
@@ -126,15 +138,30 @@ PrefabInstance:
     - target: {fileID: 9062495474639694043, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: -6433595369474896684, guid: 26136c9133ad64f43b68fcd6d178146c, type: 3}
+      objectReference: {fileID: 8563587414225390951, guid: fdbd221d3bc73f545bc13b4cae0c7f70, type: 3}
     m_RemovedComponents:
     - {fileID: 7960448012418322811, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
+    - {fileID: 1901566794619532875, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
 --- !u!1 &4741478458244633611 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4482491814637254355, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
   m_PrefabInstance: {fileID: 9221154352735593176}
   m_PrefabAsset: {fileID: 0}
+--- !u!136 &5026380636029374937
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741478458244633611}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.015326144
+  m_Height: 0.09741995
+  m_Direction: 1
+  m_Center: {x: 0.00028805993, y: 0.048401237, z: 0.0001631151}
 --- !u!96 &6188520641098761029
 TrailRenderer:
   serializedVersion: 2
