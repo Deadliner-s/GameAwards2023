@@ -20,6 +20,7 @@ public class PhaseManager : MonoBehaviour
 
     [Header("現在のフェイズ(初期フェイズ)")]
     public Phase currentPhase = Phase.Normal_Phase;  // 現在のフェイズ
+    private Phase nextPhase;                         // 次のフェイズ
 
     private float time = 0.0f;                       // 秒数カウント用
 
@@ -50,7 +51,7 @@ public class PhaseManager : MonoBehaviour
         time = 0.0f;
         //currentPhase = Phase.Normal_Phase;          // 初期フェイズ
 
-        //Reticle.SetActive(true);
+        nextPhase = currentPhase;
     }
 
     // Update is called once per frame
@@ -70,8 +71,6 @@ public class PhaseManager : MonoBehaviour
                     currentPhase = Phase.Speed_Phase;
                     time = 0.0f;
                 }
-
-               // Reticle.SetActive(true);
             }
             // ハイスピードフェイズ
             else if (currentPhase == Phase.Speed_Phase)
@@ -81,8 +80,6 @@ public class PhaseManager : MonoBehaviour
                     currentPhase = Phase.Attack_Phase;
                     time = 0.0f;
                 }
-
-                //Reticle.SetActive(false);
             }
             // アタックフェイズ
             else if (currentPhase == Phase.Attack_Phase)
@@ -92,8 +89,28 @@ public class PhaseManager : MonoBehaviour
                     currentPhase = Phase.Normal_Phase;
                     time = 0.0f;
                 }
+            }
+        }
 
-                //Reticle.SetActive(true);
+
+        // フェイズが変わった場合
+        if(nextPhase != currentPhase)
+        {
+            nextPhase = currentPhase;
+
+            if (currentPhase == Phase.Normal_Phase)
+            {
+                Reticle.SetActive(true);
+            }
+
+            if (currentPhase == Phase.Speed_Phase)
+            {
+                Reticle.SetActive(false);
+            }
+
+            if (currentPhase == Phase.Attack_Phase)
+            {
+                Reticle.SetActive(true);
             }
         }
     }
