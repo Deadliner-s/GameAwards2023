@@ -25,15 +25,15 @@ public class WeakPointBottom : MonoBehaviour
 
     private void Update()
     {
-        //if (this.gameObject != false)
-        //{
-        //    weakobj.transform.position = gameObject.transform.position;
-        //    Vector3 pos = weakobj.transform.localPosition;
-        //    //pos.x += 0.5f;
-        //    //pos.y += -0.5f;
-        //    //pos.z += 0.0f;
-        //    weakobj.transform.localPosition = pos;
-        //}
+        if (this.gameObject != false)
+        {
+            weakobj.transform.position = gameObject.transform.position;
+            //Vector3 pos = weakobj.transform.localPosition;
+            //pos.x += 0.5f;
+            //pos.y += -0.5f;
+            //pos.z += 0.0f;
+            //weakobj.transform.localPosition = pos;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
