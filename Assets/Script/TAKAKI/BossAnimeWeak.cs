@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BossAnimeWeak : MonoBehaviour
 {
+    Animator weakanime;
+
+    public GameObject weakobj;//下
 
     private WeakPointBottom weakpointbottom;
 
@@ -15,6 +18,8 @@ public class BossAnimeWeak : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        weakanime = weakobj.GetComponent<Animator>();
+
         nextPhase = currntPhase;
 
         Child = transform.GetChild(0).gameObject;
@@ -34,6 +39,9 @@ public class BossAnimeWeak : MonoBehaviour
             nextPhase = currntPhase;
             if (currntPhase == PhaseManager.Phase.Normal_Phase)
             {
+                weakanime.SetBool("isOpen", false);
+                weakanime.SetBool("isClose", true);
+
                 weakpointbottom.enabled = false;
 
 
@@ -42,6 +50,8 @@ public class BossAnimeWeak : MonoBehaviour
             else if (currntPhase == PhaseManager.Phase.Speed_Phase)
             {
                 // ハイスピードフェイズ
+
+                weakanime.SetBool("isClose", false);
 
                 //if (SeFlg != true)
                 //{
@@ -52,18 +62,24 @@ public class BossAnimeWeak : MonoBehaviour
             else if (currntPhase == PhaseManager.Phase.Attack_Phase)
             {
                 // アタックフェイズ
+                weakanime.SetBool("isOpen", true);
+
 
                 weakpointbottom.enabled = true;
 
+                obj = weakpointbottom.Setobj();
             }
 
         }
-        //if (currntPhase == PhaseManager.Phase.Attack_Phase)
-        //{
-        //    if (obj == null)
-        //    {
-        //        weakpointbottom.enabled = false;
-        //    }
-        //}
+        if (currntPhase == PhaseManager.Phase.Attack_Phase)
+        {
+            if (obj == null)
+            {
+                weakanime.SetBool("isOpen", false);
+                weakanime.SetBool("isClose", true);
+
+                weakpointbottom.enabled = false;
+            }
+        }
     }
 }

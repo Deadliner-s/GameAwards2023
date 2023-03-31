@@ -5,9 +5,9 @@ using UnityEngine;
 public class BossAnime : MonoBehaviour
 {
     Animator anime;
-    Animator weakanime;
+    //Animator weakanime;
 
-    public GameObject weakobj;//下
+    //public GameObject weakobj;//下
     public GameObject wpobj;//翼
  
     public WeakPoint weakpointtop;
@@ -26,7 +26,7 @@ public class BossAnime : MonoBehaviour
     {
         anime = GetComponent<Animator>();
 
-        weakanime = weakobj.GetComponent<Animator>();
+        //weakanime = weakobj.GetComponent<Animator>();
 
         currntPhase = PhaseManager.instance.GetPhase();
         nextPhase = currntPhase;
@@ -57,8 +57,8 @@ public class BossAnime : MonoBehaviour
             {
                 anime.SetBool("isWing", false);
                 anime.SetBool("isBinder", false);
-                weakanime.SetBool("isOpen", false);
-                weakanime.SetBool("isClose", true);
+                //weakanime.SetBool("isOpen", false);
+                //weakanime.SetBool("isClose", true);
 
                 //for (int i = 0; i < 4; i++)
                 //{
@@ -71,7 +71,7 @@ public class BossAnime : MonoBehaviour
             {
                 // ハイスピードフェイズ
                 anime.SetBool("isWing", true);
-                weakanime.SetBool("isClose", false);
+                //weakanime.SetBool("isClose", false);
 
                 if (SeFlg != true)
                 {
@@ -83,7 +83,7 @@ public class BossAnime : MonoBehaviour
             {
                 // アタックフェイズ
                 anime.SetBool("isBinder", true);
-                weakanime.SetBool("isOpen", true);
+                //weakanime.SetBool("isOpen", true);
 
                 //for (int i = 0; i < 4; i++)
                 //{
@@ -98,7 +98,7 @@ public class BossAnime : MonoBehaviour
             if(obj == null)
             {
                 anime.SetBool("isBinder", false);
-                weakanime.SetBool("isClose", true);
+                //weakanime.SetBool("isClose", true);
                 weakpointtop.enabled = false;
             }
         }
