@@ -25,28 +25,29 @@ public class WeakPointBottom : MonoBehaviour
 
     private void Update()
     {
-        if (this.gameObject != false)
+        //if (this.gameObject != false)
+        //{
+        //    weakobj.transform.position = gameObject.transform.position;
+        //    Vector3 pos = weakobj.transform.localPosition;
+        //    //pos.x += 0.5f;
+        //    //pos.y += -0.5f;
+        //    //pos.z += 0.0f;
+        //    weakobj.transform.localPosition = pos;
+        //}
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "PlayerBullet")
         {
-            weakobj.transform.position = gameObject.transform.position;
-            Vector3 pos = weakobj.transform.localPosition;
-            //pos.x += 0.5f;
-            //pos.y += -0.5f;
-            //pos.z += 0.0f;
-            weakobj.transform.localPosition = pos;
+            anime.SetBool("isOpen", false);
+            anime.SetBool("isClose", true);
+            Destroy(weakobj);
         }
     }
+
     public GameObject Setobj()
     {
         return weakobj;
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.tag == "PlayerBullet")
-    //    {
-    //        anime.SetBool("isOpen", false);
-    //        anime.SetBool("isClose", true);
-    //        Destroy(weakobj);
-    //    }
-    //}
 }
