@@ -31,6 +31,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.49498498
       objectReference: {fileID: 0}
+    - target: {fileID: 3930705679050173309, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7532afb4d759f5446893750340445e4a, type: 2}
     - target: {fileID: 4482491814637254355, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Name
       value: BossMissleCluster
@@ -106,7 +110,7 @@ PrefabInstance:
     - target: {fileID: 9062495474639694043, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 6467278205871685336, guid: 635504c03309b4e41b15cc2ecf84fdc0, type: 3}
+      objectReference: {fileID: 8464957887600175008, guid: 872c3b969c79c4340b5d572628184072, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
 --- !u!1 &5540224078154131618 stripped
