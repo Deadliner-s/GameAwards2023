@@ -67,8 +67,8 @@ public class RockOnMarker : MonoBehaviour
         }
 
         // 照準がactiveだったら
-        //if (reticle != null)
-        //{
+        if (reticle != null)
+        {
             // ワールド座標をスクリーン座標に変換
             reticle2D = reticle.transform.position; // UIなので元々スクリーン座標
             enemy2D = RectTransformUtility.WorldToScreenPoint(Camera.main, transform.position);
@@ -130,7 +130,7 @@ public class RockOnMarker : MonoBehaviour
                         }
                     }
                 }
-            //}
+            }
         }
 
         // 敵に追従させる
