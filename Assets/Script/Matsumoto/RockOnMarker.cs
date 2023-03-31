@@ -55,24 +55,6 @@ public class RockOnMarker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ワールド座標をスクリーン座標に変換
-        reticle2D = reticle.transform.position; // UIなので元々スクリーン座標
-        enemy2D = RectTransformUtility.WorldToScreenPoint(Camera.main, transform.position);
-
-        // 三平方の定理
-        float a;                     // 辺X
-        float b;                     // 辺Y
-        float c;                     // a - b間の距離
-        // XとYの距離
-        a = enemy2D.x - reticle2D.x;
-        b = enemy2D.y - reticle2D.y;
-        a = a * a;                   // aの累乗
-        b = b * b;                   // bの累乗
-        c = a + b;                   // a + b の距離
-        c = (float)Math.Sqrt(c);     // 平方根
-        float ReticleRadius = 10.0f; // 照準の半径
-        float r = ReticleRadius + TargetRadius;
-
         // マークが生成されてなかったら
         if (rockonFlg == false)
         {
@@ -84,46 +66,68 @@ public class RockOnMarker : MonoBehaviour
             rockonFlg = true;
         }
 
-        // 敵に近づいたら照準を引き寄せる
-        if (c <= AttractDistance)
+        // 照準がactiveだったら
+        if (reticle != null)
         {
-            // タグを持っていたら    ロックオンした後のオブジェクトに寄らないように
-            if (this.tag == "Enemy")
-            {
-                //reticle.transform.position = Vector2.MoveTowards(reticle.transform.position, transform.position, AttractPower);
-            }
-            reticle.transform.position = Vector2.MoveTowards(reticle.transform.position, transform.position, AttractPower);
+            // ワールド座標をスクリーン座標に変換
+            reticle2D = reticle.transform.position; // UIなので元々スクリーン座標
+            enemy2D = RectTransformUtility.WorldToScreenPoint(Camera.main, transform.position);
 
+            // 三平方の定理
+            float a;                     // 辺X
+            float b;                     // 辺Y
+            float c;                     // a - b間の距離
+                                         // XとYの距離
+            a = enemy2D.x - reticle2D.x;
+            b = enemy2D.y - reticle2D.y;
+            a = a * a;                   // aの累乗
+            b = b * b;                   // bの累乗
+            c = a + b;                   // a + b の距離
+            c = (float)Math.Sqrt(c);     // 平方根
+            float ReticleRadius = 10.0f; // 照準の半径
+            float r = ReticleRadius + TargetRadius;
 
-            // 当たり判定
-            if (c <= r)
+            // 敵に近づいたら照準を引き寄せる
+            if (c <= AttractDistance)
             {
-                // Targetタグを持つオブジェクトをカウント
-                GameObject[] tagObjects;
-                tagObjects = GameObject.FindGameObjectsWithTag("Target");
-                // ロックオンできる数以下だったら
-                if (tagObjects.Length < MaxRockOn && destroyFlg == false) 
+                // タグを持っていたら    ロックオンした後のオブジェクトに寄らないように
+                if (this.tag == "Enemy")
                 {
-                    //// 回転
-                    //Transform transform = target.transform;
-                    //Vector3 angle = transform.localEulerAngles;
-                    //angle.z = 45.0f;
-                    //transform.localEulerAngles = angle;
-                    //// 色を赤に変更
-                    //Color color = target.GetComponent<Image>().color = Color.red; ;
+                    //reticle.transform.position = Vector2.MoveTowards(reticle.transform.position, transform.position, AttractPower);
+                }
+                reticle.transform.position = Vector2.MoveTowards(reticle.transform.position, transform.position, AttractPower);
 
-                    anime = target.GetComponent<Animator>();
-                    anime.SetBool("isRockOn", true);        // AnimatorにあるisRockOnをTrueに
 
-                    //animeFlg = true;
-
-                    // 当たったらタグをTargetに変える
-                    this.tag = ("Target");
-
-                    if (RockOnSEflg != true)
+                // 当たり判定
+                if (c <= r)
+                {
+                    // Targetタグを持つオブジェクトをカウント
+                    GameObject[] tagObjects;
+                    tagObjects = GameObject.FindGameObjectsWithTag("Target");
+                    // ロックオンできる数以下だったら
+                    if (tagObjects.Length < MaxRockOn && destroyFlg == false)
                     {
-                        audioSource.PlayOneShot(RockOnSE);
-                        RockOnSEflg = true;
+                        //// 回転
+                        //Transform transform = target.transform;
+                        //Vector3 angle = transform.localEulerAngles;
+                        //angle.z = 45.0f;
+                        //transform.localEulerAngles = angle;
+                        //// 色を赤に変更
+                        //Color color = target.GetComponent<Image>().color = Color.red; ;
+
+                        anime = target.GetComponent<Animator>();
+                        anime.SetBool("isRockOn", true);        // AnimatorにあるisRockOnをTrueに
+
+                        //animeFlg = true;
+
+                        // 当たったらタグをTargetに変える
+                        this.tag = ("Target");
+
+                        if (RockOnSEflg != true)
+                        {
+                            audioSource.PlayOneShot(RockOnSE);
+                            RockOnSEflg = true;
+                        }
                     }
                 }
             }

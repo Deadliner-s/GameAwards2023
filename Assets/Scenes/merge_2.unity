@@ -870,6 +870,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5851085222433789072, guid: 041eb59527a745243ad3acae20abd9ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5851085222433789074, guid: 041eb59527a745243ad3acae20abd9ca, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2167,6 +2171,7 @@ MonoBehaviour:
   SpeedTime: 5
   AttackTime: 20
   currentPhase: 0
+  Reticle: {fileID: 1619731665}
   Debug_FixPhaseFlg: 0
 --- !u!1 &1414156512 stripped
 GameObject:
@@ -2459,6 +2464,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab8ee1ae2d46e274f8959b18cc5bb87b, type: 3}
+--- !u!1 &1619731665 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1778316015132535032, guid: c561482d1e0b1974a941459296f0703a, type: 3}
+  m_PrefabInstance: {fileID: 1778316014138479965}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1650312788 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1180267642267995962, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
