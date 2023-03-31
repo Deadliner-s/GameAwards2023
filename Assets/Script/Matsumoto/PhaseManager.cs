@@ -50,7 +50,7 @@ public class PhaseManager : MonoBehaviour
         time = 0.0f;
         //currentPhase = Phase.Normal_Phase;          // 初期フェイズ
 
-        Reticle.SetActive(true);
+        //Reticle.SetActive(true);
     }
 
     // Update is called once per frame
@@ -71,7 +71,7 @@ public class PhaseManager : MonoBehaviour
                     time = 0.0f;
                 }
 
-                Reticle.SetActive(true);
+               // Reticle.SetActive(true);
             }
             // ハイスピードフェイズ
             else if (currentPhase == Phase.Speed_Phase)
@@ -82,7 +82,7 @@ public class PhaseManager : MonoBehaviour
                     time = 0.0f;
                 }
 
-                Reticle.SetActive(false);
+                //Reticle.SetActive(false);
             }
             // アタックフェイズ
             else if (currentPhase == Phase.Attack_Phase)
@@ -93,7 +93,7 @@ public class PhaseManager : MonoBehaviour
                     time = 0.0f;
                 }
 
-                Reticle.SetActive(true);
+                //Reticle.SetActive(true);
             }
         }
     }
