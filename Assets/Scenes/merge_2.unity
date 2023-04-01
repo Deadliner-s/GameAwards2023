@@ -1719,6 +1719,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1007719211711002420, guid: 5a7748c7d55010f40bad1f1018295c85, type: 3}
+      propertyPath: BossOpenSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 36a82ed500b1f1d4a90dd73004dd89ef, type: 3}
+    - target: {fileID: 1007719211711002420, guid: 5a7748c7d55010f40bad1f1018295c85, type: 3}
+      propertyPath: BossCloseSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 36a82ed500b1f1d4a90dd73004dd89ef, type: 3}
+    - target: {fileID: 1007719211711002420, guid: 5a7748c7d55010f40bad1f1018295c85, type: 3}
       propertyPath: weakpointtop
       value: 
       objectReference: {fileID: 0}
@@ -1898,11 +1906,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23a85737b2ade54b912183fdbafeb97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.01
-  AtkSpeed: 0.005
+  Normal_VerticalSpeed: 0.01
+  Normal_HorizontalSpeed: 0.01
+  Spd_VerticalSpeed: 0.005
+  Spd_HorizontalSpeed: 0.01
+  Atk_VerticalSpeed: 0.01
+  Atk_HorizontalSpeed: 0.01
   ManerverTime: 0.5
   coolTime: 1
-  ManeverSpeed: 0.03
+  Manever_VerticalSpeed: 0.03
+  Manever_HorizontalSpeed: 0.03
   MoveSE: {fileID: 0}
   ManeverSE: {fileID: 8300000, guid: c2d9e197d242afe4cabb7b6285ad3e61, type: 3}
 --- !u!114 &1359347818

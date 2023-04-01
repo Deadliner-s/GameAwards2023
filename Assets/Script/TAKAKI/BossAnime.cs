@@ -12,9 +12,9 @@ public class BossAnime : MonoBehaviour
  
     public WeakPoint weakpointtop;
 
-    public AudioClip BossAnimeSE;
+    public AudioClip BossOpenSE;
+    public AudioClip BossCloseSE;
     private AudioSource audioSource;
-    private bool SeFlg = false;
 
     private PhaseManager.Phase currntPhase;
     private PhaseManager.Phase nextPhase;
@@ -32,11 +32,11 @@ public class BossAnime : MonoBehaviour
         nextPhase = currntPhase;
 
         audioSource = GetComponent<AudioSource>();
-        SeFlg = false;
 
-            Child = transform.GetChild(0).gameObject;
 
-            weakpointtop = Child.GetComponent<WeakPoint>();
+        Child = transform.GetChild(0).gameObject;
+
+        weakpointtop = Child.GetComponent<WeakPoint>();
     }
 
     // Update is called once per frame
@@ -54,18 +54,14 @@ public class BossAnime : MonoBehaviour
 
                 weakpointtop.enabled = false;
 
-                SeFlg = false;
+                audioSource.PlayOneShot(BossCloseSE);
             }
             else if (currntPhase == PhaseManager.Phase.Speed_Phase)
             {
                 // ハイスピードフェイズ
                 anime.SetBool("isWing", true);
 
-                if (SeFlg != true)
-                {
-                    audioSource.PlayOneShot(BossAnimeSE);
-                    SeFlg = true;
-                }
+                audioSource.PlayOneShot(BossOpenSE);
             }
             else if (currntPhase == PhaseManager.Phase.Attack_Phase)
             {
