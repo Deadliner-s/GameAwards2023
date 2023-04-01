@@ -15,22 +15,35 @@ public class PlayerMove: MonoBehaviour
     private float viewX;            // ビューポート座標のxの値
     private float viewY;            // ビューポート座標のyの値
 
-    [Header("移動速度")]
-    [Tooltip("移動速度")]
-    public float speed = 0.1f;
+    [Header("通常フェイズ時の移動速度")]
+    [Tooltip("縦移動")]
+    public float Normal_VerticalSpeed = 0.01f;
+    [Tooltip("横移動")]
+    public float Normal_HorizontalSpeed = 0.01f;
 
-    [Header("アタックフェイズ時の上下移動速度")]
-    [Tooltip("上下移動速度")]
-    public float AtkSpeed = 0.05f;
+    [Header("ハイスピードフェイズ時の移動速度")]
+    [Tooltip("縦移動")]
+    public float Spd_VerticalSpeed = 0.005f;
+    [Tooltip("横移動")]
+    public float Spd_HorizontalSpeed = 0.01f;
+
+    [Header("アタックフェイズ時の移動速度")]
+    [Tooltip("縦移動")]
+    public float Atk_VerticalSpeed = 0.01f;
+    [Tooltip("横移動")]
+    public float Atk_HorizontalSpeed = 0.01f;
 
     // クイックマニューバ用変数
-    [Header("マニューバ")]
+    [Header("マニューバ時間")]
     [Tooltip("マニューバの持続時間")]
     public float ManerverTime = 0.5f;   // 動く時間
     [Tooltip("クールタイム")]
     public float coolTime = 1.0f;       // 再使用できるようになる時間
-    [Tooltip("速度")]
-    public float ManeverSpeed = 0.5f;   // マニューバ時の速度
+    [Header("マニューバ時の移動速度")]
+    [Tooltip("縦移動")]
+    public float Manever_VerticalSpeed = 0.03f;   // マニューバ時の速度
+    [Tooltip("横移動")]
+    public float Manever_HorizontalSpeed = 0.03f;
 
     // マニューバカウント
     private float elapsedTime;          // マニューバ経過時間
@@ -89,34 +102,34 @@ public class PlayerMove: MonoBehaviour
             {
                 // 通常フェイズ
                 // 縦方向の移動
-                nextPosition.y = pos.y + inputMove.y * speed;
+                nextPosition.y = pos.y + inputMove.y * Normal_VerticalSpeed;
                 // 横方向の移動
-                nextPosition.x = pos.x + inputMove.x * speed;
+                nextPosition.x = pos.x + inputMove.x * Normal_HorizontalSpeed;
             }
             else if (currentPhase == PhaseManager.Phase.Speed_Phase) 
             {
                 // ハイスピードフェイズ
                 // 縦方向の移動
-                nextPosition.y = pos.y + inputMove.y * speed;
+                nextPosition.y = pos.y + inputMove.y * Spd_VerticalSpeed;
                 // 横方向の移動
-                nextPosition.x = pos.x + inputMove.x * speed;
+                nextPosition.x = pos.x + inputMove.x * Spd_HorizontalSpeed;
             }
             else if(currentPhase == PhaseManager.Phase.Attack_Phase)
             {
                 // アタックフェイズ
                 // 縦方向の移動
-                nextPosition.y = pos.y + inputMove.y * AtkSpeed;
+                nextPosition.y = pos.y + inputMove.y * Atk_VerticalSpeed;
                 // 横方向の移動
-                nextPosition.x = pos.x + inputMove.x * speed;
+                nextPosition.x = pos.x + inputMove.x * Atk_HorizontalSpeed;
             }
         }
         else
         {
             // クイックマニューバ
             // 縦方向の移動
-            nextPosition.y = pos.y + inputMove.y * ManeverSpeed;
+            nextPosition.y = pos.y + inputMove.y * Manever_VerticalSpeed;
             // 横方向の移動
-            nextPosition.x = pos.x + inputMove.x * ManeverSpeed;
+            nextPosition.x = pos.x + inputMove.x * Manever_HorizontalSpeed;
 
             // マニューバ経過時間
             elapsedTime += Time.deltaTime;
