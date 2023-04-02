@@ -1004,6 +1004,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 32605784}
     m_Modifications:
+    - target: {fileID: 4727187808810300034, guid: 3e2ce6294e805d240835963003cef589, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727187808810300034, guid: 3e2ce6294e805d240835963003cef589, type: 3}
+      propertyPath: m_Color.g
+      value: 0.92710716
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727187808810300034, guid: 3e2ce6294e805d240835963003cef589, type: 3}
+      propertyPath: m_Color.r
+      value: 0.4188679
+      objectReference: {fileID: 0}
     - target: {fileID: 4727187808810300035, guid: 3e2ce6294e805d240835963003cef589, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1050,11 +1062,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4727187808855345489, guid: 3e2ce6294e805d240835963003cef589, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.43640447
+      value: 0.4958864
       objectReference: {fileID: 0}
     - target: {fileID: 4727187808855345489, guid: 3e2ce6294e805d240835963003cef589, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.43640447
+      value: 0.31730533
       objectReference: {fileID: 0}
     - target: {fileID: 4727187808855345489, guid: 3e2ce6294e805d240835963003cef589, type: 3}
       propertyPath: m_LocalScale.z
@@ -2674,8 +2686,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 853329128}
     - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: HealAmount
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: MaxInvflame
-      value: 0
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: PlayerMaxHp
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: color.Array.data[0].a

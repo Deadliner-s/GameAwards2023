@@ -11,12 +11,15 @@ public class PlayerHp : MonoBehaviour
     Slider HpGauge;
 
     public float PlayerHP;
+    public float PlayerMaxHp;
+    public float HealAmount;
     float damage;
 
     public float MaxInvflame;
     float Invflame;
 
     bool UseFlag;
+    bool HealFlag;
 
     [SerializeField] ParticleSystem particle;
     [SerializeField] Color[] color = new Color[3];
@@ -25,11 +28,11 @@ public class PlayerHp : MonoBehaviour
     void Start()
     {
         HpGauge = GaugeObj.GetComponent<Slider>();
-        HpGauge.maxValue = PlayerHP;
+        HpGauge.maxValue = PlayerMaxHp;
         HpGauge.value = PlayerHP;
         //フラグを非表示判定
         UseFlag = false;
-     
+        HealFlag = false;
     }
 
     // Update is called once per frame
@@ -46,14 +49,26 @@ public class PlayerHp : MonoBehaviour
         if (MaxInvflame < Invflame)
         {
             UseFlag = false;
+            HealFlag = true;
             Invflame = 0;
         }
 
-        if(PlayerHP >= 66)
-        { 
+        if (HealFlag)
+        {
+            PlayerHP += HealAmount;
+            HpGauge.value = PlayerHP;
+
+            if (PlayerHP >= PlayerMaxHp)
+            {
+                HealFlag = false;
+            }
+        }
+
+        if (PlayerHP >= 66)
+        {
             main.startColor = color[0];
         }
-        else if(PlayerHP >= 33)
+        else if (PlayerHP >= 33)
         {
             main.startColor = color[1];
         }
@@ -66,26 +81,24 @@ public class PlayerHp : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (Invflame == 0)
+        // もし衝突した相手オブジェクトのタグが"Enemy"ならば中の処理を実行
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            // もし衝突した相手オブジェクトのタグが"Enemy"ならば中の処理を実行
-            if (collision.gameObject.CompareTag("Enemy"))
+            // "Enemy"タグがついているオブジェクトにある"PlayerDamage"変数を受けとる
+            damage = collision.gameObject.GetComponent<Damage>().PlayerDamage;
+            PlayerHP -= damage;
+            HpGauge.value -= damage;
+
+            if (PlayerHP >= 0)
             {
-                // "Enemy"タグがついているオブジェクトにある"PlayerDamage"変数を受けとる
-                damage = collision.gameObject.GetComponent<Damage>().PlayerDamage;
-                PlayerHP -= damage;
-                HpGauge.value -= damage;
-                
-                if (PlayerHP >= 0)
-                {
-                    UseFlag = true;
-                }
-                else
-                {
-                    Destroy(this.gameObject);
-                    //シーン移動
-                    SceneManager.LoadScene("GameOver");
-                }
+                UseFlag = true;
+                Invflame = 0;
+            }
+            else
+            {
+                Destroy(this.gameObject);
+                //シーン移動
+                SceneManager.LoadScene("GameOver");
             }
         }
     }
