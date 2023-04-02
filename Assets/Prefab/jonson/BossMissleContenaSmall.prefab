@@ -359,6 +359,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerDamage: 5
   EnemyDamage: 0
+--- !u!114 &4288741153946188358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741478458244633611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f837dc176d4768344bff91e7190cb05c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 3570405994875558733, guid: ead3ee784696e1647a9c1f8fa3922ee5, type: 3}
 --- !u!114 &7704027369108650710
 MonoBehaviour:
   m_ObjectHideFlags: 0
