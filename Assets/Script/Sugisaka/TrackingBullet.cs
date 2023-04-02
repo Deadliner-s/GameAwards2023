@@ -45,6 +45,9 @@ public class TrackingBullet : MonoBehaviour
     private float off = 0.2f;
     private Quaternion rot;
 
+    // “–‚½‚è”»’è
+    private CapsuleCollider Ccollider;
+
 
     private void Start()
     {
@@ -59,6 +62,9 @@ public class TrackingBullet : MonoBehaviour
 
         // ¶¬êŠ•Û‘¶
         sponePoint = transform.position;
+
+        // ”»’èó‘Ôæ“¾
+        Ccollider = GetComponent<CapsuleCollider>();
     }
     
     //private void FixedUpdate()
@@ -106,6 +112,7 @@ public class TrackingBullet : MonoBehaviour
                 {
                     State = 2;
                 }
+
                 stopCnt++;
 
                 Move = (target.transform.position - transform.position);
@@ -119,7 +126,16 @@ public class TrackingBullet : MonoBehaviour
 
             case (2):
                 // —U“±ˆÚ“®
-                
+
+                if (Ccollider.enabled != true)
+                {
+                    stopCnt++;
+                    if (stopTime + 2 <= stopCnt)
+                    {
+                        Ccollider.enabled = true;
+                    }
+                }
+
                 Move = (target.transform.position - transform.position).normalized;
                 Move = Move.normalized;
                 LateMove = (Move - LateMove) * off + (LateMove);
