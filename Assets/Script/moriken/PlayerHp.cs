@@ -15,11 +15,15 @@ public class PlayerHp : MonoBehaviour
     public float HealAmount;
     float damage;
 
+    
     public float MaxInvflame;
     float Invflame;
 
+    public float RepairShieldflame;
+
     bool UseFlag;
     bool HealFlag;
+    bool BreakShieldFlag;
 
     [SerializeField] ParticleSystem particle;
     [SerializeField] Color[] color = new Color[3];
@@ -33,6 +37,7 @@ public class PlayerHp : MonoBehaviour
         //フラグを非表示判定
         UseFlag = false;
         HealFlag = false;
+        BreakShieldFlag = false;
     }
 
     // Update is called once per frame
@@ -46,7 +51,16 @@ public class PlayerHp : MonoBehaviour
         }
 
         // 無敵時間に関する処理
-        if (MaxInvflame < Invflame)
+        if(BreakShieldFlag)
+        {
+            if (RepairShieldflame < Invflame)
+            {
+                BreakShieldFlag = false;
+                HealFlag = true;
+                Invflame = 0;
+            }
+        }
+        else if (MaxInvflame < Invflame)
         {
             UseFlag = false;
             HealFlag = true;
@@ -84,21 +98,26 @@ public class PlayerHp : MonoBehaviour
         // もし衝突した相手オブジェクトのタグが"Enemy"ならば中の処理を実行
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            if (BreakShieldFlag)
+            {
+                Destroy(this.gameObject);
+                //シーン移動
+                SceneManager.LoadScene("GameOver");
+            }
+
             // "Enemy"タグがついているオブジェクトにある"PlayerDamage"変数を受けとる
             damage = collision.gameObject.GetComponent<Damage>().PlayerDamage;
             PlayerHP -= damage;
             HpGauge.value -= damage;
 
-            if (PlayerHP >= 0)
+            if(PlayerHP <= 0)
+            {
+                BreakShieldFlag = true;
+            }
+            else if (PlayerHP > 0)
             {
                 UseFlag = true;
                 Invflame = 0;
-            }
-            else
-            {
-                Destroy(this.gameObject);
-                //シーン移動
-                SceneManager.LoadScene("GameOver");
             }
         }
     }
