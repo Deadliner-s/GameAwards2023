@@ -2687,15 +2687,19 @@ PrefabInstance:
       objectReference: {fileID: 853329128}
     - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: HealAmount
-      value: 0.1
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: MaxInvflame
-      value: 120
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: PlayerMaxHp
       value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+      propertyPath: RepairShieldflame
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: color.Array.data[0].a
