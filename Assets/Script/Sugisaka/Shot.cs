@@ -15,20 +15,26 @@ public class Shot : MonoBehaviour
     public int ReloadTime;
     [Tooltip("ミサイル生成場所")]
     public GameObject Shotpos;
+    [Tooltip("発射間隔")]
+    public float interval;
 
     // 経過時間
-    public float currenttime;
+    private float currenttime;
+    // インターバル用時間
+    private float intervalTime;
     // 射撃フラグ
     public bool Shotflg;
 
     // 現在フェイズ
     private PhaseManager.Phase currentPhase;
+    private PhaseManager.Phase nextPhase;
 
     // ロックオンされたオブジェクトのリスト
     public List<GameObject> targets;
     // 退避用
     public List<GameObject> sub = new List<GameObject>();
 
+    // 音関係
     public AudioClip ShotSE;
     private AudioSource audioSource;
 
@@ -43,10 +49,12 @@ public class Shot : MonoBehaviour
     private void Start()
     {
         currenttime = 0.0f;    // 経過時間初期化
+        intervalTime = 0.0f;
         Shotflg = false;    // フラグをオフに
 
         // フェイズ取得
         currentPhase = PhaseManager.instance.GetPhase();
+        nextPhase = currentPhase;
 
         audioSource = GetComponent<AudioSource>();
     }
@@ -54,23 +62,60 @@ public class Shot : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+
         if (Shotflg == true)
         {
+            // 時間の更新
             currenttime += Time.deltaTime;
 
-            if (currenttime > ReloadTime)
+            // 弾の発射
+            if (targets.Count != 0)                
+            {
+                intervalTime += Time.deltaTime;
+
+                if (interval <= intervalTime)
+                {
+                    // ロックオンされたターゲットにミサイルを打つ
+                    // 生成場所取得
+                    Vector3 PlayerPos = Shotpos.transform.position;
+
+                    // 新しい誘導ミサイルプレハブをインスタンス化する
+                    GameObject missile = Instantiate(MissilePrefab, PlayerPos, Quaternion.identity);
+
+                    // ミサイルのターゲットを設定する
+                    missile.GetComponent<TrackingBullet>().SetTarget(targets[0]);
+
+                    // ターゲットリスト更新
+                    targets.RemoveAt(0);
+
+                    // SE再生
+                    audioSource.PlayOneShot(ShotSE);
+
+                    intervalTime = 0.0f;
+                }   
+            }
+
+            // フラグ管理
+            if (targets.Count == 0 && currenttime > ReloadTime)
             {
                 Shotflg = false;
             }
         }
 
+
         // フェイズ確認
+
         // フェイズ取得
         currentPhase = PhaseManager.instance.GetPhase();
-        if (currentPhase == PhaseManager.Phase.Speed_Phase)
+        if (currentPhase != nextPhase)
         {
-            sub = new List<GameObject>();
+            nextPhase = currentPhase;
+            if (currentPhase == PhaseManager.Phase.Speed_Phase)
+            {
+                sub = new List<GameObject>();
+            }
         }
+
 
     }
 
@@ -93,8 +138,6 @@ public class Shot : MonoBehaviour
                     }
                 }
 
-                // 生成場所取得
-                Vector3 PlayerPos = Shotpos.transform.position;
                 // リスト再生成
                 targets = new List<GameObject>();
 
@@ -110,16 +153,16 @@ public class Shot : MonoBehaviour
                 }
 
                 // 各ロックオンされたターゲットにミサイルを打つ
-                foreach (GameObject target in targets)
-                {
-                    // 新しい誘導ミサイルプレハブをインスタンス化する
-                    GameObject missile = Instantiate(MissilePrefab, PlayerPos, Quaternion.identity);
-
-                    // 誘導ミサイルのターゲットを設定する
-                    missile.GetComponent<TrackingBullet>().SetTarget(target);
-
-                    audioSource.PlayOneShot(ShotSE);
-                }
+                //foreach (GameObject target in targets)
+                //{
+                //    // 生成場所取得
+                //    Vector3 PlayerPos = Shotpos.transform.position;
+                //    // 新しい誘導ミサイルプレハブをインスタンス化する
+                //    GameObject missile = Instantiate(MissilePrefab, PlayerPos, Quaternion.identity);
+                //    // 誘導ミサイルのターゲットを設定する
+                //    missile.GetComponent<TrackingBullet>().SetTarget(target);
+                //    audioSource.PlayOneShot(ShotSE);
+                //}
 
                 // 経過時間初期化
                 currenttime = 0.0f;
