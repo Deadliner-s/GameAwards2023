@@ -66,4 +66,12 @@ public class MissileBossClusterSmall : MonoBehaviour
             transform.position += LateMove * Speed;
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "PlayerBullet")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
