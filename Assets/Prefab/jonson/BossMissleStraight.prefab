@@ -282,11 +282,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c0691da9f5d624e9f3cef204414f6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0.002
   MaxSpeed: 0.03
-  Accel: 0.0002
   MissRange: 2
-  UIFillSpeed: 0.007
+  UIFillSpeed: 0.0075
   otherObject: {fileID: 7481113100926768853, guid: fcc74d93aaa2e0747802ce8ae23f142f, type: 3}
   outsideObject: {fileID: 7481113100926768853, guid: 6c745f242c170144e852dc37fea2b4da, type: 3}
 --- !u!114 &-4867831459758655791

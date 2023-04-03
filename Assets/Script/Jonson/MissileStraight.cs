@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class MissileStraight : MonoBehaviour
 {
-    public float Speed = 0.01f;        //ミサイルの速度
+    private float Speed = 0.0f;        //ミサイルの速度
     public float MaxSpeed = 0.003f;      //速度制限
-    public float Accel = 0.001f;       //加速度
+    //public float Accel = 0.001f;       //加速度
     public float MissRange = 2.0f;     //プレイヤーに外れるの距離
     public float UIFillSpeed = 0.005f;  //UIの速さ
     private GameObject canvas;         // キャンバス
@@ -78,18 +78,12 @@ public class MissileStraight : MonoBehaviour
         if (GameObject.Find("Player"))//プレイヤーは生きている（存在する）
         {
             time++;
-            if (time >= 120)
-                time = 0;
             //world座標をcamera座標に変換
             targetWorldPosition = transform.position;
             targetWorldPosition = mainCamera.WorldToScreenPoint(targetWorldPosition);
             Vector3 NewPosFix = targetWorldPosition;
 
-            Speed += Accel;                                         //加速度
-                                                                    // if (Speed >= MaxSpeed)                                //速度制限
-                                                                    //     Speed = MaxSpeed;
-
-            if (targetWorldPosition.x >= 50 && targetWorldPosition.x <= 1870 && targetWorldPosition.y >= 50 && targetWorldPosition.y <= 1030)    //画面内に入ったかどうか
+            if (time >= 120)
             {
                 Miss = true;            //画面内に入った
                 Speed = MaxSpeed;       //速度をMAX
@@ -131,7 +125,6 @@ public class MissileStraight : MonoBehaviour
                 {
                     newObj.GetComponent<Image>().fillAmount = 1.0f;
                 }
-                float distance = Vector3.Distance(transform.position, ToPos);
 
             }
             Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
