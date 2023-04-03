@@ -4,28 +4,24 @@ using UnityEngine;
 
 public class ShootFollow : MonoBehaviour
 {
-    GameObject Player;
-    Vector3 move;
     public float DistanceX;
     public float DistanceY;
     // Start is called before the first frame update
     void Start()
     {
-        Player = GameObject.Find("Player");
+        Vector3 P = GameObject.Find("Player").transform.position;
+        Vector3 Player;
+        Player.x = P.x;
+        Player.y = P.y;
+        Player.z = 0;
+
+        float x = Player.x + DistanceX;
+        float y = Player.y + DistanceY;
+        transform.position = new Vector3(x, y, transform.position.z);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 backDirection = Player.transform.forward;
-        Vector3 upDirection   = Player.transform.up;
-        backDirection.y       = 0;
-        upDirection.x         = 0;
-        upDirection.z         = 0;
-        backDirection         = backDirection.normalized;
-        upDirection           = upDirection.normalized;
-        transform.position    = Player.transform.position;
-        transform.position   += backDirection * DistanceX;
-        transform.position   += upDirection * DistanceY;
     }
 }
