@@ -8,16 +8,24 @@ using UnityEngine.UI;
 public class PlayerHp : MonoBehaviour
 {
     public GameObject GaugeObj;
-    Slider HpGauge;
+    Image HpGauge;
+    public GameObject DamageObj;
+    Image DamageGauge;
 
     public float PlayerHP;
-    public float PlayerMaxHp;
+    float PlayerMaxHp;
+
+    float Difference;
+
     public float HealAmount;
     float damage;
-
     
     public float MaxInvflame;
     float Invflame;
+
+    float Decreaseflame;
+
+    float i;
 
     public float RepairShieldflame;
 
@@ -31,26 +39,48 @@ public class PlayerHp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        HpGauge = GaugeObj.GetComponent<Slider>();
-        HpGauge.maxValue = PlayerMaxHp;
-        HpGauge.value = PlayerHP;
+        PlayerMaxHp = PlayerHP;
+        HpGauge = GaugeObj.GetComponent<Image>();
+        HpGauge.fillAmount = 1;
+        // ダメージを喰らったときのゲージ
+        DamageGauge = DamageObj.GetComponent<Image>();
+        DamageGauge.fillAmount = 1;
+
         //フラグを非表示判定
         UseFlag = false;
         HealFlag = false;
         BreakShieldFlag = false;
+
+        Decreaseflame = 30;
     }
 
     // Update is called once per frame
     void Update()
     {
         var main = particle.main;
-        // 敵にぶつかった時にシールドを表示する
+
+
+        // 回復開始までの時間管理
         if (UseFlag == true)
         {
             Invflame++;
         }
 
-        // 無敵時間に関する処理
+        if(Decreaseflame < Invflame)
+        {
+            if(Difference != i)
+            {
+                DamageGauge.fillAmount -= 0.001f;
+                i += 0.001f;
+            }
+            else
+            {
+                i = 0.0f;
+                Difference = 0.0f;
+            }
+        }
+
+        // 回復時間に関する処理
         if(BreakShieldFlag)
         {
             if (RepairShieldflame < Invflame)
@@ -70,7 +100,8 @@ public class PlayerHp : MonoBehaviour
         if (HealFlag)
         {
             PlayerHP += HealAmount;
-            HpGauge.value = PlayerHP;
+            HpGauge.fillAmount = PlayerHP / PlayerMaxHp;
+            DamageGauge.fillAmount = PlayerHP / PlayerMaxHp;
 
             if (PlayerHP >= PlayerMaxHp)
             {
@@ -78,6 +109,7 @@ public class PlayerHp : MonoBehaviour
             }
         }
 
+        // シールドの色の変化の処理
         if (PlayerHP >= 66)
         {
             main.startColor = color[0];
@@ -90,7 +122,6 @@ public class PlayerHp : MonoBehaviour
         {
             main.startColor = color[2];
         }
-
     }
 
     void OnCollisionEnter(Collision collision)
@@ -105,14 +136,21 @@ public class PlayerHp : MonoBehaviour
                 SceneManager.LoadScene("GameOver");
             }
 
+            HealFlag = false;
+
             // "Enemy"タグがついているオブジェクトにある"PlayerDamage"変数を受けとる
             damage = collision.gameObject.GetComponent<Damage>().PlayerDamage;
             PlayerHP -= damage;
-            HpGauge.value -= damage;
+            DamageGauge.fillAmount = HpGauge.fillAmount;
+            HpGauge.fillAmount -= damage/PlayerMaxHp;
 
-            if(PlayerHP <= 0)
+            Difference = HpGauge.fillAmount - DamageGauge.fillAmount;
+
+            if (PlayerHP <= 0)
             {
                 BreakShieldFlag = true;
+                UseFlag = true;
+                Invflame = 0;
             }
             else if (PlayerHP > 0)
             {
