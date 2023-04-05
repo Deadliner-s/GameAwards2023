@@ -19,6 +19,9 @@ public class HPGauge : MonoBehaviour
 
     void Update()
     {
-        myRectTfm.position = RectTransformUtility.WorldToScreenPoint(Camera.main, targetTfm.position + offset);
+        if (targetTfm != null)
+        {
+            myRectTfm.position = RectTransformUtility.WorldToScreenPoint(Camera.main, targetTfm.position + offset);
+        }
     }
 }
