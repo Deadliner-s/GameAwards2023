@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 247176465}
   - component: {fileID: 247176463}
   - component: {fileID: 247176462}
+  - component: {fileID: 247176468}
   m_Layer: 0
   m_Name: EnemyBoss
   m_TagString: Untagged
@@ -295,7 +296,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247176452}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -346,8 +347,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247176452}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalPosition: {x: 0, y: 1.1, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 514564259}
@@ -382,7 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Missile: {fileID: 4741478458244633611, guid: 9fe75ba60bab56b48b5309f796a7552d, type: 3}
-  DestroyTime: 5
+  DestroyTime: 7
   Key: p
   StartTime_1: 7
   Timer_1: 4
@@ -840,6 +841,20 @@ MonoBehaviour:
   Timer_10: 0
   Interval_10: 2
   h_Missile_10: []
+--- !u!114 &247176468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247176452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9174170ab5a7d84e98910c8ec6f27c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  rad: 0.85
 --- !u!4 &262786249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2653373171205573415, guid: 21fcd5f1e0c415f46bd73691b9282a0a, type: 3}
