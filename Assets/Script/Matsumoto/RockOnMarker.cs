@@ -59,7 +59,7 @@ public class RockOnMarker : MonoBehaviour
         if (rockonFlg == false)
         {
             // ロックオンマークを生成
-            target = (GameObject)Resources.Load("RockOnAnime");
+            target = (GameObject)Resources.Load("TargetMaker");
             target = Instantiate(target, transform.position, target.transform.rotation);
             // Canvasの子オブジェクトとして生成
             target.transform.SetParent(canvas.transform, false);
@@ -116,7 +116,7 @@ public class RockOnMarker : MonoBehaviour
                         //Color color = target.GetComponent<Image>().color = Color.red; ;
 
                         anime = target.GetComponent<Animator>();
-                        anime.SetBool("isRockOn", true);        // AnimatorにあるisRockOnをTrueに
+                        anime.SetBool("isMove", true);        // AnimatorにあるisRockOnをTrueに
 
                         //animeFlg = true;
 

@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 3793042148642276713}
   - component: {fileID: 937795882948890952}
   - component: {fileID: -2850171699930495403}
+  - component: {fileID: 3974326842955691092}
   m_Layer: 0
   m_Name: BossMissileShow
   m_TagString: Untagged
@@ -282,7 +283,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3222784191366915875}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -382,3 +383,21 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &3974326842955691092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3222784191366915875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35d396bcb8480c24eb784eebe6096a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimingOfUpdate: 0
+  EmitterScale: 0
+  TimeScale: 0
+  effectAsset: {fileID: 11400000, guid: 311056f8a3fe5ac4dbd2ac1b3c401b11, type: 2}
+  playOnStart: 1
+  isLooping: 0
