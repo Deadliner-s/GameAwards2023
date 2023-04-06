@@ -520,8 +520,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GaugeObj: {fileID: 1873078248}
+  DamageObj: {fileID: 0}
   PlayerHP: 100
-  PlayerMaxHp: 100
   HealAmount: 10
   MaxInvflame: 150
   RepairShieldflame: 150
