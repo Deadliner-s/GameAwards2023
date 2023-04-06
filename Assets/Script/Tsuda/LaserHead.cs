@@ -7,40 +7,53 @@ public class LaserHead : MonoBehaviour
     public static LaserHead instance;
 
     public float speed = 5f;  // 移動速度
-    public GameObject otherObject;  // 生成するプレハブオブジェクト
-    public float lifetime = 5f;  // オブジェクトの寿命（秒）
-    public int Split;    
+    public GameObject otherObject;  // 生成するプレハブオブジェクト    
+    public int Split;
+    public float LaserTime = 4.0f;
+    public float LaserSpeed = 3.0f;
 
+    private int LaserMove;
+    private float lifetime = 10.0f;  // オブジェクトの寿命（秒）
     private float splitX;
     private float splitY;
     public Vector3 targetScreenPosition;  // 目標スクリーン座標
     public Vector3 targetWorldPosition;  // 目標ワールド座標
     private Camera mainCamera;  // メインカメラ
-    private float timer;  // タイマー
-    private bool CSflg = false;
+    private float timer;  // タイマー    
     GameObject newObj;    
 
     void Start()
     {
-  
+        LaserMove = Random.Range(0, 3);
     }
 
     void Update()
     {        
-        timer -= Time.deltaTime;  // タイマーを減算する
+        timer += Time.deltaTime;  // タイマーを減算する        
 
-        if (timer >= lifetime - 6.0f)
-        {
+        if (timer >= 2.0f && timer <= 2.0f + LaserTime)
+        {                                    
             targetWorldPosition = mainCamera.ScreenToWorldPoint(targetScreenPosition);  // 目標スクリーン座標をワールド座標に変換する
             transform.LookAt(targetWorldPosition);
         }
 
-        if (timer <= lifetime - 6.0f)
+        if (timer >= 3.0f && timer <= 2.0f + LaserTime)
+        {            
+            switch(LaserMove)
+            {
+            case 0: targetScreenPosition.x += LaserSpeed; break;
+            case 1: targetScreenPosition.y += LaserSpeed; break;
+            case 2: targetScreenPosition.x -= LaserSpeed; break;
+            case 3: targetScreenPosition.y -= LaserSpeed; break;
+            }                           
+        }
+
+        if (timer >= 2.0f + LaserTime)
         {
             transform.position += transform.forward * speed * Time.deltaTime;  // 目標座標の方向に移動する
         }
 
-        if (timer <= 0)
+        if (timer >= lifetime)
         {
             Destroy(gameObject);  // オブジェクトを削除する
         }
@@ -65,13 +78,13 @@ public class LaserHead : MonoBehaviour
         targetScreenPosition.x = 320 * splitX;
         targetScreenPosition.y = 270 * splitY;
         targetScreenPosition.z = 1.0f;
-        targetWorldPosition = mainCamera.ScreenToWorldPoint(targetScreenPosition);  // 目標スクリーン座標をワールド座標に変換する
+        targetWorldPosition = mainCamera.ScreenToWorldPoint(targetScreenPosition);  // 目標スクリーン座標をワールド座標に変換する        
 
         transform.LookAt(targetWorldPosition);  // 目標座標の方向を向く
 
         newObj = Instantiate(otherObject, targetWorldPosition, transform.rotation);  // 警告UIの生成
 
-        timer = lifetime;  // タイマーを設定する
+        timer = 0.0f;  // タイマーを設定する
     }
 }
 
