@@ -33,6 +33,10 @@ public class RockOnMarker : MonoBehaviour
     private AudioSource audioSource;
     private bool RockOnSEflg = false;
 
+    private bool hideFlg = false;
+    private string startTag = null;
+
+
     // RockOnAnimeで関数を使うため
     //public static RockOnMarker instance;
 
@@ -50,6 +54,9 @@ public class RockOnMarker : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
         RockOnSEflg = false;
+
+        hideFlg = false;
+        startTag = this.tag;
     }
 
     // Update is called once per frame
@@ -58,14 +65,45 @@ public class RockOnMarker : MonoBehaviour
         // マークが生成されてなかったら
         if (rockonFlg == false)
         {
-            // ロックオンマークを生成
-            target = (GameObject)Resources.Load("TargetMaker");
-            target = Instantiate(target, transform.position, target.transform.rotation);
-            // Canvasの子オブジェクトとして生成
-            target.transform.SetParent(canvas.transform, false);
-            rockonFlg = true;
-        }
+            // 弱点でない場合
+            if (this.tag != "WeakPointTop" && this.tag != "WeakPointBottom")
+            {
+                // ロックオンマークを生成
+                target = (GameObject)Resources.Load("TargetMaker");
+                target = Instantiate(target, transform.position, target.transform.rotation);
+                // Canvasの子オブジェクトとして生成
+                target.transform.SetParent(canvas.transform, false);
+                rockonFlg = true;
+            }
 
+            // 弱点の場合
+            else if (this.tag == "WeakPointTop")
+            {
+                if (this.transform.position.z < 1.5f)
+                {
+                    // ロックオンマークを生成
+                    target = (GameObject)Resources.Load("TargetMaker");
+                    target = Instantiate(target, transform.position, target.transform.rotation);
+                    // Canvasの子オブジェクトとして生成
+                    target.transform.SetParent(canvas.transform, false);
+                    rockonFlg = true;
+                    Debug.Log("1");
+                }
+            }
+            else if (this.tag == "WeakPointBottom")
+            {
+                if (this.transform.position.z < 0.13f)
+                {
+                    // ロックオンマークを生成
+                    target = (GameObject)Resources.Load("TargetMaker");
+                    target = Instantiate(target, transform.position, target.transform.rotation);
+                    // Canvasの子オブジェクトとして生成
+                    target.transform.SetParent(canvas.transform, false);
+                    rockonFlg = true;
+                }
+
+            }
+        }
         // 照準がactiveだったら
         if (reticle != null)
         {
@@ -99,7 +137,7 @@ public class RockOnMarker : MonoBehaviour
 
 
                 // 当たり判定
-                if (c <= r)
+                if (c <= r && rockonFlg == true)
                 {
                     // Targetタグを持つオブジェクトをカウント
                     GameObject[] tagObjects;
@@ -139,7 +177,43 @@ public class RockOnMarker : MonoBehaviour
             // ワールド座標をスクリーン座標に変換
             target.transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, transform.position);
         }
+
+
+        // 弱点が後ろに行ったらロックオンを消す
+        if (startTag == "WeakPointTop")
+        {
+            if (this.transform.position.z > 2.5f && hideFlg == false && rockonFlg == true)
+            {
+                OnDestroy();
+                hideFlg = true;
+                this.tag = ("WeakPointTop");
+            }
+            if (this.transform.position.z < 1.5f && hideFlg == true)
+            {
+                hideFlg = false;
+                rockonFlg = false;
+                destroyFlg = false;
+            }
+        }
+        if (startTag == "WeakPointBottom")
+        {
+            if (this.transform.position.z > 0.3f && hideFlg == false && rockonFlg == true)
+            {
+                OnDestroy();
+                hideFlg = true;
+                this.tag = ("WeakPointBottom");
+            }
+            if (this.transform.position.z < 0.25f && hideFlg == true)
+            {
+                hideFlg = false;
+                rockonFlg = false;
+                destroyFlg = false;
+            }
+        }
+
     }
+
+
 
     // ロックオンされたオブジェクトが消滅した場合マークも消す
     private void OnDestroy()
@@ -164,4 +238,18 @@ public class RockOnMarker : MonoBehaviour
     //{
     //    return animeFlg;
     //}
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "PlayerBullet")
+        {
+            if (startTag == "WeakPointTop" || startTag == "WeakPointBottom")
+            {
+                Destroy(target);
+                rockonFlg = false;
+                this.tag = startTag;
+            }
+        }
+
+    }
+
 }
