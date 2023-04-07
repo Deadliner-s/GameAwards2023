@@ -69,7 +69,7 @@ public class MissileBossCluster : MonoBehaviour
 
             Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
             transform.rotation = rot;
-            if (targetWorldPosition.x <= 0)
+            if (targetWorldPosition.x <= -100.0f)
             {
                 transform.position = new Vector3(transform.position.x, ToPos.y, transform.position.z);
             }

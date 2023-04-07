@@ -49,15 +49,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.13848458
+      value: 0.06924229
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.13848458
+      value: 0.06924229
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalPosition.x
@@ -344,7 +344,7 @@ MonoBehaviour:
   UpSpeed: 0.04
   ContenaRange: 2.5
   Height: 4.5
-  ContenaNumber: 15
+  ContenaNumber: 9
   otherObject: {fileID: 4741478458244633611, guid: 8903fc1efd3881b46a8475f7fd2504ca, type: 3}
 --- !u!114 &2958555774321723217
 MonoBehaviour:
