@@ -296,7 +296,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247176452}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1097,9 +1097,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9776caeba2ef2884d994e3262af340ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeedNormal: -0.1
-  rotationSpeedAttack: -0.1
-  rotationSpeedHighSpeed: -0.3
+  rotationSpeedNormal: -0.05
+  rotationSpeedAttack: -0.05
+  rotationSpeedHighSpeed: -0.1
   sky: {fileID: 2100000, guid: c0dad4f095027544c938052ae1b47626, type: 2}
 --- !u!4 &356418629
 Transform:
@@ -3053,6 +3053,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1741721476060961610, guid: 48042d8fb6a3c4d4b9e2ee0e9475d2b1, type: 3}
+      propertyPath: rotationSpeedAttack
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741721476060961610, guid: 48042d8fb6a3c4d4b9e2ee0e9475d2b1, type: 3}
+      propertyPath: rotationSpeedNormal
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741721476060961610, guid: 48042d8fb6a3c4d4b9e2ee0e9475d2b1, type: 3}
+      propertyPath: rotationSpeedHighSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2171037142120710475, guid: 48042d8fb6a3c4d4b9e2ee0e9475d2b1, type: 3}
       propertyPath: GaugeObj
       value: 
@@ -3427,7 +3439,7 @@ PrefabInstance:
       objectReference: {fileID: 1991810348}
     - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: PlayerHP
-      value: 130
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: particle
@@ -3439,7 +3451,7 @@ PrefabInstance:
       objectReference: {fileID: 714986945}
     - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: HealAmount
-      value: 0.03
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: MaxInvflame
