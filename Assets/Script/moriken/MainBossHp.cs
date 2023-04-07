@@ -14,12 +14,19 @@ public class MainBossHp : MonoBehaviour
     float BossMaxHP;
     float damage;
 
+    public float HardDamage;
+
+    public int MAXHitCount;
+    int HitCount;
+
+
     // Start is called before the first frame update
     void Start()
     {
         BossMaxHP = BossHP;
         HpGauge = GaugeObj.GetComponent<Image>();
         HpGauge.fillAmount = 1;
+        HitCount = 0;
     }
 
     // Update is called once per frame
@@ -34,11 +41,21 @@ public class MainBossHp : MonoBehaviour
         damage = collision.gameObject.GetComponent<Damage>().EnemyDamage;
         BossHP -= damage;
         HpGauge.fillAmount -= damage/BossMaxHP;
+        HitCount++;
+
 
         if(BossHP <= 0)
         {
             //ƒV[ƒ“ˆÚ“®
             SceneManager.LoadScene("GameClear");
+        }
+
+        if(HitCount == MAXHitCount)
+        {
+            BossHP -= HardDamage;
+            HpGauge.fillAmount -= HardDamage / BossMaxHP;
+
+            HitCount = 0;
         }
     }
 }
