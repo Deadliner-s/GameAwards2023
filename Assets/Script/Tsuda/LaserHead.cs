@@ -24,7 +24,7 @@ public class LaserHead : MonoBehaviour
 
     void Start()
     {
-        LaserMove = Random.Range(0, 3);
+        LaserMove = Random.Range(0, 2);
     }
 
     void Update()
@@ -39,12 +39,61 @@ public class LaserHead : MonoBehaviour
 
         if (timer >= 3.0f && timer <= 2.0f + LaserTime)
         {            
-            switch(LaserMove)
-            {
-            case 0: targetScreenPosition.x += LaserSpeed; break;
-            case 1: targetScreenPosition.y += LaserSpeed; break;
-            case 2: targetScreenPosition.x -= LaserSpeed; break;
-            case 3: targetScreenPosition.y -= LaserSpeed; break;
+            switch(Split)
+            {            
+                case 1: 
+                    switch(LaserMove)
+                    {
+                        case 0: targetScreenPosition.x += LaserSpeed; break;
+                        case 1: targetScreenPosition.x += LaserSpeed; break;
+                        case 2: targetScreenPosition.y -= LaserSpeed; break;
+                    }
+                    break;
+
+                case 2:
+                    switch (LaserMove)
+                    {
+                        case 0: targetScreenPosition.x += LaserSpeed; break;
+                        case 1: targetScreenPosition.x -= LaserSpeed; break;
+                        case 2: targetScreenPosition.y -= LaserSpeed; break;
+                    }
+                    break;
+
+                case 3:
+                    switch (LaserMove)
+                    {
+                        case 0: targetScreenPosition.x -= LaserSpeed; break;
+                        case 1: targetScreenPosition.x -= LaserSpeed; break;
+                        case 2: targetScreenPosition.y -= LaserSpeed; break;
+                    }
+                    break;
+
+                case 4:
+                    switch (LaserMove)
+                    {
+                        case 0: targetScreenPosition.x += LaserSpeed; break;
+                        case 1: targetScreenPosition.x += LaserSpeed; break;
+                        case 2: targetScreenPosition.y += LaserSpeed; break;
+                    }
+                    break;
+
+                case 5:
+                    switch (LaserMove)
+                    {
+                        case 0: targetScreenPosition.x += LaserSpeed; break;
+                        case 1: targetScreenPosition.x -= LaserSpeed; break;
+                        case 2: targetScreenPosition.y += LaserSpeed; break;
+                    }
+                    break;
+
+                case 6:
+                    switch (LaserMove)
+                    {
+                        case 0: targetScreenPosition.x -= LaserSpeed; break;
+                        case 1: targetScreenPosition.x -= LaserSpeed; break;
+                        case 2: targetScreenPosition.y += LaserSpeed; break;
+                    }
+                    break;
             }                           
         }
 
