@@ -1,12 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class ReticleMove : MonoBehaviour
 {
+    [Header("移動速度")]
     public float speed = 5.0f;      // 移動スピード
+    [Header("ロックオンできる最大数")]
+    public int MaxRockOn = 5;       // ロックオンできる最大数
+
 
     private Myproject InputActions; // InputSystem
     private Vector3 pos;            // 現在の位置
@@ -19,6 +21,13 @@ public class ReticleMove : MonoBehaviour
     private GameObject[] RockOnCnt = new GameObject[5];     // ロックオンできる数オブジェクト
     private GameObject RockOnCntPrefab;                     // ●のPrefab
     private float offsetY = 40.0f;
+
+    private GameObject enemy;
+    private Vector3 enemy2D;
+
+    [Header("SE")]
+    public AudioClip RockOnSE;
+    private AudioSource audioSource;
 
     void Awake()
     {
@@ -53,10 +62,103 @@ public class ReticleMove : MonoBehaviour
         RockOnCnt[2].transform.position = new Vector3(thisPos.x, thisPos.y - offsetY, thisPos.z);
         RockOnCnt[1].transform.position = new Vector3(thisPos.x + 12.5f, thisPos.y - offsetY, thisPos.z);
         RockOnCnt[0].transform.position = new Vector3(thisPos.x + 25.0f, thisPos.y - offsetY, thisPos.z);
+
+        // SE
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
+    {
+        // 移動
+        Move();
+
+
+        // ロックオンしたターゲットタグが付いたオブジェクトをカウント
+        GameObject[] tagObj = GameObject.FindGameObjectsWithTag("Target");
+
+        // 一番近い敵のオブジェクトを取得
+        enemy = serchTag(this.gameObject, "Enemy");
+
+        if (enemy != null)
+        {
+            if(enemy.GetComponent<RockOnMarker>() != null)
+            {
+                // ロックオンのマークが出現している場合
+                if (enemy.GetComponent<RockOnMarker>().GetRockOnFlg() == true)
+                {
+                    // ロックオンのマークが隠れていない場合
+                    if (enemy.GetComponent<RockOnMarker>().GetHideFlg() == false)
+                    {
+                        // ワールド座標をスクリーン座標に変換
+                        enemy2D = RectTransformUtility.WorldToScreenPoint(Camera.main, enemy.transform.position);
+
+                        // 三平方の定理
+                        float a;                     // 辺X
+                        float b;                     // 辺Y
+                        float c;                     // a - b間の距離
+                        float TargetRadius = enemy.GetComponent<RockOnMarker>().TargetRadius;
+
+                        a = enemy2D.x - transform.position.x;
+                        b = enemy2D.y - transform.position.y;
+                        a = a * a;                   // aの累乗
+                        b = b * b;                   // bの累乗
+                        c = a + b;                   // a + b の距離
+                        c = (float)Math.Sqrt(c);     // 平方根
+                        float ReticleRadius = 10.0f; // 照準の半径
+                        float r = ReticleRadius + TargetRadius;
+
+                        // 敵に近づいたら照準を引き寄せる
+                        if (c <= enemy.GetComponent<RockOnMarker>().AttractDistance)
+                        {
+                            // タグを持っていたら    ロックオンした後のオブジェクトに寄らないように
+                            if (this.tag == "Enemy")
+                            {
+                                transform.position = Vector2.MoveTowards(transform.position, enemy2D, enemy.GetComponent<RockOnMarker>().AttractPower);
+                            }
+
+                            // 当たり判定
+                            if (c <= r)
+                            {
+                                // ロックオンできる数以下だったら
+                                if (tagObj.Length < MaxRockOn)
+                                {
+                                    //// 回転
+                                    //Transform transform = target.transform;
+                                    //Vector3 angle = transform.localEulerAngles;
+                                    //angle.z = 45.0f;
+                                    //transform.localEulerAngles = angle;
+                                    //// 色を赤に変更
+                                    //Color color = target.GetComponent<Image>().color = Color.red; ;
+
+                                    enemy.GetComponent<RockOnMarker>().RockOnAnime();
+                                    enemy.gameObject.tag = "Target";
+                                    audioSource.PlayOneShot(RockOnSE);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // 下の・の処理
+        // ロックオンした数によって色を変える
+        if (tagObj.Length > 0)
+        {
+            for (int i = 0; i < tagObj.Length; i++)
+            {
+                Color color = RockOnCnt[i].GetComponent<Image>().color = Color.gray;
+            }
+        }
+        // ロックオン解除されたら色を戻す
+        for (int i = tagObj.Length; i < 5; i++)
+        {
+            Color color = RockOnCnt[i].GetComponent<Image>().color = Color.white;
+        }
+    }
+
+    private void Move()
     {
         // 入力
         Vector3 move = InputActions.Player.Reticle.ReadValue<Vector2>();
@@ -74,22 +176,37 @@ public class ReticleMove : MonoBehaviour
 
             pos = nextPosition;
         }
+    }
 
-        // ロックオンしたターゲットタグが付いたオブジェクトをカウント
-        GameObject[] tagObj = GameObject.FindGameObjectsWithTag("Target");
 
-        // ロックオンした数によって色を変える
-        if (tagObj.Length > 0)
+
+    private GameObject serchTag(GameObject nowObj, string tagName)
+    {
+        float tmpDis = 0;           //距離用一時変数
+        float nearDis = 0;          //最も近いオブジェクトの距離
+        //string nearObjName = "";    //オブジェクト名称
+        GameObject targetObj = null; //オブジェクト
+
+        //タグ指定されたオブジェクトを配列で取得する
+        foreach (GameObject obs in GameObject.FindGameObjectsWithTag(tagName))
         {
-            for (int i = 0; i < tagObj.Length; i++)
+            Vector3 enemypos = RectTransformUtility.WorldToScreenPoint(Camera.main, obs.transform.position);
+
+            //自身と取得したオブジェクトの距離を取得
+            tmpDis = Vector3.Distance(enemypos, nowObj.transform.position);
+
+            //オブジェクトの距離が近いか、距離0であればオブジェクト名を取得
+            //一時変数に距離を格納
+            if (nearDis == 0 || nearDis > tmpDis)
             {
-                Color color = RockOnCnt[i].GetComponent<Image>().color = Color.gray;
+                nearDis = tmpDis;
+                //nearObjName = obs.name;
+                targetObj = obs;
             }
+
         }
-        // ロックオン解除されたら色を戻す
-        for (int i = tagObj.Length; i < 5; i++)
-        {
-            Color color = RockOnCnt[i].GetComponent<Image>().color = Color.white;
-        }
+        //最も近かったオブジェクトを返す
+        //return GameObject.Find(nearObjName);
+        return targetObj;
     }
 }
