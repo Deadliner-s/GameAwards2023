@@ -67,7 +67,7 @@ public class MissileBossContena : MonoBehaviour
                     {
                         float j = (i % 3) - 1;
                         float k = (i / 3) - 1;
-                        newObj = Instantiate(otherObject, new Vector3(transform.position.x + j * 0.1f, transform.position.y + k * 0.1f, transform.position.z), new Quaternion(j,k,0,1));
+                        newObj = Instantiate(otherObject, new Vector3(transform.position.x + j * 0.05f, transform.position.y + k * 0.1f, transform.position.z), new Quaternion(i,0,0,1));
                     }
                     Destroy(gameObject, 0);
                 }

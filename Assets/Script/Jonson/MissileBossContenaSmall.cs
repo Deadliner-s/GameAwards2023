@@ -8,6 +8,7 @@ public class MissileBossContenaSmall : MonoBehaviour
     public float Speed = 0.02f;        //ミサイルの速度
     public float MaxSpeed = 0.1f;      //速度制限
     public float Accel = 0.001f;       //加速度
+    public float Spread = 0.02f;       //拡散
     float off;
     bool Miss;
 
@@ -22,8 +23,12 @@ public class MissileBossContenaSmall : MonoBehaviour
     void Start()
     {
         ToPos = GameObject.Find("Player").transform.position; //Player
-        randX = transform.rotation.x;
-        randY = transform.rotation.y;
+        randX = randY = 0;
+        if (transform.rotation.x != 0)
+        {
+            randX = rand.Next(16) - 8;
+            randY = rand.Next(16) - 8;
+        }
         Miss = false;
         off = 0.9f;
     }
@@ -40,8 +45,8 @@ public class MissileBossContenaSmall : MonoBehaviour
         {
             Move = ToPos - transform.position;
             Move = Move.normalized;
-            Move.x += randX * 0.05f;
-            Move.y += randY * 0.05f;
+            Move.x += randX * Spread;
+            Move.y += randY * Spread;
             LateMove = (Move - LateMove) * off + (LateMove);
             Miss = true;
         }
