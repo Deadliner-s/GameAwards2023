@@ -4,59 +4,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class RockOnMarker : MonoBehaviour
 {
-    private GameObject reticle;                 // 照準
     private GameObject target;                  // ロックオした時のマーク
     private GameObject canvas;                  // キャンバス
+    private bool rockonFlg = false;             // ロックオンのマークが付いているか
 
-    private Vector3 reticle2D;                  // 照準のスクリーン座標
-    private Vector3 enemy2D;                    // 敵のスクリーン座標
-
-    private bool rockonFlg = false;             // ロックオンしたかどうか
-    private bool destroyFlg = false;            // 画面外で消えたかどうか
-    // private bool animeFlg = false;              // アニメーション再生用フラグ
-
+    [Header("敵の半径")]
     public float TargetRadius = 1.0f;           // 敵の半径
-    public bool FrameOutDestroy = false;        // 画面外で消すか
-    public int MaxRockOn = 5;                   // ロックオンできる最大数
+
+    [Header("照準関係")]
+    [Tooltip("引き寄せられ始める距離")]
     public float AttractDistance = 50.0f;       // 引き寄せられ始める距離
+    [Tooltip("引き寄せられる力")]
     public float AttractPower = 10.0f;          // 引き寄せられる力
 
-    private UnityEvent OnDestroyed = new UnityEvent();
+    [Header("画面外でRockOnを消す")]
+    public bool FrameOutDestroy = false;        // 画面外で消すか
 
-    Animator anime;     // アニメーション制御
+    private Animator anime;     // アニメーション制御
 
-    public AudioClip RockOnSE;
-    private AudioSource audioSource;
-    private bool RockOnSEflg = false;
+    [Header("弱点が隠れたら")]
+    public bool WeakPointTop = false;
+    public bool WeakPointBottom = false;
 
     private bool hideFlg = false;
-    private string startTag = null;
 
-
-    // RockOnAnimeで関数を使うため
-    //public static RockOnMarker instance;
+    private UnityEvent OnDestroyed = new UnityEvent();
 
     // Start is called before the first frame update
     void Start()
     {
-        //if (instance == null)
-        //{
-        //    instance = this;
-        //}
-
-        reticle = GameObject.Find("Reticle");   // 照準のオブジェクト指定
         canvas = GameObject.Find("Canvas");     // キャンバスを指定
         target = null;
 
-        audioSource = GetComponent<AudioSource>();
-        RockOnSEflg = false;
-
         hideFlg = false;
-        startTag = this.tag;
     }
 
     // Update is called once per frame
@@ -66,7 +49,7 @@ public class RockOnMarker : MonoBehaviour
         if (rockonFlg == false)
         {
             // 弱点でない場合
-            if (this.tag != "WeakPointTop" && this.tag != "WeakPointBottom")
+            if (WeakPointTop == false && WeakPointBottom == false)
             {
                 // ロックオンマークを生成
                 target = (GameObject)Resources.Load("TargetMaker");
@@ -76,8 +59,8 @@ public class RockOnMarker : MonoBehaviour
                 rockonFlg = true;
             }
 
-            // 弱点の場合
-            else if (this.tag == "WeakPointTop")
+            // 弱点の場合 Top
+            else if (WeakPointTop == true && WeakPointBottom == false)
             {
                 if (this.transform.position.z < 1.5f)
                 {
@@ -87,10 +70,10 @@ public class RockOnMarker : MonoBehaviour
                     // Canvasの子オブジェクトとして生成
                     target.transform.SetParent(canvas.transform, false);
                     rockonFlg = true;
-                    Debug.Log("1");
                 }
             }
-            else if (this.tag == "WeakPointBottom")
+            // 弱点の場合 Bottom
+            else if (WeakPointTop == false && WeakPointBottom == true)
             {
                 if (this.transform.position.z < 0.13f)
                 {
@@ -104,122 +87,63 @@ public class RockOnMarker : MonoBehaviour
 
             }
         }
-        // 照準がactiveだったら
-        if (reticle != null)
+
+        if (target != null)
         {
-            // ワールド座標をスクリーン座標に変換
-            reticle2D = reticle.transform.position; // UIなので元々スクリーン座標
-            enemy2D = RectTransformUtility.WorldToScreenPoint(Camera.main, transform.position);
-
-            // 三平方の定理
-            float a;                     // 辺X
-            float b;                     // 辺Y
-            float c;                     // a - b間の距離
-                                         // XとYの距離
-            a = enemy2D.x - reticle2D.x;
-            b = enemy2D.y - reticle2D.y;
-            a = a * a;                   // aの累乗
-            b = b * b;                   // bの累乗
-            c = a + b;                   // a + b の距離
-            c = (float)Math.Sqrt(c);     // 平方根
-            float ReticleRadius = 10.0f; // 照準の半径
-            float r = ReticleRadius + TargetRadius;
-
-            // 敵に近づいたら照準を引き寄せる
-            if (c <= AttractDistance)
+            // 敵に追従させる
+            if (rockonFlg == true)
             {
-                // タグを持っていたら    ロックオンした後のオブジェクトに寄らないように
-                if (this.tag == "Enemy")
-                {
-                    //reticle.transform.position = Vector2.MoveTowards(reticle.transform.position, transform.position, AttractPower);
-                }
-                reticle.transform.position = Vector2.MoveTowards(reticle.transform.position, transform.position, AttractPower);
-
-
-                // 当たり判定
-                if (c <= r && rockonFlg == true)
-                {
-                    // Targetタグを持つオブジェクトをカウント
-                    GameObject[] tagObjects;
-                    tagObjects = GameObject.FindGameObjectsWithTag("Target");
-                    // ロックオンできる数以下だったら
-                    if (tagObjects.Length < MaxRockOn && destroyFlg == false)
-                    {
-                        //// 回転
-                        //Transform transform = target.transform;
-                        //Vector3 angle = transform.localEulerAngles;
-                        //angle.z = 45.0f;
-                        //transform.localEulerAngles = angle;
-                        //// 色を赤に変更
-                        //Color color = target.GetComponent<Image>().color = Color.red; ;
-
-                        anime = target.GetComponent<Animator>();
-                        anime.SetBool("isMove", true);        // AnimatorにあるisRockOnをTrueに
-
-                        //animeFlg = true;
-
-                        // 当たったらタグをTargetに変える
-                        this.tag = ("Target");
-
-                        if (RockOnSEflg != true)
-                        {
-                            audioSource.PlayOneShot(RockOnSE);
-                            RockOnSEflg = true;
-                        }
-                    }
-                }
+                // ワールド座標をスクリーン座標に変換
+                target.transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, transform.position);
             }
         }
 
-        // 敵に追従させる
-        if (rockonFlg == true && destroyFlg != true)
-        {
-            // ワールド座標をスクリーン座標に変換
-            target.transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, transform.position);
-        }
-
-
-        // 弱点が後ろに行ったらロックオンを消す
-        if (startTag == "WeakPointTop")
+        // 弱点が後ろに行ったらロックオンを消す Top
+        if (WeakPointTop == true && WeakPointBottom == false)
         {
             if (this.transform.position.z > 2.5f && hideFlg == false && rockonFlg == true)
             {
-                OnDestroy();
+                if (target != null)
+                {
+                    Destroy(target);
+                }
                 hideFlg = true;
-                this.tag = ("WeakPointTop");
+                this.tag = "Enemy";
             }
             if (this.transform.position.z < 1.5f && hideFlg == true)
             {
                 hideFlg = false;
                 rockonFlg = false;
-                destroyFlg = false;
             }
         }
-        if (startTag == "WeakPointBottom")
+
+        // 弱点が後ろに行ったらロックオンを消す Bottom
+        if (WeakPointTop == false && WeakPointBottom == true)
         {
             if (this.transform.position.z > 0.3f && hideFlg == false && rockonFlg == true)
             {
-                OnDestroy();
+                if (target != null)
+                {
+                    Destroy(target);
+                }
                 hideFlg = true;
-                this.tag = ("WeakPointBottom");
+                this.tag = "Enemy";
             }
             if (this.transform.position.z < 0.25f && hideFlg == true)
             {
                 hideFlg = false;
                 rockonFlg = false;
-                destroyFlg = false;
             }
         }
-
     }
-
-
 
     // ロックオンされたオブジェクトが消滅した場合マークも消す
     private void OnDestroy()
     {
-        Destroy(target);
-        destroyFlg = true;
+        if (target != null)
+        {
+            Destroy(target);
+        }
     }
 
     // 画面外に行ったら消える
@@ -228,28 +152,52 @@ public class RockOnMarker : MonoBehaviour
         // チェックボックスがtrue
         if (FrameOutDestroy == true)
         {
-            Destroy(target);
-            destroyFlg = true;
-        }
-    }
-
-    // ロックオンしたらアニメーション開始
-    //public bool RockOnAnime()
-    //{
-    //    return animeFlg;
-    //}
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "PlayerBullet")
-        {
-            if (startTag == "WeakPointTop" || startTag == "WeakPointBottom")
+            if (target != null)
             {
                 Destroy(target);
-                rockonFlg = false;
-                this.tag = startTag;
             }
         }
-
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        // 弱点の場合 2回当たったら消すため、一度消してから生成する
+        if (collision.gameObject.tag == "PlayerBullet")
+        {
+            if (WeakPointTop == false && WeakPointBottom == false)
+            {
+                if (target != null)
+                {
+                    Destroy(target);
+                }
+            }
+            if (WeakPointTop == true || WeakPointBottom == true)
+            {
+                if (target != null)
+                {
+                    Destroy(target);
+                }
+                rockonFlg = false;
+                this.tag = "Enemy";
+            }
+        }
+    }
+
+    public void RockOnAnime()
+    {
+        if (target != null)
+        {
+            anime = target.GetComponent<Animator>();
+            anime.SetBool("isMove", true);
+        }
+    }
+
+    public bool GetRockOnFlg()
+    {
+        return rockonFlg;
+    }
+    public bool GetHideFlg()
+    {
+        return hideFlg;
+    }
 }

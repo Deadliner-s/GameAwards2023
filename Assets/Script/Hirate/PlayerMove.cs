@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static PhaseManager;
+using Effekseer;
 
 public class PlayerMove: MonoBehaviour
 {
@@ -56,9 +58,12 @@ public class PlayerMove: MonoBehaviour
     public AudioClip ManeverSE;
     private AudioSource audioSource;
     private bool MoveSeFlg = false;
+    [Header("エフェクト")]
+    public EffekseerEffectAsset effect;     // 再生するエフェクト
 
     // 現在フェイズ
     private PhaseManager.Phase currentPhase;
+    private PhaseManager.Phase nextPhase;
 
     void Awake()
     {
@@ -84,6 +89,11 @@ public class PlayerMove: MonoBehaviour
         // SE
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = MoveSE;
+
+        // エフェクトを取得する。
+        effect = Resources.Load<EffekseerEffectAsset>(effect.name);
+
+        nextPhase = currentPhase;
     }
 
     // Update is called once per frame
@@ -192,6 +202,30 @@ public class PlayerMove: MonoBehaviour
         {
             audioSource.Stop();
             MoveSeFlg = false;
+        }
+
+        // フェイズが変わった場合
+        if (nextPhase != currentPhase)
+        {
+            nextPhase = currentPhase;
+
+            if (currentPhase == Phase.Normal_Phase)
+            {
+                
+            }
+
+            if (currentPhase == Phase.Speed_Phase)
+            {
+                // transformの位置でエフェクトを再生する
+                EffekseerHandle handle = EffekseerSystem.PlayEffect(effect, transform.position);
+                // transformの回転を設定する。
+                handle.SetRotation(transform.rotation);
+            }
+
+            if (currentPhase == Phase.Attack_Phase)
+            {
+                
+            }
         }
     }
 
