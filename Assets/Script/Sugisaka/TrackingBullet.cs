@@ -168,7 +168,7 @@ public class TrackingBullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {       
         // É^ÉOñºÇ∆à·Ç¡ÇΩÇÁ
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag != "Enemy")
         {
             DestroyMissile();
         }
