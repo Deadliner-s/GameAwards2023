@@ -859,6 +859,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2653373171205573415, guid: 21fcd5f1e0c415f46bd73691b9282a0a, type: 3}
   m_PrefabInstance: {fileID: 593626620}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &266351835 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8185960629787243396, guid: 99e6e6f3f3eb01248aa21e7856d891d5, type: 3}
+  m_PrefabInstance: {fileID: 1809212665}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &313698568
 GameObject:
   m_ObjectHideFlags: 0
@@ -2885,6 +2890,22 @@ PrefabInstance:
       propertyPath: targetTfm
       value: 
       objectReference: {fileID: 1359347808}
+    - target: {fileID: 4468775414776399447, guid: 99e6e6f3f3eb01248aa21e7856d891d5, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468775414776399447, guid: 99e6e6f3f3eb01248aa21e7856d891d5, type: 3}
+      propertyPath: m_Color.b
+      value: 0.33390886
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468775414776399447, guid: 99e6e6f3f3eb01248aa21e7856d891d5, type: 3}
+      propertyPath: m_Color.g
+      value: 0.33390886
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468775414776399447, guid: 99e6e6f3f3eb01248aa21e7856d891d5, type: 3}
+      propertyPath: m_Color.r
+      value: 0.3490566
+      objectReference: {fileID: 0}
     - target: {fileID: 5466462949239986183, guid: 99e6e6f3f3eb01248aa21e7856d891d5, type: 3}
       propertyPath: targetTfm
       value: 
@@ -3004,6 +3025,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ad1012d527990a4589dea2a2e02c336, type: 3}
+--- !u!1 &1987283940 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4578128886805658051, guid: 99e6e6f3f3eb01248aa21e7856d891d5, type: 3}
+  m_PrefabInstance: {fileID: 1809212665}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2013209042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3699,7 +3725,7 @@ PrefabInstance:
     - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: GaugeObj
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 266351835}
     - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: PlayerHP
       value: 100
@@ -3711,7 +3737,7 @@ PrefabInstance:
     - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: DamageObj
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1987283940}
     - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: HealAmount
       value: 0.01
