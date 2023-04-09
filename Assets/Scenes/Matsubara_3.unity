@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: c0dad4f095027544c938052ae1b47626, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: e4b09510884cd904ba09e75ef13d0171, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.38669643, g: 0.4804055, b: 0.73194695, a: 1}
+  m_IndirectSpecularColor: {r: 0.12076034, g: 0.1864365, b: 0.33524993, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -574,7 +574,7 @@ MonoBehaviour:
   Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
   DestroyTime: 30
   Key: m
-  SpawnPos: {fileID: 860822590}
+  SpawnPos: {fileID: 0}
   StartTime_1: 0
   Timer_1: 0
   Interval_1: 2
@@ -630,7 +630,7 @@ MonoBehaviour:
   Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
   DestroyTime: 30
   Key: n
-  SpawnPos: {fileID: 665596463}
+  SpawnPos: {fileID: 0}
   StartTime_1: 0
   Timer_1: 0
   Interval_1: 2
@@ -686,7 +686,7 @@ MonoBehaviour:
   Missile: {fileID: 5540224078154131618, guid: 05a76db5fa499f548b8994bdfdbb97b9, type: 3}
   DestroyTime: 10
   Key: i
-  SpawnPos: {fileID: 1727636782}
+  SpawnPos: {fileID: 0}
   StartTime_1: 0
   Timer_1: 0
   Interval_1: 2
@@ -742,7 +742,7 @@ MonoBehaviour:
   Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
   DestroyTime: 30
   Key: j
-  SpawnPos: {fileID: 1727636782}
+  SpawnPos: {fileID: 0}
   StartTime_1: 0
   Timer_1: 0
   Interval_1: 2
@@ -798,7 +798,7 @@ MonoBehaviour:
   Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
   DestroyTime: 30
   Key: y
-  SpawnPos: {fileID: 615322229}
+  SpawnPos: {fileID: 0}
   StartTime_1: 0
   Timer_1: 0
   Interval_1: 2
@@ -854,7 +854,7 @@ MonoBehaviour:
   Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
   DestroyTime: 30
   Key: u
-  SpawnPos: {fileID: 1875399730}
+  SpawnPos: {fileID: 0}
   StartTime_1: 0
   Timer_1: 0
   Interval_1: 2
@@ -899,11 +899,6 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2653373171205573415, guid: 21fcd5f1e0c415f46bd73691b9282a0a, type: 3}
   m_PrefabInstance: {fileID: 593626620}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &350274737 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2586377003224902554, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
-  m_PrefabInstance: {fileID: 1180267642833530434}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &352125639
 PrefabInstance:
@@ -1253,11 +1248,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21fcd5f1e0c415f46bd73691b9282a0a, type: 3}
---- !u!1 &615322229 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1180267642640632006, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
-  m_PrefabInstance: {fileID: 1180267642833530434}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &630307862
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,16 +1292,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &665596463 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1180267641147467986, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
-  m_PrefabInstance: {fileID: 1180267642833530434}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &822541111 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7775764717261005051, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
-  m_PrefabInstance: {fileID: 1180267642833530434}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &846316277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1534,16 +1514,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &860822590 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1180267642777113745, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
-  m_PrefabInstance: {fileID: 1180267642833530434}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &948656449 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 282245955279183974, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
-  m_PrefabInstance: {fileID: 1180267642833530434}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1177668134
 GameObject:
   m_ObjectHideFlags: 0
@@ -1918,13 +1888,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23a85737b2ade54b912183fdbafeb97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.01
-  AtkSpeed: 0.005
+  Normal_VerticalSpeed: 0.01
+  Normal_HorizontalSpeed: 0.01
+  Spd_VerticalSpeed: 0.005
+  Spd_HorizontalSpeed: 0.01
+  Atk_VerticalSpeed: 0.01
+  Atk_HorizontalSpeed: 0.01
   ManerverTime: 0.5
   coolTime: 1
-  ManeverSpeed: 0.03
+  Manever_VerticalSpeed: 0.03
+  Manever_HorizontalSpeed: 0.03
   MoveSE: {fileID: 0}
   ManeverSE: {fileID: 8300000, guid: c2d9e197d242afe4cabb7b6285ad3e61, type: 3}
+  effect: {fileID: 0}
 --- !u!114 &1359347825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2006,6 +1982,7 @@ MonoBehaviour:
   SpeedTime: 10
   AttackTime: 10
   currentPhase: 0
+  Reticle: {fileID: 0}
   Debug_FixPhaseFlg: 0
 --- !u!1 &1414156512 stripped
 GameObject:
@@ -2041,6 +2018,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GaugeObj: {fileID: 1519824394}
   BossHP: 1000
+  HardDamage: 0
+  MAXHitCount: 0
+  HardDamageFlame: 0
 --- !u!82 &1414156517
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2146,11 +2126,6 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3462525249532592161, guid: 9afcffff6525f2d4db51dc90cb3c6660, type: 3}
   m_PrefabInstance: {fileID: 846316277}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1525888829 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4592748699010604616, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
-  m_PrefabInstance: {fileID: 1180267642833530434}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1536081983
 GameObject:
@@ -2303,11 +2278,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab8ee1ae2d46e274f8959b18cc5bb87b, type: 3}
---- !u!1 &1727636782 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1180267642688613135, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
-  m_PrefabInstance: {fileID: 1180267642833530434}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1797140990 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4727187808855345490, guid: 3e2ce6294e805d240835963003cef589, type: 3}
@@ -2414,11 +2384,6 @@ PrefabInstance:
       objectReference: {fileID: 2037204904}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ad1012d527990a4589dea2a2e02c336, type: 3}
---- !u!1 &1875399730 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1180267642077531079, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
-  m_PrefabInstance: {fileID: 1180267642833530434}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2037204904
 GameObject:
   m_ObjectHideFlags: 0
@@ -2851,19 +2816,19 @@ PrefabInstance:
     - target: {fileID: 1180267641508261406, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: Shotpos2
       value: 
-      objectReference: {fileID: 948656449}
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261406, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: Shotpos3
       value: 
-      objectReference: {fileID: 350274737}
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261406, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: Shotpos4
       value: 
-      objectReference: {fileID: 1525888829}
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261406, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: Shotpos5
       value: 
-      objectReference: {fileID: 822541111}
+      objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261406, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: ReloadTime
       value: 2
