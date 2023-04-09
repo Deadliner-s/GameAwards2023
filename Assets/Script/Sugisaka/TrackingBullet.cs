@@ -14,7 +14,7 @@ public class TrackingBullet : MonoBehaviour
 
     [Header("ため")]
     [Tooltip("ための時間(フレーム)")]
-    public int stopTime;
+    public float stopTime;
 
     [Header("誘導移動")]
     [Tooltip("誘導速度")]
@@ -37,7 +37,7 @@ public class TrackingBullet : MonoBehaviour
     private Vector3 sponePoint;
 
     // ため時間用カウント
-    private int stopCnt;
+    private float stopCnt;
 
     // 移動関係
     private Vector3 Move;
@@ -90,6 +90,12 @@ public class TrackingBullet : MonoBehaviour
             case (0):
                 // 上昇移動
 
+                // 時間確認
+                if (stopTime <= stopCnt)
+                {
+                    State = 2;
+                }
+
                 // 高さ確認
                 if (sponePoint.y + maxHeight <= transform.position.y)
                 {
@@ -104,6 +110,8 @@ public class TrackingBullet : MonoBehaviour
 
                 transform.position += LateMove;
 
+                stopCnt += Time.deltaTime;
+
                 break;
 
             case (1):
@@ -113,7 +121,7 @@ public class TrackingBullet : MonoBehaviour
                     State = 2;
                 }
 
-                stopCnt++;
+                stopCnt += Time.deltaTime;
 
                 Move = (target.transform.position - transform.position);
                 Move = Move.normalized;
@@ -130,7 +138,7 @@ public class TrackingBullet : MonoBehaviour
                 if (Ccollider.enabled != true)
                 {
                     stopCnt++;
-                    if (stopTime + 2 <= stopCnt)
+                    if (stopTime + 3 <= stopCnt)
                     {
                         Ccollider.enabled = true;
                     }

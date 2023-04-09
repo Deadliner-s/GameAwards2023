@@ -168,6 +168,8 @@ public class Shot : MonoBehaviour
                 currenttime = 0.0f;
                 // ŽËŒ‚ƒtƒ‰ƒO‚ð—§‚Ä‚é
                 Shotflg = true;
+                // ‘¦”­ŽË—p
+                intervalTime = 10.0f;
             }
         }
     }
