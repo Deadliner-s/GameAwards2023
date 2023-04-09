@@ -19,6 +19,8 @@ public class MainBossHp : MonoBehaviour
     public int MAXHitCount;
     int HitCount;
 
+    float flame;
+    public float HardDamageFlame;
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +29,25 @@ public class MainBossHp : MonoBehaviour
         HpGauge = GaugeObj.GetComponent<Image>();
         HpGauge.fillAmount = 1;
         HitCount = 0;
+        flame = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // ヒット回数がMaxと同じだったら
+        if (HitCount == MAXHitCount)
+        {
+            // HardDamageFlameになったら
+            if (flame == HardDamageFlame)
+            {
+                BossHP -= HardDamage;
+                HpGauge.fillAmount -= HardDamage / BossMaxHP;
 
+                HitCount = 0;
+            }
+            flame++;
+        }
     }
 
     public void Damage(Collision collision)
@@ -42,20 +57,12 @@ public class MainBossHp : MonoBehaviour
         BossHP -= damage;
         HpGauge.fillAmount -= damage/BossMaxHP;
         HitCount++;
+        flame = 0;
 
-
-        if(BossHP <= 0)
+        if (BossHP <= 0)
         {
             //シーン移動
             SceneManager.LoadScene("GameClear");
-        }
-
-        if(HitCount == MAXHitCount)
-        {
-            BossHP -= HardDamage;
-            HpGauge.fillAmount -= HardDamage / BossMaxHP;
-
-            HitCount = 0;
         }
     }
 }
