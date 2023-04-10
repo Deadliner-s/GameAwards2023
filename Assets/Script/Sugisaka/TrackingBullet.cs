@@ -13,7 +13,7 @@ public class TrackingBullet : MonoBehaviour
     public float maxHeight;
 
     [Header("‚½‚ß")]
-    [Tooltip("‚½‚ß‚ÌŠÔ(ƒtƒŒ[ƒ€)")]
+    [Tooltip("‚½‚ß‚ÌŠÔ(•b)")]
     public float stopTime;
 
     [Header("—U“±ˆÚ“®")]
@@ -138,7 +138,7 @@ public class TrackingBullet : MonoBehaviour
                 if (Ccollider.enabled != true)
                 {
                     stopCnt++;
-                    if (stopTime + 3 <= stopCnt)
+                    if (stopTime + 5 <= stopCnt)
                     {
                         Ccollider.enabled = true;
                     }
