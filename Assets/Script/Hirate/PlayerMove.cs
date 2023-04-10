@@ -219,6 +219,7 @@ public class PlayerMove: MonoBehaviour
                 // transformの位置でエフェクトを再生する
                 EffekseerHandle handle = EffekseerSystem.PlayEffect(effect, transform.position);
                 // transformの回転を設定する。
+                //Quaternion rot = Quaternion.Euler(0.0f, transform.rotation.y, 0.0f);
                 handle.SetRotation(transform.rotation);
             }
 
