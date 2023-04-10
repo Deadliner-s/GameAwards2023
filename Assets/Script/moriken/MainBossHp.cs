@@ -14,11 +14,14 @@ public class MainBossHp : MonoBehaviour
     float BossMaxHP;
     float damage;
 
+    // 大ダメージ数
     public float HardDamage;
 
+    //何回当たったら
     public int MAXHitCount;
     int HitCount;
 
+    // 何フレーム後にダメージ表現
     float flame;
     public float HardDamageFlame;
 
