@@ -15,20 +15,19 @@ public class SkyRotation : MonoBehaviour
     // 背景のマテリアル
     [Header("背景マテリアル設定")]
     [Tooltip("背景のマテリアル")]
-    [SerializeField] Material sky;
+    public Material sky;
 
     // 回転
     private float rotation;      // 現在の回転
     private float rotationSpeed; // 回転速度
-    private float initRotation;  // 回転の初期位置
     private PhaseManager.Phase PhaseFlg; // フェーズフラグ
+    private Material skyInstance; // 生成したスカイボックスを入れる用
 
     // Start is called before the first frame update
     void Start()
     {
-        // 終了時に現在の回転が上書きされるため、最初に取得
-        // 回転の初期位置
-        initRotation = sky.GetFloat("_Rotation");
+        skyInstance = new Material(sky); // 生成したスカイボックスを入れる用
+        RenderSettings.skybox = skyInstance;
 
         // フェーズ取得用
         PhaseFlg = PhaseManager.instance.GetPhase();
@@ -58,18 +57,22 @@ public class SkyRotation : MonoBehaviour
         }
 
         // 背景の回転
-        rotation = Mathf.Repeat(sky.GetFloat("_Rotation") + rotationSpeed, 360f);
+        rotation = Mathf.Repeat(skyInstance.GetFloat("_Rotation") + rotationSpeed, 360f);
         // 処理後の回転を代入
-        sky.SetFloat("_Rotation", rotation);
+        skyInstance.SetFloat("_Rotation", rotation);
 // デバッグ用
 #if _DEBUG
         Debug.Log(rotation);
 #endif // _DEBUG
     }
-    // アプリケーション終了時の処理
-    private void OnApplicationQuit()
+
+    // オブジェクトが破棄された時実行
+    private void OnDestroy()
     {
-        // 現在の回転を初期位置に上書き
-        sky.SetFloat("_Rotation", initRotation);
+        if(skyInstance != null)
+        {
+            Destroy(skyInstance);
+            skyInstance = null;
+        }
     }
 }
