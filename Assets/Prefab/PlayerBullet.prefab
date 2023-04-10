@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upSpeed: 0.005
   inertiaSpeed: -0.0005
-  maxHeight: 0.08
+  maxHeight: 0.1
   stopTime: 0.5
   MoveSpeed: 0.1
   maxFlightTime: 10000
