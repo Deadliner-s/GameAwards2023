@@ -1637,6 +1637,18 @@ PrefabInstance:
       propertyPath: GaugeObj
       value: 
       objectReference: {fileID: 209586893}
+    - target: {fileID: 4129359788849637176, guid: db292f0d9cff220408a7d64b79095d83, type: 3}
+      propertyPath: HardDamage
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129359788849637176, guid: db292f0d9cff220408a7d64b79095d83, type: 3}
+      propertyPath: MAXHitCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129359788849637176, guid: db292f0d9cff220408a7d64b79095d83, type: 3}
+      propertyPath: explosionEffect
+      value: 
+      objectReference: {fileID: 3570405994875558733, guid: ead3ee784696e1647a9c1f8fa3922ee5, type: 3}
     - target: {fileID: 4129359790894719892, guid: db292f0d9cff220408a7d64b79095d83, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -2682,6 +2694,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1359347808}
     m_Modifications:
+    - target: {fileID: 4085020093639412870, guid: 362942d8b06f4034ca6dcaf01d49a6d4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4085020094310763488, guid: 362942d8b06f4034ca6dcaf01d49a6d4, type: 3}
       propertyPath: m_RootOrder
       value: 3

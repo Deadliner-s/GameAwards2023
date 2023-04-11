@@ -14,6 +14,9 @@ public class MainBossHp : MonoBehaviour
     float BossMaxHP;
     float damage;
 
+    // エフェクト
+    public GameObject explosionEffect;
+
     // 大ダメージ数
     public float HardDamage;
 
@@ -39,18 +42,18 @@ public class MainBossHp : MonoBehaviour
     void Update()
     {
         // ヒット回数がMaxと同じだったら
-        if (HitCount == MAXHitCount)
-        {
-            // HardDamageFlameになったら
-            if (flame == HardDamageFlame)
-            {
-                BossHP -= HardDamage;
-                HpGauge.fillAmount -= HardDamage / BossMaxHP;
+        //if (HitCount == MAXHitCount)
+        //{
+        //    // HardDamageFlameになったら
+        //    if (flame == HardDamageFlame)
+        //    {
+        //        BossHP -= HardDamage;
+        //        HpGauge.fillAmount -= HardDamage / BossMaxHP;
 
-                HitCount = 0;
-            }
-            flame++;
-        }
+        //        HitCount = 0;
+        //    }
+        //    flame++;
+        //}
     }
 
     public void Damage(Collision collision)
@@ -67,5 +70,19 @@ public class MainBossHp : MonoBehaviour
             //シーン移動
             SceneManager.LoadScene("GameClear");
         }
+    }
+
+    public void ExplosionSet(Collision collision)
+    {
+        // エフェクト生成
+        GameObject InstantiateEffect 
+            = GameObject.Instantiate(explosionEffect, collision.transform.position, Quaternion.identity);
+
+        // 表示時間
+        //Destroy(InstantiateEffect, 10.0f);
+
+        // hp更新
+        BossHP -= HardDamage;
+        HpGauge.fillAmount -= HardDamage / BossMaxHP;
     }
 }
