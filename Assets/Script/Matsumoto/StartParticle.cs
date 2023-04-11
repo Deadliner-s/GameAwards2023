@@ -37,7 +37,7 @@ public class StartParticle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Target")
         {
             if (newParticle != null)
             {

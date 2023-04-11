@@ -49,13 +49,13 @@ public class PlayerMoveAngle : MonoBehaviour
         inputMove = InputActions.Player.Move.ReadValue<Vector2>();
 
         // ‰ñ“]
-        if (inputMove.y < 0.0f) {
+        if (inputMove.y < 0.5f) {
             angle += angleAdd;
         }
-        if (inputMove.y > 0.0f) {
+        if (inputMove.y > -0.5f) {
             angle -= angleAdd;// * angleCorrection;
         }
-
+        Debug.Log(inputMove);
         // ƒJƒƒ‰‚É‘Î‚µ‚Ä‚¸‚Á‚Æ‰E‚ğŒü‚«‘±‚¯‚é
         Transform cameraTransform = cameraObj.transform;
         Vector3 cameraAngle = cameraTransform.eulerAngles;
