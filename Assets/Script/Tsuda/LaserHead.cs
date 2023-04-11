@@ -7,7 +7,7 @@ public class LaserHead : MonoBehaviour
     public static LaserHead instance;
 
     public float speed = 5f;  // 移動速度
-    public GameObject otherObject;  // 生成するプレハブオブジェクト    
+//    public GameObject otherObject;  // 生成するプレハブオブジェクト    
     public int Split;
     public float LaserTime = 4.0f;
     public float LaserSpeed = 3.0f;
@@ -131,7 +131,7 @@ public class LaserHead : MonoBehaviour
 
         transform.LookAt(targetWorldPosition);  // 目標座標の方向を向く
 
-        newObj = Instantiate(otherObject, targetWorldPosition, transform.rotation);  // 警告UIの生成
+//        newObj = Instantiate(otherObject, targetWorldPosition, transform.rotation);  // 警告UIの生成
 
         timer = 0.0f;  // タイマーを設定する
     }
