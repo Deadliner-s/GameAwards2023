@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8292677618291783760
+--- !u!114 &-6942619031880146583
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -36,7 +36,7 @@ Material:
   stringTagMap:
     RenderType: Opaque
   disabledShaderPasses:
-  - GRABPASS
+  - ALWAYS
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
