@@ -20,7 +20,7 @@ Material:
   stringTagMap:
     RenderType: Opaque
   disabledShaderPasses:
-  - GRABPASS
+  - ALWAYS
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -115,7 +115,7 @@ Material:
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
   m_BuildTextureStacks: []
---- !u!114 &4553292185109866068
+--- !u!114 &1273325026387884027
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
