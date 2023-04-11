@@ -22,6 +22,11 @@ public class Laser_collision : MonoBehaviour
         if(timer >= 2.0f)
         {
             Col.enabled = true;
-        }        
+        }
+        
+        if(timer >= 6.0f)
+        {
+            Col.enabled = false;
+        }
     }
 }
