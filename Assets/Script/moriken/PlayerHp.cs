@@ -34,8 +34,8 @@ public class PlayerHp : MonoBehaviour
     bool BreakShieldFlag;
     public bool BreakFlag { get; private set; }
 
-    [SerializeField] ParticleSystem particle;
-    [SerializeField] Color[] color = new Color[3];
+    // hex_Shieldコンポーネント
+    HexShield hs;
 
     // シーン読込用
 //    private AsyncOperation async;
@@ -58,6 +58,8 @@ public class PlayerHp : MonoBehaviour
 
         Decreaseflame = 30;
 
+        hs = this.gameObject.GetComponent<HexShield>();
+
         // 非同期処理でシーンの遷移実行(現在実行しているシーンのバックグラウンドで次のシーンの読み込みを事前に行う)
 //        async = SceneManager.LoadSceneAsync("GameOver");
         // シーンを読み込み終わってもシーン遷移は行わない状態にする
@@ -67,9 +69,6 @@ public class PlayerHp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var main = particle.main;
-
-
         // 回復開始までの時間管理
         if (UseFlag == true)
         {
@@ -119,19 +118,6 @@ public class PlayerHp : MonoBehaviour
             }
         }
 
-        // シールドの色の変化の処理
-        if (PlayerHP >= 66)
-        {
-            main.startColor = color[0];
-        }
-        else if (PlayerHP >= 33)
-        {
-            main.startColor = color[1];
-        }
-        else
-        {
-            main.startColor = color[2];
-        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -171,6 +157,7 @@ public class PlayerHp : MonoBehaviour
                 UseFlag = true;
                 Invflame = 0;
             }
+            hs.ChangeShieldColor(PlayerHP, PlayerMaxHp);
         }
     }
 }
