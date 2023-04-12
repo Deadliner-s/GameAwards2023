@@ -36,6 +36,9 @@ public class PlayerHp : MonoBehaviour
     [SerializeField] ParticleSystem particle;
     [SerializeField] Color[] color = new Color[3];
 
+    // シーン読込用
+//    private AsyncOperation async;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +55,11 @@ public class PlayerHp : MonoBehaviour
         BreakShieldFlag = false;
 
         Decreaseflame = 30;
+
+        // 非同期処理でシーンの遷移実行(現在実行しているシーンのバックグラウンドで次のシーンの読み込みを事前に行う)
+//        async = SceneManager.LoadSceneAsync("GameOver");
+        // シーンを読み込み終わってもシーン遷移は行わない状態にする
+//        async.allowSceneActivation = false;
     }
 
     // Update is called once per frame
@@ -134,6 +142,7 @@ public class PlayerHp : MonoBehaviour
                 Destroy(this.gameObject);
                 //シーン移動
                 SceneManager.LoadScene("GameOver");
+//                async.allowSceneActivation = true;
             }
 
             HealFlag = false;

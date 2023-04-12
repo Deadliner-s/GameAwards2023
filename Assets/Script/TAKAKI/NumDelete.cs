@@ -9,6 +9,8 @@ public class NumDelete : MonoBehaviour
     int HitCount;
     int MaxHitCount;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,9 @@ public class NumDelete : MonoBehaviour
             HitCount++;
             if(HitCount == MaxHitCount)
             {
+                // エフェクト表示
+                Boss.GetComponent<MainBossHp>().ExplosionSet(collision);
+
                 Destroy(gameObject);
             }
         }
