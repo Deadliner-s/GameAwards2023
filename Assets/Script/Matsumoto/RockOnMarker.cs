@@ -23,15 +23,13 @@ public class RockOnMarker : MonoBehaviour
     [Header("画面外でRockOnを消す")]
     public bool FrameOutDestroy = false;        // 画面外で消すか
 
-    private Animator anime;     // アニメーション制御
-
     [Header("弱点が隠れたら")]
     public bool WeakPointTop = false;
     public bool WeakPointBottom = false;
 
-    private bool hideFlg = false;
+    private Animator anime;     // アニメーション制御
 
-    private UnityEvent OnDestroyed = new UnityEvent();
+    private bool hideFlg = false;
 
     // Start is called before the first frame update
     void Start()

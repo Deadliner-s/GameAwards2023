@@ -4,6 +4,10 @@ using UnityEngine.UI;
 
 public class ReticleMove : MonoBehaviour
 {
+    [Header("プレイヤーから見た照準の初期位置")]
+    public float initPosX = 0.0f;
+    public float initPosY = 50.0f;
+
     [Header("移動速度")]
     public float speed = 5.0f;      // 移動スピード
     [Header("ロックオンできる最大数")]
@@ -15,7 +19,7 @@ public class ReticleMove : MonoBehaviour
     private Vector3 nextPosition;   // 移動後の位置
     private float viewX;            // ビューポート座標のxの値
     private float viewY;            // ビューポート座標のyの値
-    private GameObject player;     // プレイヤー
+    private GameObject player;      // プレイヤー
 
 
     private GameObject[] RockOnCnt = new GameObject[5];     // ロックオンできる数オブジェクト
@@ -42,6 +46,8 @@ public class ReticleMove : MonoBehaviour
         // 初期位置
         player = GameObject.Find("Player");
         Vector3 playerPos = RectTransformUtility.WorldToScreenPoint(Camera.main, player.transform.position);
+        playerPos.x = playerPos.x + initPosX;
+        playerPos.y = playerPos.y + initPosY;
         transform.position = playerPos;
 
         // 初期化
@@ -112,7 +118,7 @@ public class ReticleMove : MonoBehaviour
                         if (c <= enemy.GetComponent<RockOnMarker>().AttractDistance)
                         {
                             // タグを持っていたら    ロックオンした後のオブジェクトに寄らないように
-                            if (this.tag == "Enemy")
+                            if (enemy.tag == "Enemy")
                             {
                                 transform.position = Vector2.MoveTowards(transform.position, enemy2D, enemy.GetComponent<RockOnMarker>().AttractPower);
                             }

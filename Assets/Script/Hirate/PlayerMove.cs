@@ -60,6 +60,7 @@ public class PlayerMove: MonoBehaviour
     private bool MoveSeFlg = false;
     [Header("エフェクト")]
     public EffekseerEffectAsset effect;     // 再生するエフェクト
+    private EffekseerHandle handle;
 
     // 現在フェイズ
     private PhaseManager.Phase currentPhase;
@@ -208,27 +209,35 @@ public class PlayerMove: MonoBehaviour
         if (nextPhase != currentPhase)
         {
             nextPhase = currentPhase;
-
+            // 通常フェイズ
             if (currentPhase == Phase.Normal_Phase)
             {
                 
             }
-
+            // ハイスピードフェイズ
             if (currentPhase == Phase.Speed_Phase)
             {
                 // transformの位置でエフェクトを再生する
-                EffekseerHandle handle = EffekseerSystem.PlayEffect(effect, transform.position);
+                handle = EffekseerSystem.PlayEffect(effect, transform.position);
                 // transformの回転を設定する。
-                //Quaternion rot = Quaternion.Euler(0.0f, transform.rotation.y, 0.0f);
-                handle.SetRotation(transform.rotation);
+                // プレイヤーの傾きに影響されない
+                Vector3 eulerAngles = this.transform.eulerAngles;
+                Vector3 rot = new Vector3(0.0f, eulerAngles.y, eulerAngles.z);
+                Quaternion quaternion = Quaternion.Euler(rot);
+                handle.SetLocation(transform.position);
+                handle.SetRotation(quaternion);
             }
-
+            // アタックフェイズ
             if (currentPhase == Phase.Attack_Phase)
             {
                 
             }
         }
+        // エフェクトをプレイヤーに追従させる
+        handle.SetLocation(transform.position);
     }
+
+
 
     private void OnManever()
     {
