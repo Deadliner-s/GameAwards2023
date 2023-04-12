@@ -32,6 +32,7 @@ public class PlayerHp : MonoBehaviour
     bool UseFlag;
     bool HealFlag;
     bool BreakShieldFlag;
+    public bool BreakFlag { get; private set; }
 
     [SerializeField] ParticleSystem particle;
     [SerializeField] Color[] color = new Color[3];
@@ -53,6 +54,7 @@ public class PlayerHp : MonoBehaviour
         UseFlag = false;
         HealFlag = false;
         BreakShieldFlag = false;
+        BreakFlag = false;
 
         Decreaseflame = 30;
 
@@ -139,10 +141,13 @@ public class PlayerHp : MonoBehaviour
         {
             if (BreakShieldFlag)
             {
+                // 完全に撃墜された判定にする
+                //BreakFlag = true;
+
                 Destroy(this.gameObject);
                 //シーン移動
                 SceneManager.LoadScene("GameOver");
-//                async.allowSceneActivation = true;
+                //async.allowSceneActivation = true;
             }
 
             HealFlag = false;
