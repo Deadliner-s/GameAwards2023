@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Shot : MonoBehaviour
 {
@@ -83,7 +82,8 @@ public class Shot : MonoBehaviour
                     GameObject missile = Instantiate(MissilePrefab, PlayerPos, Quaternion.identity);
 
                     // ミサイルのターゲットを設定する
-                    missile.GetComponent<TrackingBullet>().SetTarget(targets[0]);
+                    //missile.GetComponent<TrackingBullet>().SetTarget(targets[0]);
+                    missile.GetComponent<TrackingMissile_2>().SetTarget(targets[0]);
 
                     // ターゲットリスト更新
                     targets.RemoveAt(0);
