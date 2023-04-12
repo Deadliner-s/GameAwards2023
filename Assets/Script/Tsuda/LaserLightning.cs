@@ -4,36 +4,29 @@ using UnityEngine;
 
 public class LaserLightning : MonoBehaviour
 {
-//    public GameObject prefabObject;
     public LineRenderer lineRenderer;
-    private float time = 0.0f;
+
+    private PhaseManager.Phase currentPhase;    
 
     // Start is called before the first frame update
     void Start()
     {
+        currentPhase = PhaseManager.instance.GetPhase();
         lineRenderer.enabled = false;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        time += Time.deltaTime;
+        currentPhase = PhaseManager.instance.GetPhase();
 
-        if(time >= 2.0f)
+        if(currentPhase == PhaseManager.Phase.Speed_Phase)
         {
             lineRenderer.enabled = true;
         }
-
-        /*
-        // 指定されたプレハブオブジェクトが存在する場合にのみ LineRenderer を有効化する
-        if (prefabObject != null)
-        {
-            lineRenderer.enabled = true;
-        }
-        else
+        if (currentPhase != PhaseManager.Phase.Speed_Phase)
         {
             lineRenderer.enabled = false;
         }
-        */
     }
 }
