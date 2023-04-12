@@ -12,7 +12,7 @@ public class Title : MonoBehaviour
     void Start()
     {
         // 非同期処理でシーンの遷移実行(現在実行しているシーンのバックグラウンドで次のシーンの読み込みを事前に行う)
-       async = SceneManager.LoadSceneAsync("merge_2");
+       async = SceneManager.LoadSceneAsync("Stage1");
 
         // シーンを読み込み終わってもシーン遷移は行わない状態にする
        async.allowSceneActivation = false;

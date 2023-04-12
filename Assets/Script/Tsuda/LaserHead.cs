@@ -96,12 +96,12 @@ public class LaserHead : MonoBehaviour
                     break;
             }                           
         }
-
+        /*
         if (timer >= 2.0f + LaserTime)
         {
             transform.position += transform.forward * speed * Time.deltaTime;  // 目標座標の方向に移動する
         }
-
+        */
         if (timer >= lifetime)
         {
             Destroy(gameObject);  // オブジェクトを削除する
