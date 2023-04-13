@@ -71,6 +71,8 @@ public class ShotDown : MonoBehaviour
 
                 // プレイヤーの削除
                 Destroy(this.gameObject);
+
+                return;
             }
 
             // プレイヤーの座標を代入
