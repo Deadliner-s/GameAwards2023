@@ -15,7 +15,7 @@ public class NumDelete : MonoBehaviour
     void Start()
     {
         HitCount = 0;
-        Boss = GameObject.Find("BOSS_base");
+        Boss = GameObject.Find("boss_model");
         MaxHitCount = Boss.GetComponent<MainBossHp>().MAXHitCount;
     }
 
