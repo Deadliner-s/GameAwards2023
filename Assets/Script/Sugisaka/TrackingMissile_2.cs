@@ -4,60 +4,53 @@ using UnityEngine;
 
 public sealed class TrackingMissile_2 : MonoBehaviour
 {
-
+    [Tooltip("追跡対象")]
     [SerializeField]
     Transform target;
+
+    [Tooltip("何秒で対象に当てるか")]
     [SerializeField, Min(0)]
     float time = 1;
+
+    [Tooltip("生存時間(秒)")]
     [SerializeField]
-    float lifeTime = 2;         // 生存時間(秒)
+    float lifeTime = 2;
+
+    [Tooltip("速度上限付けるか")]
     [SerializeField]
     bool limitAcceleration = false;
+
+    [Tooltip("速度上限")]
     [SerializeField, Min(0)]
     float maxAcceleration = 100;
-    [SerializeField]
-    Vector3 minInitVelocity;
+
+    [Tooltip("発射方向")]
     [SerializeField]
     Vector3 maxInitVelocity;
 
+    // 追跡のために必要な変数
     Vector3 position;
     Vector3 velocity;
     Vector3 acceleration;
     Transform thisTransform;
 
-    //public Transform Target
-    //{
-    //    set
-    //    {
-    //        target = value;
-    //    }
-    //    get
-    //    {
-    //        return target;
-    //    }
-    //}
-
     public void SetTarget(GameObject targetObj)
     {
+        // ターゲット取得
         target = targetObj.transform;
     }
 
     void Start()
     {
-
+        // 初期位置設定
         thisTransform = transform;
         position = thisTransform.position;
 
         // 発射方向
-        //velocity = new Vector3(
-        //    Random.Range(minInitVelocity.x, maxInitVelocity.x),
-        //    Random.Range(minInitVelocity.y, maxInitVelocity.y),
-        //    Random.Range(minInitVelocity.z, maxInitVelocity.z)
-        //    );
         velocity = new Vector3(
-            0.0f,
+            maxInitVelocity.x,
             maxInitVelocity.y,
-            0.0f
+            maxInitVelocity.z
             );
 
         // 生存時間管理
@@ -81,7 +74,7 @@ public sealed class TrackingMissile_2 : MonoBehaviour
             acceleration = acceleration.normalized * maxAcceleration;
         }
 
-        // 命中時刻チェック
+        // 命中時刻更新
         time -= Time.deltaTime;
 
         if (time < 0f)
@@ -94,7 +87,7 @@ public sealed class TrackingMissile_2 : MonoBehaviour
         velocity += acceleration * Time.deltaTime;
         position += velocity * Time.deltaTime;
 
-        //thisTransform.rotation = Quaternion.LookRotation(position);
+        // 座標,向き更新
         thisTransform.rotation = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), velocity);
         thisTransform.position = position;
 
@@ -107,6 +100,16 @@ public sealed class TrackingMissile_2 : MonoBehaviour
 
         // オブジェクトの削除
         Destroy(gameObject);
+    }
+
+    // ミサイルがオブジェクトに衝突したときに呼び出される
+    private void OnCollisionEnter(Collision collision)
+    {
+        // タグ名と違ったら
+        if (collision.gameObject.tag != "Enemy")
+        {
+            Destroy(gameObject);
+        }
     }
 
 }

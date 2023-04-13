@@ -197,7 +197,7 @@ PrefabInstance:
       objectReference: {fileID: 209586893}
     - target: {fileID: 8615157711755857501, guid: e6e92f49656483e4387bd298a35c7f63, type: 3}
       propertyPath: HardDamage
-      value: 500
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8615157711755857501, guid: e6e92f49656483e4387bd298a35c7f63, type: 3}
       propertyPath: MAXHitCount
