@@ -70,7 +70,8 @@ public class MissileBossContena : MonoBehaviour
                         newObj = Instantiate(otherObject, new Vector3(transform.position.x + j * 0.05f, transform.position.y + k * 0.1f, transform.position.z),Quaternion.identity);
                         if(i == ContenaNumber / 2)
                         {
-                            newObj.GetComponent<MissileBossContenaSmall>().Spread = 0.0f;
+                            //newObj.GetComponent<MissileBossContenaSmall>().Spread = 0.0f;
+                            newObj.GetComponent<NewContena>().First = true;
                         }
                     }
                     Destroy(gameObject, 0);
