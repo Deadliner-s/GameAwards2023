@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static PhaseManager;
 using Effekseer;
+using UnityEngine.InputSystem;
 
 public class PlayerMove: MonoBehaviour
 {
@@ -71,6 +72,8 @@ public class PlayerMove: MonoBehaviour
         InputActions = new Myproject();
         InputActions.Enable();
         InputActions.Player.Manever.performed += context => OnManever();
+
+        InputActions.LoadBindingOverridesFromJson(PlayerPrefs.GetString("rebinds"));
     }
 
     // Start is called before the first frame update
