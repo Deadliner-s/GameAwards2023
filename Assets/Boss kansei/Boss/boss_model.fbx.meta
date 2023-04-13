@@ -3,7 +3,32 @@ guid: 1f5e3d239e01146458b7703250e48af3
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn5
+    second: {fileID: 2100000, guid: 97ad3d7319636f04e97498bd061517b8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn6
+    second: {fileID: 2100000, guid: 0280e7c18120501489e2c720d1317d7f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn7
+    second: {fileID: 2100000, guid: 85eb79b544ea661479f6b2bb9dbee262, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: boss_base_2
+    second: {fileID: 2800000, guid: b833f76a12dfa6e4d93e6fa6b0678978, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: boss_base_ue
+    second: {fileID: 2800000, guid: 2742985bb319f2d4ab451600d5833cb2, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
