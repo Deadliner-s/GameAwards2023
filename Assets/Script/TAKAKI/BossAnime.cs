@@ -34,7 +34,7 @@ public class BossAnime : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
 
-        Child = transform.GetChild(22).gameObject;
+        Child = transform.GetChild(2).gameObject;
 
         weakpointtop = Child.GetComponent<WeakPoint>();
     }
