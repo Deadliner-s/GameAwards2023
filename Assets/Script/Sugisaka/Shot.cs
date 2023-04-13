@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Shot : MonoBehaviour
 {
@@ -42,6 +43,7 @@ public class Shot : MonoBehaviour
         InputActions = new Myproject();
         InputActions.Enable();
         InputActions.Player.Shot.performed += context => OnShot();
+        InputActions.LoadBindingOverridesFromJson(PlayerPrefs.GetString("rebinds"));
     }
 
     // Start is called before the first frame update
