@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class ReticleMove : MonoBehaviour
@@ -38,6 +39,7 @@ public class ReticleMove : MonoBehaviour
         // コントローラー
         InputActions = new Myproject();
         InputActions.Enable();
+        InputActions.LoadBindingOverridesFromJson(PlayerPrefs.GetString("rebinds"));
     }
 
     // Start is called before the first frame update
