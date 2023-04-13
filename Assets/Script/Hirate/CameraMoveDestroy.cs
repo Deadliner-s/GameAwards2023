@@ -1,0 +1,72 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class CameraMoveDestroy : MonoBehaviour
+{
+    // プレイヤー
+    [Header("オブジェクト設定")]
+    [Tooltip("プレイヤーのオブジェクト")]
+    [SerializeField] GameObject player;
+    [Tooltip("見る先のオブジェクト")]
+    [SerializeField] GameObject obj;
+    // エフェクト
+    [Tooltip("エフェクトの演出時間")]
+    [SerializeField] float effectTime = 3.0f;
+
+    private float playerDistance = 0.0f; // プレイヤーまでの距離
+    private Vector3 centerPoint;
+    private PlayerHp playerHp; // バリア破壊後の完全撃墜時のフラグ取得用
+    private ShotDown shotDown; // エフェクト演出用
+    private float cnt = 0.0f;  // 経過時間
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        // プレイヤーのHPスクリプトを入れる用
+        playerHp = player.GetComponent<PlayerHp>();
+        // 撃墜時のスクリプトを入れる用
+        shotDown = player.GetComponent<ShotDown>();
+
+        //カメラとプレイヤーの距離を調べる
+        Vector3 toPlayer =
+            player.transform.position - transform.position;
+        playerDistance = toPlayer.magnitude; // 矢印の長さ
+
+        // 基準の位置を設定 (x,y,z)座標
+        centerPoint = new Vector3(0.0f, 0.0f, 0.0f);
+    }
+
+    void LateUpdate()
+    {
+        // 完全に撃墜された時
+        if (player != null && playerHp.BreakFlag)
+        {
+            // カメラをプレイヤーに追従させる
+            // 一度プレイヤーの座標と同じにさせる
+            Vector3 pos = player.transform.position;
+            pos += centerPoint;
+            // カメラが向いている方向とは逆向きにプレイヤーから離す
+            pos -= transform.forward * playerDistance / 2;
+            // 新しいカメラの位置
+            transform.position = pos;
+            this.transform.LookAt(obj.transform.position);
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (shotDown.EffectFlag)
+        {
+            if (cnt > effectTime)
+            {
+                // シーン移動
+                SceneManager.LoadScene("GameOver");
+            }
+            // 撃墜からの時間経過
+            cnt += Time.deltaTime;
+        }
+    }
+}
