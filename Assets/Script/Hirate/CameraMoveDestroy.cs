@@ -48,7 +48,7 @@ public class CameraMoveDestroy : MonoBehaviour
             Vector3 pos = player.transform.position;
             pos += centerPoint;
             // カメラが向いている方向とは逆向きにプレイヤーから離す
-            pos -= transform.forward * playerDistance / 2;
+            pos -= transform.forward * playerDistance / 2.3f;
             // 新しいカメラの位置
             transform.position = pos;
             this.transform.LookAt(obj.transform.position);
