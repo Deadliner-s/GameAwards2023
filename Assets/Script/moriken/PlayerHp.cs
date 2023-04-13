@@ -112,6 +112,8 @@ public class PlayerHp : MonoBehaviour
             HpGauge.fillAmount = PlayerHP / PlayerMaxHp;
             DamageGauge.fillAmount = PlayerHP / PlayerMaxHp;
 
+            hs.ChangeShieldColor(PlayerHP, PlayerMaxHp);
+
             if (PlayerHP >= PlayerMaxHp)
             {
                 HealFlag = false;
