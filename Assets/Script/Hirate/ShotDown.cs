@@ -25,6 +25,7 @@ public class ShotDown : MonoBehaviour
     private Vector3 pos;                     // 座標
     private Quaternion q;                    // 親の回転の代入用
     private bool GameOverStartFlg = true;    // 黒煙開始用
+    private int nCnt; // 補正の呼び出し用
 
     public bool EffectFlag { get; protected set; } // エフェクトの演出用
 
@@ -38,6 +39,22 @@ public class ShotDown : MonoBehaviour
 
         // エフェクトの演出用
         EffectFlag = false;
+    }
+
+    private void FixedUpdate()
+    {
+        // 一定以上の値で補正を止めるためのif文
+        if (playerHp.BreakFlag)
+        {
+            // 3コール毎に補正を呼び出し
+            if (nCnt >= 3)
+            {
+                // 移動量の補正
+                movePos.y *= 1.1f;
+                nCnt = 0;
+            }
+            nCnt++;
+        }
     }
 
     // Update is called once per frame
@@ -79,7 +96,7 @@ public class ShotDown : MonoBehaviour
             pos = obj.transform.position;
             // 撃墜時の移動
             pos += movePos;
-            movePos.y *= 1.1f;
+
             // プレイヤーの座標に代入
             obj.transform.position = pos;
 
