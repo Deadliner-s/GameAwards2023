@@ -128,11 +128,11 @@ public class PlayerHp : MonoBehaviour
             if (BreakShieldFlag)
             {
                 // 完全に撃墜された判定にする
-                //BreakFlag = true;
+                BreakFlag = true;
 
-                Destroy(this.gameObject);
+                //Destroy(this.gameObject);
                 //シーン移動
-                SceneManager.LoadScene("GameOver");
+                //SceneManager.LoadScene("GameOver");
                 //async.allowSceneActivation = true;
             }
 
