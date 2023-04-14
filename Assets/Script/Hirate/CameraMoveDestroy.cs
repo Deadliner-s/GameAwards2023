@@ -20,6 +20,7 @@ public class CameraMoveDestroy : MonoBehaviour
     private PlayerHp playerHp; // バリア破壊後の完全撃墜時のフラグ取得用
     private ShotDown shotDown; // エフェクト演出用
     private float cnt = 0.0f;  // 経過時間
+    private bool breakStart;   // 撃破開始
 
     // Start is called before the first frame update
     void Start()
@@ -36,12 +37,14 @@ public class CameraMoveDestroy : MonoBehaviour
 
         // 基準の位置を設定 (x,y,z)座標
         centerPoint = new Vector3(0.0f, 0.0f, 0.0f);
+        // 撃破開始フラグ
+        breakStart = false;
     }
 
     void LateUpdate()
     {
         // 完全に撃墜された時
-        if (player != null && playerHp.BreakFlag)
+        if (player != null && playerHp.BreakFlag && !breakStart)
         {
             // カメラをプレイヤーに追従させる
             // 一度プレイヤーの座標と同じにさせる
@@ -51,7 +54,14 @@ public class CameraMoveDestroy : MonoBehaviour
             pos -= transform.forward * playerDistance / 2.3f;
             // 新しいカメラの位置
             transform.position = pos;
-            this.transform.LookAt(obj.transform.position);
+            // 撃破開始フラグを建てる
+            breakStart = true;
+        }
+        // 位置変更後はカメラは追うだけにする
+        if (player != null && breakStart)
+        {
+            // カメラでプレイヤーを追う
+            gameObject.transform.LookAt(obj.transform.position);
         }
     }
 
