@@ -50,7 +50,7 @@ public class ShotDown : MonoBehaviour
             if (nCnt >= 3)
             {
                 // à⁄ìÆó ÇÃï‚ê≥
-                movePos.y *= 1.1f;
+                movePos.y *= 1.05f;
                 nCnt = 0;
             }
             nCnt++;
