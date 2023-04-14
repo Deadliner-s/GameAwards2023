@@ -35,7 +35,14 @@ public class PlayerHp : MonoBehaviour
     public bool BreakFlag { get; private set; }
 
     // hex_Shieldコンポーネント
-    HexShield hs;
+    private HexShield hs;
+
+    // PlayerHPオブジェクト
+    [SerializeField]
+    Transform PlayerHPGaugeTrans;
+
+    HPGauge[] HpGaugecomponents;
+
 
     // シーン読込用
 //    private AsyncOperation async;
@@ -58,6 +65,9 @@ public class PlayerHp : MonoBehaviour
 
         Decreaseflame = 30;
 
+        // PlayerHpコオブジェクトのHpGaugeコンポーネントを全て取得する
+        HpGaugecomponents = PlayerHPGaugeTrans.GetComponentsInChildren<HPGauge>();
+        // シールドオブジェクトからHexShieldコンポーネントを取得
         hs = this.gameObject.GetComponent<HexShield>();
 
         // 非同期処理でシーンの遷移実行(現在実行しているシーンのバックグラウンドで次のシーンの読み込みを事前に行う)
@@ -159,7 +169,14 @@ public class PlayerHp : MonoBehaviour
                 UseFlag = true;
                 Invflame = 0;
             }
+
             hs.ChangeShieldColor(PlayerHP, PlayerMaxHp);
+
+            foreach(HPGauge comp in HpGaugecomponents)
+            {
+                comp.ChangeHpGaugeColor(PlayerHP, PlayerMaxHp);
+            }
+            
         }
     }
 }
