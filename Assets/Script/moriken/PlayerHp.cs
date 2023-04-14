@@ -123,6 +123,10 @@ public class PlayerHp : MonoBehaviour
             DamageGauge.fillAmount = PlayerHP / PlayerMaxHp;
 
             hs.ChangeShieldColor(PlayerHP, PlayerMaxHp);
+            foreach (HPGauge comp in HpGaugecomponents)
+            {
+                comp.ChangeHpGaugeColor(PlayerHP, PlayerMaxHp);
+            }
 
             if (PlayerHP >= PlayerMaxHp)
             {
