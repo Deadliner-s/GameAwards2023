@@ -1,15 +1,11 @@
 ﻿// ロックオンしたいオブジェクトに追加
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
-using UnityEngine.Events;
 
 public class RockOnMarker : MonoBehaviour
 {
     private GameObject target;                  // ロックオした時のマーク
-    private GameObject canvas;                  // キャンバス
-    private bool rockonFlg = false;             // ロックオンのマークが付いているか
+    private GameObject canvas;                      // キャンバス
+    private bool rockonFlg = false;             // ロックオンのマークが付いているか       
 
     [Header("敵の半径")]
     public float TargetRadius = 1.0f;           // 敵の半径
@@ -31,12 +27,23 @@ public class RockOnMarker : MonoBehaviour
 
     private bool hideFlg = false;
 
+    // World Space を Screen Space Cameraにするための関数
+    private RectTransform targetRect;
+    private Vector2 targetPos;
+    private Vector2 targetScreenPos;
+    private Camera uiCamera;
+    private Camera worldCamera;
+    private RectTransform canvasRect;
+
     // Start is called before the first frame update
     void Start()
     {
-        canvas = GameObject.Find("Canvas");     // キャンバスを指定
-        target = null;
+        canvas = GameObject.Find("Canvas RockOn");     // キャンバスを指定
+        //canvasGraphic = canvas.GetComponent<Graphic>().canvas;
 
+        target = null;
+        uiCamera = Camera.main;
+        worldCamera = Camera.main;
         hideFlg = false;
     }
 
@@ -47,11 +54,14 @@ public class RockOnMarker : MonoBehaviour
         if (rockonFlg == false)
         {
             // 弱点でない場合
-            if (WeakPointTop == false && WeakPointBottom == false)
+            if (true)           // WeakPointTop == false && WeakPointBottom == false
             {
                 // ロックオンマークを生成
                 target = (GameObject)Resources.Load("RockOnAnime");
                 target = Instantiate(target, transform.position, target.transform.rotation);
+
+                targetRect = target.GetComponent<RectTransform>();
+
                 // Canvasの子オブジェクトとして生成
                 target.transform.SetParent(canvas.transform, false);
                 rockonFlg = true;
@@ -65,6 +75,7 @@ public class RockOnMarker : MonoBehaviour
                     // ロックオンマークを生成
                     target = (GameObject)Resources.Load("RockOnAnime");
                     target = Instantiate(target, transform.position, target.transform.rotation);
+
                     // Canvasの子オブジェクトとして生成
                     target.transform.SetParent(canvas.transform, false);
                     rockonFlg = true;
@@ -78,24 +89,35 @@ public class RockOnMarker : MonoBehaviour
                     // ロックオンマークを生成
                     target = (GameObject)Resources.Load("RockOnAnime");
                     target = Instantiate(target, transform.position, target.transform.rotation);
+
                     // Canvasの子オブジェクトとして生成
                     target.transform.SetParent(canvas.transform, false);
                     rockonFlg = true;
                 }
-
             }
         }
+
 
         if (target != null)
         {
             // 敵に追従させる
             if (rockonFlg == true)
             {
-                // ワールド座標をスクリーン座標に変換
-                target.transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, transform.position);
-            }
-        }
+                targetPos = target.transform.position;
+                uiCamera = Camera.main;
+                worldCamera = Camera.main;
+                canvasRect = canvas.GetComponent<RectTransform>();
 
+                // ワールド座標をスクリーン座標に変換
+                targetScreenPos = RectTransformUtility.WorldToScreenPoint(worldCamera, transform.position);
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, targetScreenPos, uiCamera, out targetPos);
+                targetRect.localPosition = targetPos;
+                Debug.Log("a");
+            }
+            Debug.Log("b");
+        }
+        
+       // Debug.Log(uiCamera);
         // 弱点が後ろに行ったらロックオンを消す Top
         if (WeakPointTop == true && WeakPointBottom == false)
         {
