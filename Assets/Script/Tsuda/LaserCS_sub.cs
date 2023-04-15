@@ -15,7 +15,7 @@ public class LaserCS_sub : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CS.enabled = false;
+        CS.enabled = true;
         mainCamera = Camera.main;  // ƒƒCƒ“ƒJƒƒ‰‚ğæ“¾‚·‚é
     }
 
@@ -24,19 +24,27 @@ public class LaserCS_sub : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        //        GetComponent<RectTransform>().position = Laser.GetComponent<LaserHead>().targetScreenPosition;
+        GetComponent<RectTransform>().position = Laser.GetComponent<LaserHead>().targetScreenPosition;
 
-        GetComponent<RectTransform>().position = mainCamera.WorldToScreenPoint(Laser.GetComponent<LaserHead>().targetWorldPosition);
+        //GetComponent<RectTransform>().position = mainCamera.WorldToScreenPoint(Laser.GetComponent<LaserHead>().targetWorldPosition);
 
+        GetComponent<RectTransform>().Rotate(0, 0, rotate);
+
+        if(timer >= 2.0f)
+        {
+            CS.enabled = false;
+        }
+
+        /*
         if (timer >= 2.0f)
         {
-            CS.enabled = true;
-            GetComponent<RectTransform>().Rotate(0, 0, rotate);
+            CS.enabled = true;            
         }
 
         if (timer >= 6.0f)
         {
             CS.enabled = false;
         }
+        */
     }
 }
