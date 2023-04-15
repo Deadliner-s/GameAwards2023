@@ -27,7 +27,7 @@ public class ShotDown : MonoBehaviour
     private bool GameOverStartFlg = true;    // 黒煙開始用
     private int nCnt; // 補正の呼び出し用
 
-    public bool EffectFlag { get; protected set; } // エフェクトの演出用
+    public bool EffectFlag { get; private set; } // エフェクトの演出用
 
     // Start is called before the first frame update
     void Start()
