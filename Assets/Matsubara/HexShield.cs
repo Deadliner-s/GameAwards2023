@@ -35,7 +35,7 @@ public class HexShield : MonoBehaviour
     public void ChangeShieldColor(float currenthelth, float maxhelth)
     {
         float fhpratio = currenthelth / maxhelth * 100;
-        int hpratio = (int)fhpratio;
+        float hpratio = fhpratio;
        
         // HpŠ„‡–ˆ‚ÌF‚É•Ï‚¦‚é
         if (hpratio >= 100)
@@ -56,7 +56,7 @@ public class HexShield : MonoBehaviour
             _mat.SetColor("_PolygonEdgeColor", _PolygonEdgeColor[2]);
             _mat.SetColor("_FresnelColor", _FresnelColor[2]);
         }
-        if (hpratio < 20 && hpratio >= 1)
+        if (hpratio < 20 && hpratio > 0)
         {
             _mat.SetColor("_Color01", _color1[3]);
             _mat.SetColor("_PolygonEdgeColor", _PolygonEdgeColor[3]);

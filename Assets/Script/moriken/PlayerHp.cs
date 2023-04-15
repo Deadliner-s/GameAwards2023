@@ -164,6 +164,7 @@ public class PlayerHp : MonoBehaviour
 
             if (PlayerHP <= 0)
             {
+                PlayerHP = 0;
                 BreakShieldFlag = true;
                 UseFlag = true;
                 Invflame = 0;
