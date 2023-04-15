@@ -11,17 +11,22 @@ public class HPGauge : MonoBehaviour
 
     private RectTransform myRectTfm;
     private Image image;
-    [SerializeField]
-    private Vector3 offset = new Vector3(0, 0.08f, 0);
+    private Vector3 offset;
 
     [SerializeField, Header("各HP割合毎の色")]
     private Color[] _color = new Color[5];
 
+    private GameObject obj;
+    private GaugeOffset gaugeOffset;
 
     void Start()
     {
         myRectTfm = GetComponent<RectTransform>();
         image = GetComponent<Image>();
+        // オフセット値の取得
+        obj = transform.parent.gameObject;
+        gaugeOffset = obj.GetComponent<GaugeOffset>();
+        offset = gaugeOffset.offset;
     }
 
     void Update()
@@ -31,7 +36,11 @@ public class HPGauge : MonoBehaviour
             myRectTfm.position = RectTransformUtility.WorldToScreenPoint(Camera.main, targetTfm.position + offset);
         }
 
-
+        // オフセット値調整用(決定したら消してもらって大丈夫です)
+        offset = gaugeOffset.offset;
+#if DEBUG
+        //offset = gaugeOffset.offset;
+#endif
     }
 
     /// <summary>
