@@ -2920,6 +2920,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerHp
       objectReference: {fileID: 0}
+    - target: {fileID: 1437601459189362650, guid: 99e6e6f3f3eb01248aa21e7856d891d5, type: 3}
+      propertyPath: <offset>k__BackingField.y
+      value: 0.11
+      objectReference: {fileID: 0}
     - target: {fileID: 1836117638541419620, guid: 99e6e6f3f3eb01248aa21e7856d891d5, type: 3}
       propertyPath: offset.y
       value: 0.11

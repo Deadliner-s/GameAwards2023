@@ -36,6 +36,8 @@ public class HPGauge : MonoBehaviour
             myRectTfm.position = RectTransformUtility.WorldToScreenPoint(Camera.main, targetTfm.position + offset);
         }
 
+        // オフセット値調整用(決定したら消してもらって大丈夫です)
+        offset = gaugeOffset.offset;
 #if DEBUG
         //offset = gaugeOffset.offset;
 #endif
