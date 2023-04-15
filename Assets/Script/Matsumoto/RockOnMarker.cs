@@ -112,9 +112,7 @@ public class RockOnMarker : MonoBehaviour
                 targetScreenPos = RectTransformUtility.WorldToScreenPoint(worldCamera, transform.position);
                 RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, targetScreenPos, uiCamera, out targetPos);
                 targetRect.localPosition = targetPos;
-                Debug.Log("a");
             }
-            Debug.Log("b");
         }
         
        // Debug.Log(uiCamera);
