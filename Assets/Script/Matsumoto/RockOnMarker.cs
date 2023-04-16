@@ -4,7 +4,7 @@ using UnityEngine;
 public class RockOnMarker : MonoBehaviour
 {
     private GameObject target;                  // ロックオした時のマーク
-    private GameObject canvas;                      // キャンバス
+    private GameObject canvas;                  // キャンバス
     private bool rockonFlg = false;             // ロックオンのマークが付いているか       
 
     [Header("敵の半径")]
@@ -23,9 +23,9 @@ public class RockOnMarker : MonoBehaviour
     public bool WeakPointTop = false;
     public bool WeakPointBottom = false;
 
-    private Animator anime;     // アニメーション制御
+    private Animator anime;                     // アニメーション制御
 
-    private bool hideFlg = false;
+    private bool hideFlg = false;               // 隠れたオブジェクト
 
     // World Space を Screen Space Cameraにするための関数
     private RectTransform targetRect;
@@ -50,11 +50,22 @@ public class RockOnMarker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // マークが生成されてなかったら
-        if (rockonFlg == false)
+        RaycastHit hit;    //ヒットした情報
+        // 自身からカメラに向かってRayを飛ばし、条件に当てはまるならマークを生成する
+        Physics.Linecast(transform.position, Camera.main.transform.position, out hit);
+
+        if (hit.collider.gameObject.tag == "MainCamera" || hit.collider.gameObject.tag == "Player" ||
+            hit.collider.gameObject.name == "BossMissle(Clone)" || hit.collider.gameObject.name == "BossMissleContena(Clone)" || hit.collider.gameObject.name == "BossMissleContenaSmall(Clone)")
         {
-            // 弱点でない場合
-            if (true)           // WeakPointTop == false && WeakPointBottom == false
+            // 一度隠れたオブジェクトの場合
+            if (hideFlg == true)
+            {
+                rockonFlg = false;
+                hideFlg = false;
+            }
+
+            // ロックオンマークがない場合
+            if (rockonFlg == false)
             {
                 // ロックオンマークを生成
                 target = (GameObject)Resources.Load("TargetMaker");
@@ -66,37 +77,20 @@ public class RockOnMarker : MonoBehaviour
                 target.transform.SetParent(canvas.transform, false);
                 rockonFlg = true;
             }
-
-            // 弱点の場合 Top
-            else if (WeakPointTop == true && WeakPointBottom == false)
+        }
+        else
+        {
+            // 条件に当てはまらない場合はマークを消してフラグを立てる
+            if (rockonFlg == true)
             {
-                if (this.transform.position.z < 1.5f)
+                if (target != null)
                 {
-                    // ロックオンマークを生成
-                    target = (GameObject)Resources.Load("TargetMaker");
-                    target = Instantiate(target, transform.position, target.transform.rotation);
-
-                    // Canvasの子オブジェクトとして生成
-                    target.transform.SetParent(canvas.transform, false);
-                    rockonFlg = true;
+                    Destroy(target);
                 }
-            }
-            // 弱点の場合 Bottom
-            else if (WeakPointTop == false && WeakPointBottom == true)
-            {
-                if (this.transform.position.z < 0.13f)
-                {
-                    // ロックオンマークを生成
-                    target = (GameObject)Resources.Load("TargetMaker");
-                    target = Instantiate(target, transform.position, target.transform.rotation);
-
-                    // Canvasの子オブジェクトとして生成
-                    target.transform.SetParent(canvas.transform, false);
-                    rockonFlg = true;
-                }
+                hideFlg = true;
+                this.tag = "Enemy";
             }
         }
-
 
         if (target != null)
         {
@@ -114,45 +108,8 @@ public class RockOnMarker : MonoBehaviour
                 targetRect.localPosition = targetPos;
             }
         }
-        
-       // Debug.Log(uiCamera);
-        // 弱点が後ろに行ったらロックオンを消す Top
-        if (WeakPointTop == true && WeakPointBottom == false)
-        {
-            if (this.transform.position.z > 2.5f && hideFlg == false && rockonFlg == true)
-            {
-                if (target != null)
-                {
-                    Destroy(target);
-                }
-                hideFlg = true;
-                this.tag = "Enemy";
-            }
-            if (this.transform.position.z < 1.5f && hideFlg == true)
-            {
-                hideFlg = false;
-                rockonFlg = false;
-            }
-        }
 
-        // 弱点が後ろに行ったらロックオンを消す Bottom
-        if (WeakPointTop == false && WeakPointBottom == true)
-        {
-            if (this.transform.position.z > 0.3f && hideFlg == false && rockonFlg == true)
-            {
-                if (target != null)
-                {
-                    Destroy(target);
-                }
-                hideFlg = true;
-                this.tag = "Enemy";
-            }
-            if (this.transform.position.z < 0.25f && hideFlg == true)
-            {
-                hideFlg = false;
-                rockonFlg = false;
-            }
-        }
+        Debug.DrawLine(transform.position, Camera.main.transform.position, Color.red);
     }
 
     // ロックオンされたオブジェクトが消滅した場合マークも消す
@@ -176,7 +133,6 @@ public class RockOnMarker : MonoBehaviour
             }
         }
     }
-
     private void OnCollisionEnter(Collision collision)
     {
         // 弱点の場合 2回当たったら消すため、一度消してから生成する
