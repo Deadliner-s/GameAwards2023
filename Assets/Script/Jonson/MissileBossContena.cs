@@ -26,60 +26,52 @@ public class MissileBossContena : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameObject.Find("Player"))//プレイヤーは生きている（存在する）
-        {
-            //プレイヤーの位置を取得
-            ToPos = GameObject.Find("Player").transform.position;
-            //ボスの位置を取得
-            FromPos = GameObject.Find("EnemyBoss").transform.position;
+        //ボスの位置を取得
+        FromPos = GameObject.Find("EnemyBoss").transform.position;
 
-            off = 0.05f;
-            Locked = false;
-        }
+        off = 0.05f;
+        Locked = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("Player"))//プレイヤーは生きている（存在する）
+        ToPos = GameObject.Find("Player").transform.position;
+        if (transform.position.y <= FromPos.y + Height && !Locked)
         {
-            ToPos = GameObject.Find("Player").transform.position;
-            if (transform.position.y <= FromPos.y + Height && !Locked)
+            Speed = UpSpeed;
+            Move = new Vector3(0, 1.0f, 0);
+            LateMove = Move;
+        }
+        else
+        {
+            Locked = true;
+            Speed = ToSpeed;
+            float distance = Vector3.Distance(transform.position, ToPos);
+            if (distance >= ContenaRange)
             {
-                Speed = UpSpeed;
-                Move = new Vector3(0, 1.0f, 0);
-                LateMove = Move;
+                Move = ToPos - transform.position;
+                Move = Move.normalized;
+                LateMove = (Move - LateMove) * off + (LateMove);
             }
             else
             {
-                Locked = true;
-                Speed = ToSpeed;
-                float distance = Vector3.Distance(transform.position, ToPos);
-                if (distance >= ContenaRange)
+                for (int i = 0; i < ContenaNumber; i++)
                 {
-                    Move = ToPos - transform.position;
-                    Move = Move.normalized;
-                    LateMove = (Move - LateMove) * off + (LateMove);
-                }
-                else
-                {
-                    for (int i = 0; i < ContenaNumber; i++)
+                    float j = (i % 3) - 1;
+                    float k = (i / 3) - 1;
+                    newObj = Instantiate(otherObject, new Vector3(transform.position.x + j * 0.05f, transform.position.y + k * 0.1f, transform.position.z), Quaternion.identity);
+                    if (i == ContenaNumber / 2)
                     {
-                        float j = (i % 3) - 1;
-                        float k = (i / 3) - 1;
-                        newObj = Instantiate(otherObject, new Vector3(transform.position.x + j * 0.05f, transform.position.y + k * 0.1f, transform.position.z),Quaternion.identity);
-                        if(i == ContenaNumber / 2)
-                        {
-                            //newObj.GetComponent<MissileBossContenaSmall>().Spread = 0.0f;
-                            newObj.GetComponent<NewContena>().First = true;
-                        }
+                        //newObj.GetComponent<MissileBossContenaSmall>().Spread = 0.0f;
+                        newObj.GetComponent<NewContena>().First = true;
                     }
-                    Destroy(gameObject, 0);
                 }
+                Destroy(gameObject, 0);
             }
-            Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
-            transform.rotation = rot;
-            transform.position += LateMove * Speed;
         }
+        Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
+        transform.rotation = rot;
+        transform.position += LateMove * Speed;
     }
 }
