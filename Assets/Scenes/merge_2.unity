@@ -192,16 +192,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8615157711755857501, guid: e6e92f49656483e4387bd298a35c7f63, type: 3}
+      propertyPath: BossHP
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615157711755857501, guid: e6e92f49656483e4387bd298a35c7f63, type: 3}
       propertyPath: GaugeObj
       value: 
       objectReference: {fileID: 209586893}
     - target: {fileID: 8615157711755857501, guid: e6e92f49656483e4387bd298a35c7f63, type: 3}
       propertyPath: HardDamage
-      value: 300
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 8615157711755857501, guid: e6e92f49656483e4387bd298a35c7f63, type: 3}
       propertyPath: MAXHitCount
-      value: 2
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615157711755857501, guid: e6e92f49656483e4387bd298a35c7f63, type: 3}
+      propertyPath: HardDamageFlame
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8615157711755857501, guid: e6e92f49656483e4387bd298a35c7f63, type: 3}
       propertyPath: explosionEffect
@@ -338,9 +346,6 @@ GameObject:
   - component: {fileID: 247176456}
   - component: {fileID: 247176455}
   - component: {fileID: 247176454}
-  - component: {fileID: 247176453}
-  - component: {fileID: 247176457}
-  - component: {fileID: 247176460}
   - component: {fileID: 247176458}
   - component: {fileID: 247176461}
   - component: {fileID: 247176464}
@@ -357,19 +362,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!135 &247176453
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247176452}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &247176454
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -435,21 +427,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &247176457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247176452}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e44b30ea3f211484598d0579955f9dc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeedNormal: 0.1
-  rotationSpeedAttack: 0.1
-  rotationSpeedHighSpeed: 0.1
 --- !u!114 &247176458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,15 +444,15 @@ MonoBehaviour:
   Key: p
   StartTime_1: 7
   Timer_1: 4
-  Interval_1: 0.4
+  Interval_1: 0.2
   h_Missile_1: []
   StartTime_2: 15
   Timer_2: 4
-  Interval_2: 0.4
+  Interval_2: 0.2
   h_Missile_2: []
   StartTime_3: 23
   Timer_3: 4
-  Interval_3: 0.4
+  Interval_3: 0.2
   h_Missile_3: []
   StartTime_4: 900
   Timer_4: 0
@@ -505,31 +482,6 @@ MonoBehaviour:
   Timer_10: 0
   Interval_10: 2
   h_Missile_10: []
---- !u!114 &247176460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247176452}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de7aa4ef5a51d644f8871f0a1330771e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 786199140513531244, guid: 9aa00b7861ffd164bb5fc3af873fd230, type: 3}
-  timer: 0
-  TargetSplit: 0
-  StartTime_1: 20
-  Split_1: 3
-  StartTime_2: 25
-  Split_2: 6
-  StartTime_3: 100
-  Split_3: 0
-  StartTime_4: 100
-  Split_4: 0
-  StartTime_5: 100
-  Split_5: 0
 --- !u!114 &247176461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,7 +501,7 @@ MonoBehaviour:
   Timer_1: 3
   Interval_1: 1
   h_Missile_1: []
-  StartTime_2: 29
+  StartTime_2: 27
   Timer_2: 3
   Interval_2: 1
   h_Missile_2: []
@@ -2190,8 +2142,8 @@ MonoBehaviour:
   Spd_HorizontalSpeed: 0.01
   Atk_VerticalSpeed: 0.01
   Atk_HorizontalSpeed: 0.01
-  ManerverTime: 0.5
-  coolTime: 1
+  ManerverTime: 0.15
+  coolTime: 0.5
   Manever_VerticalSpeed: 0.03
   Manever_HorizontalSpeed: 0.03
   MoveSE: {fileID: 0}
@@ -4402,7 +4354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261406, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: ReloadTime
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261407, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_Volume
