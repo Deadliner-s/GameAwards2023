@@ -57,7 +57,7 @@ public class RockOnMarker : MonoBehaviour
             if (true)           // WeakPointTop == false && WeakPointBottom == false
             {
                 // ロックオンマークを生成
-                target = (GameObject)Resources.Load("RockOnAnime");
+                target = (GameObject)Resources.Load("TargetMaker");
                 target = Instantiate(target, transform.position, target.transform.rotation);
 
                 targetRect = target.GetComponent<RectTransform>();
@@ -73,7 +73,7 @@ public class RockOnMarker : MonoBehaviour
                 if (this.transform.position.z < 1.5f)
                 {
                     // ロックオンマークを生成
-                    target = (GameObject)Resources.Load("RockOnAnime");
+                    target = (GameObject)Resources.Load("TargetMaker");
                     target = Instantiate(target, transform.position, target.transform.rotation);
 
                     // Canvasの子オブジェクトとして生成
@@ -87,7 +87,7 @@ public class RockOnMarker : MonoBehaviour
                 if (this.transform.position.z < 0.13f)
                 {
                     // ロックオンマークを生成
-                    target = (GameObject)Resources.Load("RockOnAnime");
+                    target = (GameObject)Resources.Load("TargetMaker");
                     target = Instantiate(target, transform.position, target.transform.rotation);
 
                     // Canvasの子オブジェクトとして生成
@@ -206,7 +206,7 @@ public class RockOnMarker : MonoBehaviour
         if (target != null)
         {
             anime = target.GetComponent<Animator>();
-            anime.SetBool("isRockOn", true);
+            anime.SetBool("isMove", true);
         }
     }
 
