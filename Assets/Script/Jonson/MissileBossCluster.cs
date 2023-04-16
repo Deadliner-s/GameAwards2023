@@ -26,54 +26,50 @@ public class MissileBossCluster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameObject.Find("Player"))//プレイヤーは生きている（存在する）
-        {
-            ToPos = GameObject.Find("Player").transform.position; //Player
-            mainCamera = Camera.main;                             // メインカメラを取得する
+        mainCamera = Camera.main;                             // メインカメラを取得する
 
-            Cluster = false;
-            off = 1.0f;
-        }
+        Cluster = false;
+        off = 1.0f;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("Player"))//プレイヤーは生きている（存在する）
+
+        ToPos = GameObject.Find("Player").transform.position;   //プレイヤーの位置
+        Speed += Accel;                                         //加速度
+        if (Speed >= MaxSpeed)                                  //速度制限
+            Speed = MaxSpeed;
+        float distance = Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(ToPos.x, 0, ToPos.z));
+        if (distance >= ClusterRange && !Cluster)               //まだ分裂してない
         {
-            ToPos = GameObject.Find("Player").transform.position;   //プレイヤーの位置
-            Speed += Accel;                                         //加速度
-            if (Speed >= MaxSpeed)                                  //速度制限
-                Speed = MaxSpeed;
-            float distance = Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(ToPos.x, 0, ToPos.z));
-            if (distance >= ClusterRange && !Cluster)               //まだ分裂してない
-            {
-                Move = ToPos - transform.position;
-                Move = Move.normalized;
-                LateMove.x = (Move.x - LateMove.x) * off + (LateMove.x);
-                LateMove.z = (Move.z - LateMove.z) * off + (LateMove.z);
-            }
-            else
-            {
-                Cluster = true;
-                for (int i = 0; i < ClusterNumber; i++)
-                {
-                    newObj = Instantiate(otherObject, transform.position, Quaternion.identity);
-                }
-                Destroy(gameObject, 0);
-            }
-
-            //world座標をcamera座標に変換
-            targetWorldPosition = transform.position;
-            targetWorldPosition = mainCamera.WorldToScreenPoint(targetWorldPosition);
-
-            Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
-            transform.rotation = rot;
-            if (targetWorldPosition.x <= -100.0f)
-            {
-                transform.position = new Vector3(transform.position.x, ToPos.y, transform.position.z);
-            }
-            transform.position += LateMove * Speed;
+            Move = ToPos - transform.position;
+            Move = Move.normalized;
+            LateMove.x = (Move.x - LateMove.x) * off + (LateMove.x);
+            LateMove.z = (Move.z - LateMove.z) * off + (LateMove.z);
         }
+        else
+        {
+            Cluster = true;
+            for (int i = 0; i < ClusterNumber; i++)
+            {
+                newObj = Instantiate(otherObject, transform.position, Quaternion.identity);
+            }
+            Destroy(gameObject, 0);
+        }
+
+        //world座標をcamera座標に変換
+        targetWorldPosition = transform.position;
+        targetWorldPosition = mainCamera.WorldToScreenPoint(targetWorldPosition);
+
+        Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
+        transform.rotation = rot;
+        if (targetWorldPosition.x <= -100.0f)
+        {
+            transform.position = new Vector3(transform.position.x, ToPos.y, transform.position.z);
+        }
+        transform.position += LateMove * Speed;
+
     }
-}   
+}

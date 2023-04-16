@@ -25,46 +25,40 @@ public class MissileBossClusterSmall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(GameObject.Find("Player"))//プレイヤーは生きている（存在する）
-        {
-            ToPos = GameObject.Find("Player").transform.position; //Player
-            Miss = false;
-            off = 0.2f;
-            randY = rand.Next(30);
-            randY -= 15;
-            randY *= 0.01f;
-            randY += PlusY.y;
-        }
+        ToPos = GameObject.Find("Player").transform.position; //Player
+        Miss = false;
+        off = 0.2f;
+        randY = rand.Next(30);
+        randY -= 15;
+        randY *= 0.01f;
+        randY += PlusY.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-       if (GameObject.Find("Player"))//プレイヤーは生きている（存在する）
+        Speed += Accel;                                         //加速度
+        if (Speed >= MaxSpeed)                                  //速度制限
+            Speed = MaxSpeed;
+        float distance = Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(ToPos.x, 0, ToPos.z));
+        if (distance >= MissRange && !Miss)
         {
-            Speed += Accel;                                         //加速度
-            if (Speed >= MaxSpeed)                                  //速度制限
-                Speed = MaxSpeed;
-            float distance = Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(ToPos.x, 0, ToPos.z));
-            if (distance >= MissRange && !Miss)
-            {
-                ToPos = GameObject.Find("Player").transform.position;   //プレイヤーの位置
+            ToPos = GameObject.Find("Player").transform.position;   //プレイヤーの位置
 
-                Move.x = ToPos.x - transform.position.x;
-                Move.z = ToPos.z - transform.position.z;
-                Move = Move.normalized;
-                Move.y = randY;
-                LateMove = (Move - LateMove) * off + (LateMove);
-            }
-            else
-            {
-                Miss = true;
-                Destroy(gameObject, 3.0f);
-            }
-            Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
-            transform.rotation = rot;
-            transform.position += LateMove * Speed;
+            Move.x = ToPos.x - transform.position.x;
+            Move.z = ToPos.z - transform.position.z;
+            Move = Move.normalized;
+            Move.y = randY;
+            LateMove = (Move - LateMove) * off + (LateMove);
         }
+        else
+        {
+            Miss = true;
+            Destroy(gameObject, 3.0f);
+        }
+        Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
+        transform.rotation = rot;
+        transform.position += LateMove * Speed;
     }
 
     private void OnCollisionEnter(Collision collision)
