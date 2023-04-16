@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: -2850171699930495403}
   - component: {fileID: 3974326842955691092}
   - component: {fileID: 6606662668158302654}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BossMissileShow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,6 +318,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particle: {fileID: 198637950067575458, guid: 007c57e2df8e9b144b99f471b84f3d56, type: 3}
-  OnDestroyed:
-    m_PersistentCalls:
-      m_Calls: []
