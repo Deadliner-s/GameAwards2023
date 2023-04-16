@@ -75,58 +75,61 @@ public class MissileStraight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time++;
-        //world座標をcamera座標に変換
-        targetWorldPosition = transform.position;
-        targetWorldPosition = mainCamera.WorldToScreenPoint(targetWorldPosition);
-        Vector3 NewPosFix = targetWorldPosition;
+        if (GameObject.Find("Player"))//プレイヤーは生きている（存在する）
+        {
+            time++;
+            //world座標をcamera座標に変換
+            targetWorldPosition = transform.position;
+            targetWorldPosition = mainCamera.WorldToScreenPoint(targetWorldPosition);
+            Vector3 NewPosFix = targetWorldPosition;
 
-        if (time >= 120)
-        {
-            Miss = true;            //画面内に入った
-            Speed = MaxSpeed;       //速度をMAX
-            Destroy(newObj);        //UIを消す
-            Destroy(OutsideObj);
-        }
-        else if (!Miss)              //画面内にまだ入ってない、追尾
-        {
-            ToPos = GameObject.Find("Player").transform.position;   //プレイヤーの位置
-            Move = ToPos - transform.position;
-            Move = Move.normalized;
-            LateMove = (Move - LateMove) * off + (LateMove);
-        }
-
-        //UIを画面外にいかないように
-        if (NewPosFix.y >= 1030)
-        {
-            NewPosFix.y = 1030;
-        }
-        if (NewPosFix.y <= 50)
-        {
-            NewPosFix.y = 50;
-        }
-        if (NewPosFix.x >= 1870)
-        {
-            NewPosFix.x = 1870;
-        }
-        if (NewPosFix.x <= 50)
-        {
-            NewPosFix.x = 50;
-        }
-
-        if (newObj)
-        {
-            newObj.transform.position = NewPosFix;  //UIの位置を更新
-            OutsideObj.transform.position = NewPosFix;  //UIの位置を更新
-            newObj.GetComponent<Image>().fillAmount += UIFillSpeed;
-            if (newObj.GetComponent<Image>().fillAmount >= 1.0f)
+            if (time >= 120)
             {
-                newObj.GetComponent<Image>().fillAmount = 1.0f;
+                Miss = true;            //画面内に入った
+                Speed = MaxSpeed;       //速度をMAX
+                Destroy(newObj);        //UIを消す
+                Destroy(OutsideObj);
+            }
+            else if (!Miss)              //画面内にまだ入ってない、追尾
+            {
+                ToPos = GameObject.Find("Player").transform.position;   //プレイヤーの位置
+                Move = ToPos - transform.position;
+                Move = Move.normalized;
+                LateMove = (Move - LateMove) * off + (LateMove);
             }
 
+            //UIを画面外にいかないように
+            if (NewPosFix.y >= 1030)
+            {
+                NewPosFix.y = 1030;
+            }
+            if (NewPosFix.y <= 50)
+            {
+                NewPosFix.y = 50;
+            }
+            if (NewPosFix.x >= 1870)
+            {
+                NewPosFix.x = 1870;
+            }
+            if (NewPosFix.x <= 50)
+            {
+                NewPosFix.x = 50;
+            }
+
+            if (newObj)
+            {
+                newObj.transform.position = NewPosFix;  //UIの位置を更新
+                OutsideObj.transform.position = NewPosFix;  //UIの位置を更新
+                newObj.GetComponent<Image>().fillAmount +=　UIFillSpeed;
+                if (newObj.GetComponent<Image>().fillAmount >= 1.0f)
+                {
+                    newObj.GetComponent<Image>().fillAmount = 1.0f;
+                }
+
+            }
+            Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
+            transform.rotation = rot;
+            transform.position += LateMove * Speed;
         }
-        Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
-        transform.rotation = rot;
-        transform.position += LateMove * Speed;
     }
 }
