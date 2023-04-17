@@ -10,7 +10,7 @@ public class PlayerMove: MonoBehaviour
 {
     // 入力
     private Myproject InputActions;
-    private Vector2 inputMove;
+    public Vector2 inputMove { get; private set; }
 
     // 座標
     private Vector3 pos;            // 現在の位置
@@ -120,7 +120,7 @@ public class PlayerMove: MonoBehaviour
                 // 横方向の移動
                 nextPosition.x = pos.x + inputMove.x * Normal_HorizontalSpeed;
             }
-            else if (currentPhase == PhaseManager.Phase.Speed_Phase) 
+            else if (currentPhase == PhaseManager.Phase.Speed_Phase)
             {
                 // ハイスピードフェイズ
                 // 縦方向の移動
@@ -247,10 +247,16 @@ public class PlayerMove: MonoBehaviour
         // クールタイムが終わっていたら ＆アタックフェイズではなかったら
         if (coolTimeCnt > coolTime)
         {
-            maneverFlg = true;
-            elapsedTime = 0;
-            coolTimeCnt = 0;
-            audioSource.PlayOneShot(ManeverSE);
+            if (inputMove.y >= 0.5f ||
+                inputMove.x >= 0.5f ||
+                inputMove.y <= -0.5f ||
+                inputMove.x <= -0.5f)
+            {
+                maneverFlg = true;
+                elapsedTime = 0;
+                coolTimeCnt = 0;
+                audioSource.PlayOneShot(ManeverSE);
+            }
         }
     }
 }
