@@ -20,18 +20,19 @@ public class MissileBoss : MonoBehaviour
 
     Vector3 FromPos;            //発射元
     Vector3 ToPos;              //発射先
+    GameObject Player;
     Vector3 Move;               //移動方向
     Vector3 LateMove;           //滑らか動きをするためのmove変数
 
     // Start is called before the first frame update
     void Start()
     {
-        if(GameObject.Find("Player"))
+        if (Player = GameObject.Find("Player"))
         {
             //EnemyBossという名前のものが存在する
-            FromPos = GameObject.Find("EnemyBoss").transform.position;
+            FromPos = transform.position;
             //Playerという名前のものが存在する
-            ToPos = GameObject.Find("Player").transform.position;
+            ToPos = Player.transform.position;
             //ミサイルの初期位置を設定
             transform.position = FromPos;
 
@@ -40,16 +41,16 @@ public class MissileBoss : MonoBehaviour
             off = 0.2f;
             Locked = false;
             Miss = false;
-        }
 
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("Player"))
+        if(Player)
         {
-            ToPos = GameObject.Find("Player").transform.position;
+            ToPos = Player.transform.position;
             if (transform.position.y <= FromPos.y + Height && !Locked)
             {
                 Move = new Vector3(randomX, 1.0f, randomZ);
@@ -78,6 +79,10 @@ public class MissileBoss : MonoBehaviour
             Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
             transform.rotation = rot;
             transform.position += LateMove * Speed;
-        }   
+        }
+        else
+        {
+            Destroy(this, 0.0f);
+        }
     }
 }
