@@ -21,7 +21,13 @@ public class EffectActiveSwitch : MonoBehaviour
     {
         if (playermove.maneverFlg == true)
         {
-            EffectObj.SetActive(false);
+            if (playermove.inputMove.y >= 0.5f ||
+                playermove.inputMove.x >= 0.5f ||
+                playermove.inputMove.y <= -0.5f ||
+                playermove.inputMove.x <= -0.5f)
+            {
+                EffectObj.SetActive(false);
+            }
         }
 
         if (playermove.maneverFlg == false)
