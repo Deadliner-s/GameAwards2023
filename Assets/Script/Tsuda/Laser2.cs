@@ -6,7 +6,8 @@ public class Laser2 : MonoBehaviour
 {
     public float sizeX = 0.0f;
     public float SizeY = 0.0f;
-    public float decrease = 0.1f;
+    public float decreaseX = 0.1f;
+    public float decreaseY = 0.1f;
     [SerializeField] private float delay = 2.0f; // 再生までの待機時間
 
     private float timer = 0.0f; // 経過時間
@@ -48,8 +49,8 @@ public class Laser2 : MonoBehaviour
 
         if (played && currentScale.x <= sizeX && currentScale.z <= SizeY && timer <= delay + 4.0f)
         {
-            currentScale.x += decrease;
-            currentScale.y += decrease;
+            currentScale.x += decreaseX;
+            currentScale.y += decreaseY;
             // 変更後のscaleを設定
             transform.localScale = currentScale;
         }
@@ -57,8 +58,8 @@ public class Laser2 : MonoBehaviour
         if (timer >= delay + 4.0f)
         {
             // scaleを減少させる
-            currentScale.x -= decrease;
-            currentScale.y -= decrease;
+            currentScale.x -= decreaseX;
+            currentScale.y -= decreaseY;
             // 変更後のscaleを設定
             transform.localScale = currentScale;
         }
