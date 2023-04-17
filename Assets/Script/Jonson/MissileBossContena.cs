@@ -18,6 +18,7 @@ public class MissileBossContena : MonoBehaviour
     GameObject newObj;
     public GameObject otherObject;       //生成するプレハブオブジェクト
 
+    GameObject Player;
     Vector3 FromPos;            //発射元
     Vector3 ToPos;              //発射先
     Vector3 Move;               //移動方向
@@ -26,12 +27,12 @@ public class MissileBossContena : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameObject.Find("Player"))//プレイヤーは生きている（存在する）
+        if (Player = GameObject.Find("Player"))//プレイヤーは生きている（存在する）
         {
             //プレイヤーの位置を取得
-            ToPos = GameObject.Find("Player").transform.position;
+            ToPos = Player.transform.position;
             //ボスの位置を取得
-            FromPos = GameObject.Find("EnemyBoss").transform.position;
+            FromPos = transform.position;
 
             off = 0.05f;
             Locked = false;
@@ -41,9 +42,9 @@ public class MissileBossContena : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("Player"))//プレイヤーは生きている（存在する）
+        if (Player)//プレイヤーは生きている（存在する）
         {
-            ToPos = GameObject.Find("Player").transform.position;
+            ToPos = Player.transform.position;
             if (transform.position.y <= FromPos.y + Height && !Locked)
             {
                 Speed = UpSpeed;
@@ -81,5 +82,10 @@ public class MissileBossContena : MonoBehaviour
             transform.rotation = rot;
             transform.position += LateMove * Speed;
         }
+        else
+        {
+            Destroy(this, 0.0f);
+        }
     }
+
 }

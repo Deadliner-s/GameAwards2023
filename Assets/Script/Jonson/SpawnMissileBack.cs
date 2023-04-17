@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnMissile : MonoBehaviour
+public class SpawnMissileBack : MonoBehaviour
 {
     [Tooltip("ミサイルプレハブ")]
     public GameObject Missile;

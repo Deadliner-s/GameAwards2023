@@ -24,6 +24,7 @@ public class MissileStraight : MonoBehaviour
 
     int time;
 
+    GameObject Player; 
     Vector3 ToPos;              //発射先
     Vector3 Move;               //移動方向
     Vector3 LateMove;           //滑らか動きをするためのmove変数
@@ -31,9 +32,9 @@ public class MissileStraight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameObject.Find("Player"))//プレイヤーは生きている（存在する）
+        if (Player = GameObject.Find("Player"))//プレイヤーは生きている（存在する）
         {
-            ToPos = GameObject.Find("Player").transform.position; //Player
+            ToPos = Player.transform.position; //Player
             mainCamera = Camera.main;                             // メインカメラを取得する
             canvas = GameObject.Find("Canvas");                  // キャンバスを指定
 
@@ -75,7 +76,7 @@ public class MissileStraight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("Player"))//プレイヤーは生きている（存在する）
+        if (Player)//プレイヤーは生きている（存在する）
         {
             time++;
             //world座標をcamera座標に変換
@@ -92,7 +93,7 @@ public class MissileStraight : MonoBehaviour
             }
             else if (!Miss)              //画面内にまだ入ってない、追尾
             {
-                ToPos = GameObject.Find("Player").transform.position;   //プレイヤーの位置
+                ToPos =Player.transform.position;   //プレイヤーの位置
                 Move = ToPos - transform.position;
                 Move = Move.normalized;
                 LateMove = (Move - LateMove) * off + (LateMove);
@@ -130,6 +131,10 @@ public class MissileStraight : MonoBehaviour
             Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
             transform.rotation = rot;
             transform.position += LateMove * Speed;
+        }
+        else
+        {
+            Destroy(this, 0.0f);
         }
     }
 }

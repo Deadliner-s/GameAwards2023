@@ -17,6 +17,7 @@ public class MissileBossClusterSmall : MonoBehaviour
     float randY;
     Vector3 PlusY;
 
+    GameObject Player;
     Vector3 ToPos;              //発射先
     Vector3 CheckPos;
     Vector3 Move;               //移動方向
@@ -25,9 +26,9 @@ public class MissileBossClusterSmall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(GameObject.Find("Player"))//プレイヤーは生きている（存在する）
+        if (Player = GameObject.Find("Player"))//プレイヤーは生きている（存在する）
         {
-            ToPos = GameObject.Find("Player").transform.position; //Player
+            ToPos = Player.transform.position; //Player
             Miss = false;
             off = 0.2f;
             randY = rand.Next(30);
@@ -40,7 +41,7 @@ public class MissileBossClusterSmall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (GameObject.Find("Player"))//プレイヤーは生きている（存在する）
+        if (Player)//プレイヤーは生きている（存在する）
         {
             Speed += Accel;                                         //加速度
             if (Speed >= MaxSpeed)                                  //速度制限
@@ -48,7 +49,7 @@ public class MissileBossClusterSmall : MonoBehaviour
             float distance = Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(ToPos.x, 0, ToPos.z));
             if (distance >= MissRange && !Miss)
             {
-                ToPos = GameObject.Find("Player").transform.position;   //プレイヤーの位置
+                ToPos = Player.transform.position;   //プレイヤーの位置
 
                 Move.x = ToPos.x - transform.position.x;
                 Move.z = ToPos.z - transform.position.z;
@@ -64,6 +65,10 @@ public class MissileBossClusterSmall : MonoBehaviour
             Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
             transform.rotation = rot;
             transform.position += LateMove * Speed;
+        }
+        else
+        {
+            Destroy(this, 0.0f);
         }
     }
 
