@@ -5,6 +5,7 @@ public class RockOnMarker : MonoBehaviour
 {
     private GameObject target;                  // ロックオした時のマーク
     private GameObject canvas;                  // キャンバス
+    private GameObject player;
     private bool rockonFlg = false;             // ロックオンのマークが付いているか       
 
     [Header("敵の半径")]
@@ -39,6 +40,7 @@ public class RockOnMarker : MonoBehaviour
     void Start()
     {
         canvas = GameObject.Find("Canvas RockOn");     // キャンバスを指定
+        player = GameObject.Find("Player");
         //canvasGraphic = canvas.GetComponent<Graphic>().canvas;
 
         target = null;
@@ -53,62 +55,63 @@ public class RockOnMarker : MonoBehaviour
         RaycastHit hit;    //ヒットした情報
         // 自身からカメラに向かってRayを飛ばし、条件に当てはまるならマークを生成する
         Physics.Linecast(transform.position, Camera.main.transform.position, out hit);
-
-        if (hit.collider.gameObject.tag == "MainCamera" || hit.collider.gameObject.tag == "Player" ||
-            hit.collider.gameObject.name == "BossMissle(Clone)" || hit.collider.gameObject.name == "BossMissleContena(Clone)" || hit.collider.gameObject.name == "BossMissleContenaSmall(Clone)")
+        if (player != null)
         {
-            // 一度隠れたオブジェクトの場合
-            if (hideFlg == true)
+            if (hit.collider.gameObject.tag == "MainCamera" || hit.collider.gameObject.tag == "Player" ||
+                hit.collider.gameObject.name == "BossMissle(Clone)" || hit.collider.gameObject.name == "BossMissleContena(Clone)" || hit.collider.gameObject.name == "BossMissleContenaSmall(Clone)")
             {
-                rockonFlg = false;
-                hideFlg = false;
-            }
-
-            // ロックオンマークがない場合
-            if (rockonFlg == false)
-            {
-                // ロックオンマークを生成
-                target = (GameObject)Resources.Load("TargetMaker");
-                target = Instantiate(target, transform.position, target.transform.rotation);
-
-                targetRect = target.GetComponent<RectTransform>();
-
-                // Canvasの子オブジェクトとして生成
-                target.transform.SetParent(canvas.transform, false);
-                rockonFlg = true;
-            }
-        }
-        else
-        {
-            // 条件に当てはまらない場合はマークを消してフラグを立てる
-            if (rockonFlg == true)
-            {
-                if (target != null)
+                // 一度隠れたオブジェクトの場合
+                if (hideFlg == true)
                 {
-                    Destroy(target);
+                    rockonFlg = false;
+                    hideFlg = false;
                 }
-                hideFlg = true;
-                this.tag = "Enemy";
-            }
-        }
 
-        if (target != null)
-        {
-            // 敵に追従させる
-            if (rockonFlg == true)
+                // ロックオンマークがない場合
+                if (rockonFlg == false)
+                {
+                    // ロックオンマークを生成
+                    target = (GameObject)Resources.Load("TargetMaker");
+                    target = Instantiate(target, transform.position, target.transform.rotation);
+
+                    targetRect = target.GetComponent<RectTransform>();
+
+                    // Canvasの子オブジェクトとして生成
+                    target.transform.SetParent(canvas.transform, false);
+                    rockonFlg = true;
+                }
+            }
+            else
             {
-                targetPos = target.transform.position;
-                uiCamera = Camera.main;
-                worldCamera = Camera.main;
-                canvasRect = canvas.GetComponent<RectTransform>();
+                // 条件に当てはまらない場合はマークを消してフラグを立てる
+                if (rockonFlg == true)
+                {
+                    if (target != null)
+                    {
+                        Destroy(target);
+                    }
+                    hideFlg = true;
+                    this.tag = "Enemy";
+                }
+            }
 
-                // ワールド座標をスクリーン座標に変換
-                targetScreenPos = RectTransformUtility.WorldToScreenPoint(worldCamera, transform.position);
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, targetScreenPos, uiCamera, out targetPos);
-                targetRect.localPosition = targetPos;
+            if (target != null)
+            {
+                // 敵に追従させる
+                if (rockonFlg == true)
+                {
+                    targetPos = target.transform.position;
+                    uiCamera = Camera.main;
+                    worldCamera = Camera.main;
+                    canvasRect = canvas.GetComponent<RectTransform>();
+
+                    // ワールド座標をスクリーン座標に変換
+                    targetScreenPos = RectTransformUtility.WorldToScreenPoint(worldCamera, transform.position);
+                    RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, targetScreenPos, uiCamera, out targetPos);
+                    targetRect.localPosition = targetPos;
+                }
             }
         }
-
         Debug.DrawLine(transform.position, Camera.main.transform.position, Color.red);
     }
 

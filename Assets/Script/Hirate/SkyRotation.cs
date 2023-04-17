@@ -30,7 +30,14 @@ public class SkyRotation : MonoBehaviour
         RenderSettings.skybox = skyInstance;
 
         // フェーズ取得用
-        PhaseFlg = PhaseManager.instance.GetPhase();
+        try
+        {
+            PhaseFlg = PhaseManager.instance.GetPhase();
+        }
+        catch
+        {
+
+        }
 
         // 通常フェーズを代入
         PhaseFlg = PhaseManager.Phase.Normal_Phase;
@@ -40,7 +47,14 @@ public class SkyRotation : MonoBehaviour
     void Update()
     {
         // フェーズ取得用
-        PhaseFlg = PhaseManager.instance.GetPhase();
+        try
+        {
+            PhaseFlg = PhaseManager.instance.GetPhase();
+        }
+        catch
+        {
+
+        }
 
         // フェーズによって切り替え
         // 通常

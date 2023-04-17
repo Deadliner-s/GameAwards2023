@@ -56,9 +56,9 @@ public class PlayerMove: MonoBehaviour
 
     [Header("SE関係")]
     public AudioClip MoveSE;
-    public AudioClip ManeverSE;
     private AudioSource audioSource;
     private bool MoveSeFlg = false;
+
     [Header("エフェクト")]
     public EffekseerEffectAsset effect;     // 再生するエフェクト
     private EffekseerHandle handle;
@@ -250,7 +250,7 @@ public class PlayerMove: MonoBehaviour
             maneverFlg = true;
             elapsedTime = 0;
             coolTimeCnt = 0;
-            audioSource.PlayOneShot(ManeverSE);
+            SoundManager.instance.Play("Manever");
         }
     }
 }
