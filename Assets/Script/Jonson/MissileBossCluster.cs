@@ -19,6 +19,7 @@ public class MissileBossCluster : MonoBehaviour
     private Camera mainCamera;            // メインカメラ
     private Vector3 targetWorldPosition;  // 目標ワールド座標
 
+    GameObject Player;
     Vector3 ToPos;              //発射先
     Vector3 Move;               //移動方向
     Vector3 LateMove;           //滑らか動きをするためのmove変数
@@ -26,22 +27,23 @@ public class MissileBossCluster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameObject.Find("Player"))//プレイヤーは生きている（存在する）
+        if(Player = GameObject.Find("Player"))
         {
-            ToPos = GameObject.Find("Player").transform.position; //Player
+            ToPos = Player.transform.position; //Player
             mainCamera = Camera.main;                             // メインカメラを取得する
 
             Cluster = false;
             off = 1.0f;
         }
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("Player"))//プレイヤーは生きている（存在する）
+        if (Player)
         {
-            ToPos = GameObject.Find("Player").transform.position;   //プレイヤーの位置
+            ToPos = Player.transform.position;   //プレイヤーの位置
             Speed += Accel;                                         //加速度
             if (Speed >= MaxSpeed)                                  //速度制限
                 Speed = MaxSpeed;
@@ -74,6 +76,10 @@ public class MissileBossCluster : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, ToPos.y, transform.position.z);
             }
             transform.position += LateMove * Speed;
+        }
+        else
+        {
+            Destroy(this, 0.0f);
         }
     }
 }   
