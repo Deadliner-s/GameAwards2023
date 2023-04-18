@@ -166,7 +166,7 @@ public class SpawnMissileScreen : MonoBehaviour
             // フェイズ確認
             currentPhase = PhaseManager.instance.GetPhase();
 
-            if (currentPhase == PhaseManager.Phase.Attack_Phase)
+            if (currentPhase == PhaseManager.Phase.Speed_Phase)
             {
                 // アタックフェイズ
                 // 各フラグ、変数などリセット
