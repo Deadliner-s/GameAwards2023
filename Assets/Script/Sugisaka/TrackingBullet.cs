@@ -6,23 +6,29 @@ public class TrackingBullet : MonoBehaviour
 {
     [Header("低速上昇")]
     [Tooltip("上昇速度")]
-    public float upSpeed;
+    [SerializeField]
+    float upSpeed;
     [Tooltip("慣性")]
-    public float inertiaSpeed;
+    [SerializeField]
+    float inertiaSpeed;
     [Tooltip("上昇限界")]
-    public float maxHeight;
+    [SerializeField]
+    float maxHeight;
 
     [Header("ため")]
     [Tooltip("ための時間(秒)")]
-    public float stopTime;
+    [SerializeField]
+    float stopTime;
 
     [Header("誘導移動")]
     [Tooltip("誘導速度")]
-    public float MoveSpeed;
+    [SerializeField]
+    float MoveSpeed;
 
     [Header("生存時間")]
     [Tooltip("ミサイルの最大飛行時間(フレーム)")]
-    public float maxFlightTime = 100f;
+    [SerializeField]
+    float maxFlightTime = 100f;
 
     // 状態(0:上昇移動  1:ため  2:追跡  3:ターゲットなくなった場合)
     private int State = 0;
