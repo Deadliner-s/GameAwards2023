@@ -34,10 +34,6 @@ public class Shot : MonoBehaviour
     // 退避用
     public List<GameObject> sub = new List<GameObject>();
 
-    // 音関係
-    public AudioClip ShotSE;
-    private AudioSource audioSource;
-
     void Awake()
     {
         InputActions = new Myproject();
@@ -56,8 +52,6 @@ public class Shot : MonoBehaviour
         // フェイズ取得
         currentPhase = PhaseManager.instance.GetPhase();
         nextPhase = currentPhase;
-
-        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -91,7 +85,7 @@ public class Shot : MonoBehaviour
                     targets.RemoveAt(0);
 
                     // SE再生
-                    audioSource.PlayOneShot(ShotSE);
+                    SoundManager.instance.Play("Shot");
 
                     intervalTime = 0.0f;
                 }   

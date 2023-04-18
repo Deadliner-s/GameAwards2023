@@ -30,10 +30,6 @@ public class ReticleMove : MonoBehaviour
     private GameObject enemy;
     private Vector3 enemy2D;
 
-    [Header("SE")]
-    public AudioClip RockOnSE;
-    private AudioSource audioSource;
-
     void Awake()
     {
         // コントローラー
@@ -70,9 +66,6 @@ public class ReticleMove : MonoBehaviour
         RockOnCnt[2].transform.position = new Vector3(thisPos.x, thisPos.y - offsetY, thisPos.z);
         RockOnCnt[1].transform.position = new Vector3(thisPos.x + 12.5f, thisPos.y - offsetY, thisPos.z);
         RockOnCnt[0].transform.position = new Vector3(thisPos.x + 25.0f, thisPos.y - offsetY, thisPos.z);
-
-        // SE
-        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -141,7 +134,7 @@ public class ReticleMove : MonoBehaviour
 
                                     enemy.GetComponent<RockOnMarker>().RockOnAnime();
                                     enemy.gameObject.tag = "Target";
-                                    audioSource.PlayOneShot(RockOnSE);
+                                    SoundManager.instance.Play("RockOn");
                                 }
                             }
                         }

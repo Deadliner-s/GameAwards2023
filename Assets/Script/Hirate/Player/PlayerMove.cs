@@ -8,62 +8,62 @@ using UnityEngine.InputSystem;
 
 public class PlayerMove: MonoBehaviour
 {
-    // “ü—Í
+    // å…¥åŠ›
     private Myproject InputActions;
-    private Vector2 inputMove;
+    public Vector2 inputMove { get; private set; }
 
-    // À•W
-    private Vector3 pos;            // Œ»İ‚ÌˆÊ’u
-    private Vector3 nextPosition;   // ˆÚ“®Œã‚ÌˆÊ’u
-    private float viewX;            // ƒrƒ…[ƒ|[ƒgÀ•W‚Ìx‚Ì’l
-    private float viewY;            // ƒrƒ…[ƒ|[ƒgÀ•W‚Ìy‚Ì’l
+    // åº§æ¨™
+    private Vector3 pos;            // ç¾åœ¨ã®ä½ç½®
+    private Vector3 nextPosition;   // ç§»å‹•å¾Œã®ä½ç½®
+    private float viewX;            // ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆåº§æ¨™ã®xã®å€¤
+    private float viewY;            // ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆåº§æ¨™ã®yã®å€¤
 
-    [Header("’ÊíƒtƒFƒCƒY‚ÌˆÚ“®‘¬“x")]
-    [Tooltip("cˆÚ“®")]
+    [Header("é€šå¸¸ãƒ•ã‚§ã‚¤ã‚ºæ™‚ã®ç§»å‹•é€Ÿåº¦")]
+    [Tooltip("ç¸¦ç§»å‹•")]
     public float Normal_VerticalSpeed = 0.01f;
-    [Tooltip("‰¡ˆÚ“®")]
+    [Tooltip("æ¨ªç§»å‹•")]
     public float Normal_HorizontalSpeed = 0.01f;
 
-    [Header("ƒnƒCƒXƒs[ƒhƒtƒFƒCƒY‚ÌˆÚ“®‘¬“x")]
-    [Tooltip("cˆÚ“®")]
+    [Header("ãƒã‚¤ã‚¹ãƒ”ãƒ¼ãƒ‰ãƒ•ã‚§ã‚¤ã‚ºæ™‚ã®ç§»å‹•é€Ÿåº¦")]
+    [Tooltip("ç¸¦ç§»å‹•")]
     public float Spd_VerticalSpeed = 0.005f;
-    [Tooltip("‰¡ˆÚ“®")]
+    [Tooltip("æ¨ªç§»å‹•")]
     public float Spd_HorizontalSpeed = 0.01f;
 
-    [Header("ƒAƒ^ƒbƒNƒtƒFƒCƒY‚ÌˆÚ“®‘¬“x")]
-    [Tooltip("cˆÚ“®")]
+    [Header("ã‚¢ã‚¿ãƒƒã‚¯ãƒ•ã‚§ã‚¤ã‚ºæ™‚ã®ç§»å‹•é€Ÿåº¦")]
+    [Tooltip("ç¸¦ç§»å‹•")]
     public float Atk_VerticalSpeed = 0.01f;
-    [Tooltip("‰¡ˆÚ“®")]
+    [Tooltip("æ¨ªç§»å‹•")]
     public float Atk_HorizontalSpeed = 0.01f;
 
-    // ƒNƒCƒbƒNƒ}ƒjƒ…[ƒo—p•Ï”
-    [Header("ƒ}ƒjƒ…[ƒoŠÔ")]
-    [Tooltip("ƒ}ƒjƒ…[ƒo‚Ì‘±ŠÔ")]
-    public float ManerverTime = 0.5f;   // “®‚­ŠÔ
-    [Tooltip("ƒN[ƒ‹ƒ^ƒCƒ€")]
-    public float coolTime = 1.0f;       // Äg—p‚Å‚«‚é‚æ‚¤‚É‚È‚éŠÔ
-    [Header("ƒ}ƒjƒ…[ƒo‚ÌˆÚ“®‘¬“x")]
-    [Tooltip("cˆÚ“®")]
-    public float Manever_VerticalSpeed = 0.03f;   // ƒ}ƒjƒ…[ƒo‚Ì‘¬“x
-    [Tooltip("‰¡ˆÚ“®")]
+    // ã‚¯ã‚¤ãƒƒã‚¯ãƒãƒ‹ãƒ¥ãƒ¼ãƒç”¨å¤‰æ•°
+    [Header("ãƒãƒ‹ãƒ¥ãƒ¼ãƒæ™‚é–“")]
+    [Tooltip("ãƒãƒ‹ãƒ¥ãƒ¼ãƒã®æŒç¶šæ™‚é–“")]
+    public float ManerverTime = 0.5f;   // å‹•ãæ™‚é–“
+    [Tooltip("ã‚¯ãƒ¼ãƒ«ã‚¿ã‚¤ãƒ ")]
+    public float coolTime = 1.0f;       // å†ä½¿ç”¨ã§ãã‚‹ã‚ˆã†ã«ãªã‚‹æ™‚é–“
+    [Header("ãƒãƒ‹ãƒ¥ãƒ¼ãƒæ™‚ã®ç§»å‹•é€Ÿåº¦")]
+    [Tooltip("ç¸¦ç§»å‹•")]
+    public float Manever_VerticalSpeed = 0.03f;   // ãƒãƒ‹ãƒ¥ãƒ¼ãƒæ™‚ã®é€Ÿåº¦
+    [Tooltip("æ¨ªç§»å‹•")]
     public float Manever_HorizontalSpeed = 0.03f;
 
-    // ƒ}ƒjƒ…[ƒoƒJƒEƒ“ƒg
-    private float elapsedTime;          // ƒ}ƒjƒ…[ƒoŒo‰ßŠÔ
-    private float coolTimeCnt;          // ƒN[ƒ‹ƒ^ƒCƒ€‚ÌŒo‰ßŠÔ
+    // ãƒãƒ‹ãƒ¥ãƒ¼ãƒã‚«ã‚¦ãƒ³ãƒˆ
+    private float elapsedTime;          // ãƒãƒ‹ãƒ¥ãƒ¼ãƒçµŒéæ™‚é–“
+    private float coolTimeCnt;          // ã‚¯ãƒ¼ãƒ«ã‚¿ã‚¤ãƒ ã®çµŒéæ™‚é–“
     //private bool maneverFlg = false;
-    public bool maneverFlg { get; private set; } = false; // ƒ}ƒjƒ…[ƒo‚Ìƒtƒ‰ƒO
+    public bool maneverFlg { get; private set; } = false; // ãƒãƒ‹ãƒ¥ãƒ¼ãƒã®ãƒ•ãƒ©ã‚°
 
-    [Header("SEŠÖŒW")]
+    [Header("SEé–¢ä¿‚")]
     public AudioClip MoveSE;
-    public AudioClip ManeverSE;
     private AudioSource audioSource;
     private bool MoveSeFlg = false;
-    [Header("ƒGƒtƒFƒNƒg")]
-    public EffekseerEffectAsset effect;     // Ä¶‚·‚éƒGƒtƒFƒNƒg
+
+    [Header("ã‚¨ãƒ•ã‚§ã‚¯ãƒˆ")]
+    public EffekseerEffectAsset effect;     // å†ç”Ÿã™ã‚‹ã‚¨ãƒ•ã‚§ã‚¯ãƒˆ
     private EffekseerHandle handle;
 
-    // Œ»İƒtƒFƒCƒY
+    // ç¾åœ¨ãƒ•ã‚§ã‚¤ã‚º
     private PhaseManager.Phase currentPhase;
     private PhaseManager.Phase nextPhase;
 
@@ -79,22 +79,22 @@ public class PlayerMove: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // ‰Šú‰»
+        // åˆæœŸåŒ–
         pos = transform.position;
         nextPosition = pos;
 
-        // ƒ}ƒjƒ…[ƒo•Ï”‰Šú‰»
+        // ãƒãƒ‹ãƒ¥ãƒ¼ãƒå¤‰æ•°åˆæœŸåŒ–
         elapsedTime = ManerverTime + coolTime;
         coolTimeCnt = 0;
 
-        // ƒtƒFƒCƒYæ“¾
+        // ãƒ•ã‚§ã‚¤ã‚ºå–å¾—
         currentPhase = PhaseManager.instance.GetPhase();
 
         // SE
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = MoveSE;
 
-        // ƒGƒtƒFƒNƒg‚ğæ“¾‚·‚éB
+        // ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚
         effect = Resources.Load<EffekseerEffectAsset>(effect.name);
 
         nextPhase = currentPhase;
@@ -103,73 +103,73 @@ public class PlayerMove: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ƒtƒFƒCƒYæ“¾
+        // ãƒ•ã‚§ã‚¤ã‚ºå–å¾—
         currentPhase = PhaseManager.instance.GetPhase();
 
-        // ƒL[“ü—Í
+        // ã‚­ãƒ¼å…¥åŠ›
         inputMove = InputActions.Player.Move.ReadValue<Vector2>();
 
-        // À•WŒvZ
+        // åº§æ¨™è¨ˆç®—
         if (maneverFlg == false)
         {
             if(currentPhase == PhaseManager.Phase.Normal_Phase)
             {
-                // ’ÊíƒtƒFƒCƒY
-                // c•ûŒü‚ÌˆÚ“®
+                // é€šå¸¸ãƒ•ã‚§ã‚¤ã‚º
+                // ç¸¦æ–¹å‘ã®ç§»å‹•
                 nextPosition.y = pos.y + inputMove.y * Normal_VerticalSpeed;
-                // ‰¡•ûŒü‚ÌˆÚ“®
+                // æ¨ªæ–¹å‘ã®ç§»å‹•
                 nextPosition.x = pos.x + inputMove.x * Normal_HorizontalSpeed;
             }
-            else if (currentPhase == PhaseManager.Phase.Speed_Phase) 
+            else if (currentPhase == PhaseManager.Phase.Speed_Phase)
             {
-                // ƒnƒCƒXƒs[ƒhƒtƒFƒCƒY
-                // c•ûŒü‚ÌˆÚ“®
+                // ãƒã‚¤ã‚¹ãƒ”ãƒ¼ãƒ‰ãƒ•ã‚§ã‚¤ã‚º
+                // ç¸¦æ–¹å‘ã®ç§»å‹•
                 nextPosition.y = pos.y + inputMove.y * Spd_VerticalSpeed;
-                // ‰¡•ûŒü‚ÌˆÚ“®
+                // æ¨ªæ–¹å‘ã®ç§»å‹•
                 nextPosition.x = pos.x + inputMove.x * Spd_HorizontalSpeed;
             }
             else if(currentPhase == PhaseManager.Phase.Attack_Phase)
             {
-                // ƒAƒ^ƒbƒNƒtƒFƒCƒY
-                // c•ûŒü‚ÌˆÚ“®
+                // ã‚¢ã‚¿ãƒƒã‚¯ãƒ•ã‚§ã‚¤ã‚º
+                // ç¸¦æ–¹å‘ã®ç§»å‹•
                 nextPosition.y = pos.y + inputMove.y * Atk_VerticalSpeed;
-                // ‰¡•ûŒü‚ÌˆÚ“®
+                // æ¨ªæ–¹å‘ã®ç§»å‹•
                 nextPosition.x = pos.x + inputMove.x * Atk_HorizontalSpeed;
             }
         }
         else
         {
-            // ƒNƒCƒbƒNƒ}ƒjƒ…[ƒo
-            // c•ûŒü‚ÌˆÚ“®
+            // ã‚¯ã‚¤ãƒƒã‚¯ãƒãƒ‹ãƒ¥ãƒ¼ãƒ
+            // ç¸¦æ–¹å‘ã®ç§»å‹•
             nextPosition.y = pos.y + inputMove.y * Manever_VerticalSpeed;
-            // ‰¡•ûŒü‚ÌˆÚ“®
+            // æ¨ªæ–¹å‘ã®ç§»å‹•
             nextPosition.x = pos.x + inputMove.x * Manever_HorizontalSpeed;
 
-            // ƒ}ƒjƒ…[ƒoŒo‰ßŠÔ
+            // ãƒãƒ‹ãƒ¥ãƒ¼ãƒçµŒéæ™‚é–“
             elapsedTime += Time.deltaTime;
         }
         if (elapsedTime > ManerverTime)
         {
-            // ƒ}ƒjƒ…[ƒo‚Å‚«‚éŠÔ‚ª‰ß‚¬‚½‚ç
+            // ãƒãƒ‹ãƒ¥ãƒ¼ãƒã§ãã‚‹æ™‚é–“ãŒéããŸã‚‰
             maneverFlg = false;
-            // ƒN[ƒ‹ƒ^ƒCƒ€‚ÌƒJƒEƒ“ƒg‚ğn‚ß‚é
+            // ã‚¯ãƒ¼ãƒ«ã‚¿ã‚¤ãƒ ã®ã‚«ã‚¦ãƒ³ãƒˆã‚’å§‹ã‚ã‚‹
             coolTimeCnt += Time.deltaTime;
         }
 
-        // ˆÚ“®Œã‚Ìƒrƒ…[ƒ|[ƒgÀ•W‚Ìx‚Ì’l‚ğæ“¾
+        // ç§»å‹•å¾Œã®ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆåº§æ¨™ã®xã®å€¤ã‚’å–å¾—
         viewX = Camera.main.WorldToViewportPoint(nextPosition).x;
         viewY = Camera.main.WorldToViewportPoint(nextPosition).y;
 
-        // ˆÚ“®Œã‚Ìƒrƒ…[ƒ|[ƒgÀ•W‚ª‚O‚©‚ç‚P‚Ì”ÍˆÍ‚È‚ç‚Î
+        // ç§»å‹•å¾Œã®ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆåº§æ¨™ãŒï¼ã‹ã‚‰ï¼‘ã®ç¯„å›²ãªã‚‰ã°
         if (0.0f <= viewX && viewX <= 1.0f && 0.0f <= viewY && viewY <= 1.0f)
         {
-            // ˆÚ“®XV
+            // ç§»å‹•æ›´æ–°
             transform.position = nextPosition;
 
             pos = nextPosition;
         }
 
-        // “®‚¢‚Ä‚é‚É–Â‚éSE
+        // å‹•ã„ã¦ã‚‹æ™‚ã«é³´ã‚‹SE
         if (0.0f < inputMove.x)
         {
             if (MoveSeFlg == false)
@@ -208,35 +208,35 @@ public class PlayerMove: MonoBehaviour
             MoveSeFlg = false;
         }
 
-        // ƒtƒFƒCƒY‚ª•Ï‚í‚Á‚½ê‡
+        // ãƒ•ã‚§ã‚¤ã‚ºãŒå¤‰ã‚ã£ãŸå ´åˆ
         if (nextPhase != currentPhase)
         {
             nextPhase = currentPhase;
-            // ’ÊíƒtƒFƒCƒY
+            // é€šå¸¸ãƒ•ã‚§ã‚¤ã‚º
             if (currentPhase == Phase.Normal_Phase)
             {
                 
             }
-            // ƒnƒCƒXƒs[ƒhƒtƒFƒCƒY
+            // ãƒã‚¤ã‚¹ãƒ”ãƒ¼ãƒ‰ãƒ•ã‚§ã‚¤ã‚º
             if (currentPhase == Phase.Speed_Phase)
             {
-                // transform‚ÌˆÊ’u‚ÅƒGƒtƒFƒNƒg‚ğÄ¶‚·‚é
+                // transformã®ä½ç½®ã§ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’å†ç”Ÿã™ã‚‹
                 handle = EffekseerSystem.PlayEffect(effect, transform.position);
-                // transform‚Ì‰ñ“]‚ğİ’è‚·‚éB
-                // ƒvƒŒƒCƒ„[‚ÌŒX‚«‚É‰e‹¿‚³‚ê‚È‚¢
+                // transformã®å›è»¢ã‚’è¨­å®šã™ã‚‹ã€‚
+                // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å‚¾ãã«å½±éŸ¿ã•ã‚Œãªã„
                 Vector3 eulerAngles = this.transform.eulerAngles;
                 Vector3 rot = new Vector3(0.0f, eulerAngles.y, eulerAngles.z);
                 Quaternion quaternion = Quaternion.Euler(rot);
                 handle.SetLocation(transform.position);
                 handle.SetRotation(quaternion);
             }
-            // ƒAƒ^ƒbƒNƒtƒFƒCƒY
+            // ã‚¢ã‚¿ãƒƒã‚¯ãƒ•ã‚§ã‚¤ã‚º
             if (currentPhase == Phase.Attack_Phase)
             {
                 
             }
         }
-        // ƒGƒtƒFƒNƒg‚ğƒvƒŒƒCƒ„[‚É’Ç]‚³‚¹‚é
+        // ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã«è¿½å¾“ã•ã›ã‚‹
         handle.SetLocation(transform.position);
     }
 
@@ -244,13 +244,19 @@ public class PlayerMove: MonoBehaviour
 
     private void OnManever()
     {
-        // ƒN[ƒ‹ƒ^ƒCƒ€‚ªI‚í‚Á‚Ä‚¢‚½‚ç •ƒAƒ^ƒbƒNƒtƒFƒCƒY‚Å‚Í‚È‚©‚Á‚½‚ç
+        // ã‚¯ãƒ¼ãƒ«ã‚¿ã‚¤ãƒ ãŒçµ‚ã‚ã£ã¦ã„ãŸã‚‰ ï¼†ã‚¢ã‚¿ãƒƒã‚¯ãƒ•ã‚§ã‚¤ã‚ºã§ã¯ãªã‹ã£ãŸã‚‰
         if (coolTimeCnt > coolTime)
         {
-            maneverFlg = true;
-            elapsedTime = 0;
-            coolTimeCnt = 0;
-            audioSource.PlayOneShot(ManeverSE);
+            if (inputMove.y >= 0.5f ||
+                inputMove.x >= 0.5f ||
+                inputMove.y <= -0.5f ||
+                inputMove.x <= -0.5f)
+            {
+                maneverFlg = true;
+                elapsedTime = 0;
+                coolTimeCnt = 0;
+                SoundManager.instance.Play("Manever");
+            }
         }
     }
 }

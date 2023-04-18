@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuSelect : MonoBehaviour
 {
-    Myproject InputActions;
+    private Myproject InputActions;
 
     public List<Animator> menuList;
 
@@ -21,7 +21,7 @@ public class MenuSelect : MonoBehaviour
         InputActions.UI.Up.performed += context => OnUp();
         InputActions.UI.Down.performed += context => OnDown();
         InputActions.UI.Select.performed += context => OnSelect();
-        InputActions.UI.Back.performed += context => OnSelect();
+        InputActions.UI.Back.performed += context => OnBack();
 
         currentMenu = 0;
         for (int i = 0; i < MaxMenu; i++)
@@ -78,6 +78,7 @@ public class MenuSelect : MonoBehaviour
             case (0):
                 // NEW GAME
                 SceneManager.LoadScene("merge_2");
+                InputActions.Disable();
                 break;
             case (1):
                 // CONTINUE
