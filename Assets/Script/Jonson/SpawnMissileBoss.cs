@@ -26,12 +26,22 @@ public class SpawnMissileBoss : MonoBehaviour
     // 現在フェイズ
     private PhaseManager.Phase currentPhase;
 
-    // これコピペ
+    [Header("AttackPhaseから何秒たったら出すか（誘導）")]
     public float[] StartTimeHoming = new float[FlagMax];           //出すタイミング
+
+    [Header("何秒出すか（誘導）")]
     public float[] DurationHoming = new float[FlagMax];           //出すトータル長さ
+
+    [Header("ミサイル一個出す間隔（誘導）")]
     public float[] IntervalTriggerHoming = new float[FlagMax];   //出す間隔
+
+    [Header("AttackPhaseから何秒たったら出すか（コンテナ）")]
     public float[] StartTimeContena = new float[FlagMax];           //出すタイミング
+
+    [Header("何秒出すか（コンテナ）")]
     public float[] DurationContena = new float[FlagMax];           //出すトータル長さ
+
+    [Header("ミサイル一個出す間隔（コンテナ）")]
     public float[] IntervalTriggerContena = new float[FlagMax];   //出す間隔
 
     // 確認用フラグ

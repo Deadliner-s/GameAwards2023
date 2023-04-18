@@ -404,14 +404,9 @@ GameObject:
   - component: {fileID: 247176456}
   - component: {fileID: 247176455}
   - component: {fileID: 247176454}
-  - component: {fileID: 247176464}
-  - component: {fileID: 247176467}
-  - component: {fileID: 247176466}
-  - component: {fileID: 247176465}
-  - component: {fileID: 247176463}
-  - component: {fileID: 247176462}
-  - component: {fileID: 247176468}
   - component: {fileID: 247176469}
+  - component: {fileID: 247176470}
+  - component: {fileID: 247176468}
   m_Layer: 0
   m_Name: EnemyBoss
   m_TagString: Untagged
@@ -484,342 +479,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &247176462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247176452}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0519608d753d34943ab8cf3ba4a213c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
-  DestroyTime: 30
-  Key: m
-  SpawnPos: {fileID: 1466317056}
-  StartTime_1: 23
-  Timer_1: 1
-  Interval_1: 8
-  h_Missile_1: []
-  StartTime_2: 900
-  Timer_2: 0
-  Interval_2: 2
-  h_Missile_2: []
-  StartTime_3: 900
-  Timer_3: 0
-  Interval_3: 2
-  h_Missile_3: []
-  StartTime_4: 900
-  Timer_4: 0
-  Interval_4: 2
-  h_Missile_4: []
-  StartTime_5: 900
-  Timer_5: 0
-  Interval_5: 2
-  h_Missile_5: []
-  StartTime_6: 900
-  Timer_6: 0
-  Interval_6: 2
-  h_Missile_6: []
-  StartTime_7: 900
-  Timer_7: 0
-  Interval_7: 2
-  h_Missile_7: []
-  StartTime_8: 900
-  Timer_8: 0
-  Interval_8: 2
-  h_Missile_8: []
-  StartTime_9: 900
-  Timer_9: 0
-  Interval_9: 2
-  h_Missile_9: []
-  StartTime_10: 900
-  Timer_10: 0
-  Interval_10: 2
-  h_Missile_10: []
---- !u!114 &247176463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247176452}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0519608d753d34943ab8cf3ba4a213c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
-  DestroyTime: 30
-  Key: n
-  SpawnPos: {fileID: 1435503352}
-  StartTime_1: 9
-  Timer_1: 18
-  Interval_1: 3
-  h_Missile_1: []
-  StartTime_2: 22
-  Timer_2: 11
-  Interval_2: 3
-  h_Missile_2: []
-  StartTime_3: 900
-  Timer_3: 0
-  Interval_3: 2
-  h_Missile_3: []
-  StartTime_4: 900
-  Timer_4: 0
-  Interval_4: 2
-  h_Missile_4: []
-  StartTime_5: 900
-  Timer_5: 0
-  Interval_5: 2
-  h_Missile_5: []
-  StartTime_6: 900
-  Timer_6: 0
-  Interval_6: 2
-  h_Missile_6: []
-  StartTime_7: 900
-  Timer_7: 0
-  Interval_7: 2
-  h_Missile_7: []
-  StartTime_8: 900
-  Timer_8: 0
-  Interval_8: 2
-  h_Missile_8: []
-  StartTime_9: 900
-  Timer_9: 0
-  Interval_9: 2
-  h_Missile_9: []
-  StartTime_10: 900
-  Timer_10: 0
-  Interval_10: 2
-  h_Missile_10: []
---- !u!114 &247176464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247176452}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0519608d753d34943ab8cf3ba4a213c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Missile: {fileID: 5540224078154131618, guid: 05a76db5fa499f548b8994bdfdbb97b9, type: 3}
-  DestroyTime: 10
-  Key: i
-  SpawnPos: {fileID: 514139033}
-  StartTime_1: 19
-  Timer_1: 10
-  Interval_1: 5
-  h_Missile_1: []
-  StartTime_2: 900
-  Timer_2: 0
-  Interval_2: 4
-  h_Missile_2: []
-  StartTime_3: 900
-  Timer_3: 0
-  Interval_3: 2
-  h_Missile_3: []
-  StartTime_4: 900
-  Timer_4: 0
-  Interval_4: 2
-  h_Missile_4: []
-  StartTime_5: 900
-  Timer_5: 0
-  Interval_5: 2
-  h_Missile_5: []
-  StartTime_6: 900
-  Timer_6: 0
-  Interval_6: 2
-  h_Missile_6: []
-  StartTime_7: 900
-  Timer_7: 0
-  Interval_7: 2
-  h_Missile_7: []
-  StartTime_8: 900
-  Timer_8: 0
-  Interval_8: 2
-  h_Missile_8: []
-  StartTime_9: 900
-  Timer_9: 0
-  Interval_9: 2
-  h_Missile_9: []
-  StartTime_10: 900
-  Timer_10: 0
-  Interval_10: 2
-  h_Missile_10: []
---- !u!114 &247176465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247176452}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0519608d753d34943ab8cf3ba4a213c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
-  DestroyTime: 30
-  Key: j
-  SpawnPos: {fileID: 514139033}
-  StartTime_1: 8
-  Timer_1: 11
-  Interval_1: 3
-  h_Missile_1: []
-  StartTime_2: 20
-  Timer_2: 10
-  Interval_2: 3
-  h_Missile_2: []
-  StartTime_3: 900
-  Timer_3: 0
-  Interval_3: 2
-  h_Missile_3: []
-  StartTime_4: 900
-  Timer_4: 0
-  Interval_4: 2
-  h_Missile_4: []
-  StartTime_5: 900
-  Timer_5: 0
-  Interval_5: 2
-  h_Missile_5: []
-  StartTime_6: 900
-  Timer_6: 0
-  Interval_6: 2
-  h_Missile_6: []
-  StartTime_7: 900
-  Timer_7: 0
-  Interval_7: 2
-  h_Missile_7: []
-  StartTime_8: 900
-  Timer_8: 0
-  Interval_8: 2
-  h_Missile_8: []
-  StartTime_9: 900
-  Timer_9: 0
-  Interval_9: 2
-  h_Missile_9: []
-  StartTime_10: 900
-  Timer_10: 0
-  Interval_10: 2
-  h_Missile_10: []
---- !u!114 &247176466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247176452}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0519608d753d34943ab8cf3ba4a213c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
-  DestroyTime: 30
-  Key: y
-  SpawnPos: {fileID: 313698568}
-  StartTime_1: 7
-  Timer_1: 10
-  Interval_1: 0.6
-  h_Missile_1: []
-  StartTime_2: 21
-  Timer_2: 10
-  Interval_2: 3
-  h_Missile_2: []
-  StartTime_3: 900
-  Timer_3: 0
-  Interval_3: 2
-  h_Missile_3: []
-  StartTime_4: 900
-  Timer_4: 0
-  Interval_4: 2
-  h_Missile_4: []
-  StartTime_5: 900
-  Timer_5: 0
-  Interval_5: 2
-  h_Missile_5: []
-  StartTime_6: 900
-  Timer_6: 0
-  Interval_6: 2
-  h_Missile_6: []
-  StartTime_7: 900
-  Timer_7: 0
-  Interval_7: 2
-  h_Missile_7: []
-  StartTime_8: 900
-  Timer_8: 0
-  Interval_8: 2
-  h_Missile_8: []
-  StartTime_9: 900
-  Timer_9: 0
-  Interval_9: 2
-  h_Missile_9: []
-  StartTime_10: 900
-  Timer_10: 0
-  Interval_10: 2
-  h_Missile_10: []
---- !u!114 &247176467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247176452}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0519608d753d34943ab8cf3ba4a213c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
-  DestroyTime: 30
-  Key: u
-  SpawnPos: {fileID: 2027436679}
-  StartTime_1: 7
-  Timer_1: 10
-  Interval_1: 3
-  h_Missile_1: []
-  StartTime_2: 20
-  Timer_2: 15
-  Interval_2: 4
-  h_Missile_2: []
-  StartTime_3: 900
-  Timer_3: 0
-  Interval_3: 2
-  h_Missile_3: []
-  StartTime_4: 900
-  Timer_4: 0
-  Interval_4: 2
-  h_Missile_4: []
-  StartTime_5: 900
-  Timer_5: 0
-  Interval_5: 2
-  h_Missile_5: []
-  StartTime_6: 900
-  Timer_6: 0
-  Interval_6: 2
-  h_Missile_6: []
-  StartTime_7: 900
-  Timer_7: 0
-  Interval_7: 2
-  h_Missile_7: []
-  StartTime_8: 900
-  Timer_8: 0
-  Interval_8: 2
-  h_Missile_8: []
-  StartTime_9: 900
-  Timer_9: 0
-  Interval_9: 2
-  h_Missile_9: []
-  StartTime_10: 900
-  Timer_10: 0
-  Interval_10: 2
-  h_Missile_10: []
 --- !u!114 &247176468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,6 +534,104 @@ MonoBehaviour:
   - 1
   - 1
   - 1
+--- !u!114 &247176470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247176452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21069c942cbda004b92ca9c90a5c96f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpeedMissile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
+  ClusterMissile: {fileID: 5540224078154131618, guid: 05a76db5fa499f548b8994bdfdbb97b9, type: 3}
+  KeyCluster: i
+  SpawnTop: {fileID: 2027436679}
+  KeyTop: u
+  SpawnTopLeft: {fileID: 313698568}
+  KeyTopLeft: y
+  SpawnLeft: {fileID: 514139033}
+  KeyLeft: h
+  SpawnBotLeft: {fileID: 1435503352}
+  KeyBotLeft: n
+  SpawnBot: {fileID: 1466317056}
+  KeyBot: m
+  DestroyTime: 10
+  StartTimeCluster:
+  - 0
+  - 0
+  - 0
+  DurationCluster:
+  - 0
+  - 0
+  - 0
+  IntervalTriggerCluster:
+  - 0
+  - 0
+  - 0
+  StartTimeTop:
+  - 0
+  - 0
+  - 0
+  DurationTop:
+  - 0
+  - 0
+  - 0
+  IntervalTriggerTop:
+  - 0
+  - 0
+  - 0
+  StartTimeTopLeft:
+  - 0
+  - 0
+  - 0
+  DurationTopLeft:
+  - 0
+  - 0
+  - 0
+  IntervalTriggerTopLeft:
+  - 0
+  - 0
+  - 0
+  StartTimeLeft:
+  - 0
+  - 0
+  - 0
+  DurationLeft:
+  - 0
+  - 0
+  - 0
+  IntervalTriggerLeft:
+  - 0
+  - 0
+  - 0
+  StartTimeBotLeft:
+  - 0
+  - 0
+  - 0
+  DurationBotLeft:
+  - 0
+  - 0
+  - 0
+  IntervalTriggerBotLeft:
+  - 0
+  - 0
+  - 0
+  StartTimeBot:
+  - 0
+  - 0
+  - 0
+  DurationBot:
+  - 0
+  - 0
+  - 0
+  IntervalTriggerBot:
+  - 0
+  - 0
+  - 0
 --- !u!1 &266351835 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8185960629787243396, guid: 99e6e6f3f3eb01248aa21e7856d891d5, type: 3}
@@ -959,7 +716,7 @@ GameObject:
   - component: {fileID: 313698570}
   - component: {fileID: 313698569}
   m_Layer: 0
-  m_Name: ShootUpLeft
+  m_Name: ShootTopLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2361,7 +2118,7 @@ GameObject:
   - component: {fileID: 1435503354}
   - component: {fileID: 1435503353}
   m_Layer: 0
-  m_Name: ShootDownLeft
+  m_Name: ShootBotLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2474,7 +2231,7 @@ GameObject:
   - component: {fileID: 1466317058}
   - component: {fileID: 1466317057}
   m_Layer: 0
-  m_Name: ShootDown
+  m_Name: ShootBot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3567,7 +3324,7 @@ GameObject:
   - component: {fileID: 2027436681}
   - component: {fileID: 2027436680}
   m_Layer: 0
-  m_Name: ShootUp
+  m_Name: ShootTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
