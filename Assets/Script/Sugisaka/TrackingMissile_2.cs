@@ -16,23 +16,34 @@ public sealed class TrackingMissile_2 : MonoBehaviour
     [SerializeField]
     float lifeTime = 2;
 
-    [Tooltip("速度上限付けるか")]
-    [SerializeField]
-    bool limitAcceleration = false;
-
-    [Tooltip("速度上限")]
-    [SerializeField, Min(0)]
-    float maxAcceleration = 100;
-
     [Tooltip("発射方向")]
     [SerializeField]
     Vector3 maxInitVelocity;
+
+    [Tooltip("誘導速度")]
+    [SerializeField]
+    float MoveSpeed;
+    
+    [SerializeField]
+    float flgTime;
+
 
     // 追跡のために必要な変数
     Vector3 position;
     Vector3 velocity;
     Vector3 acceleration;
     Transform thisTransform;
+
+    Vector3 Move;
+    Vector3 LateMove;
+    float off = 0.2f;
+    Quaternion rot;
+
+    int num;
+    float LTime;
+
+    // パーティクル生成用
+    private StartParticle Particle;
 
     public void SetTarget(GameObject targetObj)
     {
@@ -55,6 +66,12 @@ public sealed class TrackingMissile_2 : MonoBehaviour
 
         // 生存時間管理
         StartCoroutine(nameof(Timer));
+
+        // パーティクル用
+        Particle = GetComponent<StartParticle>();
+
+        num = 0;
+        LTime = 0;
     }
 
     public void Update()
@@ -62,35 +79,66 @@ public sealed class TrackingMissile_2 : MonoBehaviour
         // 追跡対象存在確認
         if (target == null)
         {
-            return;
+            num = 2;
+        }
+        // 生存時間更新
+        LTime += Time.deltaTime;
+        if (LTime > lifeTime) { 
+            DestroyMissile();
         }
 
-        // 加速度の算出(等加速度直線運動
-        acceleration = 2f / (time * time) * (target.position - position - time * velocity);
-
-        // 加速度制限がONの場合加速度を制限
-        if (limitAcceleration && acceleration.sqrMagnitude > maxAcceleration * maxAcceleration)
+        switch (num)
         {
-            acceleration = acceleration.normalized * maxAcceleration;
+            case (0):
+                // 上昇
+                // 加速度の算出(等加速度直線運動
+                acceleration = 2f / (time * time) * (target.position - position - time * velocity);
+
+                // 命中時刻更新
+                time -= Time.deltaTime/ 2.0f;
+
+                // 速度と座標の算出
+                velocity += acceleration * Time.deltaTime/ 2.0f;
+                position += velocity * Time.deltaTime/ 2.0f;
+                LateMove = velocity;
+
+                // 座標,向き更新
+                thisTransform.rotation = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), velocity);
+                thisTransform.position = position;
+
+                // 高速誘導開始
+                if (time < flgTime) num = 1;
+
+                break;
+            case (1):
+                // 誘導移動
+
+                if (Particle.enabled != true)
+                {
+                    // パーティクル生成
+                    Particle.enabled = true;
+                }
+
+                // 移動計算
+                Move = (target.transform.position - transform.position).normalized;
+                Move = Move.normalized;
+                LateMove = (Move - LateMove) * off + (LateMove);
+                MoveSpeed = Mathf.Pow(1.6f, LTime) / 10.0f;
+                // 座標,回転更新
+                rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
+                transform.rotation = rot;
+                transform.position += LateMove * MoveSpeed;
+                break;
+            case (2):
+                // 直線移動
+
+                Move = transform.up;
+                LateMove = Move;
+
+                // 座標,回転更新
+                transform.position += LateMove * MoveSpeed;
+                break;
         }
-
-        // 命中時刻更新
-        time -= Time.deltaTime;
-
-        if (time < 0f)
-        {
-            return;
-        }
-
-
-        // 速度と座標の算出
-        velocity += acceleration * Time.deltaTime;
-        position += velocity * Time.deltaTime;
-
-        // 座標,向き更新
-        thisTransform.rotation = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), velocity);
-        thisTransform.position = position;
-
     }
 
     IEnumerator Timer()
@@ -99,7 +147,7 @@ public sealed class TrackingMissile_2 : MonoBehaviour
         yield return new WaitForSeconds(lifeTime);
 
         // オブジェクトの削除
-        Destroy(gameObject);
+        DestroyMissile();
     }
 
     // ミサイルがオブジェクトに衝突したときに呼び出される
@@ -108,8 +156,14 @@ public sealed class TrackingMissile_2 : MonoBehaviour
         // タグ名と違ったら
         if (collision.gameObject.tag != "Enemy")
         {
-            Destroy(gameObject);
+            DestroyMissile();
         }
+    }
+
+    // ミサイルの消去
+    private void DestroyMissile()
+    {
+        Destroy(gameObject);
     }
 
 }
