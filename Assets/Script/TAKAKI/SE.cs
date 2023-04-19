@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class SE : MonoBehaviour
+public class SEa : MonoBehaviour
 {
     public AudioClip Soundeffeect;
     AudioSource audioSource;
