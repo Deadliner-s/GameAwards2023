@@ -6,6 +6,8 @@ public class CreateLaser : MonoBehaviour
 {
     public static CreateLaser instance;
 
+    [SerializeField] private PlayerHp playerHp;
+
     [Tooltip("ミサイルプレハブ")]
     public GameObject prefab; // プレハブオブジェクト    
 
@@ -68,93 +70,98 @@ public class CreateLaser : MonoBehaviour
 
         // 時間の初期化
         timer = 0.0f;
+
+        //playerHp = gameObject.GetComponent<PlayerHp>();
     }
 
     void Update()
     {
-        // フェイズ取得
-        currentPhase = PhaseManager.instance.GetPhase();
-
-        // デバッグ用
-        if (Input.GetKeyDown(KeyCode.C)) // Cキーが押されたら
+        if (!playerHp.BreakFlag)
         {
-            Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
-        }
+            // フェイズ取得
+            currentPhase = PhaseManager.instance.GetPhase();
 
-
-        if (currentPhase == PhaseManager.Phase.Speed_Phase)
-        {// ハイスピードフェイズ
-            // フラグなどをリセット
-            if (Reset_flg == true)
+            // デバッグ用
+            if (Input.GetKeyDown(KeyCode.C)) // Cキーが押されたら
             {
-                timer = 0.0f;
-
-                Use_flg_1 = false;
-                Use_flg_2 = false;
-                Use_flg_3 = false;
-                Use_flg_4 = false;
-                Use_flg_5 = false;
-
-                Reset_flg = false;
+                Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
             }
 
-            // 時間更新
-            timer += Time.deltaTime;
 
-            // 1回目
-            if (Use_flg_1 == false && timer >= StartTime_1)
-            {
-                TargetSplit = 1;
-                // レーザー作成
-                GameObject obj = Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
-                obj.GetComponent<LaserHead>().SetSplit(TargetSplit);
-                // フラグ更新
-                Use_flg_1 = true;
+            if (currentPhase == PhaseManager.Phase.Speed_Phase)
+            {// ハイスピードフェイズ
+             // フラグなどをリセット
+                if (Reset_flg == true)
+                {
+                    timer = 0.0f;
+
+                    Use_flg_1 = false;
+                    Use_flg_2 = false;
+                    Use_flg_3 = false;
+                    Use_flg_4 = false;
+                    Use_flg_5 = false;
+
+                    Reset_flg = false;
+                }
+
+                // 時間更新
+                timer += Time.deltaTime;
+
+                // 1回目
+                if (Use_flg_1 == false && timer >= StartTime_1)
+                {
+                    TargetSplit = 1;
+                    // レーザー作成
+                    GameObject obj = Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
+                    obj.GetComponent<LaserHead>().SetSplit(TargetSplit);
+                    // フラグ更新
+                    Use_flg_1 = true;
+                }
+                // 2回目
+                if (Use_flg_2 == false && timer >= StartTime_2)
+                {
+                    TargetSplit = 2;
+                    // レーザー作成
+                    GameObject obj1 = Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
+                    obj1.GetComponent<LaserHead>().SetSplit(TargetSplit);
+                    // フラグ更新
+                    Use_flg_2 = true;
+                }
+                // 3回目
+                if (Use_flg_3 == false && timer >= StartTime_3)
+                {
+                    TargetSplit = 3;
+                    // レーザー作成
+                    GameObject obj2 = Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
+                    obj2.GetComponent<LaserHead>().SetSplit(TargetSplit);
+                    // フラグ更新
+                    Use_flg_3 = true;
+                }
+                // 4回目
+                if (Use_flg_4 == false && timer >= StartTime_4)
+                {
+                    TargetSplit = 4;
+                    // レーザー作成
+                    GameObject obj3 = Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
+                    obj3.GetComponent<LaserHead>().SetSplit(TargetSplit);
+                    // フラグ更新
+                    Use_flg_4 = true;
+                }
+                // 5回目
+                if (Use_flg_5 == false && timer >= StartTime_5)
+                {
+                    TargetSplit = 5;
+                    // レーザー作成
+                    GameObject obj4 = Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
+                    obj4.GetComponent<LaserHead>().SetSplit(TargetSplit);
+                    // フラグ更新
+                    Use_flg_5 = true;
+                }
             }
-            // 2回目
-            if (Use_flg_2 == false && timer >= StartTime_2)
-            {
-                TargetSplit = 2;
-                // レーザー作成
-                GameObject obj1 = Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
-                obj1.GetComponent<LaserHead>().SetSplit(TargetSplit);
-                // フラグ更新
-                Use_flg_2 = true;
+            else
+            {// アタックフェイズ
+                Reset_flg = true;
             }
-            // 3回目
-            if (Use_flg_3 == false && timer >= StartTime_3)
-            {
-                TargetSplit = 3;
-                // レーザー作成
-                GameObject obj2 = Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
-                obj2.GetComponent<LaserHead>().SetSplit(TargetSplit);
-                // フラグ更新
-                Use_flg_3 = true;
-            }
-            // 4回目
-            if (Use_flg_4 == false && timer >= StartTime_4)
-            {
-                TargetSplit = 4;
-                // レーザー作成
-                GameObject obj3 = Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
-                obj3.GetComponent<LaserHead>().SetSplit(TargetSplit);
-                // フラグ更新
-                Use_flg_4 = true;
-            }
-            // 5回目
-            if (Use_flg_5 == false && timer >= StartTime_5)
-            {
-                TargetSplit = 5;
-                // レーザー作成
-                GameObject obj4 = Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
-                obj4.GetComponent<LaserHead>().SetSplit(TargetSplit);
-                // フラグ更新
-                Use_flg_5 = true;
-            }
-        }
-        else
-        {// アタックフェイズ
-            Reset_flg = true;
         }
     }
 }
