@@ -74,20 +74,30 @@ public class Shot : MonoBehaviour
                     // 生成場所取得
                     Vector3 PlayerPos = Shotpos.transform.position;
 
-                    // 新しい誘導ミサイルプレハブをインスタンス化する
-                    GameObject missile = Instantiate(MissilePrefab, PlayerPos, Quaternion.identity);
+                    // 
+                    while (targets[0] == null)
+                    {
+                        targets.RemoveAt(0);
+                    }
 
-                    // ミサイルのターゲットを設定する
-                    //missile.GetComponent<TrackingBullet>().SetTarget(targets[0]);
-                    missile.GetComponent<TrackingMissile_2>().SetTarget(targets[0]);
+                    //
+                    if (targets.Count != 0)
+                    {
 
-                    // ターゲットリスト更新
-                    targets.RemoveAt(0);
+                        // 新しい誘導ミサイルプレハブをインスタンス化する
+                        GameObject missile = Instantiate(MissilePrefab, PlayerPos, Quaternion.identity);
 
-                    // SE再生
-                    SoundManager.instance.Play("Shot");
+                        // ミサイルのターゲットを設定する
+                        missile.GetComponent<TrackingMissile_2>().SetTarget(targets[0]);
 
-                    intervalTime = 0.0f;
+                        // ターゲットリスト更新
+                        targets.RemoveAt(0);
+
+                        // SE再生
+                        SoundManager.instance.Play("Shot");
+
+                        intervalTime = 0.0f;
+                    }
                 }   
             }
 
@@ -125,14 +135,14 @@ public class Shot : MonoBehaviour
             if (Shotflg == false)
             {
                 // ターゲットリストをサブに退避
-                foreach (GameObject k in targets)
-                {
-                    // ターゲットがリストに含まれていなければ追加する
-                    if (!sub.Contains(k))
-                    {
-                        sub.Add(k);
-                    }
-                }
+                //foreach (GameObject k in targets)
+                //{
+                //    // ターゲットがリストに含まれていなければ追加する
+                //    if (!sub.Contains(k))
+                //    {
+                //        sub.Add(k);
+                //    }
+                //}
 
                 // リスト再生成
                 targets = new List<GameObject>();
@@ -169,6 +179,4 @@ public class Shot : MonoBehaviour
             }
         }
     }
-
-
 }

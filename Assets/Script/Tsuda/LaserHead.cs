@@ -6,11 +6,13 @@ public class LaserHead : MonoBehaviour
 {
     public static LaserHead instance;
 
-    public float speed = 5f;  // 移動速度
 //    public GameObject otherObject;  // 生成するプレハブオブジェクト    
     public int Split;
     public float LaserTime = 4.0f;
     public float LaserSpeed = 3.0f;
+
+    public AudioClip audioClip;    
+    AudioSource audioSource;    
 
     private int LaserMove;
     private float lifetime = 10.0f;  // オブジェクトの寿命（秒）
@@ -25,14 +27,17 @@ public class LaserHead : MonoBehaviour
     void Start()
     {
         LaserMove = Random.Range(0, 2);
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.clip = audioClip;
+        audioSource.Play();
     }
 
     void Update()
     {        
-        timer += Time.deltaTime;  // タイマーを減算する        
+        timer += Time.deltaTime;  // タイマーを減算する                
 
         if (timer >= 2.0f && timer <= 2.0f + LaserTime)
-        {                                    
+        {            
             targetWorldPosition = mainCamera.ScreenToWorldPoint(targetScreenPosition);  // 目標スクリーン座標をワールド座標に変換する
             transform.LookAt(targetWorldPosition);
         }
