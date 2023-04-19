@@ -37,7 +37,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 0b0aac254795b8a42b1f2c83055cc1cd, type: 2}
     - target: {fileID: 4482491814637254355, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Name
-      value: BossMissle
+      value: BossMissleHoming
       objectReference: {fileID: 0}
     - target: {fileID: 4482491814637254355, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Layer
@@ -349,7 +349,7 @@ MonoBehaviour:
   MaxSpeed: 1
   Accel: 0.002
   MissRange: 3
-  Height: 4
+  Height: 3.2
 --- !u!114 &8540346942733284756
 MonoBehaviour:
   m_ObjectHideFlags: 0

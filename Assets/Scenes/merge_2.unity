@@ -507,7 +507,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HomingMissile: {fileID: 4741478458244633611, guid: 9fe75ba60bab56b48b5309f796a7552d, type: 3}
   ContenaMissile: {fileID: 4741478458244633611, guid: a166eeb9b4e2c494f912cf907f7a4985, type: 3}
-  DestroyTime: 15
+  DestroyTimeHoming: 5
+  DestroyTimeContena: 15
   KeyHoming: p
   KeyContena: k
   StartTimeHoming:

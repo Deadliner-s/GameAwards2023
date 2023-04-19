@@ -7,7 +7,8 @@ public class SpawnMissileBoss : MonoBehaviour
     static int FlagMax = 3;
     public GameObject HomingMissile;
     public GameObject ContenaMissile;
-    public float DestroyTime;
+    public float DestroyTimeHoming;
+    public float DestroyTimeContena;
     public string KeyHoming;
     public string KeyContena;
 
@@ -75,12 +76,12 @@ public class SpawnMissileBoss : MonoBehaviour
             if (Input.GetKeyDown(KeyHoming))
             {
                 GameObject obj = Instantiate(HomingMissile, transform.position, Quaternion.identity);
-                Destroy(obj, DestroyTime);
+                Destroy(obj, DestroyTimeHoming);
             }
             if (Input.GetKeyDown(KeyContena))
             {
                 GameObject obj = Instantiate(ContenaMissile, transform.position, Quaternion.identity);
-                Destroy(obj, DestroyTime);
+                Destroy(obj, DestroyTimeContena);
             }
             // フェイズ確認
             currentPhase = PhaseManager.instance.GetPhase();
@@ -113,7 +114,7 @@ public class SpawnMissileBoss : MonoBehaviour
                         if (IntervalTimeHoming >= IntervalTriggerHoming[i])
                         {
                             GameObject obj = Instantiate(HomingMissile, transform.position, Quaternion.identity);
-                            Destroy(obj, DestroyTime);
+                            Destroy(obj, DestroyTimeHoming);
                             IntervalTimeHoming = 0.0f;
                         }
                         if (StartTimeHoming[i] + DurationHoming[i] <= timer)
@@ -126,7 +127,7 @@ public class SpawnMissileBoss : MonoBehaviour
                         if (IntervalTimeContena >= IntervalTriggerContena[i])
                         {
                             GameObject obj = Instantiate(ContenaMissile, transform.position, Quaternion.identity);
-                            Destroy(obj, DestroyTime);
+                            Destroy(obj, DestroyTimeContena);
                             IntervalTimeContena = 0.0f;
                         }
                         if (StartTimeContena[i] + DurationContena[i] <= timer)
