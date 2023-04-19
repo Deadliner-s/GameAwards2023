@@ -1079,6 +1079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de7aa4ef5a51d644f8871f0a1330771e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHp: {fileID: 1359347837}
   prefab: {fileID: 786199140513531244, guid: 9aa00b7861ffd164bb5fc3af873fd230, type: 3}
   timer: 0
   TargetSplit: 0
@@ -2099,6 +2100,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1359347837 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
+  m_PrefabInstance: {fileID: 1180267642833530434}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359347799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c134646b3180d0f4cb4a803dd3f199ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1406777304
 GameObject:
   m_ObjectHideFlags: 0
