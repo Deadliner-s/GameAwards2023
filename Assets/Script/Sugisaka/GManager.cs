@@ -29,7 +29,7 @@ public class GManager : MonoBehaviour
         Stage1 = false;
         Stage2 = false;
         Stage3 = false;
-}
+    }
 
     // Update is called once per frame
     void Update()
