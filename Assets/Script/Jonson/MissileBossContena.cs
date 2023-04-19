@@ -48,7 +48,7 @@ public class MissileBossContena : MonoBehaviour
             if (transform.position.y <= FromPos.y + Height && !Locked)
             {
                 Speed = UpSpeed;
-                Move = new Vector3(0, 1.0f, 0);
+                Move = new Vector3(0, 1.0f, -0.7f);
                 LateMove = Move;
             }
             else

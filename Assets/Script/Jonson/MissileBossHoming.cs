@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class MissileBoss : MonoBehaviour
+public class MissileBossHoming : MonoBehaviour
 {
     public float Speed;         //ミサイルの速度
     public float MaxSpeed = 2.0f;
@@ -16,7 +16,6 @@ public class MissileBoss : MonoBehaviour
 
     System.Random rand = new System.Random();
     float randomX;
-    float randomZ;
 
     Vector3 FromPos;            //発射元
     Vector3 ToPos;              //発射先
@@ -36,8 +35,7 @@ public class MissileBoss : MonoBehaviour
             //ミサイルの初期位置を設定
             transform.position = FromPos;
 
-            randomX = (rand.Next(10) - 5) * 0.1f;
-            randomZ = (rand.Next(10) - 5) * 0.1f;
+            randomX = (rand.Next(20) - 10) * 0.1f;
             off = 0.2f;
             Locked = false;
             Miss = false;
@@ -53,7 +51,7 @@ public class MissileBoss : MonoBehaviour
             ToPos = Player.transform.position;
             if (transform.position.y <= FromPos.y + Height && !Locked)
             {
-                Move = new Vector3(randomX, 1.0f, randomZ);
+                Move = new Vector3(randomX, 1.0f, -1.0f);
                 LateMove = Move;
             }
             else
