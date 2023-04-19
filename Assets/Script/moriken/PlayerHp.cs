@@ -34,6 +34,8 @@ public class PlayerHp : MonoBehaviour
     bool BreakShieldFlag;
     public bool BreakFlag { get; private set; }
 
+    public GameObject Canvas;
+
     // hex_Shieldコンポーネント
     private HexShield hs;
 
@@ -50,6 +52,7 @@ public class PlayerHp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Canvas.SetActive(true);
         PlayerMaxHp = PlayerHP;
         HpGauge = GaugeObj.GetComponent<Image>();
         HpGauge.fillAmount = 1;
@@ -146,6 +149,7 @@ public class PlayerHp : MonoBehaviour
                 // 完全に撃墜された判定にする
                 BreakFlag = true;
 
+                Canvas.SetActive(false);
                 //Destroy(this.gameObject);
                 //シーン移動
                 //SceneManager.LoadScene("GameOver");
