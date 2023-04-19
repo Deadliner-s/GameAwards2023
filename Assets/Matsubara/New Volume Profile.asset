@@ -86,14 +86,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d146ea0b8c76d47ba27a63f2f8d2e8, type: 3}
   m_Name: GradientFog
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   gradientTexture:
     m_OverrideState: 1
-    m_Value: {fileID: 2800000, guid: c99828877a0421f47a0d33996748bcd4, type: 3}
+    m_Value: {fileID: 2800000, guid: 23edf9410a8901444a828dbe5d2e5b76, type: 3}
     dimension: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.252
+    m_Value: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

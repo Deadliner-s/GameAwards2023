@@ -45,23 +45,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0edd85fe38f136f41a10824c2fa34e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds:
+  bgm:
+  - name: Stage3
+    clip: {fileID: 8300000, guid: 254606c65e35163418da7b6a7d950b0e, type: 3}
+    audioSource: {fileID: 0}
+  - name: BGM
+    clip: {fileID: 8300000, guid: fc32c1fce73f63043a0394d13f3fc6ec, type: 3}
+    audioSource: {fileID: 0}
+  se:
   - name: Shot
     clip: {fileID: 8300000, guid: 8e6c47ec26be3cf4dac05ffe954474c4, type: 3}
-    volume: 1
     audioSource: {fileID: 0}
-  - name: Manerver
+  - name: Manever
     clip: {fileID: 8300000, guid: c2d9e197d242afe4cabb7b6285ad3e61, type: 3}
-    volume: 1
     audioSource: {fileID: 0}
   - name: RockOn
     clip: {fileID: 8300000, guid: 188a39a5b7f353f48a1568ee189ef553, type: 3}
-    volume: 1
     audioSource: {fileID: 0}
   - name: BossAnime
     clip: {fileID: 8300000, guid: 36a82ed500b1f1d4a90dd73004dd89ef, type: 3}
-    volume: 1
     audioSource: {fileID: 0}
+  BGM_volume: 1
+  SE_volume: 1
 --- !u!82 &231837378748620153
 AudioSource:
   m_ObjectHideFlags: 0
@@ -73,10 +78,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
