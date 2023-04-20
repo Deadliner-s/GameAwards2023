@@ -177,6 +177,17 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""247ff4ff-0ed7-4cac-a80e-9de79ffc65fe"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Manever"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""c1b94eb4-8fd2-46e8-836a-0008ddf023a0"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",

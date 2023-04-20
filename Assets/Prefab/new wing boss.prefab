@@ -744,7 +744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GaugeObj: {fileID: 0}
-  BossHP: 3200
+  BossHP: 1000
   explosionEffect: {fileID: 0}
   HardDamage: 0
   MAXHitCount: 0
