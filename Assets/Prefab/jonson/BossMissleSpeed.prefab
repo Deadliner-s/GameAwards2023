@@ -45,7 +45,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1eb24c7c5bde7534e9cc25f24deecb97, type: 2}
     - target: {fileID: 4482491814637254355, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Name
-      value: BossMissleStraight
+      value: BossMissleSpeed
       objectReference: {fileID: 0}
     - target: {fileID: 4482491814637254355, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Layer
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c0691da9f5d624e9f3cef204414f6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpeed: 0.03
+  MaxSpeed: 0.04
   MissRange: 2
   UIFillSpeed: 0.0075
   otherObject: {fileID: 7481113100926768853, guid: fcc74d93aaa2e0747802ce8ae23f142f, type: 3}
