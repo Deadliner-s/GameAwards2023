@@ -77,6 +77,10 @@ public class Shot : MonoBehaviour
                     // 
                     while (targets[0] == null)
                     {
+                        if (targets[1] == null)
+                        {
+                            break;
+                        }
                         targets.RemoveAt(0);
                     }
 
