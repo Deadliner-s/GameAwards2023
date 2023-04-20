@@ -205,7 +205,7 @@ public class SpawnMissileScreen : MonoBehaviour
                     {
                         if (IntervalTimeCluster >= IntervalTriggerCluster[i])
                         {
-                            GameObject obj = Instantiate(SpeedMissile, SpawnLeft.transform.position, Quaternion.identity);
+                            GameObject obj = Instantiate(ClusterMissile, SpawnLeft.transform.position, Quaternion.identity);
                             Destroy(obj, DestroyTime);
                             IntervalTimeCluster = 0.0f;
                         }
