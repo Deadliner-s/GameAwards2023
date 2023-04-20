@@ -177,6 +177,17 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""247ff4ff-0ed7-4cac-a80e-9de79ffc65fe"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Manever"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""c1b94eb4-8fd2-46e8-836a-0008ddf023a0"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -839,6 +850,17 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""968beb3b-5fd5-4672-aadd-711f44bad267"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""ec55d33d-4fe1-4ecf-ae87-36057770a42f"",
                     ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
@@ -855,6 +877,17 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d7d1643-8757-4aed-bb82-32705366c0ed"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Down"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

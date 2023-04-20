@@ -45,6 +45,9 @@ public sealed class TrackingMissile_2 : MonoBehaviour
     // パーティクル生成用
     private StartParticle Particle;
 
+    // 当たり判定
+    private CapsuleCollider Ccollider;
+
     public void SetTarget(GameObject targetObj)
     {
         // ターゲット取得
@@ -69,6 +72,9 @@ public sealed class TrackingMissile_2 : MonoBehaviour
 
         // パーティクル用
         Particle = GetComponent<StartParticle>();
+
+        // 判定状態取得
+        Ccollider = GetComponent<CapsuleCollider>();
 
         num = 0;
         LTime = 0;
@@ -95,11 +101,11 @@ public sealed class TrackingMissile_2 : MonoBehaviour
                 acceleration = 2f / (time * time) * (target.position - position - time * velocity);
 
                 // 命中時刻更新
-                time -= Time.deltaTime/ 2.0f;
+                time -= Time.deltaTime;
 
                 // 速度と座標の算出
-                velocity += acceleration * Time.deltaTime/ 2.0f;
-                position += velocity * Time.deltaTime/ 2.0f;
+                velocity += acceleration * Time.deltaTime;
+                position += velocity * Time.deltaTime;
                 LateMove = velocity;
 
                 // 座標,向き更新
@@ -117,6 +123,8 @@ public sealed class TrackingMissile_2 : MonoBehaviour
                 {
                     // パーティクル生成
                     Particle.enabled = true;
+                    // 当たり判定開始
+                    Ccollider.enabled = true;
                 }
 
                 // 移動計算
