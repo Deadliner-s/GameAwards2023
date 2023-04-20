@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 2504755461301558491}
   - component: {fileID: 3958569231167126292}
   - component: {fileID: 3682729286254523362}
-  - component: {fileID: 4595278830560201142}
   - component: {fileID: -7701711335367564377}
+  - component: {fileID: 4595278830560201142}
   m_Layer: 0
   m_Name: PlayerBullet
   m_TagString: PlayerBullet
@@ -98,7 +98,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 522196463854886502}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 1
   m_Height: 8
   m_Direction: 1
@@ -154,7 +154,20 @@ MonoBehaviour:
   lifeTime: 5
   maxInitVelocity: {x: 0, y: 1, z: 0}
   MoveSpeed: 0.1
-  flgTime: 0.9
+  flgTime: 0.85
+--- !u!114 &-7701711335367564377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522196463854886502}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46e2563008ecf7246984391145374951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particle: {fileID: 198637950067575458, guid: 007c57e2df8e9b144b99f471b84f3d56, type: 3}
 --- !u!114 &4595278830560201142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,16 +182,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerDamage: 0
   EnemyDamage: 100
---- !u!114 &-7701711335367564377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522196463854886502}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46e2563008ecf7246984391145374951, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particle: {fileID: 198637950067575458, guid: 007c57e2df8e9b144b99f471b84f3d56, type: 3}
