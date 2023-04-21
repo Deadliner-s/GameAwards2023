@@ -2,28 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossAnime : MonoBehaviour
+public class BossAnimeWeakTop : MonoBehaviour
 {
-    Animator anime;
-
-    public GameObject wpobj;//翼
-    public GameObject weakTop;
-
     private PhaseManager.Phase currntPhase;
     private PhaseManager.Phase nextPhase;
-    private BossAnimeWeakTop top;
+
+    public WeakPoint weakpointtop;
+
+    private GameObject Child;
+    public GameObject obj { get; private set; }
 
     // Start is called before the first frame update
     void Start()
     {
-        anime = GetComponent<Animator>();
-
-        //weakanime = weakobj.GetComponent<Animator>();
-
         currntPhase = PhaseManager.instance.GetPhase();
         nextPhase = currntPhase;
 
-        top = weakTop.GetComponent<BossAnimeWeakTop>();
+        Child = transform.GetChild(0).gameObject;
+
+        weakpointtop = Child.GetComponent<WeakPoint>();
     }
 
     // Update is called once per frame
@@ -31,35 +28,28 @@ public class BossAnime : MonoBehaviour
     {
         currntPhase = PhaseManager.instance.GetPhase();
         //Debug.Log(gameObject.transform.position);
+
         if (nextPhase != currntPhase)
         {
             nextPhase = currntPhase;
             if (currntPhase == PhaseManager.Phase.Normal_Phase)
             {
-                anime.SetBool("isWing", false);
-                anime.SetBool("isBinder", false);
-
-                SoundManager.instance.Play("BossAnime");
-            }
-            else if (currntPhase == PhaseManager.Phase.Speed_Phase)
-            {
-                // ハイスピードフェイズ
-                anime.SetBool("isWing", true);
-
-                SoundManager.instance.Play("BossAnime");
+                weakpointtop.enabled = false;
             }
             else if (currntPhase == PhaseManager.Phase.Attack_Phase)
             {
                 // アタックフェイズ
-                anime.SetBool("isBinder", true);
-            }
-        }
+                weakpointtop.enabled = true;
 
+                obj = weakpointtop.Setobj();
+            }
+
+        }
         if (currntPhase == PhaseManager.Phase.Attack_Phase)
         {
-            if (top.obj == null)
+            if (obj == null)
             {
-                anime.SetBool("isBinder", false);
+                weakpointtop.enabled = false;
             }
         }
     }
