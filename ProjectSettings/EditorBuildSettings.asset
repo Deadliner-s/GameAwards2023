@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Title.unity
     guid: ad644bf7a4de30a40ba7f14644bc504f
   - enabled: 1
-    path: Assets/Scenes/Option.unity
-    guid: 81c42a10362fc244f8a2eab3a4fab0f9
-  - enabled: 1
     path: Assets/Scenes/merge_2.unity
     guid: 92b4562dd4ee2b14bac74cf3d4f9477d
   - enabled: 1

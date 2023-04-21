@@ -6,14 +6,19 @@ public class VolumeController : MonoBehaviour
     private Slider BGM_Slider;      // BGMのスライダー
     private Slider SE_Slider;       // SEのスライダー
 
-    public float BGM_Volume = 1.0f; // BGMの音量
-    public float SE_Volume = 1.0f;  // SEの音量
+    // BGM SE以外を選択した時に他のスライダーを選択を外すためのスライダー
+    private Slider BlankSlider;
+
+    public float BGM_Volume; // BGMの音量
+    public float SE_Volume;  // SEの音量
 
     // Start is called before the first frame update
     void Start()
     {
+        // スライダーを取得
         BGM_Slider = GameObject.Find("BGMSlider").GetComponent<Slider>();
         SE_Slider = GameObject.Find("SESlider").GetComponent<Slider>();
+        BlankSlider= GameObject.Find("BlankSlider").GetComponent<Slider>();
 
         // 現在の音量をスライダーに適応
         BGM_Slider.value = SoundManager.instance.BGM_volume;
@@ -23,31 +28,44 @@ public class VolumeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // 音量変更
-        BGM_Volume = BGM_Slider.value;
-        SE_Volume = SE_Slider.value;
+        // 現在の音量をスライダーに適応
+        BGM_Slider.value = SoundManager.instance.BGM_volume;
+        SE_Slider.value = SoundManager.instance.SE_volume;
+    }
+
+    // スライダーの値をSoundManagerに渡す
+    public float GetBGMVolume()
+    {
+        return BGM_Slider.value;
+    }
+    public float GetSEVolume()
+    {
+        return SE_Slider.value;
     }
 
     // SoundManagerで使用
-    public float GetBGMVolume()
+    // Nullチェック
+    public bool NullCheckBGMSlider()
     {
-        return BGM_Volume;
+        return BGM_Slider;
     }
-    // SoundManagerで使用
-    public float GetSEVolume()
+    public bool NullCheckSESlider()
     {
-        return SE_Volume;
+        return SE_Slider;
     }
 
     // OptionCursorで使用
+    // Handleを選択
     public void SetBGMSlider()
     {
         BGM_Slider.Select();
     }
-    // OptionCursorで使用
     public void SetSESlider()
     {
         SE_Slider.Select();
     }
-
+    public void SetBlankSlider()
+    {
+        BlankSlider.Select();
+    }
 }

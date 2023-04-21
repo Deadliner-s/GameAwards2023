@@ -44,12 +44,10 @@ public class SoundManager : MonoBehaviour
     [Header("BGM")]
     private SE[] se;
 
+    private GameObject volumeController;    // 音量調整用のオブジェクト
 
-    private GameObject volumeController;
-    private bool findFlg = false;
-
-    public float BGM_volume = 1.0f;
-    public float SE_volume = 1.0f;
+    public float BGM_volume = 1.0f;         // BGMの音量
+    public float SE_volume = 1.0f;          // SEの音量
 
     // シングルトン化
     public static SoundManager instance;
@@ -102,29 +100,26 @@ public class SoundManager : MonoBehaviour
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name == "Option")
+        // シーンがタイトルの時のみ音量調整用のオブジェクトを探す
+        if (SceneManager.GetActiveScene().name == "Title")
         {
-            if (findFlg == false)
+            volumeController = GameObject.FindWithTag("WeakPointTop");
+            // オブジェクトがあるかどうか
+            if(volumeController != null)
             {
-                volumeController = GameObject.Find("VolumeControllerObj");
-                findFlg = true;
-            }
-
-            if (volumeController != null)
-            {
+                // コンポーネントがあるかどうか
                 if (volumeController.GetComponent<VolumeController>() != null)
                 {
-                    BGM_volume = volumeController.GetComponent<VolumeController>().GetBGMVolume();
-                    SE_volume = volumeController.GetComponent<VolumeController>().GetSEVolume();
+                    // スライダーnullチェック
+                    if (volumeController.GetComponent<VolumeController>().NullCheckBGMSlider())
+                    {
+                        if (volumeController.GetComponent<VolumeController>().NullCheckBGMSlider())
+                        {
+                            BGM_volume = volumeController.GetComponent<VolumeController>().GetBGMVolume();
+                            SE_volume = volumeController.GetComponent<VolumeController>().GetSEVolume();
+                        }
+                    }
                 }
-            }
-        }
-        if (SceneManager.GetActiveScene().name != "Option")
-        {
-            findFlg = false;
-            if (volumeController != null)
-            {
-                volumeController = null;
             }
         }
     }
@@ -179,6 +174,8 @@ public class SoundManager : MonoBehaviour
     {
         //Debug.Log(thisScene.name);
         //Debug.Log(nextScene.name);
+
+        // シーンが切り替わった時
         if (thisScene != nextScene)
         {
             thisScene = nextScene;
