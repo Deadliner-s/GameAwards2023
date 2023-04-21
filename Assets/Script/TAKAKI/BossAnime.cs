@@ -5,18 +5,14 @@ using UnityEngine;
 public class BossAnime : MonoBehaviour
 {
     Animator anime;
-    //Animator weakanime;
 
-    //public GameObject weakobj;//下
     public GameObject wpobj;//翼
- 
-    public WeakPoint weakpointtop;
+    public GameObject weakTop;
 
     private PhaseManager.Phase currntPhase;
     private PhaseManager.Phase nextPhase;
-    public GameObject Child;
+    private BossAnimeWeakTop top;
 
-    private GameObject obj;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,10 +23,7 @@ public class BossAnime : MonoBehaviour
         currntPhase = PhaseManager.instance.GetPhase();
         nextPhase = currntPhase;
 
-
-        Child = transform.GetChild(2).gameObject;
-
-        weakpointtop = Child.GetComponent<WeakPoint>();
+        top = weakTop.GetComponent<BossAnimeWeakTop>();
     }
 
     // Update is called once per frame
@@ -46,8 +39,6 @@ public class BossAnime : MonoBehaviour
                 anime.SetBool("isWing", false);
                 anime.SetBool("isBinder", false);
 
-                weakpointtop.enabled = false;
-
                 SoundManager.instance.Play("BossAnime");
             }
             else if (currntPhase == PhaseManager.Phase.Speed_Phase)
@@ -61,20 +52,14 @@ public class BossAnime : MonoBehaviour
             {
                 // アタックフェイズ
                 anime.SetBool("isBinder", true);
-
-                weakpointtop.enabled = true;
-
-                obj = weakpointtop.Setobj();
             }
         }
 
         if (currntPhase == PhaseManager.Phase.Attack_Phase)
         {
-            if(obj == null)
+            if (top.obj == null)
             {
                 anime.SetBool("isBinder", false);
-
-                weakpointtop.enabled = false;
             }
         }
     }
