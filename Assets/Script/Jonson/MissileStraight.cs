@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MissileStraight : MonoBehaviour
 {
-    private float Speed = 0.0f;        //ミサイルの速度
+    public float Speed = 0.0f;        //ミサイルの速度
     public float MaxSpeed = 0.003f;      //速度制限
     //public float Accel = 0.001f;       //加速度
     public float MissRange = 2.0f;     //プレイヤーに外れるの距離
