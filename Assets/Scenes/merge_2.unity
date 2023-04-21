@@ -1327,12 +1327,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3946574546251136914, guid: 5f98dbc6e7c65b44e979e07eb41eb02a, type: 3}
       propertyPath: HardDamageFlame
-      value: 1
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3946574546251136914, guid: 5f98dbc6e7c65b44e979e07eb41eb02a, type: 3}
       propertyPath: explosionEffect
       value: 
-      objectReference: {fileID: 3570405994875558733, guid: ead3ee784696e1647a9c1f8fa3922ee5, type: 3}
+      objectReference: {fileID: 8650123009029719844, guid: 604532c0400d4b94297114f1846cbef0, type: 3}
     - target: {fileID: 4530587146497349046, guid: 5f98dbc6e7c65b44e979e07eb41eb02a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1479,7 +1479,7 @@ GameObject:
   - component: {fileID: 1093950287}
   - component: {fileID: 1093950286}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: DisplayEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1500,9 +1500,9 @@ MonoBehaviour:
   _gradient:
     serializedVersion: 2
     key0: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 0}
-    key1: {r: 0.26002133, g: 0.41509432, b: 0.4096391, a: 0.32941177}
-    key2: {r: 0.24222142, g: 0.52138275, b: 0.7924528, a: 0.20784314}
-    key3: {r: 1, g: 1, b: 1, a: 0.101960786}
+    key1: {r: 0.38020647, g: 0.38020647, b: 0.754717, a: 0.32941177}
+    key2: {r: 0.4039216, g: 0.61229527, b: 0.83137256, a: 0.29411766}
+    key3: {r: 0.24222142, g: 0.52138275, b: 0.7924528, a: 0.101960786}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
