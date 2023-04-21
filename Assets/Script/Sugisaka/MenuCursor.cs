@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,10 +9,18 @@ public class MenuCursor : MonoBehaviour
 {
     private Myproject InputActions;
 
-    private int Selected = 0;
-    private int ItemMax;
+    private GameObject NewGame_text;        // NewGameのテキスト
+    private GameObject Continue_text;       // Continueのテキスト
+    private GameObject Option_text;         // Optionのテキスト
 
-    private bool Actionflg;
+    [SerializeField]
+    [Header("オプションメニュー")]
+    private GameObject OptionMenu;
+    private bool OptionMenuFlag = false;
+
+    private const int MAX_MENU = 3;         // メニューの数
+
+    private int Selected = 0;
 
     void Awake()
     {
@@ -25,62 +34,65 @@ public class MenuCursor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // メニューの数を取得
-        ItemMax = transform.childCount;
-        // 初期設定
-        SelectItem();
+        // テキストを取得
+        NewGame_text = transform.GetChild(0).gameObject;
+        Continue_text = transform.GetChild(1).gameObject;
+        Option_text = transform.GetChild(2).gameObject;
 
-        Actionflg = false;
+        OptionMenuFlag = false;
+        Selected = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Selected = (Selected + MAX_MENU) % MAX_MENU;
+
+        // 選択中のメニューによって処理を変える
+        switch (Selected)
+        {
+            case (0):
+                NewGame_text.GetComponent<TextMeshProUGUI>().color = Color.white;
+                Continue_text.GetComponent<TextMeshProUGUI>().color = Color.black;
+                Option_text.GetComponent<TextMeshProUGUI>().color = Color.black;
+                break;
+            case (1):
+                NewGame_text.GetComponent<TextMeshProUGUI>().color = Color.black;
+                Continue_text.GetComponent<TextMeshProUGUI>().color = Color.white;
+                Option_text.GetComponent<TextMeshProUGUI>().color = Color.black;
+                break;
+            case (2):
+                NewGame_text.GetComponent<TextMeshProUGUI>().color = Color.black;
+                Continue_text.GetComponent<TextMeshProUGUI>().color = Color.black;
+                Option_text.GetComponent<TextMeshProUGUI>().color = Color.white;
+                break;
+        }
+
         
+        // オプション画面が閉じられた場合、再度入力を受け付ける
+        if(OptionMenuFlag == true)
+        {
+            if (OptionMenu.activeSelf == false)
+            {
+                InputActions.Enable();
+                OptionMenuFlag = false;
+            }
+        }
     }
-
-    void SelectItem()
-    {
-        transform.GetChild(Selected).GetChild(0).gameObject.SetActive(true);
-        transform.GetChild(Selected).GetChild(1).gameObject.SetActive(false);
-    }
-
-    void DeSelectItem()
-    {
-        transform.GetChild(Selected).GetChild(0).gameObject.SetActive(false);
-        transform.GetChild(Selected).GetChild(1).gameObject.SetActive(true);
-    }
-
-
 
     private void OnUp()
     {
-        if (Actionflg == false)
-        {
-            Actionflg = true;
-            DeSelectItem();
-            Selected--;
-            Selected = (int)Mathf.Repeat(Selected, ItemMax);
-            SelectItem();
-            Actionflg = false;
-        }
+        Selected--;
     }
 
     private void OnDown()
     {
-        if (Actionflg == false)
-        {
-            Actionflg = true;
-            DeSelectItem();
-            Selected++;
-            Selected = (int)Mathf.Repeat(Selected, ItemMax);
-            SelectItem();
-            Actionflg = false;
-        }
+        Selected++;
     }
 
     private void OnSelect()
     {
+        // 選択されたメニューによって処理を変える
         switch (Selected)
         {
             case (0):
@@ -92,7 +104,10 @@ public class MenuCursor : MonoBehaviour
                 // CONTINUE
                 break;
             case (2):
-                // OPTION
+                OptionMenu.SetActive(true);
+                OptionMenuFlag = true;
+                InputActions.Disable();             // オプションメニューが開いているときは入力を受け付けない
+                this.gameObject.SetActive(false);
                 break;
 
         }
