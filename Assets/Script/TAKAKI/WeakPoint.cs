@@ -27,11 +27,11 @@ public class WeakPoint : MonoBehaviour
     {
         if(this.gameObject != false)
         {
-            //weakobj.transform.position = gameObject.transform.position;
+            weakobj.transform.position = gameObject.transform.position;
             Vector3 pos = gameObject.transform.position;
-            //pos.x += 0.0f;
-            //pos.y += 0.2f;
-            //pos.z += 0.9f;
+            pos.x += 0.0f;
+            pos.y += 0.0f;
+            pos.z += 0.0f;
             weakobj.transform.position = pos;
         }
     }
