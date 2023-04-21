@@ -349,7 +349,7 @@ MonoBehaviour:
   MaxSpeed: 1
   Accel: 0.002
   MissRange: 3
-  Height: 3.2
+  Height: 2
 --- !u!114 &8540346942733284756
 MonoBehaviour:
   m_ObjectHideFlags: 0

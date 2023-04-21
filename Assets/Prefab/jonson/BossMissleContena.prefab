@@ -300,7 +300,7 @@ MonoBehaviour:
   ToSpeed: 0.025
   UpSpeed: 0.04
   ContenaRange: 2.5
-  Height: 3.2
+  Height: 2
   ContenaNumber: 15
   otherObject: {fileID: 4741478458244633611, guid: 8903fc1efd3881b46a8475f7fd2504ca, type: 3}
 --- !u!114 &2958555774321723217
