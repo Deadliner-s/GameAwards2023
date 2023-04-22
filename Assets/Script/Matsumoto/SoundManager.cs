@@ -11,8 +11,11 @@ public class BGM
     // AudioSourceに必要な情報
     [Tooltip("サウンドの音源")]
     public AudioClip clip;
-    [Tooltip("サウンドボリューム, 0.0から1.0まで")]
+    //[Tooltip("サウンドボリューム, 0.0から1.0まで")]
     //public float volume;
+    [Tooltip("ループ")]
+    public bool loop = true;
+
     // AudioSource．Inspectorに表示しない
     [HideInInspector]
     public AudioSource audioSource;
@@ -74,7 +77,7 @@ public class SoundManager : MonoBehaviour
             s.audioSource = gameObject.AddComponent<AudioSource>();
             s.audioSource.clip = s.clip;
             //s.audioSource.volume = s.volume;
-
+            s.audioSource.loop = s.loop;
             s.audioSource.volume = BGM_volume;
         }
 

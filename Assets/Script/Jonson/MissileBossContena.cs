@@ -5,7 +5,7 @@ using System;
 
 public class MissileBossContena : MonoBehaviour
 {
-    public float Speed;                  //ミサイルの速度
+    float Speed;                  //ミサイルの速度
     public float ToSpeed = 0.01f;         //ミサイルプレイヤーにいく速度
     public float UpSpeed = 0.02f;         //ミサイル上にいく速度
     public float ContenaRange = 7.0f;    //コンテナする距離

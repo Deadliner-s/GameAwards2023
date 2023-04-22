@@ -6,7 +6,11 @@ public class SpawnMissileBoss : MonoBehaviour
 {
     static int FlagMax = 3;
     public GameObject HomingMissile;
+    public float HomingSpeed;
     public GameObject ContenaMissile;
+    public float ContenaUpSpeed;
+    public float ContenaToSpeed;
+    public int ContenaNumber;
     public float DestroyTimeHoming;
     public float DestroyTimeContena;
     public string KeyHoming;
@@ -60,7 +64,7 @@ public class SpawnMissileBoss : MonoBehaviour
         timer = 0.0f;
         IntervalTimeHoming = 0.0f;
         IntervalTimeContena = 0.0f;
-        for(int i = 0; i < FlagMax;i++)
+        for (int i = 0; i < FlagMax; i++)
         {
             UseFlagHoming[i] = false;
             UseFlagContena[i] = false;
@@ -76,18 +80,22 @@ public class SpawnMissileBoss : MonoBehaviour
             if (Input.GetKeyDown(KeyHoming))
             {
                 GameObject obj = Instantiate(HomingMissile, transform.position, Quaternion.identity);
+                obj.GetComponent<MissileBossHoming>().Speed = HomingSpeed;
                 Destroy(obj, DestroyTimeHoming);
             }
             if (Input.GetKeyDown(KeyContena))
             {
                 GameObject obj = Instantiate(ContenaMissile, transform.position, Quaternion.identity);
+                obj.GetComponent<MissileBossContena>().UpSpeed = ContenaUpSpeed;
+                obj.GetComponent<MissileBossContena>().ToSpeed = ContenaToSpeed;
+                obj.GetComponent<MissileBossContena>().ContenaNumber = ContenaNumber;
                 Destroy(obj, DestroyTimeContena);
             }
             // フェイズ確認
             currentPhase = PhaseManager.instance.GetPhase();
 
             if (currentPhase == PhaseManager.Phase.Attack_Phase)
-            {   
+            {
                 // アタックフェイズ
                 // 各フラグ、変数などリセット
                 if (Reset_flg)
@@ -95,8 +103,8 @@ public class SpawnMissileBoss : MonoBehaviour
                     timer = 0.0f;
                     IntervalTimeHoming = 0.0f;
                     IntervalTimeContena = 0.0f;
-                    for(int i = 0;i < FlagMax; i++)
-                    { 
+                    for (int i = 0; i < FlagMax; i++)
+                    {
                         UseFlagHoming[i] = false;
                         UseFlagContena[i] = false;
                     }
@@ -114,6 +122,7 @@ public class SpawnMissileBoss : MonoBehaviour
                         if (IntervalTimeHoming >= IntervalTriggerHoming[i])
                         {
                             GameObject obj = Instantiate(HomingMissile, transform.position, Quaternion.identity);
+                            obj.GetComponent<MissileBossHoming>().Speed = HomingSpeed;
                             Destroy(obj, DestroyTimeHoming);
                             IntervalTimeHoming = 0.0f;
                         }
@@ -127,6 +136,9 @@ public class SpawnMissileBoss : MonoBehaviour
                         if (IntervalTimeContena >= IntervalTriggerContena[i])
                         {
                             GameObject obj = Instantiate(ContenaMissile, transform.position, Quaternion.identity);
+                            obj.GetComponent<MissileBossContena>().UpSpeed = ContenaUpSpeed;
+                            obj.GetComponent<MissileBossContena>().ToSpeed = ContenaToSpeed;
+                            obj.GetComponent<MissileBossContena>().ContenaNumber = ContenaNumber;
                             Destroy(obj, DestroyTimeContena);
                             IntervalTimeContena = 0.0f;
                         }
