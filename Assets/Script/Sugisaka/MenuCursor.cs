@@ -18,6 +18,9 @@ public class MenuCursor : MonoBehaviour
     private GameObject OptionMenu;
     private bool OptionMenuFlag = false;
 
+    [Header("ゲームマネージャオブジェクト")]
+    GameObject ManagerObj;
+
     private const int MAX_MENU = 3;         // メニューの数
 
     private int Selected = 0;
@@ -34,6 +37,8 @@ public class MenuCursor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ManagerObj = GameObject.Find("GameManager");
+
         // テキストを取得
         NewGame_text = transform.GetChild(0).gameObject;
         Continue_text = transform.GetChild(1).gameObject;
@@ -102,6 +107,25 @@ public class MenuCursor : MonoBehaviour
                 break;
             case (1):
                 // CONTINUE
+                int num = ManagerObj.GetComponent<GManager>().GetNowStage();
+                switch (num)
+                {
+                    case (0):
+                        // ステージ1
+                        InputActions.Disable();
+                        SceneManager.LoadScene("Stage1");
+                        break;
+                    case (1):
+                        // ステージ2
+                        InputActions.Disable();
+                        SceneManager.LoadScene("Stage2");
+                        break;
+                    case (2):
+                        // ステージ3
+                        InputActions.Disable();
+                        SceneManager.LoadScene("merge_2");
+                        break;
+                }
                 break;
             case (2):
                 OptionMenu.SetActive(true);
