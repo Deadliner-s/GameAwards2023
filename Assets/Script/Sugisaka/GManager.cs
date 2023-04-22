@@ -8,7 +8,6 @@ public class GManager : MonoBehaviour
 
     public bool Stage1;
     public bool Stage2;
-    public bool Stage3;
 
     private void Awake()
     {
@@ -28,12 +27,59 @@ public class GManager : MonoBehaviour
     {
         Stage1 = false;
         Stage2 = false;
-        Stage3 = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void ReSetData()
+    {
+        Stage1 = false;
+        Stage2 = false;
+    }
+
+    // メニューのコンテニューで使用
+    public int GetNowStage()
+    {
+        // 初期化
+        int num = 0;
+
+        // クリアフラグを確認して次のステージ選択
+        if (Stage1 == false)
+        {
+            // ステージ1
+            num = 0;
+        }
+        else if (Stage2 == false)
+        {
+            // ステージ2
+            num = 1;
+        }
+        else
+        {
+            // ステージ3
+            num = 2;
+        }
+
+        return num;
+    }
+
+    // ステージクリア時に
+    public void SetClearFlg(int num)
+    {
+        switch (num)
+        {
+            case (0):
+                Stage1 = true;
+                break;
+            case (1):
+                Stage2 = true;
+                break;
+            default:
+                break;
+        }
     }
 }
