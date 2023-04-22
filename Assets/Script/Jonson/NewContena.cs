@@ -23,7 +23,7 @@ public class NewContena : MonoBehaviour
 
         StartPoint = transform.position;
         EndPoint = ToPos;
-        ControlPoint = new Vector3(StartPoint.x - 1.0f + (rand.Next(10) * 0.2f), EndPoint.y - 0.5f + (rand.Next(10) * 0.1f), StartPoint.z - 0.2f -(rand.Next(10) * 0.1f) );
+        ControlPoint = new Vector3(StartPoint.x - 1.0f + (rand.Next(10) * 0.2f), EndPoint.y + (rand.Next(12) * 0.1f), StartPoint.z - 0.2f -(rand.Next(10) * 0.1f) );
        
         if(!First)
         EndPoint.z = ToPos.z - rand.Next(8) * 0.4f;
