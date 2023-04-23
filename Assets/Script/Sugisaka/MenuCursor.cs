@@ -118,9 +118,10 @@ public class MenuCursor : MonoBehaviour
                 // NEW GAME
                 InputActions.Disable();
 
+                ManagerObj.GetComponent<GManager>().ReSetData();
 
                 // デバッグ用?
-                if(stage == Stage.STAGE_1)
+                if (stage == Stage.STAGE_1)
                 {
                     SceneManager.LoadScene("Stage1");
                 }
