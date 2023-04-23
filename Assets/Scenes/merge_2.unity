@@ -1456,6 +1456,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: de7fdde99089aee4991ab9540beda984, type: 2}
+    - target: {fileID: 3927807223193477541, guid: 5f98dbc6e7c65b44e979e07eb41eb02a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 59713bb07fa9ed8418aecaa725fa6193, type: 2}
     - target: {fileID: 3946574546251136914, guid: 5f98dbc6e7c65b44e979e07eb41eb02a, type: 3}
       propertyPath: BossHP
       value: 10000
