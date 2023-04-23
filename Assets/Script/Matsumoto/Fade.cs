@@ -9,7 +9,28 @@ public class Fade : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //StartCoroutine("Color_FadeOut");
+        if(SceneManager.GetActiveScene().name == "Stage1")
+        {
+            StartCoroutine("Color_FadeIn");
+        }
+
+        // ステージクリアフラグを取得
+        bool clear_1= GManager.instance.GetStage1ClearFlg();
+        bool clear_2 = GManager.instance.GetStage2ClearFlg();
+
+        // コンティニューの場合
+        if (clear_1 == true)
+        {
+            StartCoroutine("Color_FadeIn");
+        }
+        if (clear_2 == true)
+        {
+            StartCoroutine("Color_FadeIn");
+        }
+
+
+
+
     }
 
     // Update is called once per frame
@@ -33,7 +54,7 @@ public class Fade : MonoBehaviour
         const float fade_time = 2.0f;
 
         // ループ回数（0はエラー）★変更可
-        const int loop_count = 10;
+        const int loop_count = 50;
 
         // ウェイト時間算出
         float wait_time = fade_time / loop_count;
@@ -55,7 +76,7 @@ public class Fade : MonoBehaviour
 
     }
 
-    public IEnumerator Color_FadeOut(string scene)
+    public IEnumerator Color_FadeOut()
     {
         // 画面をフェードインさせるコールチン
         // 前提：画面を覆うPanelにアタッチしている
@@ -89,13 +110,13 @@ public class Fade : MonoBehaviour
             new_color.a = alpha / 255.0f;
             fade.color = new_color;
         }
-        //Color color = fade.color;
-        //color.a = 1.0f;
-        //fade.color = color;
+        Color color = fade.color;
+        color.a = 1.0f;
+        fade.color = color;
 
         if (fade.color.a == 1.0f)
         {
-            SceneManager.LoadScene(scene);
+            GManager.instance.SceneStage1();
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GManager : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class GManager : MonoBehaviour
 
     public bool Stage1;
     public bool Stage2;
+
+    private AsyncOperation stage1;
+    private AsyncOperation stage2;
+    private AsyncOperation stage3;
 
     private void Awake()
     {
@@ -27,6 +32,14 @@ public class GManager : MonoBehaviour
     {
         Stage1 = false;
         Stage2 = false;
+
+        stage1 = SceneManager.LoadSceneAsync("Stage1");
+        stage2 = SceneManager.LoadSceneAsync("Stage2");
+        stage3 = SceneManager.LoadSceneAsync("merge_2");
+
+        stage1.allowSceneActivation = false;
+        stage2.allowSceneActivation = false;
+        stage3.allowSceneActivation = false;
     }
 
     // Update is called once per frame
@@ -81,5 +94,27 @@ public class GManager : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public bool GetStage1ClearFlg()
+    {
+        return Stage1;
+    }
+    public bool GetStage2ClearFlg()
+    {
+        return Stage2;
+    }
+
+    public void SceneStage1()
+    {
+        stage1.allowSceneActivation = true;
+    }
+    public void SceneStage2() 
+    { 
+        stage2.allowSceneActivation = true;
+    }
+    public void SceneStage3() 
+    {
+        stage3.allowSceneActivation = true;
     }
 }
