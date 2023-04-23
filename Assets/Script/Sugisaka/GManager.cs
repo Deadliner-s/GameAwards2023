@@ -72,10 +72,10 @@ public class GManager : MonoBehaviour
     {
         switch (num)
         {
-            case (0):
+            case (1):
                 Stage1 = true;
                 break;
-            case (1):
+            case (2):
                 Stage2 = true;
                 break;
             default:
