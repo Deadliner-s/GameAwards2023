@@ -123,7 +123,8 @@ public class MenuCursor : MonoBehaviour
                 // デバッグ用?
                 if (stage == Stage.STAGE_1)
                 {
-                    SceneManager.LoadScene("Stage1");
+                    //SceneManager.LoadScene("Stage1");
+                    fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut");
                 }
                 if(stage == Stage.STAGE_2)
                 {
@@ -135,7 +136,7 @@ public class MenuCursor : MonoBehaviour
                 }
 
 
-                //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "merge_2");
+                
 
                 break;
             case (1):
