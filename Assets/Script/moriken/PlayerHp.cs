@@ -137,6 +137,14 @@ public class PlayerHp : MonoBehaviour
             }
         }
 
+        if(Input.GetKeyDown(KeyCode.F1))
+        {
+            // 完全に撃墜された判定にする
+            BreakFlag = true;
+            PlayerHP = 0;
+            // UI関連を消す
+            Canvas.SetActive(false);
+        }
     }
 
     void OnCollisionEnter(Collision collision)
