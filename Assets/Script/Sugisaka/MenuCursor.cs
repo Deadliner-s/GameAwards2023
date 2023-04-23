@@ -7,11 +7,21 @@ using UnityEngine.SceneManagement;
 
 public class MenuCursor : MonoBehaviour
 {
+    public enum Stage
+    {
+        STAGE_1,
+        STAGE_2,
+        STAGE_3
+    }
+
     private Myproject InputActions;
 
     private GameObject NewGame_text;        // NewGameのテキスト
     private GameObject Continue_text;       // Continueのテキスト
     private GameObject Option_text;         // Optionのテキスト
+
+    [SerializeField]
+    private GameObject fade;                // フェードオブジェクト
 
     [SerializeField]
     [Header("オプションメニュー")]
@@ -24,6 +34,10 @@ public class MenuCursor : MonoBehaviour
     private const int MAX_MENU = 3;         // メニューの数
 
     private int Selected = 0;
+
+    [SerializeField]
+    [Header("Debug用初期ステージ選択")]
+    public Stage stage;
 
     void Awake()
     {
@@ -102,8 +116,26 @@ public class MenuCursor : MonoBehaviour
         {
             case (0):
                 // NEW GAME
-                SceneManager.LoadScene("merge_2");
                 InputActions.Disable();
+
+
+                // デバッグ用?
+                if(stage == Stage.STAGE_1)
+                {
+                    SceneManager.LoadScene("Stage1");
+                }
+                if(stage == Stage.STAGE_2)
+                {
+                    SceneManager.LoadScene("Stage2");
+                }
+                if (stage == Stage.STAGE_3)
+                {
+                    SceneManager.LoadScene("merge_2");
+                }
+
+
+                //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "merge_2");
+
                 break;
             case (1):
                 // CONTINUE
