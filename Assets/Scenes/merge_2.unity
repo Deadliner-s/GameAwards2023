@@ -1443,6 +1443,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 255642982431065954, guid: 5f98dbc6e7c65b44e979e07eb41eb02a, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 9150590163069262948, guid: f9d5c88179e7d9b4c8c762fe603ec9de, type: 3}
     - target: {fileID: 430074100472673455, guid: 5f98dbc6e7c65b44e979e07eb41eb02a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1570,7 +1574,7 @@ PrefabInstance:
     - target: {fileID: 6481477021131320126, guid: 5f98dbc6e7c65b44e979e07eb41eb02a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 79d257246d226664bb492e911815aae2, type: 2}
+      objectReference: {fileID: 2100000, guid: 0afbf8483633ddc4294248c634944a9e, type: 2}
     - target: {fileID: 7561410148672527644, guid: 5f98dbc6e7c65b44e979e07eb41eb02a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4432,8 +4436,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1042748289}
   - {fileID: 370777764}
+  - {fileID: 1042748289}
   - {fileID: 1355206854}
   m_Father: {fileID: 0}
   m_RootOrder: 0
