@@ -15,10 +15,9 @@ public class MenuCursor : MonoBehaviour
     }
 
     private Myproject InputActions;
-
-    private GameObject NewGame_text;        // NewGameのテキスト
-    private GameObject Continue_text;       // Continueのテキスト
-    private GameObject Option_text;         // Optionのテキスト
+    
+    private int Selected;
+    private int ItemMax;
 
     [SerializeField]
     private GameObject fade;                // フェードオブジェクト
@@ -30,10 +29,6 @@ public class MenuCursor : MonoBehaviour
 
     [Header("ゲームマネージャオブジェクト")]
     GameObject ManagerObj;
-
-    private const int MAX_MENU = 3;         // メニューの数
-
-    private int Selected = 0;
 
     [SerializeField]
     [Header("Debug用初期ステージ選択")]
@@ -51,43 +46,22 @@ public class MenuCursor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // マネージャオブジェクト取得
         ManagerObj = GameObject.Find("GameManager");
 
-        // テキストを取得
-        NewGame_text = transform.GetChild(0).gameObject;
-        Continue_text = transform.GetChild(1).gameObject;
-        Option_text = transform.GetChild(2).gameObject;
+        // メニュー数(タイトルロゴも入ってるため-1
+        ItemMax = transform.childCount - 1;
 
         OptionMenuFlag = false;
+        // 初期カーソル位置設定
         Selected = 0;
+        // 初期選択を白に
+        transform.GetChild(Selected).GetComponent<TextMeshProUGUI>().color = Color.white;
     }
 
     // Update is called once per frame
     void Update()
-    {
-        Selected = (Selected + MAX_MENU) % MAX_MENU;
-
-        // 選択中のメニューによって処理を変える
-        switch (Selected)
-        {
-            case (0):
-                NewGame_text.GetComponent<TextMeshProUGUI>().color = Color.white;
-                Continue_text.GetComponent<TextMeshProUGUI>().color = Color.black;
-                Option_text.GetComponent<TextMeshProUGUI>().color = Color.black;
-                break;
-            case (1):
-                NewGame_text.GetComponent<TextMeshProUGUI>().color = Color.black;
-                Continue_text.GetComponent<TextMeshProUGUI>().color = Color.white;
-                Option_text.GetComponent<TextMeshProUGUI>().color = Color.black;
-                break;
-            case (2):
-                NewGame_text.GetComponent<TextMeshProUGUI>().color = Color.black;
-                Continue_text.GetComponent<TextMeshProUGUI>().color = Color.black;
-                Option_text.GetComponent<TextMeshProUGUI>().color = Color.white;
-                break;
-        }
-
-        
+    {        
         // オプション画面が閉じられた場合、再度入力を受け付ける
         if(OptionMenuFlag == true)
         {
@@ -101,12 +75,24 @@ public class MenuCursor : MonoBehaviour
 
     private void OnUp()
     {
+        // 前選択を黒に
+        transform.GetChild(Selected).GetComponent<TextMeshProUGUI>().color = Color.black;
+        // 
         Selected--;
+        Selected = (int)Mathf.Repeat(Selected, ItemMax);
+        // 現選択を白に
+        transform.GetChild(Selected).GetComponent<TextMeshProUGUI>().color = Color.white;
     }
 
     private void OnDown()
     {
+        // 前選択を黒に
+        transform.GetChild(Selected).GetComponent<TextMeshProUGUI>().color = Color.black;
+        //
         Selected++;
+        Selected = (int)Mathf.Repeat(Selected, ItemMax);
+        // 現選択を白に
+        transform.GetChild(Selected).GetComponent<TextMeshProUGUI>().color = Color.white;
     }
 
     private void OnSelect()
