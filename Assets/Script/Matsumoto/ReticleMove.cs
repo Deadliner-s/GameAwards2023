@@ -106,7 +106,7 @@ public class ReticleMove : MonoBehaviour
                         b = b * b;                   // b‚Ì—İæ
                         c = a + b;                   // a + b ‚Ì‹——£
                         c = (float)Math.Sqrt(c);     // •½•ûª
-                        float ReticleRadius = 10.0f; // Æ€‚Ì”¼Œa
+                        float ReticleRadius = 50.0f; // Æ€‚Ì”¼Œa
                         float r = ReticleRadius + TargetRadius;
 
                         // “G‚É‹ß‚Ã‚¢‚½‚çÆ€‚ğˆø‚«Šñ‚¹‚é
