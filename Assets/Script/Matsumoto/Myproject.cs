@@ -167,7 +167,7 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""57fb9a50-5aa2-4136-8b02-909a99cfb464"",
-                    ""path"": ""<XInputController>/leftShoulder"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -200,7 +200,7 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""08462825-2abd-48aa-a709-97f937020634"",
-                    ""path"": ""<XInputController>/rightShoulder"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -905,17 +905,6 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3b778e06-a06c-46d3-a900-671605199c2b"",
-                    ""path"": ""<XInputController>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Select"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""ed1f7040-1701-429f-bf10-fb8b9ea4c2c9"",
                     ""path"": ""<Keyboard>/backspace"",
                     ""interactions"": """",
@@ -927,12 +916,23 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""3b778e06-a06c-46d3-a900-671605199c2b"",
+                    ""path"": ""<XInputController>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""0e8dda16-ff4c-4350-b51d-d0effc01d5c6"",
                     ""path"": ""<XInputController>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Back"",
+                    ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
