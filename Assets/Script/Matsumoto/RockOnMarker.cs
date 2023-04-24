@@ -58,7 +58,7 @@ public class RockOnMarker : MonoBehaviour
         if (player != null)
         {
             if (hit.collider.gameObject.tag == "MainCamera" || hit.collider.gameObject.tag == "Player" ||
-                hit.collider.gameObject.name == "BossMissle(Clone)" || hit.collider.gameObject.name == "BossMissleContena(Clone)" || hit.collider.gameObject.name == "BossMissleContenaSmall(Clone)")
+                hit.collider.gameObject.name == "BossMissleHoming(Clone)" || hit.collider.gameObject.name == "BossMissleContena(Clone)" || hit.collider.gameObject.name == "BossMissleContenaSmall(Clone)")
             {
                 // 一度隠れたオブジェクトの場合
                 if (hideFlg == true)
