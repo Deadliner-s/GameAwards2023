@@ -588,12 +588,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HomingMissile: {fileID: 4741478458244633611, guid: 9fe75ba60bab56b48b5309f796a7552d, type: 3}
-  HomingSpeed: 0.02
+  HomingSpeed: 0.01
+  HomingAccel: 0.002
+  HomingMax: 0.15
   ContenaMissile: {fileID: 4741478458244633611, guid: a166eeb9b4e2c494f912cf907f7a4985, type: 3}
-  ContenaUpSpeed: 0.025
-  ContenaToSpeed: 0.04
+  ContenaSpeed: 0.01
+  ContenaAccel: 0.0015
+  ContenaMax: 0.15
+  ContenaRange: 2.1
   ContenaNumber: 15
-  DestroyTimeHoming: 5
+  DestroyTimeHoming: 10
   DestroyTimeContena: 15
   KeyHoming: p
   KeyContena: k
@@ -628,7 +632,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247176452}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21069c942cbda004b92ca9c90a5c96f4, type: 3}
   m_Name: 

@@ -5,10 +5,10 @@ using System;
 
 public class MissileBossContena : MonoBehaviour
 {
-    float Speed;                  //ミサイルの速度
-    public float ToSpeed = 0.01f;         //ミサイルプレイヤーにいく速度
-    public float UpSpeed = 0.02f;         //ミサイル上にいく速度
-    public float ContenaRange = 7.0f;    //コンテナする距離
+    public float Speed = 0.025f;          //ミサイルの速度
+    public float MaxSpeed = 0.1f;
+    public float Accel = 0.001f;         //ミサイルプレイヤーにいく時の加速度
+    public float ContenaRange = 2.5f;    //コンテナする距離
     public float Height;                 //ミサイルの高さ
     public int ContenaNumber = 15;       //分裂の数
 
@@ -47,14 +47,17 @@ public class MissileBossContena : MonoBehaviour
             ToPos = Player.transform.position;
             if (transform.position.y <= FromPos.y + Height && !Locked)
             {
-                Speed = UpSpeed;
                 Move = new Vector3(0, 1.0f, -0.7f);
                 LateMove = Move;
             }
             else
             {
                 Locked = true;
-                Speed = ToSpeed;
+                Speed += Accel;
+                if (Speed >= MaxSpeed)
+                {
+                    Speed = MaxSpeed;
+                }
                 float distance = Vector3.Distance(transform.position, ToPos);
                 if (distance >= ContenaRange)
                 {

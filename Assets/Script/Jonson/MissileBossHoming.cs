@@ -6,7 +6,7 @@ using System;
 public class MissileBossHoming : MonoBehaviour
 {
     public float Speed;         //ミサイルの速度
-    public float MaxSpeed = 2.0f;
+    public float MaxSpeed = 0.1f;
     public float Accel;         //加速度
     public float MissRange;     //プレイヤーに外れるの距離
     public float Height;        //ミサイルの高さ
@@ -77,6 +77,11 @@ public class MissileBossHoming : MonoBehaviour
             Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
             transform.rotation = rot;
             transform.position += LateMove * Speed;
+
+            if(transform.position.z <= -12.0f)  //画面外に(カメラの後ろ)出たとき
+            {
+                Destroy(this, 0.0f);
+            }
         }
         else
         {
