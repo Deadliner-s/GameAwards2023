@@ -45,6 +45,9 @@ public class PlayerHp : MonoBehaviour
 
     HPGauge[] HpGaugecomponents;
 
+    public bool BreakShield;
+
+    SphereCollider collider;
 
     // シーン読込用
 //    private AsyncOperation async;
@@ -68,6 +71,10 @@ public class PlayerHp : MonoBehaviour
 
         Decreaseflame = 30;
 
+        BreakShield = false;
+        collider = gameObject.GetComponent<SphereCollider>();
+        collider.enabled = false;
+
         // PlayerHpコオブジェクトのHpGaugeコンポーネントを全て取得する
         HpGaugecomponents = PlayerHPGaugeTrans.GetComponentsInChildren<HPGauge>();
         // シールドオブジェクトからHexShieldコンポーネントを取得
@@ -88,6 +95,7 @@ public class PlayerHp : MonoBehaviour
             Invflame++;
         }
 
+        // 体力減少処理
         if(Decreaseflame < Invflame)
         {
             if(Difference != i)
@@ -105,9 +113,11 @@ public class PlayerHp : MonoBehaviour
         // 回復時間に関する処理
         if(BreakShieldFlag)
         {
+            // シールドが復活
             if (RepairShieldflame < Invflame)
             {
                 BreakShieldFlag = false;
+                BreakShield = false;
                 HealFlag = true;
                 Invflame = 0;
             }
@@ -145,6 +155,16 @@ public class PlayerHp : MonoBehaviour
             // UI関連を消す
             Canvas.SetActive(false);
         }
+        
+        // 当たり判定関連の処理
+        if (BreakShield == true)
+        {
+            collider.enabled = true;
+        }
+        else
+        {
+            collider.enabled = false;
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -152,48 +172,56 @@ public class PlayerHp : MonoBehaviour
         // もし衝突した相手オブジェクトのタグが"Enemy"ならば中の処理を実行
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (BreakShieldFlag)
-            {
-                // 完全に撃墜された判定にする
-                BreakFlag = true;
+            Damage(collision);
+        }
+    }
 
-                Canvas.SetActive(false);
-                //Destroy(this.gameObject);
-                //シーン移動
-                //SceneManager.LoadScene("GameOver");
-                //async.allowSceneActivation = true;
-            }
+    public void Damage(Collision collision)
+    {
+        // シールドが破壊されているとき
+        if (BreakShieldFlag)
+        {
+            // 完全に撃墜された判定にする
+            BreakFlag = true;
 
-            HealFlag = false;
+            Canvas.SetActive(false);
+            //Destroy(this.gameObject);
+            //シーン移動
+            //SceneManager.LoadScene("GameOver");
+            //async.allowSceneActivation = true;
+        }
 
-            // "Enemy"タグがついているオブジェクトにある"PlayerDamage"変数を受けとる
-            damage = collision.gameObject.GetComponent<Damage>().PlayerDamage;
-            PlayerHP -= damage;
-            DamageGauge.fillAmount = HpGauge.fillAmount;
-            HpGauge.fillAmount -= damage/PlayerMaxHp;
+        HealFlag = false;
 
-            Difference = HpGauge.fillAmount - DamageGauge.fillAmount;
+        // "Enemy"タグがついているオブジェクトにある"PlayerDamage"変数を受けとる
+        damage = collision.gameObject.GetComponent<Damage>().PlayerDamage;
+        PlayerHP -= damage;
+        DamageGauge.fillAmount = HpGauge.fillAmount;
+        HpGauge.fillAmount -= damage / PlayerMaxHp;
 
-            if (PlayerHP <= 0)
-            {
-                PlayerHP = 0;
-                BreakShieldFlag = true;
-                UseFlag = true;
-                Invflame = 0;
-            }
-            else if (PlayerHP > 0)
-            {
-                UseFlag = true;
-                Invflame = 0;
-            }
+        Difference = HpGauge.fillAmount - DamageGauge.fillAmount;
 
-            hs.ChangeShieldColor(PlayerHP, PlayerMaxHp);
+        // 体力が0以下になったら
+        if (PlayerHP <= 0)
+        {
+            PlayerHP = 0;
+            BreakShieldFlag = true;
+            BreakShield = true;
+            UseFlag = true;
+            Invflame = 0;
+        }
+        // 体力が0よりも多い時
+        else if (PlayerHP > 0)
+        {
+            UseFlag = true;
+            Invflame = 0;
+        }
 
-            foreach(HPGauge comp in HpGaugecomponents)
-            {
-                comp.ChangeHpGaugeColor(PlayerHP, PlayerMaxHp);
-            }
-            
+        hs.ChangeShieldColor(PlayerHP, PlayerMaxHp);
+
+        foreach (HPGauge comp in HpGaugecomponents)
+        {
+            comp.ChangeHpGaugeColor(PlayerHP, PlayerMaxHp);
         }
     }
 }
