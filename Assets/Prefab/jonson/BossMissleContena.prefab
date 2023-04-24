@@ -296,9 +296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 500309f31c3187042bca2ae6d04eaae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0.005
-  ToSpeed: 0.025
-  UpSpeed: 0.04
+  Speed: 0.025
+  Accel: 0.001
   ContenaRange: 2.5
   Height: 2
   ContenaNumber: 15

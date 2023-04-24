@@ -13,6 +13,7 @@ public class GManager : MonoBehaviour
     private AsyncOperation stage1;
     private AsyncOperation stage2;
     private AsyncOperation stage3;
+    private bool SceneLoadFlg = false;
 
     private void Awake()
     {
@@ -33,19 +34,43 @@ public class GManager : MonoBehaviour
         Stage1 = false;
         Stage2 = false;
 
-        stage1 = SceneManager.LoadSceneAsync("Stage1");
-        stage2 = SceneManager.LoadSceneAsync("Stage2");
-        stage3 = SceneManager.LoadSceneAsync("merge_2");
-
-        stage1.allowSceneActivation = false;
-        stage2.allowSceneActivation = false;
-        stage3.allowSceneActivation = false;
+        //stage1 = SceneManager.LoadSceneAsync("Stage1");
+        //stage2 = SceneManager.LoadSceneAsync("Stage2");
+        //stage3 = SceneManager.LoadSceneAsync("merge_2");
+        //stage1.allowSceneActivation = false;
+        //stage2.allowSceneActivation = false;
+        //stage3.allowSceneActivation = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+        // îÒìØä˙èàóù
+        //if (SceneManager.GetActiveScene().name == "Title")
+        //{
+        //    if (SceneLoadFlg == false)
+        //    {
+        //        stage1 = null;
+        //        stage1 = SceneManager.LoadSceneAsync("Stage1");
+        //        stage1.allowSceneActivation = false;
+
+        //        stage2 = null;
+        //        stage2 = SceneManager.LoadSceneAsync("Stage2");
+        //        stage2.allowSceneActivation = false;
+
+        //        stage3 = null;
+        //        stage3 = SceneManager.LoadSceneAsync("merge_2");
+        //        stage3.allowSceneActivation = false;
+
+        //        SceneLoadFlg = true;
+        //    }
+        //}
+
+        //if (SceneManager.GetActiveScene().name != "Title")
+        //{
+        //    SceneLoadFlg = false;
+        //}
     }
 
     public void ReSetData()
@@ -107,14 +132,17 @@ public class GManager : MonoBehaviour
 
     public void SceneStage1()
     {
-        stage1.allowSceneActivation = true;
+        //stage1.allowSceneActivation = true;
+        SceneManager.LoadScene("Stage1");
     }
     public void SceneStage2() 
-    { 
-        stage2.allowSceneActivation = true;
+    {
+        //stage2.allowSceneActivation = true;
+        SceneManager.LoadScene("Stage2");
     }
     public void SceneStage3() 
     {
-        stage3.allowSceneActivation = true;
+        //stage3.allowSceneActivation = true;
+        SceneManager.LoadScene("merge_2");
     }
 }

@@ -7,9 +7,13 @@ public class SpawnMissileBoss : MonoBehaviour
     static int FlagMax = 3;
     public GameObject HomingMissile;
     public float HomingSpeed;
+    public float HomingAccel;
+    public float HomingMax;
     public GameObject ContenaMissile;
-    public float ContenaUpSpeed;
-    public float ContenaToSpeed;
+    public float ContenaSpeed;
+    public float ContenaAccel;
+    public float ContenaMax;
+    public float ContenaRange;
     public int ContenaNumber;
     public float DestroyTimeHoming;
     public float DestroyTimeContena;
@@ -81,14 +85,18 @@ public class SpawnMissileBoss : MonoBehaviour
             {
                 GameObject obj = Instantiate(HomingMissile, transform.position, Quaternion.identity);
                 obj.GetComponent<MissileBossHoming>().Speed = HomingSpeed;
+                obj.GetComponent<MissileBossHoming>().Accel = HomingAccel;
+                obj.GetComponent<MissileBossHoming>().MaxSpeed = HomingMax;
                 Destroy(obj, DestroyTimeHoming);
             }
             if (Input.GetKeyDown(KeyContena))
             {
                 GameObject obj = Instantiate(ContenaMissile, transform.position, Quaternion.identity);
-                obj.GetComponent<MissileBossContena>().UpSpeed = ContenaUpSpeed;
-                obj.GetComponent<MissileBossContena>().ToSpeed = ContenaToSpeed;
-                obj.GetComponent<MissileBossContena>().ContenaNumber = ContenaNumber;
+                obj.GetComponent<MissileBossContena>().Speed = ContenaSpeed;
+                obj.GetComponent<MissileBossContena>().Accel = ContenaAccel;
+                obj.GetComponent<MissileBossContena>().MaxSpeed = ContenaMax;
+                obj.GetComponent<MissileBossContena>().ContenaRange = ContenaRange;
+                obj.GetComponent<MissileBossContena>().ContenaNumber = ContenaNumber;                
                 Destroy(obj, DestroyTimeContena);
             }
             // フェイズ確認
@@ -123,6 +131,8 @@ public class SpawnMissileBoss : MonoBehaviour
                         {
                             GameObject obj = Instantiate(HomingMissile, transform.position, Quaternion.identity);
                             obj.GetComponent<MissileBossHoming>().Speed = HomingSpeed;
+                            obj.GetComponent<MissileBossHoming>().Accel = HomingAccel;
+                            obj.GetComponent<MissileBossHoming>().MaxSpeed = HomingMax;
                             Destroy(obj, DestroyTimeHoming);
                             IntervalTimeHoming = 0.0f;
                         }
@@ -136,8 +146,10 @@ public class SpawnMissileBoss : MonoBehaviour
                         if (IntervalTimeContena >= IntervalTriggerContena[i])
                         {
                             GameObject obj = Instantiate(ContenaMissile, transform.position, Quaternion.identity);
-                            obj.GetComponent<MissileBossContena>().UpSpeed = ContenaUpSpeed;
-                            obj.GetComponent<MissileBossContena>().ToSpeed = ContenaToSpeed;
+                            obj.GetComponent<MissileBossContena>().Speed = ContenaSpeed;
+                            obj.GetComponent<MissileBossContena>().Accel = ContenaAccel;                        
+                            obj.GetComponent<MissileBossContena>().MaxSpeed = ContenaMax;
+                            obj.GetComponent<MissileBossContena>().ContenaRange = ContenaRange;
                             obj.GetComponent<MissileBossContena>().ContenaNumber = ContenaNumber;
                             Destroy(obj, DestroyTimeContena);
                             IntervalTimeContena = 0.0f;
