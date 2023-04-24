@@ -4,63 +4,36 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
-    //Panel（メニューウィンドウ）の変数
-    public GameObject Object;
-    bool UseFlag;
-
-    public float Hp;
-    public float Damage;
-
-    public float MaxInvflame;
-    float Invflame;
-
-    // 変数cubesの定義：GameObjectの配列
-    GameObject[] cubes;
+    GameObject Player;
+    MeshCollider collider;
 
     // Start is called before the first frame update
     void Start()
     {
-        //初期状態ではメニューを非表示
-        Object.SetActive(false);
-        //フラグを非表示判定
-        UseFlag = false;
-
-        // "enemy"タグが設定されたゲームオブジェクトの配列を取得し、変数cubesに格納する
-        cubes = GameObject.FindGameObjectsWithTag("Enemy");
+        Player = GameObject.Find("Player");
+        collider = gameObject.GetComponent<MeshCollider>();
+        collider.enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (UseFlag == true)
+        if (Player.GetComponent<PlayerHp>().PlayerHP <= 0)
         {
-            //初期状態ではメニューを非表示
-            Object.SetActive(true);
-            Invflame++;
+            collider.enabled = false;
         }
-
-        if(MaxInvflame < Invflame)
+        else
         {
-            Object.SetActive(false);
-            UseFlag = false;
-            Invflame = 0;
+            collider.enabled = true;
         }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (UseFlag == false)
+        // もし衝突した相手オブジェクトのタグが"Enemy"ならば中の処理を実行
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            // もし衝突した相手オブジェクトのタグが"Enemy"ならば中の処理を実行
-            if (collision.gameObject.CompareTag("Enemy"))
-            {
-                UseFlag = true;
-                Hp -= Damage;
-                if (Hp <= 0)
-                {
-                    //                this.Destroy();
-                }
-            }
+            Player.GetComponent<PlayerHp>().Damage(collision);
         }
     }
 }
