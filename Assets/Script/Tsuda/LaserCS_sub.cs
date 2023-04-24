@@ -24,9 +24,9 @@ public class LaserCS_sub : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        GetComponent<RectTransform>().position = Laser.GetComponent<LaserHead>().targetScreenPosition;
+        //GetComponent<RectTransform>().position = Laser.GetComponent<LaserHead>().targetScreenPosition;
 
-        //GetComponent<RectTransform>().position = mainCamera.WorldToScreenPoint(Laser.GetComponent<LaserHead>().targetWorldPosition);
+        GetComponent<RectTransform>().position = mainCamera.WorldToScreenPoint(Laser.GetComponent<LaserHead>().targetWorldPosition);
 
         GetComponent<RectTransform>().Rotate(0, 0, rotate);
 
