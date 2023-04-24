@@ -403,7 +403,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 786199139589172571}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 1
   m_Direction: 1
@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd9a54902e5542459783e3fd61909ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerDamage: 50
+  PlayerDamage: 5
   EnemyDamage: 0
 --- !u!114 &3790010361037620435
 MonoBehaviour:

@@ -8,7 +8,8 @@ public class Laser_collision : MonoBehaviour
     AudioSource audioSource;
 
     private CapsuleCollider Col;
-    private float timer = 0.0f;    
+    private float timer = 0.0f;
+    private float _cycle = 0.1f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,13 +25,17 @@ public class Laser_collision : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer >= 2.0f)
-        {
-            Col.enabled = true;
+        if(timer >= 2.0f && timer <= 6.0f)
+        {                                                        
+                // 0`cycle‚Ì”ÍˆÍ‚Ì’l‚ª“¾‚ç‚ê‚é
+            var repeatValue = Mathf.Repeat((float)timer, _cycle);
+
+                // “à•”time‚É‚¨‚¯‚é–¾–Åó‘Ô‚ğ”½‰f
+            Col.enabled = repeatValue >= _cycle * 0.5f;
+        
             audioSource.Play();
         }
-
-        if (timer >= 6.0f)
+        else
         {
             Col.enabled = false;
         }
