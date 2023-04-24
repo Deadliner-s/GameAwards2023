@@ -302,6 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c0691da9f5d624e9f3cef204414f6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0
   MaxSpeed: 0.04
   MissRange: 2
   UIFillSpeed: 0.0075
