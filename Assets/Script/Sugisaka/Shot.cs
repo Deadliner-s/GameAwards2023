@@ -98,7 +98,25 @@ public class Shot : MonoBehaviour
                         targets.RemoveAt(0);
 
                         // SE再生
-                        SoundManager.instance.Play("Shot");
+                        int num = targets.Count;
+                        switch (num)
+                        {
+                            case (5):
+                                SoundManager.instance.Play("Shot5");
+                                break;
+                            case (4):
+                                SoundManager.instance.Play("Shot4");
+                                break;
+                            case (3):
+                                SoundManager.instance.Play("Shot3");
+                                break;
+                            case (2):
+                                SoundManager.instance.Play("Shot2");
+                                break;
+                            case (1):
+                                SoundManager.instance.Play("Shot1");
+                                break;
+                        }
 
                         intervalTime = 0.0f;
                     }
@@ -125,8 +143,6 @@ public class Shot : MonoBehaviour
                 sub = new List<GameObject>();
             }
         }
-
-
     }
 
     public void OnShot()
@@ -138,16 +154,6 @@ public class Shot : MonoBehaviour
             // フラグの確認
             if (Shotflg == false)
             {
-                // ターゲットリストをサブに退避
-                //foreach (GameObject k in targets)
-                //{
-                //    // ターゲットがリストに含まれていなければ追加する
-                //    if (!sub.Contains(k))
-                //    {
-                //        sub.Add(k);
-                //    }
-                //}
-
                 // リスト再生成
                 targets = new List<GameObject>();
 
@@ -161,18 +167,6 @@ public class Shot : MonoBehaviour
                         targets.Add(target);
                     }
                 }
-
-                // 各ロックオンされたターゲットにミサイルを打つ
-                //foreach (GameObject target in targets)
-                //{
-                //    // 生成場所取得
-                //    Vector3 PlayerPos = Shotpos.transform.position;
-                //    // 新しい誘導ミサイルプレハブをインスタンス化する
-                //    GameObject missile = Instantiate(MissilePrefab, PlayerPos, Quaternion.identity);
-                //    // 誘導ミサイルのターゲットを設定する
-                //    missile.GetComponent<TrackingBullet>().SetTarget(target);
-                //    audioSource.PlayOneShot(ShotSE);
-                //}
 
                 // 経過時間初期化
                 currenttime = 0.0f;

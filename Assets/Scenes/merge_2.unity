@@ -254,6 +254,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManagerObj
       objectReference: {fileID: 0}
+    - target: {fileID: 231837378748620135, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: se.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 231837378748620135, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: se.Array.data[0].name
+      value: Shot1
+      objectReference: {fileID: 0}
+    - target: {fileID: 231837378748620135, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: se.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8e6c47ec26be3cf4dac05ffe954474c4, type: 3}
+    - target: {fileID: 231837378748620135, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: se.Array.data[4].name
+      value: Shot2
+      objectReference: {fileID: 0}
+    - target: {fileID: 231837378748620135, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: se.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8e6c47ec26be3cf4dac05ffe954474c4, type: 3}
+    - target: {fileID: 231837378748620135, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: se.Array.data[5].name
+      value: Shot3
+      objectReference: {fileID: 0}
+    - target: {fileID: 231837378748620135, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: se.Array.data[6].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8e6c47ec26be3cf4dac05ffe954474c4, type: 3}
+    - target: {fileID: 231837378748620135, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: se.Array.data[6].name
+      value: Shot4
+      objectReference: {fileID: 0}
+    - target: {fileID: 231837378748620135, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: se.Array.data[7].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8e6c47ec26be3cf4dac05ffe954474c4, type: 3}
+    - target: {fileID: 231837378748620135, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: se.Array.data[7].name
+      value: Shot5
+      objectReference: {fileID: 0}
     - target: {fileID: 231837378748620152, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
       propertyPath: m_RootOrder
       value: 14
