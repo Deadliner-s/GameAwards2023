@@ -598,7 +598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LaserTime: 4
   LaserSpeed: 0.01
-  audioClip: {fileID: 8300000, guid: 6fcc97f72a73db946a2f32d2047964e1, type: 3}
+  Idk: {fileID: 3114414904180507907, guid: 060cacf89f17eb449896e5fd40e8b39d, type: 3}
   targetScreenPosition: {x: 0, y: 0, z: 0}
   targetWorldPosition: {x: 0, y: 0, z: 0}
 --- !u!82 &3583087093840202663
