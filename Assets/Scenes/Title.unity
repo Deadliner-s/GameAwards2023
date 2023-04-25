@@ -390,6 +390,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6649804790914477802, guid: 36c215906eb60f64992970ab8490697c, type: 3}
+      propertyPath: vibration.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6649804790914477802, guid: 36c215906eb60f64992970ab8490697c, type: 3}
+      propertyPath: vibration.Array.data[1].name
+      value: HighSpeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 6649804790914477802, guid: 36c215906eb60f64992970ab8490697c, type: 3}
+      propertyPath: vibration.Array.data[1].LowFrequency
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6649804790914477802, guid: 36c215906eb60f64992970ab8490697c, type: 3}
+      propertyPath: vibration.Array.data[1].StepVibration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6649804790914477802, guid: 36c215906eb60f64992970ab8490697c, type: 3}
+      propertyPath: vibration.Array.data[1].TimeVibration
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6649804790914477803, guid: 36c215906eb60f64992970ab8490697c, type: 3}
       propertyPath: m_Name
       value: VibrationManagerObj
@@ -451,25 +471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fade: {fileID: 756608634}
   OptionMenu: {fileID: 8142782941527529438}
-  stage: 2
---- !u!1 &618361822 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5380927833171515514, guid: 24f91f25ae792734f85d709ce78920f8, type: 3}
-  m_PrefabInstance: {fileID: 5380927832280948496}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &618361825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 618361822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf56e973c4a27c5418d57346cbce2b3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vibration: []
+  stage: 0
 --- !u!1 &660117413
 GameObject:
   m_ObjectHideFlags: 0

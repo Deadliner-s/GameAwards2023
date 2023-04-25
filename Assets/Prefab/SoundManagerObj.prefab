@@ -48,12 +48,14 @@ MonoBehaviour:
   bgm:
   - name: Stage3
     clip: {fileID: 8300000, guid: 254606c65e35163418da7b6a7d950b0e, type: 3}
+    loop: 1
     audioSource: {fileID: 0}
   - name: BGM
     clip: {fileID: 8300000, guid: fc32c1fce73f63043a0394d13f3fc6ec, type: 3}
+    loop: 1
     audioSource: {fileID: 0}
   se:
-  - name: Shot
+  - name: Shot1
     clip: {fileID: 8300000, guid: 8e6c47ec26be3cf4dac05ffe954474c4, type: 3}
     audioSource: {fileID: 0}
   - name: Manever
@@ -64,6 +66,18 @@ MonoBehaviour:
     audioSource: {fileID: 0}
   - name: BossAnime
     clip: {fileID: 8300000, guid: 36a82ed500b1f1d4a90dd73004dd89ef, type: 3}
+    audioSource: {fileID: 0}
+  - name: Shot2
+    clip: {fileID: 8300000, guid: 8e6c47ec26be3cf4dac05ffe954474c4, type: 3}
+    audioSource: {fileID: 0}
+  - name: Shot3
+    clip: {fileID: 8300000, guid: 8e6c47ec26be3cf4dac05ffe954474c4, type: 3}
+    audioSource: {fileID: 0}
+  - name: Shot4
+    clip: {fileID: 8300000, guid: 8e6c47ec26be3cf4dac05ffe954474c4, type: 3}
+    audioSource: {fileID: 0}
+  - name: Shot5
+    clip: {fileID: 8300000, guid: 8e6c47ec26be3cf4dac05ffe954474c4, type: 3}
     audioSource: {fileID: 0}
   BGM_volume: 1
   SE_volume: 1

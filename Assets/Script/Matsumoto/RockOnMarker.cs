@@ -11,11 +11,11 @@ public class RockOnMarker : MonoBehaviour
     [Header("敵の半径")]
     public float TargetRadius = 1.0f;           // 敵の半径
 
-    [Header("照準関係")]
-    [Tooltip("引き寄せられ始める距離")]
-    public float AttractDistance = 50.0f;       // 引き寄せられ始める距離
-    [Tooltip("引き寄せられる力")]
-    public float AttractPower = 10.0f;          // 引き寄せられる力
+    //[Header("照準関係")]
+    //[Tooltip("引き寄せられ始める距離")]
+    //public float AttractDistance = 50.0f;       // 引き寄せられ始める距離
+    //[Tooltip("引き寄せられる力")]
+    //public float AttractPower = 10.0f;          // 引き寄せられる力
 
     [Header("画面外でRockOnを消す")]
     public bool FrameOutDestroy = false;        // 画面外で消すか
