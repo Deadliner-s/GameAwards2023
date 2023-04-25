@@ -24,15 +24,17 @@ public class LaserHead : MonoBehaviour
         Player = GameObject.Find("Player");
         targetScreenPosition = Player.transform.position;
         targetWorldPosition = Player.transform.position;
-        transform.LookAt(targetWorldPosition);  // Player.transform.position);                      
+        transform.LookAt(targetWorldPosition);  // Player.transform.position);  
+
+        SoundManager.instance.Play("Laser_charge");
     }
 
     void Update()
     {        
         timer += Time.deltaTime;  // タイマーを減算する                                  
 
-        transform.LookAt(targetWorldPosition);        
-        
+        transform.LookAt(targetWorldPosition);                       
+
         if (timer >= wait + 1.0f &&  timer <= wait + LaserTime)
         {
             if (targetScreenPosition.x <= 0.0f)

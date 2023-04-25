@@ -256,7 +256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 231837378748620135, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
       propertyPath: se.Array.size
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 231837378748620135, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
       propertyPath: se.Array.data[0].name
@@ -293,6 +293,22 @@ PrefabInstance:
     - target: {fileID: 231837378748620135, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
       propertyPath: se.Array.data[7].name
       value: Shot5
+      objectReference: {fileID: 0}
+    - target: {fileID: 231837378748620135, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: se.Array.data[8].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6fcc97f72a73db946a2f32d2047964e1, type: 3}
+    - target: {fileID: 231837378748620135, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: se.Array.data[8].name
+      value: Laser_charge
+      objectReference: {fileID: 0}
+    - target: {fileID: 231837378748620135, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: se.Array.data[9].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: bf2466deb470e71479cdc8c79a0fe2a1, type: 3}
+    - target: {fileID: 231837378748620135, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: se.Array.data[9].name
+      value: Laser
       objectReference: {fileID: 0}
     - target: {fileID: 231837378748620152, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
       propertyPath: m_RootOrder
