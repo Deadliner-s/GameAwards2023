@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Laser_collision : MonoBehaviour
 {
+    public GameObject LaserA;
+
     public AudioClip audioClip;
     AudioSource audioSource;
 
@@ -25,7 +27,7 @@ public class Laser_collision : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer >= 2.0f && timer <= 6.0f)
+        if(timer >= 2.0f && timer <= 2.0f + LaserA.GetComponent<LaserHead>().LaserTime)
         {                                                        
                 // 0`cycle‚Ì”ÍˆÍ‚Ì’l‚ª“¾‚ç‚ê‚é
             var repeatValue = Mathf.Repeat((float)timer, _cycle);

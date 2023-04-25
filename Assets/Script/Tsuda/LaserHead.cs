@@ -12,20 +12,22 @@ public class LaserHead : MonoBehaviour
     public AudioClip audioClip;    
     AudioSource audioSource;
 
-    private GameObject Player;
+    private GameObject Player;    
     private float lifetime;  // オブジェクトの寿命（秒）    
-//    public Vector3 targetScreenPosition;  // 目標スクリーン座標
+    public Vector3 targetScreenPosition;  // 目標スクリーン座標
     public Vector3 targetWorldPosition;  // 目標ワールド座標
-    private Camera mainCamera;  // メインカメラ
+//    private Camera mainCamera;  // メインカメラ
     private float timer;  // タイマー        
+    private float wait = 2.0f;
 
     void Start()
-    {                
+    {        
         lifetime = LaserTime + 5.0f;
 
         Player = GameObject.Find("Player");
+        targetScreenPosition = Player.transform.position;
         targetWorldPosition = Player.transform.position;
-        transform.LookAt(Player.transform.position);              
+        transform.LookAt(targetWorldPosition);  // Player.transform.position);              
 
         audioSource = gameObject.GetComponent<AudioSource>();
         audioSource.clip = audioClip;
@@ -34,7 +36,24 @@ public class LaserHead : MonoBehaviour
 
     void Update()
     {        
-        timer += Time.deltaTime;  // タイマーを減算する                
+        timer += Time.deltaTime;  // タイマーを減算する                          
+
+        //targetWorldPosition = targetScreenPosition;
+
+        transform.LookAt(targetWorldPosition);        
+        
+        if (timer >= wait + 1.0f &&  timer <= wait + LaserTime)
+        {
+            if (targetScreenPosition.x <= 0.0f)
+            {
+                targetWorldPosition.x += LaserSpeed;
+            }
+            if (targetScreenPosition.x >= 0.0f)
+            {
+                targetWorldPosition.x -= LaserSpeed;
+            }
+        }
+        
 
         //transform.LookAt(targetWorldPosition);
 
