@@ -79,6 +79,12 @@ MonoBehaviour:
   - name: Shot5
     clip: {fileID: 8300000, guid: 8e6c47ec26be3cf4dac05ffe954474c4, type: 3}
     audioSource: {fileID: 0}
+  - name: Laser_charge
+    clip: {fileID: 8300000, guid: 6fcc97f72a73db946a2f32d2047964e1, type: 3}
+    audioSource: {fileID: 0}
+  - name: Laser
+    clip: {fileID: 8300000, guid: bf2466deb470e71479cdc8c79a0fe2a1, type: 3}
+    audioSource: {fileID: 0}
   BGM_volume: 1
   SE_volume: 1
 --- !u!82 &231837378748620153
