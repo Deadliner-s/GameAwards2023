@@ -13,6 +13,13 @@ public class ReticleMove : MonoBehaviour
     public float speed = 5.0f;      // 移動スピード
     [Header("ロックオンできる最大数")]
     public int MaxRockOn = 5;       // ロックオンできる最大数
+    [Header("照準の半径")]
+    public float ReticleRadius = 50.0f; // 照準の半径
+    [Header("引き寄せられ始める距離")]
+    public float AttractDistance = 50.0f;
+    [Header("引き寄せられる力")]
+    public float AttractPower = 10.0f;
+
 
 
     private Myproject InputActions; // InputSystem
@@ -106,16 +113,16 @@ public class ReticleMove : MonoBehaviour
                         b = b * b;                   // bの累乗
                         c = a + b;                   // a + b の距離
                         c = (float)Math.Sqrt(c);     // 平方根
-                        float ReticleRadius = 50.0f; // 照準の半径
+                       
                         float r = ReticleRadius + TargetRadius;
 
                         // 敵に近づいたら照準を引き寄せる
-                        if (c <= enemy.GetComponent<RockOnMarker>().AttractDistance)
+                        if (c <= AttractPower)
                         {
                             // タグを持っていたら    ロックオンした後のオブジェクトに寄らないように
                             if (enemy.tag == "Enemy")
                             {
-                                transform.position = Vector2.MoveTowards(transform.position, enemy2D, enemy.GetComponent<RockOnMarker>().AttractPower);
+                                transform.position = Vector2.MoveTowards(transform.position, enemy2D, AttractDistance);
                             }
 
                             // 当たり判定
