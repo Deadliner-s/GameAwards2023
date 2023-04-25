@@ -7,7 +7,10 @@ public class LaserHead : MonoBehaviour
     public static LaserHead instance;
         
     public float LaserTime = 4.0f;
-    public float LaserSpeed = 3.0f;    
+    public float LaserSpeed = 3.0f;
+
+    public GameObject Idk;
+    private bool IdkFlg = false;
 
     private GameObject Player;    
     private float lifetime;  // オブジェクトの寿命（秒）    
@@ -24,14 +27,14 @@ public class LaserHead : MonoBehaviour
         Player = GameObject.Find("Player");
         targetScreenPosition = Player.transform.position;
         targetWorldPosition = Player.transform.position;
-        transform.LookAt(targetWorldPosition);  // Player.transform.position);  
+        transform.LookAt(targetWorldPosition);  // Player.transform.position);          
 
-        SoundManager.instance.Play("Laser_charge");
+        SoundManager.instance.Play("Laser_charge");  
     }
 
     void Update()
     {        
-        timer += Time.deltaTime;  // タイマーを減算する                                  
+        timer += Time.deltaTime;  // タイマーを減算する                                          
 
         transform.LookAt(targetWorldPosition);                       
 
@@ -47,6 +50,11 @@ public class LaserHead : MonoBehaviour
             }
         }
         
+        if(timer >= 2.0f && !IdkFlg)
+        {
+            Instantiate(Idk, targetWorldPosition, transform.rotation);
+            IdkFlg = true;
+        }
 
         //transform.LookAt(targetWorldPosition);
 
