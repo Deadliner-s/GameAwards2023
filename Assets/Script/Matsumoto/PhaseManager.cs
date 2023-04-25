@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PhaseManager : MonoBehaviour
-{
+{  
     // フェイズ列挙体
     public enum Phase
     {
@@ -28,6 +28,7 @@ public class PhaseManager : MonoBehaviour
     [Tooltip("照準")]
     public GameObject Reticle;
 
+    private GameObject vibrationManager;            // バイブレーションマネージャー
 
     [Header("デバッグ用 フェイズを固定する")]
     public bool Debug_FixPhaseFlg = false;
@@ -52,6 +53,8 @@ public class PhaseManager : MonoBehaviour
         //currentPhase = Phase.Normal_Phase;          // 初期フェイズ
 
         nextPhase = currentPhase;
+
+        vibrationManager = GameObject.Find("VibrationManagerObj");
     }
 
     // Update is called once per frame
@@ -106,6 +109,7 @@ public class PhaseManager : MonoBehaviour
             if (currentPhase == Phase.Speed_Phase)
             {
                 Reticle.SetActive(false);
+                vibrationManager.GetComponent<VibrationManager>().StartCoroutine("PlayVibration", "HighSpeed");
             }
 
             if (currentPhase == Phase.Attack_Phase)
