@@ -1394,7 +1394,7 @@ MonoBehaviour:
   playerHp: {fileID: 1359347837}
   prefab: {fileID: 786199140513531244, guid: 9aa00b7861ffd164bb5fc3af873fd230, type: 3}
   timer: 0
-  StartTime_1: 1
+  StartTime_1: 10
   LaserTime_1: 4
   StartTime_2: 21
   LaserTime_2: 4
@@ -2367,7 +2367,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1359347808}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1081141024 stripped
 Transform:

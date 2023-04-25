@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Laser2 : MonoBehaviour
 {
+    public GameObject LaserA;
+
     public float sizeX = 0.0f;
     public float SizeY = 0.0f;
     public float decreaseX = 0.1f;
@@ -47,7 +49,7 @@ public class Laser2 : MonoBehaviour
             played = true;
         }
 
-        if (played && currentScale.x <= sizeX && currentScale.z <= SizeY && timer <= delay + 4.0f)
+        if (played && currentScale.x <= sizeX && currentScale.z <= SizeY && timer <= delay + LaserA.GetComponent<LaserHead>().LaserTime)
         {
             currentScale.x += decreaseX;
             currentScale.y += decreaseY;
@@ -55,7 +57,7 @@ public class Laser2 : MonoBehaviour
             transform.localScale = currentScale;
         }
 
-        if (timer >= delay + 4.0f)
+        if (timer >= delay + LaserA.GetComponent<LaserHead>().LaserTime)
         {
             // scaleÇå∏è≠Ç≥ÇπÇÈ
             currentScale.x -= decreaseX;

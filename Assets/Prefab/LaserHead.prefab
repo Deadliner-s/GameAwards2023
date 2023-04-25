@@ -434,6 +434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcefb92b7e3ef984088c87b7c8078bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LaserA: {fileID: 786199140513531244}
   audioClip: {fileID: 8300000, guid: bf2466deb470e71479cdc8c79a0fe2a1, type: 3}
 --- !u!82 &7642745664861886230
 AudioSource:
@@ -597,9 +598,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07463dbfde451a74ca7f58cf19ef172e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Split: 2
   LaserTime: 4
-  LaserSpeed: 3
+  LaserSpeed: 0.01
   audioClip: {fileID: 8300000, guid: 6fcc97f72a73db946a2f32d2047964e1, type: 3}
   targetScreenPosition: {x: 0, y: 0, z: 0}
   targetWorldPosition: {x: 0, y: 0, z: 0}
@@ -10490,6 +10490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a13648447b5e9be4cada3e7f1f2d37ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LaserA: {fileID: 786199140513531244}
   sizeX: 0.815
   SizeY: 0.815
   decrease: 0.0525
@@ -20239,6 +20240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eef26e98805dd54399e31ecba3f4d6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LaserA: {fileID: 786199140513531244}
   sizeX: 0.3
   SizeY: 0.3
   decreaseX: 0.015
@@ -20392,6 +20394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d537b9bfb21bd41b8d84a326d42654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LaserA: {fileID: 0}
   sizeX: 0
   SizeY: 0
   decrease: 0.006
@@ -20556,6 +20559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d537b9bfb21bd41b8d84a326d42654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LaserA: {fileID: 786199140513531244}
   sizeX: 1.05
   SizeY: 1.05
   decrease: 0.1
@@ -20694,6 +20698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d537b9bfb21bd41b8d84a326d42654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LaserA: {fileID: 786199140513531244}
   sizeX: 0.63
   SizeY: 0.63
   decrease: 0.024
@@ -20886,6 +20891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eef26e98805dd54399e31ecba3f4d6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LaserA: {fileID: 0}
   sizeX: 0.136
   SizeY: 0.136
   decreaseX: 0.006
@@ -21124,6 +21130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d537b9bfb21bd41b8d84a326d42654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LaserA: {fileID: 0}
   sizeX: 0
   SizeY: 0
   decrease: 0.1
