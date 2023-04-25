@@ -9,6 +9,7 @@ public class Fade : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // ステージ1の場合 フェードイン
         if(SceneManager.GetActiveScene().name == "Stage1")
         {
             StartCoroutine("Color_FadeIn");
@@ -27,10 +28,6 @@ public class Fade : MonoBehaviour
         {
             StartCoroutine("Color_FadeIn");
         }
-
-
-
-
     }
 
     // Update is called once per frame
@@ -73,7 +70,6 @@ public class Fade : MonoBehaviour
             new_color.a = alpha / 255.0f;
             fade.color = new_color;
         }
-
     }
 
     public IEnumerator Color_FadeOut()
@@ -116,6 +112,7 @@ public class Fade : MonoBehaviour
 
         if (fade.color.a == 1.0f)
         {
+            // フェードアウト後にステージ1に遷移
             GManager.instance.SceneStage1();
         }
     }
