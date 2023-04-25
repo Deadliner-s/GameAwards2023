@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class Laser_collision : MonoBehaviour
 {
-    public GameObject LaserA;
-
-    public AudioClip audioClip;
-    AudioSource audioSource;
+    public GameObject LaserA;    
 
     private CapsuleCollider Col;
     private float timer = 0.0f;
@@ -17,25 +14,21 @@ public class Laser_collision : MonoBehaviour
     void Start()
     {
         Col = GetComponent<CapsuleCollider>();
-        Col.enabled = false;
-        audioSource = gameObject.GetComponent<AudioSource>();
-        audioSource.clip = audioClip;
+        Col.enabled = false;        
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        timer += Time.deltaTime;        
 
         if(timer >= 2.0f && timer <= 2.0f + LaserA.GetComponent<LaserHead>().LaserTime)
-        {                                                        
-                // 0`cycle‚Ì”ÍˆÍ‚Ì’l‚ª“¾‚ç‚ê‚é
+        {            
+            // 0`cycle‚Ì”ÍˆÍ‚Ì’l‚ª“¾‚ç‚ê‚é
             var repeatValue = Mathf.Repeat((float)timer, _cycle);
 
                 // “à•”Žžtime‚É‚¨‚¯‚é–¾–Åó‘Ô‚ð”½‰f
-            Col.enabled = repeatValue >= _cycle * 0.5f;
-        
-            audioSource.Play();
+            Col.enabled = repeatValue >= _cycle * 0.5f;                   
         }
         else
         {

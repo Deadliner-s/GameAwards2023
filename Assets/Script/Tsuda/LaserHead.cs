@@ -7,10 +7,7 @@ public class LaserHead : MonoBehaviour
     public static LaserHead instance;
         
     public float LaserTime = 4.0f;
-    public float LaserSpeed = 3.0f;
-
-    public AudioClip audioClip;    
-    AudioSource audioSource;
+    public float LaserSpeed = 3.0f;    
 
     private GameObject Player;    
     private float lifetime;  // オブジェクトの寿命（秒）    
@@ -27,18 +24,12 @@ public class LaserHead : MonoBehaviour
         Player = GameObject.Find("Player");
         targetScreenPosition = Player.transform.position;
         targetWorldPosition = Player.transform.position;
-        transform.LookAt(targetWorldPosition);  // Player.transform.position);              
-
-        audioSource = gameObject.GetComponent<AudioSource>();
-        audioSource.clip = audioClip;
-        audioSource.Play();
+        transform.LookAt(targetWorldPosition);  // Player.transform.position);                      
     }
 
     void Update()
     {        
-        timer += Time.deltaTime;  // タイマーを減算する                          
-
-        //targetWorldPosition = targetScreenPosition;
+        timer += Time.deltaTime;  // タイマーを減算する                                  
 
         transform.LookAt(targetWorldPosition);        
         
