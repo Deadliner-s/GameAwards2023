@@ -9,11 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1901566794619532875, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Height
-      value: 10
+      value: 0.11805161
       objectReference: {fileID: 0}
     - target: {fileID: 1901566794619532875, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Radius
-      value: 2.5
+      value: 0.020208756
       objectReference: {fileID: 0}
     - target: {fileID: 1901566794619532875, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Enabled
@@ -21,20 +21,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1901566794619532875, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Center.x
-      value: -0.04722798
+      value: -0.0000000018626451
       objectReference: {fileID: 0}
     - target: {fileID: 1901566794619532875, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Center.y
-      value: -0.0066986084
+      value: 0.014867004
       objectReference: {fileID: 0}
     - target: {fileID: 1901566794619532875, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Center.z
-      value: 0.003570497
+      value: 0.0000000018626451
       objectReference: {fileID: 0}
     - target: {fileID: 3930705679050173309, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0b0aac254795b8a42b1f2c83055cc1cd, type: 2}
+      objectReference: {fileID: 2100000, guid: 79100619120f4ea4ea87ef6ff1fccdc6, type: 2}
     - target: {fileID: 4482491814637254355, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Name
       value: BossMissleHoming
@@ -73,15 +73,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.025
+      value: 1.78
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.025
+      value: 1.78
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.025
+      value: 1.78
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalPosition.x
@@ -125,12 +125,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9062495474639694043, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 906361331690571510, guid: e524961050ce963418ed3d123ee82293, type: 3}
+      objectReference: {fileID: -5076798556035486163, guid: 7b72caafd16b0e5469d4d3113af635a6, type: 3}
     m_RemovedComponents:
     - {fileID: 7960448012418322811, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
@@ -314,8 +314,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetRadius: 15
-  AttractDistance: 50
-  AttractPower: 10
   FrameOutDestroy: 1
   WeakPointTop: 0
   WeakPointBottom: 0
