@@ -693,11 +693,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21069c942cbda004b92ca9c90a5c96f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowSpeedMissile: {fileID: 3222784191366915875, guid: bb92e347f9a25474d9e1b03dbdf06281, type: 3}
   SpeedMissile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
   SpeedStraight: 0.04
+  ShowClusterMissile: {fileID: 3222784191366915875, guid: a9c065bc394eff54bbd27cacc93eee39, type: 3}
   ClusterMissile: {fileID: 5540224078154131618, guid: 05a76db5fa499f548b8994bdfdbb97b9, type: 3}
   SpeedCluster: 0.02
   ClusterNumber: 6
+  SpawnDelay: 3
   KeyCluster: i
   SpawnTop: {fileID: 2027436679}
   KeyTop: u
