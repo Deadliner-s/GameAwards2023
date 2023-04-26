@@ -5,12 +5,14 @@ using UnityEngine;
 public class SpawnMissileScreen : MonoBehaviour
 {
     static int FlagMax = 3;
+    public GameObject ShowSpeedMissile;
     public GameObject SpeedMissile;
     public float SpeedStraight;
+    public GameObject ShowClusterMissile;
     public GameObject ClusterMissile;
     public float SpeedCluster;
     public int ClusterNumber;
-
+    public float SpawnDelay;
     public string KeyCluster;
     public GameObject SpawnTop;
     public string KeyTop;
@@ -138,40 +140,33 @@ public class SpawnMissileScreen : MonoBehaviour
             // デバッグ用
             if (Input.GetKeyDown(KeyCluster))
             {
-                GameObject obj = Instantiate(ClusterMissile, SpawnLeft.transform.position, Quaternion.identity);
-                obj.GetComponent<MissileBossCluster>().Speed = SpeedCluster;
-                obj.GetComponent<MissileBossCluster>().ClusterNumber = ClusterNumber;
-                Destroy(obj, DestroyTime);
+                SpawnShowCluster();
+                Invoke("SpawnCluster", SpawnDelay);
             }
             if (Input.GetKeyDown(KeyTop))
             {
-                GameObject obj = Instantiate(SpeedMissile, SpawnTop.transform.position, Quaternion.identity);
-                obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
-                Destroy(obj, DestroyTime);
+                SpawnShowSpeed();
+                Invoke("SpawnSpeedTop", SpawnDelay);
             }
             if (Input.GetKeyDown(KeyTopLeft))
             {
-                GameObject obj = Instantiate(SpeedMissile, SpawnTopLeft.transform.position, Quaternion.identity);
-                obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
-                Destroy(obj, DestroyTime);
+                SpawnShowSpeed();
+                Invoke("SpawnSpeedTopLeft", SpawnDelay);
             }
             if (Input.GetKeyDown(KeyLeft))
             {
-                GameObject obj = Instantiate(SpeedMissile, SpawnLeft.transform.position, Quaternion.identity);
-                obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
-                Destroy(obj, DestroyTime);
+                SpawnShowSpeed();
+                Invoke("SpawnSpeedLeft", SpawnDelay);
             }
             if (Input.GetKeyDown(KeyBotLeft))
             {
-                GameObject obj = Instantiate(SpeedMissile, SpawnBotLeft.transform.position, Quaternion.identity);
-                obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
-                Destroy(obj, DestroyTime);
+                SpawnShowSpeed();
+                Invoke("SpawnSpeedBotLeft", SpawnDelay);
             }
             if (Input.GetKeyDown(KeyBot))
             {
-                GameObject obj = Instantiate(SpeedMissile, SpawnBot.transform.position, Quaternion.identity);
-                obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
-                Destroy(obj, DestroyTime);
+                SpawnShowSpeed();
+                Invoke("SpawnSpeedBot", SpawnDelay);
             }
 
             // フェイズ確認
@@ -216,10 +211,8 @@ public class SpawnMissileScreen : MonoBehaviour
                     {
                         if (IntervalTimeCluster >= IntervalTriggerCluster[i])
                         {
-                            GameObject obj = Instantiate(ClusterMissile, SpawnLeft.transform.position, Quaternion.identity);
-                            obj.GetComponent<MissileBossCluster>().Speed = SpeedCluster;
-                            obj.GetComponent<MissileBossCluster>().ClusterNumber = ClusterNumber;
-                            Destroy(obj, DestroyTime);
+                            SpawnShowCluster();
+                            Invoke("SpawnCluster", SpawnDelay);
                             IntervalTimeCluster = 0.0f;
                         }
                         if (StartTimeCluster[i] + DurationCluster[i] <= timer)
@@ -231,9 +224,8 @@ public class SpawnMissileScreen : MonoBehaviour
                     {
                         if (IntervalTimeTop >= IntervalTriggerTop[i])
                         {
-                            GameObject obj = Instantiate(SpeedMissile, SpawnTop.transform.position, Quaternion.identity);
-                            obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
-                            Destroy(obj, DestroyTime);
+                            SpawnShowSpeed();
+                            Invoke("SpawnSpeedTop", SpawnDelay);
                             IntervalTimeTop = 0.0f;
                         }
                         if (StartTimeTop[i] + DurationTop[i] <= timer)
@@ -245,9 +237,8 @@ public class SpawnMissileScreen : MonoBehaviour
                     {
                         if (IntervalTimeTopLeft >= IntervalTriggerTopLeft[i])
                         {
-                            GameObject obj = Instantiate(SpeedMissile, SpawnTopLeft.transform.position, Quaternion.identity);
-                            obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
-                            Destroy(obj, DestroyTime);
+                            SpawnShowSpeed();
+                            Invoke("SpawnSpeedTopLeft", SpawnDelay);
                             IntervalTimeTopLeft = 0.0f;
                         }
                         if (StartTimeTopLeft[i] + DurationTopLeft[i] <= timer)
@@ -259,9 +250,8 @@ public class SpawnMissileScreen : MonoBehaviour
                     {
                         if (IntervalTimeLeft >= IntervalTriggerLeft[i])
                         {
-                            GameObject obj = Instantiate(SpeedMissile, SpawnLeft.transform.position, Quaternion.identity);
-                            obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
-                            Destroy(obj, DestroyTime);
+                            SpawnShowSpeed();
+                            Invoke("SpawnSpeedLeft", SpawnDelay);
                             IntervalTimeLeft = 0.0f;
                         }
                         if (StartTimeLeft[i] + DurationLeft[i] <= timer)
@@ -273,9 +263,8 @@ public class SpawnMissileScreen : MonoBehaviour
                     {
                         if (IntervalTimeBotLeft >= IntervalTriggerBotLeft[i])
                         {
-                            GameObject obj = Instantiate(SpeedMissile, SpawnBotLeft.transform.position, Quaternion.identity);
-                            obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
-                            Destroy(obj, DestroyTime);
+                            SpawnShowSpeed();
+                            Invoke("SpawnSpeedBotLeft", SpawnDelay);
                             IntervalTimeBotLeft = 0.0f;
                         }
                         if (StartTimeBotLeft[i] + DurationBotLeft[i] <= timer)
@@ -287,9 +276,8 @@ public class SpawnMissileScreen : MonoBehaviour
                     {
                         if (IntervalTimeBot >= IntervalTriggerBot[i])
                         {
-                            GameObject obj = Instantiate(SpeedMissile, SpawnBot.transform.position, Quaternion.identity);
-                            obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
-                            Destroy(obj, DestroyTime);
+                            SpawnShowSpeed();
+                            Invoke("SpawnSpeedBot", SpawnDelay);
                             IntervalTimeBot = 0.0f;
                         }
                         if (StartTimeBot[i] + DurationBot[i] <= timer)
@@ -306,4 +294,54 @@ public class SpawnMissileScreen : MonoBehaviour
         }
 
     }
+
+    void SpawnCluster()
+    {
+        GameObject obj = Instantiate(ClusterMissile, SpawnLeft.transform.position, Quaternion.identity);
+        obj.GetComponent<MissileBossCluster>().Speed = SpeedCluster;
+        obj.GetComponent<MissileBossCluster>().ClusterNumber = ClusterNumber;
+        Destroy(obj, DestroyTime);
+    }    
+    void SpawnSpeedTop()
+    {
+        GameObject obj = Instantiate(SpeedMissile, SpawnTop.transform.position, Quaternion.identity);
+        obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
+        Destroy(obj, DestroyTime);
+    }
+    void SpawnSpeedTopLeft()
+    {
+        GameObject obj = Instantiate(SpeedMissile, SpawnTopLeft.transform.position, Quaternion.identity);
+        obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
+        Destroy(obj, DestroyTime);
+    }
+    void SpawnSpeedLeft()
+    {
+        GameObject obj = Instantiate(SpeedMissile, SpawnLeft.transform.position, Quaternion.identity);
+        obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
+        Destroy(obj, DestroyTime);
+    }
+    void SpawnSpeedBotLeft()
+    {
+        GameObject obj = Instantiate(SpeedMissile, SpawnBotLeft.transform.position, Quaternion.identity);
+        obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
+        Destroy(obj, DestroyTime);
+    }
+    void SpawnSpeedBot()
+    {
+        GameObject obj = Instantiate(SpeedMissile, SpawnBot.transform.position, Quaternion.identity);
+        obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
+        Destroy(obj, DestroyTime);
+    }
+
+    void SpawnShowCluster()
+    {
+        GameObject obj = Instantiate(ShowClusterMissile, transform.position, Quaternion.identity);
+        Destroy(obj, DestroyTime);
+    }
+    void SpawnShowSpeed()
+    {
+        GameObject obj = Instantiate(ShowSpeedMissile, transform.position, Quaternion.identity);
+        Destroy(obj, DestroyTime);
+    }
+
 }
