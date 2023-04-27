@@ -1,11 +1,19 @@
-using UnityEngine;
 using System;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-
 
 [System.Serializable]
 public class BGM
 {
+    //public enum FadeBGM
+    //{
+    //    None,
+    //    FadeIn,
+    //    FadeOut,
+    //    //CrossFade
+    //}
+
     [Tooltip("サウンドの名前")]
     public string name;
     // AudioSourceに必要な情報
@@ -15,6 +23,14 @@ public class BGM
     //public float volume;
     [Tooltip("ループ")]
     public bool loop = true;
+    [Tooltip("フェードイン")]
+    public bool fadeIn = false;
+    public float TimefadeIn = 0.0f;
+    [Tooltip("フェードアウト")]
+    public bool fadeOut = false;
+    public float TimefadeOut = 0.0f;
+    //[Tooltip("クロスフェード用 次のBGM")]
+    //public string nextBGM;
 
     // AudioSource．Inspectorに表示しない
     [HideInInspector]
@@ -40,11 +56,10 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField]
     [Header("BGM")]
-    private BGM[] bgm;
+    public BGM[] bgm;
 
-    // Soundクラス配列
     [SerializeField]
-    [Header("BGM")]
+    [Header("SE")]
     private SE[] se;
 
     private GameObject volumeController;    // 音量調整用のオブジェクト
@@ -127,35 +142,86 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    // BGM再生
     public void PlayBGM(string name)
     {
-        // ラムダ式　第二引数はPredicate
-        // Soundクラスの配列の中の名前に，
-        // 引数nameに等しいものがあるかどうか確認
-        BGM s = Array.Find(bgm, sound => sound.name == name);
-        // なければreturn
-        if (s == null)
+        BGM s1 = Array.Find(bgm, sound => sound.name == name);
+
+        if (s1 == null)
         {
             print("Sound" + name + "was not found");
             return;
         }
-        // あればPlay()
-        s.audioSource.volume = BGM_volume;
-        s.audioSource.Play();
+
+        // フェード無し
+        if (s1.fadeIn == false)
+        {
+            // あればPlay()
+            s1.audioSource.volume = BGM_volume;
+            s1.audioSource.Play();
+        }
+
+        // フェードイン
+        if (s1.fadeIn == true)
+        {
+            StartCoroutine(DoFadeIn(s1));
+        }
     }
 
+    // BGM停止
     public void StopBGM(string name)
     {
-        BGM s = Array.Find(bgm, sound => sound.name == name);
+        BGM s1 = Array.Find(bgm, sound => sound.name == name);
         // なければreturn
-        if (s == null)
+        if (s1 == null)
         {
             print("Sound" + name + "was not found");
             return;
         }
-        s.audioSource.Stop();
+
+        // フェード無し
+        if (s1.fadeOut == false)
+        {
+            s1.audioSource.Stop();
+        }
+
+        // フェードアウト
+        if (s1.fadeOut == true)
+        {
+            StartCoroutine(DoFadeOut(s1));
+        }
     }
 
+    // フェードイン
+    IEnumerator DoFadeIn(BGM b)
+    {
+        float bgmVolume = 0.0f;
+        b.audioSource.Play();
+        while (bgmVolume < 1.0f)
+        {
+            bgmVolume += Time.deltaTime / b.TimefadeIn;
+            b.audioSource.volume = bgmVolume;
+            Debug.Log(bgmVolume);
+            yield return null;
+        }
+    }
+
+    // フェードアウト
+    IEnumerator DoFadeOut(BGM b)
+    {
+        float bgmVolume = 1.0f;
+
+        while (bgmVolume > 0.0f)
+        {
+            bgmVolume -= Time.deltaTime / b.TimefadeOut;
+            b.audioSource.volume = bgmVolume;
+            Debug.Log(bgmVolume);
+            yield return null;
+        }
+        b.audioSource.Stop();
+    }
+
+    // SEの再生
     public void Play(string name)
     {
         // ラムダ式　第二引数はPredicate
@@ -173,6 +239,7 @@ public class SoundManager : MonoBehaviour
         s.audioSource.Play();
     }
 
+    // シーンが切り替わった時に呼ばれる
     void ActiveSceneChanged(Scene thisScene, Scene nextScene)
     {
         //Debug.Log(thisScene.name);
