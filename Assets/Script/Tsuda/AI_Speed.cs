@@ -5,9 +5,7 @@ using UnityEngine;
 public class AI_Speed : MonoBehaviour
 {
     public Canvas message; // CanvasオブジェクトをInspectorから指定する
-    public AudioClip audioClip;
     public float showtime = 7.0f;
-    AudioSource audioSource;
 
     // 現在フェイズ
     private PhaseManager.Phase currentPhase;
@@ -22,8 +20,6 @@ public class AI_Speed : MonoBehaviour
         message.enabled = false;
         // フェイズ取得
         currentPhase = PhaseManager.instance.GetPhase();
-        audioSource = gameObject.GetComponent<AudioSource>();
-        audioSource.clip = audioClip;        
     }
 
     // Update is called once per frame
@@ -38,7 +34,7 @@ public class AI_Speed : MonoBehaviour
 
             if (!AudioFlg)
             {
-                audioSource.Play();
+                SoundManager.instance.PlayVOICE("AI_SPEED");
                 AudioFlg = true;
             }
 

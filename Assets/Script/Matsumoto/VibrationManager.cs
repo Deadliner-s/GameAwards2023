@@ -111,4 +111,17 @@ public sealed class VibrationManager : MonoBehaviour
         }
     }
 
+    // アプリケーション終了時の処理
+    private void OnApplicationQuit()
+    {
+        // 現在のゲームパッドを取得
+        var gamepad = Gamepad.current;
+
+        // ゲームパッドが接続されている場合
+        if (gamepad != null)
+        {
+            // 振動を止める
+            gamepad.SetMotorSpeeds(0, 0);
+        }
+    }
 }

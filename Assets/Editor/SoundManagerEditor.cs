@@ -6,11 +6,13 @@ public class SoundManagerEditor : Editor
 {
     private SerializedProperty bgmProperty;
     private SerializedProperty seProperty;
+    private SerializedProperty voiceProperty;
 
     private void OnEnable()
     {
         bgmProperty = serializedObject.FindProperty("bgm");
         seProperty = serializedObject.FindProperty("se");
+        voiceProperty = serializedObject.FindProperty("voice");
     }
 
     //public override void OnInspectorGUI()

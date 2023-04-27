@@ -141,7 +141,7 @@ public class ReticleMove : MonoBehaviour
 
                                     enemy.GetComponent<RockOnMarker>().RockOnAnime();
                                     enemy.gameObject.tag = "Target";
-                                    SoundManager.instance.Play("RockOn");
+                                    SoundManager.instance.PlaySE("RockOn");
                                 }
                             }
                         }

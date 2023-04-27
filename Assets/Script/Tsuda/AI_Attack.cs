@@ -5,8 +5,6 @@ using UnityEngine;
 public class AI_Attack : MonoBehaviour
 {
     public Canvas message; // CanvasオブジェクトをInspectorから指定する
-    public AudioClip audioClip;
-    AudioSource audioSource;
 
     // 現在フェイズ
     private PhaseManager.Phase currentPhase;
@@ -21,8 +19,6 @@ public class AI_Attack : MonoBehaviour
         message.enabled = false;
         // フェイズ取得
         currentPhase = PhaseManager.instance.GetPhase();
-        audioSource = gameObject.GetComponent<AudioSource>();
-        audioSource.clip = audioClip;
     }
 
     // Update is called once per frame
@@ -37,7 +33,7 @@ public class AI_Attack : MonoBehaviour
 
             if (!AudioFlg)
             {
-                audioSource.Play();
+                SoundManager.instance.PlayVOICE("AI_ATTACK");
                 AudioFlg = true;
             }
 

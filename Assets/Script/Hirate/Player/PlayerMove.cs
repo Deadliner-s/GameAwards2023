@@ -255,7 +255,7 @@ public class PlayerMove: MonoBehaviour
                 maneverFlg = true;
                 elapsedTime = 0;
                 coolTimeCnt = 0;
-                SoundManager.instance.Play("Manever");
+                SoundManager.instance.PlaySE("Manever");
             }
         }
     }

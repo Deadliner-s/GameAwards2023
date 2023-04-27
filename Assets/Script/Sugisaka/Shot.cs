@@ -99,19 +99,19 @@ public class Shot : MonoBehaviour
                         switch (num)
                         {
                             case (5):
-                                SoundManager.instance.Play("Shot5");
+                                SoundManager.instance.PlaySE("Shot5");
                                 break;
                             case (4):
-                                SoundManager.instance.Play("Shot4");
+                                SoundManager.instance.PlaySE("Shot4");
                                 break;
                             case (3):
-                                SoundManager.instance.Play("Shot3");
+                                SoundManager.instance.PlaySE("Shot3");
                                 break;
                             case (2):
-                                SoundManager.instance.Play("Shot2");
+                                SoundManager.instance.PlaySE("Shot2");
                                 break;
                             case (1):
-                                SoundManager.instance.Play("Shot1");
+                                SoundManager.instance.PlaySE("Shot1");
                                 break;
                         }
 
