@@ -85,6 +85,9 @@ MonoBehaviour:
   - name: Laser
     clip: {fileID: 8300000, guid: bf2466deb470e71479cdc8c79a0fe2a1, type: 3}
     audioSource: {fileID: 0}
+  - name: Laser_UI
+    clip: {fileID: 8300000, guid: 0ebe9255ed5a10c49a33fdfa90837375, type: 3}
+    audioSource: {fileID: 0}
   BGM_volume: 1
   SE_volume: 1
 --- !u!82 &231837378748620153
