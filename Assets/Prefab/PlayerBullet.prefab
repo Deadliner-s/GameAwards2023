@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: -7701711335367564377}
   - component: {fileID: 4595278830560201142}
   - component: {fileID: -4675918614418502498}
+  - component: {fileID: 6769261461857096266}
   m_Layer: 3
   m_Name: PlayerBullet
   m_TagString: PlayerBullet
@@ -279,3 +280,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6769261461857096266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522196463854886502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab1ddbee1f7d1e48b30c78325cee189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
