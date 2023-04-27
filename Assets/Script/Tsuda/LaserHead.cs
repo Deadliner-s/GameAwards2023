@@ -14,9 +14,10 @@ public class LaserHead : MonoBehaviour
 
     private GameObject Player;    
     private float lifetime;  // オブジェクトの寿命（秒）    
+    private Vector3 PlayerPosition;
     public Vector3 targetScreenPosition;  // 目標スクリーン座標
     public Vector3 targetWorldPosition;  // 目標ワールド座標
-//    private Camera mainCamera;  // メインカメラ
+    private Camera mainCamera;  // メインカメラ
     private float timer;  // タイマー        
     private float wait = 2.0f;
 
@@ -24,37 +25,48 @@ public class LaserHead : MonoBehaviour
     {        
         lifetime = LaserTime + 5.0f;
 
-        Player = GameObject.Find("Player");
-        targetScreenPosition = Player.transform.position;
-        targetWorldPosition = Player.transform.position;
-        transform.LookAt(targetWorldPosition);  // Player.transform.position);          
+        mainCamera = Camera.main;  // メインカメラを取得する
 
-        SoundManager.instance.Play("Laser_charge");  
+        Player = GameObject.Find("Player");
+        PlayerPosition = Player.transform.position;
+        targetWorldPosition = Player.transform.position;
+        targetScreenPosition = mainCamera.WorldToScreenPoint(targetWorldPosition);
+        transform.LookAt(targetWorldPosition);
+
+        SoundManager.instance.Play("Laser_charge");
+        SoundManager.instance.Play("Laser_UI");
     }
 
     void Update()
     {        
         timer += Time.deltaTime;  // タイマーを減算する                                          
 
+        targetWorldPosition = mainCamera.ScreenToWorldPoint(targetScreenPosition);
+
         transform.LookAt(targetWorldPosition);                       
 
         if (timer >= wait + 1.0f &&  timer <= wait + LaserTime)
         {
-            if (targetScreenPosition.x <= 0.0f)
+            if (PlayerPosition.x <= 0.0f)
             {
-                targetWorldPosition.x += LaserSpeed;
+                targetScreenPosition.x += LaserSpeed;
             }
-            if (targetScreenPosition.x >= 0.0f)
+            if (PlayerPosition.x >= 0.0f)
             {
-                targetWorldPosition.x -= LaserSpeed;
+                targetScreenPosition.x -= LaserSpeed;
             }
         }
         
-        if(timer >= 2.0f && !IdkFlg)
+        
+
+
+        if (timer >= 2.0f && !IdkFlg)
         {
             Instantiate(Idk, targetWorldPosition, transform.rotation);
             IdkFlg = true;
         }
+
+
 
         //transform.LookAt(targetWorldPosition);
 
