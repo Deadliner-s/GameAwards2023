@@ -568,11 +568,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21069c942cbda004b92ca9c90a5c96f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowSpeedMissile: {fileID: 0}
   SpeedMissile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
   SpeedStraight: 0.03
+  ShowClusterMissile: {fileID: 0}
   ClusterMissile: {fileID: 5540224078154131618, guid: 05a76db5fa499f548b8994bdfdbb97b9, type: 3}
   SpeedCluster: 0.02
   ClusterNumber: 6
+  SpawnDelay: 0
   KeyCluster: i
   SpawnTop: {fileID: 2027436679}
   KeyTop: u
@@ -1185,13 +1188,13 @@ MonoBehaviour:
   prefab: {fileID: 786199140513531244, guid: 9aa00b7861ffd164bb5fc3af873fd230, type: 3}
   timer: 0
   StartTime_1: 16
-  LaserTime_1: 0
+  LaserTime_1: 4
   StartTime_2: 21
-  LaserTime_2: 0
+  LaserTime_2: 4
   StartTime_3: 26
-  LaserTime_3: 0
+  LaserTime_3: 4
   StartTime_4: 31
-  LaserTime_4: 0
+  LaserTime_4: 4
   StartTime_5: 100
   LaserTime_5: 0
 --- !u!4 &514564259
