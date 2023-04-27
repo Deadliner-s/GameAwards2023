@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIText : MonoBehaviour
+public class Stage1UIText : MonoBehaviour
 {
     // nameText:喋っている人の名前
     // talkText:喋っている内容やナレーション
@@ -13,11 +13,6 @@ public class UIText : MonoBehaviour
 
     public bool playing = false;
     public float textSpeed = 0.1f;
-
-    private PhaseManager.Phase currntPhase;
-    private PhaseManager.Phase nextPhase;
-
-    void Start() { nextPhase = currntPhase; }
 
     // クリックで次のページを表示させるための関数
     public bool IsClicked()
@@ -37,37 +32,6 @@ public class UIText : MonoBehaviour
     {
         nameText.text = name;
         StartCoroutine("CoDrawText", text);
-    }
-
-    private void Update()
-    {
-        currntPhase = PhaseManager.instance.GetPhase();
-
-        if (nextPhase != currntPhase)
-        {
-            nextPhase = currntPhase;
-            if (currntPhase == PhaseManager.Phase.Normal_Phase)
-            {
-
-
-                //SeFlg = false;
-            }
-            else if (currntPhase == PhaseManager.Phase.Speed_Phase)
-            {
-                // ハイスピードフェイズ
-                DrawNameText("AI", "敵母艦から大量のミサイルを確認。メインエンジンにエネルギーを充填。回避行動に専念してください。");
-
-                DrawNameText("AI", "敵母艦冷却状態を確認。攻撃兵装にエネルギーを充填。敵母艦を攻撃してください。");
-
-            }
-            else if (currntPhase == PhaseManager.Phase.Attack_Phase)
-            {
-                // アタックフェイズ
-                DrawNameText("AI", "敵母艦冷却状態を確認。攻撃兵装にエネルギーを充填。敵母艦を攻撃してください。");
-
-            }
-
-        }
     }
 
     // テキストがヌルヌル出てくるためのコルーチン
