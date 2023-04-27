@@ -33,8 +33,8 @@ public class LaserHead : MonoBehaviour
         targetScreenPosition = mainCamera.WorldToScreenPoint(targetWorldPosition);
         transform.LookAt(targetWorldPosition);
 
-        SoundManager.instance.Play("Laser_charge");
-        SoundManager.instance.Play("Laser_UI");
+        SoundManager.instance.PlaySE("Laser_charge");
+        SoundManager.instance.PlaySE("Laser_UI");
     }
 
     void Update()

@@ -49,10 +49,18 @@ MonoBehaviour:
   - name: Stage3
     clip: {fileID: 8300000, guid: 254606c65e35163418da7b6a7d950b0e, type: 3}
     loop: 1
+    fadeIn: 0
+    TimefadeIn: 0
+    fadeOut: 0
+    TimefadeOut: 0
     audioSource: {fileID: 0}
   - name: BGM
     clip: {fileID: 8300000, guid: fc32c1fce73f63043a0394d13f3fc6ec, type: 3}
     loop: 1
+    fadeIn: 0
+    TimefadeIn: 0
+    fadeOut: 0
+    TimefadeOut: 0
     audioSource: {fileID: 0}
   se:
   - name: Shot1
@@ -87,6 +95,13 @@ MonoBehaviour:
     audioSource: {fileID: 0}
   - name: Laser_UI
     clip: {fileID: 8300000, guid: 0ebe9255ed5a10c49a33fdfa90837375, type: 3}
+    audioSource: {fileID: 0}
+  voice:
+  - name: AI_ATTACK
+    clip: {fileID: 8300000, guid: 222052282bc7f0a43a63045a259ee57b, type: 3}
+    audioSource: {fileID: 0}
+  - name: AI_SPEED
+    clip: {fileID: 8300000, guid: 5627c95afeca53048a868e967977f2dd, type: 3}
     audioSource: {fileID: 0}
   BGM_volume: 1
   SE_volume: 1

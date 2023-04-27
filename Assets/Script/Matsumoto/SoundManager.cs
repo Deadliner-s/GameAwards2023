@@ -14,10 +14,10 @@ public class BGM
     //    //CrossFade
     //}
 
-    [Tooltip("サウンドの名前")]
+    [Tooltip("BGMの名前")]
     public string name;
     // AudioSourceに必要な情報
-    [Tooltip("サウンドの音源")]
+    [Tooltip("BGMの音源")]
     public AudioClip clip;
     //[Tooltip("サウンドボリューム, 0.0から1.0まで")]
     //public float volume;
@@ -40,14 +40,26 @@ public class BGM
 [System.Serializable]
 public class SE
 {
-    [Tooltip("サウンドの名前")]
+    [Tooltip("SEの名前")]
     public string name;
     // AudioSourceに必要な情報
-    [Tooltip("サウンドの音源")]
+    [Tooltip("SEの音源")]
     public AudioClip clip;
-    [Tooltip("サウンドボリューム, 0.0から1.0まで")]
+    //[Tooltip("サウンドボリューム, 0.0から1.0まで")]
     //public float volume;
     // AudioSource．Inspectorに表示しない
+    [HideInInspector]
+    public AudioSource audioSource;
+}
+
+[System.Serializable]
+public class VOICE
+{
+    [Tooltip("ボイスの名前")]
+    public string name;
+    // AudioSourceに必要な情報
+    [Tooltip("ボイスの音源")]
+    public AudioClip clip;
     [HideInInspector]
     public AudioSource audioSource;
 }
@@ -61,6 +73,10 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     [Header("SE")]
     private SE[] se;
+
+    [SerializeField]
+    [Header("VOICE")]
+    private VOICE[] voice;
 
     private GameObject volumeController;    // 音量調整用のオブジェクト
 
@@ -102,6 +118,13 @@ public class SoundManager : MonoBehaviour
             s.audioSource.clip = s.clip;
             //s.audioSource.volume = s.volume;
 
+            s.audioSource.volume = SE_volume;
+        }
+
+        foreach (VOICE s in voice)
+        {
+            s.audioSource = gameObject.AddComponent<AudioSource>();
+            s.audioSource.clip = s.clip;
             s.audioSource.volume = SE_volume;
         }
     }
@@ -222,7 +245,7 @@ public class SoundManager : MonoBehaviour
     }
 
     // SEの再生
-    public void Play(string name)
+    public void PlaySE(string name)
     {
         // ラムダ式　第二引数はPredicate
         // Soundクラスの配列の中の名前に，
@@ -238,6 +261,21 @@ public class SoundManager : MonoBehaviour
         s.audioSource.volume = SE_volume;
         s.audioSource.Play();
     }
+
+    // ボイスの再生
+    public void PlayVOICE(string name)
+    {
+        VOICE s = Array.Find(voice, sound => sound.name == name);
+
+        if (s == null)
+        {
+            print("Sound" + name + "was not found");
+            return;
+        }
+        s.audioSource.volume = SE_volume;
+        s.audioSource.Play();
+    }
+
 
     // シーンが切り替わった時に呼ばれる
     void ActiveSceneChanged(Scene thisScene, Scene nextScene)
