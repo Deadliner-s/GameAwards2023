@@ -15,7 +15,13 @@ public class MainBossHp : MonoBehaviour
     float damage;
 
     // エフェクト
-    public GameObject explosionEffect;
+    [SerializeField]
+    [Tooltip("大ダメージ時")]
+    GameObject explosionEffect;
+    [SerializeField]
+    [Tooltip("通常ダメージ時")]
+    GameObject NormalHiteffect;
+
 
     // 大ダメージ数
     public float HardDamage;
@@ -64,6 +70,10 @@ public class MainBossHp : MonoBehaviour
         HpGauge.fillAmount -= damage/BossMaxHP;
         HitCount++;
         flame = 0;
+
+        // エフェクト生成
+        GameObject InstantiateEffect
+            = GameObject.Instantiate(NormalHiteffect, collision.transform.position, Quaternion.identity);
 
         if (BossHP <= 0)
         {

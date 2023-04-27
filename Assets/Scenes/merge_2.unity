@@ -1898,6 +1898,10 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3946574546251136914, guid: 5f98dbc6e7c65b44e979e07eb41eb02a, type: 3}
+      propertyPath: NormalHiteffect
+      value: 
+      objectReference: {fileID: 3570405994875558733, guid: ead3ee784696e1647a9c1f8fa3922ee5, type: 3}
+    - target: {fileID: 3946574546251136914, guid: 5f98dbc6e7c65b44e979e07eb41eb02a, type: 3}
       propertyPath: explosionEffect
       value: 
       objectReference: {fileID: 8650123009029719844, guid: 604532c0400d4b94297114f1846cbef0, type: 3}
