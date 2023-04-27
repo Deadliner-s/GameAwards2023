@@ -94,10 +94,7 @@ public class Shot : MonoBehaviour
                         // ミサイルのターゲットを設定する
                         missile.GetComponent<TrackingMissile_2>().SetTarget(targets[0]);
 
-                        // ターゲットリスト更新
-                        targets.RemoveAt(0);
-
-                        // SE再生
+                        //SE再生
                         int num = targets.Count;
                         switch (num)
                         {
@@ -117,6 +114,9 @@ public class Shot : MonoBehaviour
                                 SoundManager.instance.Play("Shot1");
                                 break;
                         }
+
+                        // ターゲットリスト更新
+                        targets.RemoveAt(0);
 
                         intervalTime = 0.0f;
                     }
