@@ -57,8 +57,6 @@ public class UIText : MonoBehaviour
                 // ハイスピードフェイズ
                 DrawNameText("AI", "敵母艦から大量のミサイルを確認。メインエンジンにエネルギーを充填。回避行動に専念してください。");
 
-                DrawNameText("AI", "敵母艦冷却状態を確認。攻撃兵装にエネルギーを充填。敵母艦を攻撃してください。");
-
             }
             else if (currntPhase == PhaseManager.Phase.Attack_Phase)
             {
