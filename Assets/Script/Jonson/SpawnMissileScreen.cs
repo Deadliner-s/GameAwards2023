@@ -140,32 +140,38 @@ public class SpawnMissileScreen : MonoBehaviour
             // デバッグ用
             if (Input.GetKeyDown(KeyCluster))
             {
-                SpawnShowCluster();
+                Invoke("SpawnShowCluster", 0.5f);
+                Invoke("SpawnShowCluster", 1.0f);
                 Invoke("SpawnCluster", SpawnDelay);
             }
             if (Input.GetKeyDown(KeyTop))
             {
-                SpawnShowSpeed();
+                Invoke("SpawnShowSpeed", 0.5f);
+                Invoke("SpawnShowSpeed", 1.0f);
                 Invoke("SpawnSpeedTop", SpawnDelay);
             }
             if (Input.GetKeyDown(KeyTopLeft))
             {
-                SpawnShowSpeed();
+                Invoke("SpawnShowSpeed", 0.5f);
+                Invoke("SpawnShowSpeed", 1.0f);
                 Invoke("SpawnSpeedTopLeft", SpawnDelay);
             }
             if (Input.GetKeyDown(KeyLeft))
             {
-                SpawnShowSpeed();
+                Invoke("SpawnShowSpeed", 0.5f);
+                Invoke("SpawnShowSpeed", 1.0f);
                 Invoke("SpawnSpeedLeft", SpawnDelay);
             }
             if (Input.GetKeyDown(KeyBotLeft))
             {
-                SpawnShowSpeed();
+                Invoke("SpawnShowSpeed", 0.5f);
+                Invoke("SpawnShowSpeed", 1.0f);
                 Invoke("SpawnSpeedBotLeft", SpawnDelay);
             }
             if (Input.GetKeyDown(KeyBot))
             {
-                SpawnShowSpeed();
+                Invoke("SpawnShowSpeed", 0.5f);
+                Invoke("SpawnShowSpeed", 1.0f);
                 Invoke("SpawnSpeedBot", SpawnDelay);
             }
 
@@ -211,7 +217,8 @@ public class SpawnMissileScreen : MonoBehaviour
                     {
                         if (IntervalTimeCluster >= IntervalTriggerCluster[i])
                         {
-                            SpawnShowCluster();
+                            Invoke("SpawnShowCluster", 0.5f);
+                            Invoke("SpawnShowCluster", 1.0f);
                             Invoke("SpawnCluster", SpawnDelay);
                             IntervalTimeCluster = 0.0f;
                         }
@@ -224,7 +231,8 @@ public class SpawnMissileScreen : MonoBehaviour
                     {
                         if (IntervalTimeTop >= IntervalTriggerTop[i])
                         {
-                            SpawnShowSpeed();
+                            Invoke("SpawnShowSpeed", 0.5f);
+                            Invoke("SpawnShowSpeed", 1.0f);
                             Invoke("SpawnSpeedTop", SpawnDelay);
                             IntervalTimeTop = 0.0f;
                         }
@@ -237,7 +245,8 @@ public class SpawnMissileScreen : MonoBehaviour
                     {
                         if (IntervalTimeTopLeft >= IntervalTriggerTopLeft[i])
                         {
-                            SpawnShowSpeed();
+                            Invoke("SpawnShowSpeed", 0.5f);
+                            Invoke("SpawnShowSpeed", 1.0f);
                             Invoke("SpawnSpeedTopLeft", SpawnDelay);
                             IntervalTimeTopLeft = 0.0f;
                         }
@@ -250,7 +259,8 @@ public class SpawnMissileScreen : MonoBehaviour
                     {
                         if (IntervalTimeLeft >= IntervalTriggerLeft[i])
                         {
-                            SpawnShowSpeed();
+                            Invoke("SpawnShowSpeed", 0.5f);
+                            Invoke("SpawnShowSpeed", 1.0f);
                             Invoke("SpawnSpeedLeft", SpawnDelay);
                             IntervalTimeLeft = 0.0f;
                         }
@@ -263,7 +273,8 @@ public class SpawnMissileScreen : MonoBehaviour
                     {
                         if (IntervalTimeBotLeft >= IntervalTriggerBotLeft[i])
                         {
-                            SpawnShowSpeed();
+                            Invoke("SpawnShowSpeed", 0.5f);
+                            Invoke("SpawnShowSpeed", 1.0f);
                             Invoke("SpawnSpeedBotLeft", SpawnDelay);
                             IntervalTimeBotLeft = 0.0f;
                         }
@@ -276,7 +287,8 @@ public class SpawnMissileScreen : MonoBehaviour
                     {
                         if (IntervalTimeBot >= IntervalTriggerBot[i])
                         {
-                            SpawnShowSpeed();
+                            Invoke("SpawnShowSpeed", 0.5f);
+                            Invoke("SpawnShowSpeed", 1.0f);
                             Invoke("SpawnSpeedBot", SpawnDelay);
                             IntervalTimeBot = 0.0f;
                         }

@@ -30,8 +30,14 @@ public class PhaseManager : MonoBehaviour
 
     private GameObject vibrationManager;            // バイブレーションマネージャー
 
+    [Tooltip("集中線")]
+    public GameObject Line;
+    Animator LineAnime;
+
     [Header("デバッグ用 フェイズを固定する")]
     public bool Debug_FixPhaseFlg = false;
+
+    
 
     // インスタンス
     public static PhaseManager instance;
@@ -55,6 +61,10 @@ public class PhaseManager : MonoBehaviour
         nextPhase = currentPhase;
 
         vibrationManager = GameObject.Find("VibrationManagerObj");
+
+        LineAnime = Line.GetComponent<Animator>();
+        Line.SetActive(false);
+        LineAnime.SetBool("isMove", false);
     }
 
     // Update is called once per frame
@@ -104,17 +114,23 @@ public class PhaseManager : MonoBehaviour
             if (currentPhase == Phase.Normal_Phase)
             {
                 Reticle.SetActive(true);
+                Line.SetActive(false);
+                LineAnime.SetBool("isMove", false);
             }
 
             if (currentPhase == Phase.Speed_Phase)
             {
                 Reticle.SetActive(false);
+                Line.SetActive(true);
+                LineAnime.SetBool("isMove", true);
                 vibrationManager.GetComponent<VibrationManager>().StartCoroutine("PlayVibration", "HighSpeed");
             }
 
             if (currentPhase == Phase.Attack_Phase)
             {
                 Reticle.SetActive(true);
+                Line.SetActive(false);
+                LineAnime.SetBool("isMove", false);
             }
         }
     }
