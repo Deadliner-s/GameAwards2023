@@ -5495,8 +5495,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5182735481102019259}
   m_LocalRotation: {x: 0.49754262, y: -0.50244534, z: 0.49754262, w: 0.50244534}
-  m_LocalPosition: {x: -0.026000021, y: 0.01069968, z: 0}
-  m_LocalScale: {x: 0.81499994, y: 0.8149997, z: 1}
+  m_LocalPosition: {x: 0, y: 0.012, z: 0}
+  m_LocalScale: {x: 0.84, y: 0.84, z: 1.0306748}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 141625415037388394}
@@ -10262,7 +10262,7 @@ ParticleSystemRenderer:
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_ShadowBias: 0
-  m_RenderAlignment: 0
+  m_RenderAlignment: 4
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0
@@ -10294,9 +10294,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LaserA: {fileID: 786199140513531244}
-  sizeX: 0.815
-  SizeY: 0.815
-  decrease: 0.0525
+  sizeX: 0.84
+  SizeY: 0.84
+  decrease: 0.04
   delay: 2
   particleSystem: {fileID: 5814241872670956914}
 --- !u!1 &6112077612015956937
@@ -20087,7 +20087,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4617036660772024948, guid: 52c7d057cba585641bb68312c10d7791, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4706116037937865665, guid: 52c7d057cba585641bb68312c10d7791, type: 3}
       propertyPath: m_RootOrder
@@ -20183,7 +20183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8715761903829094485, guid: 52c7d057cba585641bb68312c10d7791, type: 3}
       propertyPath: simulationSpeed
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8715761903829094485, guid: 52c7d057cba585641bb68312c10d7791, type: 3}
       propertyPath: SizeModule.enabled
