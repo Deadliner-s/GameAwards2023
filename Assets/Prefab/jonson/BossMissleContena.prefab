@@ -38,7 +38,7 @@ PrefabInstance:
     - target: {fileID: 3930705679050173309, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 286465d75e5f8a84eb56978790656cc7, type: 2}
+      objectReference: {fileID: 2100000, guid: 87b9f13735d8a8e44a6eb2a62b92fb72, type: 2}
     - target: {fileID: 3930705679050173309, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
@@ -97,15 +97,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.52788
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.09303
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -21.567688
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8509294059527027980, guid: f54a0b26c788ccb44a92f87d1371db52, type: 3}
       propertyPath: m_LocalRotation.w
@@ -297,6 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 0.025
+  MaxSpeed: 0.1
   Accel: 0.001
   ContenaRange: 2.5
   Height: 2
@@ -315,8 +316,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetRadius: 15
-  AttractDistance: 50
-  AttractPower: 10
   FrameOutDestroy: 0
   WeakPointTop: 0
   WeakPointBottom: 0
