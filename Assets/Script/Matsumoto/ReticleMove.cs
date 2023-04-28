@@ -124,25 +124,25 @@ public class ReticleMove : MonoBehaviour
                             {
                                 transform.position = Vector2.MoveTowards(transform.position, enemy2D, AttractDistance);
                             }
+                        }
 
-                            // 当たり判定
-                            if (c <= r)
+                        // 当たり判定
+                        if (c <= r)
+                        {
+                            // ロックオンできる数以下だったら
+                            if (tagObj.Length < MaxRockOn)
                             {
-                                // ロックオンできる数以下だったら
-                                if (tagObj.Length < MaxRockOn)
-                                {
-                                    //// 回転
-                                    //Transform transform = target.transform;
-                                    //Vector3 angle = transform.localEulerAngles;
-                                    //angle.z = 45.0f;
-                                    //transform.localEulerAngles = angle;
-                                    //// 色を赤に変更
-                                    //Color color = target.GetComponent<Image>().color = Color.red; ;
+                                //// 回転
+                                //Transform transform = target.transform;
+                                //Vector3 angle = transform.localEulerAngles;
+                                //angle.z = 45.0f;
+                                //transform.localEulerAngles = angle;
+                                //// 色を赤に変更
+                                //Color color = target.GetComponent<Image>().color = Color.red; ;
 
-                                    enemy.GetComponent<RockOnMarker>().RockOnAnime();
-                                    enemy.gameObject.tag = "Target";
-                                    SoundManager.instance.PlaySE("RockOn");
-                                }
+                                enemy.GetComponent<RockOnMarker>().RockOnAnime();
+                                enemy.gameObject.tag = "Target";
+                                SoundManager.instance.PlaySE("RockOn");
                             }
                         }
                     }
