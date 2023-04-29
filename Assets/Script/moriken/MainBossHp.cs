@@ -94,5 +94,7 @@ public class MainBossHp : MonoBehaviour
         // hpçXêV
         BossHP -= HardDamage;
         HpGauge.fillAmount -= HardDamage / BossMaxHP;
+
+        SoundManager.instance.PlaySE("WeakPoint");
     }
 }

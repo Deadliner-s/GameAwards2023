@@ -82,6 +82,8 @@ public class MenuCursor : MonoBehaviour
         Selected = (int)Mathf.Repeat(Selected, ItemMax);
         // 現選択を白に
         transform.GetChild(Selected).GetComponent<TextMeshProUGUI>().color = Color.white;
+
+        SoundManager.instance.PlaySE("Select");
     }
 
     private void OnDown()
@@ -93,6 +95,8 @@ public class MenuCursor : MonoBehaviour
         Selected = (int)Mathf.Repeat(Selected, ItemMax);
         // 現選択を白に
         transform.GetChild(Selected).GetComponent<TextMeshProUGUI>().color = Color.white;
+
+        SoundManager.instance.PlaySE("Select");
     }
 
     private void OnSelect()
@@ -121,8 +125,9 @@ public class MenuCursor : MonoBehaviour
                     SceneManager.LoadScene("merge_2");
                 }
 
+                SoundManager.instance.PlaySE("Decision");
 
-                
+
 
                 break;
             case (1):
@@ -146,12 +151,14 @@ public class MenuCursor : MonoBehaviour
                         SceneManager.LoadScene("merge_2");
                         break;
                 }
+                SoundManager.instance.PlaySE("Decision");
                 break;
             case (2):
                 OptionMenu.SetActive(true);
                 OptionMenuFlag = true;
                 InputActions.Disable();             // オプションメニューが開いているときは入力を受け付けない
                 this.gameObject.SetActive(false);
+                SoundManager.instance.PlaySE("Decision");
                 break;
 
         }

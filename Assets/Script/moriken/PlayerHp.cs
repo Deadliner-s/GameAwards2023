@@ -204,6 +204,7 @@ public class PlayerHp : MonoBehaviour
         // 体力が0以下になったら
         if (PlayerHP <= 0)
         {
+            SoundManager.instance.PlaySE("PlayerDeath");
             PlayerHP = 0;
             BreakShieldFlag = true;
             BreakShield = true;
@@ -215,6 +216,8 @@ public class PlayerHp : MonoBehaviour
         {
             UseFlag = true;
             Invflame = 0;
+
+            SoundManager.instance.PlaySE("PlayerDamage");
         }
 
         hs.ChangeShieldColor(PlayerHP, PlayerMaxHp);

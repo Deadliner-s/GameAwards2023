@@ -11,6 +11,7 @@ TagManager:
   - Laser
   - WeakPointTop
   - WeakPointBottom
+  - VolumeController
   layers:
   - Default
   - TransparentFX
