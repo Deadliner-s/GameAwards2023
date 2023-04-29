@@ -28,16 +28,16 @@ public class PhaseManager : MonoBehaviour
     [Tooltip("照準")]
     public GameObject Reticle;
 
-    private GameObject vibrationManager;            // バイブレーションマネージャー
-
     [Tooltip("集中線")]
     public GameObject Line;
-    Animator LineAnime;
+    private Animator LineAnime;
+
 
     [Header("デバッグ用 フェイズを固定する")]
     public bool Debug_FixPhaseFlg = false;
 
-    
+
+    private GameObject vibrationManager;            // バイブレーションマネージャー
 
     // インスタンス
     public static PhaseManager instance;
@@ -120,6 +120,7 @@ public class PhaseManager : MonoBehaviour
 
             if (currentPhase == Phase.Speed_Phase)
             {
+                SoundManager.instance.PlaySE("HighSpeed");
                 Reticle.SetActive(false);
                 Line.SetActive(true);
                 LineAnime.SetBool("isMove", true);
