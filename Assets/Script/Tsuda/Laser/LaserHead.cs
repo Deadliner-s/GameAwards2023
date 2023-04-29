@@ -8,6 +8,8 @@ public class LaserHead : MonoBehaviour
         
     public float LaserTime = 4.0f;
     public float LaserSpeed = 3.0f;
+    public float charge = 4.0f;
+    public float charge2 = 1.0f;
 
     public GameObject Idk;
     private bool IdkFlg = false;
@@ -19,19 +21,19 @@ public class LaserHead : MonoBehaviour
     public Vector3 targetWorldPosition;  // 目標ワールド座標
     private Camera mainCamera;  // メインカメラ
     private float timer;  // タイマー        
-    private float wait = 2.0f;
+    public float wait;
 
     void Start()
-    {        
-        lifetime = LaserTime + 5.0f;
+    {
+        wait = charge + charge2;
+
+        lifetime = wait + LaserTime + 5.0f;
 
         mainCamera = Camera.main;  // メインカメラを取得する
 
         Player = GameObject.Find("Player");
         PlayerPosition = Player.transform.position;
-        targetWorldPosition = Player.transform.position;
-        targetScreenPosition = mainCamera.WorldToScreenPoint(targetWorldPosition);
-        transform.LookAt(targetWorldPosition);
+        targetWorldPosition = Player.transform.position;                
 
         SoundManager.instance.PlaySE("Laser_charge");
         SoundManager.instance.PlaySE("Laser_UI");
@@ -39,14 +41,36 @@ public class LaserHead : MonoBehaviour
 
     void Update()
     {        
-        timer += Time.deltaTime;  // タイマーを減算する                                          
+        timer += Time.deltaTime;  // タイマーを減算する                                                          
 
-        targetWorldPosition = mainCamera.ScreenToWorldPoint(targetScreenPosition);
-
-        transform.LookAt(targetWorldPosition);                       
-
-        if (timer >= wait + 1.0f &&  timer <= wait + LaserTime)
+        if (timer <= charge)
         {
+            PlayerPosition = Player.transform.position;
+            targetWorldPosition = Player.transform.position;
+        }        
+
+        if (timer >= wait)
+        {            
+            targetScreenPosition = mainCamera.WorldToScreenPoint(targetWorldPosition);
+
+            if (timer >= wait + 1.0f)
+            {
+                if (PlayerPosition.x <= 0.0f)
+                {
+                    targetScreenPosition.x += LaserSpeed;
+                }
+                if (PlayerPosition.x >= 0.0f)
+                {
+                    targetScreenPosition.x -= LaserSpeed;
+                }
+            }
+
+            targetWorldPosition = mainCamera.ScreenToWorldPoint(targetScreenPosition);
+
+            transform.LookAt(targetWorldPosition);
+            
+
+            /*
             if (PlayerPosition.x <= 0.0f)
             {
                 targetScreenPosition.x += LaserSpeed;
@@ -55,12 +79,26 @@ public class LaserHead : MonoBehaviour
             {
                 targetScreenPosition.x -= LaserSpeed;
             }
+
+            
+            if (timer >= wait && timer <= wait + LaserTime)
+            {
+                if (PlayerPosition.x <= 0.0f)
+                {
+                    targetScreenPosition.x += LaserSpeed;
+                }
+                if (PlayerPosition.x >= 0.0f)
+                {
+                    targetScreenPosition.x -= LaserSpeed;
+                }
+            }
+            */
         }
         
         
 
 
-        if (timer >= 2.0f && !IdkFlg)
+        if (timer >= wait && !IdkFlg)
         {
             Instantiate(Idk, targetWorldPosition, transform.rotation);
             IdkFlg = true;

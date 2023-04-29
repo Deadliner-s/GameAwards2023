@@ -30,7 +30,7 @@ public class LaserCS_sub : MonoBehaviour
 
         GetComponent<RectTransform>().Rotate(0, 0, rotate);
 
-        if(timer >= 2.0f)
+        if(timer >= Laser.GetComponent<LaserHead>().wait)
         {
             CS.enabled = false;
         }

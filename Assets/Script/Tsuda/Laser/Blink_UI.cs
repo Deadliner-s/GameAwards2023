@@ -10,7 +10,7 @@ public class Blink_UI : MonoBehaviour
     [SerializeField] private Image _target;
 
     // “_–ÅüŠú[s]
-    private float _cycle = 0.5f;
+    private float _cycle = 0.6f;
     private double _time;
 
     private float timer = 0.0f;
@@ -28,9 +28,9 @@ public class Blink_UI : MonoBehaviour
 
         GetComponent<RectTransform>().position = mainCamera.WorldToScreenPoint(Laser.GetComponent<LaserHead>().targetWorldPosition);
 
-        if (timer <= 2.0f)
+        if (timer <= Laser.GetComponent<LaserHead>().wait)
         {
-            if (timer >= 1.0f) { _cycle = 0.2f; }
+            if (timer >= Laser.GetComponent<LaserHead>().charge) { _cycle = 0.2f; }
 
             // “à•”‚ğŒo‰ß‚³‚¹‚é
             _time += Time.deltaTime;

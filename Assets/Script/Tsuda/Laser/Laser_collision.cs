@@ -22,7 +22,7 @@ public class Laser_collision : MonoBehaviour
     {
         timer += Time.deltaTime;        
 
-        if(timer >= 2.0f && timer <= 2.0f + LaserA.GetComponent<LaserHead>().LaserTime)
+        if(timer >= LaserA.GetComponent<LaserHead>().wait && timer <= LaserA.GetComponent<LaserHead>().wait + LaserA.GetComponent<LaserHead>().LaserTime)
         {            
             // 0`cycle‚Ì”ÍˆÍ‚Ì’l‚ª“¾‚ç‚ê‚é
             var repeatValue = Mathf.Repeat((float)timer, _cycle);
