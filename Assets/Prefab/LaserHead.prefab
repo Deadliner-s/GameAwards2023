@@ -500,9 +500,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LaserTime: 4
   LaserSpeed: 3
+  charge: 4
+  charge2: 1
   Idk: {fileID: 3114414904180507907, guid: 060cacf89f17eb449896e5fd40e8b39d, type: 3}
   targetScreenPosition: {x: 0, y: 0, z: 0}
   targetWorldPosition: {x: 0, y: 0, z: 0}
+  wait: 5
 --- !u!1 &1152675957996035501
 GameObject:
   m_ObjectHideFlags: 0
@@ -5467,7 +5470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b9e69ee27fa84f46a37d6dfad9a9a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyTime: 1.7
+  DestroyTime: 4.7
 --- !u!1 &5182735481102019259
 GameObject:
   m_ObjectHideFlags: 0
@@ -10297,7 +10300,7 @@ MonoBehaviour:
   sizeX: 0.84
   SizeY: 0.84
   decrease: 0.04
-  delay: 2
+  delay: 5
   particleSystem: {fileID: 5814241872670956914}
 --- !u!1 &6112077612015956937
 GameObject:
@@ -10462,7 +10465,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 1.7
+    scalar: 4.7
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -20048,7 +20051,7 @@ MonoBehaviour:
   SizeY: 0.3
   decreaseX: 0.015
   decreaseY: 0.015
-  delay: 2
+  delay: 5
   particleSystem: {fileID: 3448159822081933384}
 --- !u!1001 &486402826906372358
 PrefabInstance:
@@ -20232,7 +20235,7 @@ MonoBehaviour:
   sizeX: 1.05
   SizeY: 1.05
   decrease: 0.1
-  delay: 2
+  delay: 5
   particleSystem: {fileID: 9094060180540070227}
 --- !u!198 &9094060180540070227 stripped
 ParticleSystem:
@@ -20315,6 +20318,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4153371788149063546, guid: 765d49fd164cafd47b45e7deb8558417, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153371788149063546, guid: 765d49fd164cafd47b45e7deb8558417, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0.5897215
       objectReference: {fileID: 0}
@@ -20383,7 +20390,7 @@ MonoBehaviour:
   sizeX: 0.63
   SizeY: 0.63
   decrease: 0.024
-  delay: 2
+  delay: 5
   particleSystem: {fileID: 3094878665255563948}
 --- !u!114 &4672254066841252403
 MonoBehaviour:
