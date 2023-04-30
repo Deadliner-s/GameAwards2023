@@ -849,7 +849,9 @@ MonoBehaviour:
   ClusterMissile: {fileID: 5540224078154131618, guid: 05a76db5fa499f548b8994bdfdbb97b9, type: 3}
   SpeedCluster: 0.02
   ClusterNumber: 6
-  SpawnDelay: 3
+  ShowDelay1: 0
+  ShowDelay2: 0.5
+  SpawnDelay: 1
   KeyCluster: i
   SpawnTop: {fileID: 2027436679}
   KeyTop: u
@@ -1496,6 +1498,7 @@ GameObject:
   - component: {fileID: 514139036}
   - component: {fileID: 514139035}
   - component: {fileID: 514139034}
+  - component: {fileID: 514139039}
   m_Layer: 0
   m_Name: ShootLeft
   m_TagString: Untagged
@@ -1596,6 +1599,19 @@ Transform:
   m_Father: {fileID: 497373529}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &514139039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514139033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35297d167af20484ea8e18148c169d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Timer: 0
 --- !u!1 &514564257
 GameObject:
   m_ObjectHideFlags: 0
@@ -4307,6 +4323,7 @@ GameObject:
   - component: {fileID: 1435503355}
   - component: {fileID: 1435503354}
   - component: {fileID: 1435503353}
+  - component: {fileID: 1435503358}
   m_Layer: 0
   m_Name: ShootBotLeft
   m_TagString: Untagged
@@ -4401,12 +4418,26 @@ Transform:
   m_GameObject: {fileID: 1435503352}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 497373529}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1435503358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435503352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acfb96d0dcb627e40b0abc390856e42c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnTime: 120
+  Zako: {fileID: 3835390596389008509, guid: a2d601403b8c1014d9cfbfa4925832b8, type: 3}
 --- !u!1 &1466317056
 GameObject:
   m_ObjectHideFlags: 0
@@ -5643,6 +5674,7 @@ GameObject:
   - component: {fileID: 2027436682}
   - component: {fileID: 2027436681}
   - component: {fileID: 2027436680}
+  - component: {fileID: 2027436685}
   m_Layer: 0
   m_Name: ShootTop
   m_TagString: Untagged
@@ -5743,6 +5775,19 @@ Transform:
   m_Father: {fileID: 497373529}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2027436685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027436679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35297d167af20484ea8e18148c169d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Timer: 0
 --- !u!1001 &2029265407
 PrefabInstance:
   m_ObjectHideFlags: 0

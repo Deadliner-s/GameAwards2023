@@ -12,6 +12,8 @@ public class SpawnMissileScreen : MonoBehaviour
     public GameObject ClusterMissile;
     public float SpeedCluster;
     public int ClusterNumber;
+    public float ShowDelay1;
+    public float ShowDelay2;
     public float SpawnDelay;
     public string KeyCluster;
     public GameObject SpawnTop;
@@ -140,38 +142,38 @@ public class SpawnMissileScreen : MonoBehaviour
             // デバッグ用
             if (Input.GetKeyDown(KeyCluster))
             {
-                Invoke("SpawnShowCluster", 0.5f);
-                Invoke("SpawnShowCluster", 1.0f);
+                Invoke("SpawnShowCluster", ShowDelay1);
+                Invoke("SpawnShowCluster", ShowDelay2);
                 Invoke("SpawnCluster", SpawnDelay);
             }
             if (Input.GetKeyDown(KeyTop))
             {
-                Invoke("SpawnShowSpeed", 0.5f);
-                Invoke("SpawnShowSpeed", 1.0f);
+                Invoke("SpawnShowSpeed", ShowDelay1);
+                Invoke("SpawnShowSpeed", ShowDelay2);
                 Invoke("SpawnSpeedTop", SpawnDelay);
             }
             if (Input.GetKeyDown(KeyTopLeft))
             {
-                Invoke("SpawnShowSpeed", 0.5f);
-                Invoke("SpawnShowSpeed", 1.0f);
+                Invoke("SpawnShowSpeed", ShowDelay1);
+                Invoke("SpawnShowSpeed", ShowDelay2);
                 Invoke("SpawnSpeedTopLeft", SpawnDelay);
             }
             if (Input.GetKeyDown(KeyLeft))
             {
-                Invoke("SpawnShowSpeed", 0.5f);
-                Invoke("SpawnShowSpeed", 1.0f);
+                Invoke("SpawnShowSpeed", ShowDelay1);
+                Invoke("SpawnShowSpeed", ShowDelay2);
                 Invoke("SpawnSpeedLeft", SpawnDelay);
             }
             if (Input.GetKeyDown(KeyBotLeft))
             {
-                Invoke("SpawnShowSpeed", 0.5f);
-                Invoke("SpawnShowSpeed", 1.0f);
+                Invoke("SpawnShowSpeed", ShowDelay1);
+                Invoke("SpawnShowSpeed", ShowDelay2);
                 Invoke("SpawnSpeedBotLeft", SpawnDelay);
             }
             if (Input.GetKeyDown(KeyBot))
             {
-                Invoke("SpawnShowSpeed", 0.5f);
-                Invoke("SpawnShowSpeed", 1.0f);
+                Invoke("SpawnShowSpeed", ShowDelay1);
+                Invoke("SpawnShowSpeed", ShowDelay2);
                 Invoke("SpawnSpeedBot", SpawnDelay);
             }
 
@@ -217,8 +219,8 @@ public class SpawnMissileScreen : MonoBehaviour
                     {
                         if (IntervalTimeCluster >= IntervalTriggerCluster[i])
                         {
-                            Invoke("SpawnShowCluster", 0.5f);
-                            Invoke("SpawnShowCluster", 1.0f);
+                            Invoke("SpawnShowCluster", ShowDelay1);
+                            Invoke("SpawnShowCluster", ShowDelay2);
                             Invoke("SpawnCluster", SpawnDelay);
                             IntervalTimeCluster = 0.0f;
                         }
@@ -231,8 +233,8 @@ public class SpawnMissileScreen : MonoBehaviour
                     {
                         if (IntervalTimeTop >= IntervalTriggerTop[i])
                         {
-                            Invoke("SpawnShowSpeed", 0.5f);
-                            Invoke("SpawnShowSpeed", 1.0f);
+                            Invoke("SpawnShowSpeed", ShowDelay1);
+                            Invoke("SpawnShowSpeed", ShowDelay2);
                             Invoke("SpawnSpeedTop", SpawnDelay);
                             IntervalTimeTop = 0.0f;
                         }
@@ -245,8 +247,8 @@ public class SpawnMissileScreen : MonoBehaviour
                     {
                         if (IntervalTimeTopLeft >= IntervalTriggerTopLeft[i])
                         {
-                            Invoke("SpawnShowSpeed", 0.5f);
-                            Invoke("SpawnShowSpeed", 1.0f);
+                            Invoke("SpawnShowSpeed", ShowDelay1);
+                            Invoke("SpawnShowSpeed", ShowDelay2);
                             Invoke("SpawnSpeedTopLeft", SpawnDelay);
                             IntervalTimeTopLeft = 0.0f;
                         }
@@ -259,8 +261,8 @@ public class SpawnMissileScreen : MonoBehaviour
                     {
                         if (IntervalTimeLeft >= IntervalTriggerLeft[i])
                         {
-                            Invoke("SpawnShowSpeed", 0.5f);
-                            Invoke("SpawnShowSpeed", 1.0f);
+                            Invoke("SpawnShowSpeed", ShowDelay1);
+                            Invoke("SpawnShowSpeed", ShowDelay2);
                             Invoke("SpawnSpeedLeft", SpawnDelay);
                             IntervalTimeLeft = 0.0f;
                         }
@@ -273,8 +275,8 @@ public class SpawnMissileScreen : MonoBehaviour
                     {
                         if (IntervalTimeBotLeft >= IntervalTriggerBotLeft[i])
                         {
-                            Invoke("SpawnShowSpeed", 0.5f);
-                            Invoke("SpawnShowSpeed", 1.0f);
+                            Invoke("SpawnShowSpeed", ShowDelay1);
+                            Invoke("SpawnShowSpeed", ShowDelay2);
                             Invoke("SpawnSpeedBotLeft", SpawnDelay);
                             IntervalTimeBotLeft = 0.0f;
                         }
@@ -287,8 +289,8 @@ public class SpawnMissileScreen : MonoBehaviour
                     {
                         if (IntervalTimeBot >= IntervalTriggerBot[i])
                         {
-                            Invoke("SpawnShowSpeed", 0.5f);
-                            Invoke("SpawnShowSpeed", 1.0f);
+                            Invoke("SpawnShowSpeed", ShowDelay1);
+                            Invoke("SpawnShowSpeed", ShowDelay2);
                             Invoke("SpawnSpeedBot", SpawnDelay);
                             IntervalTimeBot = 0.0f;
                         }
@@ -310,6 +312,7 @@ public class SpawnMissileScreen : MonoBehaviour
     void SpawnCluster()
     {
         GameObject obj = Instantiate(ClusterMissile, SpawnLeft.transform.position, Quaternion.identity);
+        SpawnLeft.GetComponent<UINumber>().Timer += 120;
         obj.GetComponent<MissileBossCluster>().Speed = SpeedCluster;
         obj.GetComponent<MissileBossCluster>().ClusterNumber = ClusterNumber;
         Destroy(obj, DestroyTime);
