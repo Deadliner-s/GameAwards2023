@@ -20226,7 +20226,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5103438929332648818}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46d537b9bfb21bd41b8d84a326d42654, type: 3}
   m_Name: 
@@ -20405,3 +20405,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LaserBeam: {fileID: 786199140513531247}
+--- !u!114 &6853990428297593301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5897209523579338091}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85ab0f5efb69e2e4b8621becdab92d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LaserA: {fileID: 786199140513531244}
+  FadeSpeed: 100
+  type: 1
+  particleSystem: {fileID: 3094878665255563948}
