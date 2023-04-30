@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3835390596389008509}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.30712104, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -114,6 +114,6 @@ MonoBehaviour:
   moveX: 0.5
   ZakoSpeed: 0.005
   DestroyTime: 5
-  Missile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
-  MissileSpeed: 0.05
+  Missile: {fileID: 4741478458244633611, guid: 26bb10da44f3c6c44a3cf1514fe227fd, type: 3}
+  MissileSpeed: 0.02
   SpawnMissileTime: 45

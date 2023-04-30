@@ -32,8 +32,7 @@ public class ZakoMove : MonoBehaviour
         {
             time = 0;
             GameObject obj = Instantiate(Missile, transform.position, Quaternion.identity);
-            obj.GetComponent<MissileStraight>().MaxSpeed = MissileSpeed;
-            obj.GetComponent<MissileStraight>().instant = true;
+            obj.GetComponent<ZakoMissile>().Speed = MissileSpeed;
         }
 
 
