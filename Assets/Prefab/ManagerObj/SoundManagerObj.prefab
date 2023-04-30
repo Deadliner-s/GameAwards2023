@@ -46,14 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgm:
-  - name: Stage3
-    clip: {fileID: 8300000, guid: 254606c65e35163418da7b6a7d950b0e, type: 3}
-    loop: 1
-    fadeIn: 0
-    TimefadeIn: 0
-    fadeOut: 0
-    TimefadeOut: 0
-    audioSource: {fileID: 0}
   - name: BGM
     clip: {fileID: 8300000, guid: fc32c1fce73f63043a0394d13f3fc6ec, type: 3}
     loop: 1
@@ -62,19 +54,39 @@ MonoBehaviour:
     fadeOut: 0
     TimefadeOut: 0
     audioSource: {fileID: 0}
+  - name: Title
+    clip: {fileID: 8300000, guid: 0322bb449e3692b46a69654744c7b930, type: 3}
+    loop: 1
+    fadeIn: 0
+    TimefadeIn: 0
+    fadeOut: 0
+    TimefadeOut: 0
+    audioSource: {fileID: 0}
+  - name: Stage
+    clip: {fileID: 8300000, guid: 80124c082dd64f74e840822607ea39fe, type: 3}
+    loop: 1
+    fadeIn: 0
+    TimefadeIn: 0
+    fadeOut: 0
+    TimefadeOut: 0
+    audioSource: {fileID: 0}
+  - name: BossStage
+    clip: {fileID: 8300000, guid: 254606c65e35163418da7b6a7d950b0e, type: 3}
+    loop: 1
+    fadeIn: 0
+    TimefadeIn: 0
+    fadeOut: 0
+    TimefadeOut: 0
+    audioSource: {fileID: 0}
+  - name: GameClear
+    clip: {fileID: 8300000, guid: df937fe409605cc42b9c978b354233cc, type: 3}
+    loop: 0
+    fadeIn: 0
+    TimefadeIn: 0
+    fadeOut: 0
+    TimefadeOut: 0
+    audioSource: {fileID: 0}
   se:
-  - name: Shot1
-    clip: {fileID: 8300000, guid: 8e6c47ec26be3cf4dac05ffe954474c4, type: 3}
-    audioSource: {fileID: 0}
-  - name: Manever
-    clip: {fileID: 8300000, guid: c2d9e197d242afe4cabb7b6285ad3e61, type: 3}
-    audioSource: {fileID: 0}
-  - name: RockOn
-    clip: {fileID: 8300000, guid: 188a39a5b7f353f48a1568ee189ef553, type: 3}
-    audioSource: {fileID: 0}
-  - name: BossAnime
-    clip: {fileID: 8300000, guid: 36a82ed500b1f1d4a90dd73004dd89ef, type: 3}
-    audioSource: {fileID: 0}
   - name: Shot2
     clip: {fileID: 8300000, guid: 8e6c47ec26be3cf4dac05ffe954474c4, type: 3}
     audioSource: {fileID: 0}
@@ -87,14 +99,44 @@ MonoBehaviour:
   - name: Shot5
     clip: {fileID: 8300000, guid: 8e6c47ec26be3cf4dac05ffe954474c4, type: 3}
     audioSource: {fileID: 0}
-  - name: Laser_charge
-    clip: {fileID: 8300000, guid: 6fcc97f72a73db946a2f32d2047964e1, type: 3}
+  - name: Manever
+    clip: {fileID: 8300000, guid: c2d9e197d242afe4cabb7b6285ad3e61, type: 3}
+    audioSource: {fileID: 0}
+  - name: HighSpeed
+    clip: {fileID: 8300000, guid: ba68c114683c28748bf381156b56692d, type: 3}
+    audioSource: {fileID: 0}
+  - name: PlayerDeath
+    clip: {fileID: 8300000, guid: 28352a1b9b777014b84a54653874cb5a, type: 3}
     audioSource: {fileID: 0}
   - name: Laser
     clip: {fileID: 8300000, guid: bf2466deb470e71479cdc8c79a0fe2a1, type: 3}
     audioSource: {fileID: 0}
+  - name: WeakPoint
+    clip: {fileID: 8300000, guid: ec7e19b13673c4f4c8332a50816561a2, type: 3}
+    audioSource: {fileID: 0}
+  - name: Shot1
+    clip: {fileID: 8300000, guid: 8e6c47ec26be3cf4dac05ffe954474c4, type: 3}
+    audioSource: {fileID: 0}
+  - name: PlayerDamage
+    clip: {fileID: 8300000, guid: 3d2ce12545d97114caaff33ca1fbe1b5, type: 3}
+    audioSource: {fileID: 0}
   - name: Laser_UI
     clip: {fileID: 8300000, guid: 0ebe9255ed5a10c49a33fdfa90837375, type: 3}
+    audioSource: {fileID: 0}
+  - name: Warning
+    clip: {fileID: 8300000, guid: 67caf8907ac12164db46e520f871f84f, type: 3}
+    audioSource: {fileID: 0}
+  - name: RockOn
+    clip: {fileID: 8300000, guid: 188a39a5b7f353f48a1568ee189ef553, type: 3}
+    audioSource: {fileID: 0}
+  - name: Decision
+    clip: {fileID: 8300000, guid: 982e59f87302a914ca3c22e18627415d, type: 3}
+    audioSource: {fileID: 0}
+  - name: Select
+    clip: {fileID: 8300000, guid: 1d326d1bde5b5f643932a3eb27cc8db5, type: 3}
+    audioSource: {fileID: 0}
+  - name: Laser_charge
+    clip: {fileID: 8300000, guid: 6fcc97f72a73db946a2f32d2047964e1, type: 3}
     audioSource: {fileID: 0}
   voice:
   - name: AI_ATTACK

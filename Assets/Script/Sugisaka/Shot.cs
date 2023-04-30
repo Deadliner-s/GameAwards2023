@@ -66,6 +66,7 @@ public class Shot : MonoBehaviour
             // ’e‚Ì”­Ë
             if (targets.Count != 0)                
             {
+                // ”­ËŠÔŠu‚ÌŠÔXV
                 intervalTime += Time.deltaTime;
 
                 if (interval <= intervalTime)
@@ -75,13 +76,21 @@ public class Shot : MonoBehaviour
                     Vector3 PlayerPos = Shotpos.transform.position;
 
                     // 
-                    while (targets[0] == null)
+                    if (targets[0] == null)
                     {
-                        if (targets[1] == null)
+                        int num = targets.Count;
+
+                        for (int i = 0; i < num; i++)
                         {
-                            break;
+                            if (targets[0] == null)
+                            { 
+                                targets.RemoveAt(0);
+                            }
+                            else
+                            {
+                                break;
+                            }
                         }
-                        targets.RemoveAt(0);
                     }
 
                     //

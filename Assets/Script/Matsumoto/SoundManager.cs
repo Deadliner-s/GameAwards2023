@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -133,6 +134,13 @@ public class SoundManager : MonoBehaviour
     {
         SceneManager.activeSceneChanged += ActiveSceneChanged;
 
+        // タイトルシーンのBGMを再生
+        if(SceneManager.GetActiveScene().name == "Title")
+        {
+            PlayBGM("Title");
+        }
+
+
         // アクティブシーンの切り替え
         //Scene scene = SceneManager.GetSceneByName("Scene_B");
         //SceneManager.SetActiveScene(scene);
@@ -144,7 +152,7 @@ public class SoundManager : MonoBehaviour
         // シーンがタイトルの時のみ音量調整用のオブジェクトを探す
         if (SceneManager.GetActiveScene().name == "Title")
         {
-            volumeController = GameObject.FindWithTag("WeakPointTop");
+            volumeController = GameObject.FindWithTag("VolumeController");
             // オブジェクトがあるかどうか
             if(volumeController != null)
             {
@@ -158,6 +166,8 @@ public class SoundManager : MonoBehaviour
                         {
                             BGM_volume = volumeController.GetComponent<VolumeController>().GetBGMVolume();
                             SE_volume = volumeController.GetComponent<VolumeController>().GetSEVolume();
+
+                            ChangeVolumeBGM("Title");
                         }
                     }
                 }
@@ -244,6 +254,19 @@ public class SoundManager : MonoBehaviour
         b.audioSource.Stop();
     }
 
+    private void ChangeVolumeBGM(string name)
+    {
+        BGM s1 = Array.Find(bgm, sound => sound.name == name);
+
+        if (s1 == null)
+        {
+            print("Sound" + name + "was not found");
+            return;
+        }
+
+        s1.audioSource.volume = BGM_volume;
+    }
+
     // SEの再生
     public void PlaySE(string name)
     {
@@ -284,26 +307,57 @@ public class SoundManager : MonoBehaviour
         //Debug.Log(nextScene.name);
 
         // シーンが切り替わった時
+        // BGMの切り替え
         if (thisScene != nextScene)
         {
             thisScene = nextScene;
+            if (nextScene.name == "Title")
+            {
+                PlayBGM("Title");
+            }
             if (nextScene.name == "Stage1")
             {
-                PlayBGM("Stage3");
+                PlayBGM("Stage");
+                PlayBGM("BGM");
             }
             if (nextScene.name == "Stage2")
             {
-                PlayBGM("Stage3");
+                PlayBGM("Stage");
+                PlayBGM("BGM");
             }
             if (nextScene.name == "merge_2")
             {
-                PlayBGM("Stage3");
+                PlayBGM("BossStage");
                 PlayBGM("BGM");
+            }
+            if(nextScene.name == "GameClear")
+            {
+                PlayBGM("GameClear");
+            }
+
+            // BGMの停止
+            if (nextScene.name != "Title")
+            {
+                StopBGM("Title");
+            }
+            if (nextScene.name != "Stage1")
+            {
+                StopBGM("Stage");
+                StopBGM("BGM");
+            }
+            if (nextScene.name != "Stage2")
+            {
+                StopBGM("Stage");
+                StopBGM("BGM");
             }
             if (nextScene.name != "merge_2")
             {
-                StopBGM("Stage3");
+                StopBGM("BossStage");
                 StopBGM("BGM");
+            }
+            if(nextScene.name != "GameClear")
+            {
+                StopBGM("GameClear");
             }
         }
     }

@@ -90,11 +90,13 @@ public class OptionCursor : MonoBehaviour
     private void OnUp()
     {
         Selected--;
+        SoundManager.instance.PlaySE("Select");
     }
 
     private void OnDown()
     {
         Selected++;
+        SoundManager.instance.PlaySE("Select");
     }
 
     private void OnSelect()
@@ -108,9 +110,11 @@ public class OptionCursor : MonoBehaviour
                 break;
             case (2):
                 // ƒ^ƒCƒgƒ‹‚É–ß‚é
+                Selected = 0;
                 this.gameObject.SetActive(false);
                 InputActions.Disable();
                 Menu.SetActive(true);
+                SoundManager.instance.PlaySE("Decision");
                 break;
         }
     }
