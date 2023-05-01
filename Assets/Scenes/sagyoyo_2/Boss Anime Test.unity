@@ -545,6 +545,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 7190226876101189820, guid: 2dbb230dcb44ee046ba8258bfa1f05d0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 692c4bb7c9cac80479d77c349e7bd816, type: 2}
+    - target: {fileID: 8141878712699896858, guid: 2dbb230dcb44ee046ba8258bfa1f05d0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8c242c29930165f458a2afeefb11e193, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dbb230dcb44ee046ba8258bfa1f05d0, type: 3}
 --- !u!1001 &6270870819171931140
