@@ -22,7 +22,8 @@ public class MissileStraight : MonoBehaviour
     private Vector3 targetScreenPosition; // 目標スクリーン座標
     private Vector3 targetWorldPosition;  // 目標ワールド座標
 
-    int time;
+    int time = 0;
+    public bool instant = false;
 
     GameObject Player; 
     Vector3 ToPos;              //発射先
@@ -62,11 +63,15 @@ public class MissileStraight : MonoBehaviour
             targetScreenPosition.z = 2.0f;
 
             //UI生成
-            newObj = Instantiate(otherObject, targetScreenPosition, transform.rotation) as GameObject;  // 警告UIの生成                                                           
-            newObj.transform.SetParent(canvas.transform, false);                                        // Canvasの子オブジェクトとして生成
-            OutsideObj = Instantiate(outsideObject, targetScreenPosition, transform.rotation) as GameObject;  // 警告UIの生成                                                           
-            OutsideObj.transform.SetParent(canvas.transform, false);                                        // Canvasの子オブジェクトとして生成
-            newObj.GetComponent<Image>().fillAmount = 0;
+            if(!instant)
+            {
+
+                newObj = Instantiate(otherObject, targetScreenPosition, transform.rotation) as GameObject;  // 警告UIの生成                                                           
+                newObj.transform.SetParent(canvas.transform, false);                                        // Canvasの子オブジェクトとして生成
+                OutsideObj = Instantiate(outsideObject, targetScreenPosition, transform.rotation) as GameObject;  // 警告UIの生成                                                           
+                OutsideObj.transform.SetParent(canvas.transform, false);                                        // Canvasの子オブジェクトとして生成
+                newObj.GetComponent<Image>().fillAmount = 0;
+            }
             time = 0;
             Miss = false;
             off = 0.2f;
@@ -85,20 +90,22 @@ public class MissileStraight : MonoBehaviour
             Vector3 NewPosFix = targetWorldPosition;
 
             if (time >= 120)
-            {
-                Miss = true;            //画面内に入った
-                Speed = MaxSpeed;       //速度をMAX
-                Destroy(newObj);        //UIを消す
-                Destroy(OutsideObj);
-            }
-            else if (!Miss)              //画面内にまだ入ってない、追尾
+                instant = true;
+
+            if (!Miss)              //画面内にまだ入ってない、追尾
             {
                 ToPos =Player.transform.position;   //プレイヤーの位置
                 Move = ToPos - transform.position;
                 Move = Move.normalized;
                 LateMove = (Move - LateMove) * off + (LateMove);
             }
-
+            if (instant)
+            {
+                Miss = true;            //画面内に入った
+                Speed = MaxSpeed;       //速度をMAX
+                Destroy(newObj);        //UIを消す
+                Destroy(OutsideObj);
+            }
             //UIを画面外にいかないように
             if (NewPosFix.y >= 1030)
             {
