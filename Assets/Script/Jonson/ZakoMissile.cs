@@ -20,6 +20,8 @@ public class ZakoMissile : MonoBehaviour
     void Update()
     {
         Speed += Accel;
+        if (Speed >= 0.06f)
+            Speed = 0.06f;
         Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), Move);
         transform.rotation = rot;
         transform.position += Move * Speed;
