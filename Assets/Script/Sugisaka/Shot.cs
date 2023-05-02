@@ -98,10 +98,11 @@ public class Shot : MonoBehaviour
                     {
 
                         // 新しい誘導ミサイルプレハブをインスタンス化する
-                        GameObject missile = Instantiate(MissilePrefab, PlayerPos, Quaternion.identity);
-
+                        GameObject missileUp = Instantiate(MissilePrefab, PlayerPos, Quaternion.identity);
+                        GameObject missileDown = Instantiate(MissilePrefab, PlayerPos, Quaternion.identity);
                         // ミサイルのターゲットを設定する
-                        missile.GetComponent<TrackingMissile_2>().SetTarget(targets[0]);
+                        missileUp.GetComponent<TrackingMissile_3>().SetTarget(targets[0], 1);
+                        missileDown.GetComponent<TrackingMissile_3>().SetTarget(targets[0], -1);
 
                         //SE再生
                         int num = targets.Count;
