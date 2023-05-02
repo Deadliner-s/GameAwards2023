@@ -23,6 +23,8 @@ public class LaserHead : MonoBehaviour
     private float timer;  // タイマー        
     public float wait;
 
+    private PlayerHp playerHp;
+
     void Start()
     {
         wait = charge + charge2;
@@ -31,6 +33,7 @@ public class LaserHead : MonoBehaviour
 
         mainCamera = Camera.main;  // メインカメラを取得する
 
+        playerHp = Player.GetComponent<PlayerHp>();
         Player = GameObject.Find("Player");
         PlayerPosition = Player.transform.position;
         targetWorldPosition = Player.transform.position;                
@@ -42,6 +45,11 @@ public class LaserHead : MonoBehaviour
     void Update()
     {        
         timer += Time.deltaTime;  // タイマーを減算する                                                          
+
+        if (timer >= lifetime || playerHp.BreakFlag)
+        {
+            Destroy(gameObject);  // オブジェクトを削除する
+        }
 
         if (timer <= charge)
         {
@@ -68,33 +76,7 @@ public class LaserHead : MonoBehaviour
             targetWorldPosition = mainCamera.ScreenToWorldPoint(targetScreenPosition);
 
             transform.LookAt(targetWorldPosition);
-            
-
-            /*
-            if (PlayerPosition.x <= 0.0f)
-            {
-                targetScreenPosition.x += LaserSpeed;
-            }
-            if (PlayerPosition.x >= 0.0f)
-            {
-                targetScreenPosition.x -= LaserSpeed;
-            }
-
-            
-            if (timer >= wait && timer <= wait + LaserTime)
-            {
-                if (PlayerPosition.x <= 0.0f)
-                {
-                    targetScreenPosition.x += LaserSpeed;
-                }
-                if (PlayerPosition.x >= 0.0f)
-                {
-                    targetScreenPosition.x -= LaserSpeed;
-                }
-            }
-            */
-        }
-        
+        }        
         
 
 
@@ -173,12 +155,7 @@ public class LaserHead : MonoBehaviour
                     break;
             }                           
         }
-        */
-
-        if (timer >= lifetime)
-        {
-            Destroy(gameObject);  // オブジェクトを削除する
-        }
+        */        
     }
 
     public void SetLaserTime(float time)
