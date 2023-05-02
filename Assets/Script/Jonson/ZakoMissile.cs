@@ -7,6 +7,7 @@ public class ZakoMissile : MonoBehaviour
     public float Speed = 0.01f;        //ミサイルの速度
     Vector3 Move;               //移動方向
     public float DestroyTime = 2.0f;
+    public float Accel;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,7 @@ public class ZakoMissile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Speed += Accel;
         Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), Move);
         transform.rotation = rot;
         transform.position += Move * Speed;

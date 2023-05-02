@@ -290,6 +290,20 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &-9221895292091337278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741478458244633611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e0f6d87c3ad3740a37d9315e306559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 0.01
+  DestroyTime: 15
 --- !u!114 &-4867831459758655791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,17 +374,3 @@ MonoBehaviour:
   effectAsset: {fileID: 11400000, guid: aa471dfdb67cdce41be3b1f11d3666f3, type: 2}
   playOnStart: 1
   isLooping: 0
---- !u!114 &-9221895292091337278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4741478458244633611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51e0f6d87c3ad3740a37d9315e306559, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 0.01
-  DestroyTime: 2

@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +12,8 @@ public class ZakoMove : MonoBehaviour
     public GameObject Missile;
     public float MissileSpeed;
     public float SpawnMissileTime;
+    public float MissileDestroyTime;
+    public float Accel;
 
     Vector3 move;
     int time;
@@ -33,6 +35,9 @@ public class ZakoMove : MonoBehaviour
             time = 0;
             GameObject obj = Instantiate(Missile, transform.position, Quaternion.identity);
             obj.GetComponent<ZakoMissile>().Speed = MissileSpeed;
+            obj.GetComponent<ZakoMissile>().DestroyTime = MissileDestroyTime;
+            obj.GetComponent<ZakoMissile>().Accel = Accel;
+
         }
 
 
