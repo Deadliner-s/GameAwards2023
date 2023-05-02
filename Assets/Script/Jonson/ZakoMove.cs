@@ -33,15 +33,11 @@ public class ZakoMove : MonoBehaviour
         if(time >= SpawnMissileTime)
         {
             time = 0;
-            GameObject obj = Instantiate(Missile, transform.position, Quaternion.identity);
+            GameObject obj = Instantiate(Missile, transform.position, Quaternion.Euler(0,0,-90));
             obj.GetComponent<ZakoMissile>().Speed = MissileSpeed;
             obj.GetComponent<ZakoMissile>().DestroyTime = MissileDestroyTime;
             obj.GetComponent<ZakoMissile>().Accel = Accel;
-
         }
-
-
-
         gameObject.transform.position += move * ZakoSpeed;
     }
 }
