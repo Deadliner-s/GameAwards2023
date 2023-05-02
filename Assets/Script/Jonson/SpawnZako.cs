@@ -55,6 +55,8 @@ public class SpawnZako : MonoBehaviour
         else
         {
             time = 0;
+            use1 = false;
+            use2 = false;
         }
     }
 
@@ -68,6 +70,4 @@ public class SpawnZako : MonoBehaviour
         obj.GetComponent<ZakoMove>().SpawnMissileTime = SpawnMissileTime;
         obj.GetComponent<ZakoMove>().MissileDestroyTime = MissileDestroyTime;
     }
-
-
 }
