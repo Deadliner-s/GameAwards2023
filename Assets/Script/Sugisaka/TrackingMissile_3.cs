@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public sealed class TrackingMissile_2 : MonoBehaviour
+public sealed class TrackingMissile_3 : MonoBehaviour
 {
     [Tooltip("追跡対象")]
     [SerializeField]
@@ -27,6 +27,12 @@ public sealed class TrackingMissile_2 : MonoBehaviour
     [SerializeField]
     float flgTime;
 
+    [Tooltip("上昇時間")]
+    [SerializeField]
+    float stopCnt;
+
+    [SerializeField]
+    float unum;
 
     // 追跡のために必要な変数
     Vector3 position;
@@ -41,6 +47,7 @@ public sealed class TrackingMissile_2 : MonoBehaviour
 
     int num;
     float LTime;
+    float vectol; 
 
     // パーティクル生成用
     private StartParticle Particle;
@@ -61,14 +68,17 @@ public sealed class TrackingMissile_2 : MonoBehaviour
             maxInitVelocity.y,
             maxInitVelocity.z
             );
+
+        vectol = maxInitVelocity.y / unum;
+
+        if (num < 0)
+        {
+            transform.rotation = Quaternion.AngleAxis(180.0f, new Vector3(0, 0, 1));
+        }
     }
 
     void Start()
     {
-        // 初期位置設定
-        thisTransform = transform;
-        position = thisTransform.position;
-
         // 発射方向
         velocity = new Vector3(
             maxInitVelocity.x,
@@ -94,7 +104,7 @@ public sealed class TrackingMissile_2 : MonoBehaviour
         // 追跡対象存在確認
         if (target == null)
         {
-            num = 2;
+            num = 3;
         }
         // 生存時間更新
         LTime += Time.deltaTime;
@@ -106,27 +116,23 @@ public sealed class TrackingMissile_2 : MonoBehaviour
         {
             case (0):
                 // 上昇
-                // 加速度の算出(等加速度直線運動
-                acceleration = 2f / (time * time) * (target.position - position - time * velocity);
+                
+                Move = new Vector3(0.0f, vectol, 0.0f);
+                LateMove = Move;
 
-                // 命中時刻更新
-                time -= Time.deltaTime;
+                // 座標,回転更新
+                transform.position += LateMove;
 
-                // 速度と座標の算出
-                velocity += acceleration * Time.deltaTime;
-                position += velocity * Time.deltaTime;
-                LateMove = velocity;
+                // 時間確認
+                if (LTime >= stopCnt)
+                {
+                    position = transform.position;
 
-                // 座標,向き更新
-                thisTransform.rotation = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), velocity);
-                thisTransform.position = position;
-
-                // 高速誘導開始
-                if (time < flgTime) num = 1;
-
+                    num = 1;
+                }
                 break;
             case (1):
-                // 誘導移動
+                // 曲げる
 
                 if (Particle.enabled != true)
                 {
@@ -135,6 +141,25 @@ public sealed class TrackingMissile_2 : MonoBehaviour
                     // 当たり判定開始
                     Ccollider.enabled = true;
                 }
+
+                // 加速度の算出(等加速度直線運動
+                acceleration = 2f / (time * time) * (target.position - position - time * velocity);
+                // 命中時刻更新
+                time -= Time.deltaTime;
+                // 速度と座標の算出
+                velocity += acceleration * Time.deltaTime;
+                position += velocity * Time.deltaTime;
+                LateMove = velocity;
+                // 座標,向き更新
+                transform.rotation = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), velocity);
+                transform.position = position;
+
+                // 高速誘導開始
+                if (time < flgTime) num = 2;
+
+                break;
+            case (2):
+                // 誘導
 
                 // 移動計算
                 Move = (target.transform.position - transform.position).normalized;
@@ -146,7 +171,7 @@ public sealed class TrackingMissile_2 : MonoBehaviour
                 transform.rotation = rot;
                 transform.position += LateMove * MoveSpeed;
                 break;
-            case (2):
+            case (3):
                 // 直線移動
 
                 Move = transform.up;
