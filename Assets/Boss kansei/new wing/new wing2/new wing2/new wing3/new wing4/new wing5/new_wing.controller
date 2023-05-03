@@ -9,7 +9,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isWing
+    m_ConditionEvent: isMove
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7216347016434012272}
@@ -59,7 +59,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: weak op
+  m_Name: Take 001 0
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -87,8 +87,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: isBinder
+  - m_ConditionMode: 1
+    m_ConditionEvent: isMove
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 282173251263176722}
@@ -99,7 +99,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.94957983
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -151,7 +151,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: weak cl
+  m_Name: Take 001
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -178,7 +178,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: wing op
+  m_Name: Take 001 3
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -228,8 +228,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isBinder
+  - m_ConditionMode: 2
+    m_ConditionEvent: isMove
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2077262477078362705}
@@ -254,7 +254,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isWing
+    m_ConditionEvent: isMove
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 606019157792363679}
@@ -287,7 +287,7 @@ AnimatorStateMachine:
     m_Position: {x: 470, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7216347016434012272}
-    m_Position: {x: 700, y: 30, z: 0}
+    m_Position: {x: 710, y: 30, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 282173251263176722}
     m_Position: {x: 930, y: 110, z: 0}
@@ -311,7 +311,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: wing cl
+  m_Name: Take 001 5
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
