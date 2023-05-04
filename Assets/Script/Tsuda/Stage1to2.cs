@@ -24,7 +24,7 @@ public class Stage1to2 : MonoBehaviour
     {
         Counttime += Time.deltaTime;//ŽžŠÔ‚ð‘«‚·
 
-        if (Counttime > TimeLimit)
+        if (Counttime > TimeLimit || Input.GetKeyDown(KeyCode.P))
         {
             async.allowSceneActivation = true;            
         }
