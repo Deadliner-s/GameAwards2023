@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class PhaseManager : MonoBehaviour
 {  
@@ -32,6 +34,14 @@ public class PhaseManager : MonoBehaviour
     public GameObject Line;
     private Animator LineAnime;
 
+    [Tooltip("ブラー")]
+    [SerializeField]
+    private Volume volume;
+    private RadialBlurVolume Blur;
+    public float BlurStrength;
+    private float BlurCount;
+    private float CountPoint = 0.001f;
+    private int i;
 
     [Header("デバッグ用 フェイズを固定する")]
     public bool Debug_FixPhaseFlg = false;
@@ -65,6 +75,11 @@ public class PhaseManager : MonoBehaviour
         LineAnime = Line.GetComponent<Animator>();
         Line.SetActive(false);
         LineAnime.SetBool("isMove", false);
+
+        // ブラーの初期化処理
+        volume.profile.TryGet(out Blur);
+        BlurCount = BlurStrength * 1000;
+        Blur.strength.value = 0.0f;
     }
 
     // Update is called once per frame
@@ -107,7 +122,7 @@ public class PhaseManager : MonoBehaviour
 
 
         // フェイズが変わった場合
-        if(nextPhase != currentPhase)
+        if (nextPhase != currentPhase)
         {
             nextPhase = currentPhase;
 
@@ -116,6 +131,7 @@ public class PhaseManager : MonoBehaviour
                 Reticle.SetActive(true);
                 Line.SetActive(false);
                 LineAnime.SetBool("isMove", false);
+                Blur.strength.value = 0.0f;
             }
 
             if (currentPhase == Phase.Speed_Phase)
@@ -125,6 +141,8 @@ public class PhaseManager : MonoBehaviour
                 Line.SetActive(true);
                 LineAnime.SetBool("isMove", true);
                 vibrationManager.GetComponent<VibrationManager>().StartCoroutine("PlayVibration", "HighSpeed");
+
+                i = 0;
             }
 
             if (currentPhase == Phase.Attack_Phase)
@@ -132,6 +150,25 @@ public class PhaseManager : MonoBehaviour
                 Reticle.SetActive(true);
                 Line.SetActive(false);
                 LineAnime.SetBool("isMove", false);
+
+                i = 0;
+            }
+        }
+
+        // フェーズ変更後の処理
+        if (i < BlurCount)
+        {
+            if (currentPhase == Phase.Speed_Phase)
+            {
+                // ブラーをだんだんとかけていく処理
+                Blur.strength.value += CountPoint;
+                i++;
+            }
+            if (currentPhase == Phase.Attack_Phase)
+            {
+                // ブラーをだんだんと0にしていく処理
+                Blur.strength.value -= CountPoint;
+                i++;
             }
         }
     }
