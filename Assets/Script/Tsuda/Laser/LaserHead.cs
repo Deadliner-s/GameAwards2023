@@ -33,8 +33,8 @@ public class LaserHead : MonoBehaviour
 
         mainCamera = Camera.main;  // ƒƒCƒ“ƒJƒƒ‰‚ğæ“¾‚·‚é
 
-        playerHp = Player.GetComponent<PlayerHp>();
         Player = GameObject.Find("Player");
+        playerHp = Player.GetComponent<PlayerHp>();
         PlayerPosition = Player.transform.position;
         targetWorldPosition = Player.transform.position;                
 
