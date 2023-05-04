@@ -71,10 +71,12 @@ public class PhaseManager : MonoBehaviour
         nextPhase = currentPhase;
 
         vibrationManager = GameObject.Find("VibrationManagerObj");
-
-        LineAnime = Line.GetComponent<Animator>();
-        Line.SetActive(false);
-        LineAnime.SetBool("isMove", false);
+        if (Line)
+        {
+            LineAnime = Line.GetComponent<Animator>();
+            Line.SetActive(false);
+            LineAnime.SetBool("isMove", false);
+        }
 
         // ÉuÉâÅ[ÇÃèâä˙âªèàóù
         volume.profile.TryGet(out Blur);
@@ -129,8 +131,11 @@ public class PhaseManager : MonoBehaviour
             if (currentPhase == Phase.Normal_Phase)
             {
                 Reticle.SetActive(true);
-                Line.SetActive(false);
-                LineAnime.SetBool("isMove", false);
+                if (Line)
+                {
+                    Line.SetActive(false);
+                    LineAnime.SetBool("isMove", false);
+                }
                 Blur.strength.value = 0.0f;
             }
 
@@ -138,8 +143,11 @@ public class PhaseManager : MonoBehaviour
             {
                 SoundManager.instance.PlaySE("HighSpeed");
                 Reticle.SetActive(false);
-                Line.SetActive(true);
-                LineAnime.SetBool("isMove", true);
+                if (Line)
+                {
+                    Line.SetActive(true);
+                    LineAnime.SetBool("isMove", true);
+                }
                 vibrationManager.GetComponent<VibrationManager>().StartCoroutine("PlayVibration", "HighSpeed");
 
                 i = 0;
@@ -148,8 +156,11 @@ public class PhaseManager : MonoBehaviour
             if (currentPhase == Phase.Attack_Phase)
             {
                 Reticle.SetActive(true);
-                Line.SetActive(false);
-                LineAnime.SetBool("isMove", false);
+                if (Line)
+                {
+                    Line.SetActive(false);
+                    LineAnime.SetBool("isMove", false);
+                }
 
                 i = 0;
             }
