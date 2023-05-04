@@ -1287,9 +1287,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Zako: {fileID: 3835390596389008509, guid: b948fc0b9feae1348af489437bd8c96c, type: 3}
-  SpawnZakoTime1: 300
-  SpawnZakoTime2: 500
-  SpawnZakoTime3: 700
+  SpawnZakoTime:
+  - 0
+  - 0
+  - 0
+  SpawnZakoDuration:
+  - 0
+  - 0
+  - 0
+  SpawnZakoInterval:
+  - 0
+  - 0
+  - 0
   ZakoSpeed: 0.005
   ZakoDestroyTime: 5
   SpawnMissileTime: 60
@@ -4541,9 +4550,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Zako: {fileID: 3835390596389008509, guid: a2d601403b8c1014d9cfbfa4925832b8, type: 3}
-  SpawnZakoTime1: 300
-  SpawnZakoTime2: 500
-  SpawnZakoTime3: 800
+  SpawnZakoTime:
+  - 1
+  - 2
+  - 3
+  SpawnZakoDuration:
+  - 1
+  - 1
+  - 1
+  SpawnZakoInterval:
+  - 0.9
+  - 0.9
+  - 0.9
   ZakoSpeed: 0.005
   ZakoDestroyTime: 5
   SpawnMissileTime: 60

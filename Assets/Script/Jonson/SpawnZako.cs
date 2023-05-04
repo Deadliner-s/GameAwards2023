@@ -4,29 +4,28 @@ using UnityEngine;
 
 public class SpawnZako : MonoBehaviour
 {
+    static int total = 3;
+
     public GameObject Zako;
-    public int SpawnZakoTime1;
-    public int SpawnZakoTime2;
-    public int SpawnZakoTime3;
+
+    public float[] SpawnZakoTime = new float [total];
+    public float[] SpawnZakoDuration = new float[total];
+    public float[] SpawnZakoInterval = new float[total];
     public float ZakoSpeed;
     public float ZakoDestroyTime;
-    public int SpawnMissileTime;
+    public float SpawnMissileTime;
     public float MissileSpeed;
     public float MissileAccel;
     public float MissileDestroyTime;
 
-
+    private float[] IntervalTimer = new float[total];
     private PhaseManager.Phase currentPhase;
 
-    int time;
-    bool use1;
-    bool use2;
+    float time;
     // Start is called before the first frame update
     void Start()
     {
-        time = 0;
-        use1 = false;
-        use2 = false;
+        time = 0.0f;
     }
 
     // Update is called once per frame
@@ -35,28 +34,35 @@ public class SpawnZako : MonoBehaviour
         currentPhase = PhaseManager.instance.GetPhase();
         if (currentPhase == PhaseManager.Phase.Speed_Phase)
         {
-            time++;
-            if (time >= SpawnZakoTime1 && !use1)
+            time += Time.deltaTime;
+
+            for (int i = 0;i < total; i ++)
             {
-                use1 = true;
-                CreateZako();
+
+                if (time >= SpawnZakoTime[i])
+                {
+                    if ((time - SpawnZakoTime[i]) <= SpawnZakoDuration[i])
+                    {
+                        IntervalTimer[i] += Time.deltaTime;
+                        if (IntervalTimer[i] >= SpawnZakoInterval[i])
+                        {
+                            CreateZako();
+                            IntervalTimer[i] = 0.0f;
+                        }
+                    }
+                }
+
             }
-            if(time >= SpawnZakoTime2 && !use2)
-            {
-                use2 = true;
-                CreateZako();
-            }
-            if(time >= SpawnZakoTime3)
-            {
-                time = 0;
-                CreateZako();
-            }
+
         }
         else
         {
-            time = 0;
-            use1 = false;
-            use2 = false;
+            for (int i = 0; i < total; i++)
+            {
+
+                time = 0;
+                IntervalTimer[i] = 0;
+            }
         }
     }
 
