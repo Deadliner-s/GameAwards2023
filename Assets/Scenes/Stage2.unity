@@ -688,8 +688,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acfb96d0dcb627e40b0abc390856e42c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnTime: 120
   Zako: {fileID: 3835390596389008509, guid: a2d601403b8c1014d9cfbfa4925832b8, type: 3}
+  SpawnZakoTime1: 0
+  SpawnZakoTime2: 0
+  SpawnZakoTime3: 0
+  ZakoSpeed: 0
+  ZakoDestroyTime: 0
+  SpawnMissileTime: 0
+  MissileSpeed: 0
+  MissileAccel: 0
+  MissileDestroyTime: 0
 --- !u!114 &55255742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1095,7 +1103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6063255cbe9fda04c817cbdded23a68d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 10
+  time: 120
   Timertext: {fileID: 268529704}
 --- !u!114 &268529704
 MonoBehaviour:
@@ -5392,7 +5400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 903000af724a17240aeee92604e12c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeLimit: 10
+  TimeLimit: 120
 --- !u!1001 &1429830026
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5619,8 +5627,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acfb96d0dcb627e40b0abc390856e42c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnTime: 80
   Zako: {fileID: 3835390596389008509, guid: b948fc0b9feae1348af489437bd8c96c, type: 3}
+  SpawnZakoTime1: 0
+  SpawnZakoTime2: 0
+  SpawnZakoTime3: 0
+  ZakoSpeed: 0
+  ZakoDestroyTime: 0
+  SpawnMissileTime: 0
+  MissileSpeed: 0
+  MissileAccel: 0
+  MissileDestroyTime: 0
 --- !u!114 &1496987367
 MonoBehaviour:
   m_ObjectHideFlags: 0
