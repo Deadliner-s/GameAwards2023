@@ -4405,7 +4405,7 @@ MonoBehaviour:
   AttackTime: 40
   currentPhase: 0
   Reticle: {fileID: 1619731665}
-  Line: {fileID: 0}
+  Line: {fileID: 3879867394462616794, guid: 8d5861b8308b74f409af1a6c227245a9, type: 3}
   volume: {fileID: 1093950287}
   BlurStrength: 0.2
   Debug_FixPhaseFlg: 0
