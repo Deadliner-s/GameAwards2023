@@ -179,9 +179,22 @@ public class PhaseManager : MonoBehaviour
         {
             if (currentPhase == Phase.Speed_Phase)
             {
-                // ブラーをだんだんとかけていく処理
-                Blur.strength.value += CountPoint;
-                i++;
+                if (ManeverEnd == true)
+                {
+                    Blur.strength.value -= CountPoint;
+                    i+= 2;
+                }
+                else
+                {
+                    // ブラーをだんだんとかけていく処理
+                    Blur.strength.value += CountPoint;
+                    i++;
+                }
+
+                if(Blur.strength.value == BlurStrength)
+                {
+                    Debug.Log("ブラー完了");
+                }
             }
             if (currentPhase == Phase.Attack_Phase)
             {
@@ -195,13 +208,29 @@ public class PhaseManager : MonoBehaviour
                 }
             }
         }
-        else if (currentPhase == Phase.Attack_Phase)
+        else if (currentPhase == Phase.Speed_Phase || currentPhase == Phase.Attack_Phase)
         {
-            Blur.strength.value = 0.0f;
+            if (currentPhase == Phase.Attack_Phase)
+            {
+                Blur.strength.value = BlurStrength;
+                ManeverEnd = false;
+            }
+            if (currentPhase == Phase.Attack_Phase)
+            {
+                Blur.strength.value = 0.0f;
+                ManeverEnd = false;
+            }
         }
 
+        // マニューバが行われたとき
         if (playerMove.maneverFlg == true)
         {
+            if (currentPhase == Phase.Speed_Phase)
+            {
+                i = 0;
+                Blur.strength.value = BlurStrength + 0.1f;
+                ManeverEnd = true;
+            }
             if (currentPhase == Phase.Attack_Phase)
             {
                 i = 0;
@@ -209,7 +238,6 @@ public class PhaseManager : MonoBehaviour
                 ManeverEnd = true;
             }
         }
-       
     }
 
     public Phase GetPhase()
