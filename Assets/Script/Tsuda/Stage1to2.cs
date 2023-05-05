@@ -12,11 +12,17 @@ public class Stage1to2 : MonoBehaviour
 
     private AsyncOperation async;
 
+    [Header("ゲームマネージャオブジェクト")]
+    GameObject ManagerObj;
+
     // Start is called before the first frame update
     void Start()
     {
         async = SceneManager.LoadSceneAsync("Stage2");
         async.allowSceneActivation = false;
+
+        // マネージャオブジェクト取得
+        ManagerObj = GameObject.Find("GameManager");
     }
 
     // Update is called once per frame
@@ -26,6 +32,8 @@ public class Stage1to2 : MonoBehaviour
 
         if (Counttime > TimeLimit || Input.GetKeyDown(KeyCode.P))
         {
+            ManagerObj.GetComponent<GManager>().SetClearFlg(1);
+
             async.allowSceneActivation = true;            
         }
     }
