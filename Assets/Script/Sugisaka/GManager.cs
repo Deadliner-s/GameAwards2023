@@ -10,10 +10,10 @@ public class GManager : MonoBehaviour
     public bool Stage1;
     public bool Stage2;
 
-    private AsyncOperation stage1;
-    private AsyncOperation stage2;
-    private AsyncOperation stage3;
-    private bool SceneLoadFlg = false;
+    //private AsyncOperation stage1;
+    //private AsyncOperation stage2;
+    //private AsyncOperation stage3;
+    //private bool SceneLoadFlg = false;
 
     private void Awake()
     {
@@ -31,8 +31,7 @@ public class GManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Stage1 = false;
-        Stage2 = false;
+        ReSetData();
 
         //stage1 = SceneManager.LoadSceneAsync("Stage1");
         //stage2 = SceneManager.LoadSceneAsync("Stage2");
@@ -83,26 +82,26 @@ public class GManager : MonoBehaviour
     public int GetNowStage()
     {
         // 初期化
-        int num = 0;
+        int Snum = 0;
 
         // クリアフラグを確認して次のステージ選択
         if (Stage1 == false)
         {
             // ステージ1
-            num = 0;
+            Snum = 0;
         }
-        else if (Stage2 == false)
+        else if (Stage1 == true && Stage2 == false)
         {
             // ステージ2
-            num = 1;
+            Snum = 1;
         }
         else
         {
             // ステージ3
-            num = 2;
+            Snum = 2;
         }
 
-        return num;
+        return Snum;
     }
 
     // ステージクリア時に
