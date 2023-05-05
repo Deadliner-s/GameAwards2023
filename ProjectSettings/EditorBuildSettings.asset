@@ -23,4 +23,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 9775d80f3ef84df40b1205c8ba91955e
+  - enabled: 1
+    path: Assets/Scenes/Event/Prologue.unity
+    guid: f9832896c0e968845b6fc851cf75a762
+  - enabled: 1
+    path: Assets/Scenes/Event/Stage2Event.unity
+    guid: 078e1d1608fcc544091d70bcbf9a52c8
+  - enabled: 1
+    path: Assets/Scenes/Event/Stage3Event.unity
+    guid: df9e6d1b3f0c0bf4882f201bb46e42bb
+  - enabled: 1
+    path: Assets/Scenes/Event/Epilogue.unity
+    guid: 03d2f4b1a00cd254497808035877f32d
   m_configObjects: {}

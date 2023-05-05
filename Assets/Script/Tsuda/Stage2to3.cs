@@ -18,7 +18,7 @@ public class Stage2to3 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        async = SceneManager.LoadSceneAsync("merge_2");
+        async = SceneManager.LoadSceneAsync("Stage3Event");
         async.allowSceneActivation = false;
 
         // マネージャオブジェクト取得
