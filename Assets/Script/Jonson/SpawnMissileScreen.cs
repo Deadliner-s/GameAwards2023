@@ -311,8 +311,7 @@ public class SpawnMissileScreen : MonoBehaviour
 
     void SpawnCluster()
     {
-        GameObject obj = Instantiate(ClusterMissile, SpawnLeft.transform.position, Quaternion.identity);
-        SpawnLeft.GetComponent<UINumber>().Timer += 120;
+        GameObject obj = Instantiate(ClusterMissile, SpawnLeft.transform.position, Quaternion.identity);        
         obj.GetComponent<MissileBossCluster>().Speed = SpeedCluster;
         obj.GetComponent<MissileBossCluster>().ClusterNumber = ClusterNumber;
         Destroy(obj, DestroyTime);
