@@ -4403,6 +4403,7 @@ MonoBehaviour:
   Line: {fileID: 3879867394462616794, guid: 8d5861b8308b74f409af1a6c227245a9, type: 3}
   volume: {fileID: 1093950287}
   BlurStrength: 0.2
+  player: {fileID: 1359347799}
   Debug_FixPhaseFlg: 0
 --- !u!198 &1412683214 stripped
 ParticleSystem:
