@@ -68,7 +68,7 @@ public class SpawnZako : MonoBehaviour
 
     void CreateZako()
     {
-        GameObject obj = Instantiate(Zako, transform.position, Quaternion.identity);
+        GameObject obj = Instantiate(Zako, transform.position, Zako.transform.rotation);
         obj.GetComponent<ZakoMove>().ZakoSpeed = ZakoSpeed;
         obj.GetComponent<ZakoMove>().DestroyTime = ZakoDestroyTime;
         obj.GetComponent<ZakoMove>().MissileSpeed = MissileSpeed;
