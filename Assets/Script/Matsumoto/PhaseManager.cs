@@ -43,6 +43,12 @@ public class PhaseManager : MonoBehaviour
     private float CountPoint = 0.001f;
     private int i;
 
+    [Tooltip("マニューバ中ブラーに関するオブジェクト")]
+    [SerializeField]
+    private GameObject player;
+    private PlayerMove playerMove;
+    private bool ManeverEnd;
+
     [Header("デバッグ用 フェイズを固定する")]
     public bool Debug_FixPhaseFlg = false;
 
@@ -82,6 +88,8 @@ public class PhaseManager : MonoBehaviour
         volume.profile.TryGet(out Blur);
         BlurCount = BlurStrength * 1000;
         Blur.strength.value = 0.0f;
+
+        playerMove = player.GetComponent<PlayerMove>();
     }
 
     // Update is called once per frame
@@ -179,9 +187,29 @@ public class PhaseManager : MonoBehaviour
             {
                 // ブラーをだんだんと0にしていく処理
                 Blur.strength.value -= CountPoint;
-                i++;
+                i += 2;
+
+                if (ManeverEnd == true)
+                {
+                    Blur.strength.value -= CountPoint;
+                }
             }
         }
+        else if (currentPhase == Phase.Attack_Phase)
+        {
+            Blur.strength.value = 0.0f;
+        }
+
+        if (playerMove.maneverFlg == true)
+        {
+            if (currentPhase == Phase.Attack_Phase)
+            {
+                i = 0;
+                Blur.strength.value = BlurStrength;
+                ManeverEnd = true;
+            }
+        }
+       
     }
 
     public Phase GetPhase()
