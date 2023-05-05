@@ -18,7 +18,7 @@ public class Stage1to2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        async = SceneManager.LoadSceneAsync("Stage2");
+        async = SceneManager.LoadSceneAsync("Stage2Event");
         async.allowSceneActivation = false;
 
         // マネージャオブジェクト取得

@@ -132,7 +132,7 @@ public class GManager : MonoBehaviour
     public void SceneStage1()
     {
         //stage1.allowSceneActivation = true;
-        SceneManager.LoadScene("Stage1");
+        SceneManager.LoadScene("Prologue");
     }
     public void SceneStage2() 
     {
