@@ -2606,9 +2606,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Zako: {fileID: 3835390596389008509, guid: b948fc0b9feae1348af489437bd8c96c, type: 3}
-  SpawnZakoTime1: 0
-  SpawnZakoTime2: 0
-  SpawnZakoTime3: 0
+  SpawnZakoTime:
+  - 0
+  - 0
+  - 0
+  SpawnZakoDuration:
+  - 0
+  - 0
+  - 0
+  SpawnZakoInterval:
+  - 0
+  - 0
+  - 0
   ZakoSpeed: 0
   ZakoDestroyTime: 0
   SpawnMissileTime: 0
@@ -3367,9 +3376,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Zako: {fileID: 3835390596389008509, guid: a2d601403b8c1014d9cfbfa4925832b8, type: 3}
-  SpawnZakoTime1: 0
-  SpawnZakoTime2: 0
-  SpawnZakoTime3: 0
+  SpawnZakoTime:
+  - 0
+  - 0
+  - 0
+  SpawnZakoDuration:
+  - 0
+  - 0
+  - 0
+  SpawnZakoInterval:
+  - 0
+  - 0
+  - 0
   ZakoSpeed: 0
   ZakoDestroyTime: 0
   SpawnMissileTime: 0
@@ -8066,6 +8084,9 @@ MonoBehaviour:
   currentPhase: 0
   Reticle: {fileID: 1661757866}
   Line: {fileID: 3879867394462616794, guid: 8d5861b8308b74f409af1a6c227245a9, type: 3}
+  volume: {fileID: 0}
+  BlurStrength: 0
+  player: {fileID: 169650299}
   Debug_FixPhaseFlg: 0
 --- !u!4 &1989254138
 Transform:

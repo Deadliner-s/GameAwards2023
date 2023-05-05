@@ -83,13 +83,28 @@ public class PhaseManager : MonoBehaviour
             Line.SetActive(false);
             LineAnime.SetBool("isMove", false);
         }
+        else
+        {
+            Debug.Log("Lineがありません");
+        }
 
         // ブラーの初期化処理
-        volume.profile.TryGet(out Blur);
-        BlurCount = BlurStrength * 1000;
-        Blur.strength.value = 0.0f;
+        if(volume)
+        {
+            volume.profile.TryGet(out Blur);
+            BlurCount = BlurStrength * 1000;
+            Blur.strength.value = 0.0f;
+        }
+        else
+        {
+            Debug.Log("volumeがありません");
+        }
 
         playerMove = player.GetComponent<PlayerMove>();
+        if(playerMove == null)
+        {
+            Debug.Log("playerがありません");
+        }
     }
 
     // Update is called once per frame
@@ -175,28 +190,34 @@ public class PhaseManager : MonoBehaviour
         }
 
         // フェーズ変更後の処理
-        if (i < BlurCount)
+        if (i < BlurCount && volume != null)
         {
             if (currentPhase == Phase.Speed_Phase)
             {
                 if (ManeverEnd == true)
                 {
-                    Blur.strength.value -= CountPoint;
+                    if (volume)
+                    {
+                        Blur.strength.value -= CountPoint;
+                    }
                     i+= 2;
                 }
                 else
                 {
                     // ブラーをだんだんとかけていく処理
-                    Blur.strength.value += CountPoint;
+                    if (volume)
+                    {
+                        Blur.strength.value += CountPoint;
+                    }
                     i++;
                 }
 
-                if(Blur.strength.value == BlurStrength)
+                if(Blur.strength.value == BlurStrength && volume != null)
                 {
                     Debug.Log("ブラー完了");
                 }
             }
-            if (currentPhase == Phase.Attack_Phase)
+            if (currentPhase == Phase.Attack_Phase && volume != null)
             {
                 // ブラーをだんだんと0にしていく処理
                 Blur.strength.value -= CountPoint;
@@ -208,7 +229,7 @@ public class PhaseManager : MonoBehaviour
                 }
             }
         }
-        else if (currentPhase == Phase.Speed_Phase || currentPhase == Phase.Attack_Phase)
+        else if (currentPhase == Phase.Speed_Phase || currentPhase == Phase.Attack_Phase && volume != null)
         {
             if (currentPhase == Phase.Attack_Phase)
             {
@@ -223,19 +244,28 @@ public class PhaseManager : MonoBehaviour
         }
 
         // マニューバが行われたとき
-        if (playerMove.maneverFlg == true)
+        if (playerMove != null)
         {
-            if (currentPhase == Phase.Speed_Phase)
+            if (playerMove.maneverFlg == true)
             {
-                i = 0;
-                Blur.strength.value = BlurStrength + 0.1f;
-                ManeverEnd = true;
-            }
-            if (currentPhase == Phase.Attack_Phase)
-            {
-                i = 0;
-                Blur.strength.value = BlurStrength;
-                ManeverEnd = true;
+                if (currentPhase == Phase.Speed_Phase)
+                {
+                    i = 0;
+                    if (volume)
+                    {
+                        Blur.strength.value = BlurStrength + 0.1f;
+                    }
+                    ManeverEnd = true;
+                }
+                if (currentPhase == Phase.Attack_Phase)
+                {
+                    i = 0;
+                    if (volume)
+                    {
+                        Blur.strength.value = BlurStrength;
+                    }
+                    ManeverEnd = true;
+                }
             }
         }
     }
