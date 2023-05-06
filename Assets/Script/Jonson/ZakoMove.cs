@@ -14,6 +14,7 @@ public class ZakoMove : MonoBehaviour
     public float SpawnMissileTime;
     public float MissileDestroyTime;
     public float Accel;
+    public float AccelStart;
 
     Vector3 move;
     int time;
@@ -37,6 +38,7 @@ public class ZakoMove : MonoBehaviour
             obj.GetComponent<ZakoMissile>().Speed = MissileSpeed;
             obj.GetComponent<ZakoMissile>().DestroyTime = MissileDestroyTime;
             obj.GetComponent<ZakoMissile>().Accel = Accel;
+            obj.GetComponent<ZakoMissile>().AccelStart = AccelStart;
         }
         gameObject.transform.position += move * ZakoSpeed;
     }
