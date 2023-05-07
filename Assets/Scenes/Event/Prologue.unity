@@ -143,24 +143,6 @@ MonoBehaviour:
   player: {fileID: 441137361}
   moveTime: 5
   stopTime: 0
---- !u!114 &183810429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 183810423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fd02172a43612e4abd63177e96f06cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 5
-  power: 0.3
-  frequency: 5
-  random: 10
-  snap: 0
-  fadeOut: 0
 --- !u!1 &441137361 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2192782489012478368, guid: 49ace4bb79f638c48bddca7b09ded5bb, type: 3}
