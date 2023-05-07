@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapRotation : MonoBehaviour
+public class BossRotation : MonoBehaviour
 {
     [Header("Bossの回転速度")]
     [Tooltip("通常")]
@@ -18,6 +18,16 @@ public class MapRotation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // フェーズ取得用
+        try
+        {
+            PhaseFlg = PhaseManager.instance.GetPhase();
+        }
+        catch
+        {
+
+        }
+
         // 通常フェーズを代入
         PhaseFlg = PhaseManager.Phase.Normal_Phase;
     }
@@ -26,7 +36,14 @@ public class MapRotation : MonoBehaviour
     void Update()
     {
         // フェーズ取得用
-        PhaseFlg = PhaseManager.instance.GetPhase();
+        try
+        {
+            PhaseFlg = PhaseManager.instance.GetPhase();
+        }
+        catch
+        {
+
+        }
 
         // フェーズによって切り替え
         // 通常

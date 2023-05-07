@@ -87,8 +87,15 @@ public class PlayerMove: MonoBehaviour
         elapsedTime = ManerverTime + coolTime;
         coolTimeCnt = 0;
 
-        // フェイズ取得
-        currentPhase = PhaseManager.instance.GetPhase();
+        // フェーズ取得用
+        try
+        {
+            currentPhase = PhaseManager.instance.GetPhase();
+        }
+        catch
+        {
+
+        }
 
         // SE
         audioSource = GetComponent<AudioSource>();
@@ -103,8 +110,15 @@ public class PlayerMove: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // フェイズ取得
-        currentPhase = PhaseManager.instance.GetPhase();
+        // フェーズ取得用
+        try
+        {
+            currentPhase = PhaseManager.instance.GetPhase();
+        }
+        catch
+        {
+
+        }
 
         // キー入力
         inputMove = InputActions.Player.Move.ReadValue<Vector2>();
