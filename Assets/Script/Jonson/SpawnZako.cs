@@ -16,6 +16,7 @@ public class SpawnZako : MonoBehaviour
     public float SpawnMissileTime;
     public float MissileSpeed;
     public float MissileAccel;
+    public float AccelStart;
     public float MissileDestroyTime;
 
     private float[] IntervalTimer = new float[total];
@@ -73,6 +74,7 @@ public class SpawnZako : MonoBehaviour
         obj.GetComponent<ZakoMove>().DestroyTime = ZakoDestroyTime;
         obj.GetComponent<ZakoMove>().MissileSpeed = MissileSpeed;
         obj.GetComponent<ZakoMove>().Accel = MissileAccel;
+        obj.GetComponent<ZakoMove>().AccelStart = AccelStart;
         obj.GetComponent<ZakoMove>().SpawnMissileTime = SpawnMissileTime;
         obj.GetComponent<ZakoMove>().MissileDestroyTime = MissileDestroyTime;
     }
