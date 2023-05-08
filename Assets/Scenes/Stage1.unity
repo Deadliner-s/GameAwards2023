@@ -679,7 +679,6 @@ MonoBehaviour:
   coolTime: 0.5
   Manever_VerticalSpeed: 0.03
   Manever_HorizontalSpeed: 0.03
-  MoveSE: {fileID: 0}
   effect: {fileID: 11400000, guid: 92b89741aa739f04ca42096edd880301, type: 2}
 --- !u!82 &169650306
 AudioSource:
@@ -3490,7 +3489,7 @@ PrefabInstance:
       objectReference: {fileID: 673086051}
     - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: PlayerHP
-      value: 10000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: particle
@@ -7971,8 +7970,8 @@ MonoBehaviour:
   currentPhase: 0
   Reticle: {fileID: 1661757866}
   Line: {fileID: 3879867394462616794, guid: 8d5861b8308b74f409af1a6c227245a9, type: 3}
-  volume: {fileID: 0}
-  BlurStrength: 0
+  volume: {fileID: 501685372}
+  BlurStrength: 0.2
   player: {fileID: 169650299}
   Debug_FixPhaseFlg: 0
 --- !u!4 &1989254138

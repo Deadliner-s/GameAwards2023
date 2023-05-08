@@ -2036,7 +2036,6 @@ MonoBehaviour:
   coolTime: 0.5
   Manever_VerticalSpeed: 0.03
   Manever_HorizontalSpeed: 0.03
-  MoveSE: {fileID: 0}
   effect: {fileID: 11400000, guid: 92b89741aa739f04ca42096edd880301, type: 2}
 --- !u!82 &446777052
 AudioSource:
@@ -3791,8 +3790,8 @@ MonoBehaviour:
   currentPhase: 0
   Reticle: {fileID: 966131196}
   Line: {fileID: 3879867394462616794, guid: 8d5861b8308b74f409af1a6c227245a9, type: 3}
-  volume: {fileID: 0}
-  BlurStrength: 0
+  volume: {fileID: 1442577630}
+  BlurStrength: 0.2
   player: {fileID: 446777047}
   Debug_FixPhaseFlg: 0
 --- !u!4 &805285063
