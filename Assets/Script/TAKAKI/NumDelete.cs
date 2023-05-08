@@ -9,8 +9,6 @@ public class NumDelete : MonoBehaviour
     int HitCount;
     int MaxHitCount;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
