@@ -38,15 +38,11 @@ public class BossAnime : MonoBehaviour
             {
                 anime.SetBool("isWing", false);
                 anime.SetBool("isBinder", false);
-
-                SoundManager.instance.PlaySE("BossAnime");
             }
             else if (currntPhase == PhaseManager.Phase.Speed_Phase)
             {
                 // ハイスピードフェイズ
                 anime.SetBool("isWing", true);
-
-                SoundManager.instance.PlaySE("BossAnime");
             }
             else if (currntPhase == PhaseManager.Phase.Attack_Phase)
             {
