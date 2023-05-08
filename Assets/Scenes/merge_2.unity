@@ -965,11 +965,14 @@ MonoBehaviour:
   - 7
   - 15
   - 23
+  - 27
   DurationHoming:
   - 4
   - 4
   - 4
+  - 4
   IntervalTriggerHoming:
+  - 0.2
   - 0.2
   - 0.2
   - 0.2
