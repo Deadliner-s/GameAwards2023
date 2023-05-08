@@ -6,6 +6,7 @@ public class BossMove : MonoBehaviour
 {
     public float speed = 0.01f;
     public float rad = 0.85f;
+    public bool IsLeft;
     private float angle;
     Vector3 move;
     Vector3 OriPos;
@@ -21,7 +22,14 @@ public class BossMove : MonoBehaviour
     {
 
         angle += speed * Time.deltaTime;
-        move = new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle)) * rad;
+        if(IsLeft)
+        {
+            move = new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle)) * rad;
+        }
+        else
+        {
+            move = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * rad;
+        }
 
 
         transform.position = OriPos + move;
