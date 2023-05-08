@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Stage3UIText : MonoBehaviour
+public class Stage4UIText : MonoBehaviour
 {
     // nameText:喋っている人の名前
     // talkText:喋っている内容やナレーション
