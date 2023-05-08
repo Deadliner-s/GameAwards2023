@@ -690,24 +690,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Zako: {fileID: 3835390596389008509, guid: a2d601403b8c1014d9cfbfa4925832b8, type: 3}
   SpawnZakoTime:
-  - 0
-  - 0
-  - 0
+  - 20
+  - 25
+  - 100
   SpawnZakoDuration:
-  - 0
-  - 0
-  - 0
+  - 1
+  - 1
+  - 1
   SpawnZakoInterval:
-  - 0
-  - 0
-  - 0
-  ZakoSpeed: 0
-  ZakoDestroyTime: 0
-  SpawnMissileTime: 0
-  MissileSpeed: 0
-  MissileAccel: 0
-  AccelStart: 0
-  MissileDestroyTime: 0
+  - 0.9
+  - 0.9
+  - 0.9
+  ZakoSpeed: 0.012
+  ZakoDestroyTime: 7
+  SpawnMissileTime: 40
+  MissileSpeed: 0.005
+  MissileAccel: 0.0005
+  AccelStart: 0.8
+  MissileDestroyTime: 10
 --- !u!114 &55255742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1678,7 +1678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261410, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8252
+      value: 0.94
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261410, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3785,7 +3785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NormalTime: 10
-  SpeedTime: 35
+  SpeedTime: 40
   AttackTime: 40
   currentPhase: 0
   Reticle: {fileID: 966131196}
@@ -5521,9 +5521,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Zako: {fileID: 3835390596389008509, guid: b948fc0b9feae1348af489437bd8c96c, type: 3}
   SpawnZakoTime:
-  - 1
-  - 2
-  - 3
+  - 19
+  - 24
+  - 100
   SpawnZakoDuration:
   - 1
   - 1
@@ -5535,6 +5535,7 @@ MonoBehaviour:
   ZakoSpeed: 0.012
   ZakoDestroyTime: 7
   SpawnMissileTime: 40
+  SpawnMissileRandom: 20
   MissileSpeed: 0.005
   MissileAccel: 0.0005
   AccelStart: 0.8
@@ -5781,13 +5782,13 @@ MonoBehaviour:
   playerHp: {fileID: 446777046}
   prefab: {fileID: 786199140513531244, guid: 9aa00b7861ffd164bb5fc3af873fd230, type: 3}
   timer: 0
-  StartTime_1: 10
+  StartTime_1: 24
   LaserTime_1: 4
-  StartTime_2: 21
+  StartTime_2: 32
   LaserTime_2: 4
-  StartTime_3: 26
+  StartTime_3: 100
   LaserTime_3: 4
-  StartTime_4: 31
+  StartTime_4: 100
   LaserTime_4: 4
   StartTime_5: 100
   LaserTime_5: 4
@@ -7669,21 +7670,21 @@ MonoBehaviour:
   KeyBot: m
   DestroyTime: 10
   StartTimeCluster:
-  - 13
-  - 27
-  - 100
+  - 15
+  - 21
+  - 31
   DurationCluster:
   - 4
-  - 3
-  - 100
-  IntervalTriggerCluster:
-  - 1
-  - 0.8
-  - 1
-  StartTimeTop:
   - 8
-  - 20
-  - 34
+  - 3
+  IntervalTriggerCluster:
+  - 1.1
+  - 1.5
+  - 1.1
+  StartTimeTop:
+  - 100
+  - 100
+  - 100
   DurationTop:
   - 1
   - 1
@@ -7693,45 +7694,45 @@ MonoBehaviour:
   - 1
   - 1
   StartTimeTopLeft:
-  - 7
-  - 11.5
-  - 20
+  - 6
+  - 100
+  - 100
   DurationTopLeft:
-  - 1
+  - 4
   - 1
   - 14
   IntervalTriggerTopLeft:
-  - 1
+  - 3.1
   - 1
   - 4
   StartTimeLeft:
-  - 9
-  - 12
-  - 21
+  - 6
+  - 100
+  - 0
   DurationLeft:
-  - 2
+  - 7
   - 1
   - 13
   IntervalTriggerLeft:
-  - 0.7
+  - 3.1
   - 1
   - 3
   StartTimeBotLeft:
-  - 7.5
-  - 12.5
-  - 22
+  - 6
+  - 12
+  - 100
   DurationBotLeft:
   - 1
   - 1
   - 11
   IntervalTriggerBotLeft:
-  - 1
-  - 1
+  - 1.1
+  - 1.1
   - 2
   StartTimeBot:
-  - 8.5
-  - 11
-  - 31
+  - 100
+  - 100
+  - 100
   DurationBot:
   - 1
   - 1

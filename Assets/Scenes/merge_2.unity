@@ -950,6 +950,7 @@ MonoBehaviour:
   HomingSpeed: 0.01
   HomingAccel: 0.002
   HomingMax: 0.15
+  HomingHeight: 1.8
   ContenaMissile: {fileID: 4741478458244633611, guid: a166eeb9b4e2c494f912cf907f7a4985, type: 3}
   ContenaSpeed: 0.01
   ContenaAccel: 0.0015
@@ -958,7 +959,7 @@ MonoBehaviour:
   ContenaNumber: 15
   DestroyTimeHoming: 10
   DestroyTimeContena: 15
-  KeyHoming: p
+  KeyHoming: l
   KeyContena: k
   StartTimeHoming:
   - 7
@@ -1012,84 +1013,84 @@ MonoBehaviour:
   SpawnTopLeft: {fileID: 313698568}
   KeyTopLeft: y
   SpawnLeft: {fileID: 514139033}
-  KeyLeft: h
+  KeyLeft: l
   SpawnBotLeft: {fileID: 1435503352}
   KeyBotLeft: n
   SpawnBot: {fileID: 1466317056}
   KeyBot: m
   DestroyTime: 10
   StartTimeCluster:
-  - 13
-  - 27
+  - 16
+  - 21
   - 100
   DurationCluster:
   - 4
-  - 3
+  - 4
   - 100
   IntervalTriggerCluster:
   - 1
-  - 0.8
+  - 1
   - 1
   StartTimeTop:
-  - 8
-  - 20
-  - 34
+  - 9
+  - 31
+  - 35
   DurationTop:
   - 1
-  - 1
-  - 1
+  - 2
+  - 2
   IntervalTriggerTop:
-  - 1
-  - 1
-  - 1
+  - 1.1
+  - 1.1
+  - 1.1
   StartTimeTopLeft:
-  - 7
-  - 11.5
-  - 20
+  - 6
+  - 30.5
+  - 35.5
   DurationTopLeft:
-  - 1
-  - 1
-  - 14
-  IntervalTriggerTopLeft:
-  - 1
-  - 1
   - 4
+  - 2
+  - 2
+  IntervalTriggerTopLeft:
+  - 3.1
+  - 1.1
+  - 1.1
   StartTimeLeft:
-  - 9
-  - 12
-  - 21
+  - 6
+  - 30
+  - 36
   DurationLeft:
+  - 7
   - 2
-  - 1
-  - 13
+  - 2
   IntervalTriggerLeft:
-  - 0.7
-  - 1
-  - 3
+  - 3.1
+  - 1.1
+  - 1.1
   StartTimeBotLeft:
-  - 7.5
-  - 12.5
-  - 22
+  - 6
+  - 29.5
+  - 36.5
   DurationBotLeft:
-  - 1
-  - 1
-  - 11
-  IntervalTriggerBotLeft:
-  - 1
-  - 1
+  - 7
   - 2
+  - 2
+  IntervalTriggerBotLeft:
+  - 6.1
+  - 1.1
+  - 1.1
   StartTimeBot:
-  - 8.5
-  - 11
-  - 31
+  - 12
+  - 29
+  - 37
   DurationBot:
   - 1
-  - 1
-  - 1
+  - 2
+  - 2
   IntervalTriggerBot:
-  - 1
-  - 1
-  - 1
+  - 1.1
+  - 1.1
+  - 1.1
 --- !u!1 &266351835 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8185960629787243396, guid: 99e6e6f3f3eb01248aa21e7856d891d5, type: 3}
@@ -1288,20 +1289,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Zako: {fileID: 3835390596389008509, guid: b948fc0b9feae1348af489437bd8c96c, type: 3}
   SpawnZakoTime:
-  - 1
-  - 2
-  - 3
+  - 17
+  - 22
+  - 26
   SpawnZakoDuration:
-  - 0
-  - 0
-  - 0
+  - 1
+  - 1
+  - 1
   SpawnZakoInterval:
-  - 0
-  - 0
-  - 0
+  - 0.9
+  - 0.9
+  - 0.9
   ZakoSpeed: 0.015
   ZakoDestroyTime: 5
   SpawnMissileTime: 60
+  SpawnMissileRandom: 0
   MissileSpeed: 0.005
   MissileAccel: 0.0005
   AccelStart: 0.5
@@ -1732,13 +1734,13 @@ MonoBehaviour:
   playerHp: {fileID: 1359347837}
   prefab: {fileID: 786199140513531244, guid: 9aa00b7861ffd164bb5fc3af873fd230, type: 3}
   timer: 0
-  StartTime_1: 10
+  StartTime_1: 14
   LaserTime_1: 4
-  StartTime_2: 21
+  StartTime_2: 20
   LaserTime_2: 4
   StartTime_3: 26
   LaserTime_3: 4
-  StartTime_4: 31
+  StartTime_4: 32.5
   LaserTime_4: 4
   StartTime_5: 100
   LaserTime_5: 4
@@ -4397,7 +4399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NormalTime: 10
-  SpeedTime: 35
+  SpeedTime: 40
   AttackTime: 40
   currentPhase: 0
   Reticle: {fileID: 1619731665}
@@ -4539,9 +4541,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Zako: {fileID: 3835390596389008509, guid: a2d601403b8c1014d9cfbfa4925832b8, type: 3}
   SpawnZakoTime:
-  - 1
-  - 2
-  - 3
+  - 16
+  - 21
+  - 27
   SpawnZakoDuration:
   - 1
   - 1
@@ -4552,7 +4554,8 @@ MonoBehaviour:
   - 0.9
   ZakoSpeed: 0.012
   ZakoDestroyTime: 5
-  SpawnMissileTime: 60
+  SpawnMissileTime: 35
+  SpawnMissileRandom: 20
   MissileSpeed: 0.005
   MissileAccel: 0.0005
   AccelStart: 0.5
@@ -4885,7 +4888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6588977473367775432, guid: 5a188c68c94357740a471ef4be433e27, type: 3}
       propertyPath: BossHP
-      value: 10000
+      value: 18000
       objectReference: {fileID: 0}
     - target: {fileID: 6588977473367775432, guid: 5a188c68c94357740a471ef4be433e27, type: 3}
       propertyPath: GaugeObj
@@ -4897,7 +4900,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6588977473367775432, guid: 5a188c68c94357740a471ef4be433e27, type: 3}
       propertyPath: MAXHitCount
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6588977473367775432, guid: 5a188c68c94357740a471ef4be433e27, type: 3}
       propertyPath: HardDamageFlame
@@ -7574,7 +7577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261410, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8252
+      value: 0.94
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261410, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_LocalPosition.z

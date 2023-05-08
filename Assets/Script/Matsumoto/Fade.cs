@@ -9,22 +9,16 @@ public class Fade : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // ステージ1の場合 フェードイン
-        if(SceneManager.GetActiveScene().name == "Stage1")
+        //フェードイン
+        if(SceneManager.GetActiveScene().name == "Prologue")
         {
             StartCoroutine("Color_FadeIn");
         }
-
-        // ステージクリアフラグを取得
-        bool clear_1= GManager.instance.GetStage1ClearFlg();
-        bool clear_2 = GManager.instance.GetStage2ClearFlg();
-
-        // コンティニューの場合
-        if (clear_1 == true)
+        if(SceneManager.GetActiveScene().name == "Stage2Event")
         {
             StartCoroutine("Color_FadeIn");
         }
-        if (clear_2 == true)
+        if(SceneManager.GetActiveScene().name == "Stage3Event")
         {
             StartCoroutine("Color_FadeIn");
         }
@@ -48,7 +42,7 @@ public class Fade : MonoBehaviour
         fade.color = new Color((0.0f / 255.0f), (0.0f / 255.0f), (0.0f / 0.0f), (255.0f / 255.0f));
 
         // フェードインにかかる時間（秒）★変更可
-        const float fade_time = 2.0f;
+        const float fade_time = 1.0f;
 
         // ループ回数（0はエラー）★変更可
         const int loop_count = 50;
@@ -71,8 +65,8 @@ public class Fade : MonoBehaviour
             fade.color = new_color;
         }
     }
-
-    public IEnumerator Color_FadeOut()
+    
+    public IEnumerator Color_FadeOut(string nextScene = null)
     {
         // 画面をフェードインさせるコールチン
         // 前提：画面を覆うPanelにアタッチしている
@@ -83,8 +77,8 @@ public class Fade : MonoBehaviour
         // フェード後の色を設定（黒）★変更可
         fade.color = new Color((0.0f / 255.0f), (0.0f / 255.0f), (0.0f / 0.0f), (0.0f / 255.0f));
 
-        // フェードインにかかる時間（秒）★変更可
-        const float fade_time = 2.0f;
+        // フェードアウトにかかる時間（秒）★変更可
+        const float fade_time = 1.0f;
 
         // ループ回数（0はエラー）★変更可
         const int loop_count = 50;
@@ -112,8 +106,11 @@ public class Fade : MonoBehaviour
 
         if (fade.color.a == 1.0f)
         {
-            // フェードアウト後にステージ1に遷移
-            GManager.instance.SceneStage1();
+            if (nextScene != null)
+            {
+                // シーン遷移
+                SceneManager.LoadScene(nextScene);
+            }
         }
     }
 }

@@ -26,14 +26,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3835390596389008509}
-  m_LocalRotation: {x: -0.5415622, y: 0.14906588, z: -0.2846286, w: 0.7768374}
+  m_LocalRotation: {x: -0.5609855, y: 0.4304594, z: -0.27059802, w: 0.6532815}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -48.84, y: 36.445, z: -43.515}
+  m_LocalEulerAnglesHint: {x: -30, y: 90, z: -75}
 --- !u!33 &5170047410798896684
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   Missile: {fileID: 4741478458244633611, guid: 26bb10da44f3c6c44a3cf1514fe227fd, type: 3}
   MissileSpeed: 0.02
   SpawnMissileTime: 45
+  SpawnMissileRandom: 0
   MissileDestroyTime: 0
   Accel: 0
   AccelStart: 0
