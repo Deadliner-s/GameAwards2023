@@ -8,31 +8,25 @@ using UnityEngine.SceneManagement;
 public class MainBossHp : MonoBehaviour
 {
     public GameObject GaugeObj;
-    Image HpGauge;
+    private Image HpGauge;
 
     public float BossHP;
-    float BossMaxHP;
-    float damage;
+    private float BossMaxHP;
+    private float damage;
 
     // エフェクト
     [SerializeField]
     [Tooltip("大ダメージ時")]
-    GameObject explosionEffect;
+    private GameObject explosionEffect;
     [SerializeField]
     [Tooltip("通常ダメージ時")]
-    GameObject NormalHiteffect;
-
+    private GameObject NormalHiteffect;
 
     // 大ダメージ数
     public float HardDamage;
 
     //何回当たったら
     public int MAXHitCount;
-    int HitCount;
-
-    // 何フレーム後にダメージ表現
-    float flame;
-    public float HardDamageFlame;
 
     // Start is called before the first frame update
     void Start()
@@ -40,26 +34,12 @@ public class MainBossHp : MonoBehaviour
         BossMaxHP = BossHP;
         HpGauge = GaugeObj.GetComponent<Image>();
         HpGauge.fillAmount = 1;
-        HitCount = 0;
-        flame = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // ヒット回数がMaxと同じだったら
-        //if (HitCount == MAXHitCount)
-        //{
-        //    // HardDamageFlameになったら
-        //    if (flame == HardDamageFlame)
-        //    {
-        //        BossHP -= HardDamage;
-        //        HpGauge.fillAmount -= HardDamage / BossMaxHP;
-
-        //        HitCount = 0;
-        //    }
-        //    flame++;
-        //}
+      
     }
 
     public void Damage(Collision collision)
@@ -68,8 +48,6 @@ public class MainBossHp : MonoBehaviour
         damage = collision.gameObject.GetComponent<Damage>().EnemyDamage;
         BossHP -= damage;
         HpGauge.fillAmount -= damage/BossMaxHP;
-        HitCount++;
-        flame = 0;
 
         // エフェクト生成
         GameObject InstantiateEffect
