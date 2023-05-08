@@ -6,10 +6,11 @@ public class Event_Laser : MonoBehaviour
 {    
     public GameObject prefab; // プレハブオブジェクト    
 
-    [Tooltip("何秒目に生成するか")]
+    [Header("何秒目に生成するか")]    
     public float time;
-
-    [Tooltip("向く方向")]
+    [Header("何秒間")]
+    public float Laser_time;
+    [Header("向く方向")]
     public Vector3 TargetPos;    
 
     private float timer = 0.0f;

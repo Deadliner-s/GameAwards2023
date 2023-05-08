@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 344843735724958894}
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2766080714147267835}
@@ -24119,6 +24119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8354697400787843900}
+  - component: {fileID: 939470876736554075}
   m_Layer: 0
   m_Name: Event_BossLaser
   m_TagString: Untagged
@@ -24142,3 +24143,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &939470876736554075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8354697400787843903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85ab0f5efb69e2e4b8621becdab92d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Boss: 1
+  scaleSpeed: 0.01
+  wait: 5
