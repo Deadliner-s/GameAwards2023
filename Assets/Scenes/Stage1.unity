@@ -2486,24 +2486,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Zako: {fileID: 3835390596389008509, guid: b948fc0b9feae1348af489437bd8c96c, type: 3}
   SpawnZakoTime:
-  - 0
-  - 0
-  - 0
+  - 1
+  - 2
+  - 3
   SpawnZakoDuration:
-  - 0
-  - 0
-  - 0
+  - 1
+  - 1
+  - 1
   SpawnZakoInterval:
-  - 0
-  - 0
-  - 0
-  ZakoSpeed: 0
-  ZakoDestroyTime: 0
-  SpawnMissileTime: 0
-  MissileSpeed: 0
-  MissileAccel: 0
-  AccelStart: 0
-  MissileDestroyTime: 0
+  - 0.9
+  - 0.9
+  - 0.9
+  ZakoSpeed: 0.012
+  ZakoDestroyTime: 7
+  SpawnMissileTime: 45
+  MissileSpeed: 0.005
+  MissileAccel: 0.0005
+  AccelStart: 0.75
+  MissileDestroyTime: 10
 --- !u!114 &560862001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5366,6 +5366,7 @@ MonoBehaviour:
   HomingSpeed: 0.01
   HomingAccel: 0.002
   HomingMax: 0.15
+  HomingHeight: 4
   ContenaMissile: {fileID: 4741478458244633611, guid: a166eeb9b4e2c494f912cf907f7a4985, type: 3}
   ContenaSpeed: 0.01
   ContenaAccel: 0.0015
@@ -5374,7 +5375,7 @@ MonoBehaviour:
   ContenaNumber: 15
   DestroyTimeHoming: 10
   DestroyTimeContena: 15
-  KeyHoming: p
+  KeyHoming: l
   KeyContena: k
   StartTimeHoming:
   - 7
@@ -7651,7 +7652,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1597170020}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

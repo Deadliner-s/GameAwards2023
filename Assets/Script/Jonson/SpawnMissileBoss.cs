@@ -9,6 +9,7 @@ public class SpawnMissileBoss : MonoBehaviour
     public float HomingSpeed;
     public float HomingAccel;
     public float HomingMax;
+    public float HomingHeight;
     public GameObject ContenaMissile;
     public float ContenaSpeed;
     public float ContenaAccel;
@@ -87,6 +88,7 @@ public class SpawnMissileBoss : MonoBehaviour
                 obj.GetComponent<MissileBossHoming>().Speed = HomingSpeed;
                 obj.GetComponent<MissileBossHoming>().Accel = HomingAccel;
                 obj.GetComponent<MissileBossHoming>().MaxSpeed = HomingMax;
+                obj.GetComponent<MissileBossHoming>().Height = HomingHeight;
                 Destroy(obj, DestroyTimeHoming);
             }
             if (Input.GetKeyDown(KeyContena))
@@ -133,6 +135,7 @@ public class SpawnMissileBoss : MonoBehaviour
                             obj.GetComponent<MissileBossHoming>().Speed = HomingSpeed;
                             obj.GetComponent<MissileBossHoming>().Accel = HomingAccel;
                             obj.GetComponent<MissileBossHoming>().MaxSpeed = HomingMax;
+                            obj.GetComponent<MissileBossHoming>().Height = HomingHeight;
                             Destroy(obj, DestroyTimeHoming);
                             IntervalTimeHoming = 0.0f;
                         }
