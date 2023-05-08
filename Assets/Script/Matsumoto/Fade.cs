@@ -22,6 +22,10 @@ public class Fade : MonoBehaviour
         {
             StartCoroutine("Color_FadeIn");
         }
+        if (SceneManager.GetActiveScene().name == "Title")
+        {
+            StartCoroutine("Color_FadeIn");
+        }
     }
 
     // Update is called once per frame
