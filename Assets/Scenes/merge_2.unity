@@ -1194,7 +1194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ba20b7fecc756b41af8e2efe8333c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DistanceX: -1.28
+  DistanceX: -1.25
   DistanceY: 0.835
 --- !u!136 &313698570
 CapsuleCollider:
@@ -4447,7 +4447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DistanceX: -1.25
-  DistanceY: -0.6
+  DistanceY: -0.835
 --- !u!136 &1435503354
 CapsuleCollider:
   m_ObjectHideFlags: 0

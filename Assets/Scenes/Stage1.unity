@@ -2517,7 +2517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ba20b7fecc756b41af8e2efe8333c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DistanceX: -1.28
+  DistanceX: -1.25
   DistanceY: 0.835
 --- !u!136 &560862002
 CapsuleCollider:
@@ -3251,7 +3251,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667484659}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: acfb96d0dcb627e40b0abc390856e42c, type: 3}
   m_Name: 
@@ -3290,7 +3290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DistanceX: -1.25
-  DistanceY: -0.6
+  DistanceY: -0.835
 --- !u!136 &667484663
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3490,7 +3490,7 @@ PrefabInstance:
       objectReference: {fileID: 673086051}
     - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: PlayerHP
-      value: 100
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: particle
