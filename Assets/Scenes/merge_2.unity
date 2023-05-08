@@ -950,7 +950,7 @@ MonoBehaviour:
   HomingSpeed: 0.01
   HomingAccel: 0.002
   HomingMax: 0.15
-  HomingHeight: 0
+  HomingHeight: 1.8
   ContenaMissile: {fileID: 4741478458244633611, guid: a166eeb9b4e2c494f912cf907f7a4985, type: 3}
   ContenaSpeed: 0.01
   ContenaAccel: 0.0015
@@ -959,7 +959,7 @@ MonoBehaviour:
   ContenaNumber: 15
   DestroyTimeHoming: 10
   DestroyTimeContena: 15
-  KeyHoming: p
+  KeyHoming: l
   KeyContena: k
   StartTimeHoming:
   - 7
@@ -1013,7 +1013,7 @@ MonoBehaviour:
   SpawnTopLeft: {fileID: 313698568}
   KeyTopLeft: y
   SpawnLeft: {fileID: 514139033}
-  KeyLeft: h
+  KeyLeft: l
   SpawnBotLeft: {fileID: 1435503352}
   KeyBotLeft: n
   SpawnBot: {fileID: 1466317056}
@@ -1303,6 +1303,7 @@ MonoBehaviour:
   ZakoSpeed: 0.015
   ZakoDestroyTime: 5
   SpawnMissileTime: 60
+  SpawnMissileRandom: 0
   MissileSpeed: 0.005
   MissileAccel: 0.0005
   AccelStart: 0.5
@@ -4553,7 +4554,8 @@ MonoBehaviour:
   - 0.9
   ZakoSpeed: 0.012
   ZakoDestroyTime: 5
-  SpawnMissileTime: 60
+  SpawnMissileTime: 35
+  SpawnMissileRandom: 20
   MissileSpeed: 0.005
   MissileAccel: 0.0005
   AccelStart: 0.5
@@ -7575,7 +7577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261410, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8252
+      value: 0.94
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261410, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_LocalPosition.z
