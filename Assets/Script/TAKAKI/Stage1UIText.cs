@@ -45,7 +45,7 @@ public class Stage1UIText : MonoBehaviour
             time += Time.deltaTime;
 
             // クリックされると一気に表示
-            if (IsClicked()) break;
+            //if (IsClicked()) break;
 
             int len = Mathf.FloorToInt(time / textSpeed);
             if (len > text.Length) break;
