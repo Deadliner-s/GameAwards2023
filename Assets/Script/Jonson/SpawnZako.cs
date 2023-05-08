@@ -19,6 +19,7 @@ public class SpawnZako : MonoBehaviour
     public float MissileAccel;
     public float AccelStart;
     public float MissileDestroyTime;
+    private string Key = "z";
 
     private float[] IntervalTimer = new float[total];
     private PhaseManager.Phase currentPhase;
@@ -33,7 +34,12 @@ public class SpawnZako : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentPhase = PhaseManager.instance.GetPhase();
+
+        if (Input.GetKeyDown(Key))
+        {
+            CreateZako();
+        }
+            currentPhase = PhaseManager.instance.GetPhase();
         if (currentPhase == PhaseManager.Phase.Speed_Phase)
         {
             time += Time.deltaTime;
@@ -70,7 +76,7 @@ public class SpawnZako : MonoBehaviour
 
     void CreateZako()
     {
-        GameObject obj = Instantiate(Zako, transform.position, Zako.transform.rotation);
+        GameObject obj = Instantiate(Zako, new Vector3(transform.position.x, transform.position.y , transform.position.z - 0.05f), Zako.transform.rotation);
         obj.GetComponent<ZakoMove>().ZakoSpeed = ZakoSpeed;
         obj.GetComponent<ZakoMove>().DestroyTime = ZakoDestroyTime;
         obj.GetComponent<ZakoMove>().MissileSpeed = MissileSpeed;

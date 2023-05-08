@@ -36,7 +36,7 @@ public class ZakoMove : MonoBehaviour
         if(time >= SpawnMissileTime + RandomHalf)
         {
             time = 0;
-            GameObject obj = Instantiate(Missile, transform.position, Quaternion.Euler(0,0,-90));
+            GameObject obj = Instantiate(Missile, new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.05f) , Quaternion.Euler(0,0,-90));
             obj.GetComponent<ZakoMissile>().Speed = MissileSpeed;
             obj.GetComponent<ZakoMissile>().DestroyTime = MissileDestroyTime;
             obj.GetComponent<ZakoMissile>().Accel = Accel;
