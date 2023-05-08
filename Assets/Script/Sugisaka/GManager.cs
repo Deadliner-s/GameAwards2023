@@ -119,29 +119,4 @@ public class GManager : MonoBehaviour
                 break;
         }
     }
-
-    public bool GetStage1ClearFlg()
-    {
-        return Stage1;
-    }
-    public bool GetStage2ClearFlg()
-    {
-        return Stage2;
-    }
-
-    public void SceneStage1()
-    {
-        //stage1.allowSceneActivation = true;
-        SceneManager.LoadScene("Prologue");
-    }
-    public void SceneStage2() 
-    {
-        //stage2.allowSceneActivation = true;
-        SceneManager.LoadScene("Stage2");
-    }
-    public void SceneStage3() 
-    {
-        //stage3.allowSceneActivation = true;
-        SceneManager.LoadScene("merge_2");
-    }
 }

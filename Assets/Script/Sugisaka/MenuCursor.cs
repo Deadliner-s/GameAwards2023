@@ -114,22 +114,19 @@ public class MenuCursor : MonoBehaviour
                 if (stage == Stage.STAGE_1)
                 {
                     //SceneManager.LoadScene("Stage1");
-                    fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut");
+                    fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
                 }
                 if(stage == Stage.STAGE_2)
                 {
-                    SceneManager.LoadScene("Stage2");
+                    fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2Event");
                 }
                 if (stage == Stage.STAGE_3)
                 {
-                    SceneManager.LoadScene("merge_2");
+                    fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage3Event");
                 }
-
                 SoundManager.instance.PlaySE("Decision");
-
-
-
                 break;
+
             case (1):
                 // CONTINUE
                 int num = ManagerObj.GetComponent<GManager>().GetNowStage();
@@ -138,21 +135,22 @@ public class MenuCursor : MonoBehaviour
                     case (0):
                         // ステージ1
                         InputActions.Disable();
-                        SceneManager.LoadScene("Stage1");
+                        fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
                         break;
                     case (1):
                         // ステージ2
                         InputActions.Disable();
-                        SceneManager.LoadScene("Stage2");
+                        fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2Event");
                         break;
                     case (2):
                         // ステージ3
                         InputActions.Disable();
-                        SceneManager.LoadScene("merge_2");
+                        fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage3Event");
                         break;
                 }
                 SoundManager.instance.PlaySE("Decision");
                 break;
+
             case (2):
                 OptionMenu.SetActive(true);
                 OptionMenuFlag = true;
@@ -160,6 +158,7 @@ public class MenuCursor : MonoBehaviour
                 this.gameObject.SetActive(false);
                 SoundManager.instance.PlaySE("Decision");
                 break;
+
             case (3):
 #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;//ゲームプレイ終了
