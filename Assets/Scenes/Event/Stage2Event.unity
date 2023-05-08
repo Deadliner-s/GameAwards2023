@@ -240,7 +240,7 @@ MonoBehaviour:
   nameText: {fileID: 32564253}
   talkText: {fileID: 32564252}
   playing: 0
-  textSpeed: 0.1
+  textSpeed: 0.07
 --- !u!1001 &174984340
 PrefabInstance:
   m_ObjectHideFlags: 0

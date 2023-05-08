@@ -23,6 +23,10 @@ public class Stage3TextWriter : MonoBehaviour
     IEnumerator Cotest()
     {
         string A = "　　　　　　　　　　";
+
+        uitext.DrawNameText("", " ");
+        yield return StartCoroutine("Skip");
+
         uitext.DrawNameText("AI", "衛星軌道砲、エネルギー充填完了まで10秒" + A);
         yield return StartCoroutine("Skip");
 

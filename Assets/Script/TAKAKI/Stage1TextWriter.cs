@@ -22,7 +22,11 @@ public class Stage1TextWriter : MonoBehaviour
     // 文章を表示させるコルーチン
     IEnumerator Cotest()
     {
-        string A = "　　　　　　　　　　";
+        string A = "　　　　　　　　　　　　　　　";
+
+        uitext.DrawNameText("", " ");
+        yield return StartCoroutine("Skip");
+
         uitext.DrawNameText("司令官", "改めて作戦内容を伝える"+ A);
         yield return StartCoroutine("Skip");
 
