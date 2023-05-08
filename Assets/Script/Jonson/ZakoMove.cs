@@ -12,6 +12,8 @@ public class ZakoMove : MonoBehaviour
     public GameObject Missile;
     public float MissileSpeed;
     public float SpawnMissileTime;
+    public float SpawnMissileRandom;
+    private float RandomHalf;
     public float MissileDestroyTime;
     public float Accel;
     public float AccelStart;
@@ -24,14 +26,14 @@ public class ZakoMove : MonoBehaviour
         move = new Vector3(moveX, moveY, 0.0f);
         time = 0;
         Destroy(gameObject, DestroyTime);
-
+        RandomHalf = Random.Range(-SpawnMissileRandom, SpawnMissileRandom);
     }
 
     // Update is called once per frame
     void Update()
     {
         time += 1;
-        if(time >= SpawnMissileTime)
+        if(time >= SpawnMissileTime + RandomHalf)
         {
             time = 0;
             GameObject obj = Instantiate(Missile, transform.position, Quaternion.Euler(0,0,-90));
