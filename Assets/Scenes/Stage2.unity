@@ -704,6 +704,7 @@ MonoBehaviour:
   ZakoSpeed: 0
   ZakoDestroyTime: 0
   SpawnMissileTime: 0
+  SpawnMissileRandom: 0
   MissileSpeed: 0
   MissileAccel: 0
   AccelStart: 0
@@ -1678,7 +1679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261410, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8252
+      value: 0.94
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261410, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5535,6 +5536,7 @@ MonoBehaviour:
   ZakoSpeed: 0.012
   ZakoDestroyTime: 7
   SpawnMissileTime: 40
+  SpawnMissileRandom: 20
   MissileSpeed: 0.005
   MissileAccel: 0.0005
   AccelStart: 0.8

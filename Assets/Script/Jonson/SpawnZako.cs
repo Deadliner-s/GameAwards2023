@@ -14,6 +14,7 @@ public class SpawnZako : MonoBehaviour
     public float ZakoSpeed;
     public float ZakoDestroyTime;
     public float SpawnMissileTime;
+    public float SpawnMissileRandom;
     public float MissileSpeed;
     public float MissileAccel;
     public float AccelStart;
@@ -76,6 +77,7 @@ public class SpawnZako : MonoBehaviour
         obj.GetComponent<ZakoMove>().Accel = MissileAccel;
         obj.GetComponent<ZakoMove>().AccelStart = AccelStart;
         obj.GetComponent<ZakoMove>().SpawnMissileTime = SpawnMissileTime;
+        obj.GetComponent<ZakoMove>().SpawnMissileRandom = SpawnMissileRandom;
         obj.GetComponent<ZakoMove>().MissileDestroyTime = MissileDestroyTime;
     }
 }
