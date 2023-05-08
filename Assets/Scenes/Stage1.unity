@@ -2497,14 +2497,14 @@ MonoBehaviour:
   - 0.9
   - 0.9
   - 0.9
-  ZakoSpeed: 0.012
-  ZakoDestroyTime: 7
-  SpawnMissileTime: 45
-  SpawnMissileRandom: 20
-  MissileSpeed: 0.005
-  MissileAccel: 0.0005
-  AccelStart: 0.75
-  MissileDestroyTime: 10
+  ZakoSpeed: 0.018
+  ZakoDestroyTime: 3
+  SpawnMissileTime: 20
+  SpawnMissileRandom: 10
+  MissileSpeed: 0.001
+  MissileAccel: 0.002
+  AccelStart: 0.4
+  MissileDestroyTime: 6
 --- !u!114 &560862001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3251,7 +3251,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667484659}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: acfb96d0dcb627e40b0abc390856e42c, type: 3}
   m_Name: 
@@ -3269,13 +3269,14 @@ MonoBehaviour:
   - 0.9
   - 0.9
   - 0.9
-  ZakoSpeed: 0.012
-  ZakoDestroyTime: 7
-  SpawnMissileTime: 45
-  MissileSpeed: 0.005
-  MissileAccel: 0.0005
-  AccelStart: 0.75
-  MissileDestroyTime: 10
+  ZakoSpeed: 0.018
+  ZakoDestroyTime: 3
+  SpawnMissileTime: 20
+  SpawnMissileRandom: 10
+  MissileSpeed: 0.001
+  MissileAccel: 0.002
+  AccelStart: 0.4
+  MissileDestroyTime: 6
 --- !u!114 &667484662
 MonoBehaviour:
   m_ObjectHideFlags: 0

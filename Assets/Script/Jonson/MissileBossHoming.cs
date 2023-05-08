@@ -35,7 +35,7 @@ public class MissileBossHoming : MonoBehaviour
             //ミサイルの初期位置を設定
             transform.position = FromPos;
 
-            randomX = (rand.Next(20) - 10) * 0.1f;
+            randomX = (rand.Next(2) - 1) * 0.1f;
             off = 0.2f;
             Locked = false;
             Miss = false;

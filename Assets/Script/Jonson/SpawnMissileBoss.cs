@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnMissileBoss : MonoBehaviour
 {
-    static int FlagMax = 3;
+    static int FlagMax = 4;
     public GameObject HomingMissile;
     public float HomingSpeed;
     public float HomingAccel;
