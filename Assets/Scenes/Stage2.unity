@@ -704,6 +704,7 @@ MonoBehaviour:
   ZakoSpeed: 0.012
   ZakoDestroyTime: 7
   SpawnMissileTime: 40
+  SpawnMissileRandom: 0
   MissileSpeed: 0.005
   MissileAccel: 0.0005
   AccelStart: 0.8
@@ -721,7 +722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DistanceX: -1.25
-  DistanceY: -0.6
+  DistanceY: -0.835
 --- !u!136 &55255743
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5552,7 +5553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ba20b7fecc756b41af8e2efe8333c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DistanceX: -1.28
+  DistanceX: -1.25
   DistanceY: 0.835
 --- !u!136 &1496987368
 CapsuleCollider:
