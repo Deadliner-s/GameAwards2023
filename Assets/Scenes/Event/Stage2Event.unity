@@ -397,6 +397,7 @@ MonoBehaviour:
   move: 2
   moveTimePlayer: 0.5
   moveTimeCamera: 1
+  fade: {fileID: 1365736232}
 --- !u!1001 &709810495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -686,6 +687,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+--- !u!1 &1365736232 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2159743415760273707, guid: 4b54ea32d2ddb254baaccb7865867164, type: 3}
+  m_PrefabInstance: {fileID: 32564250}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1647975827
 GameObject:
   m_ObjectHideFlags: 0
