@@ -13,6 +13,6 @@ public class LaserSound : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Destroy(gameObject);
     }
 }

@@ -936,7 +936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 4498043492243987185, guid: 46be480e6bcf2cb4187c25f84ca659d0, type: 3}
-  time: 10
+  time: 9
   Laser_time: 1
   TargetPos: {x: 0, y: 0, z: 0}
 --- !u!4 &2147372231
