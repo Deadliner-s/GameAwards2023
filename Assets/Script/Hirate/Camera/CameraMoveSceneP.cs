@@ -25,7 +25,9 @@ public class CameraMoveSceneP : MonoBehaviour
     public bool bInput { get; private set; } = false;
     public bool bSceneMove { get; private set; } = false;
 
-    private AsyncOperation async;
+    //private AsyncOperation async;
+    [SerializeField]
+    private GameObject fade; // フェードオブジェクト
 
     // Start is called before the first frame update
     void Start()
@@ -40,8 +42,8 @@ public class CameraMoveSceneP : MonoBehaviour
 
         childObj = transform.GetChild(0).gameObject;
 
-        async = SceneManager.LoadSceneAsync("Stage1");
-        async.allowSceneActivation = false;
+        //async = SceneManager.LoadSceneAsync("Stage1");
+        //async.allowSceneActivation = false;
     }
 
     // Update is called once per frame
@@ -64,7 +66,8 @@ public class CameraMoveSceneP : MonoBehaviour
                 rate = 0;
                 // シーン遷移フラグを建てる
                 bSceneMove = true;
-                async.allowSceneActivation = true;
+                //async.allowSceneActivation = true;
+                fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage1");
                 return;
             }
             // カメラ移動開始

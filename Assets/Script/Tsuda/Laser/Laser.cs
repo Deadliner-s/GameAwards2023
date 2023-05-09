@@ -5,73 +5,54 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
     public GameObject LaserA;
-
-    public float sizeX = 0.0f;
-    public float SizeY = 0.0f;
-    public float decrease = 0.1f;
-    [SerializeField] private float delay = 2.0f; // 再生までの待機時間
-
-    private float timer = 0.0f; // 経過時間
-    private bool played = false; // 再生したかどうかのフラグ
-    //private bool stopped = false;
     
+    public float scaleSpeedP = 0.01f;
+    public float scaleSpeedM = 0.01f;
+
+    private float timer = 0.0f;
+    private Vector3 StartScale;
     private Vector3 currentScale;
+    private float ZeroX = 0.00001f;
+    private float ZeroY = 0.00001f;
 
-    [SerializeField] private ParticleSystem particleSystem; // 再生するパーティクルオブジェクト
-
+    // Start is called before the first frame update
     void Start()
     {
+        StartScale = transform.localScale;
+        transform.localScale = new Vector3(ZeroX, ZeroY, 1);
         currentScale = transform.localScale;
-        particleSystem.Stop();
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-        // 再生済みであれば何もしない
-//        if (stopped) return;
-
-        // 経過時間を加算
         timer += Time.deltaTime;
 
-        if(!played)
+        currentScale = transform.localScale;
+
+        if (timer >= LaserA.GetComponent<LaserHead>().wait && timer < LaserA.GetComponent<LaserHead>().wait + LaserA.GetComponent<LaserHead>().LaserTime
+            && transform.localScale.x <= StartScale.x && transform.localScale.y <= StartScale.y)
         {
-            currentScale.x = 0.0001f;
-            currentScale.z = 0.0001f;
-            // 変更後のscaleを設定
-            transform.localScale = currentScale;
+            // スケールを増やす
+            transform.localScale += new Vector3(scaleSpeedM, scaleSpeedM, 0);
+
+            if(transform.localScale.x >= StartScale.x || transform.localScale.y >= StartScale.y)
+            {
+                transform.localScale = StartScale;
+            }
         }
 
-        // 指定した時間が経過したら再生
-        if (timer >= delay && !played)
+        if (timer >= LaserA.GetComponent<LaserHead>().wait + LaserA.GetComponent<LaserHead>().LaserTime)
         {
-            particleSystem.Play();
-            played = true;
+            // スケールを減らす
+            transform.localScale -= new Vector3(scaleSpeedP, scaleSpeedP, 0);
         }
 
-        if(played && currentScale.x <= sizeX && currentScale.z <= SizeY && timer <= delay + LaserA.GetComponent<LaserHead>().LaserTime)
+        // スケールが0以下になったらオブジェクトを削除する
+        if (timer >= LaserA.GetComponent<LaserHead>().wait + LaserA.GetComponent<LaserHead>().LaserTime 
+            && transform.localScale.x <= 0.0f || transform.localScale.x <= 0.0f)
         {
-            currentScale.x += decrease;
-            currentScale.z += decrease;
-            // 変更後のscaleを設定
-            transform.localScale = currentScale;
-        }
-
-        if(timer >= delay + LaserA.GetComponent<LaserHead>().LaserTime)
-        {            
-            // scaleを減少させる
-            currentScale.x -= decrease;
-            currentScale.z -= decrease;
-            // 変更後のscaleを設定
-            transform.localScale = currentScale;            
-        }
-
-        if(currentScale.x <= 0.0f && currentScale.z <= 0.0f)  // && !stopped)
-        {
-            Destroy(this.gameObject);
-//            particleSystem.Stop();
-//            stopped = true;
+            Destroy(gameObject);
         }
     }
 }
-
-

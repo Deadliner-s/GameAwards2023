@@ -6,7 +6,9 @@ public class BossMove : MonoBehaviour
 {
     public float speed = 0.01f;
     public float rad = 0.85f;
+    public bool IsLeft;
     private float angle;
+    private float angle2;
     Vector3 move;
     Vector3 OriPos;
 
@@ -14,6 +16,7 @@ public class BossMove : MonoBehaviour
     void Start()
     {
         OriPos = transform.position;
+        angle2 = 180;
     }
 
     // Update is called once per frame
@@ -21,7 +24,15 @@ public class BossMove : MonoBehaviour
     {
 
         angle += speed * Time.deltaTime;
-        move = new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle)) * rad;
+        angle2 += speed * Time.deltaTime;
+        if (IsLeft)
+        {
+            move = new Vector3(Mathf.Cos(angle2), 0, Mathf.Sin(angle2)) * rad;
+        }
+        else
+        {
+            move = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * rad;
+        }
 
 
         transform.position = OriPos + move;

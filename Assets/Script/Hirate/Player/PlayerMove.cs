@@ -54,11 +54,6 @@ public class PlayerMove: MonoBehaviour
     //private bool maneverFlg = false;
     public bool maneverFlg { get; private set; } = false; // マニューバのフラグ
 
-    [Header("SE関係")]
-    public AudioClip MoveSE;
-    private AudioSource audioSource;
-    private bool MoveSeFlg = false;
-
     [Header("エフェクト")]
     public EffekseerEffectAsset effect;     // 再生するエフェクト
     private EffekseerHandle handle;
@@ -96,10 +91,6 @@ public class PlayerMove: MonoBehaviour
         {
 
         }
-
-        // SE
-        audioSource = GetComponent<AudioSource>();
-        audioSource.clip = MoveSE;
 
         // エフェクトを取得する。
         effect = Resources.Load<EffekseerEffectAsset>(effect.name);
@@ -182,46 +173,7 @@ public class PlayerMove: MonoBehaviour
 
             pos = nextPosition;
         }
-
-        // 動いてる時に鳴るSE
-        if (0.0f < inputMove.x)
-        {
-            if (MoveSeFlg == false)
-            {
-                audioSource.Play();
-                MoveSeFlg = true;
-            }
-        }
-        if (0.0f > inputMove.x)
-        {
-            if (MoveSeFlg == false)
-            {
-                audioSource.Play();
-                MoveSeFlg = true;
-            }
-        }
-        if (0.0f < inputMove.y)
-        {
-            if (MoveSeFlg == false)
-            {
-                audioSource.Play();
-                MoveSeFlg = true;
-            }
-        }
-        if (0.0f > inputMove.y)
-        {
-            if (MoveSeFlg == false)
-            {
-                audioSource.Play();
-                MoveSeFlg = true;
-            }
-        }
-        if (0.0f == inputMove.x && 0.0f == inputMove.y && MoveSeFlg == true)
-        {
-            audioSource.Stop();
-            MoveSeFlg = false;
-        }
-
+        
         // フェイズが変わった場合
         if (nextPhase != currentPhase)
         {

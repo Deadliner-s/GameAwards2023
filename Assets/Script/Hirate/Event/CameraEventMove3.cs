@@ -42,7 +42,9 @@ public class CameraEventMove3 : MonoBehaviour
     private bool bInput = false; // 入力判定用
     private bool bMoveCamera = false; // カメラの移動が始まったかの判定用
 
-    private AsyncOperation async;
+    //private AsyncOperation async;
+    [SerializeField]
+    private GameObject fade; // フェードオブジェクト
 
     //public bool bInput { get; private set; } = false;
     //public bool bSceneMove { get; private set; } = false;
@@ -53,8 +55,8 @@ public class CameraEventMove3 : MonoBehaviour
         playerMove = player.GetComponent<PlayerMove>();           // プレイヤーの移動スクリプトを入れる用
         playerMoveAngle = player.GetComponent<PlayerMoveAngle>(); // プレイヤーの回転スクリプトを入れる用
 
-        async = SceneManager.LoadSceneAsync("merge_2");
-        async.allowSceneActivation = false;
+        //async = SceneManager.LoadSceneAsync("merge_2");
+        //async.allowSceneActivation = false;
     }
 
     // Update is called once per frame
@@ -116,7 +118,8 @@ public class CameraEventMove3 : MonoBehaviour
     // シーン遷移処理
     private void SceneMove()
     {
-        async.allowSceneActivation = true;
+        //async.allowSceneActivation = true;
+        fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "merge_2");
     }
 
     //void LateUpdate()
