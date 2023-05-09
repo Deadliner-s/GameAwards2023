@@ -5,20 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class SceneSkip : MonoBehaviour
 {
-    private Fade fade;
     private Myproject InputActions;
 
     void Awake()
     {
-        InputActions = new Myproject();
-        InputActions.Enable();
-        InputActions.UI.Start.performed += context => OnStart();
+        if (this.gameObject != null)
+        {
+            InputActions = new Myproject();
+            InputActions.Enable();
+            InputActions.UI.Start.performed += context => OnStart();
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        fade = GetComponent<Fade>();
+
     }
 
     // Update is called once per frame
@@ -29,26 +31,27 @@ public class SceneSkip : MonoBehaviour
 
     private void OnStart()
     {
+
         // ÉVÅ[ÉìñºÇ≈ï™äÚ
-        if (SceneManager.GetActiveScene().name == "Prologue")
+        if (this.gameObject != null)
         {
             InputActions.Disable();
-            fade.StartCoroutine("Color_FadeOut", "Stage1");
-        }
-        if (SceneManager.GetActiveScene().name == "Stage2Event")
-        {
-            InputActions.Disable();
-            fade.StartCoroutine("Color_FadeOut", "Stage2");
-        }
-        if (SceneManager.GetActiveScene().name == "Stage3Event")
-        {
-            InputActions.Disable();
-            fade.StartCoroutine("Color_FadeOut", "merge_2");
-        }
-        if (SceneManager.GetActiveScene().name == "Epilogue")
-        {
-            InputActions.Disable();
-            fade.StartCoroutine("Color_FadeOut", "Title");
+            if (SceneManager.GetActiveScene().name == "Prologue")
+            {
+                GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage1");
+            }
+            if (SceneManager.GetActiveScene().name == "Stage2Event")
+            {
+                GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2");
+            }
+            if (SceneManager.GetActiveScene().name == "Stage3Event")
+            {
+                GetComponent<Fade>().StartCoroutine("Color_FadeOut", "merge_2");
+            }
+            if (SceneManager.GetActiveScene().name == "Epilogue")
+            {
+                GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Title");
+            }
         }
     }
 }
