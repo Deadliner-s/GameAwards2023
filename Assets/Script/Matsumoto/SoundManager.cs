@@ -225,6 +225,18 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public bool CheckPlayBGM(string name)
+    {
+        BGM s1 = Array.Find(bgm, sound => sound.name == name);
+        // なければreturn
+        if (s1 == null)
+        {
+            print("Sound" + name + "was not found");
+            return false;
+        }
+        return s1.audioSource.isPlaying;
+    }
+
     // フェードイン
     IEnumerator DoFadeIn(BGM b)
     {
@@ -320,6 +332,15 @@ public class SoundManager : MonoBehaviour
                 PlayBGM("Stage");
                 PlayBGM("BGM");
             }
+
+            if(nextScene.name == "Stage2Event")
+            {
+                if (CheckPlayBGM("Stage") == false)
+                {
+                    PlayBGM("Stage");
+                }
+            }
+
             if (nextScene.name == "Stage3Event")
             {
                 PlayBGM("BossStage");
