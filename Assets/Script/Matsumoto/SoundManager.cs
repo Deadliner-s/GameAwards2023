@@ -81,8 +81,8 @@ public class SoundManager : MonoBehaviour
 
     private GameObject volumeController;    // 音量調整用のオブジェクト
 
-    public float BGM_volume = 1.0f;         // BGMの音量
-    public float SE_volume = 1.0f;          // SEの音量
+    public float BGM_volume = 0.5f;         // BGMの音量
+    public float SE_volume = 0.5f;          // SEの音量
 
     // シングルトン化
     public static SoundManager instance;
@@ -315,20 +315,14 @@ public class SoundManager : MonoBehaviour
             {
                 PlayBGM("Title");
             }
-            if (nextScene.name == "Stage1")
+            if (nextScene.name == "Prologue")
             {
                 PlayBGM("Stage");
                 PlayBGM("BGM");
             }
-            if (nextScene.name == "Stage2")
-            {
-                PlayBGM("Stage");
-                PlayBGM("BGM");
-            }
-            if (nextScene.name == "merge_2")
+            if (nextScene.name == "Stage3Event")
             {
                 PlayBGM("BossStage");
-                PlayBGM("BGM");
             }
             if(nextScene.name == "GameClear")
             {
@@ -340,22 +334,22 @@ public class SoundManager : MonoBehaviour
             {
                 StopBGM("Title");
             }
-            if (nextScene.name != "Stage1")
+            if (nextScene.name != "Prologue" && nextScene.name != "Stage1" && nextScene.name != "Stage2" && nextScene.name != "Stage2Event")
             {
                 StopBGM("Stage");
-                StopBGM("BGM");
             }
-            if (nextScene.name != "Stage2")
-            {
-                StopBGM("Stage");
-                StopBGM("BGM");
-            }
-            if (nextScene.name != "merge_2")
+            if (nextScene.name != "Stage3Event" && nextScene.name != "merge_2")
             {
                 StopBGM("BossStage");
+            }
+
+            if (nextScene.name != "Stage1" && nextScene.name != "Stage2" && nextScene.name != "merge_2" &&
+                nextScene.name != "Prologue" && nextScene.name != "Stage2Event" && nextScene.name != "Stage3Event" && nextScene.name != "Epilogue")
+            {
                 StopBGM("BGM");
             }
-            if(nextScene.name != "GameClear")
+
+            if (nextScene.name != "GameClear")
             {
                 StopBGM("GameClear");
             }
