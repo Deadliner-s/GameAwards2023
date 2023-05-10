@@ -10,13 +10,14 @@ public class OptionCursor : MonoBehaviour
 
     private GameObject BGM_Text;        // BGMのテキスト
     private GameObject SE_Text;         // SEのテキスト
+    private GameObject VOICE_Text;      // Voiceのテキスト
     private GameObject BackText;        // 戻るのテキスト
 
     [SerializeField]
     [Header("メニュー")]
     private GameObject Menu;            // メニューのオブジェクト
 
-    private const int MAX_OPTION = 3;   // オプションの数
+    private const int MAX_OPTION = 4;   // オプションの数
     private int Selected = 0;           // 選択中のオプション
 
     void Awake()
@@ -39,6 +40,7 @@ public class OptionCursor : MonoBehaviour
         // オプションのテキストを取得
         BGM_Text = transform.Find("BGMText").gameObject;
         SE_Text = transform.Find("SEText").gameObject;
+        VOICE_Text = transform.Find("VOICEText").gameObject;
         BackText = transform.Find("BackText").gameObject;
     }
 
@@ -64,6 +66,7 @@ public class OptionCursor : MonoBehaviour
                 // テキストの色を変更
                 BGM_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
                 SE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+                VOICE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 BackText.GetComponent<TextMeshProUGUI>().color = Color.black;
                 break;
             case (1):
@@ -73,15 +76,29 @@ public class OptionCursor : MonoBehaviour
                 // テキストの色を変更
                 BGM_Text.GetComponent <TextMeshProUGUI>().color = Color.black;
                 SE_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
+                VOICE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 BackText.GetComponent<TextMeshProUGUI>().color = Color.black;
                 break;
+
             case (2):
+                // スライダーのHandleを選択
+                VolCon.GetComponent<VolumeController>().SetVOICESlider();
+
+                // テキストの色を変更
+                BGM_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+                SE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+                VOICE_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
+                BackText.GetComponent<TextMeshProUGUI>().color = Color.black;
+                break;
+
+            case (3):
                 // 他のスライダーのSelectを外す
                 VolCon.GetComponent <VolumeController>().SetBlankSlider();
 
                 // テキストの色を変更
                 BGM_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 SE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+                VOICE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 BackText.GetComponent<TextMeshProUGUI>().color = Color.white;
                 break;
         }
@@ -106,9 +123,14 @@ public class OptionCursor : MonoBehaviour
         {
             case (0):
                 break;
+
             case (1):
                 break;
+
             case (2):
+                break;
+
+            case (3):
                 // タイトルに戻る
                 Selected = 0;
                 this.gameObject.SetActive(false);
