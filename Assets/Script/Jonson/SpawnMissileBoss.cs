@@ -128,7 +128,7 @@ public class SpawnMissileBoss : MonoBehaviour
                         {
                             UseFlagHoming[i] = true;
                         }
-                    }
+                    }                    
                     if (!UseFlagContena[i] && timer >= StartTimeContena[i])
                     {
                         if (IntervalTimeContena >= IntervalTriggerContena[i])
