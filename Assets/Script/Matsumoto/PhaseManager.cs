@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class PhaseManager : MonoBehaviour
 {  
@@ -110,37 +111,79 @@ public class PhaseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // フェイズが固定されてない場合
-        if (Debug_FixPhaseFlg != true)
+        // ステージ1,2
+        if (SceneManager.GetActiveScene().name == "Stage1" || SceneManager.GetActiveScene().name == "Stage2") 
         {
-            // 時間更新
-            time += Time.deltaTime;
+            // フェイズが固定されてない場合
+            if (Debug_FixPhaseFlg != true)
+            {
+                // 時間更新
+                time += Time.deltaTime;
 
-            // 通常フェイズ
-            if (currentPhase == Phase.Normal_Phase)
-            {
-                if (time >= NormalTime)
+                // 通常フェイズ
+                if (currentPhase == Phase.Normal_Phase)
                 {
-                    currentPhase = Phase.Speed_Phase;
-                    time = 0.0f;
+                    if (time >= NormalTime)
+                    {
+                        currentPhase = Phase.Attack_Phase;
+                        time = 0.0f;
+                    }
+                }
+                // ハイスピードフェイズ
+                else if (currentPhase == Phase.Speed_Phase)
+                {
+                    if (time >= SpeedTime)
+                    {
+                        currentPhase = Phase.Normal_Phase;
+                        time = 0.0f;
+                    }
+                }
+                // アタックフェイズ
+                else if (currentPhase == Phase.Attack_Phase)
+                {
+                    if (time >= AttackTime)
+                    {
+                        currentPhase = Phase.Speed_Phase;
+                        time = 0.0f;
+                    }
                 }
             }
-            // ハイスピードフェイズ
-            else if (currentPhase == Phase.Speed_Phase)
+        }
+        // ステージ3
+        else
+        {
+            // フェイズが固定されてない場合
+            if (Debug_FixPhaseFlg != true)
             {
-                if (time >= SpeedTime)
+                // 時間更新
+                time += Time.deltaTime;
+
+                // 通常フェイズ
+                if (currentPhase == Phase.Normal_Phase)
                 {
-                    currentPhase = Phase.Attack_Phase;
-                    time = 0.0f;
+                    if (time >= NormalTime)
+                    {
+                        currentPhase = Phase.Speed_Phase;
+                        time = 0.0f;
+                    }
                 }
-            }
-            // アタックフェイズ
-            else if (currentPhase == Phase.Attack_Phase)
-            {
-                if (time >= AttackTime)
+                // ハイスピードフェイズ
+                else if (currentPhase == Phase.Speed_Phase)
                 {
-                    currentPhase = Phase.Normal_Phase;
-                    time = 0.0f;
+                    if (time >= SpeedTime)
+                    {
+                        currentPhase = Phase.Attack_Phase;
+                        time = 0.0f;
+                    }
+                }
+                // アタックフェイズ
+                else if (currentPhase == Phase.Attack_Phase)
+                {
+                    if (time >= AttackTime)
+                    {
+                        currentPhase = Phase.Normal_Phase;
+                        time = 0.0f;
+                    }
                 }
             }
         }
