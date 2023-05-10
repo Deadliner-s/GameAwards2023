@@ -28,7 +28,15 @@ public class DestroyEnemyMissile : MonoBehaviour
                 Quaternion.identity); // 回転
 
             // スクリプトをコンポーネントしたオブジェクトを削除
-            Destroy(gameObject);
+            if (gameObject.GetComponent<MissileStraight>())
+            {
+                gameObject.GetComponent<MissileStraight>().isDestroyed = true;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+
         }
     }
 }
