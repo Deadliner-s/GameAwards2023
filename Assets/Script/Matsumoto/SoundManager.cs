@@ -338,7 +338,7 @@ public class SoundManager : MonoBehaviour
             {
                 StopBGM("Stage");
             }
-            if (nextScene.name == "Stage3Event" && nextScene.name != "merge_2")
+            if (nextScene.name != "Stage3Event" && nextScene.name != "merge_2")
             {
                 StopBGM("BossStage");
             }
