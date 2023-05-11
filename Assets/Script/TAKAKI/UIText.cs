@@ -17,6 +17,8 @@ public class UIText : MonoBehaviour
     private PhaseManager.Phase currntPhase;
     private PhaseManager.Phase nextPhase;
 
+    public GameObject Window;
+
     void Start() { nextPhase = currntPhase; }
 
     // クリックで次のページを表示させるための関数
@@ -48,14 +50,15 @@ public class UIText : MonoBehaviour
             nextPhase = currntPhase;
             if (currntPhase == PhaseManager.Phase.Normal_Phase)
             {
-
+                Window.SetActive(false);
 
                 //SeFlg = false;
             }
             else if (currntPhase == PhaseManager.Phase.Speed_Phase)
             {
                 // ハイスピードフェイズ
-                DrawNameText("AI", "敵母艦から大量のミサイルを確認。メインエンジンにエネルギーを充填。回避行動に専念してください。");
+                Window.SetActive(true);
+                DrawNameText("AI", "敵母艦から大量のミサイルを確認。メインエンジンにエネルギーを充填。\n回避行動に専念してください。");
 
             }
             else if (currntPhase == PhaseManager.Phase.Attack_Phase)
