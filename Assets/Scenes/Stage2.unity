@@ -5916,7 +5916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHp: {fileID: 446777046}
-  prefab: {fileID: 786199140513531244, guid: 9aa00b7861ffd164bb5fc3af873fd230, type: 3}
+  prefab: {fileID: 1809720811616492591, guid: 436d5d0536285294b92c4965004502c4, type: 3}
   timer: 0
   StartTime_1: 24
   LaserTime_1: 4
