@@ -9,7 +9,8 @@ public class ShowZako : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        float randY = Random.Range(-0.5f, 0.5f);
+        float randY = Random.Range(-5.0f, 5.0f);
+        randY = randY / 10;
         move = new Vector3(-1.0f, randY, 0.0f);
     }
 

@@ -44,14 +44,13 @@ public class SpawnZako : MonoBehaviour
 
         if (Input.GetKeyDown(Key))
         {
-            Invoke("CreateZako", SpawnZakoDelay);
-            int randShow = (int)Random.Range(1,3);
+            int randShow = (int)Random.Range(1,2);
             for(int j = 0;j <= randShow;j++)
-            {
                 Invoke("CreateShowZako", (float)j/3);
-            }
+            Invoke("CreateZako", SpawnZakoDelay);
+
         }
-            currentPhase = PhaseManager.instance.GetPhase();
+        currentPhase = PhaseManager.instance.GetPhase();
         if (currentPhase == PhaseManager.Phase.Speed_Phase)
         {
             time += Time.deltaTime;
@@ -65,13 +64,11 @@ public class SpawnZako : MonoBehaviour
                         IntervalTimer[i] += Time.deltaTime;
                         if (IntervalTimer[i] >= SpawnZakoInterval[i])
                         {
+                            IntervalTimer[i] = 0.0f;
                             int randShow = (int)Random.Range(1, 3);
                             for (int j = 0; j <= randShow; j++)
-                            {
                                 Invoke("CreateShowZako", (float)j / 3);
-                            }
-                            CreateShowZako();
-                            IntervalTimer[i] = 0.0f;
+                            Invoke("CreateZako", SpawnZakoDelay);
                         }
                     }
                 }
