@@ -336,7 +336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3149871974630229680, guid: 3d014e8e03ac09645823e0015d69d1d7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.277
+      value: -10.277
       objectReference: {fileID: 0}
     - target: {fileID: 3149871974630229680, guid: 3d014e8e03ac09645823e0015d69d1d7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -393,9 +393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9638efb6f06e74eab66a6ccf17bf98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 441137361}
   move: 5
-  moveTimePlayer: 0.5
+  moveTimeBoss: 0.5
   moveTimeCamera: 1
   fade: {fileID: 1365736232}
 --- !u!1001 &709810495
@@ -466,6 +465,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2192782489012478368, guid: 49ace4bb79f638c48bddca7b09ded5bb, type: 3}
+      propertyPath: m_TagString
+      value: PlayerParent
+      objectReference: {fileID: 0}
     - target: {fileID: 3951018357684003096, guid: 49ace4bb79f638c48bddca7b09ded5bb, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -480,7 +483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3951018357684003096, guid: 49ace4bb79f638c48bddca7b09ded5bb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -19.24
+      value: -9.24
       objectReference: {fileID: 0}
     - target: {fileID: 3951018357684003096, guid: 49ace4bb79f638c48bddca7b09ded5bb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -761,7 +764,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4634817275828135071, guid: df684e1a12061784681b83a624518f5b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4634817275828135071, guid: df684e1a12061784681b83a624518f5b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -794,6 +797,10 @@ PrefabInstance:
     - target: {fileID: 8128278999346386479, guid: df684e1a12061784681b83a624518f5b, type: 3}
       propertyPath: m_Name
       value: Booooss
+      objectReference: {fileID: 0}
+    - target: {fileID: 8128278999346386479, guid: df684e1a12061784681b83a624518f5b, type: 3}
+      propertyPath: m_TagString
+      value: BossParent
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df684e1a12061784681b83a624518f5b, type: 3}

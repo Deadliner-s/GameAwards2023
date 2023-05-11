@@ -338,7 +338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4979379680325929208, guid: 2dbb230dcb44ee046ba8258bfa1f05d0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4979379680325929208, guid: 2dbb230dcb44ee046ba8258bfa1f05d0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -712,6 +712,8 @@ MonoBehaviour:
   SpawnZakoDelay: 3
   ZakoShow: {fileID: 3835390596389008509, guid: 7ebc96ff6a576834489e155ea7818c5b, type: 3}
   ZakoShowPos: {fileID: 375971898}
+  ZakoShowSpeed: 0.15
+  ZakoShowScale: {x: 2, y: 2, z: 2}
 --- !u!114 &55255742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1717,7 +1719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261410, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.24
+      value: -9.24
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261410, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3532,6 +3534,7 @@ MonoBehaviour:
   talkText: {fileID: 1124990218}
   playing: 0
   textSpeed: 0.1
+  Window: {fileID: 0}
 --- !u!1 &692561288
 GameObject:
   m_ObjectHideFlags: 0
@@ -5265,7 +5268,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1343211722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.94, z: -15.277}
+  m_LocalPosition: {x: 0, y: 0.94, z: -10.277}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5676,6 +5679,8 @@ MonoBehaviour:
   SpawnZakoDelay: 3
   ZakoShow: {fileID: 3835390596389008509, guid: 7ebc96ff6a576834489e155ea7818c5b, type: 3}
   ZakoShowPos: {fileID: 375971898}
+  ZakoShowSpeed: 0.15
+  ZakoShowScale: {x: 2, y: 2, z: 2}
 --- !u!114 &1496987367
 MonoBehaviour:
   m_ObjectHideFlags: 0

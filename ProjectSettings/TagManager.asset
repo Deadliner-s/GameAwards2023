@@ -12,6 +12,8 @@ TagManager:
   - WeakPointTop
   - WeakPointBottom
   - VolumeController
+  - PlayerParent
+  - BossParent
   layers:
   - Default
   - TransparentFX
