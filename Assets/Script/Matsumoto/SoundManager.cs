@@ -83,6 +83,7 @@ public class SoundManager : MonoBehaviour
 
     public float BGM_volume = 0.5f;         // BGM‚Ì‰¹—Ê
     public float SE_volume = 0.5f;          // SE‚Ì‰¹—Ê
+    public float VOICE_volume = 0.5f;       // VOICE‚Ì‰¹—Ê
 
     // ƒVƒ“ƒOƒ‹ƒgƒ“‰»
     public static SoundManager instance;
@@ -126,7 +127,7 @@ public class SoundManager : MonoBehaviour
         {
             s.audioSource = gameObject.AddComponent<AudioSource>();
             s.audioSource.clip = s.clip;
-            s.audioSource.volume = SE_volume;
+            s.audioSource.volume = VOICE_volume;
         }
     }
 
@@ -166,6 +167,7 @@ public class SoundManager : MonoBehaviour
                         {
                             BGM_volume = volumeController.GetComponent<VolumeController>().GetBGMVolume();
                             SE_volume = volumeController.GetComponent<VolumeController>().GetSEVolume();
+                            VOICE_volume = volumeController.GetComponent<VolumeController>().GetVOICEVolume();
 
                             ChangeVolumeBGM("Title");
                         }
@@ -307,7 +309,7 @@ public class SoundManager : MonoBehaviour
             print("Sound" + name + "was not found");
             return;
         }
-        s.audioSource.volume = SE_volume;
+        s.audioSource.volume = VOICE_volume;
         s.audioSource.Play();
     }
 
