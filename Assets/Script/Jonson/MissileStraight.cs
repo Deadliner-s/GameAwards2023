@@ -10,16 +10,18 @@ public class MissileStraight : MonoBehaviour
     public float MaxSpeed = 0.003f;      //速度制限
     //public float Accel = 0.001f;       //加速度
     public float MissRange = 2.0f;     //プレイヤーに外れるの距離
-    public float UIFillSpeed = 0.005f;  //UIの速さ
+    float UIFillSpeed = 0.01f;  //UIの速さ
     private GameObject canvas;         // キャンバス
     float off;
     bool Miss;
     public bool isDestroyed = false;
     GameObject newObj;
     GameObject OutsideObj;
+    GameObject LightObj;
     private Camera mainCamera;            // メインカメラ
     public GameObject otherObject;        // 生成するプレハブオブジェクト
     public GameObject outsideObject;
+    public GameObject LightObject;
     private Vector3 targetScreenPosition; // 目標スクリーン座標
     private Vector3 targetWorldPosition;  // 目標ワールド座標
     Vector3 NewPosFix;
@@ -91,12 +93,16 @@ public class MissileStraight : MonoBehaviour
 
                 newObj = Instantiate(otherObject, targetScreenPosition, transform.rotation) as GameObject;  // 警告UIの生成                                                           
                 newObj.transform.SetParent(canvas.transform, false);                                        // Canvasの子オブジェクトとして生成
+                newObj.GetComponent<Image>().fillAmount = 0;
                 OutsideObj = Instantiate(outsideObject, targetScreenPosition, transform.rotation) as GameObject;  // 警告UIの生成                                                           
                 OutsideObj.transform.SetParent(canvas.transform, false);                                        // Canvasの子オブジェクトとして生成
-                newObj.GetComponent<Image>().fillAmount = 0;
+                LightObj = Instantiate(LightObject, targetScreenPosition, transform.rotation) as GameObject;
+                LightObj.transform.SetParent(canvas.transform, false);
+                LightObj.GetComponent<Image>().fillAmount = 0;
 
-                newObj.transform.position = NewPosFix;  //UIの位置を更新
+                newObj.transform.position = NewPosFix;      //UIの位置を更新
                 OutsideObj.transform.position = NewPosFix;  //UIの位置を更新
+                LightObj.transform.position = NewPosFix;    //UIの位置を更新
             }
             time = 0;
             Miss = false;
@@ -140,6 +146,7 @@ public class MissileStraight : MonoBehaviour
             {
                 Destroy(newObj);        //UIを消す
                 Destroy(OutsideObj);
+                Destroy(LightObj);
                 Destroy(gameObject);
             }
 
@@ -148,9 +155,10 @@ public class MissileStraight : MonoBehaviour
                 //newObj.transform.position = NewPosFix;  //UIの位置を更新
                 //OutsideObj.transform.position = NewPosFix;  //UIの位置を更新
                 newObj.GetComponent<Image>().fillAmount +=　UIFillSpeed;
-                if (newObj.GetComponent<Image>().fillAmount >= 1.0f)
+                if (newObj.GetComponent<Image>().fillAmount >= 0.9f)
                 {
-                    newObj.GetComponent<Image>().fillAmount = 1.0f;
+                    LightObj.GetComponent<Image>().fillAmount = 1.0f;
+                    Destroy(newObj);
                 }
 
             }
@@ -164,6 +172,8 @@ public class MissileStraight : MonoBehaviour
                 Destroy(newObj);        //UIを消す
             if(outsideObject)
                 Destroy(OutsideObj);
+            if (LightObj)
+                Destroy(LightObj);
                 Destroy(gameObject);
         }
     }
