@@ -258,7 +258,7 @@ MonoBehaviour:
   nameText: {fileID: 784192483}
   talkText: {fileID: 1442422920}
   playing: 0
-  textSpeed: 0.1
+  textSpeed: 0.0001
 --- !u!1 &402255136
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,6 +293,10 @@ MonoBehaviour:
   AttackTime: 40
   currentPhase: 0
   Reticle: {fileID: 0}
+  Line: {fileID: 0}
+  volume: {fileID: 0}
+  BlurStrength: 0
+  player: {fileID: 0}
   Debug_FixPhaseFlg: 0
 --- !u!4 &402255138
 Transform:

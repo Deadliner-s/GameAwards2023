@@ -28,16 +28,16 @@ public class Stage4TextWriter : MonoBehaviour
         yield return StartCoroutine("Skip");
 
         uitext.DrawNameText("AI", "敵巨大飛行物体の破壊を確認。" + A);
-        yield return StartCoroutine("Skip");
+        yield return new WaitForSeconds(3.0f);
 
         uitext.DrawNameText("司令官", "無事か！ " + A);
-        yield return StartCoroutine("Skip");
+        yield return new WaitForSeconds(3.0f);
 
         uitext.DrawNameText("司令官", "よくやった。お前は本物の 英雄だ" + A);
-        yield return StartCoroutine("Skip");
+        yield return new WaitForSeconds(3.0f);
 
         uitext.DrawNameText("AI", "作戦終了の承認、確認しました。帰還しましょう。" + A);
-        yield return StartCoroutine("Skip");
+        yield return new WaitForSeconds(3.0f);
         //yield return null;
     }
 }
