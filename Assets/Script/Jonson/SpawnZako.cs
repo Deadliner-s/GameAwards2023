@@ -20,6 +20,13 @@ public class SpawnZako : MonoBehaviour
     public float AccelStart;
     public float MissileDestroyTime;
     private string Key = "z";
+    public float SpawnZakoDelay = 3.0f;
+
+    public GameObject ZakoShow;
+    public GameObject ZakoShowPos;
+    public float ZakoShowSpeed = 0.15f;
+    public Vector3 ZakoShowScale =new Vector3(2.0f,2.0f,2.0f);
+
 
     private float[] IntervalTimer = new float[total];
     private PhaseManager.Phase currentPhase;
@@ -37,7 +44,12 @@ public class SpawnZako : MonoBehaviour
 
         if (Input.GetKeyDown(Key))
         {
-            CreateZako();
+            Invoke("CreateZako", SpawnZakoDelay);
+            int randShow = (int)Random.Range(1,3);
+            for(int j = 0;j <= randShow;j++)
+            {
+                Invoke("CreateShowZako", (float)j/3);
+            }
         }
             currentPhase = PhaseManager.instance.GetPhase();
         if (currentPhase == PhaseManager.Phase.Speed_Phase)
@@ -46,7 +58,6 @@ public class SpawnZako : MonoBehaviour
 
             for (int i = 0;i < total; i ++)
             {
-
                 if (time >= SpawnZakoTime[i])
                 {
                     if ((time - SpawnZakoTime[i]) <= SpawnZakoDuration[i])
@@ -54,20 +65,22 @@ public class SpawnZako : MonoBehaviour
                         IntervalTimer[i] += Time.deltaTime;
                         if (IntervalTimer[i] >= SpawnZakoInterval[i])
                         {
-                            CreateZako();
+                            int randShow = (int)Random.Range(1, 3);
+                            for (int j = 0; j <= randShow; j++)
+                            {
+                                Invoke("CreateShowZako", (float)j / 3);
+                            }
+                            CreateShowZako();
                             IntervalTimer[i] = 0.0f;
                         }
                     }
                 }
-
             }
-
         }
         else
         {
             for (int i = 0; i < total; i++)
             {
-
                 time = 0;
                 IntervalTimer[i] = 0;
             }
@@ -84,6 +97,13 @@ public class SpawnZako : MonoBehaviour
         obj.GetComponent<ZakoMove>().AccelStart = AccelStart;
         obj.GetComponent<ZakoMove>().SpawnMissileTime = SpawnMissileTime;
         obj.GetComponent<ZakoMove>().SpawnMissileRandom = SpawnMissileRandom;
-        obj.GetComponent<ZakoMove>().MissileDestroyTime = MissileDestroyTime;
+        obj.GetComponent<ZakoMove>().MissileDestroyTime = MissileDestroyTime;       
+    }
+    void CreateShowZako()
+    {
+        GameObject newObj = Instantiate(ZakoShow, ZakoShowPos.transform.position, ZakoShow.transform.rotation);
+        newObj.GetComponent<Transform>().localScale = ZakoShowScale;
+        newObj.GetComponent<ShowZako>().Speed = ZakoShowSpeed;
+        Destroy(newObj, SpawnZakoDelay);
     }
 }
