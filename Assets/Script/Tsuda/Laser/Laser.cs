@@ -18,7 +18,9 @@ public class Laser : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartScale = transform.localScale;
+        transform.position = new Vector3(LaserA.GetComponent<LaserHead>().targetWorldPosition.x, LaserA.GetComponent<LaserHead>().targetWorldPosition.y, -9.24f);
+
+        StartScale = new Vector3(transform.localScale.x, transform.localScale.y, 1);
         transform.localScale = new Vector3(ZeroX, ZeroY, 1);
         currentScale = transform.localScale;
     }
@@ -27,6 +29,8 @@ public class Laser : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
+
+        transform.position = new Vector3(LaserA.GetComponent<LaserHead>().targetWorldPosition.x, LaserA.GetComponent<LaserHead>().targetWorldPosition.y, -9.24f);
 
         currentScale = transform.localScale;
 
