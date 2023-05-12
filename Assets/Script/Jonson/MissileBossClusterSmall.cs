@@ -6,9 +6,11 @@ using System;
 
 public class MissileBossClusterSmall : MonoBehaviour
 {
-    public float Speed = 0.01f;        //ミサイルの速度
-    public float MaxSpeed = 2.0f;      //速度制限
-    public float Accel = 0.005f;       //加速度
+    float Speed = 0.01f;        //ミサイルの速度
+    float MinSpeed = 0.005f;    //最小速度
+    float MaxSpeed = 0.02f;     //最大速度
+    float Accel = 0.0001f;      //加(減)速度
+
     public float MissRange = 2.0f;     //プレイヤーに外れるの距離
     float off;
     bool Miss;
@@ -43,25 +45,21 @@ public class MissileBossClusterSmall : MonoBehaviour
     {
         if (Player)//プレイヤーは生きている（存在する）
         {
-            Speed += Accel;                                         //加速度
-            if (Speed >= MaxSpeed)                                  //速度制限
-                Speed = MaxSpeed;
-            float distance = Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(ToPos.x, 0, ToPos.z));
-            if (distance >= MissRange && !Miss)
+            if (!Miss && Speed >= MinSpeed)
             {
+                Speed -= Accel;
                 ToPos = Player.transform.position;   //プレイヤーの位置
-
-                Move.x = ToPos.x - transform.position.x;
-                Move.z = ToPos.z - transform.position.z;
-                Move = Move.normalized;
-                Move.y = randY;
-                LateMove = (Move - LateMove) * off + (LateMove);
+                Move = new Vector3(1.0f,randY,0.0f);
             }
             else
             {
                 Miss = true;
+                Speed = MaxSpeed;
+                Move = new Vector3(1.0f, 0.0f, 0.0f);
                 Destroy(gameObject, 3.0f);
             }
+
+            LateMove = (Move - LateMove) * off + (LateMove);
             Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
             transform.rotation = rot;
             transform.position += LateMove * Speed;
