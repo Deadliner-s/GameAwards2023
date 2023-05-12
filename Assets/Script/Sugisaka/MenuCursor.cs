@@ -23,6 +23,9 @@ public class MenuCursor : MonoBehaviour
     private GameObject fade;                // フェードオブジェクト
 
     [SerializeField]
+    private GameObject title;
+
+    [SerializeField]
     [Header("オプションメニュー")]
     private GameObject OptionMenu;
     private bool OptionMenuFlag = false;
@@ -50,7 +53,7 @@ public class MenuCursor : MonoBehaviour
         ManagerObj = GameObject.Find("GameManager");
 
         // メニュー数(タイトルロゴも入ってるため-1
-        ItemMax = transform.childCount - 1;
+        ItemMax = transform.childCount; //- 1;  外しました
 
         OptionMenuFlag = false;
         // 初期カーソル位置設定
@@ -67,6 +70,7 @@ public class MenuCursor : MonoBehaviour
         {
             if (OptionMenu.activeSelf == false)
             {
+                title.SetActive(true);
                 InputActions.Enable();
                 OptionMenuFlag = false;
             }
@@ -152,6 +156,8 @@ public class MenuCursor : MonoBehaviour
                 break;
 
             case (2):
+                // OPTION
+                title.SetActive(false);
                 OptionMenu.SetActive(true);
                 OptionMenuFlag = true;
                 InputActions.Disable();             // オプションメニューが開いているときは入力を受け付けない

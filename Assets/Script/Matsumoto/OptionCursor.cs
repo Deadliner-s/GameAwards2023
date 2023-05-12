@@ -8,9 +8,13 @@ public class OptionCursor : MonoBehaviour
 
     private GameObject VolCon;          // VolumeControllerのオブジェクト
 
+    [SerializeField]
     private GameObject BGM_Text;        // BGMのテキスト
+    [SerializeField]
     private GameObject SE_Text;         // SEのテキスト
+    [SerializeField]
     private GameObject VOICE_Text;      // Voiceのテキスト
+    [SerializeField]
     private GameObject BackText;        // 戻るのテキスト
 
     [SerializeField]
@@ -38,10 +42,10 @@ public class OptionCursor : MonoBehaviour
         VolCon = transform.Find("VolumeControllerObj").gameObject;
 
         // オプションのテキストを取得
-        BGM_Text = transform.Find("BGMText").gameObject;
-        SE_Text = transform.Find("SEText").gameObject;
-        VOICE_Text = transform.Find("VOICEText").gameObject;
-        BackText = transform.Find("BackText").gameObject;
+        //BGM_Text = transform.Find("BGMText").gameObject;
+        //SE_Text = transform.Find("SEText").gameObject;
+        //VOICE_Text = transform.Find("VOICEText").gameObject;
+        //BackText = transform.Find("BackText").gameObject;
     }
 
     // Update is called once per frame
