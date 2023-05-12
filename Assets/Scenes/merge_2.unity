@@ -1421,7 +1421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &360780412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1536,7 +1536,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -313, y: -226}
+  m_AnchoredPosition: {x: -290, y: -262}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!20 &370777762 stripped
@@ -1787,7 +1787,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &538967699
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1805,7 +1805,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -313, y: -179}
+  m_AnchoredPosition: {x: -290, y: -227}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &538967700
@@ -4508,8 +4508,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NormalTime: 10
-  SpeedTime: 40
-  AttackTime: 40
+  SpeedTime: 20
+  AttackTime: 20
   currentPhase: 0
   Reticle: {fileID: 1619731665}
   Line: {fileID: 3879867394462616794, guid: 8d5861b8308b74f409af1a6c227245a9, type: 3}
@@ -6108,6 +6108,8 @@ MonoBehaviour:
   playing: 0
   textSpeed: 0.0001
   Window: {fileID: 2114847176}
+  Name: {fileID: 538967698}
+  Text: {fileID: 360780411}
 --- !u!1001 &1906029977
 PrefabInstance:
   m_ObjectHideFlags: 0

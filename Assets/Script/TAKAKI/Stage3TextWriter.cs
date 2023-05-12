@@ -6,6 +6,10 @@ public class Stage3TextWriter : MonoBehaviour
 {
     public Stage3UIText uitext;
 
+    public GameObject Window;
+    public GameObject Name;
+    public GameObject Text;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +26,10 @@ public class Stage3TextWriter : MonoBehaviour
     // 文章を表示させるコルーチン
     IEnumerator Cotest()
     {
+        Window.SetActive(true);
+        Name.SetActive(true);
+        Text.SetActive(true);
+
         string A = "　　　　　　　　　　";
 
         uitext.DrawNameText("", " ");
@@ -95,6 +103,10 @@ public class Stage3TextWriter : MonoBehaviour
 
         uitext.DrawNameText("AI", "アナタとワタシなら、できます。生きて帰りましょう。。" + A);
         yield return new WaitForSeconds(3.0f);
+
+        Window.SetActive(false);
+        Name.SetActive(false);
+        Text.SetActive(false);
         //yield return null;
     }
 }
