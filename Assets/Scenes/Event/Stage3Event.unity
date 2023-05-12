@@ -292,7 +292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2192782489012478368, guid: 49ace4bb79f638c48bddca7b09ded5bb, type: 3}
       propertyPath: m_TagString
-      value: PlayerParent
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3951018357684003096, guid: 49ace4bb79f638c48bddca7b09ded5bb, type: 3}
       propertyPath: m_RootOrder
@@ -423,7 +423,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &912806753
 MonoBehaviour:
@@ -945,7 +945,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &1995076246
 MonoBehaviour:

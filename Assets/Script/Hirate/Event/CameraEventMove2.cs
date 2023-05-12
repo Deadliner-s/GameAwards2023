@@ -35,7 +35,7 @@ public class CameraEventMove2 : MonoBehaviour
     void Start()
     {
         // プレイヤーの取得
-        player = GameObject.FindGameObjectWithTag("PlayerParent");
+        player = GameObject.FindGameObjectWithTag("Player");
         // ボスの取得
         boss = GameObject.FindGameObjectWithTag("BossParent");
 

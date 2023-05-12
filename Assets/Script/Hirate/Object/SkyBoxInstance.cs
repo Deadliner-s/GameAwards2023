@@ -14,14 +14,4 @@ public class SkyBoxInstance : MonoBehaviour
     {
         RenderSettings.skybox = new Material(skyInstance);
     }
-
-    // オブジェクトが破棄された時実行
-    private void OnDestroy()
-    {
-        if (skyInstance != null)
-        {
-            Destroy(skyInstance);
-            skyInstance = null;
-        }
-    }
 }
