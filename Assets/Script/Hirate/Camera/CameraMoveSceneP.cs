@@ -75,7 +75,7 @@ public class CameraMoveSceneP : MonoBehaviour
             {
                 Vector3 pos = player.transform.position;
                 pos.x += 0.02f;
-                pos.z += 0.001f;
+                pos.z += 0.005f;
                 player.transform.position = pos;
                 // スタート地点を現在の座標にする
                 transform.position = Vector3.Lerp(start, end, rate);

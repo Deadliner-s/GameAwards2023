@@ -1048,7 +1048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4979379680325929208, guid: 2dbb230dcb44ee046ba8258bfa1f05d0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4979379680325929208, guid: 2dbb230dcb44ee046ba8258bfa1f05d0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1421,7 +1421,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367080600}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.94, z: -20.277}
+  m_LocalPosition: {x: 0, y: 0.94, z: -10.277}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3702,7 +3702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261410, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -19.24
+      value: -9.24
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261410, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5652,6 +5652,7 @@ MonoBehaviour:
   talkText: {fileID: 1412516437}
   playing: 0
   textSpeed: 0.1
+  Window: {fileID: 0}
 --- !u!224 &1597170020 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2969251025863040514, guid: d668ee0516857414aa63578f5957c949, type: 3}

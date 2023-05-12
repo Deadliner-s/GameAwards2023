@@ -24,16 +24,6 @@ public class CameraEventMove : MonoBehaviour
     [Tooltip("カメラの移動時間")]
     [SerializeField] float moveTimeCamera = 1.0f;
 
-    // シーン遷移用
-    private enum Scene
-    {
-        Scene1 = 1,
-        Scene2,
-        Scene3,
-
-        SceneMax = 99,
-    }
-
     private PlayerMove playerMove;           // プレイヤーの移動を切る用
     private PlayerMoveAngle playerMoveAngle; // プレイヤーの回転を切る用
     private GManager GManager; // シーン切り替え用
@@ -41,7 +31,7 @@ public class CameraEventMove : MonoBehaviour
     private float elapsedTime = 0.0f; // 経過時間
     private bool bInput = false; // 入力判定用
 
-    //private AsyncOperation async; // シーン遷移用
+    private AsyncOperation async; // シーン遷移用
 
     // Start is called before the first frame update
     void Start()
@@ -50,16 +40,9 @@ public class CameraEventMove : MonoBehaviour
         playerMoveAngle = player.GetComponent<PlayerMoveAngle>(); // プレイヤーの回転スクリプトを入れる用
 
         // シーン読み込み
-        //Scene scene = Scene.SceneMax;
-        //switch (scene)
-        //{
-        //    case Scene.Scene1:
-        //        async = SceneManager.LoadSceneAsync("Stage2");
-
-        //        break;
-
-        //}
-        //async.allowSceneActivation = false;
+        SceneLoad("Stage2");
+        // シーン遷移フラグをfalseにする
+        async.allowSceneActivation = false;
     }
 
     // Update is called once per frame
@@ -99,7 +82,11 @@ public class CameraEventMove : MonoBehaviour
     // シーン遷移処理
     private void SceneMove()
     {
-        SceneManager.LoadScene("Stage1");
-        //async.allowSceneActivation = true;
+        async.allowSceneActivation = true;
+    }
+    // シーン読み込み処理
+    private void SceneLoad(string scene)
+    {
+        async = SceneManager.LoadSceneAsync(scene);
     }
 }
