@@ -39,7 +39,9 @@ public class PhaseManager : MonoBehaviour
     [SerializeField]
     private Volume volume;
     private RadialBlurVolume Blur;
+    private GaussianBlurVolume gBlur;
     public float BlurStrength;
+    public float gBlurStrength;
     private float BlurCount;
     private float CountPoint = 0.001f;
     private int i;
@@ -93,8 +95,10 @@ public class PhaseManager : MonoBehaviour
         if(volume)
         {
             volume.profile.TryGet(out Blur);
+            volume.profile.TryGet(out gBlur);
             BlurCount = BlurStrength * 1000;
             Blur.strength.value = 0.0f;
+            gBlur.SamplingDistance.value = 0.0f;
         }
         else
         {
@@ -241,19 +245,23 @@ public class PhaseManager : MonoBehaviour
                 {
                     if (volume)
                     {
-                        Blur.strength.value -= CountPoint;
+                        Blur.strength.value -= CountPoint * 5;
                     }
-                    i+= 2;
+                    i+= 5;
                 }
                 else
                 {
                     // ブラーをだんだんとかけていく処理
-                    if (volume)
+                    if (gBlur.SamplingDistance.value != gBlurStrength)
                     {
-                        Blur.strength.value += CountPoint;
+                        if (volume)
+                        {
+                            gBlur.SamplingDistance.value += CountPoint;
+                        }
+                        i++;
                     }
-                    i++;
                 }
+
 
                 if(Blur.strength.value == BlurStrength && volume != null)
                 {
@@ -262,26 +270,31 @@ public class PhaseManager : MonoBehaviour
             }
             if (currentPhase == Phase.Attack_Phase && volume != null)
             {
-                // ブラーをだんだんと0にしていく処理
-                Blur.strength.value -= CountPoint;
-                i += 2;
-
                 if (ManeverEnd == true)
                 {
-                    Blur.strength.value -= CountPoint;
+                    // マニューバ後のブラーを消していく処理
+                    Blur.strength.value -= CountPoint * 5;
+                    i += 5;
+                }
+                else
+                {
+                    //// ブラーをだんだんと0にしていく処理
+                    gBlur.SamplingDistance.value -= CountPoint;
+                    i += 2;
                 }
             }
         }
         else if (currentPhase == Phase.Speed_Phase || currentPhase == Phase.Attack_Phase && volume != null)
         {
-            if (currentPhase == Phase.Attack_Phase)
+            if (currentPhase == Phase.Speed_Phase)
             {
-                Blur.strength.value = BlurStrength;
+                Blur.strength.value = 0.0f;
                 ManeverEnd = false;
             }
             if (currentPhase == Phase.Attack_Phase)
             {
                 Blur.strength.value = 0.0f;
+                gBlur.SamplingDistance.value = 0.0f;
                 ManeverEnd = false;
             }
         }
@@ -291,24 +304,12 @@ public class PhaseManager : MonoBehaviour
         {
             if (playerMove.maneverFlg == true)
             {
-                if (currentPhase == Phase.Speed_Phase)
+                i = 0;
+                if (volume)
                 {
-                    i = 0;
-                    if (volume)
-                    {
-                        Blur.strength.value = BlurStrength + 0.1f;
-                    }
-                    ManeverEnd = true;
+                    Blur.strength.value = BlurStrength;
                 }
-                if (currentPhase == Phase.Attack_Phase)
-                {
-                    i = 0;
-                    if (volume)
-                    {
-                        Blur.strength.value = BlurStrength;
-                    }
-                    ManeverEnd = true;
-                }
+                ManeverEnd = true;
             }
         }
     }
