@@ -16,6 +16,7 @@ public class MissileBossClusterSmall : MonoBehaviour
     bool Miss;
 
     System.Random rand = new System.Random();
+    float randSpeed;
     float randY;
     Vector3 PlusY;
 
@@ -33,6 +34,8 @@ public class MissileBossClusterSmall : MonoBehaviour
             ToPos = Player.transform.position; //Player
             Miss = false;
             off = 0.2f;
+            randSpeed = rand.Next(20);
+            randSpeed *= 0.0001f;
             randY = rand.Next(30);
             randY -= 15;
             randY *= 0.01f;
@@ -45,7 +48,7 @@ public class MissileBossClusterSmall : MonoBehaviour
     {
         if (Player)//プレイヤーは生きている（存在する）
         {
-            if (!Miss && Speed >= MinSpeed)
+            if (!Miss && Speed >= MinSpeed+randSpeed)
             {
                 Speed -= Accel;
                 ToPos = Player.transform.position;   //プレイヤーの位置
