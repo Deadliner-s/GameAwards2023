@@ -3384,7 +3384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2969251025863040514, guid: d668ee0516857414aa63578f5957c949, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2969251025863040514, guid: d668ee0516857414aa63578f5957c949, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3533,7 +3533,7 @@ MonoBehaviour:
   nameText: {fileID: 1903856307}
   talkText: {fileID: 1124990218}
   playing: 0
-  textSpeed: 0.1
+  textSpeed: 0.0001
   Window: {fileID: 0}
 --- !u!1 &692561288
 GameObject:
@@ -5280,7 +5280,7 @@ Transform:
   - {fileID: 380775282}
   - {fileID: 2122572055}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1343211724
 MonoBehaviour:

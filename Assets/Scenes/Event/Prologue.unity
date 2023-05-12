@@ -440,7 +440,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &912806753
 MonoBehaviour:
@@ -591,7 +591,7 @@ MonoBehaviour:
   nameText: {fileID: 2132368712}
   talkText: {fileID: 185268061}
   playing: 0
-  textSpeed: 0.07
+  textSpeed: 0.0001
 --- !u!1001 &1728212148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -883,7 +883,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &1995076246
 MonoBehaviour:
