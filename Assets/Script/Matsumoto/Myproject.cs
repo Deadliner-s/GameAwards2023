@@ -414,6 +414,24 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""47e493b7-1039-43df-b0b0-39c7b4acc61c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""71a9a858-e172-4109-8465-fe29a95f211b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -955,6 +973,72 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                     ""action"": ""Start"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""11799689-c953-481a-a45a-597b9ef4b48e"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1b8dabbd-a1b4-40a7-90f5-c63014d5c7ac"",
+                    ""path"": ""<XInputController>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""abec1c06-b96b-41f0-b2c8-3612f471e5b7"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""819ea70d-3857-4256-b21d-f4d5c25ab6cb"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3efffb47-752d-4d6c-8cc0-8e048ad24c24"",
+                    ""path"": ""<XInputController>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1392c02c-bb3d-4103-bc99-f3b56eb5502a"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1051,6 +1135,8 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
         m_UI_Select = m_UI.FindAction("Select", throwIfNotFound: true);
         m_UI_Back = m_UI.FindAction("Back", throwIfNotFound: true);
         m_UI_Start = m_UI.FindAction("Start", throwIfNotFound: true);
+        m_UI_Right = m_UI.FindAction("Right", throwIfNotFound: true);
+        m_UI_Left = m_UI.FindAction("Left", throwIfNotFound: true);
         // Blank
         m_Blank = asset.FindActionMap("Blank", throwIfNotFound: true);
     }
@@ -1184,6 +1270,8 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_Select;
     private readonly InputAction m_UI_Back;
     private readonly InputAction m_UI_Start;
+    private readonly InputAction m_UI_Right;
+    private readonly InputAction m_UI_Left;
     public struct UIActions
     {
         private @Myproject m_Wrapper;
@@ -1203,6 +1291,8 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
         public InputAction @Select => m_Wrapper.m_UI_Select;
         public InputAction @Back => m_Wrapper.m_UI_Back;
         public InputAction @Start => m_Wrapper.m_UI_Start;
+        public InputAction @Right => m_Wrapper.m_UI_Right;
+        public InputAction @Left => m_Wrapper.m_UI_Left;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1257,6 +1347,12 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                 @Start.started -= m_Wrapper.m_UIActionsCallbackInterface.OnStart;
                 @Start.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnStart;
                 @Start.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnStart;
+                @Right.started -= m_Wrapper.m_UIActionsCallbackInterface.OnRight;
+                @Right.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnRight;
+                @Right.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnRight;
+                @Left.started -= m_Wrapper.m_UIActionsCallbackInterface.OnLeft;
+                @Left.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnLeft;
+                @Left.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnLeft;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1306,6 +1402,12 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                 @Start.started += instance.OnStart;
                 @Start.performed += instance.OnStart;
                 @Start.canceled += instance.OnStart;
+                @Right.started += instance.OnRight;
+                @Right.performed += instance.OnRight;
+                @Right.canceled += instance.OnRight;
+                @Left.started += instance.OnLeft;
+                @Left.performed += instance.OnLeft;
+                @Left.canceled += instance.OnLeft;
             }
         }
     }
@@ -1404,6 +1506,8 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
         void OnSelect(InputAction.CallbackContext context);
         void OnBack(InputAction.CallbackContext context);
         void OnStart(InputAction.CallbackContext context);
+        void OnRight(InputAction.CallbackContext context);
+        void OnLeft(InputAction.CallbackContext context);
     }
     public interface IBlankActions
     {
