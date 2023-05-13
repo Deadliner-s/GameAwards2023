@@ -19,6 +19,7 @@ public class MissileBossClusterSmall : MonoBehaviour
     float randSpeed;
     float randY;
     Vector3 PlusY;
+    //OtherScript Particle = GetComponent<StartParticle>();
 
     GameObject Player;
     Vector3 ToPos;              //î≠éÀêÊ
@@ -40,6 +41,7 @@ public class MissileBossClusterSmall : MonoBehaviour
             randY -= 15;
             randY *= 0.01f;
             randY += PlusY.y;
+            GetComponent<StartParticle>().enabled = false;
         }
     }
 
@@ -56,6 +58,8 @@ public class MissileBossClusterSmall : MonoBehaviour
             }
             else
             {
+                if(!GetComponent<StartParticle>().enabled)
+                    GetComponent<StartParticle>().enabled= true;
                 Miss = true;
                 Speed = MaxSpeed;
                 Move = new Vector3(1.0f, randY * 0.3f, 0.0f);

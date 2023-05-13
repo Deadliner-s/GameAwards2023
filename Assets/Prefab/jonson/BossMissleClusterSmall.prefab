@@ -254,9 +254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96a14c8d5822ab43abf8bf726debb3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0.0025
-  MaxSpeed: 2
-  Accel: 0.0001
   MissRange: 0.5
 --- !u!114 &-4046062350313956058
 MonoBehaviour:
@@ -271,6 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particle: {fileID: 198637950067575458, guid: 007c57e2df8e9b144b99f471b84f3d56, type: 3}
+  StartTime: 0.5
 --- !u!114 &-3972371164990670206
 MonoBehaviour:
   m_ObjectHideFlags: 0
