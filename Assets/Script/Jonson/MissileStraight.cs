@@ -99,10 +99,9 @@ public class MissileStraight : MonoBehaviour
                 OutsideObj = Instantiate(outsideObject, targetScreenPosition, transform.rotation) as GameObject;  // 警告UIの生成                                                           
                 OutsideObj.transform.SetParent(canvas.transform, false);                                        // Canvasの子オブジェクトとして生成
 
-
+                LightObj.transform.position = NewPosFix;    //UIの位置を更新
                 newObj.transform.position = NewPosFix;      //UIの位置を更新
                 OutsideObj.transform.position = NewPosFix;  //UIの位置を更新
-                LightObj.transform.position = NewPosFix;    //UIの位置を更新
             }
             time = 0;
             Miss = false;
