@@ -314,7 +314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4979379680325929208, guid: 2dbb230dcb44ee046ba8258bfa1f05d0, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4979379680325929208, guid: 2dbb230dcb44ee046ba8258bfa1f05d0, type: 3}
       propertyPath: m_LocalScale.x
@@ -3384,7 +3384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2969251025863040514, guid: d668ee0516857414aa63578f5957c949, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2969251025863040514, guid: d668ee0516857414aa63578f5957c949, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3535,6 +3535,8 @@ MonoBehaviour:
   playing: 0
   textSpeed: 0.0001
   Window: {fileID: 0}
+  Name: {fileID: 0}
+  Text: {fileID: 0}
 --- !u!1 &692561288
 GameObject:
   m_ObjectHideFlags: 0
@@ -3928,6 +3930,7 @@ MonoBehaviour:
   Line: {fileID: 3879867394462616794, guid: 8d5861b8308b74f409af1a6c227245a9, type: 3}
   volume: {fileID: 1442577630}
   BlurStrength: 0.2
+  gBlurStrength: 0
   player: {fileID: 446777047}
   Debug_FixPhaseFlg: 0
 --- !u!4 &805285063
@@ -5280,7 +5283,7 @@ Transform:
   - {fileID: 380775282}
   - {fileID: 2122572055}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1343211724
 MonoBehaviour:
@@ -7815,74 +7818,92 @@ MonoBehaviour:
   - 15
   - 21
   - 31
+  - 0
   DurationCluster:
   - 4
   - 8
   - 3
+  - 0
   IntervalTriggerCluster:
   - 1.1
   - 1.5
   - 1.1
+  - 0
   StartTimeTop:
   - 100
   - 100
   - 100
+  - 0
   DurationTop:
   - 1
   - 1
   - 1
+  - 0
   IntervalTriggerTop:
   - 1
   - 1
   - 1
+  - 0
   StartTimeTopLeft:
   - 6
   - 100
   - 100
+  - 0
   DurationTopLeft:
   - 4
   - 1
   - 14
+  - 0
   IntervalTriggerTopLeft:
   - 3.1
   - 1
   - 4
+  - 0
   StartTimeLeft:
   - 6
   - 100
+  - 0
   - 0
   DurationLeft:
   - 7
   - 1
   - 13
+  - 0
   IntervalTriggerLeft:
   - 3.1
   - 1
   - 3
+  - 0
   StartTimeBotLeft:
   - 6
   - 12
   - 100
+  - 0
   DurationBotLeft:
   - 1
   - 1
   - 11
+  - 0
   IntervalTriggerBotLeft:
   - 1.1
   - 1.1
   - 2
+  - 0
   StartTimeBot:
   - 100
   - 100
   - 100
+  - 0
   DurationBot:
   - 1
   - 1
   - 1
+  - 0
   IntervalTriggerBot:
   - 1
   - 1
   - 1
+  - 0
 --- !u!114 &1933776100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7930,14 +7951,17 @@ MonoBehaviour:
   - 21
   - 27
   - 28
+  - 0
   DurationContena:
   - 3
   - 3
   - 3
+  - 0
   IntervalTriggerContena:
   - 1
   - 1
   - 1
+  - 0
 --- !u!23 &1933776101
 MeshRenderer:
   m_ObjectHideFlags: 0
