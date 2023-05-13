@@ -7,7 +7,7 @@ using System;
 public class MissileBossClusterSmall : MonoBehaviour
 {
     float Speed = 0.01f;        //ミサイルの速度
-    float MinSpeed = 0.005f;    //最小速度
+    float MinSpeed = 0.004f;    //最小速度
     float MaxSpeed = 0.02f;     //最大速度
     float Accel = 0.0001f;      //加(減)速度
 
@@ -58,7 +58,7 @@ public class MissileBossClusterSmall : MonoBehaviour
             {
                 Miss = true;
                 Speed = MaxSpeed;
-                Move = new Vector3(1.0f, 0.0f, 0.0f);
+                Move = new Vector3(1.0f, randY * 0.3f, 0.0f);
                 Destroy(gameObject, 3.0f);
             }
 
