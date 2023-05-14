@@ -18,8 +18,19 @@ public class UIText : MonoBehaviour
     private PhaseManager.Phase nextPhase;
 
     public GameObject Window;
+    public GameObject Name;
+    public GameObject Text;
 
-    void Start() { nextPhase = currntPhase; }
+    float AddTime = 0.0f;
+
+    bool FlgA = true;
+    bool FlgB = true;
+
+    void Start()
+    {
+        nextPhase = currntPhase;
+        StartCoroutine(A());
+    }
 
     // クリックで次のページを表示させるための関数
     public bool IsClicked()
@@ -41,31 +52,81 @@ public class UIText : MonoBehaviour
         StartCoroutine("CoDrawText", text);
     }
 
-    private void Update()
+    IEnumerator A()
     {
-        currntPhase = PhaseManager.instance.GetPhase();
-
-        if (nextPhase != currntPhase)
+        while (true)
         {
-            nextPhase = currntPhase;
+            yield return null;
+            currntPhase = PhaseManager.instance.GetPhase();
+            if (nextPhase != currntPhase)
+            {
+                FlgA = true;
+                FlgB = true;
+                //AddTime = 0.0f;
+
+                nextPhase = currntPhase;
+            }
             if (currntPhase == PhaseManager.Phase.Normal_Phase)
             {
-                Window.SetActive(false);
+
 
                 //SeFlg = false;
             }
             else if (currntPhase == PhaseManager.Phase.Speed_Phase)
             {
+                AddTime = 0.0f;
                 // ハイスピードフェイズ
-                Window.SetActive(true);
-                DrawNameText("AI", "敵母艦から大量のミサイルを確認。メインエンジンにエネルギーを充填。\n回避行動に専念してください。");
+                if (FlgA)
+                {
+                    Window.SetActive(true);
+                    Name.SetActive(true);
+                    Text.SetActive(true);
+                    DrawNameText("AI", "敵母艦から大量のミサイルを確認。メインエンジンにエネルギーを充填。\n回避行動に専念してください。");
+                    FlgA = false;
+                }
 
+                while (FlgB)
+                {
+                    AddTime += Time.deltaTime;
+                    Debug.Log(AddTime);
+                    yield return null;
+                    if (AddTime >= 5.0f)
+                    {
+                        Name.SetActive(false);
+                        Text.SetActive(false);
+                        Window.SetActive(false);
+                        FlgB = false;
+                        break;
+                    }
+                }
             }
+
             else if (currntPhase == PhaseManager.Phase.Attack_Phase)
             {
+                AddTime = 0.0f;
                 // アタックフェイズ
-                DrawNameText("AI", "敵母艦冷却状態を確認。攻撃兵装にエネルギーを充填。敵母艦を攻撃してください。");
-
+                if (FlgA)
+                {
+                    Window.SetActive(true);
+                    Name.SetActive(true);
+                    Text.SetActive(true);
+                    DrawNameText("AI", "敵母艦冷却状態を確認。攻撃兵装にエネルギーを充填。敵母艦を攻撃してください。");
+                    FlgA = false;
+                }
+                while (FlgB)
+                {
+                    AddTime += Time.deltaTime;
+                    Debug.Log(AddTime);
+                    yield return null;
+                    if (AddTime >= 5.0f)
+                    {
+                        Name.SetActive(false);
+                        Text.SetActive(false);
+                        Window.SetActive(false);
+                        FlgB = false;
+                        break;
+                    }
+                }
             }
 
         }
@@ -82,7 +143,7 @@ public class UIText : MonoBehaviour
             time += Time.deltaTime;
 
             // クリックされると一気に表示
-            if (IsClicked()) break;
+            //if (IsClicked()) break;
 
             int len = Mathf.FloorToInt(time / textSpeed);
             if (len > text.Length) break;

@@ -1433,7 +1433,7 @@ Transform:
   - {fileID: 51425784}
   - {fileID: 649166232}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &367080602
 MonoBehaviour:
@@ -5651,7 +5651,7 @@ MonoBehaviour:
   nameText: {fileID: 1872830652}
   talkText: {fileID: 1412516437}
   playing: 0
-  textSpeed: 0.1
+  textSpeed: 0.0001
   Window: {fileID: 0}
 --- !u!224 &1597170020 stripped
 RectTransform:
@@ -6267,7 +6267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2969251025863040514, guid: d668ee0516857414aa63578f5957c949, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2969251025863040514, guid: d668ee0516857414aa63578f5957c949, type: 3}
       propertyPath: m_AnchorMax.x

@@ -7,13 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class MenuCursor : MonoBehaviour
 {
-    public enum Stage
-    {
-        STAGE_1,
-        STAGE_2,
-        STAGE_3
-    }
-
     private Myproject InputActions;
     
     private int Selected;
@@ -23,16 +16,20 @@ public class MenuCursor : MonoBehaviour
     private GameObject fade;                // フェードオブジェクト
 
     [SerializeField]
+    private GameObject title;
+
+    [SerializeField]
     [Header("オプションメニュー")]
     private GameObject OptionMenu;
     private bool OptionMenuFlag = false;
 
+    [SerializeField]
+    [Header("データ削除確認")]
+    private GameObject CheckMenu;
+    private bool CheckMenuFlag = false;
+
     [Header("ゲームマネージャオブジェクト")]
     GameObject ManagerObj;
-
-    [SerializeField]
-    [Header("Debug用初期ステージ選択")]
-    public Stage stage;
 
     void Awake()
     {
@@ -50,9 +47,11 @@ public class MenuCursor : MonoBehaviour
         ManagerObj = GameObject.Find("GameManager");
 
         // メニュー数(タイトルロゴも入ってるため-1
-        ItemMax = transform.childCount - 1;
+        ItemMax = transform.childCount; //- 1;  外しました
 
         OptionMenuFlag = false;
+        CheckMenuFlag = false;
+
         // 初期カーソル位置設定
         Selected = 0;
         // 初期選択を白に
@@ -67,8 +66,20 @@ public class MenuCursor : MonoBehaviour
         {
             if (OptionMenu.activeSelf == false)
             {
+                title.SetActive(true);
                 InputActions.Enable();
                 OptionMenuFlag = false;
+            }
+        }
+
+        // オプション画面が閉じられた場合、再度入力を受け付ける
+        if (CheckMenuFlag == true)
+        {
+            if (CheckMenu.activeSelf == false)
+            {
+                title.SetActive(true);
+                InputActions.Enable();
+                CheckMenuFlag = false;
             }
         }
     }
@@ -106,24 +117,13 @@ public class MenuCursor : MonoBehaviour
         {
             case (0):
                 // NEW GAME
-                InputActions.Disable();
-
-                ManagerObj.GetComponent<GManager>().ReSetData();
-
-                // デバッグ用?
-                if (stage == Stage.STAGE_1)
-                {
-                    //SceneManager.LoadScene("Stage1");
-                    fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
-                }
-                if(stage == Stage.STAGE_2)
-                {
-                    fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2Event");
-                }
-                if (stage == Stage.STAGE_3)
-                {
-                    fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage3Event");
-                }
+                
+                //データ削除確認
+                title.SetActive(false);
+                CheckMenu.SetActive(true);
+                CheckMenuFlag = true;
+                InputActions.Disable();             // オプションメニューが開いているときは入力を受け付けない
+                this.gameObject.SetActive(false);
                 SoundManager.instance.PlaySE("Decision");
                 break;
 
@@ -152,6 +152,8 @@ public class MenuCursor : MonoBehaviour
                 break;
 
             case (2):
+                // OPTION
+                title.SetActive(false);
                 OptionMenu.SetActive(true);
                 OptionMenuFlag = true;
                 InputActions.Disable();             // オプションメニューが開いているときは入力を受け付けない
@@ -160,6 +162,7 @@ public class MenuCursor : MonoBehaviour
                 break;
 
             case (3):
+                // EXIT
 #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;//ゲームプレイ終了
 #else

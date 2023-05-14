@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ManagerSceneStart : MonoBehaviour
 {
     // マネージャーシーンをどのシーンからでも作るようにする
+    // 各シーンにアタッチする必要アリ
     private static bool Loaded { get; set; }
 
     private void Awake()

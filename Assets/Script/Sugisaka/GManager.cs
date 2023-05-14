@@ -31,7 +31,7 @@ public class GManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ReSetData();
+        LoadData();
 
         //stage1 = SceneManager.LoadSceneAsync("Stage1");
         //stage2 = SceneManager.LoadSceneAsync("Stage2");
@@ -72,10 +72,36 @@ public class GManager : MonoBehaviour
         //}
     }
 
+    void LoadData()
+    {
+        int stageNum = PlayerPrefs.GetInt("Stage_Num", 0);
+        switch (stageNum)
+        {
+            case (0):
+                Stage1 = false;
+                Stage2 = false;
+                break;
+            case (1):
+                Stage1 = true;
+                Stage2 = false;
+                break;
+            case (2):
+                Stage1 = true;
+                Stage2 = true;
+                break;
+        }
+    }
+
+
     public void ReSetData()
     {
+        // ゲーム内フラグリセット
         Stage1 = false;
         Stage2 = false;
+
+        // 
+        PlayerPrefs.SetInt("Stage_Num", 0);
+
     }
 
     // メニューのコンテニューで使用
@@ -85,12 +111,12 @@ public class GManager : MonoBehaviour
         int Snum = 0;
 
         // クリアフラグを確認して次のステージ選択
-        if (Stage1 == false)
+        if (Stage1 != true)
         {
             // ステージ1
             Snum = 0;
         }
-        else if (Stage1 == true && Stage2 == false)
+        else if (Stage2 != true)
         {
             // ステージ2
             Snum = 1;
@@ -111,12 +137,34 @@ public class GManager : MonoBehaviour
         {
             case (1):
                 Stage1 = true;
+                Stage2 = false;
+                PlayerPrefs.SetInt("Stage_Num", 1);
                 break;
             case (2):
+                Stage1 = true;
                 Stage2 = true;
+                PlayerPrefs.SetInt("Stage_Num", 2);
                 break;
             default:
                 break;
+        }
+    }
+
+    void OnApplicationQuit()
+    {
+        // アプリケーション終了時に
+        // 現在のクリア状況を保存
+        if (Stage1 != true)
+        {
+            PlayerPrefs.SetInt("Stage_Num", 0);
+        }
+        else if(Stage2 != true)
+        {
+            PlayerPrefs.SetInt("Stage_Num", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Stage_Num", 2);
         }
     }
 }
