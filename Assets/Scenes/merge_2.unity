@@ -2786,6 +2786,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7904084770700175032, guid: 510f74f7a1b7e7b4382ceb212febc58b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ce1f10728e0d04049a01849acb3107e9, type: 2}
     - target: {fileID: 8470185904944353892, guid: 510f74f7a1b7e7b4382ceb212febc58b, type: 3}
       propertyPath: m_Name
       value: SK_fx_hex_sphere01
@@ -3089,6 +3093,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -3284079101235368911, guid: 9532a8a62f3279c4d84f352b933d526c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2cc2420b85fbcdb43a111960725a19ca, type: 2}
     - target: {fileID: 919132149155446097, guid: 9532a8a62f3279c4d84f352b933d526c, type: 3}
       propertyPath: m_Name
       value: jikisagyou
@@ -3108,7 +3116,11 @@ PrefabInstance:
     - target: {fileID: 4915776726071734776, guid: 9532a8a62f3279c4d84f352b933d526c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7ea9b90faafe91343940cc5895d19008, type: 2}
+      objectReference: {fileID: 2100000, guid: 2cc2420b85fbcdb43a111960725a19ca, type: 2}
+    - target: {fileID: 4997971064869697033, guid: 9532a8a62f3279c4d84f352b933d526c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c269526ecf958d2499faf916c5a03454, type: 2}
     - target: {fileID: 6968076884287080925, guid: 9532a8a62f3279c4d84f352b933d526c, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -4539,6 +4551,7 @@ MonoBehaviour:
   Line: {fileID: 3879867394462616794, guid: 8d5861b8308b74f409af1a6c227245a9, type: 3}
   volume: {fileID: 1093950287}
   BlurStrength: 0.2
+  gBlurStrength: 0
   player: {fileID: 1359347799}
   Debug_FixPhaseFlg: 0
 --- !u!198 &1412683214 stripped
