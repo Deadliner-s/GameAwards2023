@@ -36,37 +36,37 @@ public class Stage2TextWriter : MonoBehaviour
         yield return StartCoroutine("Skip");
 
         uitext.DrawNameText("AI", "衛星軌道砲、エネルギー充填完了まで10秒" + A);
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(1.0f);
 
         uitext.DrawNameText("AI", "9" + A);
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(1.0f);
 
         uitext.DrawNameText("AI", "8" + A);
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(1.0f);
 
         uitext.DrawNameText("AI", "7" + A);
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(1.0f);
 
         uitext.DrawNameText("AI", "6" + A);
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(1.0f);
 
         uitext.DrawNameText("AI", "5" + A);
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(1.0f);
 
         uitext.DrawNameText("AI", "4" + A);
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(1.0f);
 
         uitext.DrawNameText("AI", "3" + A);
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(1.0f);
 
         uitext.DrawNameText("AI", "2" + A);
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(1.0f);
 
         uitext.DrawNameText("AI", "1" + A);
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(1.0f);
 
         uitext.DrawNameText("司令官", "衛星軌道砲、撃て！" + A);
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(2.0f);
 
         uitext.DrawNameText("AI", "目標への着弾を確認。目標を覆うバリアフィールド、いまだ健在です。" + A);
         yield return new WaitForSeconds(3.0f);
