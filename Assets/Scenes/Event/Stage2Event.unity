@@ -1016,6 +1016,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boos p2
       objectReference: {fileID: 0}
+    - target: {fileID: 5937572206176366146, guid: 5a188c68c94357740a471ef4be433e27, type: 3}
+      propertyPath: m_TagString
+      value: BossParent
+      objectReference: {fileID: 0}
     - target: {fileID: 6246869293547291511, guid: 5a188c68c94357740a471ef4be433e27, type: 3}
       propertyPath: m_IsActive
       value: 0
