@@ -14,4 +14,8 @@ public class SkyBoxInstance : MonoBehaviour
     {
         RenderSettings.skybox = new Material(skyInstance);
     }
+    public Material GetSky()
+    {
+        return skyInstance;
+    }
 }
