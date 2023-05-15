@@ -57,42 +57,49 @@ public class RockOnMarker : MonoBehaviour
         Physics.Linecast(transform.position, Camera.main.transform.position, out hit);
         if (player != null)
         {
-            if (hit.collider.gameObject.tag == "MainCamera" || hit.collider.gameObject.tag == "Player" ||
-                hit.collider.gameObject.name == "BossMissleHoming(Clone)" || hit.collider.gameObject.name == "BossMissleContena(Clone)" || hit.collider.gameObject.name == "BossMissleContenaSmall(Clone)")
+            try
             {
-                // 一度隠れたオブジェクトの場合
-                if (hideFlg == true)
+                if (hit.collider.gameObject.tag == "MainCamera" || hit.collider.gameObject.tag == "Player" ||
+                    hit.collider.gameObject.name == "BossMissleHoming(Clone)" || hit.collider.gameObject.name == "BossMissleContena(Clone)" || hit.collider.gameObject.name == "BossMissleContenaSmall(Clone)")
                 {
-                    rockonFlg = false;
-                    hideFlg = false;
+                    // 一度隠れたオブジェクトの場合
+                    if (hideFlg == true)
+                    {
+                        rockonFlg = false;
+                        hideFlg = false;
+                    }
+
+                    // ロックオンマークがない場合
+                    if (rockonFlg == false)
+                    {
+                        // ロックオンマークを生成
+                        target = (GameObject)Resources.Load("TargetMaker");
+                        target = Instantiate(target, transform.position, target.transform.rotation);
+
+                        targetRect = target.GetComponent<RectTransform>();
+
+                        // Canvasの子オブジェクトとして生成
+                        target.transform.SetParent(canvas.transform, false);
+                        rockonFlg = true;
+                    }
                 }
-
-                // ロックオンマークがない場合
-                if (rockonFlg == false)
+                else
                 {
-                    // ロックオンマークを生成
-                    target = (GameObject)Resources.Load("TargetMaker");
-                    target = Instantiate(target, transform.position, target.transform.rotation);
-
-                    targetRect = target.GetComponent<RectTransform>();
-
-                    // Canvasの子オブジェクトとして生成
-                    target.transform.SetParent(canvas.transform, false);
-                    rockonFlg = true;
+                    // 条件に当てはまらない場合はマークを消してフラグを立てる
+                    if (rockonFlg == true)
+                    {
+                        if (target != null)
+                        {
+                            Destroy(target);
+                        }
+                        hideFlg = true;
+                        this.tag = "Enemy";
+                    }
                 }
             }
-            else
+            catch
             {
-                // 条件に当てはまらない場合はマークを消してフラグを立てる
-                if (rockonFlg == true)
-                {
-                    if (target != null)
-                    {
-                        Destroy(target);
-                    }
-                    hideFlg = true;
-                    this.tag = "Enemy";
-                }
+                //Debug.Log("エラー");
             }
 
             if (target != null)
