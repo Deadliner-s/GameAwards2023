@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMoveAngle : MonoBehaviour
 {
+    private GameObject player;
+
     //---- ƒCƒ“ƒXƒyƒNƒ^[‚ÉŒ©‚¹‚é•Ï” ----
     // ‰ñ“]
     [Header("‰ñ“]")]
@@ -35,6 +37,8 @@ public class PlayerMoveAngle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
+
         cameraObj = GameObject.Find("Main Camera");
     }
 
@@ -43,7 +47,7 @@ public class PlayerMoveAngle : MonoBehaviour
     {
         // Œ»Ý‚Ì’l‚ð‘ã“ü
         // ‰ñ“]
-        angle = transform.eulerAngles;
+        angle = player.transform.eulerAngles;
         // ‚»‚Ì‚Ü‚Ü‚¾‚ÆŒvŽZ‚µ‚É‚­‚¢‚½‚ßA…•½Žž‚ð0‚Æ‚µ‚½”’l‚É‚·‚é
         if (angle.x >= 315) { angle.x = angle.x - 360; }
 
@@ -76,7 +80,7 @@ public class PlayerMoveAngle : MonoBehaviour
         }
 
         // ‰ñ“]‚Ì‘ã“ü
-        transform.eulerAngles = angle;
+        player.transform.eulerAngles = angle;
     }
 
     //void FixedUpdate()
