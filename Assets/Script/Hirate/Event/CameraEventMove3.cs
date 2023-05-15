@@ -28,7 +28,7 @@ public class CameraEventMove3 : MonoBehaviour
     private bool bInput = false; // 入力判定用
 
     //private AsyncOperation async;
-    [SerializeField]
+
     private GameObject fade; // フェードオブジェクト
 
     // Start is called before the first frame update
@@ -38,6 +38,8 @@ public class CameraEventMove3 : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         // ボスの取得
         boss = GameObject.FindGameObjectWithTag("BossParent");
+        // フェードの取得
+        fade = GameObject.FindGameObjectWithTag("Fade");
 
         playerMove = player.GetComponent<PlayerMove>();           // プレイヤーの移動スクリプトを入れる用
         playerMoveAngle = player.GetComponent<PlayerMoveAngle>(); // プレイヤーの回転スクリプトを入れる用
