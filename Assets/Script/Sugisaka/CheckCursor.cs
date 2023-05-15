@@ -172,7 +172,7 @@ public class CheckCursor : MonoBehaviour
             Vector3 scale = Window.transform.localScale;
             scale.y += 6.560745f * 0.1f;
             Window.transform.localScale = scale;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.01f);
         }
 
         InputActions = new Myproject();
@@ -180,5 +180,7 @@ public class CheckCursor : MonoBehaviour
         InputActions.UI.Left.performed += context => OnLeft();
         InputActions.UI.Right.performed += context => OnRight();
         InputActions.UI.Select.performed += context => OnSelect();
+
+        //yield break;
     }
 }
