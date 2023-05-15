@@ -268,7 +268,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particle: {fileID: 198637950067575458, guid: 007c57e2df8e9b144b99f471b84f3d56, type: 3}
-  StartTime: 0.5
 --- !u!114 &-3972371164990670206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,5 +323,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd9a54902e5542459783e3fd61909ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerDamage: 5
-  EnemyDamage: 0
+  playerDamageName: 2
+  bossDamageName: 9

@@ -304,6 +304,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 0.01
   DestroyTime: 15
+  Accel: 0
+  AccelStart: 0
 --- !u!114 &-4867831459758655791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,8 +356,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd9a54902e5542459783e3fd61909ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerDamage: 5
-  EnemyDamage: 0
+  playerDamageName: 7
+  bossDamageName: 9
 --- !u!114 &8056197363752620871
 MonoBehaviour:
   m_ObjectHideFlags: 0
