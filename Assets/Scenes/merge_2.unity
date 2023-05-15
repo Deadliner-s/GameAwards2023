@@ -595,11 +595,14 @@ MonoBehaviour:
   - 21
   - 27
   - 30
+  - 30
   DurationContena:
   - 3
   - 3
   - 3
+  - 3
   IntervalTriggerContena:
+  - 1
   - 1
   - 1
   - 1
@@ -1023,7 +1026,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1412,7 +1415,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2939,8 +2942,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NormalTime: 10
-  SpeedTime: 20
-  AttackTime: 20
+  SpeedTime: 40
+  AttackTime: 40
   currentPhase: 0
   Reticle: {fileID: 1619731665}
   Line: {fileID: 3879867394462616794, guid: 8d5861b8308b74f409af1a6c227245a9, type: 3}
