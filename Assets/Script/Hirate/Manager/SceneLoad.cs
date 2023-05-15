@@ -5,85 +5,168 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoad : MonoBehaviour
 {
+    // シーンの名前
+    public enum SCENE_NAME
+    {
+        E_STAGE1 = 0,       // ステージ1
+        E_STAGE2,           // ステージ2
+        E_STAGE3,           // ステージ3
+        E_PROLOGUE,         // プロローグ
+        E_STAGE2_EVENT,     // ステージ1と2の間のイベント
+        E_STAGE3_EVENT,     // ステージ2と3の間のイベント
+        E_EPILOGUE,         // エピローグ
+        E_RESULT_COMPLETED, // リザルト(俺の勝ち)
+        E_RESULT_FAILED,    // リザルト(僕の負け)
+
+        E_SCENE_MAX         // シーンの最大
+    }
+
     // 読み込み用
-    private AsyncOperation[] async;
-    private AsyncOperation asyncStage1;
-    private AsyncOperation asyncStage2;
-    private AsyncOperation asyncStage3;
-    private AsyncOperation asyncPrologue;
-    private AsyncOperation asyncStage2Event;
-    private AsyncOperation asyncStage3Event;
-    private AsyncOperation asyncEpilogue;
-    private AsyncOperation asyncResultCompleted;
-    private AsyncOperation asyncResultFailed;
-
-
-
-
+    private AsyncOperation[] async = new AsyncOperation[(int)SCENE_NAME.E_SCENE_MAX];
 
     // Start is called before the first frame update
     void Start()
     {
         // ステージ1
-        if (asyncStage1 == null)
+        if (async[(int)SCENE_NAME.E_STAGE1] == null)
         {
-            asyncStage1 = SceneManager.LoadSceneAsync("Stage1");
-            asyncStage1.allowSceneActivation = false;
+            async[(int)SCENE_NAME.E_STAGE1] = SceneManager.LoadSceneAsync("Stage1", LoadSceneMode.Additive);
         }
         // ステージ2
-        if (asyncStage2 == null)
+        if (async[(int)SCENE_NAME.E_STAGE2] == null)
         {
-            asyncStage2 = SceneManager.LoadSceneAsync("Stage2");
-            asyncStage2.allowSceneActivation = false;
+            async[(int)SCENE_NAME.E_STAGE2] = SceneManager.LoadSceneAsync("Stage2", LoadSceneMode.Additive);
         }
         // ステージ3
-        if (asyncStage3 == null)
+        if (async[(int)SCENE_NAME.E_STAGE3] == null)
         {
-            asyncStage3 = SceneManager.LoadSceneAsync("merge_2");
-            asyncStage3.allowSceneActivation = false;
+            async[(int)SCENE_NAME.E_STAGE3] = SceneManager.LoadSceneAsync("merge_2", LoadSceneMode.Additive);
         }
         // プロローグ
-
-        if (asyncPrologue == null)
+        if (async[(int)SCENE_NAME.E_PROLOGUE] == null)
         {
-            asyncPrologue = SceneManager.LoadSceneAsync("Prologue");
-            asyncPrologue.allowSceneActivation = false;
+            async[(int)SCENE_NAME.E_PROLOGUE] = SceneManager.LoadSceneAsync("Prologue", LoadSceneMode.Additive);
         }
         // ステージ1と2の間のイベント
-        if (asyncStage2Event == null)
+        if (async[(int)SCENE_NAME.E_STAGE2_EVENT] == null)
         {
-            asyncStage2Event = SceneManager.LoadSceneAsync("Stage2Event");
-            asyncStage2Event.allowSceneActivation = false;
+            async[(int)SCENE_NAME.E_STAGE2_EVENT] = SceneManager.LoadSceneAsync("Stage2Event", LoadSceneMode.Additive);
         }
         // ステージ2と3の間のイベント
-        if (asyncStage3Event == null)
+        if (async[(int)SCENE_NAME.E_STAGE3_EVENT] == null)
         {
-            asyncStage3Event = SceneManager.LoadSceneAsync("Stage3Event");
-            asyncStage3Event.allowSceneActivation = false;
+            async[(int)SCENE_NAME.E_STAGE3_EVENT] = SceneManager.LoadSceneAsync("Stage3Event", LoadSceneMode.Additive);
         }
-        // ステージ1
-        if (asyncStage1 == null)
+        // エピローグ
+        if (async[(int)SCENE_NAME.E_EPILOGUE] == null)
         {
-            asyncStage1 = SceneManager.LoadSceneAsync("Stage1");
-            asyncStage1.allowSceneActivation = false;
+            async[(int)SCENE_NAME.E_EPILOGUE] = SceneManager.LoadSceneAsync("Epilogue", LoadSceneMode.Additive);
         }
-        // ステージ1
-        if (asyncStage1 == null)
+        // リザルト(俺の勝ち)
+        if (async[(int)SCENE_NAME.E_RESULT_COMPLETED] == null)
         {
-            asyncStage1 = SceneManager.LoadSceneAsync("Stage1");
-            asyncStage1.allowSceneActivation = false;
+            async[(int)SCENE_NAME.E_RESULT_COMPLETED] = SceneManager.LoadSceneAsync("Stage1", LoadSceneMode.Additive);
         }
-        // ステージ1
-        if (asyncStage1 == null)
+        // リザルト(僕の負け)
+        if (async[(int)SCENE_NAME.E_RESULT_FAILED] == null)
         {
-            asyncStage1 = SceneManager.LoadSceneAsync("Stage1");
-            asyncStage1.allowSceneActivation = false;
+            async[(int)SCENE_NAME.E_RESULT_FAILED] = SceneManager.LoadSceneAsync("Stage1", LoadSceneMode.Additive);
+        }
+
+        // 全てのロードフラグをfalseにする
+        for (int i = 0; i < (int)SCENE_NAME.E_SCENE_MAX; i++)
+        {
+            async[i].allowSceneActivation = false;
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    // シーン起動関数
+    public void SceneStart(SCENE_NAME scene_name)
     {
-        //async.allowSceneActivation = true;
+        // 返り値でダメージを返すための分岐
+        switch (scene_name)
+        {
+            // ステージ1
+            case SCENE_NAME.E_STAGE1:
+                async[(int)SCENE_NAME.E_STAGE1].allowSceneActivation = true;
+                break;
+            // ステージ2
+            case SCENE_NAME.E_STAGE2:
+                async[(int)SCENE_NAME.E_STAGE2].allowSceneActivation = true;
+                break;
+            // ステージ3
+            case SCENE_NAME.E_STAGE3:
+                async[(int)SCENE_NAME.E_STAGE3].allowSceneActivation = true;
+                break;
+            // プロローグ
+            case SCENE_NAME.E_PROLOGUE:
+                async[(int)SCENE_NAME.E_PROLOGUE].allowSceneActivation = true;
+                break;
+            // ステージ1と2の間のイベント
+            case SCENE_NAME.E_STAGE2_EVENT:
+                async[(int)SCENE_NAME.E_STAGE2_EVENT].allowSceneActivation = true;
+                break;
+            // ステージ2と3の間のイベント
+            case SCENE_NAME.E_STAGE3_EVENT:
+                async[(int)SCENE_NAME.E_STAGE3_EVENT].allowSceneActivation = true;
+                break;
+            // エピローグ
+            case SCENE_NAME.E_EPILOGUE:
+                async[(int)SCENE_NAME.E_EPILOGUE].allowSceneActivation = true;
+                break;
+            // リザルト(俺の勝ち)
+            case SCENE_NAME.E_RESULT_COMPLETED:
+                async[(int)SCENE_NAME.E_RESULT_COMPLETED].allowSceneActivation = true;
+                break;
+            // リザルト(僕の負け)
+            case SCENE_NAME.E_RESULT_FAILED:
+                async[(int)SCENE_NAME.E_RESULT_FAILED].allowSceneActivation = true;
+                break;
+        }
+    }
+
+    // シーンのアンロード
+    public void SceneUnLoad(SCENE_NAME scene_name)
+    {
+        // 返り値でダメージを返すための分岐
+        switch (scene_name)
+        {
+            // ステージ1
+            case SCENE_NAME.E_STAGE1:
+                async[(int)SCENE_NAME.E_STAGE1] = SceneManager.UnloadSceneAsync("Stage1");
+                break;
+            // ステージ2
+            case SCENE_NAME.E_STAGE2:
+                async[(int)SCENE_NAME.E_STAGE2] = SceneManager.UnloadSceneAsync("Stage2");
+                break;
+            // ステージ3
+            case SCENE_NAME.E_STAGE3:
+                async[(int)SCENE_NAME.E_STAGE3] = SceneManager.UnloadSceneAsync("Stage3");
+                break;
+            // プロローグ
+            case SCENE_NAME.E_PROLOGUE:
+                async[(int)SCENE_NAME.E_PROLOGUE] = SceneManager.UnloadSceneAsync("Prologue");
+                break;
+            // ステージ1と2の間のイベント
+            case SCENE_NAME.E_STAGE2_EVENT:
+                async[(int)SCENE_NAME.E_STAGE2_EVENT] = SceneManager.UnloadSceneAsync("Stage2Event");
+                break;
+            // ステージ2と3の間のイベント
+            case SCENE_NAME.E_STAGE3_EVENT:
+                async[(int)SCENE_NAME.E_STAGE3_EVENT] = SceneManager.UnloadSceneAsync("Stage3Event");
+                break;
+            // エピローグ
+            case SCENE_NAME.E_EPILOGUE:
+                async[(int)SCENE_NAME.E_EPILOGUE] = SceneManager.UnloadSceneAsync("Epilogue");
+                break;
+            // リザルト(俺の勝ち)
+            case SCENE_NAME.E_RESULT_COMPLETED:
+                async[(int)SCENE_NAME.E_RESULT_COMPLETED] = SceneManager.UnloadSceneAsync("Stage1");
+                break;
+            // リザルト(僕の負け)
+            case SCENE_NAME.E_RESULT_FAILED:
+                async[(int)SCENE_NAME.E_RESULT_FAILED] = SceneManager.UnloadSceneAsync("Stage1");
+                break;
+        }
     }
 }

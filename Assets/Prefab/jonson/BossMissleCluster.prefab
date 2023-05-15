@@ -273,8 +273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd9a54902e5542459783e3fd61909ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerDamage: 5
-  EnemyDamage: 0
+  playerDamageName: 1
+  bossDamageName: 9
 --- !u!114 &3269853620418012009
 MonoBehaviour:
   m_ObjectHideFlags: 0

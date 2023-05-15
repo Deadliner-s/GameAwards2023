@@ -102,7 +102,7 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         // Soundクラスに入れたデータをAudioSourceに当てはめる
         foreach (BGM s in bgm)

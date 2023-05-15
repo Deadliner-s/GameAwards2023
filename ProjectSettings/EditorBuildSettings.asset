@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 9775d80f3ef84df40b1205c8ba91955e
+  - enabled: 1
+    path: Assets/Script/Hirate/Manager/ManagerScene.unity
+    guid: 64c6d320ba9af364492b1086dfd966b0
   m_configObjects: {}

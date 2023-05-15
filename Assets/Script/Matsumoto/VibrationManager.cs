@@ -38,7 +38,7 @@ public sealed class VibrationManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     // バイブレーション構造体
