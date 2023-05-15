@@ -42,15 +42,6 @@ public class CheckCursor : MonoBehaviour
 
     private float Max_Height = 6.560745f;
 
-    void Awake()
-    {
-        //InputActions = new Myproject();
-        //InputActions.Enable();
-        //InputActions.UI.Left.performed += context => OnLeft();
-        //InputActions.UI.Right.performed += context => OnRight();
-        //InputActions.UI.Select.performed += context => OnSelect();
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -77,10 +68,7 @@ public class CheckCursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Menu.activeSelf == false)
-        //{
-        //    InputActions.Enable();
-        //}
+
     }
 
     private void OnLeft()
@@ -134,11 +122,11 @@ public class CheckCursor : MonoBehaviour
 
                 // ƒ^ƒCƒgƒ‹‚É–ß‚é
                 Selected = 0;
-
-                this.gameObject.SetActive(false);
                 InputActions.Disable();
-                Menu.SetActive(true);
                 SoundManager.instance.PlaySE("Decision");
+
+                StartCoroutine("ScaleDown");
+
                 break;
             case (1):
                 // Yes
@@ -180,7 +168,18 @@ public class CheckCursor : MonoBehaviour
         InputActions.UI.Left.performed += context => OnLeft();
         InputActions.UI.Right.performed += context => OnRight();
         InputActions.UI.Select.performed += context => OnSelect();
+    }
+    IEnumerator ScaleDown()
+    {
+        for (float i = 1; i < 2; i += 0.1f)
+        {
+            Vector3 scale = Window.transform.localScale;
+            scale.y -= 6.560745f * 0.1f;
+            Window.transform.localScale = scale;
+            yield return new WaitForSeconds(0.01f);
+        }
 
-        //yield break;
+        this.gameObject.SetActive(false);
+        Menu.SetActive(true);
     }
 }
