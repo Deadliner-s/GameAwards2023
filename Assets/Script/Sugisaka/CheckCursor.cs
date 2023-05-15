@@ -18,6 +18,10 @@ public class CheckCursor : MonoBehaviour
 
     private int Selected;
     private int ItemMax;
+    [SerializeField]
+    private GameObject Yes_Text;        // BGMのテキスト
+    [SerializeField]
+    private GameObject No_Text;
 
     [SerializeField]
     [Header("メニュー")]
@@ -29,17 +33,22 @@ public class CheckCursor : MonoBehaviour
     [SerializeField]
     private GameObject fade;
 
-    [SerializeField]
+    [SerializeField]    
     [Header("Debug用初期ステージ選択")]
     public Stage stage;
 
+    [SerializeField]
+    GameObject Window;
+
+    private float Max_Height = 6.560745f;
+
     void Awake()
     {
-        InputActions = new Myproject();
-        InputActions.Enable();
-        InputActions.UI.Left.performed += context => OnLeft();
-        InputActions.UI.Right.performed += context => OnRight();
-        InputActions.UI.Select.performed += context => OnSelect();
+        //InputActions = new Myproject();
+        //InputActions.Enable();
+        //InputActions.UI.Left.performed += context => OnLeft();
+        //InputActions.UI.Right.performed += context => OnRight();
+        //InputActions.UI.Select.performed += context => OnSelect();
     }
 
     // Start is called before the first frame update
@@ -48,47 +57,72 @@ public class CheckCursor : MonoBehaviour
         // マネージャオブジェクト取得
         ManagerObj = GameObject.Find("GameManager");
 
-        ItemMax = transform.childCount - 1;
+        ItemMax = 2;
 
         Selected = 0;
         // 初期選択を白に
-        transform.GetChild(Selected).GetComponent<TextMeshProUGUI>().color 
-            = Color.white;
+        Yes_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+        No_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
+    }
+
+    private void OnEnable()
+    {
+        Vector3 scale = Window.transform.localScale;
+        scale.y = 0;
+        Window.transform.localScale = scale;
+        
+        StartCoroutine("ScaleUp");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Menu.activeSelf == false)
-        {
-            InputActions.Enable();
-        }
+        //if (Menu.activeSelf == false)
+        //{
+        //    InputActions.Enable();
+        //}
     }
 
     private void OnLeft()
     {
-        // 前選択を黒に
-        transform.GetChild(Selected).GetComponent<TextMeshProUGUI>().color = Color.black;
         // 
         Selected--;
         Selected = (int)Mathf.Repeat(Selected, ItemMax);
-        // 現選択を白に
-        transform.GetChild(Selected).GetComponent<TextMeshProUGUI>().color = Color.white;
+
+        if (Yes_Text.GetComponent<TextMeshProUGUI>().color == Color.black)
+        {
+            Yes_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
+            No_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+
+        }
+        else
+        {
+            Yes_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+            No_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
+        }
 
         SoundManager.instance.PlaySE("Select");
     }
 
     private void OnRight()
     {
-        // 前選択を黒に
-        transform.GetChild(Selected).GetComponent<TextMeshProUGUI>().color = Color.black;
         // 
         Selected--;
         Selected = (int)Mathf.Repeat(Selected, ItemMax);
-        // 現選択を白に
-        transform.GetChild(Selected).GetComponent<TextMeshProUGUI>().color = Color.white;
 
-        SoundManager.instance.PlaySE("Select");
+        if (Yes_Text.GetComponent<TextMeshProUGUI>().color == Color.black)
+        {
+            Yes_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
+            No_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+
+        }
+        else
+        {
+            Yes_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+            No_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
+
+        }
+            SoundManager.instance.PlaySE("Select");
     }
 
     private void OnSelect()
@@ -100,6 +134,7 @@ public class CheckCursor : MonoBehaviour
 
                 // タイトルに戻る
                 Selected = 0;
+
                 this.gameObject.SetActive(false);
                 InputActions.Disable();
                 Menu.SetActive(true);
@@ -128,5 +163,22 @@ public class CheckCursor : MonoBehaviour
                 //
                 break;
         }
+    }
+
+    IEnumerator ScaleUp()
+    {
+        for (float i = 1; i < 2; i += 0.1f)
+        {
+            Vector3 scale = Window.transform.localScale;
+            scale.y += 6.560745f * 0.1f;
+            Window.transform.localScale = scale;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        InputActions = new Myproject();
+        InputActions.Enable();
+        InputActions.UI.Left.performed += context => OnLeft();
+        InputActions.UI.Right.performed += context => OnRight();
+        InputActions.UI.Select.performed += context => OnSelect();
     }
 }
