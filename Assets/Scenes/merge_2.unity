@@ -1055,7 +1055,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -624.56067, w: 0}
+  m_margin: {x: 0, y: 0, z: -496.26233, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1086,7 +1086,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -290, y: -262}
+  m_AnchoredPosition: {x: -242, y: -262}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!20 &370777762 stripped
@@ -1350,7 +1350,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -290, y: -227}
+  m_AnchoredPosition: {x: -242, y: -229}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &538967700
@@ -1414,7 +1414,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -1444,7 +1444,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -488.30807, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2946,11 +2946,6 @@ MonoBehaviour:
   AttackTime: 40
   currentPhase: 0
   Reticle: {fileID: 1619731665}
-  Line: {fileID: 3879867394462616794, guid: 8d5861b8308b74f409af1a6c227245a9, type: 3}
-  volume: {fileID: 1093950287}
-  BlurStrength: 0.2
-  gBlurStrength: 0
-  player: {fileID: 1359347799}
   Debug_FixPhaseFlg: 0
 --- !u!1 &1432627013
 GameObject:
@@ -4803,7 +4798,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92e9684026b4748498a664fe75d4425c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1359347799}
   obj: {fileID: 1068330649}
   effectTime: 5
 --- !u!136 &2106895119
@@ -4863,7 +4857,7 @@ RectTransform:
   m_GameObject: {fileID: 2114847176}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 9.331146, y: 1.8378934, z: 1.2051}
+  m_LocalScale: {x: 8, y: 1.8378934, z: 1.2051}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 32605784}

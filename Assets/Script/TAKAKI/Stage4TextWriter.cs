@@ -30,21 +30,18 @@ public class Stage4TextWriter : MonoBehaviour
         Name.SetActive(true);
         Text.SetActive(true);
 
-        string A = "　　　　　　　　　　";
+        yield return new WaitForSeconds(1.0f);
 
-        uitext.DrawNameText("", " ");
-        yield return StartCoroutine("Skip");
-
-        uitext.DrawNameText("AI", "敵巨大飛行物体の破壊を確認。" + A);
+        uitext.DrawNameText("≪ AI ≫", "敵巨大飛行物体の破壊を確認。");
         yield return new WaitForSeconds(3.0f);
 
-        uitext.DrawNameText("司令官", "無事か！ " + A);
+        uitext.DrawNameText("≪ 司令官 ≫", "無事か！ ");
         yield return new WaitForSeconds(3.0f);
 
-        uitext.DrawNameText("司令官", "よくやった。お前は本物の 英雄だ" + A);
+        uitext.DrawNameText("≪ 司令官 ≫", "よくやった。お前は本物の 英雄だ");
         yield return new WaitForSeconds(3.0f);
 
-        uitext.DrawNameText("AI", "作戦終了の承認、確認しました。帰還しましょう。" + A);
+        uitext.DrawNameText("≪ AI ≫", "作戦終了の承認、確認しました。帰還しましょう。");
         yield return new WaitForSeconds(3.0f);
 
         Window.SetActive(false);
