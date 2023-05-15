@@ -14,12 +14,7 @@ public class MenuCursor_Resu : MonoBehaviour
 
     [SerializeField]
     private GameObject fade;                // フェードオブジェクト
-
-    [SerializeField]
-    [Header("オプションメニュー")]
-    private GameObject OptionMenu;
-    private bool OptionMenuFlag = false;
-
+   
     [Header("ゲームマネージャオブジェクト")]
     GameObject ManagerObj;
 
@@ -39,8 +34,7 @@ public class MenuCursor_Resu : MonoBehaviour
         ManagerObj = GameObject.Find("GameManager");
         
         ItemMax = transform.childCount - 1;
-
-        OptionMenuFlag = false;
+        
         // 初期カーソル位置設定
         Selected = 0;
         // 初期選択を白に
@@ -50,15 +44,6 @@ public class MenuCursor_Resu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {        
-        // オプション画面が閉じられた場合、再度入力を受け付ける
-        if(OptionMenuFlag == true)
-        {
-            if (OptionMenu.activeSelf == false)
-            {
-                InputActions.Enable();
-                OptionMenuFlag = false;
-            }
-        }
     }
 
     private void OnUp()
@@ -114,26 +99,10 @@ public class MenuCursor_Resu : MonoBehaviour
                 SoundManager.instance.PlaySE("Decision");
                 break;
             case (1):
-                // back
+                // Return to title
                 InputActions.Disable();
                 fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Title");
                 SoundManager.instance.PlaySE("Decision");
-                break;
-            case (2):
-                // option
-                OptionMenu.SetActive(true);
-                OptionMenuFlag = true;
-                InputActions.Disable();             // オプションメニューが開いているときは入力を受け付けない
-                this.gameObject.SetActive(false);
-                SoundManager.instance.PlaySE("Decision");
-                break;
-            case (3):
-                // exit
-#if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;//ゲームプレイ終了
-#else
-    Application.Quit();//ゲームプレイ終了
-#endif
                 break;
         }
     }
