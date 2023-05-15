@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIText : MonoBehaviour
+public class Stage12UIText : MonoBehaviour
 {
     // nameText:喋っている人の名前
     // talkText:喋っている内容やナレーション
@@ -81,7 +81,7 @@ public class UIText : MonoBehaviour
                     Window.SetActive(true);
                     Name.SetActive(true);
                     Text.SetActive(true);
-                    DrawNameText("≪ AI ≫", "敵母艦から大量のミサイルを確認。メインエンジンにエネルギーを充填。\n回避行動に専念してください。");
+                    DrawNameText("≪ AI ≫", "攻撃兵装へのエネルギーをカット。 メインエンジンにエネルギーを転換。回避行動に専念して下さい。");
                     FlgA = false;
                 }
 
@@ -110,7 +110,7 @@ public class UIText : MonoBehaviour
                     Window.SetActive(true);
                     Name.SetActive(true);
                     Text.SetActive(true);
-                    DrawNameText("≪ AI ≫", "敵母艦冷却状態を確認。攻撃兵装にエネルギーを充填。敵母艦を攻撃してください。");
+                    DrawNameText("≪ AI ≫", "敵内部から、多数の熱源反応を確認。飽和攻撃が予測されます。\n注意してください。");
                     FlgA = false;
                 }
                 while (FlgB)
