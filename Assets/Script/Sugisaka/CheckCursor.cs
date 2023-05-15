@@ -40,7 +40,7 @@ public class CheckCursor : MonoBehaviour
     [SerializeField]
     GameObject Window;
 
-    private float Max_Height = 6.560745f;
+    private float Max_Height = 3.777086f;
 
     // Start is called before the first frame update
     void Start()
@@ -158,7 +158,7 @@ public class CheckCursor : MonoBehaviour
         for (float i = 1; i < 2; i += 0.1f)
         {
             Vector3 scale = Window.transform.localScale;
-            scale.y += 6.560745f * 0.1f;
+            scale.y += 3.777086f * 0.1f;
             Window.transform.localScale = scale;
             yield return new WaitForSeconds(0.01f);
         }
@@ -174,7 +174,7 @@ public class CheckCursor : MonoBehaviour
         for (float i = 1; i < 2; i += 0.1f)
         {
             Vector3 scale = Window.transform.localScale;
-            scale.y -= 6.560745f * 0.1f;
+            scale.y -= 3.777086f * 0.1f;
             Window.transform.localScale = scale;
             yield return new WaitForSeconds(0.01f);
         }

@@ -119,7 +119,7 @@ public class MenuCursor : MonoBehaviour
                 // NEW GAME
                 
                 //データ削除確認
-                title.SetActive(false);
+                //title.SetActive(false);
                 CheckMenu.SetActive(true);
                 CheckMenuFlag = true;
                 InputActions.Disable();             // オプションメニューが開いているときは入力を受け付けない
