@@ -595,11 +595,14 @@ MonoBehaviour:
   - 21
   - 27
   - 30
+  - 30
   DurationContena:
   - 3
   - 3
   - 3
+  - 3
   IntervalTriggerContena:
+  - 1
   - 1
   - 1
   - 1

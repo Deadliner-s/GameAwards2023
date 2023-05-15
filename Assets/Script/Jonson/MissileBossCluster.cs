@@ -60,7 +60,7 @@ public class MissileBossCluster : MonoBehaviour
                 Cluster = true;
                 for (int i = 0; i < ClusterNumber; i++)
                 {
-                    newObj = Instantiate(otherObject, transform.position, Quaternion.identity);
+                    newObj = Instantiate(otherObject, transform.position, Quaternion.Euler(0.0f,0.0f,270.0f));
                 }
                 Destroy(gameObject, 0);
             }
