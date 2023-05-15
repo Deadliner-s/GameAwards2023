@@ -7,8 +7,8 @@ public class CameraMoveDestroy : MonoBehaviour
 {
     // プレイヤー
     [Header("オブジェクト設定")]
-    [Tooltip("プレイヤーのオブジェクト")]
-    [SerializeField] GameObject player;
+    // プレイヤーのオブジェクト
+    GameObject player;
     [Tooltip("見る先のオブジェクト")]
     [SerializeField] GameObject obj;
     // エフェクト
@@ -25,6 +25,8 @@ public class CameraMoveDestroy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+
         // プレイヤーのHPスクリプトを入れる用
         playerHp = player.GetComponent<PlayerHp>();
         // 撃墜時のスクリプトを入れる用
