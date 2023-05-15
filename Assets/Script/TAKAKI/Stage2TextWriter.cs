@@ -30,57 +30,54 @@ public class Stage2TextWriter : MonoBehaviour
         Name.SetActive(true);
         Text.SetActive(true);
 
-        string A = "　　　　　　　　　　";
-
-        uitext.DrawNameText("", " ");
-        yield return StartCoroutine("Skip");
-
-        uitext.DrawNameText("AI", "衛星軌道砲、エネルギー充填完了まで10秒" + A);
         yield return new WaitForSeconds(1.0f);
 
-        uitext.DrawNameText("AI", "9" + A);
+        uitext.DrawNameText("≪ AI ≫", "衛星軌道砲、エネルギー充填完了まで10秒");
         yield return new WaitForSeconds(1.0f);
 
-        uitext.DrawNameText("AI", "8" + A);
+        uitext.DrawNameText("≪ AI ≫", "9");
         yield return new WaitForSeconds(1.0f);
 
-        uitext.DrawNameText("AI", "7" + A);
+        uitext.DrawNameText("≪ AI ≫", "8");
         yield return new WaitForSeconds(1.0f);
 
-        uitext.DrawNameText("AI", "6" + A);
+        uitext.DrawNameText("≪ AI ≫", "7");
         yield return new WaitForSeconds(1.0f);
 
-        uitext.DrawNameText("AI", "5" + A);
+        uitext.DrawNameText("≪ AI ≫", "6");
         yield return new WaitForSeconds(1.0f);
 
-        uitext.DrawNameText("AI", "4" + A);
+        uitext.DrawNameText("≪ AI ≫", "5");
         yield return new WaitForSeconds(1.0f);
 
-        uitext.DrawNameText("AI", "3" + A);
+        uitext.DrawNameText("≪ AI ≫", "4");
         yield return new WaitForSeconds(1.0f);
 
-        uitext.DrawNameText("AI", "2" + A);
+        uitext.DrawNameText("≪ AI ≫", "3");
         yield return new WaitForSeconds(1.0f);
 
-        uitext.DrawNameText("AI", "1" + A);
+        uitext.DrawNameText("≪ AI ≫", "2");
         yield return new WaitForSeconds(1.0f);
 
-        uitext.DrawNameText("司令官", "衛星軌道砲、撃て！" + A);
+        uitext.DrawNameText("≪ AI ≫", "1");
+        yield return new WaitForSeconds(1.0f);
+
+        uitext.DrawNameText("≪ 司令官 ≫", "衛星軌道砲、撃て！");
         yield return new WaitForSeconds(2.0f);
 
-        uitext.DrawNameText("AI", "目標への着弾を確認。目標を覆うバリアフィールド、いまだ健在です。" + A);
+        uitext.DrawNameText("≪ AI ≫", "目標への着弾を確認。目標を覆うバリアフィールド、いまだ健在です。");
         yield return new WaitForSeconds(3.0f);
 
-        uitext.DrawNameText("司令官", "次で仕留める。衛星軌道砲、再充填を開始しろ。" + A);
+        uitext.DrawNameText("≪ 司令官 ≫", "次で仕留める。衛星軌道砲、再充填を開始しろ。");
         yield return new WaitForSeconds(3.0f);
 
-        uitext.DrawNameText("司令官", "だが、衛星の位置がヤツに補足された可能性がある。" + A);
+        uitext.DrawNameText("≪ 司令官 ≫", "だが、衛星の位置がヤツに補足された可能性がある。");
         yield return new WaitForSeconds(3.0f);
 
-        uitext.DrawNameText("司令官", "さらに接近し、ヤツの注意を引き付けてくれ！" + A);
+        uitext.DrawNameText("≪ 司令官 ≫", "さらに接近し、ヤツの注意を引き付けてくれ！");
         yield return new WaitForSeconds(3.0f);
 
-        uitext.DrawNameText("AI", "敵巨大飛行物体に接近します。さらなる攻撃に注意してください。" + A);
+        uitext.DrawNameText("≪ AI ≫", "敵巨大飛行物体に接近します。さらなる攻撃に注意してください。");
         yield return new WaitForSeconds(3.0f);
 
         Window.SetActive(false);

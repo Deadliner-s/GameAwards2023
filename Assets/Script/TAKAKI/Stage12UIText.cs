@@ -81,7 +81,7 @@ public class Stage12UIText : MonoBehaviour
                     Window.SetActive(true);
                     Name.SetActive(true);
                     Text.SetActive(true);
-                    DrawNameText("AI", "攻撃兵装へのエネルギーをカット。 メインエンジンにエネルギーを転換。回避行動に専念して下さい。");
+                    DrawNameText("≪ AI ≫", "攻撃兵装へのエネルギーをカット。 メインエンジンにエネルギーを転換。回避行動に専念して下さい。");
                     FlgA = false;
                 }
 
@@ -110,7 +110,7 @@ public class Stage12UIText : MonoBehaviour
                     Window.SetActive(true);
                     Name.SetActive(true);
                     Text.SetActive(true);
-                    DrawNameText("AI", "敵内部から、多数の熱源反応を確認。飽和攻撃が予測されます。注意してください。");
+                    DrawNameText("≪ AI ≫", "敵内部から、多数の熱源反応を確認。飽和攻撃が予測されます。\n注意してください。");
                     FlgA = false;
                 }
                 while (FlgB)
