@@ -983,11 +983,14 @@ MonoBehaviour:
   - 21
   - 27
   - 30
+  - 30
   DurationContena:
   - 3
   - 3
   - 3
+  - 3
   IntervalTriggerContena:
+  - 1
   - 1
   - 1
   - 1
@@ -4539,6 +4542,7 @@ MonoBehaviour:
   Line: {fileID: 3879867394462616794, guid: 8d5861b8308b74f409af1a6c227245a9, type: 3}
   volume: {fileID: 1093950287}
   BlurStrength: 0.2
+  gBlurStrength: 0
   player: {fileID: 1359347799}
   Debug_FixPhaseFlg: 0
 --- !u!198 &1412683214 stripped
@@ -7770,7 +7774,7 @@ PrefabInstance:
       objectReference: {fileID: 1987283940}
     - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: HealAmount
-      value: 0.01
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1180267641508261403, guid: 285e0369a29a8ab4bb053bda3619fa57, type: 3}
       propertyPath: BreakShield
