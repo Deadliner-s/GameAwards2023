@@ -18,6 +18,7 @@ public class Shield : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // ƒvƒŒƒCƒ„[‚ÌHP‚ª0ˆÈ‰º‚É‚È‚Á‚½‚ç“–‚½‚è”»’è‚ğÁ‚·
         if (Player.GetComponent<PlayerHp>().PlayerHP <= 0)
         {
             collider.enabled = false;
