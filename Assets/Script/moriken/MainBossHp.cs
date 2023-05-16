@@ -7,26 +7,44 @@ using UnityEngine.SceneManagement;
 
 public class MainBossHp : MonoBehaviour
 {
-    public GameObject GaugeObj;
+    [SerializeField] private GameObject GaugeObj;
+    [SerializeField] private GameObject damageGaugeObj;
+    [SerializeField] private GameObject allBossHpGauge;
     private Image HpGauge;
+    private Image damageGauge;
+    private Transform gaugeTrans;
 
     public float BossHP;
     private float BossMaxHP;
     private float damage;
+    private bool DifferenceFlag;
+
+    private int flame;
+    [SerializeField] private float Decreaseflame;
 
     // エフェクト
-    [SerializeField]
     [Tooltip("大ダメージ時")]
-    private GameObject explosionEffect;
-    [SerializeField]
+    [SerializeField] private GameObject explosionEffect;
     [Tooltip("通常ダメージ時")]
-    private GameObject NormalHiteffect;
+    [SerializeField] private GameObject NormalHiteffect;
 
     // 大ダメージ数
     public float HardDamage;
 
     //何回当たったら
     public int MAXHitCount;
+    private bool hit;
+
+    // 
+    [SerializeField]
+    private float speed;
+    [SerializeField]
+    private float vibration;
+    [SerializeField]
+    private float vibrationFlame;
+
+    Vector3 gaugePos;
+    private Vector3 gaugePosoffset;
 
     // Start is called before the first frame update
     void Start()
@@ -34,12 +52,50 @@ public class MainBossHp : MonoBehaviour
         BossMaxHP = BossHP;
         HpGauge = GaugeObj.GetComponent<Image>();
         HpGauge.fillAmount = 1;
+        gaugeTrans = allBossHpGauge.GetComponent<Transform>();
+
+        // ダメージを喰らったときのゲージ
+        damageGauge = damageGaugeObj.GetComponent<Image>();
+        damageGauge.fillAmount = HpGauge.fillAmount;
+
+        gaugePos = gaugeTrans.position;
+        gaugePosoffset = gaugePos;          // ボスのHPゲージの初期位置を保存
+
+        flame = 0;
+        hit = false;
+        DifferenceFlag = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-      
+        if (hit)
+        {
+            flame++;
+
+            //if (flame < vibrationFlame)
+            //{
+            //    gaugeTrans.position = PerlinNoise();
+            //}
+            //else
+            //     gaugeTrans.position = gaugePosoffset;
+        }
+
+        // 体力減少処理
+        if (DifferenceFlag)
+        {
+            if (Decreaseflame < flame)
+            {
+                if (HpGauge.fillAmount <= damageGauge.fillAmount)
+                    damageGauge.fillAmount -= 0.001f;
+                else
+                {
+                    DifferenceFlag = false;
+                    damageGauge.fillAmount = HpGauge.fillAmount;
+                    flame = 0;
+                }
+            }
+        }
     }
 
     public void Damage(Collision collision)
@@ -47,7 +103,11 @@ public class MainBossHp : MonoBehaviour
         // "Enemy"タグがついているオブジェクトにある"PlayerDamage"変数を受けとる
         damage = collision.gameObject.GetComponent<Damage>().EnemyDamage;
         BossHP -= damage;
-        HpGauge.fillAmount -= damage/BossMaxHP;
+        HpGauge.fillAmount -= damage / BossMaxHP;
+
+        // 当たった時にフラグをTrueにする
+        hit = true;
+        DifferenceFlag = true;
 
         // エフェクト生成
         GameObject InstantiateEffect
@@ -63,7 +123,7 @@ public class MainBossHp : MonoBehaviour
     public void ExplosionSet(Collision collision)
     {
         // エフェクト生成
-        GameObject InstantiateEffect 
+        GameObject InstantiateEffect
             = GameObject.Instantiate(explosionEffect, collision.transform.position, Quaternion.identity);
 
         // 表示時間
@@ -74,5 +134,22 @@ public class MainBossHp : MonoBehaviour
         HpGauge.fillAmount -= HardDamage / BossMaxHP;
 
         SoundManager.instance.PlaySE("WeakPoint");
+    }
+
+    private Vector3 PerlinNoise()
+    {
+        gaugePos = gaugeTrans.position;
+
+        gaugePos.x += GetNoise();   // ブレをゲージの位置に加算していく
+        gaugePos.y += GetNoise();
+
+        return gaugePos;
+    }
+
+    private float GetNoise()
+    {
+        var perlinNoise = 2 * (Mathf.PerlinNoise(Time.time, 0) - 0.5f);
+
+        return perlinNoise * vibration;
     }
 }
