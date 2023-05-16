@@ -580,14 +580,11 @@ MonoBehaviour:
   - 7
   - 15
   - 23
-  - 27
   DurationHoming:
   - 4
   - 4
-  - 4
-  - 4
+  - 12
   IntervalTriggerHoming:
-  - 0.2
   - 0.2
   - 0.2
   - 0.2
@@ -595,14 +592,11 @@ MonoBehaviour:
   - 21
   - 27
   - 30
-  - 30
   DurationContena:
   - 3
   - 3
   - 3
-  - 3
   IntervalTriggerContena:
-  - 1
   - 1
   - 1
   - 1
@@ -2941,7 +2935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5206886689ee4d74f98a6dc093602cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NormalTime: 10
+  NormalTime: 7
   SpeedTime: 40
   AttackTime: 40
   currentPhase: 0
