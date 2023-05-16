@@ -15,6 +15,7 @@ public class Laser_Cross : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = LaserBeam.GetComponent<LaserHead>().targetWorldPosition;
+        this.transform.rotation = Quaternion.Euler(0.0f, 20.0f, 0.0f);
+        //LaserBeam.GetComponent<LaserHead>().targetWorldPosition.x
     }
 }
