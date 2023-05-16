@@ -119,7 +119,15 @@ public class MissileStraight : MonoBehaviour
 
             if (time >= 120)
                 instant = true;
-
+            if(time >= 135)
+            {
+                if (newObj)
+                    Destroy(newObj);        //UIを消す
+                if (outsideObject)
+                    Destroy(OutsideObj);
+                if (LightObj)
+                    Destroy(LightObj);
+            }
             if (!Miss)              //画面内にまだ入ってない、追尾
             {
                 ToPos =Player.transform.position;   //プレイヤーの位置
