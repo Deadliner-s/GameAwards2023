@@ -5078,6 +5078,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneLoadManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5005266091318486016, guid: 4b8102f2816fb59439aff82be65a8c21, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b8102f2816fb59439aff82be65a8c21, type: 3}
 --- !u!1 &1185270027
