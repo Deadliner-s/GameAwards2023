@@ -6,7 +6,8 @@ public class CreateLaser : MonoBehaviour
 {
     public static CreateLaser instance;
 
-    [SerializeField] private PlayerHp playerHp;
+    private GameObject playerManager;
+    //[SerializeField] private PlayerHp playerHp;
     //[SerializeField] private GameObject Target;
 
     [Tooltip("ミサイルプレハブ")]
@@ -65,7 +66,9 @@ public class CreateLaser : MonoBehaviour
     private bool Use_flg_5 = false;
 
     void Start()
-    {        
+    {
+        playerManager = GameObject.Find("PlayerManager");
+
         // フェイズ取得
         currentPhase = PhaseManager.instance.GetPhase();
 
@@ -77,7 +80,7 @@ public class CreateLaser : MonoBehaviour
 
     void Update()
     {
-        if (!playerHp.BreakFlag)
+        if (!playerManager.GetComponent<PlayerHp>().BreakFlag)
         {
             // フェイズ取得
             currentPhase = PhaseManager.instance.GetPhase();

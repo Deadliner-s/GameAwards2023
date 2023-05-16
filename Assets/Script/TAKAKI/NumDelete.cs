@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NumDelete : MonoBehaviour
 {
-    GameObject Boss;
+    private GameObject BossManager;
 
     int HitCount;
     int MaxHitCount;
@@ -12,9 +12,11 @@ public class NumDelete : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        BossManager = GameObject.Find("BossManager");
+
         HitCount = 0;
-        Boss = GameObject.Find("boss_model");
-        MaxHitCount = Boss.GetComponent<MainBossHp>().MAXHitCount;
+       // Boss = GameObject.Find("boss_model");
+        MaxHitCount = BossManager.GetComponent<MainBossHp>().MAXHitCount;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -27,7 +29,7 @@ public class NumDelete : MonoBehaviour
             if(HitCount == MaxHitCount)
             {
                 // エフェクト表示
-                Boss.GetComponent<MainBossHp>().ExplosionSet(collision);
+                BossManager.GetComponent<MainBossHp>().ExplosionSet(collision);
 
                 Destroy(gameObject);
             }
