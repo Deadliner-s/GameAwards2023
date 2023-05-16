@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 331d523b7af3a424c81b05f4a1ff5459, type: 3}
   m_Name: RadialBlurVolume
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   sampleCount:
     m_OverrideState: 1
     m_Value: 6

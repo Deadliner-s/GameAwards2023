@@ -7,47 +7,50 @@ using UnityEngine.UI;
 
 public class PlayerHp : MonoBehaviour
 {
-    public GameObject GaugeObj;     // プレイヤーのHPゲージオブジェクト
+    public GameObject GaugeObj;
     Image HpGauge;
-    public GameObject DamageObj;    // プレイヤーのダメージゲージオブジェクト
+    public GameObject DamageObj;
     Image DamageGauge;
 
-    public float PlayerHP;          // プレイヤーのHP
-    private float PlayerMaxHp;              // プレイヤーのHPの最大値
+    public float PlayerHP;
+    float PlayerMaxHp;
 
-    [Tooltip("回復量")]
-    [SerializeField] private float HealAmount;
-    private float damage;
+    float Difference;
 
-    private float flame;
+    public float HealAmount;
+    float damage;
+    
+    public float MaxInvflame;
+    float Invflame;
 
-    private float Decreaseflame;
+    float Decreaseflame;
 
-    [Tooltip("シールド壊れてから回復するまでの時間")]
-    [SerializeField] private float RepairShieldflame;
+    float i;
 
-    private bool UseFlag;
-    private bool HealFlag;
-    private bool BreakShieldFlag;
+    public float RepairShieldflame;
+
+    bool UseFlag;
+    bool HealFlag;
+    bool BreakShieldFlag;
     public bool BreakFlag { get; private set; }
-    private bool DifferenceFlag;
 
-    [Tooltip("撃墜シーンに入ったときに消すオブジェクト")]
-    [SerializeField] private GameObject Canvas;
+    public GameObject Canvas;
 
     // hex_Shieldコンポーネント
     private HexShield hs;
 
     // PlayerHPオブジェクト
     [SerializeField]
-    private Transform PlayerHPGaugeTrans;
+    Transform PlayerHPGaugeTrans;
 
-    private HPGauge[] HpGaugecomponents;
+    HPGauge[] HpGaugecomponents;
 
-    private SphereCollider collider;
+    public bool BreakShield;
+
+    SphereCollider collider;
 
     // シーン読込用
-    //    private AsyncOperation async;
+//    private AsyncOperation async;
 
     // Start is called before the first frame update
     void Start()
@@ -58,16 +61,17 @@ public class PlayerHp : MonoBehaviour
         HpGauge.fillAmount = 1;
         // ダメージを喰らったときのゲージ
         DamageGauge = DamageObj.GetComponent<Image>();
-        DamageGauge.fillAmount = HpGauge.fillAmount;
+        DamageGauge.fillAmount = 1;
 
+        //フラグを非表示判定
         UseFlag = false;
         HealFlag = false;
         BreakShieldFlag = false;
         BreakFlag = false;
-        DifferenceFlag = false;
 
         Decreaseflame = 30;
 
+        BreakShield = false;
         collider = gameObject.GetComponent<SphereCollider>();
         collider.enabled = false;
 
@@ -77,9 +81,9 @@ public class PlayerHp : MonoBehaviour
         hs = this.gameObject.GetComponent<HexShield>();
 
         // 非同期処理でシーンの遷移実行(現在実行しているシーンのバックグラウンドで次のシーンの読み込みを事前に行う)
-        //        async = SceneManager.LoadSceneAsync("GameOver");
+//        async = SceneManager.LoadSceneAsync("GameOver");
         // シーンを読み込み終わってもシーン遷移は行わない状態にする
-        //        async.allowSceneActivation = false;
+//        async.allowSceneActivation = false;
     }
 
     // Update is called once per frame
@@ -88,41 +92,48 @@ public class PlayerHp : MonoBehaviour
         // 回復開始までの時間管理
         if (UseFlag == true)
         {
-            flame++;
+            Invflame++;
         }
 
         // 体力減少処理
-        if (DifferenceFlag)
+        if(Decreaseflame < Invflame)
         {
-            if(Decreaseflame < flame)
+            if(Difference != i)
             {
-                if (HpGauge.fillAmount <= DamageGauge.fillAmount)
-                     DamageGauge.fillAmount -= 0.005f;
-                else
-                {
-                    DifferenceFlag = false;
-                    DamageGauge.fillAmount = HpGauge.fillAmount;
-                }
+                DamageGauge.fillAmount -= 0.001f;
+                i += 0.001f;
+            }
+            else
+            {
+                i = 0.0f;
+                Difference = 0.0f;
             }
         }
 
-        // シールドが消滅したあとの回復時間に関する処理
-        if (BreakShieldFlag)
+        // 回復時間に関する処理
+        if(BreakShieldFlag)
         {
             // シールドが復活
-            if (RepairShieldflame < flame)
+            if (RepairShieldflame < Invflame)
             {
                 BreakShieldFlag = false;
+                BreakShield = false;
                 HealFlag = true;
-                flame = 0;
+                Invflame = 0;
             }
         }
+        else if (MaxInvflame < Invflame)
+        {
+            UseFlag = false;
+            HealFlag = true;
+            Invflame = 0;
+        }
 
-        // Hpの回復処理
         if (HealFlag)
         {
             PlayerHP += HealAmount;
             HpGauge.fillAmount = PlayerHP / PlayerMaxHp;
+            DamageGauge.fillAmount = PlayerHP / PlayerMaxHp;
 
             hs.ChangeShieldColor(PlayerHP, PlayerMaxHp);
             foreach (HPGauge comp in HpGaugecomponents)
@@ -130,14 +141,13 @@ public class PlayerHp : MonoBehaviour
                 comp.ChangeHpGaugeColor(PlayerHP, PlayerMaxHp);
             }
 
-            // プレイヤーのHPの最大値よりも大きくなった時回復をやめる
             if (PlayerHP >= PlayerMaxHp)
             {
                 HealFlag = false;
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.F1))
+        if(Input.GetKeyDown(KeyCode.F1))
         {
             // 完全に撃墜された判定にする
             BreakFlag = true;
@@ -145,11 +155,10 @@ public class PlayerHp : MonoBehaviour
             // UI関連を消す
             Canvas.SetActive(false);
         }
-
+        
         // 当たり判定関連の処理
-        if (BreakShieldFlag)
+        if (BreakShield == true)
         {
-            // シールドが壊れた(PlayerHpが0になった)ら当たり判定を付ける
             collider.enabled = true;
         }
         else
@@ -182,17 +191,15 @@ public class PlayerHp : MonoBehaviour
             //async.allowSceneActivation = true;
         }
 
+        HealFlag = false;
+
         // "Enemy"タグがついているオブジェクトにある"PlayerDamage"変数を受けとる
         damage = collision.gameObject.GetComponent<Damage>().PlayerDamage;
         PlayerHP -= damage;
+        DamageGauge.fillAmount = HpGauge.fillAmount;
         HpGauge.fillAmount -= damage / PlayerMaxHp;
 
-        DifferenceFlag = true;
-        
-        // フラグ管理
-        HealFlag = true;
-        UseFlag = true;
-        flame = 0;
+        Difference = HpGauge.fillAmount - DamageGauge.fillAmount;
 
         // 体力が0以下になったら
         if (PlayerHP <= 0)
@@ -200,10 +207,16 @@ public class PlayerHp : MonoBehaviour
             SoundManager.instance.PlaySE("PlayerDeath");
             PlayerHP = 0;
             BreakShieldFlag = true;
+            BreakShield = true;
+            UseFlag = true;
+            Invflame = 0;
         }
         // 体力が0よりも多い時
         else if (PlayerHP > 0)
         {
+            UseFlag = true;
+            Invflame = 0;
+
             SoundManager.instance.PlaySE("PlayerDamage");
         }
 
