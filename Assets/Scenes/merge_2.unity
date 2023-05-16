@@ -1892,6 +1892,7 @@ GameObject:
   - component: {fileID: 1093950288}
   - component: {fileID: 1093950287}
   - component: {fileID: 1093950286}
+  - component: {fileID: 1093950289}
   m_Layer: 0
   m_Name: DisplayEffect
   m_TagString: Untagged
@@ -1974,6 +1975,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1093950289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093950285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd5e552ab03d644eaf47a8e840975b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phaseManagerObj: {fileID: 1406777304}
+  volume: {fileID: 1093950287}
+  BlurStrength: 0.2
+  gBlurStrength: 0.15
+  player: {fileID: 1359347799}
 --- !u!1 &1129410424
 GameObject:
   m_ObjectHideFlags: 0
@@ -2720,6 +2738,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08a7f80d95de4ca44bea6392040a8f9c, type: 3}
+--- !u!1 &1294325367 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3587095558907759506, guid: 08a7f80d95de4ca44bea6392040a8f9c, type: 3}
+  m_PrefabInstance: {fileID: 1294325366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1294325368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 45674440068926652, guid: 08a7f80d95de4ca44bea6392040a8f9c, type: 3}
+  m_PrefabInstance: {fileID: 1294325366}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1298380668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3403,6 +3431,18 @@ PrefabInstance:
       propertyPath: MAXHitCount
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6588977473367775432, guid: 5a188c68c94357740a471ef4be433e27, type: 3}
+      propertyPath: Decreaseflame
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6588977473367775432, guid: 5a188c68c94357740a471ef4be433e27, type: 3}
+      propertyPath: allBossHpGauge
+      value: 
+      objectReference: {fileID: 1294325367}
+    - target: {fileID: 6588977473367775432, guid: 5a188c68c94357740a471ef4be433e27, type: 3}
+      propertyPath: damageGaugeObj
+      value: 
+      objectReference: {fileID: 1294325368}
     - target: {fileID: 6588977473367775432, guid: 5a188c68c94357740a471ef4be433e27, type: 3}
       propertyPath: HardDamageFlame
       value: 60
