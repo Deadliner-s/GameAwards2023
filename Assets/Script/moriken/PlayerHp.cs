@@ -75,7 +75,7 @@ public class PlayerHp : MonoBehaviour
 
         Decreaseflame = 30;
 
-        BreakShield = false;
+
         collider = player.GetComponent<SphereCollider>();
 
         collider.enabled = false;
