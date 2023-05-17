@@ -23,7 +23,8 @@ public class PhaseManager : MonoBehaviour
 
     [Header("現在のフェイズ(初期フェイズ)")]
     public Phase currentPhase = Phase.Normal_Phase;  // 現在のフェイズ
-    private Phase nextPhase;                         // 次のフェイズ
+    [System.NonSerialized]
+    public Phase nextPhase;                         // 次のフェイズ
 
     private float time = 0.0f;                       // 秒数カウント用
 
