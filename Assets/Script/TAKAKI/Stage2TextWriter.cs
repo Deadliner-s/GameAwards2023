@@ -65,7 +65,7 @@ public class Stage2TextWriter : MonoBehaviour
         uitext.DrawNameText("≪ 司令官 ≫", "衛星軌道砲、撃て！");
         yield return new WaitForSeconds(2.0f);
 
-        uitext.DrawNameText("≪ AI ≫", "目標への着弾を確認。目標を覆うバリアフィールド、いまだ健在です。");
+        uitext.DrawNameText("≪ AI ≫", "目標への着弾を確認。目標を覆うバリアフィール\nいまだ健在です。");
         yield return new WaitForSeconds(3.0f);
 
         uitext.DrawNameText("≪ 司令官 ≫", "次で仕留める。衛星軌道砲、再充填を開始しろ。");
@@ -77,7 +77,7 @@ public class Stage2TextWriter : MonoBehaviour
         uitext.DrawNameText("≪ 司令官 ≫", "さらに接近し、ヤツの注意を引き付けてくれ！");
         yield return new WaitForSeconds(3.0f);
 
-        uitext.DrawNameText("≪ AI ≫", "敵巨大飛行物体に接近します。さらなる攻撃に注意してください。");
+        uitext.DrawNameText("≪ AI ≫", "敵巨大飛行物体に接近します。\nさらなる攻撃に注意してください。");
         yield return new WaitForSeconds(3.0f);
 
         Window.SetActive(false);
