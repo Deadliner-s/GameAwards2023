@@ -9,12 +9,12 @@ using UnityEngine.UI;
 
 public class BossHp : MonoBehaviour
 {
-    GameObject Boss;
+    private GameObject BossManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        Boss = GameObject.Find("boss_model");
+        BossManager = GameObject.Find("BossManager");
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class BossHp : MonoBehaviour
         // もし衝突した相手オブジェクトのタグが"Enemy"ならば中の処理を実行
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
-            Boss.GetComponent<MainBossHp>().Damage(collision);
+            BossManager.GetComponent<MainBossHp>().Damage(collision);
         }
     }
 }

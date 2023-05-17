@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerAfterimage : MonoBehaviour
 {
-    [Header("オブジェクト設定")]
-    [Tooltip("プレイヤー")]
-    [SerializeField] GameObject player;
+    //[Header("オブジェクト設定")]
+    //[Tooltip("プレイヤー")]
+    private GameObject player;
     [Tooltip("残像")]
     [SerializeField] GameObject afterimageObj;
     private GameObject[] obj = new GameObject[5];
@@ -14,14 +14,19 @@ public class PlayerAfterimage : MonoBehaviour
     private Quaternion quaternion;
     private Quaternion[] lateQuaternion = new Quaternion[5];
     private Vector3[] latePos = new Vector3[5]; // 直前の座標
-    private PlayerMove playerMove;
+
+    private GameObject playerManager;
+    //private PlayerMove playerMove;
     private int saveObj;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
+        playerManager = GameObject.Find("PlayerManager");
         // PlayerMoveのスクリプトの中身を使用する用
-        playerMove = gameObject.GetComponent<PlayerMove>();
+        //playerMove = player.GetComponent<PlayerMove>();
+
         //// 現在の座標にプレイヤーの座標を代入
         //pos = player.transform.position;
         //// 現在の回転にプレイヤーの回転を代入
@@ -41,12 +46,12 @@ public class PlayerAfterimage : MonoBehaviour
     void Update()
     {
         // マニューバ開始時
-        if (playerMove.maneverFlg == true)
+        if (playerManager.GetComponent<PlayerMove>().maneverFlg == true)
         {
-            if (playerMove.inputMove.y >= 0.5f ||
-                playerMove.inputMove.x >= 0.5f ||
-                playerMove.inputMove.y <= -0.5f ||
-                playerMove.inputMove.x <= -0.5f)
+            if (playerManager.GetComponent<PlayerMove>().inputMove.y >= 0.5f ||
+                playerManager.GetComponent<PlayerMove>().inputMove.x >= 0.5f ||
+                playerManager.GetComponent<PlayerMove>().inputMove.y <= -0.5f ||
+                playerManager.GetComponent<PlayerMove>().inputMove.x <= -0.5f)
             {
                 // 演出用
                 saveObj = 0;
@@ -92,7 +97,7 @@ public class PlayerAfterimage : MonoBehaviour
         }
 
         // マニューバ終了時
-        if (playerMove.maneverFlg == false && saveObj < 5) {
+        if (playerManager.GetComponent<PlayerMove>().maneverFlg == false && saveObj < 5) {
             // モデルの削除処理
             Destroy(obj[saveObj]);
             // 演出用

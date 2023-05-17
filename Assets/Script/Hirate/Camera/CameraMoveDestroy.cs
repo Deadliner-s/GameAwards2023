@@ -7,8 +7,8 @@ public class CameraMoveDestroy : MonoBehaviour
 {
     // プレイヤー
     [Header("オブジェクト設定")]
-    // プレイヤーのオブジェクト
-    GameObject player;
+    private GameObject player;          // プレイヤー
+    private GameObject playerManager;   // プレイヤーマネージャー
     [Tooltip("見る先のオブジェクト")]
     [SerializeField] GameObject obj;
     // エフェクト
@@ -17,20 +17,21 @@ public class CameraMoveDestroy : MonoBehaviour
 
     private float playerDistance = 0.0f; // プレイヤーまでの距離
     private Vector3 centerPoint;
-    private PlayerHp playerHp; // バリア破壊後の完全撃墜時のフラグ取得用
-    private ShotDown shotDown; // エフェクト演出用
+    //private PlayerHp playerHp; // バリア破壊後の完全撃墜時のフラグ取得用
+    //private ShotDown shotDown; // エフェクト演出用
     private float cnt = 0.0f;  // 経過時間
     private bool breakStart;   // 撃破開始
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.Find("Player");
+        playerManager = GameObject.Find("PlayerManager");
 
-        // プレイヤーのHPスクリプトを入れる用
-        playerHp = player.GetComponent<PlayerHp>();
-        // 撃墜時のスクリプトを入れる用
-        shotDown = player.GetComponent<ShotDown>();
+        //// プレイヤーのHPスクリプトを入れる用
+        //playerHp = player.GetComponent<PlayerHp>();
+        //// 撃墜時のスクリプトを入れる用
+        //shotDown = player.GetComponent<ShotDown>();
 
         //カメラとプレイヤーの距離を調べる
         Vector3 toPlayer =
@@ -46,7 +47,7 @@ public class CameraMoveDestroy : MonoBehaviour
     void LateUpdate()
     {
         // 完全に撃墜された時
-        if (player != null && playerHp.BreakFlag && !breakStart)
+        if (player != null && playerManager.GetComponent<PlayerHp>().BreakFlag && !breakStart)
         {
             // カメラをプレイヤーに追従させる
             // 一度プレイヤーの座標と同じにさせる
@@ -70,7 +71,7 @@ public class CameraMoveDestroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (shotDown.EffectFlag)
+        if (playerManager.GetComponent<ShotDown>().EffectFlag)
         {
             if (cnt > effectTime)
             {

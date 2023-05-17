@@ -7,7 +7,11 @@ using UnityEngine.UI;
 
 public class PlayerHp : MonoBehaviour
 {
+    private GameObject player;
+    private GameObject playerManager;
+
     public GameObject GaugeObj;     // プレイヤーのHPゲージオブジェクト
+
     Image HpGauge;
     public GameObject DamageObj;    // プレイヤーのダメージゲージオブジェクト
     Image DamageGauge;
@@ -52,6 +56,9 @@ public class PlayerHp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
+        playerManager = GameObject.Find("PlayerManager");
+
         Canvas.SetActive(true);
         PlayerMaxHp = PlayerHP;
         HpGauge = GaugeObj.GetComponent<Image>();
@@ -68,13 +75,15 @@ public class PlayerHp : MonoBehaviour
 
         Decreaseflame = 30;
 
-        collider = gameObject.GetComponent<SphereCollider>();
+        BreakShield = false;
+        collider = player.GetComponent<SphereCollider>();
+
         collider.enabled = false;
 
         // PlayerHpコオブジェクトのHpGaugeコンポーネントを全て取得する
         HpGaugecomponents = PlayerHPGaugeTrans.GetComponentsInChildren<HPGauge>();
         // シールドオブジェクトからHexShieldコンポーネントを取得
-        hs = this.gameObject.GetComponent<HexShield>();
+        hs = playerManager.GetComponent<HexShield>();
 
         // 非同期処理でシーンの遷移実行(現在実行しているシーンのバックグラウンドで次のシーンの読み込みを事前に行う)
         //        async = SceneManager.LoadSceneAsync("GameOver");
@@ -158,14 +167,14 @@ public class PlayerHp : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        // もし衝突した相手オブジェクトのタグが"Enemy"ならば中の処理を実行
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Damage(collision);
-        }
-    }
+    //void OnCollisionEnter(Collision collision)
+    //{
+    //    // もし衝突した相手オブジェクトのタグが"Enemy"ならば中の処理を実行
+    //    if (collision.gameObject.CompareTag("Enemy"))
+    //    {
+    //        Damage(collision);
+    //    }
+    //}
 
     public void Damage(Collision collision)
     {
@@ -182,6 +191,9 @@ public class PlayerHp : MonoBehaviour
             //async.allowSceneActivation = true;
         }
 
+
+        HealFlag = false;
+        
         // "Enemy"タグがついているオブジェクトにある"PlayerDamage"変数を受けとる
         damage = collision.gameObject.GetComponent<Damage>().PlayerDamage;
         PlayerHP -= damage;
