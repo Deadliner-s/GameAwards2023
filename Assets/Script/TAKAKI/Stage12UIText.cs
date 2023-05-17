@@ -81,7 +81,7 @@ public class Stage12UIText : MonoBehaviour
                     Window.SetActive(true);
                     Name.SetActive(true);
                     Text.SetActive(true);
-                    DrawNameText("≪ AI ≫", "攻撃兵装へのエネルギーをカット。 メインエンジンにエネルギーを転換。回避行動に専念して下さい。");
+                    DrawNameText("≪ AI ≫", "攻撃兵装へのエネルギーをカット。 メインエンジンにエネルギーを転換。\n回避行動に専念して下さい。");
                     FlgA = false;
                 }
 
