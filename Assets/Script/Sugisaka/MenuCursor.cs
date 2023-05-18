@@ -72,12 +72,11 @@ public class MenuCursor : MonoBehaviour
             }
         }
 
-        // オプション画面が閉じられた場合、再度入力を受け付ける
+        // データ削除確認画面が閉じられた場合、再度入力を受け付ける
         if (CheckMenuFlag == true)
         {
             if (CheckMenu.activeSelf == false)
             {
-                title.SetActive(true);
                 InputActions.Enable();
                 CheckMenuFlag = false;
             }
@@ -117,16 +116,22 @@ public class MenuCursor : MonoBehaviour
         {
             case (0):
                 // NEW GAME
-                
-                //データ削除確認
-                //title.SetActive(false);
-                CheckMenu.SetActive(true);
-                CheckMenuFlag = true;
-                InputActions.Disable();             // オプションメニューが開いているときは入力を受け付けない
-                this.gameObject.SetActive(false);
+                if (ManagerObj.GetComponent<GManager>().GetFirstTime())
+                {
+                    // ステージ１へ
+                    InputActions.Disable();
+                    fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
+                }
+                else
+                {
+                    //データ削除確認
+                    CheckMenu.SetActive(true);
+                    CheckMenuFlag = true;
+                    InputActions.Disable();             // オプションメニューが開いているときは入力を受け付けない
+                    this.gameObject.SetActive(false);
+                }
                 SoundManager.instance.PlaySE("Decision");
                 break;
-
             case (1):
                 // CONTINUE
                 int num = ManagerObj.GetComponent<GManager>().GetNowStage();
@@ -147,10 +152,11 @@ public class MenuCursor : MonoBehaviour
                         InputActions.Disable();
                         fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage3Event");
                         break;
+                    default:
+                        break;
                 }
                 SoundManager.instance.PlaySE("Decision");
                 break;
-
             case (2):
                 // OPTION
                 title.SetActive(false);
@@ -160,7 +166,6 @@ public class MenuCursor : MonoBehaviour
                 this.gameObject.SetActive(false);
                 SoundManager.instance.PlaySE("Decision");
                 break;
-
             case (3):
                 // EXIT
 #if UNITY_EDITOR

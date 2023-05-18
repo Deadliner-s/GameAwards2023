@@ -6,9 +6,14 @@ using UnityEngine.SceneManagement;
 public class GManager : MonoBehaviour
 {
     public static GManager instance = null;
-
-    public bool Stage1;
-    public bool Stage2;
+    
+    [SerializeField]
+    bool Stage1;
+    [SerializeField]
+    bool Stage2;
+    
+    [SerializeField]
+    bool FirstTime = true;
 
     //private AsyncOperation stage1;
     //private AsyncOperation stage2;
@@ -74,7 +79,7 @@ public class GManager : MonoBehaviour
 
     void LoadData()
     {
-        int stageNum = PlayerPrefs.GetInt("Stage_Num", 0);
+        int stageNum = PlayerPrefs.GetInt("Stage_Num", 4);
         switch (stageNum)
         {
             case (0):
@@ -89,6 +94,10 @@ public class GManager : MonoBehaviour
                 Stage1 = true;
                 Stage2 = true;
                 break;
+            default:
+                Stage1 = false;
+                Stage2 = false;
+                break;
         }
     }
 
@@ -101,7 +110,6 @@ public class GManager : MonoBehaviour
 
         // 
         PlayerPrefs.SetInt("Stage_Num", 0);
-
     }
 
     // メニューのコンテニューで使用
@@ -109,20 +117,21 @@ public class GManager : MonoBehaviour
     {
         // 初期化
         int Snum = 0;
+        if (FirstTime){
+            Snum = 4;
+            return Snum;
+        }
 
         // クリアフラグを確認して次のステージ選択
-        if (Stage1 != true)
-        {
+        if (Stage1 != true){
             // ステージ1
             Snum = 0;
         }
-        else if (Stage2 != true)
-        {
+        else if (Stage2 != true){
             // ステージ2
             Snum = 1;
         }
-        else
-        {
+        else{
             // ステージ3
             Snum = 2;
         }
@@ -165,6 +174,19 @@ public class GManager : MonoBehaviour
         else
         {
             PlayerPrefs.SetInt("Stage_Num", 2);
+        }
+    }
+
+    public bool GetFirstTime()
+    {
+        if (FirstTime){
+            // 初回
+            FirstTime = false;
+            return true;
+        }
+        else{
+            // 2回目以降
+            return false;
         }
     }
 }
