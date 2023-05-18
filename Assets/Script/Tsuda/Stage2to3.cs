@@ -18,8 +18,8 @@ public class Stage2to3 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        async = SceneManager.LoadSceneAsync("Stage3Event");
-        async.allowSceneActivation = false;
+        //async = SceneManager.LoadSceneAsync("Stage3Event");
+        //async.allowSceneActivation = false;
 
         // マネージャオブジェクト取得
         ManagerObj = GameObject.Find("GameManager");
@@ -34,7 +34,11 @@ public class Stage2to3 : MonoBehaviour
         {
             ManagerObj.GetComponent<GManager>().SetClearFlg(2);
 
-            async.allowSceneActivation = true;
+            //async.allowSceneActivation = true;
+            // SceneLoadManagerをタグ検索
+            GameObject obj = GameObject.FindGameObjectWithTag("SceneMoveManager");
+            // シーンの開始
+            obj.GetComponent<SceneMoveManager>().SceneLoadUnload();
         }
     }
 }
