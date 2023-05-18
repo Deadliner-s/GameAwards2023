@@ -23,15 +23,17 @@ public class EffectManager : MonoBehaviour
     private int gFlame;
     private bool onece;
 
-    [Tooltip("マニューバ中ブラーに関するオブジェクト")]
-    [SerializeField]
-    private GameObject player;
-    private PlayerMove playerMove;
+    //[Tooltip("マニューバ中ブラーに関するオブジェクト")]
+    //[SerializeField]
+    //private GameObject player;
+    //private PlayerMove playerMove;
+    private GameObject playerManager;
     private bool ManeverEnd;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerManager = GameObject.Find("PlayerManager");
         phaseManager = phaseManagerObj.GetComponent<PhaseManager>();
 
         // ブラーの初期化処理
@@ -49,11 +51,11 @@ public class EffectManager : MonoBehaviour
             Debug.Log("volumeがありません");
         }
 
-        playerMove = player.GetComponent<PlayerMove>();
-        if (playerMove == null)
-        {
-            Debug.Log("playerがありません");
-        }
+        //playerMove = player.GetComponent<PlayerMove>();
+        //if (playerMove == null)
+        //{
+        //    Debug.Log("playerがありません");
+        //}
 
         flame = 0;
         gFlame = 0;
@@ -136,9 +138,9 @@ public class EffectManager : MonoBehaviour
             gBlur.SamplingDistance.value = 0;
 
         // マニューバが行われたとき
-        if (playerMove != null)
+        if (playerManager != null)
         {
-            if (playerMove.maneverFlg == true && volume != null)
+            if (playerManager.GetComponent<PlayerMove>().maneverFlg == true && volume != null)
             {
                 if (phaseManager.currentPhase == PhaseManager.Phase.Speed_Phase
                 || phaseManager.currentPhase == PhaseManager.Phase.Attack_Phase)
