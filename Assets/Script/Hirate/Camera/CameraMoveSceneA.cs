@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CameraMoveSceneA : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
+    private GameObject playerManager;
+
     public GameObject next;
 
     private float playerDistance = 0.0f; // プレイヤーまでの距離
@@ -21,8 +23,8 @@ public class CameraMoveSceneA : MonoBehaviour
     private float elapsedTime; // 経過時間
     private float rate; // 割合
     private GameObject childObj;
-    private PlayerMove playerMove;           // プレイヤーの移動を切る用
-    private PlayerMoveAngle playerMoveAngle; // プレイヤーの回転を切る用
+    //private PlayerMove playerMove;           // プレイヤーの移動を切る用
+    //private PlayerMoveAngle playerMoveAngle; // プレイヤーの回転を切る用
 
     public bool bInput { get; private set; } = false;
     public bool bSceneMove { get; private set; } = false;
@@ -30,6 +32,9 @@ public class CameraMoveSceneA : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
+        playerManager = GameObject.Find("PlayerManager");
+
         //カメラとプレイヤーの距離を調べる
         Vector3 toPlayer =
             player.transform.position - transform.position;
@@ -39,8 +44,8 @@ public class CameraMoveSceneA : MonoBehaviour
         centerPoint = new Vector3(0.0f, 0.0f, 0.0f);
 
         childObj = transform.GetChild(0).gameObject;
-        playerMove = player.GetComponent<PlayerMove>();           // プレイヤーの移動スクリプトを入れる用
-        playerMoveAngle = player.GetComponent<PlayerMoveAngle>(); // プレイヤーの回転スクリプトを入れる用
+        //playerMove = player.GetComponent<PlayerMove>();           // プレイヤーの移動スクリプトを入れる用
+        //playerMoveAngle = player.GetComponent<PlayerMoveAngle>(); // プレイヤーの回転スクリプトを入れる用
     }
 
     // Update is called once per frame
@@ -57,17 +62,17 @@ public class CameraMoveSceneA : MonoBehaviour
         if (bInput)
         {
             // プレイヤーの移動のスクリプトを停止
-            playerMove.enabled = false;
+            playerManager.GetComponent<PlayerMove>().enabled = false;
             // プレイヤーの回転のスクリプトを停止
-            playerMoveAngle.enabled = false;
+            playerManager.GetComponent<PlayerMoveAngle>().enabled = false;
 
             // マニューバ終了時
             if (bMove && elapsedTime >= moveTime)
             {
                 // プレイヤーの移動のスクリプトを停止
-                playerMove.enabled = true;
+                playerManager.GetComponent<PlayerMove>().enabled = true;
                 // プレイヤーの回転のスクリプトを停止
-                playerMoveAngle.enabled = true;
+                playerManager.GetComponent<PlayerMoveAngle>().enabled = true;
                 bInput = false;
                 bMove = false;
                 rate = 0;
