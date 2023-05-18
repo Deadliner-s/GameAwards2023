@@ -62,6 +62,15 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""b325764c-a94d-417b-ba91-a594c129bdd2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -271,6 +280,28 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Reticle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d40a07d3-06a5-435a-9422-692eeb6eb0c9"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6e4e2ef3-03f6-4c7f-a994-7fc229d716bd"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1118,6 +1149,7 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
         m_Player_Manever = m_Player.FindAction("Manever", throwIfNotFound: true);
         m_Player_Shot = m_Player.FindAction("Shot", throwIfNotFound: true);
         m_Player_Reticle = m_Player.FindAction("Reticle", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1202,6 +1234,7 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Manever;
     private readonly InputAction m_Player_Shot;
     private readonly InputAction m_Player_Reticle;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @Myproject m_Wrapper;
@@ -1210,6 +1243,7 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
         public InputAction @Manever => m_Wrapper.m_Player_Manever;
         public InputAction @Shot => m_Wrapper.m_Player_Shot;
         public InputAction @Reticle => m_Wrapper.m_Player_Reticle;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1231,6 +1265,9 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                 @Reticle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReticle;
                 @Reticle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReticle;
                 @Reticle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReticle;
+                @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1247,6 +1284,9 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                 @Reticle.started += instance.OnReticle;
                 @Reticle.performed += instance.OnReticle;
                 @Reticle.canceled += instance.OnReticle;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -1488,6 +1528,7 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
         void OnManever(InputAction.CallbackContext context);
         void OnShot(InputAction.CallbackContext context);
         void OnReticle(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

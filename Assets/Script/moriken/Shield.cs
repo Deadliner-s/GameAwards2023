@@ -1,30 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class Shield : MonoBehaviour
 {
-    GameObject Player;
-    MeshCollider collider;
+    private GameObject playerManager;
+    private GameObject shield;
+    private MeshCollider MS_shield;
 
     // Start is called before the first frame update
     void Start()
     {
-        Player = GameObject.Find("Player");
-        collider = gameObject.GetComponent<MeshCollider>();
-        collider.enabled = true;
+        playerManager = GameObject.Find("PlayerManager");
+        //collider = gameObject.GetComponent<MeshCollider>();
+        shield = GameObject.Find("hex_shield");
+        MS_shield = shield.GetComponent<MeshCollider>();
+        MS_shield.enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Player.GetComponent<PlayerHp>().PlayerHP <= 0)
+        // プレイヤーのHPが0以下になったら当たり判定を消す
+        if (playerManager.GetComponent<PlayerHp>().PlayerHP <= 0)
         {
-            collider.enabled = false;
+            MS_shield.enabled = false;
         }
         else
         {
-            collider.enabled = true;
+            MS_shield.enabled = true;
         }
     }
 
@@ -33,7 +38,7 @@ public class Shield : MonoBehaviour
         // もし衝突した相手オブジェクトのタグが"Enemy"ならば中の処理を実行
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Player.GetComponent<PlayerHp>().Damage(collision);
+            playerManager.GetComponent<PlayerHp>().Damage(collision);
         }
     }
 }

@@ -14,7 +14,9 @@ public class LaserHead : MonoBehaviour
     public GameObject Idk;
     private bool IdkFlg = false;
 
-    private GameObject Player;    
+    private GameObject Player;
+    private GameObject playerManager;
+
     private float lifetime;  // オブジェクトの寿命（秒）    
     private Vector3 PlayerPosition;
     public Vector3 targetScreenPosition;  // 目標スクリーン座標
@@ -23,7 +25,7 @@ public class LaserHead : MonoBehaviour
     private float timer;  // タイマー        
     public float wait;
 
-    private PlayerHp playerHp;
+    //private PlayerHp playerHp;
 
     void Start()
     {
@@ -34,7 +36,9 @@ public class LaserHead : MonoBehaviour
         mainCamera = Camera.main;  // メインカメラを取得する
 
         Player = GameObject.Find("Player");
-        playerHp = Player.GetComponent<PlayerHp>();
+        playerManager = GameObject.Find("PlayerManager");
+
+        //playerHp = Player.GetComponent<PlayerHp>();
         PlayerPosition = Player.transform.position;
         targetWorldPosition = Player.transform.position;                
 
@@ -46,7 +50,7 @@ public class LaserHead : MonoBehaviour
     {        
         timer += Time.deltaTime;  // タイマーを減算する                                                          
 
-        if (timer >= lifetime || playerHp.BreakFlag)
+        if (timer >= lifetime || playerManager.GetComponent<PlayerHp>().BreakFlag)
         {
             Destroy(gameObject);  // オブジェクトを削除する
         }

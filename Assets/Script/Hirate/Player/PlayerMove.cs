@@ -8,6 +8,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMove: MonoBehaviour
 {
+    private GameObject player;
+
     // 入力
     private Myproject InputActions;
     public Vector2 inputMove { get; private set; }
@@ -74,8 +76,10 @@ public class PlayerMove: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
+
         // 初期化
-        pos = transform.position;
+        pos = player.transform.position;
         nextPosition = pos;
 
         // マニューバ変数初期化
@@ -169,7 +173,7 @@ public class PlayerMove: MonoBehaviour
         if (0.0f <= viewX && viewX <= 1.0f && 0.0f <= viewY && viewY <= 1.0f)
         {
             // 移動更新
-            transform.position = nextPosition;
+            player.transform.position = nextPosition;
 
             pos = nextPosition;
         }
@@ -187,13 +191,13 @@ public class PlayerMove: MonoBehaviour
             if (currentPhase == Phase.Speed_Phase)
             {
                 // transformの位置でエフェクトを再生する
-                handle = EffekseerSystem.PlayEffect(effect, transform.position);
+                handle = EffekseerSystem.PlayEffect(effect, player.transform.position);
                 // transformの回転を設定する。
                 // プレイヤーの傾きに影響されない
-                Vector3 eulerAngles = this.transform.eulerAngles;
+                Vector3 eulerAngles = player.transform.eulerAngles;
                 Vector3 rot = new Vector3(0.0f, eulerAngles.y, eulerAngles.z);
                 Quaternion quaternion = Quaternion.Euler(rot);
-                handle.SetLocation(transform.position);
+                handle.SetLocation(player.transform.position);
                 handle.SetRotation(quaternion);
             }
             // アタックフェイズ
@@ -203,7 +207,7 @@ public class PlayerMove: MonoBehaviour
             }
         }
         // エフェクトをプレイヤーに追従させる
-        handle.SetLocation(transform.position);
+        handle.SetLocation(player.transform.position);
     }
 
 

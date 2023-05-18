@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneSkip : MonoBehaviour
 {
+    private GameObject fade;
     private Myproject InputActions;
 
     void Awake()
@@ -20,7 +21,7 @@ public class SceneSkip : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        fade = GameObject.Find("Fade");
     }
 
     // Update is called once per frame
@@ -35,22 +36,26 @@ public class SceneSkip : MonoBehaviour
         // ÉVÅ[ÉìñºÇ≈ï™äÚ
         if (this.gameObject != null)
         {
-            InputActions.Disable();
+
             if (SceneManager.GetActiveScene().name == "Prologue")
             {
-                GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage1");
+                InputActions.Disable();
+                fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage1");
             }
             if (SceneManager.GetActiveScene().name == "Stage2Event")
             {
-                GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2");
+                InputActions.Disable();
+                fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2");
             }
             if (SceneManager.GetActiveScene().name == "Stage3Event")
             {
-                GetComponent<Fade>().StartCoroutine("Color_FadeOut", "merge_2");
+                InputActions.Disable();
+                fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "merge_2");
             }
             if (SceneManager.GetActiveScene().name == "Epilogue")
             {
-                GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Title");
+                InputActions.Disable();
+                fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Title");
             }
         }
     }

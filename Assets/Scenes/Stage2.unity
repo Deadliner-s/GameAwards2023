@@ -2542,6 +2542,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneLoadManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5005266091318486016, guid: 4b8102f2816fb59439aff82be65a8c21, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b8102f2816fb59439aff82be65a8c21, type: 3}
 --- !u!1001 &503807404
@@ -3905,9 +3909,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5206886689ee4d74f98a6dc093602cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NormalTime: 10
+  NormalTime: 7
   SpeedTime: 40
-  AttackTime: 40
+  AttackTime: 25
   currentPhase: 0
   Reticle: {fileID: 966131196}
   Debug_FixPhaseFlg: 0
@@ -5465,7 +5469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 903000af724a17240aeee92604e12c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeLimit: 120
+  TimeLimit: 140
 --- !u!1 &1379947608
 GameObject:
   m_ObjectHideFlags: 0
@@ -5517,7 +5521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6063255cbe9fda04c817cbdded23a68d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 120
+  time: 140
   Timertext: {fileID: 1379947611}
 --- !u!114 &1379947611
 MonoBehaviour:
@@ -6110,7 +6114,7 @@ MonoBehaviour:
   playerHp: {fileID: 446777046}
   prefab: {fileID: 1809720811616492591, guid: 436d5d0536285294b92c4965004502c4, type: 3}
   timer: 0
-  StartTime_1: 24
+  StartTime_1: 16
   LaserTime_1: 4
   StartTime_2: 32
   LaserTime_2: 4
@@ -8111,7 +8115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowSpeedMissile: {fileID: 3222784191366915875, guid: bb92e347f9a25474d9e1b03dbdf06281, type: 3}
   SpeedMissile: {fileID: 4741478458244633611, guid: 51f0e54cbd5adf24f87e028ae09bec38, type: 3}
-  SpeedStraight: 0.04
+  SpeedStraight: 0.06
   ShowClusterMissile: {fileID: 3222784191366915875, guid: a9c065bc394eff54bbd27cacc93eee39, type: 3}
   ClusterMissile: {fileID: 5540224078154131618, guid: 05a76db5fa499f548b8994bdfdbb97b9, type: 3}
   SpeedCluster: 0.02
@@ -8135,92 +8139,74 @@ MonoBehaviour:
   - 15
   - 21
   - 31
-  - 0
   DurationCluster:
   - 4
   - 8
   - 3
-  - 0
   IntervalTriggerCluster:
   - 1.1
   - 1.5
   - 1.1
-  - 0
   StartTimeTop:
   - 100
   - 100
   - 100
-  - 0
   DurationTop:
   - 1
   - 1
   - 1
-  - 0
   IntervalTriggerTop:
   - 1
   - 1
   - 1
-  - 0
   StartTimeTopLeft:
   - 6
   - 100
   - 100
-  - 0
   DurationTopLeft:
   - 4
   - 1
   - 14
-  - 0
   IntervalTriggerTopLeft:
   - 3.1
   - 1
   - 4
-  - 0
   StartTimeLeft:
   - 6
   - 100
-  - 0
   - 0
   DurationLeft:
   - 7
   - 1
   - 13
-  - 0
   IntervalTriggerLeft:
   - 3.1
   - 1
   - 3
-  - 0
   StartTimeBotLeft:
   - 6
   - 12
   - 100
-  - 0
   DurationBotLeft:
   - 1
   - 1
   - 11
-  - 0
   IntervalTriggerBotLeft:
   - 1.1
   - 1.1
   - 2
-  - 0
   StartTimeBot:
   - 100
   - 100
   - 100
-  - 0
   DurationBot:
   - 1
   - 1
   - 1
-  - 0
   IntervalTriggerBot:
   - 1
   - 1
   - 1
-  - 0
 --- !u!114 &1933776100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8253,32 +8239,26 @@ MonoBehaviour:
   - 6.5
   - 7
   - 7.5
-  - 8
   DurationHoming:
   - 30
   - 29
   - 28
-  - 27
   IntervalTriggerHoming:
+  - 0.6
   - 0.8
-  - 1
   - 1.3
-  - 2
   StartTimeContena:
   - 21
   - 27
   - 28
-  - 0
   DurationContena:
   - 3
   - 3
   - 3
-  - 0
   IntervalTriggerContena:
+  - 0.7
+  - 0.7
   - 1
-  - 1
-  - 1
-  - 0
 --- !u!23 &1933776101
 MeshRenderer:
   m_ObjectHideFlags: 0

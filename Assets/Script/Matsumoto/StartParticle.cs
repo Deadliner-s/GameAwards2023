@@ -7,6 +7,7 @@ public class StartParticle : MonoBehaviour
     [Tooltip("発生させるエフェクト(パーティクル)")]
     private ParticleSystem particle;
     private ParticleSystem newParticle;
+    float DestroyTime = 1.0f;
 
     private void Start()
     {
@@ -31,7 +32,8 @@ public class StartParticle : MonoBehaviour
     {
         if (newParticle != null)
         {
-            Destroy(newParticle.gameObject);
+            newParticle.Stop();
+            Destroy(newParticle.gameObject,DestroyTime);
         }
     }
 
@@ -41,7 +43,8 @@ public class StartParticle : MonoBehaviour
         {
             if (newParticle != null)
             {
-                Destroy(newParticle.gameObject);
+                newParticle.Stop();
+                Destroy(newParticle.gameObject,DestroyTime);
             }
         }
     }
