@@ -829,11 +829,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d3b1208431e964596b423719b11705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GaugeObj: {fileID: 0}
-  damageGaugeObj: {fileID: 1588861528}
-  allBossHpGauge: {fileID: 1015690990}
+  GaugeObj: {fileID: 1015690990}
+  damageGaugeObj: {fileID: 2090735028}
+  allBossHpGauge: {fileID: 1588861528}
   BossHP: 18000
-  Decreaseflame: 0
+  Decreaseflame: 30
   explosionEffect: {fileID: 8650123009029719844, guid: 604532c0400d4b94297114f1846cbef0, type: 3}
   NormalHiteffect: {fileID: 3570405994875558733, guid: ead3ee784696e1647a9c1f8fa3922ee5, type: 3}
   HardDamage: 700
@@ -1310,6 +1310,39 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!1 &935931503 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2870269124591205001, guid: bcfcbcc8f8c3cc143a2cb5c3e089a72d, type: 3}
+  m_PrefabInstance: {fileID: 229053997}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &935931505 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2870269124591205003, guid: bcfcbcc8f8c3cc143a2cb5c3e089a72d, type: 3}
+  m_PrefabInstance: {fileID: 229053997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935931503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &935931507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935931503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd5e552ab03d644eaf47a8e840975b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phaseManagerObj: {fileID: 1406777304}
+  volume: {fileID: 935931505}
+  BlurStrength: 0.2
+  gBlurStrength: 0.15
+  player: {fileID: 1848612102}
 --- !u!1 &950187706
 GameObject:
   m_ObjectHideFlags: 0
@@ -3136,6 +3169,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1723877612400094873, guid: 540091d884751a445ab5f2cede2159a6, type: 3}
   m_PrefabInstance: {fileID: 1723877613879104542}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2090735028 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 45674440068926652, guid: 08a7f80d95de4ca44bea6392040a8f9c, type: 3}
+  m_PrefabInstance: {fileID: 773442716}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2106895110
 GameObject:
