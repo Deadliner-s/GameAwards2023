@@ -47,9 +47,7 @@ public class CheckCursor : MonoBehaviour
     {
         // マネージャオブジェクト取得
         ManagerObj = GameObject.Find("GameManager");
-
         ItemMax = 2;
-
         Selected = 0;
         // 初期選択を白に
         Yes_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
@@ -58,17 +56,11 @@ public class CheckCursor : MonoBehaviour
 
     private void OnEnable()
     {
+        // ウィンドウ表示
         Vector3 scale = Window.transform.localScale;
         scale.y = 0;
         Window.transform.localScale = scale;
-        
         StartCoroutine("ScaleUp");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private void OnLeft()
@@ -119,33 +111,30 @@ public class CheckCursor : MonoBehaviour
         {
             case (0):
                 // No
-
                 // タイトルに戻る
                 Selected = 0;
                 InputActions.Disable();
                 SoundManager.instance.PlaySE("Decision");
-
                 StartCoroutine("ScaleDown");
-
                 break;
             case (1):
                 // Yes
-
                 InputActions.Disable();
                 ManagerObj.GetComponent<GManager>().ReSetData();
                 // デバッグ用?
-                if (stage == Stage.STAGE_1)
+                switch (stage)
                 {
-                    //SceneManager.LoadScene("Stage1");
-                    fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
-                }
-                if (stage == Stage.STAGE_2)
-                {
-                    fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2Event");
-                }
-                if (stage == Stage.STAGE_3)
-                {
-                    fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage3Event");
+                    case (Stage.STAGE_1):
+                        fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
+                        break;
+                    case (Stage.STAGE_2):
+                        fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2Event");
+                        break;
+                    case (Stage.STAGE_3):
+                        fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage3Event");
+                        break;
+                    default:
+                        break;
                 }
                 SoundManager.instance.PlaySE("Decision");
                 //
@@ -162,7 +151,7 @@ public class CheckCursor : MonoBehaviour
             Window.transform.localScale = scale;
             yield return new WaitForSeconds(0.01f);
         }
-
+        // 入力処理有効化
         InputActions = new Myproject();
         InputActions.Enable();
         InputActions.UI.Left.performed += context => OnLeft();
@@ -178,7 +167,6 @@ public class CheckCursor : MonoBehaviour
             Window.transform.localScale = scale;
             yield return new WaitForSeconds(0.01f);
         }
-
         this.gameObject.SetActive(false);
         Menu.SetActive(true);
     }
