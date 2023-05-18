@@ -66,8 +66,7 @@ public class CameraMoveSceneP : MonoBehaviour
                 rate = 0;
                 // シーン遷移フラグを建てる
                 bSceneMove = true;
-                //async.allowSceneActivation = true;
-                fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage1");
+                SceneMove();
                 return;
             }
             // カメラ移動開始
@@ -100,5 +99,12 @@ public class CameraMoveSceneP : MonoBehaviour
             elapsedTime += Time.deltaTime;
             //Debug.Log(elapsedTime);
         }
+    }
+
+    // シーン遷移処理
+    private void SceneMove()
+    {
+        //async.allowSceneActivation = true;
+        fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage1");
     }
 }

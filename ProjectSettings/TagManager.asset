@@ -18,6 +18,7 @@ TagManager:
   - Fade
   - SceneLoadManager
   - SceneMoveManager
+  - PlayerManager
   layers:
   - Default
   - TransparentFX

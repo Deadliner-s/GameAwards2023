@@ -31,7 +31,7 @@ public class SceneMoveManager : MonoBehaviour
     }
 
     // 次のシーンのロード と 現在のシーンのアンロードの呼び出し
-    public static void SceneLoadUnloadCall()
+    private void SceneLoadUnloadCall()
     {
         // SceneLoadManagerをタグ検索
         GameObject obj = GameObject.FindGameObjectWithTag("SceneMoveManager");

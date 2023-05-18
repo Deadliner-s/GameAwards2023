@@ -28,12 +28,6 @@ public class Fade : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public IEnumerator Color_FadeIn()
     {
         // 画面をフェードインさせるコールチン
@@ -113,7 +107,11 @@ public class Fade : MonoBehaviour
             if (nextScene != null)
             {
                 // シーン遷移
-                SceneManager.LoadScene(nextScene);
+                //SceneManager.LoadScene(nextScene);
+                // SceneLoadManagerをタグ検索
+                GameObject obj = GameObject.FindGameObjectWithTag("SceneMoveManager");
+                // シーンの開始
+                obj.GetComponent<SceneMoveManager>().SceneLoadUnload();
             }
         }
     }
