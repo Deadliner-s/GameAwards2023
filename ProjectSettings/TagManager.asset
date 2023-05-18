@@ -16,6 +16,8 @@ TagManager:
   - BossParent
   - DamageManager
   - Fade
+  - SceneLoadManager
+  - SceneMoveManager
   layers:
   - Default
   - TransparentFX
