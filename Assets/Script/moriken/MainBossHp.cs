@@ -17,7 +17,8 @@ public class MainBossHp : MonoBehaviour
     public float BossHP;
     private float BossMaxHP;
     private float damage;
-    private bool DifferenceFlag;
+    [System.NonSerialized]
+    public bool DifferenceFlag;
 
     private int flame;
     [SerializeField] private float Decreaseflame;
@@ -93,6 +94,7 @@ public class MainBossHp : MonoBehaviour
                     DifferenceFlag = false;
                     damageGauge.fillAmount = HpGauge.fillAmount;
                     flame = 0;
+                    hit = false;
                 }
             }
         }
