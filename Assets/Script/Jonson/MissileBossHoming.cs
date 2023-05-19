@@ -40,7 +40,7 @@ public class MissileBossHoming : MonoBehaviour
             {
                 randomX *= -1.0f;
             }
-            off = 0.2f;
+            off = 0.04f;
             Locked = false;
             Miss = false;
         }
@@ -54,15 +54,16 @@ public class MissileBossHoming : MonoBehaviour
             if (transform.position.y <= FromPos.y + HeightHalf && !Locked)
             {
                 Move = new Vector3(randomX, 1.0f, -1.0f);
-                LateMove = Move;
+                LateMove = (Move - LateMove) * off + (LateMove);
             }
             else if (transform.position.y <= FromPos.y + Height && !Locked)
             {
                 Move = new Vector3(randomX * 10.0f, 1.0f, -1.0f);
-                LateMove = (Move - LateMove) * off + (LateMove);
+                LateMove = (Move - LateMove) * off + (LateMove);                
             }
             else
             {
+                off = 0.12f;
                 Locked = true;
                 Speed += Accel;
                 if (Speed >= MaxSpeed)
