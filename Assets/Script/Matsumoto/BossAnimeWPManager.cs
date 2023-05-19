@@ -18,6 +18,8 @@ public class BossAnimeWPManager : MonoBehaviour
 
     private PhaseManager.Phase currntPhase;                         // 現在のフェイズ
     private PhaseManager.Phase nextPhase;                           // 次のフェイズ
+    private PhaseManager.Phase NormaltoNext;                        // 次のフェイズ
+
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +55,11 @@ public class BossAnimeWPManager : MonoBehaviour
         }
 
         // フェイズの初期化
-        nextPhase = currntPhase;
+        currntPhase = PhaseManager.instance.GetPhase();
+        NormaltoNext = PhaseManager.instance.GetNormaltoNext();
+
+        //nextPhase = currntPhase;
+        nextPhase = NormaltoNext;
     }
 
     // Update is called once per frame
@@ -61,6 +67,7 @@ public class BossAnimeWPManager : MonoBehaviour
     {
         // フェイズの取得
         currntPhase = PhaseManager.instance.GetPhase();
+        NormaltoNext = PhaseManager.instance.GetNormaltoNext();
 
         // フェイズが変わったら
         if (nextPhase != currntPhase)
@@ -68,20 +75,50 @@ public class BossAnimeWPManager : MonoBehaviour
             // フェイズの更新
             nextPhase = currntPhase;
 
+
             // ノーマルフェイズ
-            if (currntPhase == PhaseManager.Phase.Normal_Phase)
+            if (currntPhase == PhaseManager.Phase.Normal_Phase && NormaltoNext == PhaseManager.Phase.First_Normal)
             {
                 // アニメーション上
                 for(int i = 0; i < 4; i++)
                 {
-                    BossWing_Anime[i].SetBool("isWing", false);
+                    BossWing_Anime[i].SetBool("isWing", true);
+                }
+                // アニメーション下
+                //for(int i = 0; i < 4; i++)
+                //{
+                //}
+            }
+            // ノーマルフェイズの次がアタックフェーズ
+            else if (currntPhase == PhaseManager.Phase.Normal_Phase && NormaltoNext == PhaseManager.Phase.Attack_Phase)
+            {
+                // アニメーション上
+                for (int i = 0; i < 4; i++)
+                {
+                    BossWing_Anime[i].SetBool("isBinder", true);
+                }
+                // アニメーション下
+                for (int i = 0; i < 4; i++)
+                {
+                    WP_Bottom_Anime[i].SetBool("isOpen", true);
+                    WP_Bottom_Anime[i].SetBool("isClose", false);
+                    WP_Bottom_Anime[i].SetBool("isMove", false);
+                }
+            }
+            //　ノーマルフェイズの次がスピードフェイズ
+            else if (currntPhase == PhaseManager.Phase.Normal_Phase && NormaltoNext == PhaseManager.Phase.Speed_Phase)
+            {
+                // アニメーション上
+                for (int i = 0; i < 4; i++)
+                {
                     BossWing_Anime[i].SetBool("isBinder", false);
                 }
                 // アニメーション下
-                for(int i = 0; i < 4; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     WP_Bottom_Anime[i].SetBool("isOpen", false);
                     WP_Bottom_Anime[i].SetBool("isClose", true);
+                    WP_Bottom_Anime[i].SetBool("isMove", true);
                 }
 
                 // 生成されている場合、ボスの弱点のコライダーを削除
@@ -97,36 +134,10 @@ public class BossAnimeWPManager : MonoBehaviour
                     }
                 }
             }
-            // ハイスピードフェイズ
-            else if (currntPhase == PhaseManager.Phase.Speed_Phase)
+            if (currntPhase == PhaseManager.Phase.Attack_Phase)
             {
-                // アニメーション上
-                for (int i = 0; i < 4; i++)
-                {
-                    BossWing_Anime[i].SetBool("isWing", true);
-                }
-                // アニメーション下
-                for (int i = 0; i < 4; i++)
-                {
-                    WP_Bottom_Anime[i].SetBool("isOpen", false);
-                }
-            }
-            // アタックフェイズ
-            else if (currntPhase == PhaseManager.Phase.Attack_Phase)
-            {
-                // アニメーション上
-                for (int i = 0; i < 4; i++)
-                {
-                    BossWing_Anime[i].SetBool("isBinder", true);
-                }
-                // アニメーション下
-                for (int i = 0; i < 4; i++)
-                {
-                    WP_Bottom_Anime[i].SetBool("isOpen", true);
-                }
-                
                 // ボスの弱点のコライダーオブジェクトを生成
-                for(int i = 0; i < 4; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     if (WP_Top_Collision[i] == null)
                     {
@@ -154,6 +165,7 @@ public class BossAnimeWPManager : MonoBehaviour
                 {
                     WP_Bottom_Anime[i].SetBool("isOpen", false);
                     WP_Bottom_Anime[i].SetBool("isClose", true);
+                    WP_Bottom_Anime[i].SetBool("isMove", true);
                 }
             }
         }
