@@ -35,8 +35,8 @@ public class MissileBossHoming : MonoBehaviour
             //ミサイルの初期位置を設定
             transform.position = FromPos;
 
-            randomX = (rand.Next(2) + 1) * 0.05f;
-            HeightHalf = Height / 2.0f;
+            randomX = (rand.Next(2) + 1) * 0.1f;
+            HeightHalf = Height / 3.0f * 2.0f;
             if (transform.position.x < 0.0f)
             {
                 randomX *= -1.0f;
@@ -44,7 +44,7 @@ public class MissileBossHoming : MonoBehaviour
             off = 0.03f;
             Locked = false;
             Miss = false;
-            mult = 1.0f;
+            mult = 5.0f;
         }
     }
     // Update is called once per frame
@@ -56,12 +56,16 @@ public class MissileBossHoming : MonoBehaviour
             if (transform.position.y <= FromPos.y + HeightHalf && !Locked)
             {
                 Move = new Vector3(randomX, 1.0f, -1.0f);
+                Move = Move.normalized;
                 LateMove = (Move - LateMove) * off + (LateMove);
             }
             else if (transform.position.y <= FromPos.y + Height && !Locked)
             {
-                mult += 0.1f;
-                Move = new Vector3(randomX * mult, 0.8f, -1.0f);
+                mult += 0.2f;
+                if (mult >= 10.0f)
+                    mult = 10.0f;
+                Move = new Vector3(randomX * mult, 1.0f, -1.0f);
+                Move = Move.normalized;
                 LateMove = (Move - LateMove) * off + (LateMove);                
             }
             else
