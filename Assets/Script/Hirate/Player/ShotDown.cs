@@ -67,6 +67,10 @@ public class ShotDown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+        {
+            player = GameObject.Find("Player");
+        }
         // playerHP‚É“ü‚ê‚é—p
         //public bool BreakFlag { get; private set; }
 
