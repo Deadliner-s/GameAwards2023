@@ -15,6 +15,7 @@ public class MissileBossHoming : MonoBehaviour
     bool Locked;                //ミサイルがロックオンしているか
     bool Miss;
     float randomX;
+    float mult;
     System.Random rand = new System.Random();
     Vector3 FromPos;            //発射元
     Vector3 ToPos;              //発射先
@@ -43,6 +44,7 @@ public class MissileBossHoming : MonoBehaviour
             off = 0.03f;
             Locked = false;
             Miss = false;
+            mult = 1.0f;
         }
     }
     // Update is called once per frame
@@ -58,7 +60,8 @@ public class MissileBossHoming : MonoBehaviour
             }
             else if (transform.position.y <= FromPos.y + Height && !Locked)
             {
-                Move = new Vector3(randomX * 10.0f, 1.0f, -1.0f);
+                mult += 0.1f;
+                Move = new Vector3(randomX * mult, 0.8f, -1.0f);
                 LateMove = (Move - LateMove) * off + (LateMove);                
             }
             else
