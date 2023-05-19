@@ -11,8 +11,9 @@ public class PhaseManager : MonoBehaviour
     public enum Phase
     {
         Normal_Phase,
-        Speed_Phase,
+        Speed_Phase, 
         Attack_Phase,
+        First_Normal,
         MAX_Phase
     }
 
@@ -24,7 +25,9 @@ public class PhaseManager : MonoBehaviour
     [Header("現在のフェイズ(初期フェイズ)")]
     public Phase currentPhase = Phase.Normal_Phase;  // 現在のフェイズ
     [System.NonSerialized]
-    public Phase nextPhase;                         // 次のフェイズ
+    public Phase nextPhase;                          // 次のフェイズ
+    [Header("通常フェイズから次のフェイズ")]
+    public Phase NormaltoNext = Phase.First_Normal;  // 通常フェイズから次のフェイズ
 
     private float time = 0.0f;                       // 秒数カウント用
 
@@ -60,13 +63,15 @@ public class PhaseManager : MonoBehaviour
         nextPhase = currentPhase;
 
         vibrationManager = GameObject.Find("VibrationManagerObj");
-    }
 
+        NormaltoNext = Phase.First_Normal;
+
+    }
     // Update is called once per frame
     void Update()
     {
         // ステージ1,2
-        if (SceneManager.GetActiveScene().name == "Stage1" || SceneManager.GetActiveScene().name == "Stage2") 
+        if (SceneManager.GetActiveScene().name == "Stage1" || SceneManager.GetActiveScene().name == "Stage2")
         {
             // フェイズが固定されてない場合
             if (Debug_FixPhaseFlg != true)
@@ -79,7 +84,22 @@ public class PhaseManager : MonoBehaviour
                 {
                     if (time >= NormalTime)
                     {
-                        currentPhase = Phase.Attack_Phase;
+                        // ステージ1,2はアタックフェイズから
+                        if (NormaltoNext == Phase.First_Normal)
+                        {
+                            NormaltoNext = Phase.Attack_Phase;
+                        }
+                        if (NormaltoNext == Phase.Attack_Phase)
+                        {
+                            currentPhase = Phase.Attack_Phase;
+                            NormaltoNext = Phase.Speed_Phase;
+                        }
+                        else if (NormaltoNext == Phase.Speed_Phase)
+                        {
+                            currentPhase = Phase.Speed_Phase;
+                            NormaltoNext = Phase.Attack_Phase;
+                        }
+
                         time = 0.0f;
                     }
                 }
@@ -97,7 +117,7 @@ public class PhaseManager : MonoBehaviour
                 {
                     if (time >= AttackTime)
                     {
-                        currentPhase = Phase.Speed_Phase;
+                        currentPhase = Phase.Normal_Phase;
                         time = 0.0f;
                     }
                 }
@@ -117,7 +137,23 @@ public class PhaseManager : MonoBehaviour
                 {
                     if (time >= NormalTime)
                     {
-                        currentPhase = Phase.Speed_Phase;
+                        // ステージ3はスピードフェイズから
+                        if (NormaltoNext == Phase.First_Normal)
+                        {
+                            NormaltoNext = Phase.Speed_Phase;
+                        }
+                        if (NormaltoNext == Phase.Speed_Phase)
+                        {
+                            currentPhase = Phase.Speed_Phase;
+                            NormaltoNext = Phase.Attack_Phase;
+                        }
+                        else if (NormaltoNext == Phase.Attack_Phase)
+                        {
+                            currentPhase = Phase.Attack_Phase;
+                            NormaltoNext = Phase.Speed_Phase;
+                        }
+
+
                         time = 0.0f;
                     }
                 }
@@ -126,7 +162,7 @@ public class PhaseManager : MonoBehaviour
                 {
                     if (time >= SpeedTime)
                     {
-                        currentPhase = Phase.Attack_Phase;
+                        currentPhase = Phase.Normal_Phase;
                         time = 0.0f;
                     }
                 }
@@ -140,7 +176,9 @@ public class PhaseManager : MonoBehaviour
                     }
                 }
             }
+
         }
+    
 
 
         // フェイズが変わった場合
@@ -171,5 +209,9 @@ public class PhaseManager : MonoBehaviour
     public Phase GetPhase()
     {
         return currentPhase;
+    }
+    public Phase GetNormalPhaseCount()
+    {
+        return NormaltoNext;
     }
 }
