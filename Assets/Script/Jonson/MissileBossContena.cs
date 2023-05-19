@@ -11,13 +11,10 @@ public class MissileBossContena : MonoBehaviour
     public float ContenaRange = 2.5f;    //コンテナする距離
     public float Height;                 //ミサイルの高さ
     public int ContenaNumber = 15;       //分裂の数
-
     float off;
     bool Locked;                         //ミサイルがロックオンしているか
-
-    GameObject newObj;
     public GameObject otherObject;       //生成するプレハブオブジェクト
-
+    GameObject newObj;
     GameObject Player;
     Vector3 FromPos;            //発射元
     Vector3 ToPos;              //発射先
@@ -38,7 +35,6 @@ public class MissileBossContena : MonoBehaviour
             Locked = false;
         }
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -90,5 +86,4 @@ public class MissileBossContena : MonoBehaviour
             Destroy(this, 0.0f);
         }
     }
-
 }

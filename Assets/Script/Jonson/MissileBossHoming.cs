@@ -10,13 +10,12 @@ public class MissileBossHoming : MonoBehaviour
     public float Accel;         //加速度
     public float MissRange;     //プレイヤーに外れるの距離
     public float Height;        //ミサイルの高さ
+    float HeightHalf;
     float off;
     bool Locked;                //ミサイルがロックオンしているか
     bool Miss;
-
-    System.Random rand = new System.Random();
     float randomX;
-
+    System.Random rand = new System.Random();
     Vector3 FromPos;            //発射元
     Vector3 ToPos;              //発射先
     GameObject Player;
@@ -35,24 +34,32 @@ public class MissileBossHoming : MonoBehaviour
             //ミサイルの初期位置を設定
             transform.position = FromPos;
 
-            randomX = (rand.Next(2) - 1) * 0.1f;
+            randomX = (rand.Next(2) + 1) * 0.05f;
+            HeightHalf = Height / 2.0f;
+            if (transform.position.x < 0.0f)
+            {
+                randomX *= -1.0f;
+            }
             off = 0.2f;
             Locked = false;
             Miss = false;
-
         }
     }
-
     // Update is called once per frame
     void Update()
     {
         if(Player)
         {
             ToPos = Player.transform.position;
-            if (transform.position.y <= FromPos.y + Height && !Locked)
+            if (transform.position.y <= FromPos.y + HeightHalf && !Locked)
             {
                 Move = new Vector3(randomX, 1.0f, -1.0f);
                 LateMove = Move;
+            }
+            else if (transform.position.y <= FromPos.y + Height && !Locked)
+            {
+                Move = new Vector3(randomX * 10.0f, 1.0f, -1.0f);
+                LateMove = (Move - LateMove) * off + (LateMove);
             }
             else
             {
