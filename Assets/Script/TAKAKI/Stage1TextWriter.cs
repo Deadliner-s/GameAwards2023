@@ -32,6 +32,7 @@ public class Stage1TextWriter : MonoBehaviour
 
         yield return new WaitForSeconds(1.0f);
 
+        SoundManager.instance.PlayVOICE("0-1");
         uitext.DrawNameText("á i—ßŠ¯ â", "‰ü‚ß‚Äìí“à—e‚ğ“`‚¦‚é");
         yield return new WaitForSeconds(3.0f);
 

@@ -145,6 +145,9 @@ MonoBehaviour:
   - name: AI_SPEED
     clip: {fileID: 8300000, guid: 5627c95afeca53048a868e967977f2dd, type: 3}
     audioSource: {fileID: 0}
+  - name: 0-1
+    clip: {fileID: 8300000, guid: da9e9bffbf082144c91499bcd37b68c7, type: 3}
+    audioSource: {fileID: 0}
   BGM_volume: 0.5
   SE_volume: 0.5
   VOICE_volume: 0.5
