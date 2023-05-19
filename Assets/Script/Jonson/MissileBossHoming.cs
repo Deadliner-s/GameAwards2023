@@ -40,7 +40,7 @@ public class MissileBossHoming : MonoBehaviour
             {
                 randomX *= -1.0f;
             }
-            off = 0.04f;
+            off = 0.03f;
             Locked = false;
             Miss = false;
         }
