@@ -4289,7 +4289,7 @@ MonoBehaviour:
   ContenaMax: 0.15
   ContenaRange: 2.1
   ContenaNumber: 15
-  DestroyTimeHoming: 10
+  DestroyTimeHoming: 15
   DestroyTimeContena: 15
   KeyHoming: l
   KeyContena: k
@@ -6136,6 +6136,7 @@ MonoBehaviour:
   SpeedTime: 40
   AttackTime: 25
   currentPhase: 0
+  NormaltoNext: 3
   Reticle: {fileID: 1661757866}
   Debug_FixPhaseFlg: 0
 --- !u!4 &1989254138
