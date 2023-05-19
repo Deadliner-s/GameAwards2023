@@ -346,7 +346,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e2563008ecf7246984391145374951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particle: {fileID: 198637950067575458, guid: 007c57e2df8e9b144b99f471b84f3d56, type: 3}
+  missileTrail: {fileID: 198637950067575458, guid: 007c57e2df8e9b144b99f471b84f3d56, type: 3}
+  missileExplosion: {fileID: 3570405994889740839, guid: ead3ee784696e1647a9c1f8fa3922ee5, type: 3}
 --- !u!114 &6840243341829856579
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,48 +4,63 @@ using UnityEngine.Events;
 public class StartParticle : MonoBehaviour
 {
     [SerializeField]
-    [Tooltip("発生させるエフェクト(パーティクル)")]
-    private ParticleSystem particle;
-    private ParticleSystem newParticle;
+    [Header("ミサイルのトレイルエフェクト")]
+    private ParticleSystem missileTrail;
+    private ParticleSystem TrailParticle;
+
+    [SerializeField]
+    [Header("ミサイルが爆発したときのエフェクト")]
+    private ParticleSystem missileExplosion;
+    private ParticleSystem ExplosionParticle;
+
     float DestroyTime = 1.0f;
 
     private void Start()
     {
         // エフェクトを生成
-        newParticle = Instantiate(particle);
-        newParticle.transform.position = this.transform.position;
-        newParticle.transform.rotation = this.transform.rotation;
-        newParticle.Play();
+        TrailParticle = Instantiate(missileTrail);
+        TrailParticle.transform.position = this.transform.position;
+        TrailParticle.transform.rotation = this.transform.rotation;
+        TrailParticle.Play();
     }
 
     private void Update()
     {
-        if (newParticle != null)
+        if (TrailParticle != null)
         {
             // エフェクトの位置を更新
-            newParticle.transform.position = this.transform.position;
-            newParticle.transform.rotation = this.transform.rotation;
+            TrailParticle.transform.position = this.transform.position;
+            TrailParticle.transform.rotation = this.transform.rotation;
         }
     }
 
     private void OnDestroy()
     {
-        if (newParticle != null)
+        if (TrailParticle != null)
         {
-            newParticle.Stop();
-            Destroy(newParticle.gameObject,DestroyTime);
+            TrailParticle.Stop();
+            Destroy(TrailParticle.gameObject,DestroyTime);
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        // プレイヤーかターゲットに当たったらトレイルエフェクトを消す
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Target")
         {
-            if (newParticle != null)
+            if (TrailParticle != null)
             {
-                newParticle.Stop();
-                Destroy(newParticle.gameObject,DestroyTime);
+                TrailParticle.Stop();
+                Destroy(TrailParticle.gameObject,DestroyTime);
             }
+        }
+        // プレイヤーの弾に当たったら爆発エフェクトを生成
+        if(collision.gameObject.tag == "PlayerBullet")
+        {
+            ExplosionParticle = Instantiate(missileExplosion);
+            ExplosionParticle.transform.position = this.transform.position;
+            ExplosionParticle.transform.rotation = this.transform.rotation;
+            ExplosionParticle.Play();
         }
     }
 }
