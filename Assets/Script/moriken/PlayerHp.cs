@@ -246,7 +246,15 @@ public class PlayerHp : MonoBehaviour
         // 体力が0よりも多い時
         else if (PlayerHP > 0)
         {
-            SoundManager.instance.PlaySE("PlayerDamage");
+            if (collision.gameObject.name == "Cylinder")
+            {
+                // レーザーを受けた時のSEを再生(未設定
+            }
+            else
+            {
+                // ダメージを受けた時のSEを再生(レーザー以外、ミサイルとかだけ
+                SoundManager.instance.PlaySE("PlayerDamage");
+            }
         }
 
         //if (hs == null)
