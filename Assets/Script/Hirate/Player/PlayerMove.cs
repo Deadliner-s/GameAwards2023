@@ -105,6 +105,11 @@ public class PlayerMove: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+        {
+            player = GameObject.Find("Player");
+        }
+
         // フェーズ取得用
         try
         {

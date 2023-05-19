@@ -10,6 +10,12 @@ public class SceneAccessSearch : MonoBehaviour
     {
         // シーン検索
         Scene scene = SceneManager.GetSceneByName("ManagerScene");
+
+        if (scene.name == null)
+        {
+            Debug.Log("ManagerSceneが取得出来ていません。");
+        }
+
         // ルート内のオブジェクトを検索
         foreach (var sceneRootObj in scene.GetRootGameObjects())
         {

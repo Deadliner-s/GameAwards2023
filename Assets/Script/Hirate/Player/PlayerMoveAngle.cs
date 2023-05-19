@@ -45,6 +45,11 @@ public class PlayerMoveAngle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+        {
+            player = GameObject.Find("Player");
+        }
+
         // Œ»İ‚Ì’l‚ğ‘ã“ü
         // ‰ñ“]
         angle = player.transform.eulerAngles;

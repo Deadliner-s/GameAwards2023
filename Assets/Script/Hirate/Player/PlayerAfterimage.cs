@@ -45,6 +45,11 @@ public class PlayerAfterimage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+        {
+            player = GameObject.Find("Player");
+        }
+
         // マニューバ開始時
         if (playerManager.GetComponent<PlayerMove>().maneverFlg == true)
         {

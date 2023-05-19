@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SkyRotation : MonoBehaviour
 {
@@ -25,8 +26,23 @@ public class SkyRotation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // シーン検索
+        Scene scene = SceneManager.GetSceneByName("ManagerScene");
+        // ルート内のオブジェクトを検索
+        foreach (var sceneRootObj in scene.GetRootGameObjects())
+        {
+            SkyBoxInstance skyBoxInstance = sceneRootObj.GetComponent<SkyBoxInstance>();
+            if (skyBoxInstance != null)
+            {
+                sky = skyBoxInstance.GetSky();
+                RenderSettings.skybox = sky;
+                break;
+                //yield return new WaitForSeconds(0.0f);
+            }
+        }
+
         // スカイボックスを取得
-        sky = RenderSettings.skybox;
+        //sky = RenderSettings.skybox;
 
         // フェーズ取得用
         try

@@ -48,7 +48,9 @@ public class PlayerHp : MonoBehaviour
 
     private HPGauge[] HpGaugecomponents;
 
-    private SphereCollider collider;
+    private SphereCollider sphereCollider;
+
+    private Collider modelCollider;
 
     // シーン読込用
     //    private AsyncOperation async;
@@ -76,9 +78,12 @@ public class PlayerHp : MonoBehaviour
         Decreaseflame = 30;
 
 
-        collider = player.GetComponent<SphereCollider>();
+        sphereCollider = player.GetComponent<SphereCollider>();
 
-        collider.enabled = false;
+        if (sphereCollider != null)
+        {
+            sphereCollider.enabled = false;
+        }
 
         // PlayerHpコオブジェクトのHpGaugeコンポーネントを全て取得する
         HpGaugecomponents = PlayerHPGaugeTrans.GetComponentsInChildren<HPGauge>();
@@ -94,6 +99,17 @@ public class PlayerHp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+        {
+            player = GameObject.Find("Player");
+            modelCollider = player.GetComponent<Collider>();
+            sphereCollider = player.GetComponent<SphereCollider>();
+            // PlayerHpコオブジェクトのHpGaugeコンポーネントを全て取得する
+            HpGaugecomponents = PlayerHPGaugeTrans.GetComponentsInChildren<HPGauge>();
+            // シールドオブジェクトからHexShieldコンポーネントを取得
+            hs = playerManager.GetComponent<HexShield>();
+        } 
+
         // 回復開始までの時間管理
         if (UseFlag == true)
         {
@@ -133,6 +149,10 @@ public class PlayerHp : MonoBehaviour
             PlayerHP += HealAmount;
             HpGauge.fillAmount = PlayerHP / PlayerMaxHp;
 
+            //if (hs == null)
+            //{
+            //    hs = playerManager.GetComponent<HexShield>();
+            //}
             hs.ChangeShieldColor(PlayerHP, PlayerMaxHp);
             foreach (HPGauge comp in HpGaugecomponents)
             {
@@ -159,11 +179,21 @@ public class PlayerHp : MonoBehaviour
         if (BreakShieldFlag)
         {
             // シールドが壊れた(PlayerHpが0になった)ら当たり判定を付ける
-            collider.enabled = true;
+            //player.GetComponent<Collider>().enabled = true;
+            if (modelCollider == null)
+            {
+                modelCollider = player.GetComponent<Collider>();
+            }
+            modelCollider.enabled = true;
         }
         else
         {
-            collider.enabled = false;
+            //player.GetComponent<Collider>().enabled = false;
+            if (modelCollider == null)
+            {
+                modelCollider = player.GetComponent<Collider>();
+            }
+            modelCollider.enabled = false;
         }
     }
 
@@ -219,6 +249,10 @@ public class PlayerHp : MonoBehaviour
             SoundManager.instance.PlaySE("PlayerDamage");
         }
 
+        //if (hs == null)
+        //{
+        //    hs = playerManager.GetComponent<HexShield>();
+        //}
         hs.ChangeShieldColor(PlayerHP, PlayerMaxHp);
 
         foreach (HPGauge comp in HpGaugecomponents)
