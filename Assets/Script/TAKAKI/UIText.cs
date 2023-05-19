@@ -88,7 +88,6 @@ public class UIText : MonoBehaviour
                 while (FlgB)
                 {
                     AddTime += Time.deltaTime;
-                    Debug.Log(AddTime);
                     yield return null;
                     if (AddTime >= 5.0f)
                     {
@@ -116,7 +115,6 @@ public class UIText : MonoBehaviour
                 while (FlgB)
                 {
                     AddTime += Time.deltaTime;
-                    Debug.Log(AddTime);
                     yield return null;
                     if (AddTime >= 5.0f)
                     {
