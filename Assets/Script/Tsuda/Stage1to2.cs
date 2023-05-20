@@ -10,7 +10,8 @@ public class Stage1to2 : MonoBehaviour
     public float TimeLimit;//制限時間
     private Text TimeText;
 
-    private AsyncOperation async;
+    //private AsyncOperation async;
+    private bool bSceneStart = false;
 
     [Header("ゲームマネージャオブジェクト")]
     GameObject ManagerObj;
@@ -34,11 +35,16 @@ public class Stage1to2 : MonoBehaviour
         {
             ManagerObj.GetComponent<GManager>().SetClearFlg(1);
 
-            //async.allowSceneActivation = true;
+            if (bSceneStart) { return; }
+
             // SceneLoadManagerをタグ検索
             GameObject obj = GameObject.FindGameObjectWithTag("SceneMoveManager");
             // シーンの開始
-            obj.GetComponent<SceneMoveManager>().SceneLoadUnload();
+            //async.allowSceneActivation = true;
+            obj.GetComponent<SceneMoveManager>().SceneLoad(SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT);
+            obj.GetComponent<SceneMoveManager>().SceneStartUnload();
+
+            bSceneStart = true;
         }
     }
 }

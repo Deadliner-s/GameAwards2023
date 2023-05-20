@@ -141,7 +141,6 @@ MonoBehaviour:
   fade: {fileID: 756608634}
   stage: 0
   Window: {fileID: 975802255}
-  flg: 1
 --- !u!1 &56546630
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,6 +842,10 @@ PrefabInstance:
     - target: {fileID: 671558592357310652, guid: 64be719a3a388d9499ab68f7ce549323, type: 3}
       propertyPath: m_Name
       value: ManagerCreate
+      objectReference: {fileID: 0}
+    - target: {fileID: 671558592357310652, guid: 64be719a3a388d9499ab68f7ce549323, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8884269267406885949, guid: 64be719a3a388d9499ab68f7ce549323, type: 3}
       propertyPath: m_RootOrder
