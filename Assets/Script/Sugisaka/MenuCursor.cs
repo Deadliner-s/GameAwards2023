@@ -120,7 +120,10 @@ public class MenuCursor : MonoBehaviour
                 {
                     // ステージ１へ
                     InputActions.Disable();
-                    fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
+                    //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
+                    fade.GetComponent<Fade>().StartCoroutine(
+                            "Color_FadeOut_Title",
+                            SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE);
                 }
                 else
                 {
@@ -140,17 +143,26 @@ public class MenuCursor : MonoBehaviour
                     case (0):
                         // ステージ1
                         InputActions.Disable();
-                        fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
+                        //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
+                        fade.GetComponent<Fade>().StartCoroutine(
+                            "Color_FadeOut_Title",
+                            SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE);
                         break;
                     case (1):
                         // ステージ2
                         InputActions.Disable();
-                        fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2Event");
+                        //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2Event");
+                        fade.GetComponent<Fade>().StartCoroutine(
+                            "Color_FadeOut_Title",
+                            SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT);
                         break;
                     case (2):
                         // ステージ3
                         InputActions.Disable();
-                        fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage3Event");
+                        //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage3Event");
+                        fade.GetComponent<Fade>().StartCoroutine(
+                            "Color_FadeOut_Title",
+                            SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT);
                         break;
                     default:
                         break;

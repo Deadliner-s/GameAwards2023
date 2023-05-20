@@ -125,13 +125,22 @@ public class CheckCursor : MonoBehaviour
                 switch (stage)
                 {
                     case (Stage.STAGE_1):
-                        fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
+                        //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
+                        fade.GetComponent<Fade>().StartCoroutine(
+                            "Color_FadeOut_Title",
+                            SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE);
                         break;
                     case (Stage.STAGE_2):
-                        fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2Event");
+                        //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2Event");
+                        fade.GetComponent<Fade>().StartCoroutine(
+                            "Color_FadeOut_Title",
+                            SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT);
                         break;
                     case (Stage.STAGE_3):
-                        fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage3Event");
+                        //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage3Event");
+                        fade.GetComponent<Fade>().StartCoroutine(
+                            "Color_FadeOut_Title",
+                            SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT);
                         break;
                     default:
                         break;

@@ -15,12 +15,26 @@ public class CameraMoveDestroy : MonoBehaviour
     [Tooltip("エフェクトの演出時間")]
     [SerializeField] float effectTime = 3.0f;
 
+    // 現在のシーンの設定
+    [Header("現在のシーン設定")]
+    [Tooltip("現在のシーン")]
+    [SerializeField] SceneLoadStartUnload.SCENE_NAME SceneNow;
+
+    // 次のシーンの設定
+    [Header("次のシーン設定")]
+    [Tooltip("次のシーン")]
+    [SerializeField] SceneLoadStartUnload.SCENE_NAME SceneNext;
+
     private float playerDistance = 0.0f; // プレイヤーまでの距離
     private Vector3 centerPoint;
     //private PlayerHp playerHp; // バリア破壊後の完全撃墜時のフラグ取得用
     //private ShotDown shotDown; // エフェクト演出用
     private float cnt = 0.0f;  // 経過時間
     private bool breakStart;   // 撃破開始
+
+    [SerializeField]
+    private GameObject fade; // フェードオブジェクト
+    private bool bFade = false;
 
     // Start is called before the first frame update
     void Start()
@@ -71,12 +85,16 @@ public class CameraMoveDestroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (bFade) { return; }
         if (playerManager.GetComponent<ShotDown>().EffectFlag)
         {
             if (cnt > effectTime)
             {
                 // シーン移動
-                SceneManager.LoadScene("GameOver");
+                //SceneManager.LoadScene("GameOver");
+                fade.GetComponent<Fade>().StartCoroutine(
+                    fade.GetComponent<Fade>().Color_FadeOut_GameOver(SceneNow));
+                bFade = true;
             }
             // 撃墜からの時間経過
             cnt += Time.deltaTime;

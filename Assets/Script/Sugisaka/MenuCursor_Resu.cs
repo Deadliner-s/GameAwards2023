@@ -85,15 +85,27 @@ public class MenuCursor_Resu : MonoBehaviour
                 {
                     case (0):
                         // ステージ1
-                        fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
+                        //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
+                        fade.GetComponent<Fade>().StartCoroutine(
+                            fade.GetComponent<Fade>().Color_FadeOut_NowNext(
+                                SceneLoadStartUnload.SCENE_NAME.E_RESULT_FAILED,
+                                SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE));
                         break;
                     case (1):
                         // ステージ2
-                        fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2Event");
+                        //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2Event");
+                        fade.GetComponent<Fade>().StartCoroutine(
+                            fade.GetComponent<Fade>().Color_FadeOut_NowNext(
+                                SceneLoadStartUnload.SCENE_NAME.E_RESULT_FAILED,
+                                SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT));
                         break;
                     case (2):
                         // ステージ3
-                        fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage3Event");
+                        //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage3Event");
+                        fade.GetComponent<Fade>().StartCoroutine(
+                            fade.GetComponent<Fade>().Color_FadeOut_NowNext(
+                                SceneLoadStartUnload.SCENE_NAME.E_RESULT_FAILED,
+                                SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT));
                         break;
                 }
                 SoundManager.instance.PlaySE("Decision");
@@ -101,7 +113,11 @@ public class MenuCursor_Resu : MonoBehaviour
             case (1):
                 // Return to title
                 InputActions.Disable();
-                fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Title");
+                //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Title");
+                fade.GetComponent<Fade>().StartCoroutine(
+                            fade.GetComponent<Fade>().Color_FadeOut_NowNext(
+                                SceneLoadStartUnload.SCENE_NAME.E_RESULT_FAILED,
+                                SceneLoadStartUnload.SCENE_NAME.E_TITLE));
                 SoundManager.instance.PlaySE("Decision");
                 break;
         }

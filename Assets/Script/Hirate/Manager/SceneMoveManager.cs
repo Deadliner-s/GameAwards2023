@@ -14,28 +14,34 @@ public class SceneMoveManager : MonoBehaviour
     [Tooltip("次のシーン")]
     [SerializeField] SceneLoadStartUnload.SCENE_NAME SceneNext;
 
+    // 次のシーンの事前ロードの設定
+    [Header("次のシーンの事前ロード設定")]
+    [Tooltip("ロードの有無")]
+    [SerializeField] bool bLoad = true;
+
     // Start is called before the first frame update
     void Start()
     {
+        if (bLoad)
+        {
+            // 次のシーン読み込み
+            SceneLoad(SceneNext);
+        }
+    }
+
+    // 次のシーンのロード
+    public void SceneLoad(SceneLoadStartUnload.SCENE_NAME loadscene)
+    {
         // 次のシーン読み込み
-        SceneAccessSearch.SceneAccessCatchLoad(SceneNext);
+        SceneAccessSearch.SceneAccessCatchLoad(loadscene);
     }
 
     // 次のシーンのロード と 現在のシーンのアンロード
-    public void SceneLoadUnload()
+    public void SceneStartUnload()
     {
-        // 次のシーンのロード
+        // 次のシーンの起動
         SceneAccessSearch.SceneAccessCatchStart();
         // 現在のシーンのアンロード
         SceneAccessSearch.SceneAccessCatchUnload(SceneNow);
-    }
-
-    // 次のシーンのロード と 現在のシーンのアンロードの呼び出し
-    private void SceneLoadUnloadCall()
-    {
-        // SceneLoadManagerをタグ検索
-        GameObject obj = GameObject.FindGameObjectWithTag("SceneMoveManager");
-        // シーンの開始
-        obj.GetComponent<SceneMoveManager>().SceneLoadUnload();
     }
 }
