@@ -2621,6 +2621,7 @@ MonoBehaviour:
   SpeedTime: 40
   AttackTime: 25
   currentPhase: 0
+  NormaltoNext: 3
   Reticle: {fileID: 966131196}
   Debug_FixPhaseFlg: 0
 --- !u!4 &805285063
@@ -3945,7 +3946,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1343211722}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fd8efd3b3629c14783fae4ed836fd02, type: 3}
   m_Name: 
@@ -3981,6 +3982,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 182055690}
   effectTime: 5
+  SceneNow: 1
+  SceneNext: 6
+  fade: {fileID: 1618347428}
 --- !u!114 &1343211727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5097,6 +5101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cbab81af54435542a11ad6c923994e3, type: 3}
+--- !u!1 &1618347428 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 629208804658511440, guid: 5cbab81af54435542a11ad6c923994e3, type: 3}
+  m_PrefabInstance: {fileID: 1618347427}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1629794908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5150,6 +5159,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2955973731894738314, guid: 96b1e6a973866624bbe1ccfc4eb846a5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476309591831286947, guid: 96b1e6a973866624bbe1ccfc4eb846a5, type: 3}
+      propertyPath: bLoad
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4476309591831286947, guid: 96b1e6a973866624bbe1ccfc4eb846a5, type: 3}
