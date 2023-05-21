@@ -276,6 +276,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4138739373431447344, guid: bcfcbcc8f8c3cc143a2cb5c3e089a72d, type: 3}
+      propertyPath: volume
+      value: 
+      objectReference: {fileID: 935931505}
+    - target: {fileID: 4138739373431447344, guid: bcfcbcc8f8c3cc143a2cb5c3e089a72d, type: 3}
+      propertyPath: BlurStrength
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138739373431447344, guid: bcfcbcc8f8c3cc143a2cb5c3e089a72d, type: 3}
+      propertyPath: gBlurStrength
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138739373431447344, guid: bcfcbcc8f8c3cc143a2cb5c3e089a72d, type: 3}
+      propertyPath: phaseManagerObj
+      value: 
+      objectReference: {fileID: 1406777304}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcfcbcc8f8c3cc143a2cb5c3e089a72d, type: 3}
 --- !u!1 &270288725
@@ -1310,39 +1326,17 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!1 &935931503 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2870269124591205001, guid: bcfcbcc8f8c3cc143a2cb5c3e089a72d, type: 3}
-  m_PrefabInstance: {fileID: 229053997}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &935931505 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2870269124591205003, guid: bcfcbcc8f8c3cc143a2cb5c3e089a72d, type: 3}
   m_PrefabInstance: {fileID: 229053997}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 935931503}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &935931507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 935931503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bd5e552ab03d644eaf47a8e840975b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  phaseManagerObj: {fileID: 1406777304}
-  volume: {fileID: 935931505}
-  BlurStrength: 0.2
-  gBlurStrength: 0.15
-  player: {fileID: 1848612102}
 --- !u!1 &950187706
 GameObject:
   m_ObjectHideFlags: 0
@@ -2294,6 +2288,7 @@ MonoBehaviour:
   SpeedTime: 40
   AttackTime: 40
   currentPhase: 0
+  NormaltoNext: 3
   Reticle: {fileID: 1564491173}
   Debug_FixPhaseFlg: 0
 --- !u!1 &1420291030
@@ -3322,6 +3317,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 1068330649}
   effectTime: 5
+  SceneNow: 0
+  SceneNext: 0
+  fade: {fileID: 0}
 --- !u!136 &2106895119
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3348,7 +3346,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fd8efd3b3629c14783fae4ed836fd02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1359347799}
   next: {fileID: 4990481989932407205}
   moveTime: 5
   stopTime: 0

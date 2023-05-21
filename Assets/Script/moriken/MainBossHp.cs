@@ -88,7 +88,7 @@ public class MainBossHp : MonoBehaviour
             if (Decreaseflame < flame)
             {
                 if (HpGauge.fillAmount <= damageGauge.fillAmount)
-                    damageGauge.fillAmount -= 0.001f;
+                    damageGauge.fillAmount -= 0.0005f;
                 else
                 {
                     DifferenceFlag = false;
