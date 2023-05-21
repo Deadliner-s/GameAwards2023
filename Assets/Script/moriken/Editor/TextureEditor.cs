@@ -12,8 +12,6 @@ public class TextureEditor : Editor
         //target‚ğ•ÏŠ·‚µ‚Ä‘ÎÛ‚ğæ“¾
         CreateRampTexture Script = target as CreateRampTexture;
 
-
-
         //ƒ{ƒ^ƒ“‚ğ•\¦
         if (GUILayout.Button("Convert"))
         {
@@ -32,7 +30,6 @@ public class TextureEditor : Editor
     {
         var texture = new Texture2D(width, height, TextureFormat.ARGB32, false);
 
-        //        Color color = gradient;
         float inv = 1f / (width - 1);
         for (int y = 0; y < texture.height; y++)
         {

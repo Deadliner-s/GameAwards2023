@@ -18,8 +18,6 @@ public class GaussianBlurRenderPass : ScriptableRenderPass
     private readonly int _mainTexPropertyId = Shader.PropertyToID("_MainTex");
     private readonly Material _material;
     private readonly ProfilingSampler _profilingSampler;
-    //private readonly int _sampleCountPropertyId = Shader.PropertyToID("_SampleCount");
-    //private readonly int _strengthPropertyId = Shader.PropertyToID("_Strength");
     private readonly int _samplingDistancePropertyId = Shader.PropertyToID("_SamplingDistance");
 
     private RenderTargetHandle _afterPostProcessTexture;
@@ -66,11 +64,6 @@ public class GaussianBlurRenderPass : ScriptableRenderPass
             return;
         }
 
-        //if (!SamplingDistance.IsActive())
-        //{
-        //    return;
-        //}
-
         var source = renderPassEvent == RenderPassEvent.AfterRendering && renderingData.cameraData.resolveFinalTarget
             ? _afterPostProcessTexture.Identifier()
             : _cameraColorTarget;
@@ -83,8 +76,6 @@ public class GaussianBlurRenderPass : ScriptableRenderPass
 
         using (new ProfilingScope(cmd, _profilingSampler))
         {
-            //_material.SetInt(_sampleCountPropertyId, _volume.sampleCount.value);
-            //_material.SetFloat(_strengthPropertyId, _volume.strength.value);
             _material.SetFloat(_samplingDistancePropertyId, _volume.SamplingDistance.value);
             cmd.SetGlobalTexture(_mainTexPropertyId, source);
             Blit(cmd, source, _tempRenderTargetHandle.Identifier(), _material);

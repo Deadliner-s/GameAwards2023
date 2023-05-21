@@ -12,8 +12,6 @@ Shader "Hidden/GaussianBlur2"
 			TEXTURE2D(_MainTex);
 			SAMPLER(sampler_MainTex);
 			float _SamplingDistance;
-			//half _SampleCount;
-			//half _Strength;
 			static const int samplingCount = 7;
 			static const half weights[samplingCount] = { 0.036, 0.113, 0.216, 0.269, 0.216, 0.113, 0.036 };
 
@@ -52,15 +50,6 @@ Shader "Hidden/GaussianBlur2"
 			{
 				half4 color = 0;
 
-				//// 垂直方向
-				//for (int i = 0; i < samplingCount; i++) {
-				//	// サンプリングして重みを掛ける。後で水平方向も合成するため0.5をかける
-				//	color += SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.coordV) * weights[i] * 0.5;
-				//	// offset分だけサンプリングポイントをずらす
-				//	IN.coordV += IN.offsetV;
-				//}
-
-				// 水平方向
 				for (int j = 0; j < samplingCount; j++) {
 					color += SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.coordH) * weights[j] * 1.0f;
 					IN.coordH += IN.offsetH;
