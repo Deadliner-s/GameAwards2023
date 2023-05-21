@@ -13,11 +13,15 @@ public class CreateExplosion : MonoBehaviour
     private GameObject bigEffect;
 
     [SerializeField]
-    private int firstExplosionStartFlame;
+    [Tooltip("1度目の爆発までのフレーム")]
+    private int firstExplosionStartFlame;   
     [SerializeField]
-    private int secondExplosionStartFlame;
+    [Tooltip("2度目の爆発までのフレーム")]
+    private int secondExplosionStartFlame;  // ゲームがスタートした時からのフレームなので注意
     [SerializeField]
-    private int thirdExplosionStartFlame;
+    [Tooltip("3度目の爆発までのフレーム")]
+    private int thirdExplosionStartFlame;   
+
     private int flame;
 
     private Vector3 vec;
@@ -40,37 +44,43 @@ public class CreateExplosion : MonoBehaviour
     void Update()
     {
         flame++;
-
        
+        // 最初の爆発の処理(小爆発の処理)
         if (flame >= firstExplosionStartFlame && flame <= secondExplosionStartFlame)
         {
-            if ((flame % 10) == 0)
+            // 2度目の爆発まで何度か爆発する
+            if ((flame % 10) == 0)      // 現在は10の倍数のフレームごとに設定してる (flame % 〇←の数字の倍数で爆発する)
             {
+                // ランダムで爆破する場所を変えている
                 randX = Random.Range(-3.00f, 3.00f);
                 randY = Random.Range(4.00f, 7.00f);
                 vec = new Vector3(gameObject.transform.position.x + randX,
                 gameObject.transform.position.y + randY,
                 gameObject.transform.position.z);
-                // エフェクト生成
+                
                 GameObject InstantiateEffect
                 = GameObject.Instantiate(smallEffect, vec, Quaternion.identity);
             }
         }
 
+        // 2度目の爆発の処理(小爆発の処理)
         if (flame >= secondExplosionStartFlame && flame <= thirdExplosionStartFlame)
         {
-            if ((flame % 20) == 0)
+            // 最後の爆発まで何度か爆発する
+            if ((flame % 20) == 0)      // 現在は20の倍数のフレームごとに設定してる
             {
                 randX = Random.Range(-3.00f, 3.00f);
                 randY = Random.Range(0.00f, 4.00f);
                 vec = new Vector3(gameObject.transform.position.x + randX,
                 gameObject.transform.position.y + randY,
                 gameObject.transform.position.z);
+
                 GameObject InstantiateEffect
                     = GameObject.Instantiate(smallEffect, vec, Quaternion.identity);
             }
         }
 
+        // 最後の爆発の処理(大爆発の処理)
         if (flame == thirdExplosionStartFlame)
         {
             vec = new Vector3(gameObject.transform.position.x ,
