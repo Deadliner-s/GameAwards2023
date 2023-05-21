@@ -34,6 +34,7 @@ public class EffectManager : MonoBehaviour
     void Start()
     {
         playerManager = GameObject.Find("PlayerManager");
+        phaseManagerObj = GameObject.Find("PhaseManagerObj");
         phaseManager = phaseManagerObj.GetComponent<PhaseManager>();
 
         // ƒuƒ‰[‚Ì‰Šú‰»ˆ—

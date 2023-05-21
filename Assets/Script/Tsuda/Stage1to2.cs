@@ -37,7 +37,7 @@ public class Stage1to2 : MonoBehaviour
 
             if (bSceneStart) { return; }
 
-            // SceneLoadManagerをタグ検索
+            // SceneMoveManagerをタグ検索
             GameObject obj = GameObject.FindGameObjectWithTag("SceneMoveManager");
             // シーンの開始
             //async.allowSceneActivation = true;

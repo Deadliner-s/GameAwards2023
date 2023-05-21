@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using DG.Tweening;
+//using DG.Tweening;
 
 public class CameraEventMove3 : MonoBehaviour
 {
@@ -31,6 +31,14 @@ public class CameraEventMove3 : MonoBehaviour
 
     private GameObject fade; // フェードオブジェクト
 
+    // 制限時間の設定
+    [Header("制限時間")]
+    [Tooltip("制限時間")]
+    [SerializeField] float TimeLimit = 60; //制限時間
+    private float Counttime; //時間を測る
+
+    private bool bSceneStart = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,44 +62,74 @@ public class CameraEventMove3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H) && !bInput)
-        {
-            // プレイヤーの移動のスクリプトを停止
-            if (playerMove != null)
-            {
-                playerMove.enabled = false;
-            }
-            // プレイヤーの回転のスクリプトを停止
-            if (playerMoveAngle != null)
-            {
-                playerMoveAngle.enabled = false;
-            }
-
-            //---- しーむれすな移動 ----
-            var DOTMove = DOTween.Sequence();
-            //ボスの移動の追加
-            float pos = boss.transform.position.z;
-            DOTMove.Append(boss.transform.DOMoveZ(pos - move, moveTimeBoss));
-            // カメラの移動の追加
-            pos = gameObject.transform.position.z;
-            DOTMove.Join(gameObject.transform.DOMoveZ(
-                pos - move, moveTimeBoss));
-            // 両方動かした後、カメラの移動を行う
-            // その後、シーン遷移処理
-            DOTMove.Append(gameObject.transform.DOMoveZ(
-                initPos.z, moveTimeCamera));
-            // 移動実行
-            DOTMove.Play().OnComplete(SceneMove);
-
-            // もう一度押しても実行されないようにする
-            bInput = true;
-        }
+        CountTime();
     }
 
     // シーン遷移処理
     private void SceneMove()
     {
         //async.allowSceneActivation = true;
-        fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "merge_2");
+        //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "merge_2");
+        // SceneMoveManagerをタグ検索
+        GameObject obj = GameObject.FindGameObjectWithTag("SceneMoveManager");
+        // シーンの開始
+        obj.GetComponent<SceneMoveManager>().SceneStartUnload();
+    }
+
+    // カウントダウン
+    private void CountTime()
+    {
+        Counttime += Time.deltaTime;//時間を足す
+
+        if (Counttime > TimeLimit ||
+            Input.GetKeyDown(KeyCode.H) ||
+            Input.GetKeyDown(KeyCode.P))
+        {
+            if (bSceneStart) { return; }
+
+            // シームレスな遷移
+            //Seamless();
+
+            // シーン遷移
+            SceneMove();
+
+            bSceneStart = true;
+        }
+    }
+
+    // シームレスな遷移
+    private void Seamless()
+    {
+        //if (bInput) { return; }
+        //// プレイヤーの移動のスクリプトを停止
+        //if (playerMove != null)
+        //{
+        //    playerMove.enabled = false;
+        //}
+        //// プレイヤーの回転のスクリプトを停止
+        //if (playerMoveAngle != null)
+        //{
+        //    playerMoveAngle.enabled = false;
+        //}
+
+        ////---- しーむれすな移動 ----
+        //// 連続で動作させるための前処理
+        //var DOTMove = DOTween.Sequence();
+        ////ボスの移動の追加
+        //float pos = boss.transform.position.z;
+        //DOTMove.Append(boss.transform.DOMoveZ(pos - move, moveTimeBoss));
+        //// カメラの移動の追加
+        //pos = gameObject.transform.position.z;
+        //DOTMove.Join(gameObject.transform.DOMoveZ(
+        //    pos - move, moveTimeBoss));
+        //// 両方動かした後、カメラの移動を行う
+        //// その後、シーン遷移処理
+        //DOTMove.Append(gameObject.transform.DOMoveZ(
+        //    initPos.z, moveTimeCamera));
+        //// 移動実行
+        //DOTMove.Play().OnComplete(SceneMove);
+
+        //// もう一度押しても実行されないようにする
+        //bInput = true;
     }
 }
