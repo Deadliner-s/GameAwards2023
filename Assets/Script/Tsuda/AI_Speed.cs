@@ -14,6 +14,11 @@ public class AI_Speed : MonoBehaviour
     private bool AudioFlg = false;
     private float timer = 0.0f;
 
+    [SerializeField]
+    private int count = 3;
+    [SerializeField]
+    private float SE_time = 0.802f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +40,7 @@ public class AI_Speed : MonoBehaviour
             if (!AudioFlg)
             {
                 SoundManager.instance.PlayVOICE("AI_SPEED");
+                StartCoroutine("WarningSound");
                 AudioFlg = true;
             }
 
@@ -52,6 +58,15 @@ public class AI_Speed : MonoBehaviour
             timer = 0.0f;
             message.enabled = false;
             AudioFlg = false;
+        }
+    }
+
+    IEnumerator WarningSound()
+    {
+        for(int i = 0; i < count; i++)
+        {
+            SoundManager.instance.PlaySE("Warning");
+            yield return new WaitForSeconds(SE_time);
         }
     }
 }

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgm:
   - name: BGM
-    clip: {fileID: 8300000, guid: fc32c1fce73f63043a0394d13f3fc6ec, type: 3}
+    clip: {fileID: 8300000, guid: e97d7d1749a8c91469a0041bdd013cf3, type: 3}
     loop: 1
     fadeIn: 0
     TimefadeIn: 0
