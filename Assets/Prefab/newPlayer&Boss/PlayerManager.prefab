@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22fa49041413b124e867d81e2fb2c992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  afterimageObj: {fileID: 780286264740109266, guid: 43dfb98239ca1bf48aa33f2652dcfa41, type: 3}
+  afterimageObj: {fileID: 2630742501158787459, guid: 674c0f7557306894a8edf2756737361c, type: 3}
 --- !u!114 &2200838780285789213
 MonoBehaviour:
   m_ObjectHideFlags: 0
