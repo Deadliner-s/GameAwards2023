@@ -15,6 +15,8 @@ public class GManager : MonoBehaviour
     [SerializeField]
     bool FirstTime = true;
 
+    public bool ContinueFlg = false;    // メニュー画面でコンティニューが押されたか
+
     //private AsyncOperation stage1;
     //private AsyncOperation stage2;
     //private AsyncOperation stage3;
@@ -44,6 +46,8 @@ public class GManager : MonoBehaviour
         //stage1.allowSceneActivation = false;
         //stage2.allowSceneActivation = false;
         //stage3.allowSceneActivation = false;
+
+        ContinueFlg = false;
     }
 
     // Update is called once per frame
@@ -157,6 +161,15 @@ public class GManager : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void GetContinueFlg(bool flg)
+    {
+        ContinueFlg = flg;
+    }
+    public bool SetContinueFlg()
+    {
+        return ContinueFlg;
     }
 
     void OnApplicationQuit()

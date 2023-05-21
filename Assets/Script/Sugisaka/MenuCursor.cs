@@ -133,6 +133,7 @@ public class MenuCursor : MonoBehaviour
                     InputActions.Disable();             // オプションメニューが開いているときは入力を受け付けない
                     this.gameObject.SetActive(false);
                 }
+                GManager.instance.GetContinueFlg(false);
                 SoundManager.instance.PlaySE("Decision");
                 break;
             case (1):
@@ -167,6 +168,7 @@ public class MenuCursor : MonoBehaviour
                     default:
                         break;
                 }
+                GManager.instance.GetContinueFlg(true);
                 SoundManager.instance.PlaySE("Decision");
                 break;
             case (2):

@@ -9,23 +9,44 @@ public class Fade : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //フェードイン
-        if(SceneManager.GetActiveScene().name == "Prologue")
+        ////フェードイン
+        //if(SceneManager.GetActiveScene().name == "Prologue")
+        //{
+        //    StartCoroutine("Color_FadeIn");
+        //}
+        //if(SceneManager.GetActiveScene().name == "Stage2Event")
+        //{
+        //    StartCoroutine("Color_FadeIn");
+        //}
+        //if(SceneManager.GetActiveScene().name == "Stage3Event")
+        //{
+        //    StartCoroutine("Color_FadeIn");
+        //}
+        //if (SceneManager.GetActiveScene().name == "Title")
+        //{
+        //    StartCoroutine("Color_FadeIn");
+        //}
+        if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_TITLE)
         {
             StartCoroutine("Color_FadeIn");
         }
-        if(SceneManager.GetActiveScene().name == "Stage2Event")
+        if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE)
         {
             StartCoroutine("Color_FadeIn");
         }
-        if(SceneManager.GetActiveScene().name == "Stage3Event")
+        // コンティニューの場合
+        if(GManager.instance.SetContinueFlg() == true)
         {
-            StartCoroutine("Color_FadeIn");
+            if(SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT)
+            {
+                StartCoroutine("Color_FadeIn");
+            }
+            if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT)
+            {
+                StartCoroutine("Color_FadeIn");
+            }
         }
-        if (SceneManager.GetActiveScene().name == "Title")
-        {
-            StartCoroutine("Color_FadeIn");
-        }
+
     }
 
     public IEnumerator Color_FadeIn()
