@@ -67,6 +67,9 @@ public class VOICE
 
 public class SoundManager : MonoBehaviour
 {
+    private SceneLoadStartUnload.SCENE_NAME currentScene;
+    private SceneLoadStartUnload.SCENE_NAME nextScene;
+
     [SerializeField]
     [Header("BGM")]
     public BGM[] bgm;
@@ -133,29 +136,28 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-        SceneManager.activeSceneChanged += ActiveSceneChanged;
-
         // タイトルシーンのBGMを再生
-        if(SceneManager.GetActiveScene().name == "Title")
-        {
-            PlayBGM("Title");
-        }
-
+        //if(SceneManager.GetActiveScene().name == "Title")
+        //{
+        //    PlayBGM("Title");
+        //}
 
         // アクティブシーンの切り替え
         //Scene scene = SceneManager.GetSceneByName("Scene_B");
         //SceneManager.SetActiveScene(scene);
-       // PlayBgm(BGM_clip);
+        // PlayBgm(BGM_clip);
     }
 
     private void Update()
     {
+        currentScene = SceneNow.instance.sceneNowCatch;
+
         // シーンがタイトルの時のみ音量調整用のオブジェクトを探す
-        if (SceneManager.GetActiveScene().name == "Title")
+        if (currentScene == SceneLoadStartUnload.SCENE_NAME.E_TITLE)
         {
             volumeController = GameObject.FindWithTag("VolumeController");
             // オブジェクトがあるかどうか
-            if(volumeController != null)
+            if (volumeController != null)
             {
                 // コンポーネントがあるかどうか
                 if (volumeController.GetComponent<VolumeController>() != null)
@@ -175,6 +177,9 @@ public class SoundManager : MonoBehaviour
                 }
             }
         }
+
+
+        BGMPlayer();
     }
 
     // BGM再生
@@ -313,69 +318,156 @@ public class SoundManager : MonoBehaviour
         s.audioSource.Play();
     }
 
-
-    // シーンが切り替わった時に呼ばれる
-    void ActiveSceneChanged(Scene thisScene, Scene nextScene)
+    void BGMPlayer()
     {
-        //Debug.Log(thisScene.name);
-        //Debug.Log(nextScene.name);
-
-        // シーンが切り替わった時
-        // BGMの切り替え
-        if (thisScene != nextScene)
+        // シーンが切り替わった時に呼ばれる関数を登録
+        if (SceneNow.instance != null)
         {
-            thisScene = nextScene;
-            if (nextScene.name == "Title")
+            if (currentScene != nextScene)
             {
-                PlayBGM("Title");
-            }
-            if (nextScene.name == "Prologue")
-            {
-                PlayBGM("Stage");
-                PlayBGM("BGM");
-            }
+                nextScene = currentScene;
 
-            if(nextScene.name == "Stage2Event")
-            {
-                if (CheckPlayBGM("Stage") == false)
+                // BGMの再生
+                // タイトルシーンの時
+                if (currentScene == SceneLoadStartUnload.SCENE_NAME.E_TITLE)
+                {
+                    PlayBGM("Title");
+                }
+                // プロローグシーン～ステージ2の時
+                if (currentScene == SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE)
                 {
                     PlayBGM("Stage");
+                    PlayBGM("BGM");
                 }
-            }
+                // Stage2Eventの時にBGMが鳴っていなかった場合(ステージ2でコンティニュー
+                if (currentScene == SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT)
+                {
+                    if (CheckPlayBGM("Stage") == false)
+                    {
+                        PlayBGM("Stage");
+                    }
+                    if (CheckPlayBGM("BGM") == false)
+                    {
+                        PlayBGM("BGM");
+                    }
+                }
+                // Stage3Event～ステージ3
+                if (currentScene == SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT)
+                {
+                    PlayBGM("BossStage");
+                    if (CheckPlayBGM("BGM") == false)
+                    {
+                        PlayBGM("BGM");
+                    }
+                }
+                // ゲームクリア
+                if (currentScene == SceneLoadStartUnload.SCENE_NAME.E_RESULT_COMPLETED)
+                {
+                    PlayBGM("GameClear");
+                }
 
-            if (nextScene.name == "Stage3Event")
-            {
-                PlayBGM("BossStage");
-            }
-            if(nextScene.name == "GameClear")
-            {
-                PlayBGM("GameClear");
-            }
-
-            // BGMの停止
-            if (nextScene.name != "Title")
-            {
-                StopBGM("Title");
-            }
-            if (nextScene.name != "Prologue" && nextScene.name != "Stage1" && nextScene.name != "Stage2" && nextScene.name != "Stage2Event")
-            {
-                StopBGM("Stage");
-            }
-            if (nextScene.name != "Stage3Event" && nextScene.name != "merge_2")
-            {
-                StopBGM("BossStage");
-            }
-
-            if (nextScene.name != "Stage1" && nextScene.name != "Stage2" && nextScene.name != "merge_2" &&
-                nextScene.name != "Prologue" && nextScene.name != "Stage2Event" && nextScene.name != "Stage3Event" && nextScene.name != "Epilogue")
-            {
-                StopBGM("BGM");
-            }
-
-            if (nextScene.name != "GameClear")
-            {
-                StopBGM("GameClear");
+                // BGMの停止
+                // タイトルシーンでない場合
+                if (currentScene != SceneLoadStartUnload.SCENE_NAME.E_TITLE)
+                {
+                    StopBGM("Title");
+                }
+                // プロローグシーン～ステージ2でない場合
+                if (currentScene != SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE &&
+                    currentScene != SceneLoadStartUnload.SCENE_NAME.E_STAGE1 &&
+                    currentScene != SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT &&
+                    currentScene != SceneLoadStartUnload.SCENE_NAME.E_STAGE2)
+                {
+                    StopBGM("Stage");
+                }
+                // Stage3Event～ステージ3でない場合
+                if (currentScene != SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT &&
+                   currentScene != SceneLoadStartUnload.SCENE_NAME.E_STAGE3)
+                {
+                    StopBGM("BossStage");
+                }
+                // ゲームクリアでない場合
+                if (currentScene != SceneLoadStartUnload.SCENE_NAME.E_RESULT_COMPLETED)
+                {
+                    StopBGM("GameClear");
+                }
+                // プロローグシーン～ステージ3でない場合
+                if (currentScene != SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE &&
+                    currentScene != SceneLoadStartUnload.SCENE_NAME.E_STAGE1 &&
+                    currentScene != SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT &&
+                    currentScene != SceneLoadStartUnload.SCENE_NAME.E_STAGE2 &&
+                    currentScene != SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT &&
+                    currentScene != SceneLoadStartUnload.SCENE_NAME.E_STAGE3)
+                {
+                    StopBGM("BGM");
+                }
             }
         }
     }
 }
+
+    // シーンが切り替わった時に呼ばれる
+//    void ActiveSceneChanged(Scene thisScene, Scene nextScene)
+//    {
+//        //Debug.Log(thisScene.name);
+//        //Debug.Log(nextScene.name);
+
+//        // シーンが切り替わった時
+//        // BGMの切り替え
+//        if (thisScene != nextScene)
+//        {
+//            thisScene = nextScene;
+//            if (nextScene.name == "Title")
+//            {
+//                PlayBGM("Title");
+//            }
+//            if (nextScene.name == "Prologue")
+//            {
+//                PlayBGM("Stage");
+//                PlayBGM("BGM");
+//            }
+
+//            if (nextScene.name == "Stage2Event")
+//            {
+//                if (CheckPlayBGM("Stage") == false)
+//                {
+//                    PlayBGM("Stage");
+//                }
+//            }
+
+//            if (nextScene.name == "Stage3Event")
+//            {
+//                PlayBGM("BossStage");
+//            }
+//            if (nextScene.name == "GameClear")
+//            {
+//                PlayBGM("GameClear");
+//            }
+
+//            // BGMの停止
+//            if (nextScene.name != "Title")
+//            {
+//                StopBGM("Title");
+//            }
+//            if (nextScene.name != "Prologue" && nextScene.name != "Stage1" && nextScene.name != "Stage2" && nextScene.name != "Stage2Event")
+//            {
+//                StopBGM("Stage");
+//            }
+//            if (nextScene.name != "Stage3Event" && nextScene.name != "merge_2")
+//            {
+//                StopBGM("BossStage");
+//            }
+
+//            if (nextScene.name != "Stage1" && nextScene.name != "Stage2" && nextScene.name != "merge_2" &&
+//                nextScene.name != "Prologue" && nextScene.name != "Stage2Event" && nextScene.name != "Stage3Event" && nextScene.name != "Epilogue")
+//            {
+//                StopBGM("BGM");
+//            }
+
+//            if (nextScene.name != "GameClear")
+//            {
+//                StopBGM("GameClear");
+//            }
+//        }
+//    }
+//}
