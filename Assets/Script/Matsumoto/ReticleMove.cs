@@ -53,7 +53,7 @@ public class ReticleMove : MonoBehaviour
         Vector3 playerPos = RectTransformUtility.WorldToScreenPoint(Camera.main, player.transform.position);
         playerPos.x = playerPos.x + initPosX;
         playerPos.y = playerPos.y + initPosY;
-        transform.position = playerPos;
+        //transform.position = playerPos;
 
         // èâä˙âª
         pos = transform.position;
