@@ -85,6 +85,16 @@ public class CameraMoveDestroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(player == null)
+        {
+            player = GameObject.Find("Player");
+        }
+
+        if (playerManager == null)
+        {
+            playerManager = GameObject.Find("PlayerManager");
+        }
+
         if (bFade) { return; }
         if (playerManager.GetComponent<ShotDown>().EffectFlag)
         {

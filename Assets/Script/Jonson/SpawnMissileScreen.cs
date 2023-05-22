@@ -137,6 +137,11 @@ public class SpawnMissileScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+        {
+            player = player = GameObject.Find("Player");
+        }
+
         if (player)//プレイヤーは生きている（存在する）
         {
             // デバッグ用
