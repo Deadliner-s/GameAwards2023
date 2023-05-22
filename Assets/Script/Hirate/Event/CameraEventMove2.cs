@@ -38,6 +38,7 @@ public class CameraEventMove2 : MonoBehaviour
     private float Counttime; //時間を測る
 
     private bool bSceneStart = false;
+    public bool bAniEnd { get; set; } = false; // アニメーションの終了取得用
 
     // Start is called before the first frame update
     void Start()
@@ -82,14 +83,23 @@ public class CameraEventMove2 : MonoBehaviour
     {
         Counttime += Time.deltaTime;//時間を足す
 
-        if (Counttime > TimeLimit ||
-            Input.GetKeyDown(KeyCode.H) ||
+        if (Counttime > TimeLimit)
+        {
+            // シームレスな遷移
+            //Seamless();
+
+            // アニメーション終了したかの判定
+            if (bAniEnd)
+            {
+                // シーン遷移
+                SceneMove();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.H) ||
             Input.GetKeyDown(KeyCode.P))
         {
             if (bSceneStart) { return; }
-
-            // シームレスな遷移
-            //Seamless();
 
             // シーン遷移
             SceneMove();
