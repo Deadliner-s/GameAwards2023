@@ -55,12 +55,15 @@ public class StartParticle : MonoBehaviour
             }
         }
         // プレイヤーの弾に当たったら爆発エフェクトを生成
-        if(collision.gameObject.tag == "PlayerBullet")
+        if(this.gameObject.tag == "Target")
         {
-            ExplosionParticle = Instantiate(missileExplosion);
-            ExplosionParticle.transform.position = this.transform.position;
-            ExplosionParticle.transform.rotation = this.transform.rotation;
-            ExplosionParticle.Play();
+            if (collision.gameObject.tag == "PlayerBullet")
+            {
+                ExplosionParticle = Instantiate(missileExplosion);
+                ExplosionParticle.transform.position = this.transform.position;
+                ExplosionParticle.transform.rotation = this.transform.rotation;
+                ExplosionParticle.Play();
+            }
         }
     }
 }

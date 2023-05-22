@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 2200838780285789201}
   - component: {fileID: 2200838780285789200}
   - component: {fileID: 2200838780285789215}
-  - component: {fileID: 2200838780285789214}
   - component: {fileID: 2200838780285789213}
   - component: {fileID: 2200838780285789212}
   - component: {fileID: 2200838780285789211}
   - component: {fileID: 2200838780285789210}
   - component: {fileID: 2200838780285789209}
+  - component: {fileID: 2572366721224248827}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -93,19 +93,6 @@ MonoBehaviour:
   RepairShieldflame: 150
   Canvas: {fileID: 0}
   PlayerHPGaugeTrans: {fileID: 0}
---- !u!114 &2200838780285789214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2200838780285789208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22fa49041413b124e867d81e2fb2c992, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  afterimageObj: {fileID: 2630742501158787459, guid: 674c0f7557306894a8edf2756737361c, type: 3}
 --- !u!114 &2200838780285789213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,3 +188,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d263528c2948094c8faee590e96e9c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2572366721224248827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2200838780285789208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 754685862f732ac4a8125690cff2580b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterimageObj: {fileID: 2630742501158787459, guid: 674c0f7557306894a8edf2756737361c, type: 3}
+  maxAfterimages: 7
+  afterimageDelay: 0.1
+  afterimageLifetime: 0.1
