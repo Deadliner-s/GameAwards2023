@@ -29,6 +29,8 @@ public class CameraMoveSceneP : MonoBehaviour
     [SerializeField]
     private GameObject fade; // フェードオブジェクト
 
+    public bool bAniEnd { get; set; } = false; // アニメーションの終了取得用
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +51,16 @@ public class CameraMoveSceneP : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) ||
+            Input.GetKeyDown(KeyCode.H))
+        {
+            // SceneLoadManagerをタグ検索
+            GameObject obj = GameObject.FindGameObjectWithTag("SceneMoveManager");
+            // シーンの開始
+            obj.GetComponent<SceneMoveManager>().SceneStartUnload();
+        }
+
+        if (bAniEnd)
         {
             // SceneLoadManagerをタグ検索
             GameObject obj = GameObject.FindGameObjectWithTag("SceneMoveManager");
@@ -58,7 +69,7 @@ public class CameraMoveSceneP : MonoBehaviour
         }
     }
 
-    void LateUpdate()
+    private void Ani()
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
@@ -116,6 +127,7 @@ public class CameraMoveSceneP : MonoBehaviour
     private void SceneMove()
     {
         //async.allowSceneActivation = true;
-        fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage1");
+        //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage1");
+        StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
     }
 }
