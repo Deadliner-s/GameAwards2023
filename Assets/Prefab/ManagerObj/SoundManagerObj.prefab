@@ -283,6 +283,9 @@ MonoBehaviour:
   - name: 4-4
     clip: {fileID: 8300000, guid: c3192dc9a9eae314ca20a0d511e35e27, type: 3}
     audioSource: {fileID: 0}
+  - name: EX-1
+    clip: {fileID: 8300000, guid: 196e8a5e0fa22be42a5b2d106f1e368d, type: 3}
+    audioSource: {fileID: 0}
   BGM_volume: 0.5
   SE_volume: 0.5
   VOICE_volume: 0.5
