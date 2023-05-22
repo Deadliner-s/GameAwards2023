@@ -27,35 +27,58 @@ public class SceneSkip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (fade == null)
+        {
+            fade = GameObject.Find("Fade");
+        }
     }
-
     private void OnStart()
     {
-
         // ÉVÅ[ÉìñºÇ≈ï™äÚ
         if (this.gameObject != null)
         {
 
-            if (SceneManager.GetActiveScene().name == "Prologue")
+            //if (SceneManager.GetActiveScene().name == "Prologue")
+            //{
+            //    InputActions.Disable();
+            //    fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage1");
+            //}
+            //if (SceneManager.GetActiveScene().name == "Stage2Event")
+            //{
+            //    InputActions.Disable();
+            //    fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2");
+            //}
+            //if (SceneManager.GetActiveScene().name == "Stage3Event")
+            //{
+            //    InputActions.Disable();
+            //    fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "merge_2");
+            //}
+            //if (SceneManager.GetActiveScene().name == "Epilogue")
+            //{
+            //    InputActions.Disable();
+            //    fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Title");
+            //}
+
+
+            if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE) 
             {
                 InputActions.Disable();
-                fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage1");
+                StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
             }
-            if (SceneManager.GetActiveScene().name == "Stage2Event")
+            if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT)
             {
                 InputActions.Disable();
-                fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2");
+                StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
             }
-            if (SceneManager.GetActiveScene().name == "Stage3Event")
+            if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT)
             {
                 InputActions.Disable();
-                fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "merge_2");
+                StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
             }
-            if (SceneManager.GetActiveScene().name == "Epilogue")
+            if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_EPILOGUE)
             {
                 InputActions.Disable();
-                fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Title");
+                StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
             }
         }
     }

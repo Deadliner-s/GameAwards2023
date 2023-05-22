@@ -38,13 +38,13 @@ public class LaserLightning : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            if (timer >= 4.0f)
-            {
+            //if (timer >= 4.0f)
+            //{
                 for (int i = 0; i < 4; i++)
                 {
                     lightning[i].GetComponent<LineRenderer>().enabled = true;
                 }
-            }
+            //}
         }
         if (currentPhase != PhaseManager.Phase.Speed_Phase)
         {
@@ -52,7 +52,7 @@ public class LaserLightning : MonoBehaviour
             {
                 lightning[i].GetComponent<LineRenderer>().enabled = false;
             }
-            timer = 0.0f;
+            //timer = 0.0f;
         }
     }
 }

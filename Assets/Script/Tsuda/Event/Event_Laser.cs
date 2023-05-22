@@ -15,11 +15,13 @@ public class Event_Laser : MonoBehaviour
 
     private float timer = 0.0f;
     private bool createFlg = false;
+    private GameObject Parent;
 
     // Start is called before the first frame update
     void Start()
     {
         transform.LookAt(TargetPos);
+        Parent = GameObject.Find("Laser_hanger");
     }
 
     // Update is called once per frame
@@ -28,8 +30,9 @@ public class Event_Laser : MonoBehaviour
         timer += Time.deltaTime;  // タイマーを減算する                                                          
 
         if(timer >= time && !createFlg)
-        {
-            Instantiate(prefab, transform.position, transform.rotation);
+        {            
+            GameObject spawnedObject = Instantiate(prefab, transform.position, transform.rotation);
+            spawnedObject.transform.parent = Parent.transform;
 
             createFlg = true;
         }

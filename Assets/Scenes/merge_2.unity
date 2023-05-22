@@ -1044,14 +1044,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 23
+  m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1111,7 +1111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -242, y: -262}
+  m_AnchoredPosition: {x: -227, y: -247}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!20 &370777762 stripped
@@ -1374,7 +1374,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -242, y: -229}
+  m_AnchoredPosition: {x: -229, y: -219}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &538967700
@@ -1432,14 +1432,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 27
+  m_fontSizeBase: 27
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -4361,7 +4361,7 @@ RectTransform:
   m_GameObject: {fileID: 2114847176}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 1.8378934, z: 1.2051}
+  m_LocalScale: {x: 7.5, y: 1.8378934, z: 1.2051}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 32605784}
@@ -4564,11 +4564,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1778316015132535035, guid: c561482d1e0b1974a941459296f0703a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -603.1896
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1778316015132535035, guid: c561482d1e0b1974a941459296f0703a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -291.97388
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1778316015132535035, guid: c561482d1e0b1974a941459296f0703a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4660,6 +4660,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 266351835}
     - target: {fileID: 2200838780285789215, guid: 8b1e9336a4ad23d499411d1a1637d001, type: 3}
+      propertyPath: PlayerHP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2200838780285789215, guid: 8b1e9336a4ad23d499411d1a1637d001, type: 3}
       propertyPath: DamageObj
       value: 
       objectReference: {fileID: 1987283940}
@@ -4676,6 +4680,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2980126415596057248, guid: 9e54c5e33ac33a244880130b486a8bc4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980126415596057251, guid: 9e54c5e33ac33a244880130b486a8bc4, type: 3}
+      propertyPath: EndObject
+      value: 
+      objectReference: {fileID: 514564257}
+    - target: {fileID: 2980126416014154772, guid: 9e54c5e33ac33a244880130b486a8bc4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980126416014154775, guid: 9e54c5e33ac33a244880130b486a8bc4, type: 3}
+      propertyPath: EndObject
+      value: 
+      objectReference: {fileID: 514564257}
+    - target: {fileID: 2980126416179589344, guid: 9e54c5e33ac33a244880130b486a8bc4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980126416179589347, guid: 9e54c5e33ac33a244880130b486a8bc4, type: 3}
+      propertyPath: EndObject
+      value: 
+      objectReference: {fileID: 514564257}
+    - target: {fileID: 2980126416733239035, guid: 9e54c5e33ac33a244880130b486a8bc4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980126416733239038, guid: 9e54c5e33ac33a244880130b486a8bc4, type: 3}
+      propertyPath: EndObject
+      value: 
+      objectReference: {fileID: 514564257}
     - target: {fileID: 2980126416889658716, guid: 9e54c5e33ac33a244880130b486a8bc4, type: 3}
       propertyPath: m_Name
       value: Boss

@@ -85,7 +85,7 @@ public class Fade : MonoBehaviour
         }
     }
     
-    public IEnumerator Color_FadeOut(string nextScene = null)
+    public IEnumerator Color_FadeOut()
     {
         // 画面をフェードインさせるコールチン
         // 前提：画面を覆うPanelにアタッチしている
@@ -125,15 +125,14 @@ public class Fade : MonoBehaviour
 
         if (fade.color.a == 1.0f)
         {
-            if (nextScene != null)
-            {
-                // シーン遷移
-                //SceneManager.LoadScene(nextScene);
-                // SceneLoadManagerをタグ検索
-                GameObject obj = GameObject.FindGameObjectWithTag("SceneMoveManager");
-                // シーンの開始
-                obj.GetComponent<SceneMoveManager>().SceneStartUnload();
-            }
+
+            // シーン遷移
+            //SceneManager.LoadScene(nextScene);
+            // SceneLoadManagerをタグ検索
+            GameObject obj = GameObject.FindGameObjectWithTag("SceneMoveManager");
+            // シーンの開始
+            obj.GetComponent<SceneMoveManager>().SceneStartUnload();
+            
         }
     }
 
