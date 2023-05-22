@@ -10,7 +10,7 @@ public class Blink_UI : MonoBehaviour
     [SerializeField] private Image _target;
 
     // “_–ÅŽüŠú[s]
-    private float _cycle = 0.6f;
+    private float _cycle = 1.0f;
     private double _time;
 
     private float timer = 0.0f;
