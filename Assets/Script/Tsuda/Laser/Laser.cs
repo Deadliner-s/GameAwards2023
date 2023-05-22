@@ -20,8 +20,8 @@ public class Laser : MonoBehaviour
     {
         transform.position = LaserA.GetComponent<LaserHead>().targetWorldPosition;
 
-        StartScale = new Vector3(transform.localScale.x, transform.localScale.y, 1);
-        transform.localScale = new Vector3(ZeroX, ZeroY, 1);
+        StartScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(ZeroX, ZeroY, StartScale.z);
         currentScale = transform.localScale;
     }
 
