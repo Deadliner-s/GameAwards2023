@@ -39,7 +39,7 @@ public class AI_Speed : MonoBehaviour
 
             if (!AudioFlg)
             {
-                SoundManager.instance.PlayVOICE("AI_SPEED");
+                //SoundManager.instance.PlayVOICE("AI_SPEED");
                 StartCoroutine("WarningSound");
                 AudioFlg = true;
             }

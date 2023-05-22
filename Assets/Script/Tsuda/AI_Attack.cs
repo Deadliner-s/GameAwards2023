@@ -33,7 +33,7 @@ public class AI_Attack : MonoBehaviour
 
             if (!AudioFlg)
             {
-                SoundManager.instance.PlayVOICE("AI_ATTACK");
+                //SoundManager.instance.PlayVOICE("AI_ATTACK");
                 AudioFlg = true;
             }
 
