@@ -48,9 +48,7 @@ public class PlayerHp : MonoBehaviour
 
     private HPGauge[] HpGaugecomponents;
 
-    private SphereCollider sphereCollider;
-
-    private Collider modelCollider;
+    private SphereCollider modelCollider;
 
     // シーン読込用
     //    private AsyncOperation async;
@@ -78,11 +76,11 @@ public class PlayerHp : MonoBehaviour
         Decreaseflame = 30;
 
 
-        sphereCollider = player.GetComponent<SphereCollider>();
+        modelCollider = player.GetComponent<SphereCollider>();
 
-        if (sphereCollider != null)
+        if (modelCollider != null)
         {
-            sphereCollider.enabled = false;
+            modelCollider.enabled = false;
         }
 
         // PlayerHpコオブジェクトのHpGaugeコンポーネントを全て取得する
@@ -102,8 +100,8 @@ public class PlayerHp : MonoBehaviour
         if (player == null)
         {
             player = GameObject.Find("Player");
-            modelCollider = player.GetComponent<Collider>();
-            sphereCollider = player.GetComponent<SphereCollider>();
+            modelCollider = player.GetComponent<SphereCollider>();
+            //sphereCollider = player.GetComponent<SphereCollider>();
             // PlayerHpコオブジェクトのHpGaugeコンポーネントを全て取得する
             HpGaugecomponents = PlayerHPGaugeTrans.GetComponentsInChildren<HPGauge>();
             // シールドオブジェクトからHexShieldコンポーネントを取得
@@ -182,18 +180,24 @@ public class PlayerHp : MonoBehaviour
             //player.GetComponent<Collider>().enabled = true;
             if (modelCollider == null)
             {
-                modelCollider = player.GetComponent<Collider>();
+                modelCollider = player.GetComponent<SphereCollider>();
             }
-            modelCollider.enabled = true;
+            if (modelCollider != null)
+            {
+                modelCollider.enabled = true;
+            }
         }
         else
         {
             //player.GetComponent<Collider>().enabled = false;
             if (modelCollider == null)
             {
-                modelCollider = player.GetComponent<Collider>();
+                modelCollider = player.GetComponent<SphereCollider>();
             }
-            modelCollider.enabled = false;
+            if (modelCollider != null)
+            {
+                modelCollider.enabled = false;
+            }
         }
     }
 
