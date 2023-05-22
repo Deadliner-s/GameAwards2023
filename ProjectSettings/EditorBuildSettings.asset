@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/ManagerScene.unity
+    guid: 64c6d320ba9af364492b1086dfd966b0
+  - enabled: 1
     path: Assets/Scenes/Title.unity
     guid: ad644bf7a4de30a40ba7f14644bc504f
   - enabled: 1
@@ -35,9 +38,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 9775d80f3ef84df40b1205c8ba91955e
-  - enabled: 1
-    path: Assets/Scenes/ManagerScene.unity
-    guid: 64c6d320ba9af364492b1086dfd966b0
   - enabled: 0
     path: Assets/Script/Hirate/Manager/otamesiya/SLpreMane.unity
     guid: 937845df6450b614bb4d12ddb554c2c3
