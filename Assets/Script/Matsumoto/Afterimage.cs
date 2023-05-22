@@ -49,6 +49,11 @@ public class Afterimage : MonoBehaviour
 
     void Update()
     {
+        if(player == null) 
+        {
+            player = GameObject.Find("Player");
+        }
+
         // 残像を生成するタイミングかどうかを判定
         if (playerManager.GetComponent<PlayerMove>().maneverFlg)
         {
