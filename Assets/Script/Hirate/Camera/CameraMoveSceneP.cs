@@ -47,6 +47,17 @@ public class CameraMoveSceneP : MonoBehaviour
     }
 
     // Update is called once per frame
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            // SceneLoadManagerをタグ検索
+            GameObject obj = GameObject.FindGameObjectWithTag("SceneMoveManager");
+            // シーンの開始
+            obj.GetComponent<SceneMoveManager>().SceneStartUnload();
+        }
+    }
+
     void LateUpdate()
     {
         if (Input.GetKeyDown(KeyCode.H))
