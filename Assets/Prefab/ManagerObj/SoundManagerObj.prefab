@@ -167,13 +167,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 9f45ff517b6664e499d35b4bc393b87a, type: 3}
     audioSource: {fileID: 0}
   - name: 0-8
-    clip: {fileID: 8300000, guid: 07aa5ce7a4cd1cb47b4f3f29da4a03be, type: 3}
+    clip: {fileID: 8300000, guid: 628f8f66110a1c9498748cae7b8cb97c, type: 3}
     audioSource: {fileID: 0}
   - name: 0-9
     clip: {fileID: 8300000, guid: 9811ff63307bacb48997d24b5e5b57a9, type: 3}
     audioSource: {fileID: 0}
   - name: 1-1
-    clip: {fileID: 8300000, guid: e2c7ac8c6ee64d641a5b2e408c6c18bf, type: 3}
+    clip: {fileID: 8300000, guid: 336b99851686ae54ba1e720ff1c41781, type: 3}
     audioSource: {fileID: 0}
   - name: 1-2
     clip: {fileID: 8300000, guid: 9f1d424739480b943a2d1871fdb2e8a4, type: 3}
@@ -218,7 +218,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4ba3386b4fb7a6341b57a52b6225e515, type: 3}
     audioSource: {fileID: 0}
   - name: 1-16
-    clip: {fileID: 8300000, guid: 715e139fcbc75414291c865403ad843a, type: 3}
+    clip: {fileID: 8300000, guid: 5a36eb5e63568c34bbdfee9e50df4b0f, type: 3}
     audioSource: {fileID: 0}
   - name: 2-11
     clip: {fileID: 8300000, guid: a1c467cea4cb2024dbf5b1d8768d3785, type: 3}
@@ -242,13 +242,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: b8f352101c55f024e82ae6975ab8d1e0, type: 3}
     audioSource: {fileID: 0}
   - name: 2-18
-    clip: {fileID: 8300000, guid: 5af9f0fbce0a01a438feaa5621b16e03, type: 3}
+    clip: {fileID: 8300000, guid: 67f1a532afd3fe14791b8cd8fbfbcf48, type: 3}
     audioSource: {fileID: 0}
   - name: 2-19
     clip: {fileID: 8300000, guid: bc5b773093366ef4b837cd9e6bf13b9d, type: 3}
     audioSource: {fileID: 0}
   - name: 2-20
-    clip: {fileID: 8300000, guid: 542a92afe5335f642abd50d72173d8d8, type: 3}
+    clip: {fileID: 8300000, guid: e353208aa669c3d469f9b86ca4133d17, type: 3}
     audioSource: {fileID: 0}
   - name: 2-21
     clip: {fileID: 8300000, guid: 6cdb9be2415e84d48b52ad650cf3a4c6, type: 3}
@@ -257,7 +257,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 0ce815e69c664fc49a24f37c5f130848, type: 3}
     audioSource: {fileID: 0}
   - name: 2-23
-    clip: {fileID: 8300000, guid: bca693fbf87380e4fbd89148bc7bb055, type: 3}
+    clip: {fileID: 8300000, guid: b285f50b85be0d1459e9c558b5be88cf, type: 3}
     audioSource: {fileID: 0}
   - name: 3-1
     clip: {fileID: 8300000, guid: 2db55c9becb549843912ff767a383b60, type: 3}
@@ -266,7 +266,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: fd18b46d0621c004d92ca1c8050a55a8, type: 3}
     audioSource: {fileID: 0}
   - name: 3-3
-    clip: {fileID: 8300000, guid: 85d9c1f3aa20e5a4388cfcb8fbc4098b, type: 3}
+    clip: {fileID: 8300000, guid: 42a20f7c99460144ba457dc2d9deb916, type: 3}
     audioSource: {fileID: 0}
   - name: 3-4
     clip: {fileID: 8300000, guid: 6db58ec1ce7b240408c8267f7ac6edcd, type: 3}
@@ -285,6 +285,9 @@ MonoBehaviour:
     audioSource: {fileID: 0}
   - name: EX-1
     clip: {fileID: 8300000, guid: 196e8a5e0fa22be42a5b2d106f1e368d, type: 3}
+    audioSource: {fileID: 0}
+  - name: 2-tuika
+    clip: {fileID: 8300000, guid: 52ba91eca45b13844a3516748e511adb, type: 3}
     audioSource: {fileID: 0}
   BGM_volume: 0.5
   SE_volume: 0.5
