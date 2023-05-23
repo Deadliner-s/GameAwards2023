@@ -6,50 +6,77 @@ using UnityEngine.SceneManagement;
 public class SceneSkip : MonoBehaviour
 {
     private GameObject fade;
-    private Myproject InputActions;
+    //private Myproject InputActions;
 
-    private SceneLoadStartUnload.SCENE_NAME currentScene;
-    private SceneLoadStartUnload.SCENE_NAME nextScene;
-    void Awake()
-    {
-        if (this.gameObject != null)
-        {
-            InputActions = new Myproject();
-            InputActions.Enable();
-            InputActions.UI.Start.performed += context => OnStart();
-        }
-    }
+    //private SceneLoadStartUnload.SCENE_NAME currentScene;
+    //private SceneLoadStartUnload.SCENE_NAME nextScene;
+
+    //void Awake()
+    //{
+    //    if (this.gameObject != null)
+    //    {
+    //        InputActions = new Myproject();
+    //        InputActions.Enable();
+    //        InputActions.UI.Start.performed += context => OnStart();
+    //    }
+    //}
 
     // Start is called before the first frame update
     void Start()
     {
         fade = GameObject.Find("Fade");
-        currentScene = SceneNow.instance.sceneNowCatch;
+        //currentScene = SceneNow.instance.sceneNowCatch;
+        //nextScene = currentScene;
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentScene = SceneNow.instance.sceneNowCatch;
+        //currentScene = SceneNow.instance.sceneNowCatch;
         if (fade == null)
         {
             fade = GameObject.Find("Fade");
         }
 
         // ƒV[ƒ“‚ªØ‚è‘Ö‚í‚Á‚½Žž‚ÉŒÄ‚Î‚ê‚é
-        if (SceneNow.instance != null)
+        //if (SceneNow.instance != null)
+        //{
+        //    if (currentScene != nextScene)
+        //    {
+        //        nextScene = currentScene;
+        //        if (currentScene == SceneLoadStartUnload.SCENE_NAME.E_STAGE1 || 
+        //            currentScene == SceneLoadStartUnload.SCENE_NAME.E_STAGE2 || 
+        //            currentScene == SceneLoadStartUnload.SCENE_NAME.E_STAGE3)
+        //        {
+        //            InputActions.UI.Start.performed -= context => OnStart();
+        //            InputActions.Disable();
+        //        }
+        //    }
+        //}
+
+        if (InputManager.instance.OnSelect())
         {
-            if (currentScene != nextScene)
+            if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE)
             {
-                nextScene = currentScene;
-                if (currentScene == SceneLoadStartUnload.SCENE_NAME.E_STAGE1 || 
-                    currentScene == SceneLoadStartUnload.SCENE_NAME.E_STAGE2 || 
-                    currentScene == SceneLoadStartUnload.SCENE_NAME.E_STAGE3)
-                {
-                    InputActions.UI.Start.performed -= context => OnStart();
-                    InputActions.Disable();
-                }
+                //InputActions.Disable();
+                StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
             }
+            if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT)
+            {
+                //InputActions.Disable();
+                StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
+            }
+            if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT)
+            {
+                //InputActions.Disable();
+                StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
+            }
+            if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_EPILOGUE)
+            {
+                //InputActions.Disable();
+                StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
+            }
+            InputManager.instance.UI_Disable();
         }
 
     }
@@ -81,26 +108,7 @@ public class SceneSkip : MonoBehaviour
             //}
 
 
-            if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE) 
-            {
-                InputActions.Disable();
-                StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
-            }
-            if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT)
-            {
-                InputActions.Disable();
-                StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
-            }
-            if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT)
-            {
-                InputActions.Disable();
-                StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
-            }
-            if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_EPILOGUE)
-            {
-                InputActions.Disable();
-                StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
-            }
+
         }
     }
 }

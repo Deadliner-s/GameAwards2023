@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class Shot : MonoBehaviour
 {
     public static Shot instance;
-    Myproject InputActions;
+    //Myproject InputActions;
 
     [Header("ミサイル発射用")]
     [Tooltip("プレイヤーミサイルのプレハブ")]
@@ -34,13 +34,13 @@ public class Shot : MonoBehaviour
     // 退避用
     public List<GameObject> sub = new List<GameObject>();
 
-    void Awake()
-    {
-        InputActions = new Myproject();
-        InputActions.Enable();
-        InputActions.Player.Shot.performed += context => OnShot();
-        InputActions.LoadBindingOverridesFromJson(PlayerPrefs.GetString("rebinds"));
-    }
+    //void Awake()
+    //{
+    //    InputActions = new Myproject();
+    //    InputActions.Enable();
+    //    InputActions.Player.Shot.performed += context => OnShot();
+    //    InputActions.LoadBindingOverridesFromJson(PlayerPrefs.GetString("rebinds"));
+    //}
 
     // Start is called before the first frame update
     private void Start()
@@ -153,38 +153,44 @@ public class Shot : MonoBehaviour
                 sub = new List<GameObject>();
             }
         }
-    }
 
-    public void OnShot()
-    {
-        // フェイズの確認
-        if (currentPhase == PhaseManager.Phase.Attack_Phase)
+        if(InputManager.instance.OnShot())
         {
-            // アタックフェイズ    
-            // フラグの確認
-            if (Shotflg == false)
+            // フェイズの確認
+            if (currentPhase == PhaseManager.Phase.Attack_Phase)
             {
-                // リスト再生成
-                targets = new List<GameObject>();
-
-                // 配列にタグがTargetのオブジェクトを入れる
-                GameObject[] targetsObj = GameObject.FindGameObjectsWithTag("Target");
-                foreach (GameObject target in targetsObj)
+                // アタックフェイズ    
+                // フラグの確認
+                if (Shotflg == false)
                 {
-                    // ターゲットがリストに含まれていなければ追加する
-                    if (!targets.Contains(target))
-                    {
-                        targets.Add(target);
-                    }
-                }
+                    // リスト再生成
+                    targets = new List<GameObject>();
 
-                // 経過時間初期化
-                currenttime = 0.0f;
-                // 射撃フラグを立てる
-                Shotflg = true;
-                // 即発射用
-                intervalTime = 10.0f;
+                    // 配列にタグがTargetのオブジェクトを入れる
+                    GameObject[] targetsObj = GameObject.FindGameObjectsWithTag("Target");
+                    foreach (GameObject target in targetsObj)
+                    {
+                        // ターゲットがリストに含まれていなければ追加する
+                        if (!targets.Contains(target))
+                        {
+                            targets.Add(target);
+                        }
+                    }
+
+                    // 経過時間初期化
+                    currenttime = 0.0f;
+                    // 射撃フラグを立てる
+                    Shotflg = true;
+                    // 即発射用
+                    intervalTime = 10.0f;
+                }
             }
         }
+
     }
+
+    //public void OnShot()
+    //{
+
+    //}
 }

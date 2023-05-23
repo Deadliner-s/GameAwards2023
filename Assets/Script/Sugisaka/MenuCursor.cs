@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuCursor : MonoBehaviour
 {
-    private Myproject InputActions;
+    //private Myproject InputActions;
     
     private int Selected;
     private int ItemMax;
@@ -33,11 +33,11 @@ public class MenuCursor : MonoBehaviour
 
     void Awake()
     {
-        InputActions = new Myproject();
-        InputActions.Enable();
-        InputActions.UI.Up.performed += context => OnUp();
-        InputActions.UI.Down.performed += context => OnDown();
-        InputActions.UI.Select.performed += context => OnSelect();
+        //InputActions = new Myproject();
+        //InputActions.Enable();
+        //InputActions.UI.Up.performed += context => OnUp();
+        //InputActions.UI.Down.performed += context => OnDown();
+        //InputActions.UI.Select.performed += context => OnSelect();
     }
 
     // Start is called before the first frame update
@@ -67,7 +67,7 @@ public class MenuCursor : MonoBehaviour
             if (OptionMenu.activeSelf == false)
             {
                 title.SetActive(true);
-                InputActions.Enable();
+                //nputActions.Enable();
                 OptionMenuFlag = false;
             }
         }
@@ -77,117 +77,131 @@ public class MenuCursor : MonoBehaviour
         {
             if (CheckMenu.activeSelf == false)
             {
-                InputActions.Enable();
+                //InputActions.Enable();
                 CheckMenuFlag = false;
+            }
+        }
+
+
+        if (InputManager.instance.OnUp())
+        {
+            // 前選択を黒に
+            transform.GetChild(Selected).GetComponent<TextMeshProUGUI>().color = Color.black;
+            // 
+            Selected--;
+            Selected = (int)Mathf.Repeat(Selected, ItemMax);
+            // 現選択を白に
+            transform.GetChild(Selected).GetComponent<TextMeshProUGUI>().color = Color.white;
+
+            SoundManager.instance.PlaySE("Select");
+        }
+        if(InputManager.instance.OnDown())
+        {
+            // 前選択を黒に
+            transform.GetChild(Selected).GetComponent<TextMeshProUGUI>().color = Color.black;
+            //
+            Selected++;
+            Selected = (int)Mathf.Repeat(Selected, ItemMax);
+            // 現選択を白に
+            transform.GetChild(Selected).GetComponent<TextMeshProUGUI>().color = Color.white;
+
+            SoundManager.instance.PlaySE("Select");
+        }
+
+        if(InputManager.instance.OnSelect())
+        {
+            // 選択されたメニューによって処理を変える
+            switch (Selected)
+            {
+                case (0):
+                    // NEW GAME
+                    if (ManagerObj.GetComponent<GManager>().GetFirstTime())
+                    {
+                        // ステージ１へ
+                        InputManager.instance.UI_Disable();
+                        //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
+                        fade.GetComponent<Fade>().StartCoroutine(
+                                "Color_FadeOut_Title",
+                                SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE);
+                    }
+                    else
+                    {
+                        //データ削除確認
+                        CheckMenu.SetActive(true);
+                        CheckMenuFlag = true;
+                        this.gameObject.SetActive(false);
+                    }
+                    GManager.instance.GetContinueFlg(false);
+                    SoundManager.instance.PlaySE("Decision");
+                    break;
+                case (1):
+                    // CONTINUE
+                    int num = ManagerObj.GetComponent<GManager>().GetNowStage();
+                    switch (num)
+                    {
+                        case (0):
+                            // ステージ1
+                            //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
+                            fade.GetComponent<Fade>().StartCoroutine(
+                                "Color_FadeOut_Title",
+                                SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE);
+                            break;
+                        case (1):
+                            // ステージ2
+                            //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2Event");
+                            fade.GetComponent<Fade>().StartCoroutine(
+                                "Color_FadeOut_Title",
+                                SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT);
+                            break;
+                        case (2):
+                            // ステージ3
+                            //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage3Event");
+                            fade.GetComponent<Fade>().StartCoroutine(
+                                "Color_FadeOut_Title",
+                                SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT);
+                            break;
+                        default:
+                            break;
+                    }
+                    // コンティニューフラグを立てる
+                    GManager.instance.GetContinueFlg(true);
+                    // SE再生
+                    SoundManager.instance.PlaySE("Decision");
+                    // UIの入力を受け付けない
+                    InputManager.instance.UI_Disable();
+                    break;
+                case (2):
+                    // OPTION
+                    title.SetActive(false);
+                    OptionMenu.SetActive(true);
+                    OptionMenuFlag = true;
+                    this.gameObject.SetActive(false);
+                    SoundManager.instance.PlaySE("Decision");
+                    break;
+                case (3):
+                    // EXIT
+#if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;//ゲームプレイ終了
+#else
+    Application.Quit();//ゲームプレイ終了
+#endif
+                    break;
             }
         }
     }
 
-    private void OnUp()
-    {
-        // 前選択を黒に
-        transform.GetChild(Selected).GetComponent<TextMeshProUGUI>().color = Color.black;
-        // 
-        Selected--;
-        Selected = (int)Mathf.Repeat(Selected, ItemMax);
-        // 現選択を白に
-        transform.GetChild(Selected).GetComponent<TextMeshProUGUI>().color = Color.white;
+    //private void OnUp()
+    //{
 
-        SoundManager.instance.PlaySE("Select");
-    }
+    //}
 
-    private void OnDown()
-    {
-        // 前選択を黒に
-        transform.GetChild(Selected).GetComponent<TextMeshProUGUI>().color = Color.black;
-        //
-        Selected++;
-        Selected = (int)Mathf.Repeat(Selected, ItemMax);
-        // 現選択を白に
-        transform.GetChild(Selected).GetComponent<TextMeshProUGUI>().color = Color.white;
+    //private void OnDown()
+    //{
 
-        SoundManager.instance.PlaySE("Select");
-    }
+    //}
 
-    private void OnSelect()
-    {
-        // 選択されたメニューによって処理を変える
-        switch (Selected)
-        {
-            case (0):
-                // NEW GAME
-                if (ManagerObj.GetComponent<GManager>().GetFirstTime())
-                {
-                    // ステージ１へ
-                    InputActions.Disable();
-                    //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
-                    fade.GetComponent<Fade>().StartCoroutine(
-                            "Color_FadeOut_Title",
-                            SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE);
-                }
-                else
-                {
-                    //データ削除確認
-                    CheckMenu.SetActive(true);
-                    CheckMenuFlag = true;
-                    InputActions.Disable();             // オプションメニューが開いているときは入力を受け付けない
-                    this.gameObject.SetActive(false);
-                }
-                GManager.instance.GetContinueFlg(false);
-                SoundManager.instance.PlaySE("Decision");
-                break;
-            case (1):
-                // CONTINUE
-                int num = ManagerObj.GetComponent<GManager>().GetNowStage();
-                switch (num)
-                {
-                    case (0):
-                        // ステージ1
-                        InputActions.Disable();
-                        //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
-                        fade.GetComponent<Fade>().StartCoroutine(
-                            "Color_FadeOut_Title",
-                            SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE);
-                        break;
-                    case (1):
-                        // ステージ2
-                        InputActions.Disable();
-                        //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2Event");
-                        fade.GetComponent<Fade>().StartCoroutine(
-                            "Color_FadeOut_Title",
-                            SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT);
-                        break;
-                    case (2):
-                        // ステージ3
-                        InputActions.Disable();
-                        //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage3Event");
-                        fade.GetComponent<Fade>().StartCoroutine(
-                            "Color_FadeOut_Title",
-                            SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT);
-                        break;
-                    default:
-                        break;
-                }
-                GManager.instance.GetContinueFlg(true);
-                SoundManager.instance.PlaySE("Decision");
-                break;
-            case (2):
-                // OPTION
-                title.SetActive(false);
-                OptionMenu.SetActive(true);
-                OptionMenuFlag = true;
-                InputActions.Disable();             // オプションメニューが開いているときは入力を受け付けない
-                this.gameObject.SetActive(false);
-                SoundManager.instance.PlaySE("Decision");
-                break;
-            case (3):
-                // EXIT
-#if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;//ゲームプレイ終了
-#else
-    Application.Quit();//ゲームプレイ終了
-#endif
-                break;
-        }
-    }
+    //private void OnSelect()
+    //{
+
+    //}
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OptionCursor : MonoBehaviour
 {
-    private Myproject InputActions;
+    //private Myproject InputActions;
 
     private GameObject VolCon;          // VolumeControllerのオブジェクト
 
@@ -26,11 +26,11 @@ public class OptionCursor : MonoBehaviour
 
     void Awake()
     {
-        InputActions = new Myproject();
-        InputActions.Enable();
-        InputActions.UI.Up.performed += context => OnUp();
-        InputActions.UI.Down.performed += context => OnDown();
-        InputActions.UI.Select.performed += context => OnSelect();
+        ////InputActions = new Myproject();
+        ////InputActions.Enable();
+        ////InputActions.UI.Up.performed += context => OnUp();
+        ////InputActions.UI.Down.performed += context => OnDown();
+        ////InputActions.UI.Select.performed += context => OnSelect();
     }
 
     // Start is called before the first frame update
@@ -54,7 +54,19 @@ public class OptionCursor : MonoBehaviour
         // オプションが表示されている場合は入力を受け付ける
         if (Menu.activeSelf == false)
         {
-            InputActions.Enable();
+            //InputActions.Enable();
+        }
+
+
+        if (InputManager.instance.OnUp())
+        {
+            Selected--;
+            SoundManager.instance.PlaySE("Select");
+        }
+        if (InputManager.instance.OnDown())
+        {
+            Selected++;
+            SoundManager.instance.PlaySE("Select");
         }
 
         // オプション選択 更新
@@ -106,42 +118,46 @@ public class OptionCursor : MonoBehaviour
                 BackText.GetComponent<TextMeshProUGUI>().color = Color.white;
                 break;
         }
-    }
 
-    private void OnUp()
-    {
-        Selected--;
-        SoundManager.instance.PlaySE("Select");
-    }
-
-    private void OnDown()
-    {
-        Selected++;
-        SoundManager.instance.PlaySE("Select");
-    }
-
-    private void OnSelect()
-    {
-        // 選択されたオプションによって処理を変える
-        switch (Selected)
+        if (InputManager.instance.OnSelect())
         {
-            case (0):
-                break;
+            // 選択されたオプションによって処理を変える
+            switch (Selected)
+            {
+                case (0):
+                    break;
 
-            case (1):
-                break;
+                case (1):
+                    break;
 
-            case (2):
-                break;
+                case (2):
+                    break;
 
-            case (3):
-                // タイトルに戻る
-                Selected = 0;
-                this.gameObject.SetActive(false);
-                InputActions.Disable();
-                Menu.SetActive(true);
-                SoundManager.instance.PlaySE("Decision");
-                break;
+                case (3):
+                    // タイトルに戻る
+                    Selected = 0;
+                    this.gameObject.SetActive(false);
+                    //InputActions.Disable();
+                    Menu.SetActive(true);
+                    SoundManager.instance.PlaySE("Decision");
+                    break;
+            }
         }
+
     }
+
+    //private void OnUp()
+    //{
+
+    //}
+
+    //private void OnDown()
+    //{
+
+    //}
+
+    //private void OnSelect()
+    //{
+
+    //}
 }
