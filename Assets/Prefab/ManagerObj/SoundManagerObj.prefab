@@ -55,7 +55,7 @@ MonoBehaviour:
     TimefadeOut: 0
     audioSource: {fileID: 0}
   - name: Title
-    clip: {fileID: 8300000, guid: 0322bb449e3692b46a69654744c7b930, type: 3}
+    clip: {fileID: 8300000, guid: fb92dde13ac74ad429f84dbafedaa0a7, type: 3}
     loop: 1
     fadeIn: 0
     TimefadeIn: 0
@@ -63,7 +63,7 @@ MonoBehaviour:
     TimefadeOut: 0
     audioSource: {fileID: 0}
   - name: Stage
-    clip: {fileID: 8300000, guid: 80124c082dd64f74e840822607ea39fe, type: 3}
+    clip: {fileID: 8300000, guid: bede3ac6420ea2a41911937cb3df809c, type: 3}
     loop: 1
     fadeIn: 0
     TimefadeIn: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
     TimefadeOut: 0
     audioSource: {fileID: 0}
   - name: GameClear
-    clip: {fileID: 8300000, guid: df937fe409605cc42b9c978b354233cc, type: 3}
+    clip: {fileID: 8300000, guid: d77fe712b56eaea4bb1bfbd6ce0fcc49, type: 3}
     loop: 0
     fadeIn: 0
     TimefadeIn: 0
