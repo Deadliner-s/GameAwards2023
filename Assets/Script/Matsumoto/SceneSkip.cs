@@ -8,6 +8,8 @@ public class SceneSkip : MonoBehaviour
     private GameObject fade;
     private Myproject InputActions;
 
+    private SceneLoadStartUnload.SCENE_NAME currentScene;
+    private SceneLoadStartUnload.SCENE_NAME nextScene;
     void Awake()
     {
         if (this.gameObject != null)
@@ -22,15 +24,34 @@ public class SceneSkip : MonoBehaviour
     void Start()
     {
         fade = GameObject.Find("Fade");
+        currentScene = SceneNow.instance.sceneNowCatch;
     }
 
     // Update is called once per frame
     void Update()
     {
+        currentScene = SceneNow.instance.sceneNowCatch;
         if (fade == null)
         {
             fade = GameObject.Find("Fade");
         }
+
+        // ƒV[ƒ“‚ªØ‚è‘Ö‚í‚Á‚½Žž‚ÉŒÄ‚Î‚ê‚é
+        if (SceneNow.instance != null)
+        {
+            if (currentScene != nextScene)
+            {
+                nextScene = currentScene;
+                if (currentScene == SceneLoadStartUnload.SCENE_NAME.E_STAGE1 || 
+                    currentScene == SceneLoadStartUnload.SCENE_NAME.E_STAGE2 || 
+                    currentScene == SceneLoadStartUnload.SCENE_NAME.E_STAGE3)
+                {
+                    InputActions.UI.Start.performed -= context => OnStart();
+                    InputActions.Disable();
+                }
+            }
+        }
+
     }
     private void OnStart()
     {
