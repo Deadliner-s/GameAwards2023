@@ -142,6 +142,10 @@ public class MenuCursor : MonoBehaviour
                         case (0):
                             // ステージ1
                             //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
+                            // UIの入力を受け付けない
+                            InputManager.instance.UI_Disable();
+                            // コンティニューフラグを立てる
+                            GManager.instance.GetContinueFlg(true);
                             fade.GetComponent<Fade>().StartCoroutine(
                                 "Color_FadeOut_Title",
                                 SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE);
@@ -149,6 +153,10 @@ public class MenuCursor : MonoBehaviour
                         case (1):
                             // ステージ2
                             //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2Event");
+                            // UIの入力を受け付けない
+                            InputManager.instance.UI_Disable();
+                            // コンティニューフラグを立てる
+                            GManager.instance.GetContinueFlg(true);
                             fade.GetComponent<Fade>().StartCoroutine(
                                 "Color_FadeOut_Title",
                                 SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT);
@@ -156,6 +164,10 @@ public class MenuCursor : MonoBehaviour
                         case (2):
                             // ステージ3
                             //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage3Event");
+                            // UIの入力を受け付けない
+                            InputManager.instance.UI_Disable();
+                            // コンティニューフラグを立てる
+                            GManager.instance.GetContinueFlg(true);
                             fade.GetComponent<Fade>().StartCoroutine(
                                 "Color_FadeOut_Title",
                                 SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT);
@@ -163,12 +175,10 @@ public class MenuCursor : MonoBehaviour
                         default:
                             break;
                     }
-                    // コンティニューフラグを立てる
-                    GManager.instance.GetContinueFlg(true);
+
                     // SE再生
                     SoundManager.instance.PlaySE("Decision");
-                    // UIの入力を受け付けない
-                    InputManager.instance.UI_Disable();
+
                     break;
                 case (2):
                     // OPTION
