@@ -19,14 +19,21 @@ public class SceneMoveManager : MonoBehaviour
     [Tooltip("ロードの有無")]
     [SerializeField] bool bLoad = true;
 
+    // 事前ロードを渡す時用
+    public bool bLoadGet { get; private set; } = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        // 事前ロードするかどうかの判定
         if (bLoad)
         {
             // 次のシーン読み込み
             SceneLoad(SceneNext);
         }
+
+        // 事前ロードを渡せるように設定を代入
+        bLoadGet = bLoad;
     }
 
     // 次のシーンのロード
