@@ -37,39 +37,39 @@ public class Stage3TextWriter : MonoBehaviour
         yield return new WaitForSeconds(5.0f);
 
         SoundManager.instance.PlayVOICE("1-2");
-        uitext.DrawNameText("≪ AI ≫", "9");
+        uitext.DrawNameText("≪ AI ≫", " 9");
         yield return new WaitForSeconds(1.0f);
 
         SoundManager.instance.PlayVOICE("1-3");
-        uitext.DrawNameText("≪ AI ≫", "8");
+        uitext.DrawNameText("≪ AI ≫", " 8");
         yield return new WaitForSeconds(1.0f);
 
         SoundManager.instance.PlayVOICE("1-4");
-        uitext.DrawNameText("≪ AI ≫", "7");
+        uitext.DrawNameText("≪ AI ≫", " 7");
         yield return new WaitForSeconds(1.0f);
 
         SoundManager.instance.PlayVOICE("1-5");
-        uitext.DrawNameText("≪ AI ≫", "6");
+        uitext.DrawNameText("≪ AI ≫", " 6");
         yield return new WaitForSeconds(1.0f);
 
         SoundManager.instance.PlayVOICE("1-6");
-        uitext.DrawNameText("≪ AI ≫", "5");
+        uitext.DrawNameText("≪ AI ≫", " 5");
         yield return new WaitForSeconds(1.0f);
 
         SoundManager.instance.PlayVOICE("1-7");
-        uitext.DrawNameText("≪ AI ≫", "4");
+        uitext.DrawNameText("≪ AI ≫", " 4");
         yield return new WaitForSeconds(1.0f);
 
         SoundManager.instance.PlayVOICE("1-8");
-        uitext.DrawNameText("≪ AI ≫", "3");
+        uitext.DrawNameText("≪ AI ≫", " 3");
         yield return new WaitForSeconds(1.0f);
 
         SoundManager.instance.PlayVOICE("1-9");
-        uitext.DrawNameText("≪ AI ≫", "2");
+        uitext.DrawNameText("≪ AI ≫", " 2");
         yield return new WaitForSeconds(1.0f);
 
         SoundManager.instance.PlayVOICE("1-10");
-        uitext.DrawNameText("≪ AI ≫", "1");
+        uitext.DrawNameText("≪ AI ≫", " 1");
         yield return new WaitForSeconds(1.0f);
 
         SoundManager.instance.PlayVOICE("2-11");
@@ -77,7 +77,7 @@ public class Stage3TextWriter : MonoBehaviour
         yield return new WaitForSeconds(5.0f);
 
         SoundManager.instance.PlayVOICE("2-12");
-        uitext.DrawNameText("≪ AI ≫", "目標へ着弾。敵巨大飛行物体のバリアフィールド破壊を確認しました。");
+        uitext.DrawNameText("≪ AI ≫", "目標へ着弾。敵巨大飛行物体の\nバリアフィールド破壊を確認しました。");
         yield return new WaitForSeconds(7.0f);
 
         SoundManager.instance.PlayVOICE("2-13");
@@ -85,7 +85,7 @@ public class Stage3TextWriter : MonoBehaviour
         yield return new WaitForSeconds(4.0f);
 
         SoundManager.instance.PlayVOICE("2-14");
-        uitext.DrawNameText("≪ AI ≫", "敵巨大飛行物体、エネルギーの急激な上昇を検出");
+        uitext.DrawNameText("≪ AI ≫", "敵巨大飛行物体、エネルギーの急激な上昇を確認");
         yield return new WaitForSeconds(6.0f);
 
         SoundManager.instance.PlayVOICE("2-15");
@@ -93,7 +93,7 @@ public class Stage3TextWriter : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
 
         SoundManager.instance.PlayVOICE("2-16");
-        uitext.DrawNameText("≪ AI ≫", "予想攻撃目標、衛星軌道砲です。");
+        uitext.DrawNameText("≪ AI ≫", "目標予測……攻撃目標は、衛星軌道砲です。");
         yield return new WaitForSeconds(6.0f);
 
         SoundManager.instance.PlayVOICE("2-17");
@@ -101,7 +101,7 @@ public class Stage3TextWriter : MonoBehaviour
         yield return new WaitForSeconds(6.0f);
 
         SoundManager.instance.PlayVOICE("2-18");
-        uitext.DrawNameText("≪ 司令官 ≫", "ヤツのバリアフィールドが破壊できた今なら、ブルーアサルトの\nミサイルによる破壊が可能なはずだ。");
+        uitext.DrawNameText("≪ 司令官 ≫", "ヤツのバリアフィールドが破壊できた今なら、\nブルーアサルトのミサイルによる破壊が可能なはずだ。");
         yield return new WaitForSeconds(7.0f);
 
         SoundManager.instance.PlayVOICE("2-19");
@@ -113,15 +113,19 @@ public class Stage3TextWriter : MonoBehaviour
         yield return new WaitForSeconds(5.0f);
 
         SoundManager.instance.PlayVOICE("2-21");
-        uitext.DrawNameText("≪ AI ≫", "敵巨大飛行物体に最接近します。さらなる攻撃が予想されます。");
+        uitext.DrawNameText("≪ AI ≫", "敵巨大飛行物体に最接近します。\nさらなる攻撃に注意してください。");
         yield return new WaitForSeconds(6.0f);
 
         SoundManager.instance.PlayVOICE("2-22");
         uitext.DrawNameText("≪ AI ≫", "予測される作戦成功確率、2％。");
         yield return new WaitForSeconds(4.0f);
 
+        SoundManager.instance.PlayVOICE("2-tuika");
+        uitext.DrawNameText("≪ AI ≫", "………ですが、");
+        yield return new WaitForSeconds(3.0f);
+
         SoundManager.instance.PlayVOICE("2-23");
-        uitext.DrawNameText("≪ AI ≫", "アナタとワタシなら、できます。生きて帰りましょう。");
+        uitext.DrawNameText("≪ AI ≫", "アナタとワタシなら、できます。\n生きて帰りましょう。");
         yield return new WaitForSeconds(6.0f);
 
         Window.SetActive(false);

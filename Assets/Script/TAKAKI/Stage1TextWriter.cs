@@ -65,7 +65,7 @@ public class Stage1TextWriter : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
 
         SoundManager.instance.PlayVOICE("0-9");
-        uitext.DrawNameText("≪ AI ≫", "まもなく敵巨大飛行物体の攻撃圏内\nに突入します。注意してください");
+        uitext.DrawNameText("≪ AI ≫", "まもなく敵巨大飛行物体の攻撃圏内\nに突入します。注意してください。");
         yield return new WaitForSeconds(6.0f);
 
         Window.SetActive(false);

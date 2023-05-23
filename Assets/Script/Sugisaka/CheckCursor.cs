@@ -14,7 +14,7 @@ public class CheckCursor : MonoBehaviour
         STAGE_3
     }
 
-    private Myproject InputActions;
+    //private Myproject InputActions;
 
     private int Selected;
     private int ItemMax;
@@ -54,6 +54,95 @@ public class CheckCursor : MonoBehaviour
         No_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
     }
 
+    void Update()
+    {
+        if(InputManager.instance.OnLeft())
+        {
+            Selected--;
+            Selected = (int)Mathf.Repeat(Selected, ItemMax);
+
+            if (Yes_Text.GetComponent<TextMeshProUGUI>().color == Color.black)
+            {
+                Yes_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
+                No_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+
+            }
+            else
+            {
+                Yes_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+                No_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
+            }
+
+            SoundManager.instance.PlaySE("Select");
+        }
+        if (InputManager.instance.OnRight())
+        {
+            Selected--;
+            Selected = (int)Mathf.Repeat(Selected, ItemMax);
+
+            if (Yes_Text.GetComponent<TextMeshProUGUI>().color == Color.black)
+            {
+                Yes_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
+                No_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+
+            }
+            else
+            {
+                Yes_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+                No_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
+
+            }
+            SoundManager.instance.PlaySE("Select");
+        }
+        if(InputManager.instance.OnSelect())
+        {
+            switch (Selected)
+            {
+                case (0):
+                    // No
+                    // タイトルに戻る
+                    Selected = 0;
+                    //InputActions.Disable();
+                    SoundManager.instance.PlaySE("Decision");
+                    StartCoroutine("ScaleDown");
+                    break;
+                case (1):
+                    // Yes
+                    //InputActions.Disable();
+                    ManagerObj.GetComponent<GManager>().ReSetData();
+                    // デバッグ用?
+                    switch (stage)
+                    {
+                        case (Stage.STAGE_1):
+                            //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
+                            fade.GetComponent<Fade>().StartCoroutine(
+                                "Color_FadeOut_Title",
+                                SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE);
+                            break;
+                        case (Stage.STAGE_2):
+                            //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2Event");
+                            fade.GetComponent<Fade>().StartCoroutine(
+                                "Color_FadeOut_Title",
+                                SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT);
+                            break;
+                        case (Stage.STAGE_3):
+                            //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage3Event");
+                            fade.GetComponent<Fade>().StartCoroutine(
+                                "Color_FadeOut_Title",
+                                SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT);
+                            break;
+                        default:
+                            break;
+                    }
+                    SoundManager.instance.PlaySE("Decision");
+                    //
+                    break;
+            }
+        }
+
+
+    }
+
     private void OnEnable()
     {
         // ウィンドウ表示
@@ -63,93 +152,20 @@ public class CheckCursor : MonoBehaviour
         StartCoroutine("ScaleUp");
     }
 
-    private void OnLeft()
-    {
-        // 
-        Selected--;
-        Selected = (int)Mathf.Repeat(Selected, ItemMax);
+    //private void OnLeft()
+    //{
 
-        if (Yes_Text.GetComponent<TextMeshProUGUI>().color == Color.black)
-        {
-            Yes_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
-            No_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+    //}
 
-        }
-        else
-        {
-            Yes_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
-            No_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
-        }
+    //private void OnRight()
+    //{
 
-        SoundManager.instance.PlaySE("Select");
-    }
+    //}
 
-    private void OnRight()
-    {
-        // 
-        Selected--;
-        Selected = (int)Mathf.Repeat(Selected, ItemMax);
+    //private void OnSelect()
+    //{
 
-        if (Yes_Text.GetComponent<TextMeshProUGUI>().color == Color.black)
-        {
-            Yes_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
-            No_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
-
-        }
-        else
-        {
-            Yes_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
-            No_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
-
-        }
-            SoundManager.instance.PlaySE("Select");
-    }
-
-    private void OnSelect()
-    {
-        switch (Selected)
-        {
-            case (0):
-                // No
-                // タイトルに戻る
-                Selected = 0;
-                InputActions.Disable();
-                SoundManager.instance.PlaySE("Decision");
-                StartCoroutine("ScaleDown");
-                break;
-            case (1):
-                // Yes
-                InputActions.Disable();
-                ManagerObj.GetComponent<GManager>().ReSetData();
-                // デバッグ用?
-                switch (stage)
-                {
-                    case (Stage.STAGE_1):
-                        //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
-                        fade.GetComponent<Fade>().StartCoroutine(
-                            "Color_FadeOut_Title",
-                            SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE);
-                        break;
-                    case (Stage.STAGE_2):
-                        //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2Event");
-                        fade.GetComponent<Fade>().StartCoroutine(
-                            "Color_FadeOut_Title",
-                            SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT);
-                        break;
-                    case (Stage.STAGE_3):
-                        //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage3Event");
-                        fade.GetComponent<Fade>().StartCoroutine(
-                            "Color_FadeOut_Title",
-                            SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT);
-                        break;
-                    default:
-                        break;
-                }
-                SoundManager.instance.PlaySE("Decision");
-                //
-                break;
-        }
-    }
+    //}
 
     IEnumerator ScaleUp()
     {
@@ -161,11 +177,11 @@ public class CheckCursor : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
         // 入力処理有効化
-        InputActions = new Myproject();
-        InputActions.Enable();
-        InputActions.UI.Left.performed += context => OnLeft();
-        InputActions.UI.Right.performed += context => OnRight();
-        InputActions.UI.Select.performed += context => OnSelect();
+        //InputActions = new Myproject();
+        //InputActions.Enable();
+        //InputActions.UI.Left.performed += context => OnLeft();
+        //InputActions.UI.Right.performed += context => OnRight();
+        //InputActions.UI.Select.performed += context => OnSelect();
     }
     IEnumerator ScaleDown()
     {

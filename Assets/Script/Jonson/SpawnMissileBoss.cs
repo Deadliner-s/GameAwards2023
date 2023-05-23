@@ -24,7 +24,7 @@ public class SpawnMissileBoss : MonoBehaviour
     GameObject player;
 
     // 進行時間用
-    private float timer;
+    public float timer;
 
     // 発射間隔用
     private float IntervalTimeHoming;
@@ -80,6 +80,11 @@ public class SpawnMissileBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+        {
+            player = player = GameObject.Find("Player");
+        }
+
         if (player)//プレイヤーは生きている（存在する）
         {
             // デバッグ用

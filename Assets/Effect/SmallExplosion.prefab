@@ -9694,6 +9694,7 @@ GameObject:
   - component: {fileID: 8647589358973914990}
   - component: {fileID: 8848679827420301876}
   - component: {fileID: 8847821408050087768}
+  - component: {fileID: 8382946738106962614}
   m_Layer: 0
   m_Name: SmallExplosion
   m_TagString: Untagged
@@ -14595,6 +14596,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &8382946738106962614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8650123009029719844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f0425058e0c8d48b9e8bb1c4a79bea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8650169941660758048
 GameObject:
   m_ObjectHideFlags: 0

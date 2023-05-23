@@ -207,6 +207,10 @@ public class PhaseManager : MonoBehaviour
     {
         return currentPhase;
     }
+    public Phase GetNextPhase()
+    {
+        return nextPhase;
+    }
     public Phase GetNormaltoNext()
     {
         return NormaltoNext;

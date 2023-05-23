@@ -38,11 +38,11 @@ public class Stage4TextWriter : MonoBehaviour
 
         SoundManager.instance.PlayVOICE("3-2");
         uitext.DrawNameText("≪ 司令官 ≫", "無事か！ ");
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.5f);
 
         SoundManager.instance.PlayVOICE("3-3");
-        uitext.DrawNameText("≪ 司令官 ≫", "よくやった。お前は本物の 英雄だ");
-        yield return new WaitForSeconds(4.0f);
+        uitext.DrawNameText("≪ 司令官 ≫", "よくやった。お前は本物の英雄だ！");
+        yield return new WaitForSeconds(5.5f);
 
         SoundManager.instance.PlayVOICE("3-4");
         uitext.DrawNameText("≪ AI ≫", "作戦終了の承認、確認しました。帰還しましょう。");

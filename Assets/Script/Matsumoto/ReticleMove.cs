@@ -22,7 +22,7 @@ public class ReticleMove : MonoBehaviour
 
 
 
-    private Myproject InputActions; // InputSystem
+    //private Myproject InputActions; // InputSystem
     private Vector3 pos;            // 現在の位置
     private Vector3 nextPosition;   // 移動後の位置
     private float viewX;            // ビューポート座標のxの値
@@ -37,13 +37,13 @@ public class ReticleMove : MonoBehaviour
     private GameObject enemy;
     private Vector3 enemy2D;
 
-    void Awake()
-    {
-        // コントローラー
-        InputActions = new Myproject();
-        InputActions.Enable();
-        InputActions.LoadBindingOverridesFromJson(PlayerPrefs.GetString("rebinds"));
-    }
+    //void Awake()
+    //{
+    //    // コントローラー
+    //    InputActions = new Myproject();
+    //    InputActions.Enable();
+    //    InputActions.LoadBindingOverridesFromJson(PlayerPrefs.GetString("rebinds"));
+    //}
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +53,7 @@ public class ReticleMove : MonoBehaviour
         Vector3 playerPos = RectTransformUtility.WorldToScreenPoint(Camera.main, player.transform.position);
         playerPos.x = playerPos.x + initPosX;
         playerPos.y = playerPos.y + initPosY;
-        transform.position = playerPos;
+        //transform.position = playerPos;
 
         // 初期化
         pos = transform.position;
@@ -169,7 +169,7 @@ public class ReticleMove : MonoBehaviour
     private void Move()
     {
         // 入力
-        Vector3 move = InputActions.Player.Reticle.ReadValue<Vector2>();
+        Vector3 move = InputManager.instance.OnReticleMove();
         nextPosition = pos + move * speed;
 
         // 移動後のビューポート座標のxの値を取得
