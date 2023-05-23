@@ -55,6 +55,21 @@ public class InputManager : MonoBehaviour
         // シーン取得
         currentScene = SceneNow.instance.sceneNowCatch;
         nextScene = currentScene;
+
+        // シーンがステージならプレイヤーの入力を有効にする
+        if (currentScene == SceneLoadStartUnload.SCENE_NAME.E_STAGE1 ||
+            currentScene == SceneLoadStartUnload.SCENE_NAME.E_STAGE2 ||
+            currentScene == SceneLoadStartUnload.SCENE_NAME.E_STAGE3)
+        {
+            InputActions.UI.Disable();
+            InputActions.Player.Enable();
+        }
+        // シーンがステージ以外ならUIの入力を有効にする
+        else
+        {
+            InputActions.Player.Disable();
+            InputActions.UI.Enable();
+        }
     }
 
     // Update is called once per frame
