@@ -6,36 +6,31 @@ using UnityEngine.Rendering.Universal;
 
 public class EffectManager : MonoBehaviour
 {
-    public GameObject phaseManagerObj;
-    private PhaseManager phaseManager;
+    private PhaseManager.Phase currentPhase;    // PhaseManagerのcurrentPhase
+    private PhaseManager.Phase nextPhase;       // PhaseManagerのnextPhase
 
     [Tooltip("ブラー")]
     [SerializeField]
-    private Volume volume;
-    private RadialBlurVolume Blur;
+    private Volume volume;                      // 画面効果を参照する
+    private RadialBlurVolume Blur;              // RadialBlurの中身を使用する
     private GaussianBlurVolume gBlur;
-    public float BlurStrength;
-    public float gBlurStrength;
-    private float BlurCount;
-    private float gBlurCount;
+    public float BlurStrength;                  // RadialBlurの強さ
+    public float gBlurStrength;                 // GaussianBlurの強さ
+    private float BlurCount;                    // RadialBlurを何回かけたか
+    private float gBlurCount;                   // GaussianBlurを何回かけたか
     private float CountPoint = 0.001f;
     private int flame;
     private int gFlame;
-    private bool onece;
 
-    //[Tooltip("マニューバ中ブラーに関するオブジェクト")]
-    //[SerializeField]
-    //private GameObject player;
-    //private PlayerMove playerMove;
-    private GameObject playerManager;
-    private bool ManeverEnd;
+    private GameObject playerManager;           // Playerの外部参照
+    private bool ManeverEnd;                    // クイックマニューバが終わった判定
 
     // Start is called before the first frame update
     void Start()
     {
         playerManager = GameObject.Find("PlayerManager");
-        phaseManagerObj = GameObject.Find("PhaseManagerObj");
-        phaseManager = phaseManagerObj.GetComponent<PhaseManager>();
+
+        nextPhase = PhaseManager.instance.GetNextPhase();
 
         // ブラーの初期化処理
         if (volume)
@@ -52,23 +47,22 @@ public class EffectManager : MonoBehaviour
             Debug.Log("volumeがありません");
         }
 
-        //playerMove = player.GetComponent<PlayerMove>();
-        //if (playerMove == null)
-        //{
-        //    Debug.Log("playerがありません");
-        //}
-
         flame = 0;
         gFlame = 0;
-        onece = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (phaseManager.nextPhase != phaseManager.currentPhase)
+        currentPhase = PhaseManager.instance.GetPhase();
+
+        // フェイズが変わった時の処理 
+        if (nextPhase != currentPhase)
         {
-            if (phaseManager.currentPhase == PhaseManager.Phase.Speed_Phase)
+            nextPhase = PhaseManager.instance.GetNextPhase();
+
+            Debug.Log("初期化");
+            if (currentPhase == PhaseManager.Phase.Speed_Phase)
             {
                 Blur.strength.value = 0.0f;
                 gBlur.SamplingDistance.value = 0.0f;
@@ -76,80 +70,64 @@ public class EffectManager : MonoBehaviour
                 gFlame = 0;
                 ManeverEnd = false;
             }
-            if (phaseManager.currentPhase == PhaseManager.Phase.Attack_Phase)
+
+            if (currentPhase == PhaseManager.Phase.Attack_Phase
+             || currentPhase == PhaseManager.Phase.Normal_Phase)
             {
                 Blur.strength.value = 0.0f;
-                gBlur.SamplingDistance.value = 0.0f;
                 flame = 0;
                 gFlame = 0;
                 ManeverEnd = false;
-            }
+            } 
         }
 
         // RadialBlurの処理
         if (flame < BlurCount && volume != null)
         {
-            if (phaseManager.currentPhase == PhaseManager.Phase.Speed_Phase)
+            // マニューバ後のブラーを消していく処理
+            if (ManeverEnd == true)
             {
-                // マニューバ後のブラーを消していく処理
-                if (ManeverEnd == true)
-                {
-                    Blur.strength.value -= CountPoint * 5;
-                    flame += 5;
-                }
-            }
-            if (phaseManager.currentPhase == PhaseManager.Phase.Attack_Phase)
-            {
-                // マニューバ後のブラーを消していく処理
-                if (ManeverEnd == true)
-                {
-                    Blur.strength.value -= CountPoint * 5;
-                    flame += 5;
-                }
+                Blur.strength.value -= CountPoint * 5;
+                flame += 5;
             }
         }
 
         // GaussianBlurの処理
         if (gFlame < gBlurCount && volume != null)
         {
-            if (phaseManager.currentPhase == PhaseManager.Phase.Speed_Phase)
+            if (currentPhase == PhaseManager.Phase.Speed_Phase)
             {
+                Debug.Log("ブラーをかけています");
                 // ブラーをだんだんとかけていく処理
-                if (gBlur.SamplingDistance.value <= gBlurStrength)
-                {
-                    gBlur.SamplingDistance.value += CountPoint;
-                    gFlame++;
-                }
-                else
-                {
+                gBlur.SamplingDistance.value += CountPoint;
+                gFlame++;
+
+                // SamplingDistanceが設定した数値よりも大きくならないように
+                if (gBlur.SamplingDistance.value >= gBlurStrength)
                     gBlur.SamplingDistance.value = gBlurStrength;
-                }
             }
 
-            if (phaseManager.currentPhase == PhaseManager.Phase.Attack_Phase)
+            if (currentPhase == PhaseManager.Phase.Attack_Phase
+             || currentPhase == PhaseManager.Phase.Normal_Phase)
             {
-                //// ブラーをだんだんと0にしていく処理
+                // ブラーをだんだんと0にしていく処理
                 gBlur.SamplingDistance.value -= CountPoint * 2;
                 gFlame += 2;
+
+                // SamplingDistanceが0よりも小さくならないように
+                if (gBlur.SamplingDistance.value <= 0.0f)
+                    gBlur.SamplingDistance.value = 0.0f;
             }
         }
-        else
-        if (phaseManager.currentPhase == PhaseManager.Phase.Attack_Phase
-            && gBlur.SamplingDistance.value > 0)
-            gBlur.SamplingDistance.value = 0;
 
         // マニューバが行われたとき
         if (playerManager != null)
         {
             if (playerManager.GetComponent<PlayerMove>().maneverFlg == true && volume != null)
             {
-                if (phaseManager.currentPhase == PhaseManager.Phase.Speed_Phase
-                || phaseManager.currentPhase == PhaseManager.Phase.Attack_Phase)
-                {
-                    Blur.strength.value = BlurStrength;
-                    flame = 0;
-                    ManeverEnd = true;
-                }
+                Blur.strength.value = BlurStrength;
+                flame = 0;
+                ManeverEnd = true;
             }
         }
     }
