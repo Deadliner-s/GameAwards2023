@@ -93,7 +93,7 @@ public class Stage3TextWriter : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
 
         SoundManager.instance.PlayVOICE("2-16");
-        uitext.DrawNameText("≪ AI ≫", "目標予測……攻撃目標は、、衛星軌道砲です。");
+        uitext.DrawNameText("≪ AI ≫", "目標予測……攻撃目標は、衛星軌道砲です。");
         yield return new WaitForSeconds(6.0f);
 
         SoundManager.instance.PlayVOICE("2-17");
@@ -113,7 +113,7 @@ public class Stage3TextWriter : MonoBehaviour
         yield return new WaitForSeconds(5.0f);
 
         SoundManager.instance.PlayVOICE("2-21");
-        uitext.DrawNameText("≪ AI ≫", "敵巨大飛行物体に最接近します。\nさらなる攻撃が予想されます。");
+        uitext.DrawNameText("≪ AI ≫", "敵巨大飛行物体に最接近します。\nさらなる攻撃に注意してください。");
         yield return new WaitForSeconds(6.0f);
 
         SoundManager.instance.PlayVOICE("2-22");
