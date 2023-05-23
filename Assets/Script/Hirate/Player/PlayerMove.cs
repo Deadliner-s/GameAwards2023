@@ -11,7 +11,7 @@ public class PlayerMove: MonoBehaviour
     private GameObject player;
 
     // 入力
-    private Myproject InputActions;
+    //private Myproject InputActions;
     public Vector2 inputMove { get; private set; }
 
     // 座標
@@ -64,14 +64,14 @@ public class PlayerMove: MonoBehaviour
     private PhaseManager.Phase currentPhase;
     private PhaseManager.Phase nextPhase;
 
-    void Awake()
-    {
-        InputActions = new Myproject();
-        InputActions.Enable();
-        InputActions.Player.Manever.performed += context => OnManever();
+    //void Awake()
+    //{
+    //    InputActions = new Myproject();
+    //    InputActions.Enable();
+    //    InputActions.Player.Manever.performed += context => OnManever();
 
-        InputActions.LoadBindingOverridesFromJson(PlayerPrefs.GetString("rebinds"));
-    }
+    //    InputActions.LoadBindingOverridesFromJson(PlayerPrefs.GetString("rebinds"));
+    //}
 
     // Start is called before the first frame update
     void Start()
@@ -121,7 +121,7 @@ public class PlayerMove: MonoBehaviour
         }
 
         // キー入力
-        inputMove = InputActions.Player.Move.ReadValue<Vector2>();
+        inputMove = InputManager.instance.OnMove();
 
         // 座標計算
         if (maneverFlg == false)
@@ -213,25 +213,31 @@ public class PlayerMove: MonoBehaviour
         }
         // エフェクトをプレイヤーに追従させる
         handle.SetLocation(player.transform.position);
-    }
 
-
-
-    private void OnManever()
-    {
-        // クールタイムが終わっていたら ＆アタックフェイズではなかったら
-        if (coolTimeCnt > coolTime)
+        if (InputManager.instance.OnManever()) 
         {
-            if (inputMove.y >= 0.5f ||
-                inputMove.x >= 0.5f ||
-                inputMove.y <= -0.5f ||
-                inputMove.x <= -0.5f)
+            // クールタイムが終わっていたら
+            if (coolTimeCnt > coolTime)
             {
-                maneverFlg = true;
-                elapsedTime = 0;
-                coolTimeCnt = 0;
-                SoundManager.instance.PlaySE("Manever");
+                if (inputMove.y >= 0.5f ||
+                    inputMove.x >= 0.5f ||
+                    inputMove.y <= -0.5f ||
+                    inputMove.x <= -0.5f)
+                {
+                    maneverFlg = true;
+                    elapsedTime = 0;
+                    coolTimeCnt = 0;
+                    SoundManager.instance.PlaySE("Manever");
+                }
             }
         }
+
     }
+
+
+
+    //private void OnManever()
+    //{
+
+    //}
 }

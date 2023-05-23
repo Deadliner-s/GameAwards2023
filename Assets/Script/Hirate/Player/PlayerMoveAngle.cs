@@ -23,16 +23,16 @@ public class PlayerMoveAngle : MonoBehaviour
 
     //---- •Ï”éŒ¾ ----
     private Vector3 angle;        // ‰ñ“]
-    private Myproject InputActions; // “ü—Í
+   // private Myproject InputActions; // “ü—Í
     private Vector2 inputMove;
     private GameObject cameraObj;
 
-    void Awake()
-    {
-        InputActions = new Myproject();
-        InputActions.Enable();
-        InputActions.LoadBindingOverridesFromJson(PlayerPrefs.GetString("rebinds"));
-    }
+    //void Awake()
+    //{
+    //    InputActions = new Myproject();
+    //    InputActions.Enable();
+    //    InputActions.LoadBindingOverridesFromJson(PlayerPrefs.GetString("rebinds"));
+    //}
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +57,7 @@ public class PlayerMoveAngle : MonoBehaviour
         if (angle.x >= 315) { angle.x = angle.x - 360; }
 
         // ƒL[“ü—Í
-        inputMove = InputActions.Player.Move.ReadValue<Vector2>();
+        inputMove = InputManager.instance.OnMove();
 
         // ‰ñ“]
         if (inputMove.y < 0.5f) {
