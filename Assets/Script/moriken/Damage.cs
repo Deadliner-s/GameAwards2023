@@ -23,8 +23,11 @@ public class Damage : MonoBehaviour
         DamageAmount = GameObject.Find("DamageManager");
         //---- インスペクターで設定した与えるダメージを代入 ----
         // プレイヤーへのダメージ
-        PlayerDamage = DamageAmount.GetComponent<DamageManager>().GetDamage(playerDamageName);
-        // ボスへのダメージ
-        EnemyDamage = DamageAmount.GetComponent<DamageManager>().GetDamage(bossDamageName);
+        if (DamageAmount != null)
+        {
+            PlayerDamage = DamageAmount.GetComponent<DamageManager>().GetDamage(playerDamageName);
+            // ボスへのダメージ
+            EnemyDamage = DamageAmount.GetComponent<DamageManager>().GetDamage(bossDamageName);
+        }
     }
 }
