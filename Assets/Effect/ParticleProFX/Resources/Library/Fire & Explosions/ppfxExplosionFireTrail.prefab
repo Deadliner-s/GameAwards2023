@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 400000}
   - component: {fileID: 19800000}
   - component: {fileID: 19900000}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shockwave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4869,7 +4869,7 @@ GameObject:
   - component: {fileID: 400002}
   - component: {fileID: 19800002}
   - component: {fileID: 19900002}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: firetrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9660,7 +9660,7 @@ GameObject:
   - component: {fileID: 400004}
   - component: {fileID: 19800004}
   - component: {fileID: 19900004}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: smoketrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14451,7 +14451,7 @@ GameObject:
   - component: {fileID: 400006}
   - component: {fileID: 19800006}
   - component: {fileID: 19900006}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19298,7 +19298,7 @@ GameObject:
   - component: {fileID: 400008}
   - component: {fileID: 19800008}
   - component: {fileID: 19900008}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24156,7 +24156,7 @@ GameObject:
   - component: {fileID: 400010}
   - component: {fileID: 19800010}
   - component: {fileID: 19900010}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29023,7 +29023,7 @@ GameObject:
   - component: {fileID: 400012}
   - component: {fileID: 10800000}
   - component: {fileID: 11400000}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: flare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29135,7 +29135,7 @@ GameObject:
   - component: {fileID: 11400004}
   - component: {fileID: 11400002}
   - component: {fileID: 11400006}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ppfxExplosionFireTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
