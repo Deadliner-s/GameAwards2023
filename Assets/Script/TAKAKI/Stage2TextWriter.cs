@@ -10,9 +10,15 @@ public class Stage2TextWriter : MonoBehaviour
     public GameObject Name;
     public GameObject Text;
 
+    private float Max_Height = 2.756843f;
+
     // Start is called before the first frame update
     void Start()
     {
+        Window.SetActive(false);
+        Name.SetActive(false);
+        Text.SetActive(false);
+
         StartCoroutine("Cotest");
     }
 
@@ -26,9 +32,7 @@ public class Stage2TextWriter : MonoBehaviour
     // 文章を表示させるコルーチン
     IEnumerator Cotest()
     {
-        Window.SetActive(true);
-        Name.SetActive(true);
-        Text.SetActive(true);
+        StartCoroutine("WindowScaleUp");
 
         yield return new WaitForSeconds(1.0f);
 
@@ -96,9 +100,40 @@ public class Stage2TextWriter : MonoBehaviour
         uitext.DrawNameText("≪ AI ≫", "敵巨大飛行物体に接近します。\nさらなる攻撃に注意してください。");
         yield return new WaitForSeconds(6.0f);
 
-        Window.SetActive(false);
+        StartCoroutine("WindowScaleDown");
+        //yield return null;
+    }
+    IEnumerator WindowScaleUp()
+    {
+        Window.SetActive(true);
+        Window.transform.localScale = new Vector3(
+            Window.transform.localScale.x,
+            0.0f,
+            Window.transform.localScale.z
+            );
+        for (float i = 1; i < 2; i += 0.1f)
+        {
+            Vector3 scale = Window.transform.localScale;
+            scale.y += Max_Height * 0.1f;
+            Window.transform.localScale = scale;
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        Name.SetActive(true);
+        Text.SetActive(true);
+    }
+    IEnumerator WindowScaleDown()
+    {
         Name.SetActive(false);
         Text.SetActive(false);
-        //yield return null;
+
+        for (float i = 1; i < 2; i += 0.1f)
+        {
+            Vector3 scale = Window.transform.localScale;
+            scale.y -= Max_Height * 0.1f;
+            Window.transform.localScale = scale;
+            yield return new WaitForSeconds(0.01f);
+        }
+        Window.SetActive(false);
     }
 }

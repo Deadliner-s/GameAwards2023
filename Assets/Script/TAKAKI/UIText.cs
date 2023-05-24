@@ -25,9 +25,15 @@ public class UIText : MonoBehaviour
 
     bool FlgA = true;
     bool FlgB = true;
+    
+    private float Max_Height = 1.837893f;
 
     void Start()
     {
+        Window.SetActive(false);
+        Name.SetActive(false);
+        Text.SetActive(false);
+
         nextPhase = currntPhase;
         StartCoroutine(A());
     }
@@ -38,7 +44,6 @@ public class UIText : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) return true;
         return false;
     }
-
     // ナレーション用のテキストを生成する関数
     public void DrawText(string text)
     {
@@ -68,8 +73,6 @@ public class UIText : MonoBehaviour
             }
             if (currntPhase == PhaseManager.Phase.Normal_Phase)
             {
-
-
                 //SeFlg = false;
             }
             else if (currntPhase == PhaseManager.Phase.Speed_Phase)
@@ -78,9 +81,7 @@ public class UIText : MonoBehaviour
                 // ハイスピードフェイズ
                 if (FlgA)
                 {
-                    Window.SetActive(true);
-                    Name.SetActive(true);
-                    Text.SetActive(true);
+                    StartCoroutine("WindowScaleUp");
                     SoundManager.instance.PlayVOICE("4-1");
                     DrawNameText("≪ AI ≫", "敵内部から、多数の熱源反応を確認。\n飽和攻撃が予測されます。");
                     yield return new WaitForSeconds(6.5f);
@@ -96,9 +97,7 @@ public class UIText : MonoBehaviour
                     yield return null;
                     if (AddTime >= 5.0f)
                     {
-                        Name.SetActive(false);
-                        Text.SetActive(false);
-                        Window.SetActive(false);
+                        StartCoroutine("WindowScaleDown");
                         FlgB = false;
                         break;
                     }
@@ -111,9 +110,7 @@ public class UIText : MonoBehaviour
                 // アタックフェイズ
                 if (FlgA)
                 {
-                    Window.SetActive(true);
-                    Name.SetActive(true);
-                    Text.SetActive(true);
+                    StartCoroutine("WindowScaleUp");
                     SoundManager.instance.PlayVOICE("4-3");
                     DrawNameText("≪ AI ≫", "敵、装甲温度上昇。冷却状態への移行を確認。");
                     yield return new WaitForSeconds(5.0f);
@@ -128,15 +125,12 @@ public class UIText : MonoBehaviour
                     yield return null;
                     if (AddTime >= 5.0f)
                     {
-                        Name.SetActive(false);
-                        Text.SetActive(false);
-                        Window.SetActive(false);
+                        StartCoroutine("WindowScaleDown");
                         FlgB = false;
                         break;
                     }
                 }
             }
-
         }
     }
 
@@ -160,5 +154,36 @@ public class UIText : MonoBehaviour
         talkText.text = text;
         yield return 0;
         playing = false;
+    }
+    IEnumerator WindowScaleUp()
+    {
+        Window.SetActive(true);
+        Window.transform.localScale = new Vector3(
+            Window.transform.localScale.x,
+            0.0f,
+            Window.transform.localScale.z
+            );
+        for (float i = 1; i < 2; i += 0.1f)
+        {
+            Vector3 scale = Window.transform.localScale;
+            scale.y += Max_Height * 0.1f;
+            Window.transform.localScale = scale;
+            yield return new WaitForSeconds(0.01f);
+        }
+        Name.SetActive(true);
+        Text.SetActive(true);
+    }
+    IEnumerator WindowScaleDown()
+    {
+        Name.SetActive(false);
+        Text.SetActive(false);
+        for (float i = 1; i < 2; i += 0.1f)
+        {
+            Vector3 scale = Window.transform.localScale;
+            scale.y -= Max_Height * 0.1f;
+            Window.transform.localScale = scale;
+            yield return new WaitForSeconds(0.01f);
+        }
+        Window.SetActive(false);
     }
 }
