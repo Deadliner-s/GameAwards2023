@@ -16,6 +16,9 @@ public class PhaseManager : MonoBehaviour
     public float NormalTime = 10.0f;
     public float SpeedTime = 10.0f;
     public float AttackTime = 10.0f;
+    public float First_NormalTime = 4.0f;
+
+    private bool fristNormalFlg = false;
 
     [Header("現在のフェイズ(初期フェイズ)")]
     public Phase currentPhase = Phase.Normal_Phase;  // 現在のフェイズ
@@ -61,6 +64,8 @@ public class PhaseManager : MonoBehaviour
 
         // 初回通常フェイズ
         NormaltoNext = Phase.First_Normal;
+
+        fristNormalFlg = false;
     }
     // Update is called once per frame
     void Update()
@@ -79,7 +84,14 @@ public class PhaseManager : MonoBehaviour
                 // 通常フェイズ
                 if (currentPhase == Phase.Normal_Phase)
                 {
-                    if (time >= NormalTime)
+                    // 初回通常フェイズの秒数処理
+                    float nt = 999.0f;
+                    if (NormaltoNext == Phase.First_Normal)
+                        nt = First_NormalTime;
+                    else if (NormaltoNext != Phase.First_Normal)
+                        nt = NormalTime;
+
+                    if (time >= nt)
                     {
                         // ステージ1,2はアタックフェイズから
                         if (NormaltoNext == Phase.First_Normal)
@@ -132,7 +144,14 @@ public class PhaseManager : MonoBehaviour
                 // 通常フェイズ
                 if (currentPhase == Phase.Normal_Phase)
                 {
-                    if (time >= NormalTime)
+                    // 初回通常フェイズの秒数処理
+                    float nt = 999.0f;
+                    if (NormaltoNext == Phase.First_Normal)
+                        nt = First_NormalTime;
+                    else if (NormaltoNext != Phase.First_Normal)
+                        nt = NormalTime;
+
+                    if (time >= nt)
                     {
                         // ステージ3はスピードフェイズから
                         if (NormaltoNext == Phase.First_Normal)

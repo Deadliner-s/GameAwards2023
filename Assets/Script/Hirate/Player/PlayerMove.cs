@@ -130,34 +130,34 @@ public class PlayerMove: MonoBehaviour
             {
                 // 通常フェイズ
                 // 縦方向の移動
-                nextPosition.y = pos.y + inputMove.y * Normal_VerticalSpeed;
+                nextPosition.y = pos.y + inputMove.y * Normal_VerticalSpeed * Time.timeScale;
                 // 横方向の移動
-                nextPosition.x = pos.x + inputMove.x * Normal_HorizontalSpeed;
+                nextPosition.x = pos.x + inputMove.x * Normal_HorizontalSpeed * Time.timeScale;
             }
             else if (currentPhase == PhaseManager.Phase.Speed_Phase)
             {
                 // ハイスピードフェイズ
                 // 縦方向の移動
-                nextPosition.y = pos.y + inputMove.y * Spd_VerticalSpeed;
+                nextPosition.y = pos.y + inputMove.y * Spd_VerticalSpeed * Time.timeScale;
                 // 横方向の移動
-                nextPosition.x = pos.x + inputMove.x * Spd_HorizontalSpeed;
+                nextPosition.x = pos.x + inputMove.x * Spd_HorizontalSpeed * Time.timeScale;
             }
             else if(currentPhase == PhaseManager.Phase.Attack_Phase)
             {
                 // アタックフェイズ
                 // 縦方向の移動
-                nextPosition.y = pos.y + inputMove.y * Atk_VerticalSpeed;
+                nextPosition.y = pos.y + inputMove.y * Atk_VerticalSpeed * Time.timeScale;
                 // 横方向の移動
-                nextPosition.x = pos.x + inputMove.x * Atk_HorizontalSpeed;
+                nextPosition.x = pos.x + inputMove.x * Atk_HorizontalSpeed * Time.timeScale;
             }
         }
         else
         {
             // クイックマニューバ
             // 縦方向の移動
-            nextPosition.y = pos.y + inputMove.y * Manever_VerticalSpeed;
+            nextPosition.y = pos.y + inputMove.y * Manever_VerticalSpeed * Time.timeScale;
             // 横方向の移動
-            nextPosition.x = pos.x + inputMove.x * Manever_HorizontalSpeed;
+            nextPosition.x = pos.x + inputMove.x * Manever_HorizontalSpeed * Time.timeScale;
 
             // マニューバ経過時間
             elapsedTime += Time.deltaTime;

@@ -61,10 +61,10 @@ public class PlayerMoveAngle : MonoBehaviour
 
         // ‰ñ“]
         if (inputMove.y < 0.5f) {
-            angle += angleAdd;
+            angle += angleAdd * Time.timeScale;
         }
         if (inputMove.y > -0.5f) {
-            angle -= angleAdd;// * angleCorrection;
+            angle -= angleAdd * Time.timeScale;// * angleCorrection;
         }
 
         // ƒJƒƒ‰‚É‘Î‚µ‚Ä‚¸‚Á‚Æ‰E‚ğŒü‚«‘±‚¯‚é
