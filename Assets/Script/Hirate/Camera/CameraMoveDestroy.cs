@@ -11,10 +11,12 @@ public class CameraMoveDestroy : MonoBehaviour
     private GameObject playerManager;   // プレイヤーマネージャー
     [Tooltip("見る先のオブジェクト")]
     [SerializeField] GameObject obj;
-    // エフェクト
-    [Tooltip("エフェクトの演出時間")]
-    [SerializeField] float effectTime = 3.0f;
 
+    // エフェクト
+    //[Header("爆発してからの見せる時間")]
+    //[Tooltip("爆発してからの見せる時間")]
+    //[SerializeField] float effectTime = 0.75f;
+    private float effectTime = 0.75f;
     // 現在のシーンの設定
     [Header("現在のシーン設定")]
     [Tooltip("現在のシーン")]
@@ -56,6 +58,9 @@ public class CameraMoveDestroy : MonoBehaviour
         centerPoint = new Vector3(0.0f, 0.0f, 0.0f);
         // 撃破開始フラグ
         breakStart = false;
+
+        // 爆発してからの見せる時間
+        effectTime = 0.75f;
     }
 
     void LateUpdate()
