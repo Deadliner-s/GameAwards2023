@@ -478,9 +478,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eab7ae84bb101142af08884a03900c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: 5
-  moveTimeBoss: 0.5
-  moveTimeCamera: 1
   TimeLimit: 60
 --- !u!1001 &802008633
 PrefabInstance:
@@ -549,6 +546,30 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2cc2420b85fbcdb43a111960725a19ca, type: 2}
+    - target: {fileID: 4504267260574098391, guid: 49ace4bb79f638c48bddca7b09ded5bb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.013
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504267260574098391, guid: 49ace4bb79f638c48bddca7b09ded5bb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.037799995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504267260574098391, guid: 49ace4bb79f638c48bddca7b09ded5bb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.104
+      objectReference: {fileID: 0}
+    - target: {fileID: 8834014704700475041, guid: 49ace4bb79f638c48bddca7b09ded5bb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0136
+      objectReference: {fileID: 0}
+    - target: {fileID: 8834014704700475041, guid: 49ace4bb79f638c48bddca7b09ded5bb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0378
+      objectReference: {fileID: 0}
+    - target: {fileID: 8834014704700475041, guid: 49ace4bb79f638c48bddca7b09ded5bb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1025
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49ace4bb79f638c48bddca7b09ded5bb, type: 3}
 --- !u!1 &912806749
