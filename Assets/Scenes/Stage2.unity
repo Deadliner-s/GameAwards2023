@@ -6060,8 +6060,8 @@ MonoBehaviour:
   ContenaMax: 0.15
   ContenaRange: 2.1
   ContenaNumber: 15
-  DestroyTimeHoming: 10
-  DestroyTimeContena: 15
+  DestroyTimeHoming: 20
+  DestroyTimeContena: 20
   KeyHoming: l
   KeyContena: k
   SpawnPos2: {fileID: 495977318}

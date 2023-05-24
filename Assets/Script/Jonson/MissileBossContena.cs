@@ -34,6 +34,10 @@ public class MissileBossContena : MonoBehaviour
             off = 0.05f;
             Locked = false;
         }
+        else
+        {
+            Destroy(this, 0.0f);
+        }
     }
     // Update is called once per frame
     void Update()
@@ -71,7 +75,7 @@ public class MissileBossContena : MonoBehaviour
                         if(i == ContenaNumber / 2)
                         {
                             //newObj.GetComponent<MissileBossContenaSmall>().Spread = 0.0f;
-                            newObj.GetComponent<NewContena>().First = true;
+                            newObj.GetComponent<MissileBossContenaSmall>().First = true;
                         }
                     }
                     Destroy(gameObject, 0);

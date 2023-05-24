@@ -46,6 +46,10 @@ public class MissileBossHoming : MonoBehaviour
             Miss = false;
             mult = 5.0f;
         }
+        else
+        {
+            Destroy(this, 0.0f);
+        }
     }
     // Update is called once per frame
     void Update()
