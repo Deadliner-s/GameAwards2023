@@ -12,6 +12,6 @@ public class SceneNowSet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SceneNow.instance.sceneNowCatch = nowSceneSet;
+        SceneNowBefore.instance.sceneNowCatch = nowSceneSet;
     }
 }

@@ -19,6 +19,7 @@ TagManager:
   - SceneLoadManager
   - SceneMoveManager
   - PlayerManager
+  - NowEventSceneSet
   layers:
   - Default
   - TransparentFX

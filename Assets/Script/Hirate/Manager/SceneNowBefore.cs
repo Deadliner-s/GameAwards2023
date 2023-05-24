@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneNow : MonoBehaviour
+public class SceneNowBefore : MonoBehaviour
 {
     public SceneLoadStartUnload.SCENE_NAME sceneNowCatch { get; set; }
+    public SceneLoadStartUnload.SCENE_NAME sceneBeforeCatch { get; set; }
 
-    public static SceneNow instance;
+    public static SceneNowBefore instance;
 
     private void Awake()
     {
