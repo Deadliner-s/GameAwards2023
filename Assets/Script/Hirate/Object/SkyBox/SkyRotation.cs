@@ -62,15 +62,15 @@ public class SkyRotation : MonoBehaviour
         // フェーズによって切り替え
         // 通常
         if (PhaseFlg == PhaseManager.Phase.Normal_Phase) {
-            rotationSpeed = rotationSpeedNormal;
+            rotationSpeed = rotationSpeedNormal * Time.timeScale;
         }
         // アタック
         if (PhaseFlg == PhaseManager.Phase.Attack_Phase) {
-            rotationSpeed = rotationSpeedAttack;
+            rotationSpeed = rotationSpeedAttack * Time.timeScale;
         }
         // ハイスピード
         if (PhaseFlg == PhaseManager.Phase.Speed_Phase) {
-            rotationSpeed = rotationSpeedHighSpeed;
+            rotationSpeed = rotationSpeedHighSpeed * Time.timeScale;
         }
 
         if (sky != null)
