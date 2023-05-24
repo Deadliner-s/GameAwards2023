@@ -2,68 +2,64 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
 public class MissileBossContenaSmall : MonoBehaviour
 {
-    public float Speed = 0.02f;        //ミサイルの速度
-    public float MaxSpeed = 0.1f;      //速度制限
-    public float Accel = 0.001f;       //加速度
-    public float Spread = 0.02f;       //拡散
-    //float off;
-    bool Miss;
-
+    Vector3 ToPos;              //発射先 
+    Vector3 StartPoint;
+    Vector3 EndPoint;
+    Vector3 ControlPoint;
+    Vector3 Move;
+    Vector3 Point;
+    public bool First = false;
     System.Random rand = new System.Random();
-    float randX;
-    float randY;
 
-    GameObject Player;
-    Vector3 ToPos;              //発射先
-    Vector3 Move;               //移動方向
-    Vector3 LateMove;           //滑らか動きをするためのmove変数
+
+    float Time;
     // Start is called before the first frame update
     void Start()
     {
-        if (Player = GameObject.Find("Player"))
-        {
-            ToPos = Player.transform.position; //Player
-            randX = rand.Next(16) - 8;
-            randY = rand.Next(16) - 8;
-            Miss = false;
-            //off = 0.9f;
-        }
+        Time = 0.0f;
+        ToPos = GameObject.Find("Player").transform.position;
+
+        StartPoint = transform.position;
+        EndPoint = ToPos;
+        ControlPoint = new Vector3(StartPoint.x - 1.0f + (rand.Next(10) * 0.2f), EndPoint.y + (rand.Next(12) * 0.1f), StartPoint.z - 0.2f -(rand.Next(10) * 0.1f) );
+       
+        if(!First)
+        EndPoint.z = ToPos.z - rand.Next(8) * 0.4f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Player)
+        Time += 0.01f;
+        float u = 1f - Time;
+        float uu = u * u;
+        float tt = Time * Time;
+
+        if (Time <= 0.9f)
         {
-            Speed += Accel;                                         //加速度
-            if (Speed >= MaxSpeed)                                  //速度制限
-                Speed = MaxSpeed;
-            //if (distance >= MissRange && !Miss)
-            if (!Miss)
-            {
-                Move = ToPos - transform.position;
-                Move = Move.normalized;
-                Move.x += randX * Spread;
-                Move.y += randY * Spread;
-                //LateMove = (Move - LateMove) * off + (LateMove);
-                LateMove = Move;
-                Miss = true;
-            }
-            else
-            {
-                Destroy(gameObject, 3.0f);
-            }
-            Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
-            transform.rotation = rot;
-            transform.position += LateMove * Speed;
+            Point = uu * StartPoint;
+            Point += 2f * u * Time * ControlPoint;
+            Point += tt * EndPoint;
+            Move = Point - transform.position;  
         }
         else
         {
-            Destroy(this, 0.0f);
+            Destroy(gameObject, 1.0f);
         }
 
+
+
+
+
+        Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), Move);
+        transform.rotation = rot;
+
+       
+
+
+
+        transform.position += Move;
     }
 }

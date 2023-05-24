@@ -43,6 +43,10 @@ public class MissileBossClusterSmall : MonoBehaviour
             randY += PlusY.y;
             GetComponent<StartParticle>().enabled = false;
         }
+        else
+        {
+            Destroy(this, 0.0f);
+        }
     }
 
     // Update is called once per frame

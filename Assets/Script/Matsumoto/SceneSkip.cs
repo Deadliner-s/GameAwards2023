@@ -54,37 +54,39 @@ public class SceneSkip : MonoBehaviour
         //    }
         //}
 
-        if (InputManager.instance.OnSelect())
+        if (InputManager.instance.OnStart())
         {
             if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE)
             {
-                //InputActions.Disable();
+                InputManager.instance.UI_Disable();
+                SoundManager.instance.StopVOICE();
                 StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
             }
             if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT)
             {
-                //InputActions.Disable();
+                InputManager.instance.UI_Disable();
+                SoundManager.instance.StopVOICE();
                 StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
             }
             if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT)
             {
-                //InputActions.Disable();
+                InputManager.instance.UI_Disable();
+                SoundManager.instance.StopVOICE();
                 StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
             }
             if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_EPILOGUE)
             {
-                //InputActions.Disable();
+                InputManager.instance.UI_Disable();
+                SoundManager.instance.StopVOICE();
                 StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
             }
-            InputManager.instance.UI_Disable();
         }
-
     }
-    private void OnStart()
-    {
-        // シーン名で分岐
-        if (this.gameObject != null)
-        {
+    //private void OnStart()
+    //{
+    //    // シーン名で分岐
+    //    if (this.gameObject != null)
+    //    {
 
             //if (SceneManager.GetActiveScene().name == "Prologue")
             //{
@@ -109,6 +111,6 @@ public class SceneSkip : MonoBehaviour
 
 
 
-        }
-    }
+    //    }
+    //}
 }

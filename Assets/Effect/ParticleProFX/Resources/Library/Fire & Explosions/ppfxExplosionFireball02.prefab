@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 19979394}
   - component: {fileID: 11497296}
   - component: {fileID: 11477632}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ppfxExplosionFireball02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4938,7 +4938,7 @@ GameObject:
   - component: {fileID: 19848452}
   - component: {fileID: 19953338}
   - component: {fileID: 11466722}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9907,7 +9907,7 @@ GameObject:
   - component: {fileID: 19818024}
   - component: {fileID: 19933318}
   - component: {fileID: 11416662}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: thickSmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}

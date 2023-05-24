@@ -92,7 +92,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 125
+    scalar: 200
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -9673,7 +9673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b9e69ee27fa84f46a37d6dfad9a9a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyTime: 4.7
+  DestroyTime: 8
 --- !u!1 &5718749178404184980
 GameObject:
   m_ObjectHideFlags: 0
@@ -9730,7 +9730,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 125
+    scalar: 200
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -14542,7 +14542,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 125
+    scalar: 200
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -19354,7 +19354,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 4.7
+    scalar: 7.7
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -19583,7 +19583,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 15
+      scalar: 30
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -24157,4 +24157,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Boss: 1
   scaleSpeed: 0.01
-  wait: 5
+  wait: 8

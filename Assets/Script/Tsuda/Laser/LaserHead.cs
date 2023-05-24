@@ -49,12 +49,13 @@ public class LaserHead : MonoBehaviour
     void Update()
     {        
         timer += Time.deltaTime;  // タイマーを減算する                                                          
-
-        if (timer >= lifetime || playerManager.GetComponent<PlayerHp>().BreakFlag)
+        if (playerManager != null)
         {
-            Destroy(gameObject);  // オブジェクトを削除する
+            if (timer >= lifetime || playerManager.GetComponent<PlayerHp>().BreakFlag)
+            {
+                Destroy(gameObject);  // オブジェクトを削除する
+            }
         }
-
         if (timer <= charge)
         {
             PlayerPosition = Player.transform.position;
@@ -62,23 +63,25 @@ public class LaserHead : MonoBehaviour
         }        
 
         if (timer >= wait)
-        {            
-            targetScreenPosition = mainCamera.WorldToScreenPoint(targetWorldPosition);
-
-            if (timer >= wait + 1.0f)
+        {
+            if (mainCamera != null)
             {
-                if (PlayerPosition.x <= 0.0f)
+                targetScreenPosition = mainCamera.WorldToScreenPoint(targetWorldPosition);
+
+                if (timer >= wait + 1.0f)
                 {
-                    targetScreenPosition.x += LaserSpeed;
+                    if (PlayerPosition.x <= 0.0f)
+                    {
+                        targetScreenPosition.x += LaserSpeed;
+                    }
+                    if (PlayerPosition.x >= 0.0f)
+                    {
+                        targetScreenPosition.x -= LaserSpeed;
+                    }
                 }
-                if (PlayerPosition.x >= 0.0f)
-                {
-                    targetScreenPosition.x -= LaserSpeed;
-                }
+
+                targetWorldPosition = mainCamera.ScreenToWorldPoint(targetScreenPosition);
             }
-
-            targetWorldPosition = mainCamera.ScreenToWorldPoint(targetScreenPosition);
-
             transform.LookAt(targetWorldPosition);
         }        
         

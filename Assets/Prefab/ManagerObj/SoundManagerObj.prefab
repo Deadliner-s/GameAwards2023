@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8875813143279743145}
   - component: {fileID: 8875813143279743144}
-  - component: {fileID: 9185245506595575519}
+  - component: {fileID: -1733074672095084422}
   m_Layer: 0
   m_Name: SoundManagerObj
   m_TagString: Untagged
@@ -292,7 +292,7 @@ MonoBehaviour:
   BGM_volume: 0.5
   SE_volume: 0.5
   VOICE_volume: 0.5
---- !u!81 &9185245506595575519
+--- !u!81 &-1733074672095084422
 AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

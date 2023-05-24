@@ -349,9 +349,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Zako: {fileID: 3835390596389008509, guid: a2d601403b8c1014d9cfbfa4925832b8, type: 3}
   SpawnZakoTime:
-  - 20
-  - 25
-  - 100
+  - 16
+  - 21
+  - 26
   SpawnZakoDuration:
   - 1
   - 1
@@ -2837,9 +2837,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5206886689ee4d74f98a6dc093602cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NormalTime: 7
-  SpeedTime: 40
-  AttackTime: 25
+  NormalTime: 1
+  SpeedTime: 29
+  AttackTime: 20
   currentPhase: 0
   NormaltoNext: 3
   Reticle: {fileID: 966131196}
@@ -4250,7 +4250,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1343211722}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1343211729
 Camera:
   m_ObjectHideFlags: 0
@@ -4306,7 +4306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 903000af724a17240aeee92604e12c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeLimit: 140
+  TimeLimit: 153
 --- !u!1 &1379947608
 GameObject:
   m_ObjectHideFlags: 0
@@ -4358,7 +4358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6063255cbe9fda04c817cbdded23a68d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 140
+  time: 153
   Timertext: {fileID: 1379947611}
 --- !u!114 &1379947611
 MonoBehaviour:
@@ -4727,9 +4727,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Zako: {fileID: 3835390596389008509, guid: b948fc0b9feae1348af489437bd8c96c, type: 3}
   SpawnZakoTime:
-  - 19
-  - 24
-  - 100
+  - 15
+  - 20
+  - 25
   SpawnZakoDuration:
   - 1
   - 1
@@ -4927,9 +4927,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1809720811616492591, guid: 436d5d0536285294b92c4965004502c4, type: 3}
   timer: 0
-  StartTime_1: 16
+  StartTime_1: 12
   LaserTime_1: 4
-  StartTime_2: 32
+  StartTime_2: 20
   LaserTime_2: 4
   StartTime_3: 100
   LaserTime_3: 4
@@ -5966,17 +5966,17 @@ MonoBehaviour:
   KeyBot: m
   DestroyTime: 10
   StartTimeCluster:
-  - 15
-  - 21
-  - 31
+  - 11
+  - 20
+  - 100
   DurationCluster:
   - 4
-  - 8
-  - 3
+  - 6
+  - 100
   IntervalTriggerCluster:
   - 1.1
-  - 1.5
   - 1.1
+  - 100
   StartTimeTop:
   - 100
   - 100
@@ -5990,53 +5990,53 @@ MonoBehaviour:
   - 1
   - 1
   StartTimeTopLeft:
-  - 6
+  - 2
   - 100
   - 100
   DurationTopLeft:
   - 4
-  - 1
-  - 14
+  - 100
+  - 100
   IntervalTriggerTopLeft:
   - 3.1
-  - 1
-  - 4
-  StartTimeLeft:
-  - 6
   - 100
-  - 0
+  - 100
+  StartTimeLeft:
+  - 2
+  - 100
+  - 100
   DurationLeft:
   - 7
-  - 1
-  - 13
+  - 100
+  - 100
   IntervalTriggerLeft:
   - 3.1
   - 1
   - 3
   StartTimeBotLeft:
-  - 6
-  - 12
+  - 2
+  - 100
   - 100
   DurationBotLeft:
-  - 1
-  - 1
-  - 11
+  - 7
+  - 100
+  - 100
   IntervalTriggerBotLeft:
-  - 1.1
-  - 1.1
-  - 2
+  - 6.1
+  - 100
+  - 100
   StartTimeBot:
   - 100
   - 100
   - 100
   DurationBot:
-  - 1
-  - 1
-  - 1
+  - 100
+  - 100
+  - 100
   IntervalTriggerBot:
-  - 1
-  - 1
-  - 1
+  - 100
+  - 100
+  - 100
 --- !u!114 &1933776100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6053,42 +6053,42 @@ MonoBehaviour:
   HomingSpeed: 0.01
   HomingAccel: 0.002
   HomingMax: 0.15
-  HomingHeight: 3
+  HomingHeight: 4
   ContenaMissile: {fileID: 4741478458244633611, guid: a166eeb9b4e2c494f912cf907f7a4985, type: 3}
   ContenaSpeed: 0.01
   ContenaAccel: 0.0015
   ContenaMax: 0.15
   ContenaRange: 2.1
   ContenaNumber: 15
-  DestroyTimeHoming: 10
+  DestroyTimeHoming: 15
   DestroyTimeContena: 15
   KeyHoming: l
   KeyContena: k
   SpawnPos2: {fileID: 495977318}
   timer: 0
   StartTimeHoming:
-  - 6.5
+  - 2
   - 7
-  - 7.5
+  - 12
   DurationHoming:
-  - 30
-  - 29
-  - 28
+  - 3
+  - 3
+  - 3
   IntervalTriggerHoming:
-  - 0.6
-  - 0.8
-  - 1.3
+  - 0.5
+  - 0.4
+  - 0.2
   StartTimeContena:
-  - 21
-  - 27
-  - 28
+  - 8
+  - 13
+  - 100
   DurationContena:
   - 3
   - 3
   - 3
   IntervalTriggerContena:
-  - 0.7
-  - 0.7
+  - 1
+  - 1
   - 1
 --- !u!23 &1933776101
 MeshRenderer:

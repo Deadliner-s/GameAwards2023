@@ -25,8 +25,8 @@ public class Blink_UI : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-
-        GetComponent<RectTransform>().position = mainCamera.WorldToScreenPoint(Laser.GetComponent<LaserHead>().targetWorldPosition);
+        if (mainCamera != null)
+            GetComponent<RectTransform>().position = mainCamera.WorldToScreenPoint(Laser.GetComponent<LaserHead>().targetWorldPosition);
 
         if (timer <= Laser.GetComponent<LaserHead>().wait)
         {

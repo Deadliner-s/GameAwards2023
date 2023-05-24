@@ -20,10 +20,10 @@ public class CameraMoveDestroy : MonoBehaviour
     [Tooltip("現在のシーン")]
     [SerializeField] SceneLoadStartUnload.SCENE_NAME SceneNow;
 
-    // 次のシーンの設定
-    [Header("次のシーン設定")]
-    [Tooltip("次のシーン")]
-    [SerializeField] SceneLoadStartUnload.SCENE_NAME SceneNext;
+    //// 次のシーンの設定
+    //[Header("次のシーン設定")]
+    //[Tooltip("次のシーン")]
+    //[SerializeField] SceneLoadStartUnload.SCENE_NAME SceneNext;
 
     private float playerDistance = 0.0f; // プレイヤーまでの距離
     private Vector3 centerPoint;
