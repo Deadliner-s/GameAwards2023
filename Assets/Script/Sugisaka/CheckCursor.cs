@@ -152,7 +152,7 @@ public class CheckCursor : MonoBehaviour
         StartCoroutine("WindowScaleUp");
     }
 
-    IEnumerator ScaleUp()
+    IEnumerator WindowScaleUp()
     {
         for (float i = 1; i < 2; i += 0.1f)
         {
