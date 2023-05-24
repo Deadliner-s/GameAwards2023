@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 8829965664625761237}
   - component: {fileID: 5367243958905801089}
   - component: {fileID: 3559138847694653606}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Laser2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5168,7 +5168,7 @@ GameObject:
   - component: {fileID: 8001874236890443877}
   - component: {fileID: 6860448015229383918}
   - component: {fileID: 3330301120963703234}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Laser4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10247,7 +10247,7 @@ GameObject:
   - component: {fileID: 5368799996516976537}
   - component: {fileID: 4209935839911320173}
   - component: {fileID: 2136279177061901621}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Laser1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19937,7 +19937,7 @@ GameObject:
   - component: {fileID: 8060300168331768361}
   - component: {fileID: 1974519629740829896}
   - component: {fileID: 8995144772925138890}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Laser3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29561,7 +29561,7 @@ GameObject:
   - component: {fileID: 8560052460048657185}
   - component: {fileID: 6486424915132316428}
   - component: {fileID: 3242680738781284305}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Laser5
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -595,15 +595,15 @@ MonoBehaviour:
   SpawnDelay: 1
   KeyCluster: i
   SpawnTop: {fileID: 2027436679}
-  KeyTop: u
+  KeyTop: 1
   SpawnTopLeft: {fileID: 313698568}
-  KeyTopLeft: y
+  KeyTopLeft: 2
   SpawnLeft: {fileID: 514139033}
-  KeyLeft: l
+  KeyLeft: 3
   SpawnBotLeft: {fileID: 1435503352}
-  KeyBotLeft: n
+  KeyBotLeft: 4
   SpawnBot: {fileID: 1466317056}
-  KeyBot: m
+  KeyBot: 5
   DestroyTime: 10
   StartTimeCluster:
   - 12
