@@ -15,6 +15,9 @@ public class Stage4TextWriter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Window.SetActive(false);
+        Name.SetActive(false);
+        Text.SetActive(false);
         StartCoroutine("Cotest");
     }
 
