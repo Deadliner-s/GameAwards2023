@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 11412566}
   - component: {fileID: 11464756}
   - component: {fileID: 11499652}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ppfxExplosionFireball03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4951,7 +4951,7 @@ GameObject:
   - component: {fileID: 19852858}
   - component: {fileID: 19909450}
   - component: {fileID: 11426430}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
