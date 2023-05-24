@@ -2,33 +2,38 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class OptionCursor : MonoBehaviour
 {
     //private Myproject InputActions;
+    
+    private GameObject VolCon;          // VolumeControllerã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 
-    private GameObject VolCon;          // VolumeController‚ÌƒIƒuƒWƒFƒNƒg
+    [SerializeField]
+    private GameObject Window;
+    [SerializeField]
+    private GameObject BGM_Text;        // BGMã®ãƒ†ã‚­ã‚¹ãƒˆ
+    [SerializeField]
+    private GameObject SE_Text;         // SEã®ãƒ†ã‚­ã‚¹ãƒˆ
+    [SerializeField]
+    private GameObject VOICE_Text;      // Voiceã®ãƒ†ã‚­ã‚¹ãƒˆ
+    [SerializeField]
+    private GameObject VibrationText;   // Vibrationã®ãƒ†ã‚­ã‚¹ãƒˆ
+    [SerializeField]
+    private GameObject BackText;        // æˆ»ã‚‹ã®ãƒ†ã‚­ã‚¹ãƒˆ
 
-    [SerializeField]
-    private GameObject BGM_Text;        // BGM‚ÌƒeƒLƒXƒg
-    [SerializeField]
-    private GameObject SE_Text;         // SE‚ÌƒeƒLƒXƒg
-    [SerializeField]
-    private GameObject VOICE_Text;      // Voice‚ÌƒeƒLƒXƒg
-    [SerializeField]
-    private GameObject VibrationText;   // Vibration‚ÌƒeƒLƒXƒg
-    [SerializeField]
-    private GameObject BackText;        // –ß‚é‚ÌƒeƒLƒXƒg
-
-    private GameObject VibrationToggle; // Vibration‚ÌƒgƒOƒ‹
+    private GameObject VibrationToggle; // Vibrationã®ãƒˆã‚°ãƒ«
     private bool isVibration;
 
     [SerializeField]
-    [Header("ƒƒjƒ…[")]
-    private GameObject Menu;            // ƒƒjƒ…[‚ÌƒIƒuƒWƒFƒNƒg
+    [Header("ãƒ¡ãƒ‹ãƒ¥ãƒ¼")]
+    private GameObject Menu;            // ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 
-    private const int MAX_OPTION = 5;   // ƒIƒvƒVƒ‡ƒ“‚Ì”
-    private int Selected = 0;           // ‘I‘ğ’†‚ÌƒIƒvƒVƒ‡ƒ“
+    private const int MAX_OPTION = 5;   // ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã®æ•°
+    private int Selected = 0;           // é¸æŠä¸­ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³
+
+    private float Max_Height = 14.30278f;
 
     void Awake()
     {
@@ -44,11 +49,12 @@ public class OptionCursor : MonoBehaviour
     {
         Selected = 0;
 
-        // VolumeController‚ÌƒIƒuƒWƒFƒNƒg‚ğæ“¾
+        // VolumeControllerã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—
         VolCon = transform.Find("VolumeControllerObj").gameObject;
         VibrationToggle = transform.Find("VibrationToggle").gameObject;
+        //VibrationToggle = transform.FindChild("VolumeControllerObj").gameObject;
 
-        // ƒIƒvƒVƒ‡ƒ“‚ÌƒeƒLƒXƒg‚ğæ“¾
+        // ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—
         //BGM_Text = transform.Find("BGMText").gameObject;
         //SE_Text = transform.Find("SEText").gameObject;
         //VOICE_Text = transform.Find("VOICEText").gameObject;
@@ -56,12 +62,13 @@ public class OptionCursor : MonoBehaviour
 
         isVibration = VibrationManager.instance.GetisVibration();
         VibrationToggle.GetComponent<Toggle>().isOn = isVibration;
+        VibrationToggle.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // ƒIƒvƒVƒ‡ƒ“‚ª•\¦‚³‚ê‚Ä‚¢‚éê‡‚Í“ü—Í‚ğó‚¯•t‚¯‚é
+        // ã‚ªãƒ—ã‚·ãƒ§ãƒ³ãŒè¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹å ´åˆã¯å…¥åŠ›ã‚’å—ã‘ä»˜ã‘ã‚‹
         if (Menu.activeSelf == false)
         {
             //InputActions.Enable();
@@ -79,18 +86,18 @@ public class OptionCursor : MonoBehaviour
             SoundManager.instance.PlaySE("Select");
         }
 
-        // ƒIƒvƒVƒ‡ƒ“‘I‘ğ XV
+        // ã‚ªãƒ—ã‚·ãƒ§ãƒ³é¸æŠ æ›´æ–°
         Selected = (Selected + MAX_OPTION) % MAX_OPTION;
 
-        // ‘I‘ğ’†‚ÌƒIƒvƒVƒ‡ƒ“‚É‚æ‚Á‚Äˆ—‚ğ•Ï‚¦‚é
+        // é¸æŠä¸­ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã«ã‚ˆã£ã¦å‡¦ç†ã‚’å¤‰ãˆã‚‹
         switch (Selected)
         {
             case (0):
-                // BGM‚Ìƒ{ƒŠƒ…[ƒ€‚ğ•ÏX‚·‚é
-                // BGMƒXƒ‰ƒCƒ_[‚ÌHandle‚ğ‘I‘ğ
+                // BGMã®ãƒœãƒªãƒ¥ãƒ¼ãƒ ã‚’å¤‰æ›´ã™ã‚‹
+                // BGMã‚¹ãƒ©ã‚¤ãƒ€ãƒ¼ã®Handleã‚’é¸æŠ
                 VolCon.GetComponent<VolumeController>().SetBGMSlider();
 
-                // ƒeƒLƒXƒg‚ÌF‚ğ•ÏX
+                // ãƒ†ã‚­ã‚¹ãƒˆã®è‰²ã‚’å¤‰æ›´
                 BGM_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
                 SE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 VOICE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
@@ -98,11 +105,11 @@ public class OptionCursor : MonoBehaviour
                 BackText.GetComponent<TextMeshProUGUI>().color = Color.black;
                 break;
             case (1):
-                // SE‚Ìƒ{ƒŠƒ…[ƒ€‚ğ•ÏX‚·‚é
-                // SEƒXƒ‰ƒCƒ_[‚ÌHandle‚ğ‘I‘ğ
+                // SEã®ãƒœãƒªãƒ¥ãƒ¼ãƒ ã‚’å¤‰æ›´ã™ã‚‹
+                // SEã‚¹ãƒ©ã‚¤ãƒ€ãƒ¼ã®Handleã‚’é¸æŠ
                 VolCon.GetComponent<VolumeController>().SetSESlider();
 
-                // ƒeƒLƒXƒg‚ÌF‚ğ•ÏX
+                // ãƒ†ã‚­ã‚¹ãƒˆã®è‰²ã‚’å¤‰æ›´
                 BGM_Text.GetComponent <TextMeshProUGUI>().color = Color.black;
                 SE_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
                 VOICE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
@@ -111,11 +118,11 @@ public class OptionCursor : MonoBehaviour
                 break;
 
             case (2):
-                // ƒ{ƒCƒX‚Ìƒ{ƒŠƒ…[ƒ€‚ğ•ÏX‚·‚é
-                // VOICE‚ÌƒXƒ‰ƒCƒ_[‚ÌHandle‚ğ‘I‘ğ
+                // ãƒœã‚¤ã‚¹ã®ãƒœãƒªãƒ¥ãƒ¼ãƒ ã‚’å¤‰æ›´ã™ã‚‹
+                // VOICEã®ã‚¹ãƒ©ã‚¤ãƒ€ãƒ¼ã®Handleã‚’é¸æŠ
                 VolCon.GetComponent<VolumeController>().SetVOICESlider();
 
-                // ƒeƒLƒXƒg‚ÌF‚ğ•ÏX
+                // ãƒ†ã‚­ã‚¹ãƒˆã®è‰²ã‚’å¤‰æ›´
                 BGM_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 SE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 VOICE_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
@@ -124,10 +131,10 @@ public class OptionCursor : MonoBehaviour
                 break;
 
             case (3):
-                // ƒoƒCƒuƒŒ[ƒVƒ‡ƒ“‚ğØ‚è‘Ö‚¦‚é 186s–Ú
-                // ‘¼‚ÌƒXƒ‰ƒCƒ_[‚ÌSelect‚ğŠO‚·(BlankSlider‚ÌHandle‚ğ‘I‘ğ
+                // ãƒã‚¤ãƒ–ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹ 186è¡Œç›®
+                // ä»–ã®ã‚¹ãƒ©ã‚¤ãƒ€ãƒ¼ã®Selectã‚’å¤–ã™(BlankSliderã®Handleã‚’é¸æŠ
                 VolCon.GetComponent<VolumeController>().SetBlankSlider();
-                // ƒeƒLƒXƒg‚ÌF‚ğ•ÏX
+                // ãƒ†ã‚­ã‚¹ãƒˆã®è‰²ã‚’å¤‰æ›´
                 BGM_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 SE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 VOICE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
@@ -136,11 +143,11 @@ public class OptionCursor : MonoBehaviour
                 break;
 
             case (4):
-                // –ß‚é‚ğ‘I‘ğ
-                // ‘¼‚ÌƒXƒ‰ƒCƒ_[‚ÌSelect‚ğŠO‚·(BlankSlider‚ÌHandle‚ğ‘I‘ğ
+                // æˆ»ã‚‹ã‚’é¸æŠ
+                // ä»–ã®ã‚¹ãƒ©ã‚¤ãƒ€ãƒ¼ã®Selectã‚’å¤–ã™(BlankSliderã®Handleã‚’é¸æŠ
                 VolCon.GetComponent <VolumeController>().SetBlankSlider();
 
-                // ƒeƒLƒXƒg‚ÌF‚ğ•ÏX
+                // ãƒ†ã‚­ã‚¹ãƒˆã®è‰²ã‚’å¤‰æ›´
                 BGM_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 SE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 VOICE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
@@ -151,7 +158,7 @@ public class OptionCursor : MonoBehaviour
 
         if (InputManager.instance.OnSelect())
         {
-            // ‘I‘ğ‚³‚ê‚½ƒIƒvƒVƒ‡ƒ“‚É‚æ‚Á‚Äˆ—‚ğ•Ï‚¦‚é
+            // é¸æŠã•ã‚ŒãŸã‚ªãƒ—ã‚·ãƒ§ãƒ³ã«ã‚ˆã£ã¦å‡¦ç†ã‚’å¤‰ãˆã‚‹
             switch (Selected)
             {
                 case (0):
@@ -164,37 +171,66 @@ public class OptionCursor : MonoBehaviour
                     break;
 
                 case (3):
-                    // ƒoƒCƒuƒŒ[ƒVƒ‡ƒ“‚ÌƒIƒ“ƒIƒt‚ğØ‚è‘Ö‚¦‚é
+                    // ãƒã‚¤ãƒ–ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã®ã‚ªãƒ³ã‚ªãƒ•ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹
                     VibrationToggle.GetComponent<Toggle>().isOn = !VibrationToggle.GetComponent<Toggle>().isOn;
                     isVibration = VibrationToggle.GetComponent<Toggle>().isOn;
                     VibrationManager.instance.SetisVibration(isVibration);
                     break;
 
                 case (4):
-                    // ƒ^ƒCƒgƒ‹‚É–ß‚é
+                    // ã‚¿ã‚¤ãƒˆãƒ«ã«æˆ»ã‚‹
                     Selected = 0;
-                    this.gameObject.SetActive(false);
-                    //InputActions.Disable();
-                    Menu.SetActive(true);
                     SoundManager.instance.PlaySE("Decision");
+                    StartCoroutine("WindowScaleDown");
                     break;
             }
         }
 
     }
+    private void OnEnable()
+    {
+        // ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦è¡¨ç¤º
+        Window.transform.localScale = new Vector3(
+            Window.transform.localScale.x,
+            0.0f,
+            Window.transform.localScale.z
+            );
+        StartCoroutine("WindowScaleUp");
+    }
+    IEnumerator WindowScaleUp()
+    {
+        for (float i = 1; i < 2; i += 0.1f)
+        {
+            Vector3 scale = Window.transform.localScale;
+            scale.y += Max_Height * 0.1f;
+            Window.transform.localScale = scale;
+            yield return new WaitForSeconds(0.01f);
+        }
+        Selected = 0;
+        // BGMã®ãƒœãƒªãƒ¥ãƒ¼ãƒ ã‚’å¤‰æ›´ã™ã‚‹
+        // BGMã‚¹ãƒ©ã‚¤ãƒ€ãƒ¼ã®Handleã‚’é¸æŠ
+        VolCon.GetComponent<VolumeController>().SetBGMSlider();
 
-    //private void OnUp()
-    //{
+        // ãƒ†ã‚­ã‚¹ãƒˆã®è‰²ã‚’å¤‰æ›´
+        BGM_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
+        SE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+        VOICE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+        VibrationText.GetComponent<TextMeshProUGUI>().color = Color.black;
+        BackText.GetComponent<TextMeshProUGUI>().color = Color.black;
 
-    //}
-
-    //private void OnDown()
-    //{
-
-    //}
-
-    //private void OnSelect()
-    //{
-
-    //}
+        VibrationToggle.SetActive(true);
+    }
+    IEnumerator WindowScaleDown()
+    {
+        VibrationToggle.SetActive(false);
+        for (float i = 1; i < 2; i += 0.1f)
+        {
+            Vector3 scale = Window.transform.localScale;
+            scale.y -= Max_Height * 0.1f;
+            Window.transform.localScale = scale;
+            yield return new WaitForSeconds(0.01f);
+        }
+        this.gameObject.SetActive(false);
+        Menu.SetActive(true);
+    }
 }
