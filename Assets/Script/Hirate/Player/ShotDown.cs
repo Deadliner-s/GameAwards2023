@@ -5,9 +5,10 @@ using UnityEngine;
 public class ShotDown : MonoBehaviour
 {
     // 撃墜時の設定
-    [Header("撃墜時の設定")]
-    [Tooltip("撃墜までの時間")]
-    [SerializeField] float destroyTime = 3.0f;
+    //[Header("撃墜時の設定")]
+    //[Tooltip("撃墜までの燃え上がる時間")]
+    //[SerializeField] float destroyTime = 1.5f;
+    private float destroyTime = 1.5f;
     [Tooltip("撃墜時の移動")]
     [SerializeField] Vector3 movePos;
     // エフェクト
@@ -25,7 +26,7 @@ public class ShotDown : MonoBehaviour
     //private PlayerMove playerMove;           // プレイヤーの移動を切る用
     //private PlayerMoveAngle playerMoveAngle; // プレイヤーの回転を切る用
     //private PlayerHp playerHp;               // バリア破壊後の完全撃墜時のフラグ取得用
-    private float cnt = 2.0f;                // 爆発までの時間
+    private float cnt = 0.0f;                // 爆発までの時間
     private Vector3 pos;                     // 座標
     private Quaternion q;                    // 親の回転の代入用
     private bool GameOverStartFlg = true;    // 黒煙開始用
@@ -46,6 +47,9 @@ public class ShotDown : MonoBehaviour
 
         // エフェクトの演出用
         EffectFlag = false;
+
+        // 燃え上がる時間
+        destroyTime = 1.5f;
     }
 
     private void FixedUpdate()
