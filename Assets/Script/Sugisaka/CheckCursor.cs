@@ -65,7 +65,6 @@ public class CheckCursor : MonoBehaviour
             {
                 Yes_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
                 No_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
-
             }
             else
             {
@@ -84,13 +83,11 @@ public class CheckCursor : MonoBehaviour
             {
                 Yes_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
                 No_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
-
             }
             else
             {
                 Yes_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 No_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
-
             }
             SoundManager.instance.PlaySE("Select");
         }
@@ -104,7 +101,7 @@ public class CheckCursor : MonoBehaviour
                     Selected = 0;
                     //InputActions.Disable();
                     SoundManager.instance.PlaySE("Decision");
-                    StartCoroutine("ScaleDown");
+                    StartCoroutine("WindowScaleDown");
                     break;
                 case (1):
                     // Yes
@@ -139,56 +136,38 @@ public class CheckCursor : MonoBehaviour
                     break;
             }
         }
-
-
     }
 
     private void OnEnable()
     {
         // ウィンドウ表示
-        Vector3 scale = Window.transform.localScale;
-        scale.y = 0;
-        Window.transform.localScale = scale;
-        StartCoroutine("ScaleUp");
+        //Vector3 scale = Window.transform.localScale;
+        //scale.y = 0;
+        //Window.transform.localScale = scale;
+        Window.transform.localScale = new Vector3(
+            Window.transform.localScale.x,
+            0.0f,
+            Window.transform.localScale.z
+            );
+        StartCoroutine("WindowScaleUp");
     }
 
-    //private void OnLeft()
-    //{
-
-    //}
-
-    //private void OnRight()
-    //{
-
-    //}
-
-    //private void OnSelect()
-    //{
-
-    //}
-
-    IEnumerator ScaleUp()
+    IEnumerator WindowScaleUp()
     {
         for (float i = 1; i < 2; i += 0.1f)
         {
             Vector3 scale = Window.transform.localScale;
-            scale.y += 3.777086f * 0.1f;
+            scale.y += Max_Height * 0.1f;
             Window.transform.localScale = scale;
             yield return new WaitForSeconds(0.01f);
         }
-        // 入力処理有効化
-        //InputActions = new Myproject();
-        //InputActions.Enable();
-        //InputActions.UI.Left.performed += context => OnLeft();
-        //InputActions.UI.Right.performed += context => OnRight();
-        //InputActions.UI.Select.performed += context => OnSelect();
     }
-    IEnumerator ScaleDown()
+    IEnumerator WindowScaleDown()
     {
         for (float i = 1; i < 2; i += 0.1f)
         {
             Vector3 scale = Window.transform.localScale;
-            scale.y -= 3.777086f * 0.1f;
+            scale.y -= Max_Height * 0.1f;
             Window.transform.localScale = scale;
             yield return new WaitForSeconds(0.01f);
         }

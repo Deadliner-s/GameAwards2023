@@ -62,7 +62,7 @@ public class EffectManager : MonoBehaviour
         {
             nextPhase = currentPhase;
 
-            Debug.Log("‰Šú‰»");
+            //Debug.Log("‰Šú‰»");
             if (currentPhase == PhaseManager.Phase.Speed_Phase)
             {
                 Blur.strength.value = 0.0f;
