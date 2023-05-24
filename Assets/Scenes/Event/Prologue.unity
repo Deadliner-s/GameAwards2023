@@ -306,6 +306,10 @@ PrefabInstance:
       propertyPath: m_CullingMask.m_Bits
       value: 193
       objectReference: {fileID: 0}
+    - target: {fileID: 8219060240087159242, guid: 3d014e8e03ac09645823e0015d69d1d7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3413927530067460583, guid: 3d014e8e03ac09645823e0015d69d1d7, type: 3}
     - {fileID: 2114914741875227071, guid: 3d014e8e03ac09645823e0015d69d1d7, type: 3}
@@ -398,7 +402,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912806749}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &912806751
 Camera:
   m_ObjectHideFlags: 0
