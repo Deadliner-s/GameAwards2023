@@ -67,7 +67,6 @@ public class MenuCursor : MonoBehaviour
             if (OptionMenu.activeSelf == false)
             {
                 title.SetActive(true);
-                //nputActions.Enable();
                 OptionMenuFlag = false;
             }
         }
@@ -77,7 +76,6 @@ public class MenuCursor : MonoBehaviour
         {
             if (CheckMenu.activeSelf == false)
             {
-                //InputActions.Enable();
                 CheckMenuFlag = false;
             }
         }

@@ -30,7 +30,8 @@ public class EffectManager : MonoBehaviour
     {
         playerManager = GameObject.Find("PlayerManager");
 
-        nextPhase = PhaseManager.instance.GetNextPhase();
+        currentPhase = PhaseManager.instance.GetPhase();
+        nextPhase = currentPhase;
 
         // ブラーの初期化処理
         if (volume)
@@ -59,9 +60,9 @@ public class EffectManager : MonoBehaviour
         // フェイズが変わった時の処理 
         if (nextPhase != currentPhase)
         {
-            nextPhase = PhaseManager.instance.GetNextPhase();
+            nextPhase = currentPhase;
 
-            Debug.Log("初期化");
+            //Debug.Log("初期化");
             if (currentPhase == PhaseManager.Phase.Speed_Phase)
             {
                 Blur.strength.value = 0.0f;

@@ -248,12 +248,14 @@ public class SoundManager : MonoBehaviour
     IEnumerator DoFadeIn(BGM b)
     {
         float bgmVolume = 0.0f;
+        b.audioSource.volume = 0.0f;
         b.audioSource.Play();
-        while (bgmVolume < 1.0f)
+        while (bgmVolume < BGM_volume)
         {
             bgmVolume += Time.deltaTime / b.TimefadeIn;
             b.audioSource.volume = bgmVolume;
-            Debug.Log(bgmVolume);
+            b.audioSource.volume = BGM_volume;
+            //Debug.Log(bgmVolume);
             yield return null;
         }
     }
@@ -261,13 +263,13 @@ public class SoundManager : MonoBehaviour
     // フェードアウト
     IEnumerator DoFadeOut(BGM b)
     {
-        float bgmVolume = 1.0f;
+        float bgmVolume = BGM_volume;
 
         while (bgmVolume > 0.0f)
         {
             bgmVolume -= Time.deltaTime / b.TimefadeOut;
             b.audioSource.volume = bgmVolume;
-            Debug.Log(bgmVolume);
+            //Debug.Log(bgmVolume);
             yield return null;
         }
         b.audioSource.Stop();
@@ -316,6 +318,21 @@ public class SoundManager : MonoBehaviour
         }
         s.audioSource.volume = VOICE_volume;
         s.audioSource.Play();
+    }
+
+    // ボイスの停止
+    public void StopVOICE()
+    {
+        VOICE s = Array.Find(voice, sound => sound.audioSource.isPlaying == true);
+
+        if (s == null)
+        {
+            //print("再生中のボイスがありません");
+            return;
+        }
+        s.audioSource.Stop();
+
+        // DoFadeOut(s);
     }
 
     void BGMPlayer()

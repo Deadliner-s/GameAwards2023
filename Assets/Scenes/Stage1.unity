@@ -991,7 +991,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367080600}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &367080607
 Camera:
   m_ObjectHideFlags: 0
@@ -4594,8 +4594,8 @@ MonoBehaviour:
   ContenaMax: 0.15
   ContenaRange: 2.1
   ContenaNumber: 15
-  DestroyTimeHoming: 15
-  DestroyTimeContena: 15
+  DestroyTimeHoming: 20
+  DestroyTimeContena: 20
   KeyHoming: l
   KeyContena: k
   SpawnPos2: {fileID: 1609272615}

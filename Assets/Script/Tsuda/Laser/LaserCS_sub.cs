@@ -26,7 +26,8 @@ public class LaserCS_sub : MonoBehaviour
 
         //GetComponent<RectTransform>().position = Laser.GetComponent<LaserHead>().targetScreenPosition;
 
-        GetComponent<RectTransform>().position = mainCamera.WorldToScreenPoint(Laser.GetComponent<LaserHead>().targetWorldPosition);
+        if(mainCamera != null)
+            GetComponent<RectTransform>().position = mainCamera.WorldToScreenPoint(Laser.GetComponent<LaserHead>().targetWorldPosition);
 
         GetComponent<RectTransform>().Rotate(0, 0, rotate);
 

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6649804790914477803
+--- !u!1 &8058430610760972277
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,51 +8,44 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6649804790914477801}
-  - component: {fileID: 6649804790914477802}
-  m_Layer: 0
-  m_Name: VibrationManagerObj
+  - component: {fileID: 8058430610760972234}
+  - component: {fileID: 8058430610760972235}
+  m_Layer: 5
+  m_Name: boss_explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6649804790914477801
+--- !u!4 &8058430610760972234
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6649804790914477803}
+  m_GameObject: {fileID: 8058430610760972277}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.046672255, y: 1.4105053, z: -4.463883}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6649804790914477802
+--- !u!114 &8058430610760972235
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6649804790914477803}
+  m_GameObject: {fileID: 8058430610760972277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf56e973c4a27c5418d57346cbce2b3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f414f09c4497f14da8ce8d53846b42f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vibration:
-  - name: Option
-    LowFrequency: 1
-    HighFrequency: 1
-    TimeVibration: 0.3
-    StepVibration: 0
-  - name: HighSpeed
-    LowFrequency: 1
-    HighFrequency: 0
-    TimeVibration: 5
-    StepVibration: 1
-  isVibration: 1
+  smallEffect: {fileID: 183818, guid: 64d48cc8be380db4c9285fafe8c3c0a8, type: 3}
+  bigEffect: {fileID: 100008, guid: 6676e2285ec9f8a4c90fd08653ba8464, type: 3}
+  firstExplosionStartFlame: 20
+  secondExplosionStartFlame: 180
+  thirdExplosionStartFlame: 300

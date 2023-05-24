@@ -53,14 +53,14 @@ public class PhaseManager : MonoBehaviour
     void Start()
     {
         time = 0.0f;
-        //currentPhase = Phase.Normal_Phase;          // 初期フェイズ
 
+        //currentPhase = Phase.Normal_Phase;          // 初期フェイズ
         nextPhase = currentPhase;
 
         vibrationManager = GameObject.Find("VibrationManagerObj");
 
+        // 初回通常フェイズ
         NormaltoNext = Phase.First_Normal;
-
     }
     // Update is called once per frame
     void Update()
@@ -150,7 +150,6 @@ public class PhaseManager : MonoBehaviour
                             NormaltoNext = Phase.Speed_Phase;
                         }
 
-
                         time = 0.0f;
                     }
                 }
@@ -173,10 +172,7 @@ public class PhaseManager : MonoBehaviour
                     }
                 }
             }
-
         }
-    
-
 
         // フェイズが変わった場合
         if (nextPhase != currentPhase)
@@ -185,7 +181,7 @@ public class PhaseManager : MonoBehaviour
 
             if (currentPhase == Phase.Normal_Phase)
             {
-                Reticle.SetActive(true);
+                Reticle.SetActive(false);
             }
 
             if (currentPhase == Phase.Speed_Phase)
@@ -207,10 +203,7 @@ public class PhaseManager : MonoBehaviour
     {
         return currentPhase;
     }
-    public Phase GetNextPhase()
-    {
-        return nextPhase;
-    }
+
     public Phase GetNormaltoNext()
     {
         return NormaltoNext;

@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class RockOnMarker : MonoBehaviour
 {
+    private GameObject playerManager;           // プレイヤーマネージャー
+    private GameObject bossManager;             // ボスマネージャー
     private GameObject target;                  // ロックオした時のマーク
     private GameObject canvas;                  // キャンバス
-    private GameObject player;
     private bool rockonFlg = false;             // ロックオンのマークが付いているか       
 
     [Header("敵の半径")]
@@ -13,9 +14,9 @@ public class RockOnMarker : MonoBehaviour
 
     //[Header("照準関係")]
     //[Tooltip("引き寄せられ始める距離")]
-    //public float AttractDistance = 50.0f;       // 引き寄せられ始める距離
+    //public float AttractDistance = 50.0f;     // 引き寄せられ始める距離
     //[Tooltip("引き寄せられる力")]
-    //public float AttractPower = 10.0f;          // 引き寄せられる力
+    //public float AttractPower = 10.0f;        // 引き寄せられる力
 
     [Header("画面外でRockOnを消す")]
     public bool FrameOutDestroy = false;        // 画面外で消すか
@@ -36,32 +37,50 @@ public class RockOnMarker : MonoBehaviour
     private Camera worldCamera;
     private RectTransform canvasRect;
 
+    // フェイズ
+    private PhaseManager.Phase currentPhase;
+    private PhaseManager.Phase nextPhase;
+
     // Start is called before the first frame update
     void Start()
     {
-        canvas = GameObject.Find("Canvas RockOn");     // キャンバスを指定
-        player = GameObject.Find("Player");
-        //canvasGraphic = canvas.GetComponent<Graphic>().canvas;
+        canvas = GameObject.Find("Canvas RockOn");          // キャンバス
+        playerManager = GameObject.Find("PlayerManager");   // プレイヤーマネージャー
+        bossManager = GameObject.Find("BossManager");       // ボスマネージャー
 
         target = null;
         uiCamera = Camera.main;
         worldCamera = Camera.main;
         hideFlg = false;
+
+        // フェイズ取得
+        currentPhase = PhaseManager.instance.GetPhase();
+        nextPhase = currentPhase;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // フェイズ取得
+        currentPhase = PhaseManager.instance.GetPhase();
+
         RaycastHit hit;    //ヒットした情報
         // 自身からカメラに向かってRayを飛ばし、条件に当てはまるならマークを生成する
-        Physics.Linecast(transform.position, Camera.main.transform.position, out hit);
-        if (player != null)
+        bool isHit = Physics.Linecast(transform.position, Camera.main.transform.position, out hit);
+        if (currentPhase == PhaseManager.Phase.Attack_Phase && 
+            playerManager.GetComponent<PlayerHp>().BreakFlag !=true && 
+            bossManager.GetComponent<MainBossHp>().BreakFlag != true)
         {
-            try
+            if (isHit)
             {
-                if (hit.collider.gameObject.tag == "MainCamera" || hit.collider.gameObject.tag == "Player" ||
-                    hit.collider.gameObject.name == "BossMissleHoming(Clone)" || hit.collider.gameObject.name == "BossMissleContena(Clone)" || hit.collider.gameObject.name == "BossMissleContenaSmall(Clone)")
+                if (hit.collider.gameObject.tag == "MainCamera" ||
+                    hit.collider.gameObject.tag == "Player" ||
+                    hit.collider.gameObject.name == "BossMissleHoming(Clone)" ||
+                    hit.collider.gameObject.name == "BossMissleContena(Clone)" ||
+                    hit.collider.gameObject.name == "BossMissleContenaSmall(Clone)" ||
+                    hit.collider.gameObject.name == "Cylinder")
                 {
+
                     // 一度隠れたオブジェクトの場合
                     if (hideFlg == true)
                     {
@@ -97,10 +116,7 @@ public class RockOnMarker : MonoBehaviour
                     }
                 }
             }
-            catch
-            {
-                //Debug.Log("エラー");
-            }
+            
 
             if (target != null)
             {
@@ -119,7 +135,21 @@ public class RockOnMarker : MonoBehaviour
                 }
             }
         }
-        Debug.DrawLine(transform.position, Camera.main.transform.position, Color.red);
+        // Debug.DrawLine(transform.position, Camera.main.transform.position, Color.red);
+
+        // フェイズが変わったらマークを消す
+        if(currentPhase != nextPhase)
+        {
+            nextPhase = currentPhase;
+            if(currentPhase != PhaseManager.Phase.Attack_Phase)
+            {
+                if (target != null)
+                {
+                    Destroy(target);
+                }
+            }
+        }
+
     }
 
     // ロックオンされたオブジェクトが消滅した場合マークも消す
@@ -145,7 +175,7 @@ public class RockOnMarker : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        // 弱点の場合 2回当たったら消すため、一度消してから生成する
+        // 弱点の場合 複数回当たったら消すため、一度消してから生成する
         if (collision.gameObject.tag == "PlayerBullet")
         {
             if (WeakPointTop == false && WeakPointBottom == false)

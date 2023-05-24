@@ -42,6 +42,7 @@ public class InputManager : MonoBehaviour
         InputActions.UI.Right.performed += context => OnRight();
         InputActions.UI.Left.performed += context => OnLeft();
         InputActions.UI.Select.performed += context => OnSelect();
+        InputActions.UI.Start.performed += context => OnStart();
     }
 
     // Start is called before the first frame update
@@ -138,6 +139,10 @@ public class InputManager : MonoBehaviour
     public bool OnSelect()
     {
         return InputActions.UI.Select.triggered;
+    }
+    public bool OnStart()
+    {
+        return InputActions.UI.Start.triggered;
     }
     public void UI_Disable()
     {

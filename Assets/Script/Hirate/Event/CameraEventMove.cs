@@ -28,7 +28,7 @@ public class CameraEventMove : MonoBehaviour
     private PlayerMoveAngle playerMoveAngle; // プレイヤーの回転を切る用
     private GManager GManager; // シーン切り替え用
 
-    private float elapsedTime = 0.0f; // 経過時間
+    //private float elapsedTime = 0.0f; // 経過時間
     private bool bInput = false; // 入力判定用
 
     private AsyncOperation async; // シーン遷移用

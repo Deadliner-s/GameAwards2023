@@ -7,17 +7,17 @@ using UnityEngine.SceneManagement;
 public class CameraEventMove3 : MonoBehaviour
 {
     // 移動距離の設定
-    [Header("移動距離の設定")]
-    [Tooltip("移動距離")]
-    [SerializeField] float move = 5.0f;
+    //[Header("移動距離の設定")]
+    //[Tooltip("移動距離")]
+    //[SerializeField] float move = 5.0f;
     // 移動時間の設定
-    [Header("移動時間の設定")]
+    //[Header("移動時間の設定")]
     // ボスの設定
-    [Tooltip("ボスの移動時間")]
-    [SerializeField] float moveTimeBoss = 0.5f;
+    //[Tooltip("ボスの移動時間")]
+    //[SerializeField] float moveTimeBoss = 0.5f;
     // カメラの設定
-    [Tooltip("カメラの移動時間")]
-    [SerializeField] float moveTimeCamera = 1.0f;
+    //[Tooltip("カメラの移動時間")]
+    //[SerializeField] float moveTimeCamera = 1.0f;
 
     private GameObject player; // プレイヤーオブジェクト
     private GameObject boss; // ボスオブジェクト
@@ -25,7 +25,7 @@ public class CameraEventMove3 : MonoBehaviour
     private PlayerMoveAngle playerMoveAngle; // プレイヤーの回転を切る用
 
     private Vector3 initPos;
-    private bool bInput = false; // 入力判定用
+    //private bool bInput = false; // 入力判定用
 
     //private AsyncOperation async;
 

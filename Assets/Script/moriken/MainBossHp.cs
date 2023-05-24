@@ -47,6 +47,8 @@ public class MainBossHp : MonoBehaviour
     Vector3 gaugePos;
     private Vector3 gaugePosoffset;
 
+    public bool BreakFlag { get; private set; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +67,8 @@ public class MainBossHp : MonoBehaviour
         flame = 0;
         hit = false;
         DifferenceFlag = false;
+
+        BreakFlag = false;
     }
 
     // Update is called once per frame
@@ -117,6 +121,7 @@ public class MainBossHp : MonoBehaviour
 
         if (BossHP <= 0)
         {
+            BreakFlag = true;
             //シーン移動
             //SceneManager.LoadScene("GameClear");
             // SceneMoveManagerをタグ検索

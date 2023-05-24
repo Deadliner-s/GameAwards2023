@@ -97,8 +97,10 @@ public class ShotDown : MonoBehaviour
                 // エフェクトの演出用フラグを建てる
                 EffectFlag = true;
 
-                // プレイヤーの削除
-                //Destroy(player.gameObject);
+                gameObject.GetComponent<ShotDown>().enabled = false;
+
+                // エフェクトの削除
+                Destroy(effect_1.gameObject);
 
                 return;
             }

@@ -35,6 +35,10 @@ public class MissileBossCluster : MonoBehaviour
             Cluster = false;
             off = 1.0f;
         }
+        else
+        {
+            Destroy(this, 0.0f);
+        }
 
     }
 
