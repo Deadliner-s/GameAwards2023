@@ -8,7 +8,6 @@ public class MissileStraight : MonoBehaviour
 {
     public float Speed = 0.0f;        //ミサイルの速度
     public float MaxSpeed = 0.003f;      //速度制限
-    //public float Accel = 0.001f;       //加速度
     public float MissRange = 2.0f;     //プレイヤーに外れるの距離
     float UIFillSpeed = 0.01f;  //UIの速さ
     private GameObject canvas;         // キャンバス
@@ -67,7 +66,7 @@ public class MissileStraight : MonoBehaviour
             targetScreenPosition.z = 2.0f;
 
             //UI生成
-            if(!instant)
+            if (!instant)
             {
                 //world座標をcamera座標に変換
                 targetWorldPosition = transform.position;
@@ -106,6 +105,10 @@ public class MissileStraight : MonoBehaviour
             time = 0;
             Miss = false;
             off = 0.2f;
+        }
+        else
+        {
+            Destroy(this, 0.0f);
         }
     }
 
