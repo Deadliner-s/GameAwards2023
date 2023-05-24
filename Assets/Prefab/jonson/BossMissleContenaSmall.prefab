@@ -351,19 +351,3 @@ MonoBehaviour:
   effectAsset: {fileID: 11400000, guid: 2bade9c8953f44a40b17ee5b2550c5ae, type: 2}
   playOnStart: 1
   isLooping: 0
---- !u!114 &7704027369108650710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4741478458244633611}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc094b85e8e1944cb46fc290849a398, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 0.02
-  MaxSpeed: 0.1
-  Accel: 0.001
-  Spread: 0.02
