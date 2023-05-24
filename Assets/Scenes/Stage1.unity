@@ -1047,7 +1047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4e77b0f21a7694eae994ad1ccec71b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeLimit: 140
+  TimeLimit: 153
 --- !u!1001 &387227512
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1976,9 +1976,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Zako: {fileID: 3835390596389008509, guid: b948fc0b9feae1348af489437bd8c96c, type: 3}
   SpawnZakoTime:
-  - 18
-  - 23
-  - 28
+  - 10
+  - 15
+  - 20
   SpawnZakoDuration:
   - 1
   - 1
@@ -2693,9 +2693,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Zako: {fileID: 3835390596389008509, guid: a2d601403b8c1014d9cfbfa4925832b8, type: 3}
   SpawnZakoTime:
-  - 20
-  - 25
-  - 30
+  - 12
+  - 17
+  - 22
   SpawnZakoDuration:
   - 1
   - 1
@@ -3296,7 +3296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6063255cbe9fda04c817cbdded23a68d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 140
+  time: 153
   Timertext: {fileID: 964365227}
 --- !u!114 &964365227
 MonoBehaviour:
@@ -4524,41 +4524,41 @@ MonoBehaviour:
   - 1
   - 1
   StartTimeTopLeft:
-  - 9
-  - 31
-  - 35
-  DurationTopLeft:
-  - 3
-  - 1
-  - 1
-  IntervalTriggerTopLeft:
-  - 1.1
-  - 1.1
-  - 1.1
-  StartTimeLeft:
-  - 5
-  - 31.5
-  - 35.5
-  DurationLeft:
-  - 12
-  - 1
-  - 1
-  IntervalTriggerLeft:
-  - 2.1
-  - 1.1
-  - 1.1
-  StartTimeBotLeft:
-  - 12
-  - 32
-  - 36
-  DurationBotLeft:
   - 2
-  - 1
-  - 1
+  - 22
+  - 100
+  DurationTopLeft:
+  - 5
+  - 5
+  - 5
+  IntervalTriggerTopLeft:
+  - 4
+  - 4
+  - 4
+  StartTimeLeft:
+  - 2.5
+  - 22
+  - 100
+  DurationLeft:
+  - 5
+  - 5
+  - 5
+  IntervalTriggerLeft:
+  - 4
+  - 4
+  - 4
+  StartTimeBotLeft:
+  - 3
+  - 22
+  - 100
+  DurationBotLeft:
+  - 5
+  - 5
+  - 5
   IntervalTriggerBotLeft:
-  - 0.8
-  - 1.1
-  - 1.1
+  - 4
+  - 4
+  - 4
   StartTimeBot:
   - 100
   - 100
@@ -4601,20 +4601,20 @@ MonoBehaviour:
   SpawnPos2: {fileID: 1609272615}
   timer: 0
   StartTimeHoming:
-  - 6.5
-  - 7
-  - 7.5
-  DurationHoming:
-  - 20
-  - 13
-  - 18
-  IntervalTriggerHoming:
-  - 0.6
-  - 1.5
   - 2
+  - 7
+  - 12
+  DurationHoming:
+  - 3
+  - 3
+  - 3
+  IntervalTriggerHoming:
+  - 0.5
+  - 0.4
+  - 0.2
   StartTimeContena:
-  - 15
-  - 22
+  - 100
+  - 100
   - 100
   DurationContena:
   - 3
@@ -6630,9 +6630,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5206886689ee4d74f98a6dc093602cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NormalTime: 7
-  SpeedTime: 40
-  AttackTime: 25
+  NormalTime: 1
+  SpeedTime: 29
+  AttackTime: 20
   currentPhase: 0
   NormaltoNext: 3
   Reticle: {fileID: 1661757866}
