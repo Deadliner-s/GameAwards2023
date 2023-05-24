@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2638846306007953477, guid: a59be6160a277df4ca989da071801c60, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4369554554302661785, guid: a59be6160a277df4ca989da071801c60, type: 3}
       propertyPath: m_Name
       value: SK_fx_hex_sphere01
@@ -253,6 +257,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 197765807524538726, guid: 99da17f4359d3bb40b47c2dbe11685c6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3409299535279239150, guid: 99da17f4359d3bb40b47c2dbe11685c6, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8883384440829916904, guid: 99da17f4359d3bb40b47c2dbe11685c6, type: 3}
