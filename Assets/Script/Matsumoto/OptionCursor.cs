@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OptionCursor : MonoBehaviour
 {
@@ -15,13 +16,18 @@ public class OptionCursor : MonoBehaviour
     [SerializeField]
     private GameObject VOICE_Text;      // Voiceのテキスト
     [SerializeField]
+    private GameObject VibrationText;   // Vibrationのテキスト
+    [SerializeField]
     private GameObject BackText;        // 戻るのテキスト
+
+    private GameObject VibrationToggle; // Vibrationのトグル
+    private bool isVibration;
 
     [SerializeField]
     [Header("メニュー")]
     private GameObject Menu;            // メニューのオブジェクト
 
-    private const int MAX_OPTION = 4;   // オプションの数
+    private const int MAX_OPTION = 5;   // オプションの数
     private int Selected = 0;           // 選択中のオプション
 
     void Awake()
@@ -40,12 +46,16 @@ public class OptionCursor : MonoBehaviour
 
         // VolumeControllerのオブジェクトを取得
         VolCon = transform.Find("VolumeControllerObj").gameObject;
+        VibrationToggle = transform.Find("VibrationToggle").gameObject;
 
         // オプションのテキストを取得
         //BGM_Text = transform.Find("BGMText").gameObject;
         //SE_Text = transform.Find("SEText").gameObject;
         //VOICE_Text = transform.Find("VOICEText").gameObject;
         //BackText = transform.Find("BackText").gameObject;
+
+        isVibration = VibrationManager.instance.GetisVibration();
+        VibrationToggle.GetComponent<Toggle>().isOn = isVibration;
     }
 
     // Update is called once per frame
@@ -76,45 +86,65 @@ public class OptionCursor : MonoBehaviour
         switch (Selected)
         {
             case (0):
-                // スライダーのHandleを選択
+                // BGMのボリュームを変更する
+                // BGMスライダーのHandleを選択
                 VolCon.GetComponent<VolumeController>().SetBGMSlider();
 
                 // テキストの色を変更
                 BGM_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
                 SE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 VOICE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+                VibrationText.GetComponent<TextMeshProUGUI>().color = Color.black;
                 BackText.GetComponent<TextMeshProUGUI>().color = Color.black;
                 break;
             case (1):
-                // スライダーのHandleを選択
+                // SEのボリュームを変更する
+                // SEスライダーのHandleを選択
                 VolCon.GetComponent<VolumeController>().SetSESlider();
 
                 // テキストの色を変更
                 BGM_Text.GetComponent <TextMeshProUGUI>().color = Color.black;
                 SE_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
                 VOICE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+                VibrationText.GetComponent<TextMeshProUGUI>().color = Color.black;
                 BackText.GetComponent<TextMeshProUGUI>().color = Color.black;
                 break;
 
             case (2):
-                // スライダーのHandleを選択
+                // ボイスのボリュームを変更する
+                // VOICEのスライダーのHandleを選択
                 VolCon.GetComponent<VolumeController>().SetVOICESlider();
 
                 // テキストの色を変更
                 BGM_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 SE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 VOICE_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
+                VibrationText.GetComponent<TextMeshProUGUI>().color = Color.black;
                 BackText.GetComponent<TextMeshProUGUI>().color = Color.black;
                 break;
 
             case (3):
-                // 他のスライダーのSelectを外す
+                // バイブレーションを切り替える 186行目
+                // 他のスライダーのSelectを外す(BlankSliderのHandleを選択
+                VolCon.GetComponent<VolumeController>().SetBlankSlider();
+                // テキストの色を変更
+                BGM_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+                SE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+                VOICE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+                VibrationText.GetComponent<TextMeshProUGUI>().color = Color.white;
+                BackText.GetComponent<TextMeshProUGUI>().color = Color.black;
+                break;
+
+            case (4):
+                // 戻るを選択
+                // 他のスライダーのSelectを外す(BlankSliderのHandleを選択
                 VolCon.GetComponent <VolumeController>().SetBlankSlider();
 
                 // テキストの色を変更
                 BGM_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 SE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 VOICE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+                VibrationText.GetComponent<TextMeshProUGUI>().color = Color.black;
                 BackText.GetComponent<TextMeshProUGUI>().color = Color.white;
                 break;
         }
@@ -134,6 +164,13 @@ public class OptionCursor : MonoBehaviour
                     break;
 
                 case (3):
+                    // バイブレーションのオンオフを切り替える
+                    VibrationToggle.GetComponent<Toggle>().isOn = !VibrationToggle.GetComponent<Toggle>().isOn;
+                    isVibration = VibrationToggle.GetComponent<Toggle>().isOn;
+                    VibrationManager.instance.SetisVibration(isVibration);
+                    break;
+
+                case (4):
                     // タイトルに戻る
                     Selected = 0;
                     this.gameObject.SetActive(false);

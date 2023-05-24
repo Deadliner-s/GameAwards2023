@@ -45,8 +45,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vibration:
+  - name: Option
+    LowFrequency: 1
+    HighFrequency: 1
+    TimeVibration: 0.3
+    StepVibration: 0
   - name: HighSpeed
     LowFrequency: 1
     HighFrequency: 0
     TimeVibration: 5
     StepVibration: 1
+  isVibration: 1
