@@ -31,6 +31,8 @@ public class Stage4TextWriter : MonoBehaviour
     // 文章を表示させるコルーチン
     IEnumerator Cotest()
     {
+        yield return new WaitForSeconds(7.0f);
+
         StartCoroutine("WindowScaleUp");
 
         yield return new WaitForSeconds(1.0f);
