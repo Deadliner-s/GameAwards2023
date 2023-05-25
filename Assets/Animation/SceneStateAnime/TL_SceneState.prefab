@@ -51,6 +51,12 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 6272911892182585346, guid: c7e1353e1aa7f434dba2f4e9aff5bd97, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -5717961827234699027, guid: c7e1353e1aa7f434dba2f4e9aff5bd97, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 4691018302510247327, guid: c7e1353e1aa7f434dba2f4e9aff5bd97, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 7966647161692764886, guid: c7e1353e1aa7f434dba2f4e9aff5bd97, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - 08b3a499b89869b4d81326d57c24f765: {fileID: 0}
