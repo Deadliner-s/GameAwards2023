@@ -79,12 +79,12 @@ public class Stage12UIText : MonoBehaviour
             else if (currntPhase == PhaseManager.Phase.Speed_Phase)
             {
                 AddTime = 0.0f;
-                // ハイスピードフェイズ
+                // アタックフェイズ
                 if (FlgA)
                 {
                     StartCoroutine("WindowScaleUp");
-                    SoundManager.instance.PlayVOICE("EX-1");
-                    DrawNameText("≪ AI ≫", "敵内部から、多数の熱源反応を確認。\n飽和攻撃が予測されます。注意してください。");
+                    SoundManager.instance.PlayVOICE("4-2");
+                    DrawNameText("≪ AI ≫", "攻撃兵装へのエネルギーをカット。 メインエンジンに\nエネルギーを転換。回避行動に専念して下さい。");
                     yield return new WaitForSeconds(3.0f);
                     FlgA = false;
                 }
@@ -105,12 +105,12 @@ public class Stage12UIText : MonoBehaviour
             else if (currntPhase == PhaseManager.Phase.Attack_Phase)
             {
                 AddTime = 0.0f;
-                // アタックフェイズ
+                // ハイスピードフェイズ 
                 if (FlgA)
                 {
                     StartCoroutine("WindowScaleUp");
-                    SoundManager.instance.PlayVOICE("4-2");
-                    DrawNameText("≪ AI ≫", "攻撃兵装へのエネルギーをカット。 メインエンジンに\nエネルギーを転換。回避行動に専念して下さい。");
+                    SoundManager.instance.PlayVOICE("EX-1");
+                    DrawNameText("≪ AI ≫", "敵内部から、多数の熱源反応を確認。\n飽和攻撃が予測されます。注意してください。");
                     yield return new WaitForSeconds(3.0f);
                     FlgA = false;
                 }
