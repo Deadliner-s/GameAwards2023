@@ -31,8 +31,17 @@ public class Laser_Fade : MonoBehaviour
 
         if (timer >= wait + EV_Laser.GetComponent<Event_Laser>().Laser_time)
         {
-            // スケールを減らす
-            transform.localScale -= new Vector3(scaleSpeed, scaleSpeed, 0);
+            if (Boss)
+            {
+                // スケールを減らす
+                transform.localScale -= new Vector3(scaleSpeed, scaleSpeed, 0);
+            }
+            else
+            {
+                // スケールを減らす
+                transform.localScale -= new Vector3(scaleSpeed, 0, 0);
+            }
+            
         }
 
         // スケールが0以下になったらオブジェクトを削除する

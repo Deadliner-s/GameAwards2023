@@ -414,7 +414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4391533621509390914, guid: d1247ea3e9217ee4084572fdf351ecd3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 5.111224e-16
+      value: -5.1112244e-16
       objectReference: {fileID: 0}
     - target: {fileID: 4391533621509390914, guid: d1247ea3e9217ee4084572fdf351ecd3, type: 3}
       propertyPath: m_LocalRotation.y
@@ -422,7 +422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4391533621509390914, guid: d1247ea3e9217ee4084572fdf351ecd3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.1322704e-17
+      value: 4.1322707e-17
       objectReference: {fileID: 0}
     - target: {fileID: 4391533621509390915, guid: d1247ea3e9217ee4084572fdf351ecd3, type: 3}
       propertyPath: m_Follow
@@ -1562,54 +1562,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7896366105924856507, guid: 4b54ea32d2ddb254baaccb7865867164, type: 3}
   m_PrefabInstance: {fileID: 32564250}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1647975827
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1647975829}
-  - component: {fileID: 1647975828}
-  m_Layer: 0
-  m_Name: Laser_Boss
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1647975828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647975827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 598411f03f9d45843a9d52fb43dcaeb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 8354697400787843903, guid: e0db1be4d75631049b5823f43feed683, type: 3}
-  time: 1
-  Laser_time: 2
-  TargetPos: {x: 1, y: 7, z: 1}
---- !u!4 &1647975829
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647975827}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.06, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1728012287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1745,6 +1697,54 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6895759283119615045, guid: 4b54ea32d2ddb254baaccb7865867164, type: 3}
   m_PrefabInstance: {fileID: 32564250}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1844292972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1844292974}
+  - component: {fileID: 1844292973}
+  m_Layer: 0
+  m_Name: Laser_Hit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1844292973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844292972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598411f03f9d45843a9d52fb43dcaeb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2252305583018203621, guid: 95ead1f9749f5c54fa49ba6d67f16305, type: 3}
+  time: 17
+  Laser_time: 0
+  TargetPos: {x: 0, y: 0, z: 0}
+--- !u!4 &1844292974
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844292972}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.7, y: 1.75, z: 7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1886910835
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2127,7 +2127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ToChange: {fileID: 1951943440}
-  Delay: 16.2
+  Delay: 17
 --- !u!114 &2026402967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2193,5 +2193,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
