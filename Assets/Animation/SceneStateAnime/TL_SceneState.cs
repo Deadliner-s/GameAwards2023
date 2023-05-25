@@ -7,30 +7,40 @@ public class TL_SceneState : MonoBehaviour
 {
     
     private PlayableDirector _director;
-    private CameraMoveSceneP CameraMoveSceneP; 
+    private SceneEventMove sceneEventMove;
 
     // Start is called before the first frame update
     void Start()
     {   
         // シーン遷移フラグの取得
-        this.CameraMoveSceneP = FindAnyObjectByType<CameraMoveSceneP>();
-        
+        sceneEventMove = FindAnyObjectByType<SceneEventMove>();
+
         _director = GetComponent<PlayableDirector>();
         _director.played += Director_Played;
         _director.stopped += Director_Stopped;
-        
-        // タイムラインの再生
-        _director.Play();
-
     }
 
     private void Update()
     {
+        if (sceneEventMove == null)
+        {
+            // シーン遷移フラグの取得
+            sceneEventMove = FindAnyObjectByType<SceneEventMove>();
+        }
+
+        if (sceneEventMove.bTextEnd == true)
+        {
+            // タイムラインの再生
+            _director.Play();
+        }
+
         if (_director.extrapolationMode != DirectorWrapMode.Hold)
-        { return; }
+        {
+            return; 
+        }
         if (_director.time >= _director.duration)
         {
-            CameraMoveSceneP.bAniEnd = true;
+            sceneEventMove.bAniEnd = true;
         }
     }
 
