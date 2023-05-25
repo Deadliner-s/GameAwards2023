@@ -68,7 +68,7 @@ public class DebugSceneMove : MonoBehaviour
 
         // Lキーが押されたら
         if (!Input.GetKeyDown(KeyCode.L)) { return; }
-        // SceneMoveManagerをタグ検索
+        // NowEventSceneSetをタグ検索
         GameObject texEnd = GameObject.FindGameObjectWithTag("NowEventSceneSet");
         if (texEnd == null) { return; }
         // テキストを飛ばす

@@ -20,6 +20,7 @@ TagManager:
   - SceneMoveManager
   - PlayerManager
   - NowEventSceneSet
+  - MissileObj
   layers:
   - Default
   - TransparentFX
