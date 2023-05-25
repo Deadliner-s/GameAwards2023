@@ -88,11 +88,11 @@ public class SpawnMissileBoss : MonoBehaviour
         if (player)//プレイヤーは生きている（存在する）
         {
             // デバッグ用
-            if (Input.GetKeyDown(KeyHoming))
+            if (DebugCommandooo.instance.debugMissileSet && Input.GetKeyDown(KeyHoming))
             {
                 CreateHoming();   
             }
-            if (Input.GetKeyDown(KeyContena))
+            if (DebugCommandooo.instance.debugMissileSet && Input.GetKeyDown(KeyContena))
             {
                 CreateContena();
             }

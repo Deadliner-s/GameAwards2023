@@ -167,7 +167,7 @@ public class SpawnMissileFront : MonoBehaviour
             currentPhase = PhaseManager.instance.GetPhase();
 
             // デバッグ用
-            if (Input.GetKeyDown(Key))
+            if (DebugCommandooo.instance.debugMissileSet && Input.GetKeyDown(Key))
             {
                 GameObject obj = Instantiate(Missile, new Vector3(SpawnPos.transform.position.x, SpawnPos.transform.position.y, SpawnPos.transform.position.z), Quaternion.identity);
                 Destroy(obj, DestroyTime);

@@ -145,37 +145,37 @@ public class SpawnMissileScreen : MonoBehaviour
         if (player)//プレイヤーは生きている（存在する）
         {
             // デバッグ用
-            if (Input.GetKeyDown(KeyCluster))
+            if (DebugCommandooo.instance.debugMissileSet && Input.GetKeyDown(KeyCluster))
             {
                 Invoke("SpawnShowCluster", ShowDelay1);
                 Invoke("SpawnShowCluster", ShowDelay2);
                 Invoke("SpawnCluster", SpawnDelay);
             }
-            if (Input.GetKeyDown(KeyTop))
+            if (DebugCommandooo.instance.debugMissileSet && Input.GetKeyDown(KeyTop))
             {
                 Invoke("SpawnShowSpeed", ShowDelay1);
                 Invoke("SpawnShowSpeed", ShowDelay2);
                 Invoke("SpawnSpeedTop", SpawnDelay);
             }
-            if (Input.GetKeyDown(KeyTopLeft))
+            if (DebugCommandooo.instance.debugMissileSet && Input.GetKeyDown(KeyTopLeft))
             {
                 Invoke("SpawnShowSpeed", ShowDelay1);
                 Invoke("SpawnShowSpeed", ShowDelay2);
                 Invoke("SpawnSpeedTopLeft", SpawnDelay);
             }
-            if (Input.GetKeyDown(KeyLeft))
+            if (DebugCommandooo.instance.debugMissileSet && Input.GetKeyDown(KeyLeft))
             {
                 Invoke("SpawnShowSpeed", ShowDelay1);
                 Invoke("SpawnShowSpeed", ShowDelay2);
                 Invoke("SpawnSpeedLeft", SpawnDelay);
             }
-            if (Input.GetKeyDown(KeyBotLeft))
+            if (DebugCommandooo.instance.debugMissileSet && Input.GetKeyDown(KeyBotLeft))
             {
                 Invoke("SpawnShowSpeed", ShowDelay1);
                 Invoke("SpawnShowSpeed", ShowDelay2);
                 Invoke("SpawnSpeedBotLeft", SpawnDelay);
             }
-            if (Input.GetKeyDown(KeyBot))
+            if (DebugCommandooo.instance.debugMissileSet && Input.GetKeyDown(KeyBot))
             {
                 Invoke("SpawnShowSpeed", ShowDelay1);
                 Invoke("SpawnShowSpeed", ShowDelay2);

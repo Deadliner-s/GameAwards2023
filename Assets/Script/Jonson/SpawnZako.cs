@@ -42,7 +42,7 @@ public class SpawnZako : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(Key))
+        if (DebugCommandooo.instance.debugMissileSet && Input.GetKeyDown(Key))
         {
             int randShow = (int)Random.Range(1,2);
             for(int j = 0;j <= randShow;j++)
