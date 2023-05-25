@@ -26,22 +26,22 @@ public class Fade : MonoBehaviour
         //{
         //    StartCoroutine("Color_FadeIn");
         //}
-        if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_TITLE)
+        if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_TITLE)
         {
             StartCoroutine("Color_FadeIn");
         }
-        if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE)
+        if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE)
         {
             StartCoroutine("Color_FadeIn");
         }
         // コンティニューの場合
         if(GManager.instance.SetContinueFlg() == true)
         {
-            if(SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT)
+            if(SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT)
             {
                 StartCoroutine("Color_FadeIn");
             }
-            if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT)
+            if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT)
             {
                 StartCoroutine("Color_FadeIn");
             }

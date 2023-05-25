@@ -24,6 +24,16 @@ public class TL_SceneState : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (_director.extrapolationMode != DirectorWrapMode.Hold)
+        { return; }
+        if (_director.time >= _director.duration)
+        {
+            CameraMoveSceneP.bAniEnd = true;
+        }
+    }
+
     // タイムライン再生開始時
     void Director_Played(PlayableDirector obj)
     {
@@ -31,6 +41,6 @@ public class TL_SceneState : MonoBehaviour
     // タイムライン再生終了時
     void Director_Stopped(PlayableDirector obj)
     {
-        CameraMoveSceneP.bAniEnd = true;
+        
     }
 }

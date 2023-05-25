@@ -150,7 +150,7 @@ public class SoundManager : MonoBehaviour
 
     private void Update()
     {
-        currentScene = SceneNow.instance.sceneNowCatch;
+        currentScene = SceneNowBefore.instance.sceneNowCatch;
 
         // シーンがタイトルの時のみ音量調整用のオブジェクトを探す
         if (currentScene == SceneLoadStartUnload.SCENE_NAME.E_TITLE)
@@ -338,7 +338,7 @@ public class SoundManager : MonoBehaviour
     void BGMPlayer()
     {
         // シーンが切り替わった時に呼ばれる関数を登録
-        if (SceneNow.instance != null)
+        if (SceneNowBefore.instance != null)
         {
             if (currentScene != nextScene)
             {

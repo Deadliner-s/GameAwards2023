@@ -54,7 +54,7 @@ public class InputManager : MonoBehaviour
         InputActions.UI.Enable();
 
         // シーン取得
-        currentScene = SceneNow.instance.sceneNowCatch;
+        currentScene = SceneNowBefore.instance.sceneNowCatch;
         nextScene = currentScene;
 
         // シーンがステージならプレイヤーの入力を有効にする
@@ -77,8 +77,8 @@ public class InputManager : MonoBehaviour
     void Update()
     {
         // 現在のシーンを取得
-        currentScene = SceneNow.instance.sceneNowCatch;
-        if (SceneNow.instance != null)
+        currentScene = SceneNowBefore.instance.sceneNowCatch;
+        if (SceneNowBefore.instance != null)
         {
             // シーンが変わったら
             if (currentScene != nextScene)

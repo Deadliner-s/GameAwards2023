@@ -54,7 +54,11 @@ public class Stage4TextWriter : MonoBehaviour
         yield return new WaitForSeconds(5.0f);
 
         StartCoroutine("WindowScaleDown");
-        //yield return null;
+
+        // SceneMoveManagerをタグ検索
+        GameObject obj = GameObject.FindGameObjectWithTag("NowEventSceneSet");
+        // シーンの開始
+        obj.GetComponent<SceneEventMove>().bTextEnd = true;
     }
     IEnumerator WindowScaleUp()
     {

@@ -56,25 +56,25 @@ public class SceneSkip : MonoBehaviour
 
         if (InputManager.instance.OnStart())
         {
-            if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE)
+            if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE)
             {
                 InputManager.instance.UI_Disable();
                 SoundManager.instance.StopVOICE();
                 StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
             }
-            if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT)
+            if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT)
             {
                 InputManager.instance.UI_Disable();
                 SoundManager.instance.StopVOICE();
                 StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
             }
-            if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT)
+            if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT)
             {
                 InputManager.instance.UI_Disable();
                 SoundManager.instance.StopVOICE();
                 StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
             }
-            if (SceneNow.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_EPILOGUE)
+            if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_EPILOGUE)
             {
                 InputManager.instance.UI_Disable();
                 SoundManager.instance.StopVOICE();
