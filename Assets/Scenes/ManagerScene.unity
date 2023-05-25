@@ -587,6 +587,14 @@ PrefabInstance:
       propertyPath: debugDamage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6386098928866036403, guid: 5d83a968e9b267d41808836c2964bc01, type: 3}
+      propertyPath: debugMissile
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386098928866036403, guid: 5d83a968e9b267d41808836c2964bc01, type: 3}
+      propertyPath: debugExplosion
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d83a968e9b267d41808836c2964bc01, type: 3}
 --- !u!1001 &1379673443
