@@ -167,6 +167,10 @@ public class SpawnMissileBack : MonoBehaviour
             if (Input.GetKeyDown(Key))
             {
                 GameObject obj = Instantiate(Missile,transform.position, Quaternion.identity);
+                // MissileObjをタグ検索
+                GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                // ミサイルオブジェクトの子にする
+                obj.transform.parent = missileObj.transform;
                 Destroy(obj, DestroyTime);
             }
 
@@ -217,6 +221,10 @@ public class SpawnMissileBack : MonoBehaviour
                     if (IntervalTime >= Interval_1)
                     {
                         GameObject obj = Instantiate(Missile,transform.position, Quaternion.identity);
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                        // ミサイルオブジェクトの子にする
+                        obj.transform.parent = missileObj.transform;
                         h_Missile_1.Add(obj);
                         //GameObject obj1 = Instantiate(Missile, transform.position, Quaternion.identity);
                         //h_Missile_1.Add(obj);
@@ -235,6 +243,10 @@ public class SpawnMissileBack : MonoBehaviour
                     if (IntervalTime >= Interval_2)
                     {
                         GameObject obj = Instantiate(Missile, transform.position, Quaternion.identity);
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                        // ミサイルオブジェクトの子にする
+                        obj.transform.parent = missileObj.transform;
                         h_Missile_2.Add(obj);
                         Destroy(obj, DestroyTime);
 
@@ -251,6 +263,10 @@ public class SpawnMissileBack : MonoBehaviour
                     if (IntervalTime >= Interval_3)
                     {
                         GameObject obj = Instantiate(Missile, transform.position, Quaternion.identity);
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                        // ミサイルオブジェクトの子にする
+                        obj.transform.parent = missileObj.transform;
                         h_Missile_3.Add(obj);
                         Destroy(obj, DestroyTime);
 
@@ -267,6 +283,10 @@ public class SpawnMissileBack : MonoBehaviour
                     if (IntervalTime >= Interval_4)
                     {
                         GameObject obj = Instantiate(Missile, transform.position, Quaternion.identity);
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                        // ミサイルオブジェクトの子にする
+                        obj.transform.parent = missileObj.transform;
                         h_Missile_4.Add(obj);
                         Destroy(obj, DestroyTime);
 
@@ -283,6 +303,10 @@ public class SpawnMissileBack : MonoBehaviour
                     if (IntervalTime >= Interval_5)
                     {
                         GameObject obj = Instantiate(Missile, transform.position, Quaternion.identity);
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                        // ミサイルオブジェクトの子にする
+                        obj.transform.parent = missileObj.transform;
                         h_Missile_5.Add(obj);
                         Destroy(obj, DestroyTime);
 
@@ -299,6 +323,10 @@ public class SpawnMissileBack : MonoBehaviour
                     if (IntervalTime >= Interval_6)
                     {
                         GameObject obj = Instantiate(Missile, transform.position, Quaternion.identity);
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                        // ミサイルオブジェクトの子にする
+                        obj.transform.parent = missileObj.transform;
                         h_Missile_6.Add(obj);
                         Destroy(obj, DestroyTime);
 
@@ -315,6 +343,10 @@ public class SpawnMissileBack : MonoBehaviour
                     if (IntervalTime >= Interval_7)
                     {
                         GameObject obj = Instantiate(Missile,transform.position, Quaternion.identity);
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                        // ミサイルオブジェクトの子にする
+                        obj.transform.parent = missileObj.transform;
                         h_Missile_7.Add(obj);
                         Destroy(obj, DestroyTime);
 
@@ -331,6 +363,10 @@ public class SpawnMissileBack : MonoBehaviour
                     if (IntervalTime >= Interval_8)
                     {
                         GameObject obj = Instantiate(Missile, transform.position, Quaternion.identity);
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                        // ミサイルオブジェクトの子にする
+                        obj.transform.parent = missileObj.transform;
                         h_Missile_8.Add(obj);
                         Destroy(obj, DestroyTime);
 
@@ -347,6 +383,10 @@ public class SpawnMissileBack : MonoBehaviour
                     if (IntervalTime >= Interval_9)
                     {
                         GameObject obj = Instantiate(Missile, transform.position, Quaternion.identity);
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                        // ミサイルオブジェクトの子にする
+                        obj.transform.parent = missileObj.transform;
                         h_Missile_9.Add(obj);
                         Destroy(obj, DestroyTime);
 
@@ -363,6 +403,10 @@ public class SpawnMissileBack : MonoBehaviour
                     if (IntervalTime >= Interval_10)
                     {
                         GameObject obj = Instantiate(Missile, transform.position, Quaternion.identity);
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                        // ミサイルオブジェクトの子にする
+                        obj.transform.parent = missileObj.transform;
                         h_Missile_10.Add(obj);
                         Destroy(obj, DestroyTime);
 

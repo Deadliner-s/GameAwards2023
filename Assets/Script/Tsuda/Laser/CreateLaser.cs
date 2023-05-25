@@ -88,7 +88,11 @@ public class CreateLaser : MonoBehaviour
             // デバッグ用
             if (Input.GetKeyDown(KeyCode.C)) // Cキーが押されたら
             {
-                Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
+                GameObject obj = Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
+                // MissileObjをタグ検索
+                GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                // ミサイルオブジェクトの子にする
+                obj.transform.parent = missileObj.transform;
             }
 
 
@@ -116,7 +120,11 @@ public class CreateLaser : MonoBehaviour
                 {
                     //TargetSplit = 1;
                     // レーザー作成
-                    GameObject obj = Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する                    
+                    GameObject obj = Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
+                                                                                                  // MissileObjをタグ検索
+                    GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                    // ミサイルオブジェクトの子にする
+                    obj.transform.parent = missileObj.transform;
                     //obj.GetComponent<LaserHead>().SetTarget(Target);
                     obj.GetComponent<LaserHead>().SetLaserTime(LaserTime_1);
                     // フラグ更新
@@ -127,7 +135,11 @@ public class CreateLaser : MonoBehaviour
                 {
                     //TargetSplit = 2;
                     // レーザー作成
-                    GameObject obj1 = Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する                    
+                    GameObject obj1 = Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
+                    // MissileObjをタグ検索
+                    GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                    // ミサイルオブジェクトの子にする
+                    obj1.transform.parent = missileObj.transform;
                     obj1.GetComponent<LaserHead>().SetLaserTime(LaserTime_2);
                     // フラグ更新
                     Use_flg_2 = true;
@@ -138,6 +150,10 @@ public class CreateLaser : MonoBehaviour
                     //TargetSplit = 3;
                     // レーザー作成
                     GameObject obj2 = Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
+                    // MissileObjをタグ検索
+                    GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                    // ミサイルオブジェクトの子にする
+                    obj2.transform.parent = missileObj.transform;
                     obj2.GetComponent<LaserHead>().SetLaserTime(LaserTime_3);
                     // フラグ更新
                     Use_flg_3 = true;
@@ -148,6 +164,10 @@ public class CreateLaser : MonoBehaviour
                     //TargetSplit = 4;
                     // レーザー作成
                     GameObject obj3 = Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
+                    // MissileObjをタグ検索
+                    GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                    // ミサイルオブジェクトの子にする
+                    obj3.transform.parent = missileObj.transform;
                     obj3.GetComponent<LaserHead>().SetLaserTime(LaserTime_4);
                     // フラグ更新
                     Use_flg_4 = true;
@@ -158,6 +178,10 @@ public class CreateLaser : MonoBehaviour
                     //TargetSplit = 5;
                     // レーザー作成
                     GameObject obj4 = Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
+                    // MissileObjをタグ検索
+                    GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                    // ミサイルオブジェクトの子にする
+                    obj4.transform.parent = missileObj.transform;
                     obj4.GetComponent<LaserHead>().SetLaserTime(LaserTime_5);
                     // フラグ更新
                     Use_flg_5 = true;

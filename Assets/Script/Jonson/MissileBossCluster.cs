@@ -65,6 +65,10 @@ public class MissileBossCluster : MonoBehaviour
                 for (int i = 0; i < ClusterNumber; i++)
                 {
                     newObj = Instantiate(otherObject, transform.position, Quaternion.Euler(0.0f,0.0f,270.0f));
+                    // MissileObjをタグ検索
+                    GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                    // ミサイルオブジェクトの子にする
+                    newObj.transform.parent = missileObj.transform;
                 }
                 Destroy(gameObject, 0);
             }

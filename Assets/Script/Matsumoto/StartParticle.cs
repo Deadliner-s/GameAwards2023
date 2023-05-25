@@ -19,6 +19,10 @@ public class StartParticle : MonoBehaviour
     {
         // エフェクトを生成
         TrailParticle = Instantiate(missileTrail);
+        // MissileObjをタグ検索
+        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+        // ミサイルオブジェクトの子にする
+        TrailParticle.transform.parent = missileObj.transform;
         TrailParticle.transform.position = this.transform.position;
         TrailParticle.transform.rotation = this.transform.rotation;
         TrailParticle.Play();
@@ -60,6 +64,10 @@ public class StartParticle : MonoBehaviour
             if (collision.gameObject.tag == "PlayerBullet")
             {
                 ExplosionParticle = Instantiate(missileExplosion);
+                //// MissileObjをタグ検索
+                //GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                //// ミサイルオブジェクトの子にする
+                //ExplosionParticle.transform.parent = missileObj.transform;
                 ExplosionParticle.transform.position = this.transform.position;
                 ExplosionParticle.transform.rotation = this.transform.rotation;
                 ExplosionParticle.Play();

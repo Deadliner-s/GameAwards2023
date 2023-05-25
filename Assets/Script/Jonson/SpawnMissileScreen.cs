@@ -316,7 +316,11 @@ public class SpawnMissileScreen : MonoBehaviour
 
     void SpawnCluster()
     {
-        GameObject obj = Instantiate(ClusterMissile, SpawnLeft.transform.position, Quaternion.identity);        
+        GameObject obj = Instantiate(ClusterMissile, SpawnLeft.transform.position, Quaternion.identity);
+        // MissileObjをタグ検索
+        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+        // ミサイルオブジェクトの子にする
+        obj.transform.parent = missileObj.transform;
         obj.GetComponent<MissileBossCluster>().Speed = SpeedCluster;
         obj.GetComponent<MissileBossCluster>().ClusterNumber = ClusterNumber;
         Destroy(obj, DestroyTime);
@@ -324,30 +328,50 @@ public class SpawnMissileScreen : MonoBehaviour
     void SpawnSpeedTop()
     {
         GameObject obj = Instantiate(SpeedMissile, SpawnTop.transform.position, Quaternion.identity);
+        // MissileObjをタグ検索
+        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+        // ミサイルオブジェクトの子にする
+        obj.transform.parent = missileObj.transform;
         obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
         Destroy(obj, DestroyTime);
     }
     void SpawnSpeedTopLeft()
     {
         GameObject obj = Instantiate(SpeedMissile, SpawnTopLeft.transform.position, Quaternion.identity);
+        // MissileObjをタグ検索
+        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+        // ミサイルオブジェクトの子にする
+        obj.transform.parent = missileObj.transform;
         obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
         Destroy(obj, DestroyTime);
     }
     void SpawnSpeedLeft()
     {
         GameObject obj = Instantiate(SpeedMissile, SpawnLeft.transform.position, Quaternion.identity);
+        // MissileObjをタグ検索
+        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+        // ミサイルオブジェクトの子にする
+        obj.transform.parent = missileObj.transform;
         obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
         Destroy(obj, DestroyTime);
     }
     void SpawnSpeedBotLeft()
     {
         GameObject obj = Instantiate(SpeedMissile, SpawnBotLeft.transform.position, Quaternion.identity);
+        // MissileObjをタグ検索
+        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+        // ミサイルオブジェクトの子にする
+        obj.transform.parent = missileObj.transform;
         obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
         Destroy(obj, DestroyTime);
     }
     void SpawnSpeedBot()
     {
         GameObject obj = Instantiate(SpeedMissile, SpawnBot.transform.position, Quaternion.identity);
+        // MissileObjをタグ検索
+        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+        // ミサイルオブジェクトの子にする
+        obj.transform.parent = missileObj.transform;
         obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
         Destroy(obj, DestroyTime);
     }
@@ -355,11 +379,19 @@ public class SpawnMissileScreen : MonoBehaviour
     void SpawnShowCluster()
     {
         GameObject obj = Instantiate(ShowClusterMissile, transform.position, Quaternion.identity);
+        // MissileObjをタグ検索
+        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+        // ミサイルオブジェクトの子にする
+        obj.transform.parent = missileObj.transform;
         Destroy(obj, DestroyTime);
     }
     void SpawnShowSpeed()
     {
         GameObject obj = Instantiate(ShowSpeedMissile, transform.position, Quaternion.identity);
+        // MissileObjをタグ検索
+        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+        // ミサイルオブジェクトの子にする
+        obj.transform.parent = missileObj.transform;
         Destroy(obj, DestroyTime);
     }
 

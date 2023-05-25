@@ -170,6 +170,10 @@ public class SpawnMissileFront : MonoBehaviour
             if (DebugCommandooo.instance.debugMissileSet && Input.GetKeyDown(Key))
             {
                 GameObject obj = Instantiate(Missile, new Vector3(SpawnPos.transform.position.x, SpawnPos.transform.position.y, SpawnPos.transform.position.z), Quaternion.identity);
+                // MissileObjをタグ検索
+                GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                // ミサイルオブジェクトの子にする
+                obj.transform.parent = missileObj.transform;
                 Destroy(obj, DestroyTime);
             }
 
@@ -222,6 +226,10 @@ public class SpawnMissileFront : MonoBehaviour
                         h_Missile_1.Add(obj);
                         //GameObject obj1 = Instantiate(Missile, new Vector3(SpawnPos.transform.position.x, SpawnPos.transform.position.y, SpawnPos.transform.position.z), Quaternion.identity);
                         //h_Missile_1.Add(obj);
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                        // ミサイルオブジェクトの子にする
+                        obj.transform.parent = missileObj.transform;
                         Destroy(obj, DestroyTime);
 
                         IntervalTime = 0.0f; // タイマーをリセットする
@@ -237,6 +245,10 @@ public class SpawnMissileFront : MonoBehaviour
                     if (IntervalTime >= Interval_2)
                     {
                         GameObject obj = Instantiate(Missile, new Vector3(SpawnPos.transform.position.x, SpawnPos.transform.position.y, SpawnPos.transform.position.z), Quaternion.identity);
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                        // ミサイルオブジェクトの子にする
+                        obj.transform.parent = missileObj.transform;
                         h_Missile_2.Add(obj);
                         Destroy(obj, DestroyTime);
 
@@ -253,6 +265,10 @@ public class SpawnMissileFront : MonoBehaviour
                     if (IntervalTime >= Interval_3)
                     {
                         GameObject obj = Instantiate(Missile, new Vector3(SpawnPos.transform.position.x, SpawnPos.transform.position.y, SpawnPos.transform.position.z), Quaternion.identity);
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                        // ミサイルオブジェクトの子にする
+                        obj.transform.parent = missileObj.transform;
                         h_Missile_3.Add(obj);
                         Destroy(obj, DestroyTime);
 
@@ -269,6 +285,10 @@ public class SpawnMissileFront : MonoBehaviour
                     if (IntervalTime >= Interval_4)
                     {
                         GameObject obj = Instantiate(Missile, new Vector3(SpawnPos.transform.position.x, SpawnPos.transform.position.y, SpawnPos.transform.position.z), Quaternion.identity);
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                        // ミサイルオブジェクトの子にする
+                        obj.transform.parent = missileObj.transform;
                         h_Missile_4.Add(obj);
                         Destroy(obj, DestroyTime);
 
@@ -285,6 +305,10 @@ public class SpawnMissileFront : MonoBehaviour
                     if (IntervalTime >= Interval_5)
                     {
                         GameObject obj = Instantiate(Missile, new Vector3(SpawnPos.transform.position.x, SpawnPos.transform.position.y, SpawnPos.transform.position.z), Quaternion.identity);
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                        // ミサイルオブジェクトの子にする
+                        obj.transform.parent = missileObj.transform;
                         h_Missile_5.Add(obj);
                         Destroy(obj, DestroyTime);
 
@@ -301,6 +325,10 @@ public class SpawnMissileFront : MonoBehaviour
                     if (IntervalTime >= Interval_6)
                     {
                         GameObject obj = Instantiate(Missile, new Vector3(SpawnPos.transform.position.x, SpawnPos.transform.position.y, SpawnPos.transform.position.z), Quaternion.identity);
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                        // ミサイルオブジェクトの子にする
+                        obj.transform.parent = missileObj.transform;
                         h_Missile_6.Add(obj);
                         Destroy(obj, DestroyTime);
 
@@ -317,6 +345,10 @@ public class SpawnMissileFront : MonoBehaviour
                     if (IntervalTime >= Interval_7)
                     {
                         GameObject obj = Instantiate(Missile, new Vector3(SpawnPos.transform.position.x, SpawnPos.transform.position.y, SpawnPos.transform.position.z), Quaternion.identity);
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                        // ミサイルオブジェクトの子にする
+                        obj.transform.parent = missileObj.transform;
                         h_Missile_7.Add(obj);
                         Destroy(obj, DestroyTime);
 
@@ -333,6 +365,10 @@ public class SpawnMissileFront : MonoBehaviour
                     if (IntervalTime >= Interval_8)
                     {
                         GameObject obj = Instantiate(Missile, new Vector3(SpawnPos.transform.position.x, SpawnPos.transform.position.y, SpawnPos.transform.position.z), Quaternion.identity);
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                        // ミサイルオブジェクトの子にする
+                        obj.transform.parent = missileObj.transform;
                         Destroy(obj, DestroyTime);
                         Destroy(obj, DestroyTime);
 
@@ -349,6 +385,10 @@ public class SpawnMissileFront : MonoBehaviour
                     if (IntervalTime >= Interval_9)
                     {
                         GameObject obj = Instantiate(Missile, new Vector3(SpawnPos.transform.position.x, SpawnPos.transform.position.y, SpawnPos.transform.position.z), Quaternion.identity);
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                        // ミサイルオブジェクトの子にする
+                        obj.transform.parent = missileObj.transform;
                         Destroy(obj, DestroyTime);
                         Destroy(obj, DestroyTime);
 
@@ -365,6 +405,10 @@ public class SpawnMissileFront : MonoBehaviour
                     if (IntervalTime >= Interval_10)
                     {
                         GameObject obj = Instantiate(Missile, new Vector3(SpawnPos.transform.position.x, SpawnPos.transform.position.y, SpawnPos.transform.position.z), Quaternion.identity);
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                        // ミサイルオブジェクトの子にする
+                        obj.transform.parent = missileObj.transform;
                         Destroy(obj, DestroyTime);
                         Destroy(obj, DestroyTime);
 
