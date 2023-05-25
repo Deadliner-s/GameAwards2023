@@ -145,6 +145,15 @@ public class InputManager : MonoBehaviour
         return InputActions.UI.Start.triggered;
     }
 
+    public void Player_Enable()
+    {
+        InputActions.Player.Enable();
+    }
+    public void Player_Disable()
+    {
+        InputActions.Player.Disable();
+    }
+
     public void UI_Enable()
     {
         InputActions.UI.Enable();
