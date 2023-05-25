@@ -5,52 +5,73 @@ using UnityEngine.SceneManagement;
 
 public class DebugSceneMove : MonoBehaviour
 {
-    // シーン遷移用
-    //private enum Scene
-    //{
-    //    Scene1 = 1,
-    //    Scene2,
-    //    Scene3,
+    // 分岐用
+    private SceneLoadStartUnload.SCENE_NAME sceneName;
+    // デバッグ用(ダメージを0にします)
+    private bool debug = false;
 
-    //    SceneMax = 99,
-    //}
+    private void Start()
+    {
+        // デバッグ用の設定
+        debug = DebugCommandooo.instance.debugSceneSet;
+    }
 
     // デバッグ用のステージ遷移
-    void Update()
+    private void Update()
     {
-        // 通常ステージ
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (!debug) { return; }
+
+        // Pキーが押されたら
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            // ステージ1
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            // 現在のシーンの取得
+            sceneName = SceneNowBefore.instance.sceneNowCatch;
+
+            // シーン遷移
+            switch (sceneName)
             {
-                SceneManager.LoadScene("Stage1");
-            }
-            // ステージ2
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                SceneManager.LoadScene("Stage2");
-            }
-            // ステージ3
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                SceneManager.LoadScene("merge_2");
-            }
-            // プロローグ
-            if (Input.GetKeyDown(KeyCode.Alpha4))
-            {
-                SceneManager.LoadScene("Prologue");
-            }
-            // ステージ1と2の間のイベント
-            if (Input.GetKeyDown(KeyCode.Alpha5))
-            {
-                SceneManager.LoadScene("Stage2Event");
-            }
-            // ステージ2と3の間のイベント
-            if (Input.GetKeyDown(KeyCode.Alpha6))
-            {
-                SceneManager.LoadScene("Stage3Event");
+                // ステージ1
+                case (SceneLoadStartUnload.SCENE_NAME.E_STAGE1):
+                    // シーンの開始
+                    gameObject.GetComponent<SceneMoveManager>().SceneLoad(SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT);
+                    gameObject.GetComponent<SceneMoveManager>().SceneStartUnload();
+                    break;
+                // ステージ2
+                case (SceneLoadStartUnload.SCENE_NAME.E_STAGE2):
+                    // シーンの開始
+                    gameObject.GetComponent<SceneMoveManager>().SceneLoad(SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT);
+                    gameObject.GetComponent<SceneMoveManager>().SceneStartUnload();
+                    break;
+                // ステージ3
+                case (SceneLoadStartUnload.SCENE_NAME.E_STAGE3):
+                    // シーンの開始
+                    gameObject.GetComponent<SceneMoveManager>().SceneLoad(SceneLoadStartUnload.SCENE_NAME.E_EPILOGUE);
+                    gameObject.GetComponent<SceneMoveManager>().SceneStartUnload();
+                    break;
+                // プロローグ
+                case (SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE):
+                    // シーンの開始
+                    gameObject.GetComponent<SceneMoveManager>().SceneStartUnload();
+                    break;
+                // ステージ1と2の間
+                case (SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT):
+                    // シーンの開始
+                    gameObject.GetComponent<SceneMoveManager>().SceneStartUnload();
+                    break;
+                // ステージ2と3の間
+                case (SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT):
+                    // シーンの開始
+                    gameObject.GetComponent<SceneMoveManager>().SceneStartUnload();
+                    break;
             }
         }
+
+        // Lキーが押されたら
+        if (!Input.GetKeyDown(KeyCode.L)) { return; }
+        // SceneMoveManagerをタグ検索
+        GameObject texEnd = GameObject.FindGameObjectWithTag("NowEventSceneSet");
+        if (texEnd == null) { return; }
+        // テキストを飛ばす
+        texEnd.GetComponent<SceneEventMove>().bTextEnd = true;
     }
 }
