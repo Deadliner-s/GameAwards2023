@@ -75,11 +75,13 @@ public class MenuCursor_Resu : MonoBehaviour
             {
                 case (0):
                     // CONTINUE
-                    int num = ManagerObj.GetComponent<GManager>().GetNowStage();
+                    //int num = ManagerObj.GetComponent<GManager>().GetNowStage();
+                    SceneLoadStartUnload.SCENE_NAME sceneName;
+                    sceneName = SceneNowBefore.instance.sceneBeforeCatch;
                     //InputActions.Disable();
-                    switch (num)
+                    switch (sceneName)
                     {
-                        case (0):
+                        case (SceneLoadStartUnload.SCENE_NAME.E_STAGE1):
                             // ステージ1
                             //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
                             fade.GetComponent<Fade>().StartCoroutine(
@@ -87,7 +89,7 @@ public class MenuCursor_Resu : MonoBehaviour
                                     SceneLoadStartUnload.SCENE_NAME.E_RESULT_FAILED,
                                     SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE));
                             break;
-                        case (1):
+                        case (SceneLoadStartUnload.SCENE_NAME.E_STAGE2):
                             // ステージ2
                             //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2Event");
                             fade.GetComponent<Fade>().StartCoroutine(
@@ -95,7 +97,7 @@ public class MenuCursor_Resu : MonoBehaviour
                                     SceneLoadStartUnload.SCENE_NAME.E_RESULT_FAILED,
                                     SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT));
                             break;
-                        case (2):
+                        case (SceneLoadStartUnload.SCENE_NAME.E_STAGE3):
                             // ステージ3
                             //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage3Event");
                             fade.GetComponent<Fade>().StartCoroutine(

@@ -105,6 +105,9 @@ public class CameraMoveDestroy : MonoBehaviour
         {
             if (cnt > effectTime)
             {
+                // 直前のシーンをセット
+                SceneNowBefore.instance.sceneBeforeCatch =
+                    SceneNowBefore.instance.sceneNowCatch;
                 // シーン移動
                 //SceneManager.LoadScene("GameOver");
                 fade.GetComponent<Fade>().StartCoroutine(
