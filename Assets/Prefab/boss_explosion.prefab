@@ -48,4 +48,4 @@ MonoBehaviour:
   bigEffect: {fileID: 100008, guid: 6676e2285ec9f8a4c90fd08653ba8464, type: 3}
   firstExplosionStartFlame: 20
   secondExplosionStartFlame: 180
-  thirdExplosionStartFlame: 300
+  thirdExplosionStartFlame: 320
