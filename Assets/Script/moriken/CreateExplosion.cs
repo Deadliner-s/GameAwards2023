@@ -49,7 +49,7 @@ public class CreateExplosion : MonoBehaviour
         if (flame >= firstExplosionStartFlame && flame <= secondExplosionStartFlame)
         {
             // 2“x–Ú‚Ì”š”­‚Ü‚Å‰½“x‚©”š”­‚·‚é
-            if ((flame % 20) == 0)      // Œ»Ý‚Í10‚Ì”{”‚ÌƒtƒŒ[ƒ€‚²‚Æ‚ÉÝ’è‚µ‚Ä‚é (flame % Z©‚Ì”Žš‚Ì”{”‚Å”š”­‚·‚é)
+            if ((flame % 50) == 0)      // Œ»Ý‚Í10‚Ì”{”‚ÌƒtƒŒ[ƒ€‚²‚Æ‚ÉÝ’è‚µ‚Ä‚é (flame % Z©‚Ì”Žš‚Ì”{”‚Å”š”­‚·‚é)
             {
                 // ƒ‰ƒ“ƒ_ƒ€‚Å”š”j‚·‚éêŠ‚ð•Ï‚¦‚Ä‚¢‚é
                 randX = Random.Range(-3.00f, 3.00f);
