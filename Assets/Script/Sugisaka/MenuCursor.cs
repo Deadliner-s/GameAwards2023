@@ -135,9 +135,15 @@ public class MenuCursor : MonoBehaviour
                 case (1):
                     // CONTINUE
                     int num = ManagerObj.GetComponent<GManager>().GetNowStage();
-                    switch (num)
+                    SceneLoadStartUnload.SCENE_NAME sceneName;
+                    sceneName = SceneNowBefore.instance.sceneBeforeCatch;
+                    if (num == 4)
                     {
-                        case (0):
+                        sceneName = SceneLoadStartUnload.SCENE_NAME.E_TITLE;
+                    }
+                    switch (sceneName)
+                    {
+                        case (SceneLoadStartUnload.SCENE_NAME.E_STAGE1):
                             // ステージ1
                             //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
                             // UIの入力を受け付けない
@@ -148,7 +154,7 @@ public class MenuCursor : MonoBehaviour
                                 "Color_FadeOut_Title",
                                 SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE);
                             break;
-                        case (1):
+                        case (SceneLoadStartUnload.SCENE_NAME.E_STAGE2):
                             // ステージ2
                             //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage2Event");
                             // UIの入力を受け付けない
@@ -159,7 +165,7 @@ public class MenuCursor : MonoBehaviour
                                 "Color_FadeOut_Title",
                                 SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT);
                             break;
-                        case (2):
+                        case (SceneLoadStartUnload.SCENE_NAME.E_STAGE3):
                             // ステージ3
                             //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Stage3Event");
                             // UIの入力を受け付けない
@@ -169,6 +175,8 @@ public class MenuCursor : MonoBehaviour
                             fade.GetComponent<Fade>().StartCoroutine(
                                 "Color_FadeOut_Title",
                                 SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT);
+                            break;
+                        case (SceneLoadStartUnload.SCENE_NAME.E_TITLE):
                             break;
                         default:
                             break;

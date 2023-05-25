@@ -378,7 +378,7 @@ public class SoundManager : MonoBehaviour
                     }
                 }
                 // ゲームクリア
-                if (currentScene == SceneLoadStartUnload.SCENE_NAME.E_RESULT_COMPLETED)
+                if (currentScene == SceneLoadStartUnload.SCENE_NAME.E_EPILOGUE)
                 {
                     PlayBGM("GameClear");
                 }
@@ -404,7 +404,8 @@ public class SoundManager : MonoBehaviour
                     StopBGM("BossStage");
                 }
                 // ゲームクリアでない場合
-                if (currentScene != SceneLoadStartUnload.SCENE_NAME.E_RESULT_COMPLETED)
+                if (currentScene != SceneLoadStartUnload.SCENE_NAME.E_EPILOGUE &&
+                    currentScene != SceneLoadStartUnload.SCENE_NAME.E_RESULT_COMPLETED)
                 {
                     StopBGM("GameClear");
                 }
