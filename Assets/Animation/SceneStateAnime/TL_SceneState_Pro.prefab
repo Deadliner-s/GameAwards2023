@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 588032736922949651}
   - component: {fileID: 588032736922949652}
   m_Layer: 0
-  m_Name: TL_SceneState
+  m_Name: TL_SceneState_Pro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,6 +56,10 @@ PlayableDirector:
   - key: {fileID: 4691018302510247327, guid: c7e1353e1aa7f434dba2f4e9aff5bd97, type: 2}
     value: {fileID: 0}
   - key: {fileID: 7966647161692764886, guid: c7e1353e1aa7f434dba2f4e9aff5bd97, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 7445702006589484297, guid: c7e1353e1aa7f434dba2f4e9aff5bd97, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 2124815797637146234, guid: c7e1353e1aa7f434dba2f4e9aff5bd97, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References:
