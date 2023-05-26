@@ -78,7 +78,7 @@ public class Stage3TextWriter : MonoBehaviour
 
         SoundManager.instance.PlayVOICE("2-11");
         uitext.DrawNameText("≪ 司令官 ≫", "今度こそだ。衛星軌道砲、撃て！");
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(6.5f);
 
         SoundManager.instance.PlayVOICE("2-12");
         uitext.DrawNameText("≪ AI ≫", "目標へ着弾。敵巨大飛行物体の\nバリアフィールド破壊を確認しました。");
@@ -98,7 +98,7 @@ public class Stage3TextWriter : MonoBehaviour
 
         SoundManager.instance.PlayVOICE("2-16");
         uitext.DrawNameText("≪ AI ≫", "目標予測……攻撃目標は、衛星軌道砲です。");
-        yield return new WaitForSeconds(6.0f);
+        yield return new WaitForSeconds(8.0f);
 
         SoundManager.instance.PlayVOICE("2-17");
         uitext.DrawNameText("≪ 司令官 ≫", "衛星軌道砲がやられた。だが、作戦終了は認められない。");
@@ -110,7 +110,7 @@ public class Stage3TextWriter : MonoBehaviour
 
         SoundManager.instance.PlayVOICE("2-19");
         uitext.DrawNameText("≪ 司令官 ≫", "さらに接近し、ヤツを直接攻撃してくれ");
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(6.0f);
 
         SoundManager.instance.PlayVOICE("2-20");
         uitext.DrawNameText("≪ 司令官 ≫", "君に人類の命運を託す。　……頼んだぞ。");
@@ -122,7 +122,7 @@ public class Stage3TextWriter : MonoBehaviour
 
         SoundManager.instance.PlayVOICE("2-22");
         uitext.DrawNameText("≪ AI ≫", "予測される作戦成功確率、2％。");
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(6.0f);
 
         SoundManager.instance.PlayVOICE("2-tuika");
         uitext.DrawNameText("≪ AI ≫", "………ですが、");

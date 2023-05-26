@@ -89,18 +89,21 @@ public class MissileStraight : MonoBehaviour
                 {
                     NewPosFix.x = 50;
                 }
-                LightObj = Instantiate(LightObject, targetScreenPosition, transform.rotation) as GameObject;
-                LightObj.transform.SetParent(canvas.transform, false);
-                LightObj.GetComponent<Image>().fillAmount = 0;
-                newObj = Instantiate(otherObject, targetScreenPosition, transform.rotation) as GameObject;  // 警告UIの生成                                                           
-                newObj.transform.SetParent(canvas.transform, false);                                        // Canvasの子オブジェクトとして生成
-                newObj.GetComponent<Image>().fillAmount = 0;
-                OutsideObj = Instantiate(outsideObject, targetScreenPosition, transform.rotation) as GameObject;  // 警告UIの生成                                                           
-                OutsideObj.transform.SetParent(canvas.transform, false);                                        // Canvasの子オブジェクトとして生成
+                if (GameObject.Find("Canvas"))
+                {
+                    LightObj = Instantiate(LightObject, targetScreenPosition, transform.rotation) as GameObject;
+                    LightObj.transform.SetParent(canvas.transform, false);
+                    LightObj.GetComponent<Image>().fillAmount = 0;
+                    newObj = Instantiate(otherObject, targetScreenPosition, transform.rotation) as GameObject;  // 警告UIの生成                                                           
+                    newObj.transform.SetParent(canvas.transform, false);                                        // Canvasの子オブジェクトとして生成
+                    newObj.GetComponent<Image>().fillAmount = 0;
+                    OutsideObj = Instantiate(outsideObject, targetScreenPosition, transform.rotation) as GameObject;  // 警告UIの生成                                                           
+                    OutsideObj.transform.SetParent(canvas.transform, false);                                        // Canvasの子オブジェクトとして生成
 
-                LightObj.transform.position = NewPosFix;    //UIの位置を更新
-                newObj.transform.position = NewPosFix;      //UIの位置を更新
-                OutsideObj.transform.position = NewPosFix;  //UIの位置を更新
+                    LightObj.transform.position = NewPosFix;    //UIの位置を更新
+                    newObj.transform.position = NewPosFix;      //UIの位置を更新
+                    OutsideObj.transform.position = NewPosFix;  //UIの位置を更新
+                }
             }
             time = 0;
             Miss = false;
