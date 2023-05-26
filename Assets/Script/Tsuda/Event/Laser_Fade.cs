@@ -6,10 +6,12 @@ public class Laser_Fade : MonoBehaviour
 {
     public bool Boss;
     public float scaleSpeed = 0.01f;
+    public float scaleSpeed2 = 0.01f;
     public float wait;
 
     private float timer = 0.0f;
     private GameObject EV_Laser;
+    private bool flg = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,7 @@ public class Laser_Fade : MonoBehaviour
         else
         {
             EV_Laser = GameObject.Find("Laser_Squad");
+            transform.localScale = new Vector3(0.1f, 3.5f, 3.5f);
         }
     }
 
@@ -28,6 +31,19 @@ public class Laser_Fade : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
+
+       if(!Boss)
+       {
+           if(transform.localScale.x <= 3.5f && timer >= wait && !flg)
+            {
+                transform.localScale += new Vector3(scaleSpeed2, 0, 0);
+
+                if(transform.localScale.x >= 3.5f)
+                {
+                    flg = true;
+                }
+            }
+       }
 
         if (timer >= wait + EV_Laser.GetComponent<Event_Laser>().Laser_time)
         {

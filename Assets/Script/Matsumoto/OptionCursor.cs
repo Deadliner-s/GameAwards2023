@@ -33,7 +33,7 @@ public class OptionCursor : MonoBehaviour
     private const int MAX_OPTION = 5;   // オプションの数
     private int Selected = 0;           // 選択中のオプション
 
-    private float Max_Height = 14.30278f;
+    private float Max_Height = 12.33629f;
 
     void Awake()
     {
@@ -179,16 +179,22 @@ public class OptionCursor : MonoBehaviour
 
                 case (4):
                     // タイトルに戻る
-                    Selected = 0;
                     SoundManager.instance.PlaySE("Decision");
                     StartCoroutine("WindowScaleDown");
                     break;
             }
         }
+        if (InputManager.instance.OnBack())
+        {
+            // タイトルに戻る
+            SoundManager.instance.PlaySE("Decision");
+            StartCoroutine("WindowScaleDown");
+        }
 
     }
     private void OnEnable()
     {
+        Selected = 0;
         // ウィンドウ表示
         Window.transform.localScale = new Vector3(
             Window.transform.localScale.x,

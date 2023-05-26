@@ -36,12 +36,14 @@ public class InputManager : MonoBehaviour
         InputActions.Player.Reticle.performed += context => OnReticleMove();
         InputActions.Player.Shot.performed += context => OnShot();
         InputActions.Player.Manever.performed += context => OnManever();
+        InputActions.Player.Pause.performed += context => OnPause();
         // UI‚Ì“ü—Í
         InputActions.UI.Up.performed += context => OnUp();
         InputActions.UI.Down.performed += context => OnDown();
         InputActions.UI.Right.performed += context => OnRight();
         InputActions.UI.Left.performed += context => OnLeft();
         InputActions.UI.Select.performed += context => OnSelect();
+        InputActions.UI.Back.performed += context => OnBack();
         InputActions.UI.Start.performed += context => OnStart();
     }
 
@@ -120,6 +122,12 @@ public class InputManager : MonoBehaviour
     {
         return InputActions.Player.Manever.triggered;
     }
+    public bool OnPause()
+    {
+        return InputActions.Player.Pause.triggered;
+    }
+
+
     public bool OnUp()
     {
         return InputActions.UI.Up.triggered;
@@ -139,6 +147,10 @@ public class InputManager : MonoBehaviour
     public bool OnSelect()
     {
         return InputActions.UI.Select.triggered;
+    }
+    public bool OnBack()
+    {
+        return InputActions.UI.Back.triggered;
     }
     public bool OnStart()
     {
