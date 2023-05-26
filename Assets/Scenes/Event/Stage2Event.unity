@@ -2159,7 +2159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ToChange: {fileID: 2104687373}
-  Delay: 16.2
+  Delay: 17
 --- !u!1 &2104687373 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2215252258188351803, guid: 09073995e9a92364892eca996227f6d6, type: 3}
