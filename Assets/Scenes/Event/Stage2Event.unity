@@ -2314,7 +2314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ToChange: {fileID: 1951943440}
-  Delay: 23
+  Delay: 17
 --- !u!114 &2026402967
 MonoBehaviour:
   m_ObjectHideFlags: 0
