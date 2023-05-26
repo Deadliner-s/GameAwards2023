@@ -1045,7 +1045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4e77b0f21a7694eae994ad1ccec71b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeLimit: 159
+  TimeLimit: 160
   startPlayerInitPos: 156
 --- !u!1001 &387227512
 PrefabInstance:
@@ -3326,7 +3326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6063255cbe9fda04c817cbdded23a68d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 156
+  time: 157
   Timertext: {fileID: 964365227}
 --- !u!114 &964365227
 MonoBehaviour:
