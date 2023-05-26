@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d21dcc2386d650c4597f3633c75a1f98, type: 3}
-  m_Name: Animation Track (1)
+  m_Name: Eve3_BossAnime
   m_EditorClassIdentifier: 
   m_Version: 3
   m_AnimClip: {fileID: 0}
@@ -419,7 +419,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfda56da833e2384a9677cd3c976a436, type: 3}
-  m_Name: TL_SceneState
+  m_Name: TL_SceneState_Eve3
   m_EditorClassIdentifier: 
   m_Version: 0
   m_Tracks:
@@ -1194,7 +1194,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: CM vcam1_Near
+    m_DisplayName: CM vcam1_Far
   - m_Version: 1
     m_Start: 7.26666666666666
     m_ClipIn: 0
@@ -1260,7 +1260,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: CM vcam1_Far
+    m_DisplayName: CM vcam1_Near
   - m_Version: 1
     m_Start: 0.7333333333333333
     m_ClipIn: 0

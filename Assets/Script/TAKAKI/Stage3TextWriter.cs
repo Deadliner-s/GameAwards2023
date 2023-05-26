@@ -81,7 +81,7 @@ public class Stage3TextWriter : MonoBehaviour
         yield return new WaitForSeconds(6.5f);
 
         SoundManager.instance.PlayVOICE("2-12");
-        uitext.DrawNameText("≪ AI ≫", "目標へ着弾。敵巨大飛行物体の\nバリアフィールド破壊を確認しました。");
+        uitext.DrawNameText("≪ AI ≫", "目標へ着弾。敵巨大飛行物体のバリアフィールド破壊を確認しました。");
         yield return new WaitForSeconds(7.0f);
 
         SoundManager.instance.PlayVOICE("2-13");
@@ -89,7 +89,7 @@ public class Stage3TextWriter : MonoBehaviour
         yield return new WaitForSeconds(4.0f);
 
         SoundManager.instance.PlayVOICE("2-14");
-        uitext.DrawNameText("≪ AI ≫", "敵巨大飛行物体、エネルギーの急激な上昇を確認");
+        uitext.DrawNameText("≪ AI ≫", "敵巨大飛行物体、エネルギーの急激な上昇を確認。");
         yield return new WaitForSeconds(6.0f);
 
         SoundManager.instance.PlayVOICE("2-15");
@@ -105,11 +105,11 @@ public class Stage3TextWriter : MonoBehaviour
         yield return new WaitForSeconds(6.0f);
 
         SoundManager.instance.PlayVOICE("2-18");
-        uitext.DrawNameText("≪ 司令官 ≫", "ヤツのバリアフィールドが破壊できた今なら、\nブルーアサルトのミサイルによる破壊が可能なはずだ。");
+        uitext.DrawNameText("≪ 司令官 ≫", "ヤツのバリアフィールドが破壊できた今なら、ブルーアサルトのミサイルによる破壊が可能なはずだ。");
         yield return new WaitForSeconds(7.0f);
 
         SoundManager.instance.PlayVOICE("2-19");
-        uitext.DrawNameText("≪ 司令官 ≫", "さらに接近し、ヤツを直接攻撃してくれ");
+        uitext.DrawNameText("≪ 司令官 ≫", "さらに接近し、ヤツを直接攻撃してくれ。");
         yield return new WaitForSeconds(6.0f);
 
         SoundManager.instance.PlayVOICE("2-20");

@@ -3508,6 +3508,10 @@ PrefabInstance:
       propertyPath: _color.Array.data[4].r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4383171116205339661, guid: 99e6e6f3f3eb01248aa21e7856d891d5, type: 3}
+      propertyPath: targetTfm
+      value: 
+      objectReference: {fileID: 182055691}
     - target: {fileID: 4468775414776399447, guid: 99e6e6f3f3eb01248aa21e7856d891d5, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -6626,7 +6630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3324069252480740235, guid: 09073995e9a92364892eca996227f6d6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.17
+      value: -0.19
       objectReference: {fileID: 0}
     - target: {fileID: 3324069252480740235, guid: 09073995e9a92364892eca996227f6d6, type: 3}
       propertyPath: m_LocalPosition.z

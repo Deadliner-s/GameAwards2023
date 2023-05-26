@@ -20,7 +20,7 @@ public class PlayerOnCollision : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Target")
         {
             playerManager.GetComponent<PlayerHp>().Damage(collision);
         }
