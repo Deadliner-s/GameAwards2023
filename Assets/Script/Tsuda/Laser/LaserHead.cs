@@ -89,7 +89,11 @@ public class LaserHead : MonoBehaviour
 
         if (timer >= wait && !IdkFlg)
         {
-            Instantiate(Idk, targetWorldPosition, transform.rotation);
+            GameObject obj = Instantiate(Idk, targetWorldPosition, transform.rotation);
+            // MissileObjをタグ検索
+            GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+            // ミサイルオブジェクトの子にする
+            obj.transform.parent = missileObj.transform;
             IdkFlg = true;
         }
 

@@ -72,7 +72,11 @@ public class MissileBossContena : MonoBehaviour
                         float j = (i % 3) - 1;
                         float k = (i / 3) - 1;
                         newObj = Instantiate(otherObject, new Vector3(transform.position.x + j * 0.05f, transform.position.y + k * 0.1f, transform.position.z),Quaternion.identity);
-                        if(i == ContenaNumber / 2)
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                        // ミサイルオブジェクトの子にする
+                        newObj.transform.parent = missileObj.transform;
+                        if (i == ContenaNumber / 2)
                         {
                             //newObj.GetComponent<MissileBossContenaSmall>().Spread = 0.0f;
                             newObj.GetComponent<MissileBossContenaSmall>().First = true;

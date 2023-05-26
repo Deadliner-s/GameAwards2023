@@ -46,8 +46,14 @@ public class DamageManager : MonoBehaviour
     [Tooltip("レーザー")]
     [SerializeField] float BossLaser = 5.0f;
 
-    [Header("デバッグ用\n(ダメージを0にします)\n(ゲーム実行前に設定してください)")]
-    [SerializeField] bool debug = false;
+    // デバッグ用(ダメージを0にします)
+    private bool debug = false;
+
+    private void Start()
+    {
+        // デバッグ用の設定
+        debug = DebugCommandooo.instance.debugDamageSet;
+    }
 
     // ダメージ量取得用の関数
     public float GetDamage(DAMAGE_NAME damage_name)

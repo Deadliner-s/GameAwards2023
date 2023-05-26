@@ -88,11 +88,11 @@ public class SpawnMissileBoss : MonoBehaviour
         if (player)//プレイヤーは生きている（存在する）
         {
             // デバッグ用
-            if (Input.GetKeyDown(KeyHoming))
+            if (DebugCommandooo.instance.debugMissileSet && Input.GetKeyDown(KeyHoming))
             {
                 CreateHoming();   
             }
-            if (Input.GetKeyDown(KeyContena))
+            if (DebugCommandooo.instance.debugMissileSet && Input.GetKeyDown(KeyContena))
             {
                 CreateContena();
             }
@@ -169,6 +169,10 @@ public class SpawnMissileBoss : MonoBehaviour
             sPos = transform.position;
         }
         GameObject obj = Instantiate(ContenaMissile,sPos, Quaternion.identity);
+        // MissileObjをタグ検索
+        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+        // ミサイルオブジェクトの子にする
+        obj.transform.parent = missileObj.transform;
         obj.GetComponent<MissileBossContena>().Speed = ContenaSpeed;
         obj.GetComponent<MissileBossContena>().Accel = ContenaAccel;
         obj.GetComponent<MissileBossContena>().MaxSpeed = ContenaMax;
@@ -191,6 +195,10 @@ public class SpawnMissileBoss : MonoBehaviour
             sPos = transform.position;
         }
         GameObject obj = Instantiate(HomingMissile, sPos, Quaternion.identity);
+        // MissileObjをタグ検索
+        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+        // ミサイルオブジェクトの子にする
+        obj.transform.parent = missileObj.transform;
         obj.GetComponent<MissileBossHoming>().Speed = HomingSpeed;
         obj.GetComponent<MissileBossHoming>().Accel = HomingAccel;
         obj.GetComponent<MissileBossHoming>().MaxSpeed = HomingMax;

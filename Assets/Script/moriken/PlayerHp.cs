@@ -164,7 +164,7 @@ public class PlayerHp : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.F1))
+        if (DebugCommandooo.instance.debugExplosionSet && Input.GetKeyDown(KeyCode.F1))
         {
             // 完全に撃墜された判定にする
             BreakFlag = true;

@@ -145,37 +145,37 @@ public class SpawnMissileScreen : MonoBehaviour
         if (player)//プレイヤーは生きている（存在する）
         {
             // デバッグ用
-            if (Input.GetKeyDown(KeyCluster))
+            if (DebugCommandooo.instance.debugMissileSet && Input.GetKeyDown(KeyCluster))
             {
                 Invoke("SpawnShowCluster", ShowDelay1);
                 Invoke("SpawnShowCluster", ShowDelay2);
                 Invoke("SpawnCluster", SpawnDelay);
             }
-            if (Input.GetKeyDown(KeyTop))
+            if (DebugCommandooo.instance.debugMissileSet && Input.GetKeyDown(KeyTop))
             {
                 Invoke("SpawnShowSpeed", ShowDelay1);
                 Invoke("SpawnShowSpeed", ShowDelay2);
                 Invoke("SpawnSpeedTop", SpawnDelay);
             }
-            if (Input.GetKeyDown(KeyTopLeft))
+            if (DebugCommandooo.instance.debugMissileSet && Input.GetKeyDown(KeyTopLeft))
             {
                 Invoke("SpawnShowSpeed", ShowDelay1);
                 Invoke("SpawnShowSpeed", ShowDelay2);
                 Invoke("SpawnSpeedTopLeft", SpawnDelay);
             }
-            if (Input.GetKeyDown(KeyLeft))
+            if (DebugCommandooo.instance.debugMissileSet && Input.GetKeyDown(KeyLeft))
             {
                 Invoke("SpawnShowSpeed", ShowDelay1);
                 Invoke("SpawnShowSpeed", ShowDelay2);
                 Invoke("SpawnSpeedLeft", SpawnDelay);
             }
-            if (Input.GetKeyDown(KeyBotLeft))
+            if (DebugCommandooo.instance.debugMissileSet && Input.GetKeyDown(KeyBotLeft))
             {
                 Invoke("SpawnShowSpeed", ShowDelay1);
                 Invoke("SpawnShowSpeed", ShowDelay2);
                 Invoke("SpawnSpeedBotLeft", SpawnDelay);
             }
-            if (Input.GetKeyDown(KeyBot))
+            if (DebugCommandooo.instance.debugMissileSet && Input.GetKeyDown(KeyBot))
             {
                 Invoke("SpawnShowSpeed", ShowDelay1);
                 Invoke("SpawnShowSpeed", ShowDelay2);
@@ -316,7 +316,11 @@ public class SpawnMissileScreen : MonoBehaviour
 
     void SpawnCluster()
     {
-        GameObject obj = Instantiate(ClusterMissile, SpawnLeft.transform.position, Quaternion.identity);        
+        GameObject obj = Instantiate(ClusterMissile, SpawnLeft.transform.position, Quaternion.identity);
+        // MissileObjをタグ検索
+        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+        // ミサイルオブジェクトの子にする
+        obj.transform.parent = missileObj.transform;
         obj.GetComponent<MissileBossCluster>().Speed = SpeedCluster;
         obj.GetComponent<MissileBossCluster>().ClusterNumber = ClusterNumber;
         Destroy(obj, DestroyTime);
@@ -324,30 +328,50 @@ public class SpawnMissileScreen : MonoBehaviour
     void SpawnSpeedTop()
     {
         GameObject obj = Instantiate(SpeedMissile, SpawnTop.transform.position, Quaternion.identity);
+        // MissileObjをタグ検索
+        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+        // ミサイルオブジェクトの子にする
+        obj.transform.parent = missileObj.transform;
         obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
         Destroy(obj, DestroyTime);
     }
     void SpawnSpeedTopLeft()
     {
         GameObject obj = Instantiate(SpeedMissile, SpawnTopLeft.transform.position, Quaternion.identity);
+        // MissileObjをタグ検索
+        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+        // ミサイルオブジェクトの子にする
+        obj.transform.parent = missileObj.transform;
         obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
         Destroy(obj, DestroyTime);
     }
     void SpawnSpeedLeft()
     {
         GameObject obj = Instantiate(SpeedMissile, SpawnLeft.transform.position, Quaternion.identity);
+        // MissileObjをタグ検索
+        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+        // ミサイルオブジェクトの子にする
+        obj.transform.parent = missileObj.transform;
         obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
         Destroy(obj, DestroyTime);
     }
     void SpawnSpeedBotLeft()
     {
         GameObject obj = Instantiate(SpeedMissile, SpawnBotLeft.transform.position, Quaternion.identity);
+        // MissileObjをタグ検索
+        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+        // ミサイルオブジェクトの子にする
+        obj.transform.parent = missileObj.transform;
         obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
         Destroy(obj, DestroyTime);
     }
     void SpawnSpeedBot()
     {
         GameObject obj = Instantiate(SpeedMissile, SpawnBot.transform.position, Quaternion.identity);
+        // MissileObjをタグ検索
+        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+        // ミサイルオブジェクトの子にする
+        obj.transform.parent = missileObj.transform;
         obj.GetComponent<MissileStraight>().MaxSpeed = SpeedStraight;
         Destroy(obj, DestroyTime);
     }
@@ -355,11 +379,19 @@ public class SpawnMissileScreen : MonoBehaviour
     void SpawnShowCluster()
     {
         GameObject obj = Instantiate(ShowClusterMissile, transform.position, Quaternion.identity);
+        // MissileObjをタグ検索
+        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+        // ミサイルオブジェクトの子にする
+        obj.transform.parent = missileObj.transform;
         Destroy(obj, DestroyTime);
     }
     void SpawnShowSpeed()
     {
         GameObject obj = Instantiate(ShowSpeedMissile, transform.position, Quaternion.identity);
+        // MissileObjをタグ検索
+        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+        // ミサイルオブジェクトの子にする
+        obj.transform.parent = missileObj.transform;
         Destroy(obj, DestroyTime);
     }
 

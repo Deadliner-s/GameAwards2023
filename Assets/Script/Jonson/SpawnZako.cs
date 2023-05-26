@@ -42,7 +42,7 @@ public class SpawnZako : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(Key))
+        if (DebugCommandooo.instance.debugMissileSet && Input.GetKeyDown(Key))
         {
             int randShow = (int)Random.Range(1,2);
             for(int j = 0;j <= randShow;j++)
@@ -87,6 +87,10 @@ public class SpawnZako : MonoBehaviour
     void CreateZako()
     {
         GameObject obj = Instantiate(Zako, new Vector3(transform.position.x, transform.position.y , transform.position.z - 0.05f), Zako.transform.rotation);
+        // MissileObjをタグ検索
+        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+        // ミサイルオブジェクトの子にする
+        obj.transform.parent = missileObj.transform;
         obj.GetComponent<ZakoMove>().ZakoSpeed = ZakoSpeed;
         obj.GetComponent<ZakoMove>().DestroyTime = ZakoDestroyTime;
         obj.GetComponent<ZakoMove>().MissileSpeed = MissileSpeed;
@@ -99,6 +103,10 @@ public class SpawnZako : MonoBehaviour
     void CreateShowZako()
     {
         GameObject newObj = Instantiate(ZakoShow, ZakoShowPos.transform.position, ZakoShow.transform.rotation);
+        // MissileObjをタグ検索
+        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+        // ミサイルオブジェクトの子にする
+        newObj.transform.parent = missileObj.transform;
         newObj.GetComponent<Transform>().localScale = ZakoShowScale;
         newObj.GetComponent<ShowZako>().Speed = ZakoShowSpeed;
         Destroy(newObj, SpawnZakoDelay);

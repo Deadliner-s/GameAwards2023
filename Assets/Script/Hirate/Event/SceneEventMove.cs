@@ -13,7 +13,8 @@ public class SceneEventMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (bTextEnd && bAniEnd)
+        //if (bTextEnd && bAniEnd)
+        if (bAniEnd)
         {
             // SceneMoveManagerÇÉ^ÉOåüçı
             GameObject obj = GameObject.FindGameObjectWithTag("SceneMoveManager");

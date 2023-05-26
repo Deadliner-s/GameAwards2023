@@ -39,7 +39,7 @@ public class Stage1to2 : MonoBehaviour
     {
         Counttime += Time.deltaTime;//ŽžŠÔ‚ð‘«‚·
 
-        if (Counttime > TimeLimit || Input.GetKeyDown(KeyCode.P))
+        if (Counttime > TimeLimit)
         {
             ManagerObj.GetComponent<GManager>().SetClearFlg(1);
 
