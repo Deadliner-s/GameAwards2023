@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: cf7d8ea1b1d612244a01c5e73c6b601d, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 025f76c6cf29e3a42bccd0374148333e, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.31493968, g: 0.37682033, b: 0.614484, a: 1}
+  m_IndirectSpecularColor: {r: 0.31506336, g: 0.37680638, b: 0.6145887, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6164,7 +6164,7 @@ MonoBehaviour:
   HomingSpeed: 0.01
   HomingAccel: 0.002
   HomingMax: 0.15
-  HomingHeight: 4
+  HomingHeight: 3.5
   ContenaMissile: {fileID: 4741478458244633611, guid: a166eeb9b4e2c494f912cf907f7a4985, type: 3}
   ContenaSpeed: 0.01
   ContenaAccel: 0.0015

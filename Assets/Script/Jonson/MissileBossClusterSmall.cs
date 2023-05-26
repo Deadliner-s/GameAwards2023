@@ -73,7 +73,7 @@ public class MissileBossClusterSmall : MonoBehaviour
             LateMove = (Move - LateMove) * off + (LateMove);
             Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
             transform.rotation = rot;
-            transform.position += LateMove * Speed;
+            transform.position += LateMove * Speed * Time.timeScale;
         }
         else
         {

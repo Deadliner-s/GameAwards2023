@@ -46,6 +46,6 @@ public class ZakoMove : MonoBehaviour
             obj.GetComponent<ZakoMissile>().Accel = Accel;
             obj.GetComponent<ZakoMissile>().AccelStart = AccelStart;
         }
-        gameObject.transform.position += move * ZakoSpeed;
+        gameObject.transform.position += move * ZakoSpeed * Time.timeScale;
     }
 }

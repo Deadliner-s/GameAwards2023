@@ -21,31 +21,17 @@ public class LaserCS_sub : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        timer += Time.deltaTime;
+    {        
+        timer += Time.deltaTime;        
 
-        //GetComponent<RectTransform>().position = Laser.GetComponent<LaserHead>().targetScreenPosition;
-
-        if(mainCamera != null)
+        if (mainCamera != null)
             GetComponent<RectTransform>().position = mainCamera.WorldToScreenPoint(Laser.GetComponent<LaserHead>().targetWorldPosition);
 
-        GetComponent<RectTransform>().Rotate(0, 0, rotate);
+        GetComponent<RectTransform>().Rotate(0, 0, rotate * Time.timeScale);
 
         if(timer >= Laser.GetComponent<LaserHead>().wait)
         {
             CS.enabled = false;
-        }
-
-        /*
-        if (timer >= 2.0f)
-        {
-            CS.enabled = true;            
-        }
-
-        if (timer >= 6.0f)
-        {
-            CS.enabled = false;
-        }
-        */
+        }        
     }
 }

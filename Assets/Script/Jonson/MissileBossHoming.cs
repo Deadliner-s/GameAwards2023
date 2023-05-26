@@ -5,6 +5,7 @@ using System;
 
 public class MissileBossHoming : MonoBehaviour
 {
+    private float UpSpeed = 1.02f;
     public float Speed;         //ミサイルの速度
     public float MaxSpeed = 0.1f;
     public float Accel;         //加速度
@@ -62,6 +63,7 @@ public class MissileBossHoming : MonoBehaviour
                 Move = new Vector3(randomX, 1.0f, -1.0f);
                 Move = Move.normalized;
                 LateMove = (Move - LateMove) * off + (LateMove);
+                LateMove *= UpSpeed;
             }
             else if (transform.position.y <= FromPos.y + Height && !Locked)
             {
@@ -70,7 +72,8 @@ public class MissileBossHoming : MonoBehaviour
                     mult = 10.0f;
                 Move = new Vector3(randomX * mult, 1.0f, -1.0f);
                 Move = Move.normalized;
-                LateMove = (Move - LateMove) * off + (LateMove);                
+                LateMove = (Move - LateMove) * off + (LateMove);
+                LateMove *= UpSpeed;
             }
             else
             {
@@ -95,7 +98,7 @@ public class MissileBossHoming : MonoBehaviour
             }
             Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
             transform.rotation = rot;
-            transform.position += LateMove * Speed;
+            transform.position += LateMove * Speed * Time.timeScale;
 
             if(transform.position.z <= -12.0f)  //画面外に(カメラの後ろ)出たとき
             {
