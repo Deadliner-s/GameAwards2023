@@ -167,7 +167,7 @@ public class MissileStraight : MonoBehaviour
             {
                 //newObj.transform.position = NewPosFix;  //UIの位置を更新
                 //OutsideObj.transform.position = NewPosFix;  //UIの位置を更新
-                newObj.GetComponent<Image>().fillAmount +=　UIFillSpeed;
+                newObj.GetComponent<Image>().fillAmount +=　UIFillSpeed * Time.timeScale;
                 if (newObj.GetComponent<Image>().fillAmount >= 0.9f)
                 {
                     LightObj.GetComponent<Image>().fillAmount = 1.0f;
@@ -177,7 +177,7 @@ public class MissileStraight : MonoBehaviour
             }
             Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
             transform.rotation = rot;
-            transform.position += LateMove * Speed;
+            transform.position += LateMove * Speed * Time.timeScale;
         }
         else
         {

@@ -18,6 +18,6 @@ public class ShowZako : MonoBehaviour
     void Update()
     {
         transform.rotation = Quaternion.Euler(-move.y * 90.0f,270.0f, 90.0f);
-        gameObject.transform.position += move * Speed;
+        gameObject.transform.position += move * Speed * Time.timeScale;
     }
 }

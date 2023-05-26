@@ -83,7 +83,7 @@ public class MissileBossCluster : MonoBehaviour
             {
                 transform.position = new Vector3(transform.position.x, ToPos.y, transform.position.z);
             }
-            transform.position += LateMove * Speed;
+            transform.position += LateMove * Speed * Time.timeScale;
         }
         else
         {

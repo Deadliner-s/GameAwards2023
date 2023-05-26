@@ -14,6 +14,6 @@ public class ShowMissile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.position += move * 0.1f;
+        gameObject.transform.position += move * 0.1f * Time.timeScale;
     }
 }
