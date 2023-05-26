@@ -1713,6 +1713,10 @@ PrefabInstance:
       propertyPath: _color.Array.data[4].r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4383171116205339661, guid: 99e6e6f3f3eb01248aa21e7856d891d5, type: 3}
+      propertyPath: targetTfm
+      value: 
+      objectReference: {fileID: 1943355051}
     - target: {fileID: 4468775414776399447, guid: 99e6e6f3f3eb01248aa21e7856d891d5, type: 3}
       propertyPath: m_Color.a
       value: 1
