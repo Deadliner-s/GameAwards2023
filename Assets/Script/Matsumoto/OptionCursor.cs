@@ -179,16 +179,22 @@ public class OptionCursor : MonoBehaviour
 
                 case (4):
                     // タイトルに戻る
-                    Selected = 0;
                     SoundManager.instance.PlaySE("Decision");
                     StartCoroutine("WindowScaleDown");
                     break;
             }
         }
+        if (InputManager.instance.OnBack())
+        {
+            // タイトルに戻る
+            SoundManager.instance.PlaySE("Decision");
+            StartCoroutine("WindowScaleDown");
+        }
 
     }
     private void OnEnable()
     {
+        Selected = 0;
         // ウィンドウ表示
         Window.transform.localScale = new Vector3(
             Window.transform.localScale.x,

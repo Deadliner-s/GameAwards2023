@@ -42,6 +42,7 @@ public class InputManager : MonoBehaviour
         InputActions.UI.Right.performed += context => OnRight();
         InputActions.UI.Left.performed += context => OnLeft();
         InputActions.UI.Select.performed += context => OnSelect();
+        InputActions.UI.Back.performed += context => OnBack();
         InputActions.UI.Start.performed += context => OnStart();
     }
 
@@ -139,6 +140,10 @@ public class InputManager : MonoBehaviour
     public bool OnSelect()
     {
         return InputActions.UI.Select.triggered;
+    }
+    public bool OnBack()
+    {
+        return InputActions.UI.Back.triggered;
     }
     public bool OnStart()
     {
