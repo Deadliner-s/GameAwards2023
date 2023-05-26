@@ -661,6 +661,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8875813143279743144, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: bgm.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 16f108691fb8ec04e9680223d63d61dd, type: 3}
+    - target: {fileID: 8875813143279743144, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: bgm.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2239de2c0492a4b4ab80ff5c9525af78, type: 3}
+    - target: {fileID: 8875813143279743144, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: bgm.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1ad1317e3f40c3f4186939e17df51107, type: 3}
+    - target: {fileID: 8875813143279743144, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: bgm.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6d0b849e92ec75d458a42d7f78941e0b, type: 3}
     - target: {fileID: 8875813143279743145, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
       propertyPath: m_RootOrder
       value: 4
