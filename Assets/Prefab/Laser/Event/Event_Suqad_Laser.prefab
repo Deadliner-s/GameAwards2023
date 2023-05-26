@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Boss: 0
-  scaleSpeed: 0.05
-  scaleSpeed2: 0.2
+  scaleSpeed: 0.2
+  scaleSpeed2: 0.5
   wait: 2
 --- !u!1 &6523964449622435763
 GameObject:
