@@ -96,10 +96,15 @@ public class Shot : MonoBehaviour
                     //
                     if (targets.Count != 0)
                     {
-
+                        // MissileObjをタグ検索
+                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
                         // 新しい誘導ミサイルプレハブをインスタンス化する
                         GameObject missileUp = Instantiate(MissilePrefab, PlayerPos, Quaternion.identity);
+                        // ミサイルオブジェクトの子にする
+                        missileUp.transform.parent = missileObj.transform;
                         GameObject missileDown = Instantiate(MissilePrefab, PlayerPos, Quaternion.identity);
+                        // ミサイルオブジェクトの子にする
+                        missileDown.transform.parent = missileObj.transform;
                         // ミサイルのターゲットを設定する
                         missileUp.GetComponent<TrackingMissile_3>().SetTarget(targets[0], 1);
                         missileDown.GetComponent<TrackingMissile_3>().SetTarget(targets[0], -1);
