@@ -117,6 +117,7 @@ public class MenuCursor : MonoBehaviour
                     {
                         // ステージ１へ
                         InputManager.instance.UI_Disable();
+                        ManagerObj.GetComponent<GManager>().ReSetData();
                         //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "Prologue");
                         fade.GetComponent<Fade>().StartCoroutine(
                                 "Color_FadeOut_Title",
