@@ -963,6 +963,17 @@ public partial class @Myproject : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""b863f688-50a8-40df-9b80-0c99badc2168"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""ed1f7040-1701-429f-bf10-fb8b9ea4c2c9"",
                     ""path"": ""<Keyboard>/backspace"",
                     ""interactions"": """",
