@@ -86,7 +86,7 @@ public class CreateLaser : MonoBehaviour
             currentPhase = PhaseManager.instance.GetPhase();
 
             // デバッグ用
-            if (Input.GetKeyDown(KeyCode.C)) // Cキーが押されたら
+            if (DebugCommandooo.instance.debugMissileSet && Input.GetKeyDown(KeyCode.C)) // Cキーが押されたら
             {
                 GameObject obj = Instantiate(prefab, transform.position, transform.rotation); // プレハブオブジェクトを生成する
                 // MissileObjをタグ検索
