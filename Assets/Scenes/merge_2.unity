@@ -534,7 +534,7 @@ MonoBehaviour:
   HomingSpeed: 0.01
   HomingAccel: 0.002
   HomingMax: 0.15
-  HomingHeight: 4
+  HomingHeight: 1.4
   ContenaMissile: {fileID: 4741478458244633611, guid: a166eeb9b4e2c494f912cf907f7a4985, type: 3}
   ContenaSpeed: 0.01
   ContenaAccel: 0.0015
