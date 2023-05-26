@@ -33,7 +33,7 @@ public class OptionCursor : MonoBehaviour
     private const int MAX_OPTION = 5;   // オプションの数
     private int Selected = 0;           // 選択中のオプション
 
-    private float Max_Height = 14.30278f;
+    private float Max_Height = 12.33629f;
 
     void Awake()
     {
