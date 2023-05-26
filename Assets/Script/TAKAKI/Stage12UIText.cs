@@ -84,7 +84,7 @@ public class Stage12UIText : MonoBehaviour
                 {
                     StartCoroutine("WindowScaleUp");
                     SoundManager.instance.PlayVOICE("4-2");
-                    DrawNameText("≪ AI ≫", "攻撃兵装へのエネルギーをカット。 メインエンジンに\nエネルギーを転換。回避行動に専念して下さい。");
+                    DrawNameText("≪ AI ≫", "攻撃兵装へのエネルギーをカット。 メインエンジンにエネルギーを転換。回避行動に専念して下さい。");
                     yield return new WaitForSeconds(3.0f);
                     FlgA = false;
                 }
