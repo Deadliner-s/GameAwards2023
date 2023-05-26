@@ -98,7 +98,6 @@ public class EffectManager : MonoBehaviour
         {
             if (currentPhase == PhaseManager.Phase.Speed_Phase)
             {
-                Debug.Log("ブラーをかけています");
                 // ブラーをだんだんとかけていく処理
                 gBlur.SamplingDistance.value += CountPoint;
                 gFlame++;
