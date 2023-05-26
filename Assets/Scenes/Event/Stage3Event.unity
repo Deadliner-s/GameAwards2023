@@ -1324,7 +1324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 6778060778336100350, guid: b213c1bbd85ef5b46a4fa28515264172, type: 3}
-  time: 17.5
+  time: 19.5
   Laser_time: 0
   TargetPos: {x: 0, y: 0, z: 0}
 --- !u!4 &1503609566
@@ -1442,7 +1442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 4498043492243987185, guid: 46be480e6bcf2cb4187c25f84ca659d0, type: 3}
-  time: 15.5
+  time: 17.5
   Laser_time: 3
   TargetPos: {x: 0, y: 0.5, z: 5}
 --- !u!4 &1677930028
@@ -2030,7 +2030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 2252305583018203621, guid: 95ead1f9749f5c54fa49ba6d67f16305, type: 3}
-  time: 20.5
+  time: 22.5
   Laser_time: 0
   TargetPos: {x: 0, y: 0, z: 0}
 --- !u!4 &2000692747
