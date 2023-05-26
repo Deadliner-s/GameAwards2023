@@ -992,7 +992,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3324069252480740235, guid: 09073995e9a92364892eca996227f6d6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.19
       objectReference: {fileID: 0}
     - target: {fileID: 3324069252480740235, guid: 09073995e9a92364892eca996227f6d6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2194,7 +2194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ToChange: {fileID: 1951943440}
-  Delay: 17
+  Delay: 20
 --- !u!114 &2026402967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2208,7 +2208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ToChange: {fileID: 2104687373}
-  Delay: 17
+  Delay: 20
 --- !u!95 &2026402968
 Animator:
   serializedVersion: 5
