@@ -78,7 +78,7 @@ public class Stage2TextWriter : MonoBehaviour
 
         SoundManager.instance.PlayVOICE("1-11");
         uitext.DrawNameText("≪ 司令官 ≫", "衛星軌道砲、撃て！");
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(5.0f);
 
         SoundManager.instance.PlayVOICE("1-12");
         uitext.DrawNameText("≪ AI ≫", "目標への着弾を確認。目標を覆う\nバリアフィールドいまだ健在です。");
