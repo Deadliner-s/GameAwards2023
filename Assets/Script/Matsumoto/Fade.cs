@@ -47,6 +47,10 @@ public class Fade : MonoBehaviour
             }
         }
 
+        if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_RESULT_FAILED)
+        {
+            StartCoroutine("Color_FadeIn");
+        }
     }
 
     public IEnumerator Color_FadeIn()
