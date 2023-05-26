@@ -180,7 +180,7 @@ public class ReticleMove : MonoBehaviour
         if (0.0f <= viewX && viewX <= 1.0f && 0.0f <= viewY && viewY <= 1.0f)
         {
             // ˆÚ“®
-            transform.position = nextPosition;
+            transform.position = nextPosition * Time.timeScale;
 
             pos = nextPosition;
         }

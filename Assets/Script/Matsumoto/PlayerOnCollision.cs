@@ -15,7 +15,10 @@ public class PlayerOnCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (playerManager == null)
+        {
+            playerManager = GameObject.Find("PlayerManager");
+        }
     }
 
     void OnCollisionEnter(Collision collision)

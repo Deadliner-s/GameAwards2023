@@ -97,6 +97,16 @@ public class PlayerHp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerManager == null)
+        {
+            playerManager = GameObject.Find("PlayerManager");
+        }
+        if (hs == null)
+        {
+            hs = playerManager.GetComponent<HexShield>();
+        }
+
+
         if (player == null)
         {
             player = GameObject.Find("Player");
@@ -120,7 +130,7 @@ public class PlayerHp : MonoBehaviour
             if (Decreaseflame < flame)
             {
                 if (HpGauge.fillAmount <= DamageGauge.fillAmount)
-                    DamageGauge.fillAmount -= 0.005f;
+                    DamageGauge.fillAmount -= 0.005f * Time.timeScale;
                 else
                 {
                     DifferenceFlag = false;
@@ -144,8 +154,8 @@ public class PlayerHp : MonoBehaviour
         // Hpの回復処理
         if (HealFlag)
         {
-            PlayerHP += HealAmount;
-            HpGauge.fillAmount = PlayerHP / PlayerMaxHp;
+            PlayerHP += HealAmount * Time.timeScale;
+            HpGauge.fillAmount = PlayerHP / PlayerMaxHp; ;
 
             //if (hs == null)
             //{
@@ -230,7 +240,7 @@ public class PlayerHp : MonoBehaviour
         
         // "Enemy"タグがついているオブジェクトにある"PlayerDamage"変数を受けとる
         damage = collision.gameObject.GetComponent<Damage>().PlayerDamage;
-        PlayerHP -= damage;
+        PlayerHP -= damage * Time.timeScale;
         HpGauge.fillAmount -= damage / PlayerMaxHp;
 
         DifferenceFlag = true;
