@@ -61,6 +61,14 @@ public class PauseGame_beta : MonoBehaviour
             Time.timeScale = 1.0f;
             SoundManager.instance.PlaySE("Decision");
         }
+        else if (InputManager.instance.OnStart() && pauseFlg == true)
+        {
+            // ポーズ終了
+            PauseEndBack();
+            // タイムスケールを1にする
+            Time.timeScale = 1.0f;
+            SoundManager.instance.PlaySE("Decision");
+        }
 
         // カーソル移動
         if (InputManager.instance.OnUp())
