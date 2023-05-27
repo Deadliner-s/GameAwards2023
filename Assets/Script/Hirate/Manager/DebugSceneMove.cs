@@ -63,6 +63,8 @@ public class DebugSceneMove : MonoBehaviour
                     // シーンの開始
                     gameObject.GetComponent<SceneMoveManager>().SceneStartUnload();
                     break;
+                default:
+                    break;
             }
         }
 

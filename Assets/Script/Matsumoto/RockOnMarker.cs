@@ -150,6 +150,11 @@ public class RockOnMarker : MonoBehaviour
             }
         }
 
+        // プレイヤーが完全に撃墜された時消す
+        if (playerManager.GetComponent<PlayerHp>().BreakFlag)
+        {
+            Destroy(target);
+        }
     }
 
     // ロックオンされたオブジェクトが消滅した場合マークも消す
