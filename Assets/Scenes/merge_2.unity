@@ -2010,7 +2010,7 @@ RectTransform:
   m_GameObject: {fileID: 839853718}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 13, y: 8, z: 13}
+  m_LocalScale: {x: 13, y: 0, z: 13}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1162401376}
@@ -4412,6 +4412,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseWindow: {fileID: 839853718}
+  animationTime: 0.1
+  targetScaleY: 8
 --- !u!1001 &1906029977
 PrefabInstance:
   m_ObjectHideFlags: 0
