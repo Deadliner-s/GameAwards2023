@@ -62,6 +62,7 @@ public class PauseGame_beta : MonoBehaviour
             SoundManager.instance.PlaySE("Decision");
         }
 
+        // カーソル移動
         if (InputManager.instance.OnUp())
         {
             Selected--;
@@ -125,7 +126,7 @@ public class PauseGame_beta : MonoBehaviour
                     }
                     SoundManager.instance.PlaySE("Decision");
                     PauseEndBack();
-                    // Fade.cppでタイムスケールを1.0f、再生中のサウンドを止める
+                    // Fade.csでタイムスケールを1.0f、再生中のサウンドを止める
                     break;
             }
         }
