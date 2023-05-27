@@ -149,6 +149,7 @@ public class RockOnMarker : MonoBehaviour
                 }
             }
         }
+        
     }
 
     // ロックオンされたオブジェクトが消滅した場合マークも消す
