@@ -402,6 +402,31 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    // çƒê∂íÜÇÃBGMÅASEÅAVOICEÇëSÇƒéÊìæÇµí‚é~Ç∑ÇÈ
+    public void StopAll()
+    {
+        foreach (BGM b in bgm)
+        {
+            if (b.audioSource.isPlaying)
+            {
+                b.audioSource.Stop();
+            }
+        }
+        foreach (SE s in se)
+        {
+            if (s.audioSource.isPlaying)
+            {
+                s.audioSource.Stop();
+            }
+        }
+        foreach (VOICE v in voice)
+        {
+            if (v.audioSource.isPlaying)
+            {
+                v.audioSource.Stop();
+            }
+        }
+    }
     
 
     void BGMPlayer()
