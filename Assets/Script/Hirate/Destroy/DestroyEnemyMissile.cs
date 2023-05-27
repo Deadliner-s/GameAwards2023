@@ -8,6 +8,23 @@ public class DestroyEnemyMissile : MonoBehaviour
     [SerializeField] GameObject obj;
     // 衝突位置
     private Vector3 hitPos;
+    // プレイヤーマネージャー
+    private GameObject playerManager;
+
+    private void Update()
+    {
+        // プレイヤーマネージャーが無い時に代入する
+        if (playerManager == null)
+        {
+            playerManager = GameObject.Find("PlayerManager");
+        }
+
+        // プレイヤーが完全に撃墜されたとき破壊する
+        if (playerManager.GetComponent<PlayerHp>().BreakFlag)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // オブジェクトが当たった時に行われる関数
     private void OnCollisionEnter(Collision collision)

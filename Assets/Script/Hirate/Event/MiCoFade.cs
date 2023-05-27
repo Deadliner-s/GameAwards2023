@@ -65,11 +65,12 @@ public class MiCoFade : MonoBehaviour
 
         if (MiCo.color.a == 1.0f)
         {
+            // 直前のシーンに入れる
+            SceneNowBefore.instance.sceneBeforeCatch = SceneNowBefore.instance.sceneNowCatch;
+
             // 待ち時間
             yield return new WaitForSeconds(3.0f);
 
-            // 直前のシーンに入れる
-            SceneNowBefore.instance.sceneBeforeCatch = SceneNowBefore.instance.sceneNowCatch;
             // シーン遷移
             StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext_time(
                             SceneLoadStartUnload.SCENE_NAME.E_RESULT_COMPLETED,
