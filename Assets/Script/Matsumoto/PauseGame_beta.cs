@@ -72,75 +72,77 @@ public class PauseGame_beta : MonoBehaviour
             SoundManager.instance.PlaySE("Decision");
         }
 
-        // カーソル移動
-        if (InputManager.instance.OnUp())
+        if (pauseFlg == true)
         {
-            Selected--;
-            SoundManager.instance.PlaySE("Select");
-        }
-        if (InputManager.instance.OnDown())
-        {
-            Selected++;
-            SoundManager.instance.PlaySE("Select");
-        }
-        Selected = (Selected + MAX_PAUSEMENU) % MAX_PAUSEMENU;
+            // カーソル移動
+            if (InputManager.instance.OnUp())
+            {
+                Selected--;
+                SoundManager.instance.PlaySE("Select");
+            }
+            if (InputManager.instance.OnDown())
+            {
+                Selected++;
+                SoundManager.instance.PlaySE("Select");
+            }
+            Selected = (Selected + MAX_PAUSEMENU) % MAX_PAUSEMENU;
 
-        // 選択中のメニューの色を変える
-        switch (Selected)
-        {
-            case 0:
-                // BACK
-                text[0].GetComponent<TextMeshProUGUI>().color = Color.white;
-                text[1].GetComponent<TextMeshProUGUI>().color = Color.black;
-                break;
-            case 1:
-                // RETRY
-                text[0].GetComponent<TextMeshProUGUI>().color = Color.black;
-                text[1].GetComponent<TextMeshProUGUI>().color = Color.white;
-                break;
-        }
-
-        if (InputManager.instance.OnSelect())
-        {
+            // 選択中のメニューの色を変える
             switch (Selected)
             {
                 case 0:
                     // BACK
-                    PauseEndBack();
-                    // タイムスケールを1にする
-                    Time.timeScale = 1.0f;
-                    SoundManager.instance.PlaySE("Decision");
+                    text[0].GetComponent<TextMeshProUGUI>().color = Color.white;
+                    text[1].GetComponent<TextMeshProUGUI>().color = Color.black;
                     break;
                 case 1:
-                    // RETURN TITLE
-                    // ステージ1
-                    if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE1)
-                    {
-                        StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
-                            SceneLoadStartUnload.SCENE_NAME.E_STAGE1,
-                            SceneLoadStartUnload.SCENE_NAME.E_TITLE));
-                    }
-                    // ステージ2
-                    else if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE2)
-                    {
-                        StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
-                            SceneLoadStartUnload.SCENE_NAME.E_STAGE2,
-                            SceneLoadStartUnload.SCENE_NAME.E_TITLE));
-                    }
-                    // ステージ3
-                    else if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE3)
-                    {
-                        StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
-                            SceneLoadStartUnload.SCENE_NAME.E_STAGE3,
-                            SceneLoadStartUnload.SCENE_NAME.E_TITLE));
-                    }
-                    SoundManager.instance.PlaySE("Decision");
-                    PauseEndBack();
-                    // Fade.csでタイムスケールを1.0f、再生中のサウンドを止める
+                    // RETRY
+                    text[0].GetComponent<TextMeshProUGUI>().color = Color.black;
+                    text[1].GetComponent<TextMeshProUGUI>().color = Color.white;
                     break;
             }
-        }
 
+            if (InputManager.instance.OnSelect())
+            {
+                switch (Selected)
+                {
+                    case 0:
+                        // BACK
+                        PauseEndBack();
+                        // タイムスケールを1にする
+                        Time.timeScale = 1.0f;
+                        SoundManager.instance.PlaySE("Decision");
+                        break;
+                    case 1:
+                        // RETURN TITLE
+                        // ステージ1
+                        if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE1)
+                        {
+                            StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
+                                SceneLoadStartUnload.SCENE_NAME.E_STAGE1,
+                                SceneLoadStartUnload.SCENE_NAME.E_TITLE));
+                        }
+                        // ステージ2
+                        else if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE2)
+                        {
+                            StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
+                                SceneLoadStartUnload.SCENE_NAME.E_STAGE2,
+                                SceneLoadStartUnload.SCENE_NAME.E_TITLE));
+                        }
+                        // ステージ3
+                        else if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE3)
+                        {
+                            StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
+                                SceneLoadStartUnload.SCENE_NAME.E_STAGE3,
+                                SceneLoadStartUnload.SCENE_NAME.E_TITLE));
+                        }
+                        SoundManager.instance.PlaySE("Decision");
+                        PauseEndBack();
+                        // Fade.csでタイムスケールを1.0f、再生中のサウンドを止める
+                        break;
+                }
+            }
+        }
         // アニメーション中の処理
         if (isAnimating)
         {
