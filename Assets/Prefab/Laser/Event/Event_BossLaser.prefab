@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 3386120865350348575}
   - component: {fileID: 6462970481374328584}
   - component: {fileID: 6470921673383972555}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4860,7 +4860,7 @@ GameObject:
   - component: {fileID: 4925917262101752933}
   - component: {fileID: 6594566754880327728}
   - component: {fileID: 1025092275903473496}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9685,7 +9685,7 @@ GameObject:
   - component: {fileID: 8262493393980533265}
   - component: {fileID: 4351287400048606925}
   - component: {fileID: 3720752534249576688}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14497,7 +14497,7 @@ GameObject:
   - component: {fileID: 2766080714147267835}
   - component: {fileID: 6733851725699128565}
   - component: {fileID: 3355546922522700880}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19309,7 +19309,7 @@ GameObject:
   - component: {fileID: 6568381470627589033}
   - component: {fileID: 1839251067670700598}
   - component: {fileID: 766743364308035929}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24157,4 +24157,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Boss: 1
   scaleSpeed: 0.01
+  scaleSpeed2: 0.01
   wait: 8
