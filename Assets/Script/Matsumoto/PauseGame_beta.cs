@@ -26,6 +26,7 @@ public class PauseGame_beta : MonoBehaviour
     void Start()
     {
         pauseFlg = false;
+        Selected = 0;
 
         // ポーズ画面のオブジェクトを取得
         pauseMenu = pauseWindow.transform.Find("PauseMenu").gameObject;
@@ -51,6 +52,7 @@ public class PauseGame_beta : MonoBehaviour
             {
                 // ポーズ開始
                 PauseStart();
+                Selected = 0;
             }
         }
         else if (InputManager.instance.OnBack() && pauseFlg == true)
