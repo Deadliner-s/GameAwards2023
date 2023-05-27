@@ -23,7 +23,7 @@ public class Laser_Fade : MonoBehaviour
         else
         {
             EV_Laser = GameObject.Find("Laser_Squad");
-            transform.localScale = new Vector3(0.1f, 3.5f, 3.5f);
+            transform.localScale = new Vector3(0.1f, 0.1f, 3.5f);
         }
     }
 
@@ -36,7 +36,7 @@ public class Laser_Fade : MonoBehaviour
        {
            if(transform.localScale.x <= 3.5f && timer >= wait && !flg)
             {
-                transform.localScale += new Vector3(scaleSpeed2, 0, 0);
+                transform.localScale += new Vector3(scaleSpeed2, scaleSpeed2, 0);
 
                 if(transform.localScale.x >= 3.5f)
                 {

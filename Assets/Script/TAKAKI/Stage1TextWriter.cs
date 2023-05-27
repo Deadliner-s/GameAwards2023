@@ -53,7 +53,7 @@ public class Stage1TextWriter : MonoBehaviour
         yield return new WaitForSeconds(7.0f);
 
         SoundManager.instance.PlayVOICE("0-5");
-        uitext.DrawNameText("≪ 司令官 ≫", "唯一、それを可能にするのが君の搭乗している「ブルーアサルト」である。");
+        uitext.DrawNameText("≪ 司令官 ≫", "唯一、それを可能にするのが君の搭乗している\n「ブルーアサルト」である。");
         yield return new WaitForSeconds(6.0f);
 
         SoundManager.instance.PlayVOICE("0-6");
