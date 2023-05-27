@@ -305,7 +305,6 @@ public class SoundManager : MonoBehaviour
         s.audioSource.volume = SE_volume;
         s.audioSource.Play();
     }
-
     // ボイスの再生
     public void PlayVOICE(string name)
     {
@@ -335,6 +334,76 @@ public class SoundManager : MonoBehaviour
         // DoFadeOut(s);
     }
 
+
+    // 再生中のBGMを全て取得し一時停止する
+    public void PauseBGM()
+    {
+        foreach (BGM b in bgm)
+        {
+            if (b.audioSource.isPlaying)
+            {
+                b.audioSource.Pause();
+            }
+        }
+    }
+    // 一時停止中のBGMを全て取得し再生する
+    public void UnPauseBGM()
+    {
+        foreach (BGM b in bgm)
+        {
+            if (b.audioSource.isPlaying == false)
+            {
+                b.audioSource.UnPause();
+            }
+        }
+    }
+    // 再生中のSEを全て取得し一時停止する
+    public void PauseSE()
+    {
+        foreach (SE s in se)
+        {
+            if (s.audioSource.isPlaying)
+            {
+                s.audioSource.Pause();
+            }
+        }
+    }
+    // 一時停止中のSEを全て取得し再生する
+    public void UnPauseSE()
+    {
+        foreach (SE s in se)
+        {
+            if (s.audioSource.isPlaying == false)
+            {
+                s.audioSource.UnPause();
+            }
+        }
+    }
+    // 再生中のVOICEを全て取得し一時停止する
+    public void PauseVOICE()
+    {
+        foreach (VOICE v in voice)
+        {
+            if (v.audioSource.isPlaying)
+            {
+                v.audioSource.Pause();
+            }
+        }
+    }
+    // 一時停止中のVOICEを全て取得し再生する
+    public void UnPauseVOICE()
+    {
+        foreach (VOICE v in voice)
+        {
+            if (v.audioSource.isPlaying == false)
+            {
+                v.audioSource.UnPause();
+            }
+        }
+    }
+
+    
+
     void BGMPlayer()
     {
         // シーンが切り替わった時に呼ばれる関数を登録
@@ -356,7 +425,7 @@ public class SoundManager : MonoBehaviour
                     PlayBGM("Stage");
                     PlayBGM("BGM");
                 }
-                // Stage2Eventの時にBGMが鳴っていなかった場合(ステージ2でコンティニュー
+                // Stage2Eventの時にBGMが鳴っていなかった場合
                 if (currentScene == SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT)
                 {
                     if (CheckPlayBGM("Stage") == false)
@@ -377,6 +446,44 @@ public class SoundManager : MonoBehaviour
                         PlayBGM("BGM");
                     }
                 }
+
+
+                // コンティニューの時
+                if (currentScene == SceneLoadStartUnload.SCENE_NAME.E_STAGE1)
+                {
+                    if (CheckPlayBGM("Stage") == false)
+                    {
+                        PlayBGM("Stage");
+                    }
+                    if (CheckPlayBGM("BGM") == false)
+                    {
+                        PlayBGM("BGM");
+                    }
+                }
+                if (currentScene == SceneLoadStartUnload.SCENE_NAME.E_STAGE2)
+                {
+                    if (CheckPlayBGM("Stage") == false)
+                    {
+                        PlayBGM("Stage");
+                    }
+                    if (CheckPlayBGM("BGM") == false)
+                    {
+                        PlayBGM("BGM");
+                    }
+                }
+                if (currentScene == SceneLoadStartUnload.SCENE_NAME.E_STAGE3)
+                {
+                    if (CheckPlayBGM("BossStage") == false)
+                    {
+                        PlayBGM("BossStage");
+                    }
+                    if (CheckPlayBGM("BGM") == false)
+                    {
+                        PlayBGM("BGM");
+                    }
+                }
+
+
                 // ゲームクリア
                 if (currentScene == SceneLoadStartUnload.SCENE_NAME.E_EPILOGUE)
                 {

@@ -8,6 +8,7 @@ public class EffectManager : MonoBehaviour
 {
     private PhaseManager.Phase currentPhase;    // PhaseManagerのcurrentPhase
     private PhaseManager.Phase nextPhase;       // PhaseManagerのnextPhase
+    private GameObject phaseManager;
 
     [Tooltip("ブラー")]
     [SerializeField]
@@ -29,8 +30,11 @@ public class EffectManager : MonoBehaviour
     void Start()
     {
         playerManager = GameObject.Find("PlayerManager");
+        phaseManager = GameObject.Find("PhaseManagerObj");
 
-        currentPhase = PhaseManager.instance.GetPhase();
+        if(phaseManager != null)
+            currentPhase = PhaseManager.instance.GetPhase();
+
         nextPhase = currentPhase;
 
         // ブラーの初期化処理
@@ -55,7 +59,8 @@ public class EffectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentPhase = PhaseManager.instance.GetPhase();
+        if (phaseManager != null)
+            currentPhase = PhaseManager.instance.GetPhase();
 
         // フェイズが変わった時の処理 
         if (nextPhase != currentPhase)

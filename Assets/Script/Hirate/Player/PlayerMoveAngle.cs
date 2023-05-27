@@ -49,6 +49,10 @@ public class PlayerMoveAngle : MonoBehaviour
         {
             player = GameObject.Find("Player");
         }
+        if (cameraObj == null)
+        {
+            cameraObj = GameObject.Find("Main Camera");
+        }
 
         // Œ»Ý‚Ì’l‚ð‘ã“ü
         // ‰ñ“]
@@ -68,9 +72,13 @@ public class PlayerMoveAngle : MonoBehaviour
         }
 
         // ƒJƒƒ‰‚É‘Î‚µ‚Ä‚¸‚Á‚Æ‰E‚ðŒü‚«‘±‚¯‚é
-        Transform cameraTransform = cameraObj.transform;
-        Vector3 cameraAngle = cameraTransform.eulerAngles;
-        angle.y = cameraAngle.y + 90.0f;
+        if (cameraObj != null)
+        {
+            Transform cameraTransform = cameraObj.transform;
+            Vector3 cameraAngle = cameraTransform.eulerAngles;
+            angle.y = cameraAngle.y + 90.0f;
+        }
+
 
         // …•½‚É‚·‚é
         Horizon();
@@ -98,12 +106,12 @@ public class PlayerMoveAngle : MonoBehaviour
     {
         // ‰º
         if (angle.x >= 0) {
-            angle.x = angle.x - horizon;
+            angle.x = angle.x - horizon * Time.timeScale;
             if (angle.x <= 0) { angle.x = 0; }
         }
         // ã
         if (angle.x < 0) {
-            angle.x = angle.x + horizon;
+            angle.x = angle.x + horizon * Time.timeScale;
             if (angle.x >= 0) { angle.x = 0; }
         }
     }

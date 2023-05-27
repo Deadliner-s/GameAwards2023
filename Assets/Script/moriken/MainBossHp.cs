@@ -92,7 +92,7 @@ public class MainBossHp : MonoBehaviour
             if (Decreaseflame < flame)
             {
                 if (HpGauge.fillAmount <= damageGauge.fillAmount)
-                    damageGauge.fillAmount -= 0.0005f;
+                    damageGauge.fillAmount -= 0.0005f * Time.timeScale;
                 else
                 {
                     DifferenceFlag = false;
@@ -108,7 +108,7 @@ public class MainBossHp : MonoBehaviour
     {
         // "Enemy"タグがついているオブジェクトにある"PlayerDamage"変数を受けとる
         damage = collision.gameObject.GetComponent<Damage>().EnemyDamage;
-        BossHP -= damage;
+        BossHP -= damage * Time.timeScale;
         HpGauge.fillAmount -= damage / BossMaxHP;
 
         // 当たった時にフラグをTrueにする
@@ -142,7 +142,7 @@ public class MainBossHp : MonoBehaviour
         //Destroy(InstantiateEffect, 10.0f);
 
         // hp更新
-        BossHP -= HardDamage;
+        BossHP -= HardDamage * Time.timeScale;
         HpGauge.fillAmount -= HardDamage / BossMaxHP;
 
         SoundManager.instance.PlaySE("WeakPoint");
