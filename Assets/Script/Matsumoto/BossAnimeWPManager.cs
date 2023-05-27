@@ -3,6 +3,7 @@ using UnityEngine;
 public class BossAnimeWPManager : MonoBehaviour
 {
     private GameObject boss;                                        // ボスのオブジェクト
+    private GameObject playerManager;                               // プレイヤーマネージャー
 
     private GameObject[] BossWing = new GameObject[4];              // ボスの羽の弱点
     private Animator[] BossWing_Anime = new Animator[4];            // ボスの羽のアニメーション
@@ -25,6 +26,7 @@ public class BossAnimeWPManager : MonoBehaviour
     void Start()
     {
         boss = GameObject.Find("Boss");
+        playerManager = GameObject.Find("PlayerManager");
 
         // ボスの羽のオブジェクトの取得
         BossWing[0] = boss.transform.Find("wing1").gameObject;
@@ -166,6 +168,22 @@ public class BossAnimeWPManager : MonoBehaviour
                     WP_Bottom_Anime[i].SetBool("isOpen", false);
                     WP_Bottom_Anime[i].SetBool("isClose", true);
                     WP_Bottom_Anime[i].SetBool("isMove", true);
+                }
+            }
+        }
+
+        // プレイヤーのHPが0になった時、ボスの弱点のコライダーを削除
+        if (playerManager.GetComponent<PlayerHp>().BreakFlag == true)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (WP_Top_Collision[i] != null)
+                {
+                    Destroy(WP_Top_Collision[i]);
+                }
+                if (WP_Bottom_Collision[i] != null)
+                {
+                    Destroy(WP_Bottom_Collision[i]);
                 }
             }
         }
