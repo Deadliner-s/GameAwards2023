@@ -1,35 +1,40 @@
 using TMPro;
-using UnityEditor;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class PauseGame_beta : MonoBehaviour
 {
-    private bool pauseFlg = false;         // ポーズ中か
+    private bool pauseFlg = false;                                              // ポーズ中か
 
-    private const int MAX_PAUSEMENU = 2;   // ポーズメニューの数
-    private int Selected = 0;              // 選択中のポーズメニュー
-
+    private const int MAX_PAUSEMENU = 2;                                        // ポーズメニューの数
+    private int Selected = 0;                                                   // 選択中のポーズメニュー
 
     [SerializeField]
-    private GameObject pauseWindow;         // ポーズ画面のオブジェクト
-    private GameObject pauseMenu;           // ポーズメニューのオブジェクト
-    private GameObject[] text = new GameObject[MAX_PAUSEMENU];                // テキストのオブジェクト
+    private GameObject pauseWindow;                                             // ポーズ画面のオブジェクト
+    private GameObject pauseMenu;                                               // ポーズメニューのオブジェクト
+    private GameObject[] text = new GameObject[MAX_PAUSEMENU];                  // テキストのオブジェクト
 
-    private GameObject fade;                // フェードのオブジェクト
+    private GameObject fade;                                                    // フェードのオブジェクト
+
+    private bool isAnimating = false;                                           // アニメーション中か
+    public float animationTime = 0.1f;                                          // アニメーションにかける時間
+    public float targetScaleY = 8.0f;
+    private float scaleY = 8.0f;                                                // 目標のスケール値
+    private float initialScaleY;                                                // 初期のスケール値
+    private float animationStartTime;                                           // アニメーション開始時間
+
     // Start is called before the first frame update
     void Start()
     {
         pauseFlg = false;
 
+        // ポーズ画面のオブジェクトを取得
         pauseMenu = pauseWindow.transform.Find("PauseMenu").gameObject;
+        // ポーズメニューのテキストを取得
         int cnt = pauseMenu.transform.childCount;
         for (int i = 0; i < cnt; i++)
         {
             text[i] = pauseMenu.transform.GetChild(i).gameObject;
         }
-
-
     }
 
     // Update is called once per frame
@@ -40,19 +45,24 @@ public class PauseGame_beta : MonoBehaviour
             fade = GameObject.Find("Fade");
         }
 
-        if (InputManager.instance.OnPause() && pauseFlg == false)
+        if (Time.timeScale == 1.0f)
         {
-            PauseStart();
+            if (InputManager.instance.OnPause() && pauseFlg == false)
+            {
+                // ポーズ開始
+                PauseStart();
+            }
         }
         else if (InputManager.instance.OnBack() && pauseFlg == true)
         {
+            // ポーズ終了
             PauseEndBack();
+            // タイムスケールを1にする
+            Time.timeScale = 1.0f;
+            SoundManager.instance.PlaySE("Decision");
         }
 
-
-
-        Selected = (Selected + MAX_PAUSEMENU) % MAX_PAUSEMENU;
-
+        // カーソル移動
         if (InputManager.instance.OnUp())
         {
             Selected--;
@@ -63,7 +73,9 @@ public class PauseGame_beta : MonoBehaviour
             Selected++;
             SoundManager.instance.PlaySE("Select");
         }
+        Selected = (Selected + MAX_PAUSEMENU) % MAX_PAUSEMENU;
 
+        // 選択中のメニューの色を変える
         switch (Selected)
         {
             case 0:
@@ -85,6 +97,9 @@ public class PauseGame_beta : MonoBehaviour
                 case 0:
                     // BACK
                     PauseEndBack();
+                    // タイムスケールを1にする
+                    Time.timeScale = 1.0f;
+                    SoundManager.instance.PlaySE("Decision");
                     break;
                 case 1:
                     // RETURN TITLE
@@ -109,43 +124,82 @@ public class PauseGame_beta : MonoBehaviour
                             SceneLoadStartUnload.SCENE_NAME.E_STAGE3,
                             SceneLoadStartUnload.SCENE_NAME.E_TITLE));
                     }
+                    SoundManager.instance.PlaySE("Decision");
                     PauseEndBack();
+                    // Fade.csでタイムスケールを1.0f、再生中のサウンドを止める
                     break;
             }
         }
-        
+
+        // アニメーション中の処理
+        if (isAnimating)
+        {
+            float elapsedTime = Time.unscaledTime - animationStartTime;
+            float t = Mathf.Clamp01(elapsedTime / animationTime);
+
+            // スケール変更
+            float scale = Mathf.Lerp(initialScaleY, scaleY, t);
+            pauseWindow.transform.localScale = new Vector3(pauseWindow.transform.localScale.x, scale, pauseMenu.transform.localScale.z);
+
+            // アニメーション終了時の処理
+            if (t >= 1.0f)
+            {
+                isAnimating = false;
+
+                // ウィンドウが開き終わってから入力を受け付ける
+                if (scaleY == 8.0f && pauseFlg == true)
+                {
+                    InputManager.instance.UI_Enable();
+                }
+                // ウィンドウが閉じ終わってから入力を受け付ける
+                if (scaleY == 0.0f && pauseFlg == false)
+                {
+                    pauseWindow.SetActive(false);
+                    InputManager.instance.Player_Enable();
+                }
+            }
+        }
     }
 
     // ポーズの開始処理
     private void PauseStart()
     {
+        pauseFlg = true;
+        pauseWindow.SetActive(true);
+
+        // サウンドの一時停止
         SoundManager.instance.PauseBGM();
         SoundManager.instance.PauseSE();
         SoundManager.instance.PauseVOICE();
 
         InputManager.instance.Player_Disable();
-        InputManager.instance.UI_Enable();
 
+        // タイムスケールを0にする
         Time.timeScale = 0.0f;
-        pauseFlg = true;
 
-        pauseWindow.SetActive(true);
+        // アニメーション開始
+        isAnimating = true;
+        animationStartTime = Time.unscaledTime;
+        initialScaleY = pauseWindow.transform.localScale.y;
+        scaleY = targetScaleY;
     }
 
     // ポーズの終了処理
     private void PauseEndBack()
     {
+        pauseFlg = false;
+
+        // サウンドの再開
         SoundManager.instance.UnPauseBGM();
         SoundManager.instance.UnPauseSE();
         SoundManager.instance.UnPauseVOICE();
 
         InputManager.instance.UI_Disable();
-        InputManager.instance.Player_Enable();
 
-        Time.timeScale = 1.0f;
-        pauseFlg = false;
-
-        pauseWindow.SetActive(false);
+        // アニメーション開始
+        isAnimating = true;
+        animationStartTime = Time.unscaledTime;
+        initialScaleY = pauseWindow.transform.localScale.y;
+        scaleY = 0.0f;
     }
-
 }

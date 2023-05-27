@@ -80,7 +80,7 @@ public class Fade : MonoBehaviour
         for (float alpha = 255.0f; alpha >= 0.0f; alpha -= alpha_interval)
         {
             // 待ち時間
-            yield return new WaitForSeconds(wait_time);
+            yield return new WaitForSecondsRealtime(wait_time);
 
             // Alpha値を少しずつ下げる
             Color new_color = fade.color;
@@ -101,7 +101,7 @@ public class Fade : MonoBehaviour
         fade.color = new Color((0.0f / 255.0f), (0.0f / 255.0f), (0.0f / 0.0f), (255.0f / 255.0f));
 
         // 待ち時間
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSecondsRealtime(2.0f);
 
         // フェードインにかかる時間（秒）★変更可
         float fade_time = time;
@@ -119,7 +119,7 @@ public class Fade : MonoBehaviour
         for (float alpha = 255.0f; alpha >= 0.0f; alpha -= alpha_interval)
         {
             // 待ち時間
-            yield return new WaitForSeconds(wait_time);
+            yield return new WaitForSecondsRealtime(wait_time);
 
             // Alpha値を少しずつ下げる
             Color new_color = fade.color;
@@ -155,7 +155,7 @@ public class Fade : MonoBehaviour
         for (float alpha = 0.0f; alpha < 255.0f; alpha += alpha_interval)
         {
             // 待ち時間
-            yield return new WaitForSeconds(wait_time);
+            yield return new WaitForSecondsRealtime(wait_time);
 
             // Alpha値を少しずつ上げる
             Color new_color = fade.color;
@@ -206,7 +206,7 @@ public class Fade : MonoBehaviour
         for (float alpha = 0.0f; alpha < 255.0f; alpha += alpha_interval)
         {
             // 待ち時間
-            yield return new WaitForSeconds(wait_time);
+            yield return new WaitForSecondsRealtime(wait_time);
 
             // Alpha値を少しずつ上げる
             Color new_color = fade.color;
@@ -254,7 +254,7 @@ public class Fade : MonoBehaviour
         for (float alpha = 0.0f; alpha < 255.0f; alpha += alpha_interval)
         {
             // 待ち時間
-            yield return new WaitForSeconds(wait_time);
+            yield return new WaitForSecondsRealtime(wait_time);
 
             // Alpha値を少しずつ上げる
             Color new_color = fade.color;
@@ -303,7 +303,7 @@ public class Fade : MonoBehaviour
         for (float alpha = 0.0f; alpha < 255.0f; alpha += alpha_interval)
         {
             // 待ち時間
-            yield return new WaitForSeconds(wait_time);
+            yield return new WaitForSecondsRealtime(wait_time);
 
             // Alpha値を少しずつ上げる
             Color new_color = fade.color;
@@ -316,6 +316,12 @@ public class Fade : MonoBehaviour
 
         if (fade.color.a == 1.0f)
         {
+            // ポーズからタイトルに戻るとき
+            if (Time.timeScale != 1.0f)
+            {
+                SoundManager.instance.StopAll();
+                Time.timeScale = 1.0f;
+            }
             // シーン遷移
             SceneAccessSearch.SceneAccessCatchLoad(scene_next);
             SceneAccessSearch.SceneAccessCatchStart();
@@ -353,7 +359,7 @@ public class Fade : MonoBehaviour
         for (float alpha = 0.0f; alpha < 255.0f; alpha += alpha_interval)
         {
             // 待ち時間
-            yield return new WaitForSeconds(wait_time);
+            yield return new WaitForSecondsRealtime(wait_time);
 
             // Alpha値を少しずつ上げる
             Color new_color = fade.color;
