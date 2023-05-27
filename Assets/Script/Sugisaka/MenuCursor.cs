@@ -153,7 +153,7 @@ public class MenuCursor : MonoBehaviour
                             GManager.instance.GetContinueFlg(true);
                             fade.GetComponent<Fade>().StartCoroutine(
                                 "Color_FadeOut_Title",
-                                SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE);
+                                SceneLoadStartUnload.SCENE_NAME.E_STAGE1);
                             break;
                         case (SceneLoadStartUnload.SCENE_NAME.E_STAGE2):
                             // ステージ2
@@ -164,7 +164,7 @@ public class MenuCursor : MonoBehaviour
                             GManager.instance.GetContinueFlg(true);
                             fade.GetComponent<Fade>().StartCoroutine(
                                 "Color_FadeOut_Title",
-                                SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT);
+                                SceneLoadStartUnload.SCENE_NAME.E_STAGE2);
                             break;
                         case (SceneLoadStartUnload.SCENE_NAME.E_STAGE3):
                             // ステージ3
@@ -175,7 +175,7 @@ public class MenuCursor : MonoBehaviour
                             GManager.instance.GetContinueFlg(true);
                             fade.GetComponent<Fade>().StartCoroutine(
                                 "Color_FadeOut_Title",
-                                SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT);
+                                SceneLoadStartUnload.SCENE_NAME.E_STAGE3);
                             break;
                         case (SceneLoadStartUnload.SCENE_NAME.E_TITLE):
                             break;
