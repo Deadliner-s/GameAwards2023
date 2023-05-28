@@ -51,4 +51,17 @@ public class SceneMoveManager : MonoBehaviour
         // 現在のシーンのアンロード
         SceneAccessSearch.SceneAccessCatchUnload(SceneNow);
     }
+
+    // 同名シーンのロード(リトライ)
+    public void SceneLoadRetry(SceneLoadStartUnload.SCENE_NAME loadretryscene)
+    {
+        // ダミーシーン読み込み
+        SceneAccessSearch.SceneAccessCatchLoad(SceneLoadStartUnload.SCENE_NAME.E_DUMMY);
+        SceneAccessSearch.SceneAccessCatchStart();
+        SceneAccessSearch.SceneAccessCatchUnload(loadretryscene);
+        // シーン遷移
+        SceneAccessSearch.SceneAccessCatchLoad(loadretryscene);
+        SceneAccessSearch.SceneAccessCatchStart();
+        SceneAccessSearch.SceneAccessCatchUnload(SceneLoadStartUnload.SCENE_NAME.E_DUMMY);
+    }
 }

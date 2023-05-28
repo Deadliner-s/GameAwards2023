@@ -19,6 +19,7 @@ public class SceneLoadStartUnload : MonoBehaviour
         E_EPILOGUE,         // エピローグ
         E_RESULT_COMPLETED, // リザルト(俺の勝ち)
         E_RESULT_FAILED,    // リザルト(僕の負け)
+        E_DUMMY,            // ダミー
 
         E_SCENE_MAX         // シーンの最大
     }
@@ -36,6 +37,7 @@ public class SceneLoadStartUnload : MonoBehaviour
         "Epilogue",    // エピローグ
         "GameClear",   // リザルト(俺の勝ち)
         "GameOver",    // リザルト(僕の負け)
+        "Dummy",       // ダミー
 
         "Scene_Max"    // シーンの最大
     };
@@ -47,7 +49,7 @@ public class SceneLoadStartUnload : MonoBehaviour
     private AsyncOperation[] asyncAll = new AsyncOperation[(int)SCENE_NAME.E_SCENE_MAX];
 
     // 読み込み終了時用フラグ
-    //public bool bLoad { get; private set; } = false;
+    public bool bLoad { get; private set; } = false;
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +70,7 @@ public class SceneLoadStartUnload : MonoBehaviour
     {
         // 引数に入力されたシーンをロード
         async = SceneManager.LoadSceneAsync(sSceneName[(int)scene_name], LoadSceneMode.Additive);
+        //async.completed += SceneLoadFinish;
         async.allowSceneActivation = false;
     }
 
@@ -80,8 +83,40 @@ public class SceneLoadStartUnload : MonoBehaviour
             Debug.Log("SceneStart：NULLです");
             return;
         }
+
         // シーンを起動
         async.allowSceneActivation = true;
+    }
+
+    // シーンの起動(ロードと起動同時用)
+    private void SceneStart(AsyncOperation obj)
+    {
+        // シーンのNULLチェック
+        if (async == null)
+        {
+            Debug.Log("SceneStart：NULLです");
+            return;
+        }
+
+        // シーンを起動
+        async.allowSceneActivation = true;
+        //do
+        //{
+        //    // シーンを起動
+        //    async.allowSceneActivation = true;
+        //    // ロード完了フラグを建てる
+        //    bLoad = false;
+        //}
+        //while (!bLoad);
+    }
+
+    // シーンのロードと起動
+    public void SceneLoadStart(SCENE_NAME scene_name)
+    {
+        // 引数に入力されたシーンをロード
+        async = SceneManager.LoadSceneAsync(sSceneName[(int)scene_name], LoadSceneMode.Additive);
+        // ロード完了後に起動
+        async.completed += SceneStart;
     }
 
     // シーンのアンロード
@@ -128,6 +163,13 @@ public class SceneLoadStartUnload : MonoBehaviour
         SceneLoadManager = GameObject.FindWithTag("SceneLoadManager");
         // シーンのアンロード
         SceneLoadManager.GetComponent<SceneLoadStartUnload>().SceneUnload(scene_name);
+    }
+
+    // ロード完了時にフラグを建てる
+    private void SceneLoadFinish(AsyncOperation obj)
+    {
+        // ロード完了フラグを建てる
+        bLoad = true;
     }
 
     // デバッグ用

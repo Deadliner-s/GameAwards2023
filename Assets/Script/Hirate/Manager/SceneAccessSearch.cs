@@ -45,6 +45,23 @@ public class SceneAccessSearch : MonoBehaviour
         }
     }
 
+    // シーンロードマネージャーの取得 と シーンのロードと開始
+    public static void SceneAccessCatchLoadStart(SceneLoadStartUnload.SCENE_NAME scene_name)
+    {
+        // シーン検索
+        Scene scene = SceneManager.GetSceneByName("ManagerScene");
+        // ルート内のオブジェクトを検索
+        foreach (var sceneRootObj in scene.GetRootGameObjects())
+        {
+            SceneLoadStartUnload sceneLoad = sceneRootObj.GetComponent<SceneLoadStartUnload>();
+            if (sceneLoad != null)
+            {
+                sceneLoad.SceneLoadStart(scene_name);
+                break;
+            }
+        }
+    }
+
     // シーンロードマネージャーの取得 と シーンのアンロード
     public static void SceneAccessCatchUnload(SceneLoadStartUnload.SCENE_NAME scene_name)
     {

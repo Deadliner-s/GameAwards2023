@@ -102,7 +102,7 @@ public class PauseGame_beta : MonoBehaviour
                     break;
             }
 
-            if (InputManager.instance.OnSelect())
+            if (InputManager.instance.OnSelect() || Input.GetKeyDown(KeyCode.K))
             {
                 switch (Selected)
                 {
@@ -115,31 +115,47 @@ public class PauseGame_beta : MonoBehaviour
                         break;
                     case 1:
                         // RETURN TITLE
-                        // ステージ1
-                        if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE1)
-                        {
-                            StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
-                                SceneLoadStartUnload.SCENE_NAME.E_STAGE1,
+                        // 直前のシーンをセット
+                        SceneNowBefore.instance.sceneBeforeCatch =
+                            SceneNowBefore.instance.sceneNowCatch;
+                        // シーン遷移
+                        StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
+                                SceneNowBefore.instance.sceneNowCatch,
                                 SceneLoadStartUnload.SCENE_NAME.E_TITLE));
-                        }
-                        // ステージ2
-                        else if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE2)
-                        {
-                            StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
-                                SceneLoadStartUnload.SCENE_NAME.E_STAGE2,
-                                SceneLoadStartUnload.SCENE_NAME.E_TITLE));
-                        }
-                        // ステージ3
-                        else if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE3)
-                        {
-                            StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
-                                SceneLoadStartUnload.SCENE_NAME.E_STAGE3,
-                                SceneLoadStartUnload.SCENE_NAME.E_TITLE));
-                        }
+                        //// ステージ1
+                        //if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE1)
+                        //{
+                        //    StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
+                        //        SceneLoadStartUnload.SCENE_NAME.E_STAGE1,
+                        //        SceneLoadStartUnload.SCENE_NAME.E_TITLE));
+                        //}
+                        //// ステージ2
+                        //else if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE2)
+                        //{
+                        //    StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
+                        //        SceneLoadStartUnload.SCENE_NAME.E_STAGE2,
+                        //        SceneLoadStartUnload.SCENE_NAME.E_TITLE));
+                        //}
+                        //// ステージ3
+                        //else if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE3)
+                        //{
+                        //    StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
+                        //        SceneLoadStartUnload.SCENE_NAME.E_STAGE3,
+                        //        SceneLoadStartUnload.SCENE_NAME.E_TITLE));
+                        //}
                         SoundManager.instance.PlaySE("Decision");
                         PauseEndBack();
                         // Fade.csでタイムスケールを1.0f、再生中のサウンドを止める
                         break;
+                    //case 2:
+                    //    //直前のシーンをセット
+                    //    SceneNowBefore.instance.sceneBeforeCatch =
+                    //      SceneNowBefore.instance.sceneNowCatch;
+                    //    // シーン遷移
+                    //    StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
+                    //          SceneNowBefore.instance.sceneNowCatch,
+                    //          SceneLoadStartUnload.SCENE_NAME.E_DUMMY));
+                    //    break;
                 }
             }
         }
