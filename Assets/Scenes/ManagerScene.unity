@@ -662,21 +662,45 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8875813143279743144, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: se.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b3f0453cd2dc95c4f81b4b85ae8dd938, type: 3}
+    - target: {fileID: 8875813143279743144, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: se.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b3f0453cd2dc95c4f81b4b85ae8dd938, type: 3}
+    - target: {fileID: 8875813143279743144, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: se.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b3f0453cd2dc95c4f81b4b85ae8dd938, type: 3}
+    - target: {fileID: 8875813143279743144, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: se.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b3f0453cd2dc95c4f81b4b85ae8dd938, type: 3}
+    - target: {fileID: 8875813143279743144, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: se.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b3f0453cd2dc95c4f81b4b85ae8dd938, type: 3}
+    - target: {fileID: 8875813143279743144, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
+      propertyPath: bgm.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 521a332b6b3b1ba448a2358894ad3a45, type: 3}
+    - target: {fileID: 8875813143279743144, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
       propertyPath: bgm.Array.data[1].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 16f108691fb8ec04e9680223d63d61dd, type: 3}
+      objectReference: {fileID: 8300000, guid: a0dc424339ccfc24086780159c093dee, type: 3}
     - target: {fileID: 8875813143279743144, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
       propertyPath: bgm.Array.data[2].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 2239de2c0492a4b4ab80ff5c9525af78, type: 3}
+      objectReference: {fileID: 8300000, guid: 92e75465cbf33f842a5710e9b107eb00, type: 3}
     - target: {fileID: 8875813143279743144, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
       propertyPath: bgm.Array.data[3].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 1ad1317e3f40c3f4186939e17df51107, type: 3}
+      objectReference: {fileID: 8300000, guid: bd4fba1327166bd44b5551abae9e5341, type: 3}
     - target: {fileID: 8875813143279743144, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
       propertyPath: bgm.Array.data[4].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 6d0b849e92ec75d458a42d7f78941e0b, type: 3}
+      objectReference: {fileID: 8300000, guid: 4e70d4d1189f2ed45874232fd64697f5, type: 3}
     - target: {fileID: 8875813143279743145, guid: 57658bada90485d4e8bf94235f358bc3, type: 3}
       propertyPath: m_RootOrder
       value: 4
