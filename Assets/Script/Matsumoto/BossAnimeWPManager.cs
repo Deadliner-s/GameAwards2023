@@ -4,6 +4,7 @@ public class BossAnimeWPManager : MonoBehaviour
 {
     private GameObject boss;                                        // ボスのオブジェクト
     private GameObject playerManager;                               // プレイヤーマネージャー
+    private GameObject bossManager;                                 // ボスマネージャー
 
     private GameObject[] BossWing = new GameObject[4];              // ボスの羽の弱点
     private Animator[] BossWing_Anime = new Animator[4];            // ボスの羽のアニメーション
@@ -27,6 +28,7 @@ public class BossAnimeWPManager : MonoBehaviour
     {
         boss = GameObject.Find("Boss");
         playerManager = GameObject.Find("PlayerManager");
+        bossManager = GameObject.Find("BossManager");
 
         // ボスの羽のオブジェクトの取得
         BossWing[0] = boss.transform.Find("wing1").gameObject;
@@ -198,6 +200,24 @@ public class BossAnimeWPManager : MonoBehaviour
             if (WP_Bottom_Collision[i] != null)
             {
                 WP_Bottom_Collision[i].transform.position = WP_Bottom[i].transform.position;
+            }
+        }
+
+        // プレイヤーかボスが撃墜された場合に消す
+        if (playerManager.GetComponent<PlayerHp>().BreakFlag ||
+            bossManager.GetComponent<MainBossHp>().BreakFlag)
+        {
+            // 生成されている場合、ボスの弱点のコライダーを削除
+            for (int i = 0; i < 4; i++)
+            {
+                if (WP_Top_Collision[i] != null)
+                {
+                    Destroy(WP_Top_Collision[i]);
+                }
+                if (WP_Bottom_Collision[i] != null)
+                {
+                    Destroy(WP_Bottom_Collision[i]);
+                }
             }
         }
     }
