@@ -2702,6 +2702,21 @@ MonoBehaviour:
   Window: {fileID: 1929612266}
   Name: {fileID: 1903856304}
   Text: {fileID: 1124990217}
+--- !u!114 &689093586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689093583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a959bea19d8ac4b83b4ca85a135101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseWindow: {fileID: 1044225832}
+  animationTime: 0.1
+  targetScaleY: 8
 --- !u!1 &692561288
 GameObject:
   m_ObjectHideFlags: 0
