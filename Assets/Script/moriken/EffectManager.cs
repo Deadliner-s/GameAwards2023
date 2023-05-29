@@ -15,8 +15,10 @@ public class EffectManager : MonoBehaviour
     private Volume volume;                      // 画面効果を参照する
     private RadialBlurVolume Blur;              // RadialBlurの中身を使用する
     private GaussianBlurVolume gBlur;
-    public float BlurStrength;                  // RadialBlurの強さ
-    public float gBlurStrength;                 // GaussianBlurの強さ
+    [SerializeField]
+    private float BlurStrength;                  // RadialBlurの強さ
+    [SerializeField]
+    private float gBlurStrength;                 // GaussianBlurの強さ
     private float BlurCount;                    // RadialBlurを何回かけたか
     private float gBlurCount;                   // GaussianBlurを何回かけたか
     private float CountPoint = 0.001f;
@@ -25,6 +27,15 @@ public class EffectManager : MonoBehaviour
 
     private GameObject playerManager;           // Playerの外部参照
     private bool ManeverEnd;                    // クイックマニューバが終わった判定
+
+    // イベントシーン時の処理に使う変数
+    SceneLoadStartUnload.SCENE_NAME nowSceneSet;
+    [SerializeField]
+    private int eventBlurStartFlame;
+    [SerializeField]
+    private int eventBlurEndFlame;
+    private int eventFlame;
+    private int eventEndFlame;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +65,8 @@ public class EffectManager : MonoBehaviour
 
         flame = 0;
         gFlame = 0;
+        eventFlame = 0;
+        eventEndFlame = 0;
     }
 
     // Update is called once per frame
@@ -61,6 +74,8 @@ public class EffectManager : MonoBehaviour
     {
         if (phaseManager != null)
             currentPhase = PhaseManager.instance.GetPhase();
+
+        nowSceneSet = SceneNowBefore.instance.sceneNowCatch;
 
         // フェイズが変わった時の処理 
         if (nextPhase != currentPhase)
@@ -134,6 +149,22 @@ public class EffectManager : MonoBehaviour
                 flame = 0;
                 ManeverEnd = true;
             }
+        }
+
+        // プロローグの時
+        if(nowSceneSet == SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE)
+        {
+            eventFlame++;
+
+            if (eventFlame >= eventBlurStartFlame && eventEndFlame < eventBlurEndFlame)
+            {
+                Blur.strength.value = BlurStrength;
+                eventEndFlame++;
+            }
+            else eventFlame++;
+
+            if (eventEndFlame == eventBlurEndFlame)
+                Blur.strength.value = 0.0f;
         }
     }
 }
