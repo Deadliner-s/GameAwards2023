@@ -1,8 +1,7 @@
+using System.Collections;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class OptionCursor : MonoBehaviour
 {
@@ -144,6 +143,19 @@ public class OptionCursor : MonoBehaviour
                 VibrationText[0].GetComponent<TextMeshProUGUI>().color = Color.white;
                 VibrationText[1].GetComponent<TextMeshProUGUI>().color = Color.white;
                 BackText.GetComponent<TextMeshProUGUI>().color = Color.black;
+
+                if (InputManager.instance.OnLeft())
+                {
+                    VibrationToggle.GetComponent<Toggle>().isOn = !VibrationToggle.GetComponent<Toggle>().isOn;
+                    isVibration = VibrationToggle.GetComponent<Toggle>().isOn;
+                    VibrationManager.instance.SetisVibration(isVibration);
+                }
+                else if (InputManager.instance.OnRight())
+                {
+                    VibrationToggle.GetComponent<Toggle>().isOn = !VibrationToggle.GetComponent<Toggle>().isOn;
+                    isVibration = VibrationToggle.GetComponent<Toggle>().isOn;
+                    VibrationManager.instance.SetisVibration(isVibration);
+                }
                 break;
 
             case (4):
