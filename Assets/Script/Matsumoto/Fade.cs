@@ -35,7 +35,7 @@ public class Fade : MonoBehaviour
             StartCoroutine("Color_FadeIn");
         }
         // コンティニューの場合
-        if(GManager.instance.SetContinueFlg() == true)
+        if(GManager.instance.GetContinueFlg() == true)
         {
             if(SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE1)
             {
@@ -49,7 +49,7 @@ public class Fade : MonoBehaviour
             {
                 StartCoroutine("Color_FadeIn");
             }
-            GManager.instance.GetContinueFlg(false);
+            GManager.instance.SetContinueFlg(false);
         }
 
         if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_RESULT_FAILED)
@@ -321,11 +321,15 @@ public class Fade : MonoBehaviour
 
         if (fade.color.a == 1.0f)
         {
-            // ポーズからタイトルに戻るとき
+            // ポーズからシーン遷移する時
             if (Time.timeScale != 1.0f)
             {
+                // 一時停止中のサウンドを停止させる
                 SoundManager.instance.StopAll();
+                // フェードアウトしてから時を再始動させる
                 Time.timeScale = 1.0f;
+                // フェードインから始めるためにコンティニューフラグを立てる
+                GManager.instance.SetContinueFlg(true);
             }
             // シーン遷移
             SceneAccessSearch.SceneAccessCatchLoad(scene_next);
