@@ -149,7 +149,16 @@ public class RockOnMarker : MonoBehaviour
                 }
             }
         }
-        
+
+        // プレイヤーかボスが撃墜された場合も消す
+        if (playerManager.GetComponent<PlayerHp>().BreakFlag ||
+            bossManager.GetComponent<MainBossHp>().BreakFlag)
+        {
+            if (target != null)
+            {
+                Destroy(target);
+            }
+        }
     }
 
     // ロックオンされたオブジェクトが消滅した場合マークも消す
