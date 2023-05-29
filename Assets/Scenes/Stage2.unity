@@ -3004,7 +3004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5206886689ee4d74f98a6dc093602cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NormalTime: 1
+  NormalTime: 0.5
   SpeedTime: 29
   AttackTime: 20
   First_NormalTime: 4
