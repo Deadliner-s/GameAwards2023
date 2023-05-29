@@ -117,7 +117,7 @@ public class MenuCursor_Resu : MonoBehaviour
                                 fade.GetComponent<Fade>().Color_FadeOut_NowNext(
                                     SceneLoadStartUnload.SCENE_NAME.E_RESULT_FAILED,
                                     SceneLoadStartUnload.SCENE_NAME.E_STAGE1));
-                            GManager.instance.GetContinueFlg(true);
+                            GManager.instance.SetContinueFlg(true);
                             break;
                         case (SceneLoadStartUnload.SCENE_NAME.E_STAGE2):
                             // ステージ2
@@ -126,7 +126,7 @@ public class MenuCursor_Resu : MonoBehaviour
                                 fade.GetComponent<Fade>().Color_FadeOut_NowNext(
                                     SceneLoadStartUnload.SCENE_NAME.E_RESULT_FAILED,
                                     SceneLoadStartUnload.SCENE_NAME.E_STAGE2));
-                            GManager.instance.GetContinueFlg(true);
+                            GManager.instance.SetContinueFlg(true);
                             break;
                         case (SceneLoadStartUnload.SCENE_NAME.E_STAGE3):
                             // ステージ3
@@ -135,7 +135,7 @@ public class MenuCursor_Resu : MonoBehaviour
                                 fade.GetComponent<Fade>().Color_FadeOut_NowNext(
                                     SceneLoadStartUnload.SCENE_NAME.E_RESULT_FAILED,
                                     SceneLoadStartUnload.SCENE_NAME.E_STAGE3));
-                            GManager.instance.GetContinueFlg(true);
+                            GManager.instance.SetContinueFlg(true);
                             break;
                     }
                     SoundManager.instance.PlaySE("Decision");
