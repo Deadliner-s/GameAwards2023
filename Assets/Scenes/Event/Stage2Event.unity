@@ -972,7 +972,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2215252258188351803, guid: 09073995e9a92364892eca996227f6d6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2316528467925121851, guid: 09073995e9a92364892eca996227f6d6, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1879,7 +1879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2215252258188351803, guid: 71f9f7f752f404b47a74168d6c53854b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3219578087797302650, guid: 71f9f7f752f404b47a74168d6c53854b, type: 3}
       propertyPath: m_Enabled
@@ -2181,7 +2181,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844292972}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.08, y: 3, z: 8.18}
+  m_LocalPosition: {x: 1.08, y: 3.29, z: 11.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2299,7 +2299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1993144302}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.1, y: 3, z: 10}
+  m_LocalPosition: {x: 1.1, y: 3.261, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2747,7 +2747,7 @@ MonoBehaviour:
   activeObject: {fileID: 1951943440}
   inactiveObject: {fileID: 2104687373}
   targetObject: {fileID: 1196019629}
-  switchInterval: 0.07
+  switchInterval: 0.035
   Delay: 17
   LaserTime: 3
 --- !u!1001 &2074189705
