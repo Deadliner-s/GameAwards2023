@@ -64,10 +64,6 @@ public class DamageManager : MonoBehaviour
         // 返り値でダメージを返すための分岐
         switch (damage_name)
         {
-            // ボスへのダメージ
-            case DAMAGE_NAME.E_PLAYER_ATTACK_DAMAGE:
-                work = PlayerAttackDamage;
-                break;
             // クラスターミサイル
             case DAMAGE_NAME.E_BOSS_MISSLE_CLUSTER:
                 work = BossMissleCluster;
@@ -111,6 +107,12 @@ public class DamageManager : MonoBehaviour
         {
             // ダメージ量を0にする
             work = 0.0f;
+        }
+
+        // プレイヤーからのダメージはそのままにする
+        if (damage_name == DAMAGE_NAME.E_PLAYER_ATTACK_DAMAGE)
+        {
+            work = PlayerAttackDamage;
         }
 
         // 返り値でダメージ量を返す
