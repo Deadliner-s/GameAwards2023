@@ -18,7 +18,7 @@ public class PhaseManager : MonoBehaviour
     public float AttackTime = 10.0f;
     public float First_NormalTime = 4.0f;
 
-    private bool fristNormalFlg = false;
+    private bool lastNormalFlg = false;
 
     [Header("現在のフェイズ(初期フェイズ)")]
     public Phase currentPhase = Phase.Normal_Phase;  // 現在のフェイズ
@@ -65,7 +65,7 @@ public class PhaseManager : MonoBehaviour
         // 初回通常フェイズ
         NormaltoNext = Phase.First_Normal;
 
-        fristNormalFlg = false;
+        lastNormalFlg = false;
     }
     // Update is called once per frame
     void Update()
@@ -130,6 +130,12 @@ public class PhaseManager : MonoBehaviour
                         time = 0.0f;
                     }
                 }
+            }
+            // 残り時間がn秒になったら通常フェイズに固定する
+            if (lastNormalFlg == true)
+            {
+                currentPhase = Phase.Normal_Phase;
+                Debug_FixPhaseFlg = true;
             }
         }
         // ステージ3
@@ -226,5 +232,14 @@ public class PhaseManager : MonoBehaviour
     public Phase GetNormaltoNext()
     {
         return NormaltoNext;
+    }
+
+    //public bool GetLastNormalFlg()
+    //{
+    //    return lastNormalFlg;
+    //}
+    public void SetLastNormalFlg(bool flg)
+    {
+        lastNormalFlg = flg;
     }
 }

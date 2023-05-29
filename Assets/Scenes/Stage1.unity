@@ -1046,7 +1046,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeLimit: 160
-  startPlayerInitPos: 156
+  startPlayerInitPos: 153
+  lastNormalTime: 147
 --- !u!1001 &387227512
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5197,7 +5198,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1597170018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52177136e22587747b8df9a715f312de, type: 3}
+  m_Script: {fileID: 11500000, guid: 78a959bea19d8ac4b83b4ca85a135101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pauseWindow: {fileID: 3237807435429813462}

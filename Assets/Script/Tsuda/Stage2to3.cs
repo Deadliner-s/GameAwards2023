@@ -12,6 +12,8 @@ public class Stage2to3 : MonoBehaviour
 
     private GameObject playerManager;
     public float startPlayerInitPos = 153.0f;
+
+    public float lastNormalTime = 147.0f;
     private bool startPlayerInitFlg = false;
 
     //private AsyncOperation async;
@@ -19,6 +21,8 @@ public class Stage2to3 : MonoBehaviour
 
     [Header("ゲームマネージャオブジェクト")]
     GameObject ManagerObj;
+
+    private GameObject phaseManager;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +32,7 @@ public class Stage2to3 : MonoBehaviour
 
         // マネージャオブジェクト取得
         ManagerObj = GameObject.Find("GameManager");
-
+        phaseManager = GameObject.Find("PhaseManagerObj");
         playerManager = GameObject.Find("PlayerManager");
         startPlayerInitFlg = false;
     }
@@ -59,6 +63,10 @@ public class Stage2to3 : MonoBehaviour
         {
             startPlayerInitFlg = true;
             playerManager.GetComponent<MoveToInitialPosition>().enabled = true;
+        }
+        if (Counttime >= lastNormalTime)
+        {
+            phaseManager.GetComponent<PhaseManager>().SetLastNormalFlg(true);
         }
     }
 }
