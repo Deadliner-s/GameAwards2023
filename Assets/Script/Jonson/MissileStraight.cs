@@ -25,7 +25,7 @@ public class MissileStraight : MonoBehaviour
     private Vector3 targetWorldPosition;  // 目標ワールド座標
     Vector3 NewPosFix;
 
-    int time = 0;
+    float time = 0;
     bool instant = false;
 
     GameObject Player; 
@@ -105,7 +105,7 @@ public class MissileStraight : MonoBehaviour
                     OutsideObj.transform.position = NewPosFix;  //UIの位置を更新
                 }
             }
-            time = 0;
+            time = 0.0f;
             Miss = false;
             off = 0.2f;
         }
@@ -120,12 +120,10 @@ public class MissileStraight : MonoBehaviour
     {
         if (Player)//プレイヤーは生きている（存在する）
         {
-            time++;
-
-
-            if (time >= 120)
+            time += Time.timeScale;
+            if (time >= 120.0f)
                 instant = true;
-            if(time >= 135)
+            if(time >= 135.0f)
             {
                 if (newObj)
                     Destroy(newObj);        //UIを消す

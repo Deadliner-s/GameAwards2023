@@ -19,12 +19,12 @@ public class ZakoMove : MonoBehaviour
     public float AccelStart;
 
     Vector3 move;
-    int time;
+    float time;
     // Start is called before the first frame update
     void Start()
     {
         move = new Vector3(moveX, moveY, 0.0f);
-        time = 0;
+        time = 0.0f;
         Destroy(gameObject, DestroyTime);
         RandomHalf = Random.Range(-SpawnMissileRandom, SpawnMissileRandom);
     }
@@ -32,10 +32,10 @@ public class ZakoMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += 1;
+        time += Time.timeScale;
         if(time >= SpawnMissileTime + RandomHalf)
         {
-            time = 0;
+            time = 0.0f;
             GameObject obj = Instantiate(Missile, new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.05f) , Quaternion.Euler(0,0,-90));
             // MissileObjÇÉ^ÉOåüçı
             GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
