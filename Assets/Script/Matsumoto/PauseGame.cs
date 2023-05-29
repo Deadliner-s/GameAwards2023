@@ -12,6 +12,7 @@ public class PauseGame : MonoBehaviour
     private GameObject pauseWindow;                                             // ポーズ画面のオブジェクト
     private GameObject pauseMenu;                                               // ポーズメニューのオブジェクト
     private GameObject[] text = new GameObject[MAX_PAUSEMENU];                  // テキストのオブジェクト
+    private GameObject[] textJP = new GameObject[MAX_PAUSEMENU];                // 概要説明のオブジェクト
 
     private GameObject fade;                                                    // フェードのオブジェクト
 
@@ -28,6 +29,9 @@ public class PauseGame : MonoBehaviour
         pauseFlg = false;
         Selected = 0;
 
+        // フェードのオブジェクトを取得
+        fade = GameObject.Find("Fade");
+
         // ポーズ画面のオブジェクトを取得
         pauseMenu = pauseWindow.transform.Find("PauseMenu").gameObject;
         // ポーズメニューのテキストを取得
@@ -36,6 +40,22 @@ public class PauseGame : MonoBehaviour
         {
             text[i] = pauseMenu.transform.GetChild(i).gameObject;
         }
+
+        // 概要説明のオブジェクトを取得
+        int cntJP = pauseWindow.transform.childCount - 1;
+        for (int i = 0; i < cntJP; i++)
+        {
+            textJP[i] = pauseWindow.transform.GetChild(i).gameObject;
+        }
+
+        text[0].GetComponent<TextMeshProUGUI>().color = Color.white;
+        text[1].GetComponent<TextMeshProUGUI>().color = Color.black;
+        text[2].GetComponent<TextMeshProUGUI>().color = Color.black;
+        text[3].GetComponent<TextMeshProUGUI>().color = Color.black;
+        textJP[0].SetActive(true);
+        textJP[1].SetActive(false);
+        textJP[2].SetActive(false);
+        textJP[3].SetActive(false);
     }
 
     // Update is called once per frame
@@ -53,9 +73,18 @@ public class PauseGame : MonoBehaviour
                 // ポーズ開始
                 PauseStart();
                 Selected = 0;
+                SoundManager.instance.PlaySE("Decision");
             }
         }
         else if (InputManager.instance.OnBack() && pauseFlg == true)
+        {
+            // ポーズ終了
+            PauseEndBack();
+            // タイムスケールを1にする
+            Time.timeScale = 1.0f;
+            SoundManager.instance.PlaySE("Decision");
+        }       
+        else if (InputManager.instance.OnPause() && pauseFlg == true)
         {
             // ポーズ終了
             PauseEndBack();
@@ -88,6 +117,10 @@ public class PauseGame : MonoBehaviour
                     text[1].GetComponent<TextMeshProUGUI>().color = Color.black;
                     text[2].GetComponent<TextMeshProUGUI>().color = Color.black;
                     text[3].GetComponent<TextMeshProUGUI>().color = Color.black;
+                    textJP[0].SetActive(true);
+                    textJP[1].SetActive(false);
+                    textJP[2].SetActive(false);
+                    textJP[3].SetActive(false);
                     break;
 
                 case 1:
@@ -96,6 +129,10 @@ public class PauseGame : MonoBehaviour
                     text[1].GetComponent<TextMeshProUGUI>().color = Color.white;
                     text[2].GetComponent<TextMeshProUGUI>().color = Color.black;
                     text[3].GetComponent<TextMeshProUGUI>().color = Color.black;
+                    textJP[0].SetActive(false);
+                    textJP[1].SetActive(true);
+                    textJP[2].SetActive(false);
+                    textJP[3].SetActive(false);
                     break;
                 case 2:
                     // RESTART
@@ -103,6 +140,10 @@ public class PauseGame : MonoBehaviour
                     text[1].GetComponent<TextMeshProUGUI>().color = Color.black;
                     text[2].GetComponent<TextMeshProUGUI>().color = Color.white;
                     text[3].GetComponent<TextMeshProUGUI>().color = Color.black;
+                    textJP[0].SetActive(false);
+                    textJP[1].SetActive(false);
+                    textJP[2].SetActive(true);
+                    textJP[3].SetActive(false);
                     break;
                     
                 case 3:
@@ -111,10 +152,14 @@ public class PauseGame : MonoBehaviour
                     text[1].GetComponent<TextMeshProUGUI>().color = Color.black;
                     text[2].GetComponent<TextMeshProUGUI>().color = Color.black;
                     text[3].GetComponent<TextMeshProUGUI>().color = Color.white;
+                    textJP[0].SetActive(false);
+                    textJP[1].SetActive(false);
+                    textJP[2].SetActive(false);
+                    textJP[3].SetActive(true);
                     break;
             }
 
-            if (InputManager.instance.OnSelect())
+            if (InputManager.instance.OnSelect() && pauseFlg == true)
             {
                 switch (Selected)
                 {
