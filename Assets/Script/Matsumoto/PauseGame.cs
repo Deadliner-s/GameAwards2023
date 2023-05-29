@@ -114,7 +114,7 @@ public class PauseGame : MonoBehaviour
                     break;
             }
 
-            if (InputManager.instance.OnSelect() || Input.GetKeyDown(KeyCode.K))
+            if (InputManager.instance.OnSelect())
             {
                 switch (Selected)
                 {
