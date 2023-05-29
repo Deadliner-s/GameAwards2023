@@ -32,7 +32,7 @@ public class MissileBossContenaSmall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += 0.01f;
+        time += 0.01f * Time.timeScale;
         float u = 1f - time;
         float uu = u * u;
         float tt = time * time;
@@ -48,8 +48,11 @@ public class MissileBossContenaSmall : MonoBehaviour
         {
             Destroy(gameObject, 1.0f);
         }
-        Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), Move);
-        transform.rotation = rot;
-        transform.position += Move * Time.timeScale;
+        if(Time.timeScale != 0)
+        {
+            Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), Move);
+            transform.rotation = rot;
+            transform.position += Move * Time.timeScale;
+        }
     }
 }

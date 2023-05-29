@@ -56,7 +56,7 @@ public class MissileBossClusterSmall : MonoBehaviour
         {
             if (!Miss && Speed >= MinSpeed+randSpeed)
             {
-                Speed -= Accel;
+                Speed -= Accel * Time.timeScale;
                 ToPos = Player.transform.position;   //プレイヤーの位置
                 Move = new Vector3(1.0f,randY,0.0f);
             }
