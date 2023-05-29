@@ -1045,9 +1045,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4e77b0f21a7694eae994ad1ccec71b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeLimit: 160
-  startPlayerInitPos: 153
-  lastNormalTime: 147
+  TimeLimit: 167
+  startPlayerInitPos: 165
+  lastNormalTime: 150
 --- !u!1001 &387227512
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3407,7 +3407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6063255cbe9fda04c817cbdded23a68d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 157
+  time: 165
   Timertext: {fileID: 964365227}
 --- !u!114 &964365227
 MonoBehaviour:
@@ -6927,7 +6927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5206886689ee4d74f98a6dc093602cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NormalTime: 1
+  NormalTime: 0.5
   SpeedTime: 29
   AttackTime: 20
   First_NormalTime: 4
