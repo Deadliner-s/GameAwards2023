@@ -121,7 +121,7 @@ public sealed class TrackingMissile_3 : MonoBehaviour
                 LateMove = Move;
 
                 // 座標,回転更新
-                transform.position += LateMove;
+                transform.position += LateMove * Time.timeScale;
 
                 // 時間確認
                 if (LTime >= stopCnt)
@@ -152,7 +152,7 @@ public sealed class TrackingMissile_3 : MonoBehaviour
                 LateMove = velocity;
                 // 座標,向き更新
                 transform.rotation = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), velocity);
-                transform.position = position;
+                transform.position = position * Time.timeScale;
 
                 // 高速誘導開始
                 if (time < flgTime) num = 2;
@@ -169,7 +169,7 @@ public sealed class TrackingMissile_3 : MonoBehaviour
                 // 座標,回転更新
                 rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
                 transform.rotation = rot;
-                transform.position += LateMove * MoveSpeed;
+                transform.position += LateMove * MoveSpeed * Time.timeScale;
                 break;
             case (3):
                 // 直線移動
@@ -178,7 +178,7 @@ public sealed class TrackingMissile_3 : MonoBehaviour
                 LateMove = Move;
 
                 // 座標,回転更新
-                transform.position += LateMove * MoveSpeed;
+                transform.position += LateMove * MoveSpeed * Time.timeScale;
                 break;
         }
     }

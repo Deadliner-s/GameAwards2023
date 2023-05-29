@@ -7,10 +7,12 @@ using UnityEngine.SceneManagement;
 public class Stage1to2 : MonoBehaviour
 {
     private float Counttime;//ŠÔ‚ğ‘ª‚é
-    public float TimeLimit;//§ŒÀŠÔ
+    public float TimeLimit = 160.0f;//§ŒÀŠÔ
     private Text TimeText;
 
     public float startPlayerInitPos = 153.0f;
+    public float lastNormalTime = 147.0f;
+
     private bool startPlayerInitFlg = false;
 
     //private AsyncOperation async;
@@ -20,6 +22,7 @@ public class Stage1to2 : MonoBehaviour
     GameObject ManagerObj;
 
     private GameObject playerManager;
+    private GameObject phaseManager;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +34,9 @@ public class Stage1to2 : MonoBehaviour
         ManagerObj = GameObject.Find("GameManager");
 
         playerManager = GameObject.Find("PlayerManager");
+
+        phaseManager = GameObject.Find("PhaseManagerObj");
+
         startPlayerInitFlg = false;
     }
 
@@ -59,6 +65,10 @@ public class Stage1to2 : MonoBehaviour
         {
             startPlayerInitFlg = true;
             playerManager.GetComponent<MoveToInitialPosition>().enabled = true;
+        }
+        if (Counttime >= lastNormalTime)
+        {
+           phaseManager.GetComponent<PhaseManager>().SetLastNormalFlg(true);
         }
     }
 }

@@ -170,7 +170,7 @@ public class ReticleMove : MonoBehaviour
     {
         // 入力
         Vector3 move = InputManager.instance.OnReticleMove();
-        nextPosition = pos + move * speed;
+        nextPosition = pos + move * speed * Time.timeScale;
 
         // 移動後のビューポート座標のxの値を取得
         viewX = Camera.main.ScreenToViewportPoint(nextPosition).x;
@@ -180,7 +180,7 @@ public class ReticleMove : MonoBehaviour
         if (0.0f <= viewX && viewX <= 1.0f && 0.0f <= viewY && viewY <= 1.0f)
         {
             // 移動
-            transform.position = nextPosition * Time.timeScale;
+            transform.position = nextPosition;
 
             pos = nextPosition;
         }
