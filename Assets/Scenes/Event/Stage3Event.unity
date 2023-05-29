@@ -1801,7 +1801,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503609564}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.1, y: 2.5, z: 5}
+  m_LocalPosition: {x: 1.1, y: 3.17, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2511,7 +2511,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000692745}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.95, y: 2.533, z: 3.248}
+  m_LocalPosition: {x: 0.95, y: 3.27, z: 6.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2798,7 +2798,7 @@ MonoBehaviour:
   activeObject: {fileID: 158472899}
   inactiveObject: {fileID: 2098039967}
   targetObject: {fileID: 1405107804}
-  switchInterval: 0.07
+  switchInterval: 0.035
   Delay: 19.5
   LaserTime: 3
 --- !u!1 &2098039967 stripped
