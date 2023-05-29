@@ -163,13 +163,15 @@ public class GManager : MonoBehaviour
         }
     }
 
-    public void GetContinueFlg(bool flg)
-    {
-        ContinueFlg = flg;
-    }
-    public bool SetContinueFlg()
+    // コンティニューやポーズからのシーン遷移で
+    // ステージのフェードインするのために使うフラグ
+    public bool GetContinueFlg()
     {
         return ContinueFlg;
+    }
+    public void SetContinueFlg(bool flg)
+    {
+        ContinueFlg = flg;
     }
 
     void OnApplicationQuit()

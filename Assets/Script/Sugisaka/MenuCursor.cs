@@ -130,7 +130,7 @@ public class MenuCursor : MonoBehaviour
                         CheckMenuFlag = true;
                         this.gameObject.SetActive(false);
                     }
-                    GManager.instance.GetContinueFlg(false);
+                    GManager.instance.SetContinueFlg(false);
                     SoundManager.instance.PlaySE("Decision");
                     break;
                 case (1):
@@ -150,7 +150,7 @@ public class MenuCursor : MonoBehaviour
                             // UIの入力を受け付けない
                             InputManager.instance.UI_Disable();
                             // コンティニューフラグを立てる
-                            GManager.instance.GetContinueFlg(true);
+                            GManager.instance.SetContinueFlg(true);
                             fade.GetComponent<Fade>().StartCoroutine(
                                 "Color_FadeOut_Title",
                                 SceneLoadStartUnload.SCENE_NAME.E_STAGE1);
@@ -161,7 +161,7 @@ public class MenuCursor : MonoBehaviour
                             // UIの入力を受け付けない
                             InputManager.instance.UI_Disable();
                             // コンティニューフラグを立てる
-                            GManager.instance.GetContinueFlg(true);
+                            GManager.instance.SetContinueFlg(true);
                             fade.GetComponent<Fade>().StartCoroutine(
                                 "Color_FadeOut_Title",
                                 SceneLoadStartUnload.SCENE_NAME.E_STAGE2);
@@ -172,7 +172,7 @@ public class MenuCursor : MonoBehaviour
                             // UIの入力を受け付けない
                             InputManager.instance.UI_Disable();
                             // コンティニューフラグを立てる
-                            GManager.instance.GetContinueFlg(true);
+                            GManager.instance.SetContinueFlg(true);
                             fade.GetComponent<Fade>().StartCoroutine(
                                 "Color_FadeOut_Title",
                                 SceneLoadStartUnload.SCENE_NAME.E_STAGE3);

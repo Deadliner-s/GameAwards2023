@@ -1,37 +1,36 @@
+using System.Collections;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class OptionCursor : MonoBehaviour
 {
     //private Myproject InputActions;
     
-    private GameObject VolCon;          // VolumeControllerのオブジェクト
+    private GameObject VolCon;                                  // VolumeControllerのオブジェクト
 
     [SerializeField]
     private GameObject Window;
     [SerializeField]
-    private GameObject BGM_Text;        // BGMのテキスト
+    private GameObject BGM_Text;                                // BGMのテキスト
     [SerializeField]
-    private GameObject SE_Text;         // SEのテキスト
+    private GameObject SE_Text;                                 // SEのテキスト
     [SerializeField]
-    private GameObject VOICE_Text;      // Voiceのテキスト
+    private GameObject VOICE_Text;                              // Voiceのテキスト
     [SerializeField]
-    private GameObject VibrationText;   // Vibrationのテキスト
+    private GameObject[] VibrationText = new GameObject[2];     // Vibrationのテキスト(空白ができるので2つに分ける
     [SerializeField]
-    private GameObject BackText;        // 戻るのテキスト
+    private GameObject BackText;                                // 戻るのテキスト
 
-    private GameObject VibrationToggle; // Vibrationのトグル
+    private GameObject VibrationToggle;                         // Vibrationのトグル
     private bool isVibration;
 
     [SerializeField]
     [Header("メニュー")]
-    private GameObject Menu;            // メニューのオブジェクト
+    private GameObject Menu;                                    // メニューのオブジェクト
 
-    private const int MAX_OPTION = 5;   // オプションの数
-    private int Selected = 0;           // 選択中のオプション
+    private const int MAX_OPTION = 5;                           // オプションの数
+    private int Selected = 0;                                   // 選択中のオプション
 
     private float Max_Height = 12.33629f;
 
@@ -101,7 +100,8 @@ public class OptionCursor : MonoBehaviour
                 BGM_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
                 SE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 VOICE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
-                VibrationText.GetComponent<TextMeshProUGUI>().color = Color.black;
+                VibrationText[0].GetComponent<TextMeshProUGUI>().color = Color.black;
+                VibrationText[1].GetComponent<TextMeshProUGUI>().color = Color.black;
                 BackText.GetComponent<TextMeshProUGUI>().color = Color.black;
                 break;
             case (1):
@@ -113,7 +113,8 @@ public class OptionCursor : MonoBehaviour
                 BGM_Text.GetComponent <TextMeshProUGUI>().color = Color.black;
                 SE_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
                 VOICE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
-                VibrationText.GetComponent<TextMeshProUGUI>().color = Color.black;
+                VibrationText[0].GetComponent<TextMeshProUGUI>().color = Color.black;
+                VibrationText[1].GetComponent<TextMeshProUGUI>().color = Color.black;
                 BackText.GetComponent<TextMeshProUGUI>().color = Color.black;
                 break;
 
@@ -126,7 +127,8 @@ public class OptionCursor : MonoBehaviour
                 BGM_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 SE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 VOICE_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
-                VibrationText.GetComponent<TextMeshProUGUI>().color = Color.black;
+                VibrationText[0].GetComponent<TextMeshProUGUI>().color = Color.black;
+                VibrationText[1].GetComponent<TextMeshProUGUI>().color = Color.black;
                 BackText.GetComponent<TextMeshProUGUI>().color = Color.black;
                 break;
 
@@ -138,8 +140,22 @@ public class OptionCursor : MonoBehaviour
                 BGM_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 SE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 VOICE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
-                VibrationText.GetComponent<TextMeshProUGUI>().color = Color.white;
+                VibrationText[0].GetComponent<TextMeshProUGUI>().color = Color.white;
+                VibrationText[1].GetComponent<TextMeshProUGUI>().color = Color.white;
                 BackText.GetComponent<TextMeshProUGUI>().color = Color.black;
+
+                if (InputManager.instance.OnLeft())
+                {
+                    VibrationToggle.GetComponent<Toggle>().isOn = !VibrationToggle.GetComponent<Toggle>().isOn;
+                    isVibration = VibrationToggle.GetComponent<Toggle>().isOn;
+                    VibrationManager.instance.SetisVibration(isVibration);
+                }
+                else if (InputManager.instance.OnRight())
+                {
+                    VibrationToggle.GetComponent<Toggle>().isOn = !VibrationToggle.GetComponent<Toggle>().isOn;
+                    isVibration = VibrationToggle.GetComponent<Toggle>().isOn;
+                    VibrationManager.instance.SetisVibration(isVibration);
+                }
                 break;
 
             case (4):
@@ -151,7 +167,8 @@ public class OptionCursor : MonoBehaviour
                 BGM_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 SE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
                 VOICE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
-                VibrationText.GetComponent<TextMeshProUGUI>().color = Color.black;
+                VibrationText[0].GetComponent<TextMeshProUGUI>().color = Color.black;
+                VibrationText[1].GetComponent<TextMeshProUGUI>().color = Color.black;
                 BackText.GetComponent<TextMeshProUGUI>().color = Color.white;
                 break;
         }
@@ -221,7 +238,8 @@ public class OptionCursor : MonoBehaviour
         BGM_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
         SE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
         VOICE_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
-        VibrationText.GetComponent<TextMeshProUGUI>().color = Color.black;
+        VibrationText[0].GetComponent<TextMeshProUGUI>().color = Color.black;
+        VibrationText[1].GetComponent<TextMeshProUGUI>().color = Color.black;
         BackText.GetComponent<TextMeshProUGUI>().color = Color.black;
 
         VibrationToggle.SetActive(true);
