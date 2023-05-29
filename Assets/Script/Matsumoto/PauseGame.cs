@@ -73,9 +73,18 @@ public class PauseGame : MonoBehaviour
                 // ポーズ開始
                 PauseStart();
                 Selected = 0;
+                SoundManager.instance.PlaySE("Decision");
             }
         }
         else if (InputManager.instance.OnBack() && pauseFlg == true)
+        {
+            // ポーズ終了
+            PauseEndBack();
+            // タイムスケールを1にする
+            Time.timeScale = 1.0f;
+            SoundManager.instance.PlaySE("Decision");
+        }       
+        else if (InputManager.instance.OnPause() && pauseFlg == true)
         {
             // ポーズ終了
             PauseEndBack();
@@ -150,7 +159,7 @@ public class PauseGame : MonoBehaviour
                     break;
             }
 
-            if (InputManager.instance.OnSelect())
+            if (InputManager.instance.OnSelect() && pauseFlg == true)
             {
                 switch (Selected)
                 {
