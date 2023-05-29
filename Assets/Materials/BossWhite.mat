@@ -84,7 +84,7 @@ Material:
     - _RippleTImeRandomness: 0
     m_Colors:
     - _BaseTextureScroll01: {r: 0.1, g: 0.1, b: 0, a: 0}
-    - _Color01: {r: 1, g: 1, b: 1, a: 1}
+    - _Color01: {r: 1, g: 1, b: 1, a: 0.4627451}
     - _Color02: {r: 0, g: 0, b: 0, a: 0}
     - _DisplacementSmoothstep: {r: 0.4, g: 1, b: 0, a: 0}
     - _FresnelColor: {r: 4.759381, g: 4.759381, b: 4.759381, a: 1}
