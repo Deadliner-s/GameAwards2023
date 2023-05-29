@@ -172,6 +172,8 @@ public class PauseGame : MonoBehaviour
                         break;
                     case 1:
                         // RETRY
+                        // セレクトで選んだものを取得
+                        SceneSelectCatch.instance.selectCatch = Selected;
                         //直前のシーンをセット
                         SceneNowBefore.instance.sceneBeforeCatch =
                           SceneNowBefore.instance.sceneNowCatch;
@@ -184,16 +186,15 @@ public class PauseGame : MonoBehaviour
                         // Fade.csでタイムスケールを1.0f、再生中のサウンドを止める
                         break;
                     case 2:
-                        // RESTART
-                        // 直前のシーンをセット
-                        //SceneNowBefore.instance.sceneBeforeCatch =
-                        //    SceneNowBefore.instance.sceneNowCatch;
-                        //// シーン遷移
-                        //StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
-                        //        SceneNowBefore.instance.sceneNowCatch,
-                        //        SceneLoadStartUnload.SCENE_NAME.E_STAGE1));
-                        //SoundManager.instance.PlaySE("Decision");
-                        //PauseEndBack();
+                        // RESTART(ステージ1に戻る)
+                        // セレクトで選んだものを取得
+                        SceneSelectCatch.instance.selectCatch = Selected;
+                        // シーン遷移
+                        StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
+                                SceneNowBefore.instance.sceneNowCatch,
+                                SceneLoadStartUnload.SCENE_NAME.E_DUMMY));
+                        SoundManager.instance.PlaySE("Decision");
+                        PauseEndBack();
                         // Fade.csでタイムスケールを1.0f、再生中のサウンドを止める
                         break;
 
