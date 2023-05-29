@@ -37,14 +37,19 @@ public class Fade : MonoBehaviour
         // コンティニューの場合
         if(GManager.instance.SetContinueFlg() == true)
         {
-            if(SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT)
+            if(SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE1)
             {
                 StartCoroutine("Color_FadeIn");
             }
-            if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT)
+            if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE2)
             {
                 StartCoroutine("Color_FadeIn");
             }
+            if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE3)
+            {
+                StartCoroutine("Color_FadeIn");
+            }
+            GManager.instance.GetContinueFlg(false);
         }
 
         if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_RESULT_FAILED)

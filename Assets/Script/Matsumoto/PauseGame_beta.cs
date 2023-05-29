@@ -26,6 +26,7 @@ public class PauseGame_beta : MonoBehaviour
     void Start()
     {
         pauseFlg = false;
+        Selected = 0;
 
         // ポーズ画面のオブジェクトを取得
         pauseMenu = pauseWindow.transform.Find("PauseMenu").gameObject;
@@ -51,6 +52,7 @@ public class PauseGame_beta : MonoBehaviour
             {
                 // ポーズ開始
                 PauseStart();
+                Selected = 0;
             }
         }
         else if (InputManager.instance.OnBack() && pauseFlg == true)
@@ -61,76 +63,102 @@ public class PauseGame_beta : MonoBehaviour
             Time.timeScale = 1.0f;
             SoundManager.instance.PlaySE("Decision");
         }
-
-        // カーソル移動
-        if (InputManager.instance.OnUp())
+        else if (InputManager.instance.OnStart() && pauseFlg == true)
         {
-            Selected--;
-            SoundManager.instance.PlaySE("Select");
-        }
-        if (InputManager.instance.OnDown())
-        {
-            Selected++;
-            SoundManager.instance.PlaySE("Select");
-        }
-        Selected = (Selected + MAX_PAUSEMENU) % MAX_PAUSEMENU;
-
-        // 選択中のメニューの色を変える
-        switch (Selected)
-        {
-            case 0:
-                // BACK
-                text[0].GetComponent<TextMeshProUGUI>().color = Color.white;
-                text[1].GetComponent<TextMeshProUGUI>().color = Color.black;
-                break;
-            case 1:
-                // RETRY
-                text[0].GetComponent<TextMeshProUGUI>().color = Color.black;
-                text[1].GetComponent<TextMeshProUGUI>().color = Color.white;
-                break;
+            // ポーズ終了
+            PauseEndBack();
+            // タイムスケールを1にする
+            Time.timeScale = 1.0f;
+            SoundManager.instance.PlaySE("Decision");
         }
 
-        if (InputManager.instance.OnSelect())
+        if (pauseFlg == true)
         {
+            // カーソル移動
+            if (InputManager.instance.OnUp())
+            {
+                Selected--;
+                SoundManager.instance.PlaySE("Select");
+            }
+            if (InputManager.instance.OnDown())
+            {
+                Selected++;
+                SoundManager.instance.PlaySE("Select");
+            }
+            Selected = (Selected + MAX_PAUSEMENU) % MAX_PAUSEMENU;
+
+            // 選択中のメニューの色を変える
             switch (Selected)
             {
                 case 0:
                     // BACK
-                    PauseEndBack();
-                    // タイムスケールを1にする
-                    Time.timeScale = 1.0f;
-                    SoundManager.instance.PlaySE("Decision");
+                    text[0].GetComponent<TextMeshProUGUI>().color = Color.white;
+                    text[1].GetComponent<TextMeshProUGUI>().color = Color.black;
                     break;
                 case 1:
-                    // RETURN TITLE
-                    // ステージ1
-                    if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE1)
-                    {
-                        StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
-                            SceneLoadStartUnload.SCENE_NAME.E_STAGE1,
-                            SceneLoadStartUnload.SCENE_NAME.E_TITLE));
-                    }
-                    // ステージ2
-                    else if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE2)
-                    {
-                        StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
-                            SceneLoadStartUnload.SCENE_NAME.E_STAGE2,
-                            SceneLoadStartUnload.SCENE_NAME.E_TITLE));
-                    }
-                    // ステージ3
-                    else if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE3)
-                    {
-                        StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
-                            SceneLoadStartUnload.SCENE_NAME.E_STAGE3,
-                            SceneLoadStartUnload.SCENE_NAME.E_TITLE));
-                    }
-                    SoundManager.instance.PlaySE("Decision");
-                    PauseEndBack();
-                    // Fade.csでタイムスケールを1.0f、再生中のサウンドを止める
+                    // RETRY
+                    text[0].GetComponent<TextMeshProUGUI>().color = Color.black;
+                    text[1].GetComponent<TextMeshProUGUI>().color = Color.white;
                     break;
             }
-        }
 
+            if (InputManager.instance.OnSelect() || Input.GetKeyDown(KeyCode.K))
+            {
+                switch (Selected)
+                {
+                    case 0:
+                        // BACK
+                        PauseEndBack();
+                        // タイムスケールを1にする
+                        Time.timeScale = 1.0f;
+                        SoundManager.instance.PlaySE("Decision");
+                        break;
+                    case 1:
+                        // RETURN TITLE
+                        // 直前のシーンをセット
+                        SceneNowBefore.instance.sceneBeforeCatch =
+                            SceneNowBefore.instance.sceneNowCatch;
+                        // シーン遷移
+                        StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
+                                SceneNowBefore.instance.sceneNowCatch,
+                                SceneLoadStartUnload.SCENE_NAME.E_TITLE));
+                        //// ステージ1
+                        //if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE1)
+                        //{
+                        //    StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
+                        //        SceneLoadStartUnload.SCENE_NAME.E_STAGE1,
+                        //        SceneLoadStartUnload.SCENE_NAME.E_TITLE));
+                        //}
+                        //// ステージ2
+                        //else if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE2)
+                        //{
+                        //    StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
+                        //        SceneLoadStartUnload.SCENE_NAME.E_STAGE2,
+                        //        SceneLoadStartUnload.SCENE_NAME.E_TITLE));
+                        //}
+                        //// ステージ3
+                        //else if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE3)
+                        //{
+                        //    StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
+                        //        SceneLoadStartUnload.SCENE_NAME.E_STAGE3,
+                        //        SceneLoadStartUnload.SCENE_NAME.E_TITLE));
+                        //}
+                        SoundManager.instance.PlaySE("Decision");
+                        PauseEndBack();
+                        // Fade.csでタイムスケールを1.0f、再生中のサウンドを止める
+                        break;
+                    //case 2:
+                    //    //直前のシーンをセット
+                    //    SceneNowBefore.instance.sceneBeforeCatch =
+                    //      SceneNowBefore.instance.sceneNowCatch;
+                    //    // シーン遷移
+                    //    StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut_NowNext(
+                    //          SceneNowBefore.instance.sceneNowCatch,
+                    //          SceneLoadStartUnload.SCENE_NAME.E_DUMMY));
+                    //    break;
+                }
+            }
+        }
         // アニメーション中の処理
         if (isAnimating)
         {

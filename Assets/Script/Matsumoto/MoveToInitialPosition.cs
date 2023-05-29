@@ -8,7 +8,7 @@ public class MoveToInitialPosition : MonoBehaviour
     public float duration = 2.0f;       // 移動にかける時間
 
     private Vector3 startPosition;      // 移動開始時の位置
-    private Vector3 startRotation;      // 移動開始時の回転
+    private Quaternion startRotation;   // 移動開始時の回転
     private float startTime;            // 時間
 
     private void Start()
@@ -22,7 +22,7 @@ public class MoveToInitialPosition : MonoBehaviour
 
         // 初期位置を設定
         startPosition = player.transform.position;
-        startRotation = player.transform.eulerAngles;
+        startRotation = player.transform.rotation;
 
         // 時間を初期化
         startTime = Time.time;
@@ -40,7 +40,7 @@ public class MoveToInitialPosition : MonoBehaviour
         // 移動
         player.transform.position = Vector3.Lerp(startPosition, initialTransform.position, t);
         // 回転
-        player.transform.eulerAngles = Vector3.Lerp(startRotation, initialTransform.eulerAngles, t);
+        player.transform.rotation = Quaternion.Lerp(startRotation, initialTransform.rotation, t);
 
         // 指定した秒数経過後に初期位置に到達したら処理を終了
         if (t >= 1f)
@@ -50,5 +50,4 @@ public class MoveToInitialPosition : MonoBehaviour
             enabled = false; // スクリプトを無効化して停止
         }
     }
-    
 }
