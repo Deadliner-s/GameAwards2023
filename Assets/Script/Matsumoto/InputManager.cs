@@ -164,6 +164,7 @@ public class InputManager : MonoBehaviour
     public void Player_Disable()
     {
         InputActions.Player.Disable();
+        InputActions.Player.Pause.Enable();
     }
 
     public void UI_Enable()

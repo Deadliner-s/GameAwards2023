@@ -15,9 +15,9 @@ public class Stage2TextWriter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Window.SetActive(false);
-        Name.SetActive(false);
-        Text.SetActive(false);
+        //Window.SetActive(false);
+        //Name.SetActive(false);
+        //Text.SetActive(false);
 
         StartCoroutine("Cotest");
     }
@@ -32,49 +32,49 @@ public class Stage2TextWriter : MonoBehaviour
     // ï∂èÕÇï\é¶Ç≥ÇπÇÈÉRÉãÅ[É`Éì
     IEnumerator Cotest()
     {
-        StartCoroutine("WindowScaleUp");
+        //StartCoroutine("WindowScaleUp");
 
-        yield return new WaitForSeconds(1.0f);
+        //yield return new WaitForSeconds(1.0f);
 
-        SoundManager.instance.PlayVOICE("1-1");
-        uitext.DrawNameText("Å· AI Å‚", "âqêØãOìπñCÅAÉGÉlÉãÉMÅ[è[ìUäÆóπÇ‹Ç≈10ïb");
-        yield return new WaitForSeconds(5.0f);
+        //SoundManager.instance.PlayVOICE("1-1");
+        //uitext.DrawNameText("Å· AI Å‚", "âqêØãOìπñCÅAÉGÉlÉãÉMÅ[è[ìUäÆóπÇ‹Ç≈10ïb");
+        //yield return new WaitForSeconds(5.0f);
 
-        SoundManager.instance.PlayVOICE("1-2");
-        uitext.DrawNameText("Å· AI Å‚", " 9");
-        yield return new WaitForSeconds(1.0f);
+        //SoundManager.instance.PlayVOICE("1-2");
+        //uitext.DrawNameText("Å· AI Å‚", " 9");
+        //yield return new WaitForSeconds(1.0f);
 
-        SoundManager.instance.PlayVOICE("1-3");
-        uitext.DrawNameText("Å· AI Å‚", " 8");
-        yield return new WaitForSeconds(1.0f);
+        //SoundManager.instance.PlayVOICE("1-3");
+        //uitext.DrawNameText("Å· AI Å‚", " 8");
+        //yield return new WaitForSeconds(1.0f);
 
-        SoundManager.instance.PlayVOICE("1-4");
-        uitext.DrawNameText("Å· AI Å‚", " 7");
-        yield return new WaitForSeconds(1.0f);
+        //SoundManager.instance.PlayVOICE("1-4");
+        //uitext.DrawNameText("Å· AI Å‚", " 7");
+        //yield return new WaitForSeconds(1.0f);
 
-        SoundManager.instance.PlayVOICE("1-5");
-        uitext.DrawNameText("Å· AI Å‚", " 6");
-        yield return new WaitForSeconds(1.0f);
+        //SoundManager.instance.PlayVOICE("1-5");
+        //uitext.DrawNameText("Å· AI Å‚", " 6");
+        //yield return new WaitForSeconds(1.0f);
 
-        SoundManager.instance.PlayVOICE("1-6");
-        uitext.DrawNameText("Å· AI Å‚", " 5");
-        yield return new WaitForSeconds(1.0f);
+        //SoundManager.instance.PlayVOICE("1-6");
+        //uitext.DrawNameText("Å· AI Å‚", " 5");
+        //yield return new WaitForSeconds(1.0f);
 
-        SoundManager.instance.PlayVOICE("1-7");
-        uitext.DrawNameText("Å· AI Å‚", " 4");
-        yield return new WaitForSeconds(1.0f);
+        //SoundManager.instance.PlayVOICE("1-7");
+        //uitext.DrawNameText("Å· AI Å‚", " 4");
+        //yield return new WaitForSeconds(1.0f);
 
-        SoundManager.instance.PlayVOICE("1-8");
-        uitext.DrawNameText("Å· AI Å‚", " 3");
-        yield return new WaitForSeconds(1.0f);
+        //SoundManager.instance.PlayVOICE("1-8");
+        //uitext.DrawNameText("Å· AI Å‚", " 3");
+        //yield return new WaitForSeconds(1.0f);
 
-        SoundManager.instance.PlayVOICE("1-9");
-        uitext.DrawNameText("Å· AI Å‚", " 2");
-        yield return new WaitForSeconds(1.0f);
+        //SoundManager.instance.PlayVOICE("1-9");
+        //uitext.DrawNameText("Å· AI Å‚", " 2");
+        //yield return new WaitForSeconds(1.0f);
 
-        SoundManager.instance.PlayVOICE("1-10");
-        uitext.DrawNameText("Å· AI Å‚", " 1");
-        yield return new WaitForSeconds(1.0f);
+        //SoundManager.instance.PlayVOICE("1-10");
+        //uitext.DrawNameText("Å· AI Å‚", " 1");
+        //yield return new WaitForSeconds(1.0f);
 
         SoundManager.instance.PlayVOICE("1-11");
         uitext.DrawNameText("Å· éióﬂäØ Å‚", "âqêØãOìπñCÅAåÇÇƒÅI");

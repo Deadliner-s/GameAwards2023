@@ -6,6 +6,7 @@ public class Blink_Shield : MonoBehaviour
 {
     public GameObject activeObject;
     public GameObject inactiveObject;
+    public GameObject targetObject;
     public float switchInterval = 0.2f;
     public float Delay = 1.0f;
     public float LaserTime = 3.0f;
@@ -18,6 +19,7 @@ public class Blink_Shield : MonoBehaviour
         // 最初はactiveObjectがアクティブで、inactiveObjectが非アクティブとする
         activeObject.SetActive(true);
         inactiveObject.SetActive(false);
+        targetObject.SetActive(false);
     }
 
     private void Update()
@@ -39,7 +41,8 @@ public class Blink_Shield : MonoBehaviour
         if(timer >= Delay + LaserTime)
         {
             activeObject.SetActive(false);
-            inactiveObject.SetActive(true);
+            inactiveObject.SetActive(false);
+            targetObject.SetActive(true);
         }
     }
 

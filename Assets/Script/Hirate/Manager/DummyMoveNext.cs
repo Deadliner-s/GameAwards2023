@@ -6,6 +6,7 @@ public class DummyMoveNext : MonoBehaviour
 {
     private void Start()
     {
+        // ƒV[ƒ“‘JˆÚ
         SceneAccessSearch.SceneAccessCatchLoadStart(SceneNowBefore.instance.sceneBeforeCatch);
         SceneAccessSearch.SceneAccessCatchUnload(SceneLoadStartUnload.SCENE_NAME.E_DUMMY);
     }
