@@ -4476,9 +4476,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 903000af724a17240aeee92604e12c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeLimit: 160
-  startPlayerInitPos: 153
-  lastNormalTime: 147
+  TimeLimit: 169
+  startPlayerInitPos: 167
+  lastNormalTime: 150
 --- !u!1 &1379947608
 GameObject:
   m_ObjectHideFlags: 0
@@ -4530,7 +4530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6063255cbe9fda04c817cbdded23a68d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 157
+  time: 165
   Timertext: {fileID: 1379947611}
 --- !u!114 &1379947611
 MonoBehaviour:
