@@ -27,7 +27,9 @@ public class SkyRotation : MonoBehaviour
     void Start()
     {
         // スカイボックスの取得
-        SkyBoxCatch();
+        //SkyBoxCatch();
+
+
 
         // スカイボックスを取得
         //sky = RenderSettings.skybox;
@@ -73,17 +75,19 @@ public class SkyRotation : MonoBehaviour
             rotationSpeed = rotationSpeedHighSpeed * Time.timeScale;
         }
 
-        if (sky != null)
-        {
-            // 背景の回転
-            rotation = Mathf.Repeat(sky.GetFloat("_Rotation") + rotationSpeed, 360f);
-            // 処理後の回転を代入
-            sky.SetFloat("_Rotation", rotation);
-        }
-        else
-        {
-            Debug.Log("SkyBoxがNullです。");
-        }
+        SkyBoxInstance.instance.rotationSpeed = rotationSpeed;
+
+        //if (sky != null)
+        //{
+        //    // 背景の回転
+        //    rotation = Mathf.Repeat(sky.GetFloat("_Rotation") + rotationSpeed, 360f);
+        //    // 処理後の回転を代入
+        //    sky.SetFloat("_Rotation", rotation);
+        //}
+        //else
+        //{
+        //    Debug.Log("SkyBoxがNullです。");
+        //}
 
 // デバッグ用
 #if _DEBUG
