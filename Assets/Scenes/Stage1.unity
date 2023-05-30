@@ -2569,7 +2569,7 @@ GameObject:
   - component: {fileID: 652526729}
   - component: {fileID: 652526728}
   - component: {fileID: 652526727}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Canvas RockOn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2626,7 +2626,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 644878795}
+  m_Camera: {fileID: 621296153}
   m_PlaneDistance: 5
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
