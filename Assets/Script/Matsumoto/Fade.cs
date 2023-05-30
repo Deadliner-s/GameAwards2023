@@ -173,7 +173,8 @@ public class Fade : MonoBehaviour
 
         if (fade.color.a == 1.0f)
         {
-
+            // イベントシーンがスキップされた時に流れているボイスを止める
+            SoundManager.instance.StopVOICE();
             // シーン遷移
             //SceneManager.LoadScene(nextScene);
             // SceneLoadManagerをタグ検索
