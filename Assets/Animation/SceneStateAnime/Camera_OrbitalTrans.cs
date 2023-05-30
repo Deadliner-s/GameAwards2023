@@ -18,6 +18,6 @@ public class Camera_OrbitalTrans : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _orbitaltransposer.m_XAxis.Value += 0.1f;
+        _orbitaltransposer.m_XAxis.Value += 0.05f;
     }
 }
