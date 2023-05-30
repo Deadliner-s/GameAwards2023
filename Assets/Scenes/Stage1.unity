@@ -5392,6 +5392,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1597170020}
     m_Modifications:
     - target: {fileID: 1798173049475065606, guid: d2623e704616eeb4d8e72e65f3fc9747, type: 3}
+      propertyPath: Delay
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1798173049475065606, guid: d2623e704616eeb4d8e72e65f3fc9747, type: 3}
       propertyPath: count
       value: 3
       objectReference: {fileID: 0}
@@ -6928,8 +6932,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NormalTime: 0.5
-  SpeedTime: 20
-  AttackTime: 29
+  SpeedTime: 29
+  AttackTime: 20
   First_NormalTime: 4
   currentPhase: 0
   NormaltoNext: 3
