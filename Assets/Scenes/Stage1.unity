@@ -4737,7 +4737,7 @@ MonoBehaviour:
   DurationHoming:
   - 3
   - 3
-  - 3
+  - 2
   IntervalTriggerHoming:
   - 0.5
   - 0.4
@@ -5170,6 +5170,9 @@ MonoBehaviour:
   Window: {fileID: 2012658020}
   Name: {fileID: 1872830649}
   Text: {fileID: 1412516436}
+  AddTime: 0
+  MessageWindowActiveTime: 5
+  WarningActiveTime: 13
 --- !u!114 &1597170022
 MonoBehaviour:
   m_ObjectHideFlags: 0
