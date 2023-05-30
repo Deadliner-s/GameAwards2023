@@ -6,6 +6,7 @@ public class AI_Speed : MonoBehaviour
 {
     public Canvas message; // CanvasオブジェクトをInspectorから指定する
     public float showtime = 7.0f;
+    public float Delay = 22.0f;
 
     // 現在フェイズ
     private PhaseManager.Phase currentPhase;
@@ -33,24 +34,27 @@ public class AI_Speed : MonoBehaviour
         // フェイズ取得
         currentPhase = PhaseManager.instance.GetPhase();
 
-        if (currentPhase == PhaseManager.Phase.Speed_Phase)
+        if (currentPhase == PhaseManager.Phase.Attack_Phase)
         {
             timer += Time.deltaTime;
 
-            if (!AudioFlg)
+            if (timer >= Delay)
             {
-                //SoundManager.instance.PlayVOICE("AI_SPEED");
-                StartCoroutine("WarningSound");
-                AudioFlg = true;
-            }
+                if (!AudioFlg)
+                {
+                    //SoundManager.instance.PlayVOICE("AI_SPEED");
+                    StartCoroutine("WarningSound");
+                    AudioFlg = true;
+                }
 
-            if (timer <= showtime)
-            {
-                message.enabled = true;
-            }
-            else
-            {
-                message.enabled = false;
+                if (timer <= showtime + Delay)
+                {
+                    message.enabled = true;
+                }
+                else
+                {
+                    message.enabled = false;
+                }
             }
         }
         else

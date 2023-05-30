@@ -6928,8 +6928,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NormalTime: 0.5
-  SpeedTime: 29
-  AttackTime: 20
+  SpeedTime: 20
+  AttackTime: 29
   First_NormalTime: 4
   currentPhase: 0
   NormaltoNext: 3
