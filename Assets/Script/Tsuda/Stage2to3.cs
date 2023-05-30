@@ -50,6 +50,11 @@ public class Stage2to3 : MonoBehaviour
 
             // SceneMoveManagerをタグ検索
             GameObject obj = GameObject.FindGameObjectWithTag("SceneMoveManager");
+
+            // ボスのローテーションを代入する
+            GameObject boss = GameObject.FindGameObjectWithTag("BossParent");
+            BossRotationCatch.instance.fRotation = boss.transform.rotation;
+
             // シーンの開始
             //async.allowSceneActivation = true;
             obj.GetComponent<SceneMoveManager>().SceneLoad(SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT);

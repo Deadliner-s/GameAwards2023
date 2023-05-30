@@ -24,18 +24,53 @@ public class UIText : MonoBehaviour
     float AddTime = 0.0f;
 
     bool FlgA = true;
-    bool FlgB = true;
     
     private float Max_Height = 1.837893f;
+    float WarningActiveTime = 33.0f;
 
     void Start()
     {
+        AddTime = 0.0f;
+
         Window.SetActive(false);
         Name.SetActive(false);
         Text.SetActive(false);
 
         nextPhase = currntPhase;
-        StartCoroutine(A());
+    }
+
+    void Update()
+    {
+        AddTime += Time.deltaTime;
+
+        // 現在のフェイズ確認
+        currntPhase = PhaseManager.instance.GetPhase();
+        // フェイズ変更時
+        if (nextPhase != currntPhase)
+        {
+            // フラグリセット
+            FlgA = true;
+            nextPhase = currntPhase;
+        }
+        // ノーマルフェイズ
+        if (currntPhase == PhaseManager.Phase.Normal_Phase)
+        {
+
+        }
+        // アタックフェイズ
+        else if (currntPhase == PhaseManager.Phase.Attack_Phase)
+        {
+            if (FlgA)
+            {
+                // ウィンドウの開始
+                StartCoroutine("AttackMessageUI");
+                FlgA = false;
+            }
+        }
+        else if (currntPhase == PhaseManager.Phase.Speed_Phase)
+        {
+
+        }
     }
 
     // クリックで次のページを表示させるための関数
@@ -56,82 +91,35 @@ public class UIText : MonoBehaviour
         nameText.text = name;
         StartCoroutine("CoDrawText", text);
     }
-
-    IEnumerator A()
+    
+    // ゲーム中のAIセリフ用
+    IEnumerator AttackMessageUI()
     {
-        while (true)
-        {
-            yield return null;
-            currntPhase = PhaseManager.instance.GetPhase();
-            if (nextPhase != currntPhase)
-            {
-                FlgA = true;
-                FlgB = true;
-                //AddTime = 0.0f;
+        // ウィンドウ表示
+        StartCoroutine("WindowScaleUp");
+        // ボイス再生,テキスト設定,表示
+        SoundManager.instance.PlayVOICE("4-3");
+        DrawNameText("≪ AI ≫", "敵、装甲温度上昇。冷却状態への移行を確認。");
+        yield return new WaitForSeconds(5.0f);
+        SoundManager.instance.PlayVOICE("4-4");
+        DrawNameText("≪ AI ≫", "攻撃兵装にエネルギーを接続。\n露出した冷却装置を攻撃して下さい。");
+        yield return new WaitForSeconds(6.0f);
+        // ウィンドウ非表示
+        StartCoroutine("WindowScaleDown");
 
-                nextPhase = currntPhase;
-            }
-            if (currntPhase == PhaseManager.Phase.Normal_Phase)
-            {
-                //SeFlg = false;
-            }
-            else if (currntPhase == PhaseManager.Phase.Speed_Phase)
-            {
-                AddTime = 0.0f;
-                // ハイスピードフェイズ
-                if (FlgA)
-                {
-                    StartCoroutine("WindowScaleUp");
-                    SoundManager.instance.PlayVOICE("4-1");
-                    DrawNameText("≪ AI ≫", "敵内部から、多数の熱源反応を確認。\n飽和攻撃が予測されます。");
-                    yield return new WaitForSeconds(6.5f);
-                    SoundManager.instance.PlayVOICE("4-2");
-                    DrawNameText("≪ AI ≫", "攻撃兵装へのエネルギーをカット。メインエンジンに\nエネルギーを転換。回避行動に専念して下さい。");
-                    yield return new WaitForSeconds(3.0f);
-                    FlgA = false;
-                }
+        // アタックフェイズの間待機
+        yield return new WaitForSeconds(WarningActiveTime - 5.0f - 6.0f);
 
-                while (FlgB)
-                {
-                    AddTime += Time.deltaTime;
-                    yield return null;
-                    if (AddTime >= 5.0f)
-                    {
-                        StartCoroutine("WindowScaleDown");
-                        FlgB = false;
-                        break;
-                    }
-                }
-            }
-
-            else if (currntPhase == PhaseManager.Phase.Attack_Phase)
-            {
-                AddTime = 0.0f;
-                // アタックフェイズ
-                if (FlgA)
-                {
-                    StartCoroutine("WindowScaleUp");
-                    SoundManager.instance.PlayVOICE("4-3");
-                    DrawNameText("≪ AI ≫", "敵、装甲温度上昇。冷却状態への移行を確認。");
-                    yield return new WaitForSeconds(5.0f);
-                    SoundManager.instance.PlayVOICE("4-4");
-                    DrawNameText("≪ AI ≫", "攻撃兵装にエネルギーを接続。\n露出した冷却装置を攻撃して下さい。");
-                    yield return new WaitForSeconds(1.0f);
-                    FlgA = false;
-                }
-                while (FlgB)
-                {
-                    AddTime += Time.deltaTime;
-                    yield return null;
-                    if (AddTime >= 5.0f)
-                    {
-                        StartCoroutine("WindowScaleDown");
-                        FlgB = false;
-                        break;
-                    }
-                }
-            }
-        }
+        StartCoroutine("WindowScaleUp");
+        // ボイス再生,テキスト設定,表示
+        SoundManager.instance.PlayVOICE("4-1");
+        DrawNameText("≪ AI ≫", "敵内部から、多数の熱源反応を確認。\n飽和攻撃が予測されます。");
+        yield return new WaitForSeconds(6.0f);
+        SoundManager.instance.PlayVOICE("4-2");
+        DrawNameText("≪ AI ≫", "攻撃兵装へのエネルギーをカット。メインエンジンに\nエネルギーを転換。回避行動に専念して下さい。");
+        yield return new WaitForSeconds(8.0f);
+        // ウィンドウ非表示
+        StartCoroutine("WindowScaleDown");
     }
 
     // テキストがヌルヌル出てくるためのコルーチン
@@ -175,6 +163,7 @@ public class UIText : MonoBehaviour
     }
     IEnumerator WindowScaleDown()
     {
+        DrawNameText("", "");
         Name.SetActive(false);
         Text.SetActive(false);
         for (float i = 1; i < 2; i += 0.1f)

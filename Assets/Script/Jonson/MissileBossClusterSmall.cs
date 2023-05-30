@@ -21,6 +21,7 @@ public class MissileBossClusterSmall : MonoBehaviour
     Vector3 PlusY;
     //OtherScript Particle = GetComponent<StartParticle>();
 
+    GameObject BossFlg;
     GameObject Player;
     Vector3 ToPos;              //発射先
     Vector3 CheckPos;
@@ -30,29 +31,34 @@ public class MissileBossClusterSmall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Player = GameObject.Find("Player"))//プレイヤーは生きている（存在する）
+        BossFlg = GameObject.Find("BossManager");
+        if (!BossFlg.GetComponent<MainBossHp>().BreakFlag)
         {
-            ToPos = Player.transform.position; //Player
-            Miss = false;
-            off = 0.2f;
-            randSpeed = rand.Next(20);
-            randSpeed *= 0.0001f;
-            randY = rand.Next(30);
-            randY -= 15;
-            randY *= 0.01f;
-            randY += PlusY.y;
-            GetComponent<StartParticle>().enabled = false;
+            if (Player = GameObject.Find("Player"))//プレイヤーは生きている（存在する）
+            {
+                ToPos = Player.transform.position; //Player
+                Miss = false;
+                off = 0.2f;
+                randSpeed = rand.Next(20);
+                randSpeed *= 0.0001f;
+                randY = rand.Next(30);
+                randY -= 15;
+                randY *= 0.01f;
+                randY += PlusY.y;
+                GetComponent<StartParticle>().enabled = false;
+            }
+            else
+            {
+                Destroy(this, 0.0f);
+            }
         }
-        else
-        {
-            Destroy(this, 0.0f);
-        }
+            
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Player)//プレイヤーは生きている（存在する）
+        if (Player && !BossFlg.GetComponent<MainBossHp>().BreakFlag)//プレイヤーは生きている（存在する）
         {
             if (!Miss && Speed >= MinSpeed+randSpeed)
             {

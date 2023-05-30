@@ -15,6 +15,8 @@ public class StartParticle : MonoBehaviour
 
     float DestroyTime = 1.0f;
 
+    GameObject BossFlg;
+
     private void Start()
     {
         // エフェクトを生成
@@ -26,6 +28,8 @@ public class StartParticle : MonoBehaviour
         TrailParticle.transform.position = this.transform.position;
         TrailParticle.transform.rotation = this.transform.rotation;
         TrailParticle.Play();
+        BossFlg = GameObject.Find("BossManager");
+
     }
 
     private void Update()
@@ -45,6 +49,21 @@ public class StartParticle : MonoBehaviour
             TrailParticle.Stop();
             Destroy(TrailParticle.gameObject,DestroyTime);
         }
+        if(BossFlg != null)
+        {
+            if (BossFlg.GetComponent<MainBossHp>().BreakFlag)
+            {
+                if(missileExplosion != null)
+                {
+                    ExplosionParticle = Instantiate(missileExplosion);
+                    ExplosionParticle.transform.position = this.transform.position;
+                    ExplosionParticle.transform.rotation = this.transform.rotation;
+                    ExplosionParticle.Play();
+                    Destroy(ExplosionParticle.gameObject, DestroyTime);
+                }
+
+            }
+        }        
     }
 
     private void OnCollisionEnter(Collision collision)

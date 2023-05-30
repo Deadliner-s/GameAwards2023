@@ -17,35 +17,48 @@ public class ZakoMove : MonoBehaviour
     public float MissileDestroyTime;
     public float Accel;
     public float AccelStart;
+    GameObject BossFlg;
 
     Vector3 move;
     float time;
     // Start is called before the first frame update
     void Start()
     {
-        move = new Vector3(moveX, moveY, 0.0f);
-        time = 0.0f;
-        Destroy(gameObject, DestroyTime);
-        RandomHalf = Random.Range(-SpawnMissileRandom, SpawnMissileRandom);
+        BossFlg = GameObject.Find("BossManager");
+        if (!BossFlg.GetComponent<MainBossHp>().BreakFlag)
+        {
+            move = new Vector3(moveX, moveY, 0.0f);
+            time = 0.0f;
+            Destroy(gameObject, DestroyTime);
+            RandomHalf = Random.Range(-SpawnMissileRandom, SpawnMissileRandom);
+
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        time += Time.timeScale;
-        if(time >= SpawnMissileTime + RandomHalf)
+        if(!BossFlg.GetComponent<MainBossHp>().BreakFlag)
         {
-            time = 0.0f;
-            GameObject obj = Instantiate(Missile, new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.05f) , Quaternion.Euler(0,0,-90));
-            // MissileObjをタグ検索
-            GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
-            // ミサイルオブジェクトの子にする
-            obj.transform.parent = missileObj.transform;
-            obj.GetComponent<ZakoMissile>().Speed = MissileSpeed;
-            obj.GetComponent<ZakoMissile>().DestroyTime = MissileDestroyTime;
-            obj.GetComponent<ZakoMissile>().Accel = Accel;
-            obj.GetComponent<ZakoMissile>().AccelStart = AccelStart;
+            time += Time.timeScale;
+            if (time >= SpawnMissileTime + RandomHalf)
+            {
+                time = 0.0f;
+                GameObject obj = Instantiate(Missile, new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.05f), Quaternion.Euler(0, 0, -90));
+                // MissileObjをタグ検索
+                GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                // ミサイルオブジェクトの子にする
+                obj.transform.parent = missileObj.transform;
+                obj.GetComponent<ZakoMissile>().Speed = MissileSpeed;
+                obj.GetComponent<ZakoMissile>().DestroyTime = MissileDestroyTime;
+                obj.GetComponent<ZakoMissile>().Accel = Accel;
+                obj.GetComponent<ZakoMissile>().AccelStart = AccelStart;
+            }
+            gameObject.transform.position += move * ZakoSpeed * Time.timeScale;
         }
-        gameObject.transform.position += move * ZakoSpeed * Time.timeScale;
+        else
+        {           
+            Destroy(this, 0.0f);
+        }
     }
 }

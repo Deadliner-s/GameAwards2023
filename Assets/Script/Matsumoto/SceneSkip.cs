@@ -59,28 +59,30 @@ public class SceneSkip : MonoBehaviour
             if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_PROLOGUE)
             {
                 InputManager.instance.UI_Disable();
-                SoundManager.instance.StopVOICE();
                 GManager.instance.SetContinueFlg(true);
                 StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
             }
             if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE2_EVENT)
             {
                 InputManager.instance.UI_Disable();
-                SoundManager.instance.StopVOICE();
                 GManager.instance.SetContinueFlg(true);
+                // ボスのローテーションを代入する
+                GameObject boss = GameObject.FindGameObjectWithTag("BossParent");
+                BossRotationCatch.instance.fRotation = boss.transform.rotation;
                 StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
             }
             if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE3_EVENT)
             {
                 InputManager.instance.UI_Disable();
-                SoundManager.instance.StopVOICE();
                 GManager.instance.SetContinueFlg(true);
+                // ボスのローテーションを代入する
+                GameObject boss = GameObject.FindGameObjectWithTag("BossParent");
+                BossRotationCatch.instance.fRotation = boss.transform.rotation;
                 StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
             }
             if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_EPILOGUE)
             {
                 InputManager.instance.UI_Disable();
-                SoundManager.instance.StopVOICE();
                 GManager.instance.SetContinueFlg(true);
                 StartCoroutine(fade.GetComponent<Fade>().Color_FadeOut());
             }

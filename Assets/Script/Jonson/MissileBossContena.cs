@@ -13,6 +13,7 @@ public class MissileBossContena : MonoBehaviour
     public int ContenaNumber = 15;       //分裂の数
     float off;
     bool Locked;                         //ミサイルがロックオンしているか
+    GameObject BossFlg;
     public GameObject otherObject;       //生成するプレハブオブジェクト
     GameObject newObj;
     GameObject Player;
@@ -24,74 +25,88 @@ public class MissileBossContena : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Player = GameObject.Find("Player"))//プレイヤーは生きている（存在する）
+        BossFlg = GameObject.Find("BossManager");
+     
+        if (!BossFlg.GetComponent<MainBossHp>().BreakFlag)
         {
-            //プレイヤーの位置を取得
-            ToPos = Player.transform.position;
-            //ボスの位置を取得
-            FromPos = transform.position;
+            if (Player = GameObject.Find("Player"))//プレイヤーは生きている（存在する）
+            {
+                //プレイヤーの位置を取得
+                ToPos = Player.transform.position;
+                //ボスの位置を取得
+                FromPos = transform.position;
 
-            off = 0.05f;
-            Locked = false;
-        }
-        else
-        {
-            Destroy(this, 0.0f);
-        }
+                off = 0.05f;
+                Locked = false;
+            }
+            else
+            {
+                Destroy(this, 0.0f);
+            }
+        }           
     }
     // Update is called once per frame
     void Update()
     {
-        if (Player)//プレイヤーは生きている（存在する）
+        if (!BossFlg.GetComponent<MainBossHp>().BreakFlag)
         {
-            ToPos = Player.transform.position;
-            if (transform.position.y <= FromPos.y + Height && !Locked)
+
+            if (Player)//プレイヤーは生きている（存在する）
             {
-                Move = new Vector3(0, 1.0f, -0.7f);
-                LateMove = Move;
-            }
-            else
-            {
-                Locked = true;
-                Speed += Accel;
-                if (Speed >= MaxSpeed)
+                ToPos = Player.transform.position;
+                if (transform.position.y <= FromPos.y + Height && !Locked)
                 {
-                    Speed = MaxSpeed;
-                }
-                float distance = Vector3.Distance(transform.position, ToPos);
-                if (distance >= ContenaRange)
-                {
-                    Move = ToPos - transform.position;
-                    Move = Move.normalized;
-                    LateMove = (Move - LateMove) * off + (LateMove);
+                    Move = new Vector3(0, 1.0f, -0.7f);
+                    LateMove = Move;
                 }
                 else
                 {
-                    for (int i = 0; i < ContenaNumber; i++)
+                    Locked = true;
+                    Speed += Accel;
+                    if (Speed >= MaxSpeed)
                     {
-                        float j = (i % 3) - 1;
-                        float k = (i / 3) - 1;
-                        newObj = Instantiate(otherObject, new Vector3(transform.position.x + j * 0.05f, transform.position.y + k * 0.1f, transform.position.z),Quaternion.identity);
-                        // MissileObjをタグ検索
-                        GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
-                        // ミサイルオブジェクトの子にする
-                        newObj.transform.parent = missileObj.transform;
-                        if (i == ContenaNumber / 2)
-                        {
-                            //newObj.GetComponent<MissileBossContenaSmall>().Spread = 0.0f;
-                            newObj.GetComponent<MissileBossContenaSmall>().First = true;
-                        }
+                        Speed = MaxSpeed;
                     }
-                    Destroy(gameObject, 0);
+                    float distance = Vector3.Distance(transform.position, ToPos);
+                    if (distance >= ContenaRange)
+                    {
+                        Move = ToPos - transform.position;
+                        Move = Move.normalized;
+                        LateMove = (Move - LateMove) * off + (LateMove);
+                    }
+                    else
+                    {
+                        for (int i = 0; i < ContenaNumber; i++)
+                        {
+                            float j = (i % 3) - 1;
+                            float k = (i / 3) - 1;
+                            newObj = Instantiate(otherObject, new Vector3(transform.position.x + j * 0.05f, transform.position.y + k * 0.1f, transform.position.z), Quaternion.identity);
+                            // MissileObjをタグ検索
+                            GameObject missileObj = GameObject.FindGameObjectWithTag("MissileObj");
+                            // ミサイルオブジェクトの子にする
+                            newObj.transform.parent = missileObj.transform;
+                            if (i == ContenaNumber / 2)
+                            {
+                                //newObj.GetComponent<MissileBossContenaSmall>().Spread = 0.0f;
+                                newObj.GetComponent<MissileBossContenaSmall>().First = true;
+                            }
+                        }
+                        Destroy(gameObject, 0);
+                    }
                 }
+                Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
+                transform.rotation = rot;
+                transform.position += LateMove * Speed * Time.timeScale;
             }
-            Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), LateMove);
-            transform.rotation = rot;
-            transform.position += LateMove * Speed * Time.timeScale;
+            else
+            {
+                Destroy(gameObject, 0.0f);
+            }
         }
         else
         {
-            Destroy(this, 0.0f);
+            Destroy(gameObject, 0.0f);
         }
+        
     }
 }

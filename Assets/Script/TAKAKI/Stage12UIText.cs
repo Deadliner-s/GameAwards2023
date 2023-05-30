@@ -20,8 +20,7 @@ public class Stage12UIText : MonoBehaviour
     public GameObject Window;
     public GameObject Name;
     public GameObject Text;
-
-    [SerializeField]
+    
     float AddTime = 0.0f;
 
     bool FlgA = true;
@@ -29,11 +28,8 @@ public class Stage12UIText : MonoBehaviour
     bool FlgFinish = false;
 
     private float Max_Height = 1.837893f;
-    [SerializeField]
-    float MessageWindowActiveTime = 5.0f;
-    [SerializeField]
+    float MessageWindowActiveTime = 8.0f;
     float WarningActiveTime = 13.0f;
-
     int Attacknum = 0;
 
 
@@ -48,12 +44,52 @@ public class Stage12UIText : MonoBehaviour
         Text.SetActive(false);
 
         nextPhase = currntPhase;
-        StartCoroutine(A());
     }
 
     void Update()
     {
         AddTime += Time.deltaTime;
+
+        // 現在のフェイズ確認
+        currntPhase = PhaseManager.instance.GetPhase();
+        // フェイズ変更時
+        if (nextPhase != currntPhase)
+        {
+            // フラグリセット
+            FlgA = true;
+            nextPhase = currntPhase;
+        }
+        // ノーマルフェイズ
+        if (currntPhase == PhaseManager.Phase.Normal_Phase && FlgFinish == false)
+        {
+
+        }
+        // アタックフェイズ
+        else if (currntPhase == PhaseManager.Phase.Attack_Phase && FlgFinish == false && Attacknum < 3)
+        {
+            if (FlgA)
+            {
+                // ウィンドウの開始
+                StartCoroutine("AttackMessageUI");
+                FlgA = false;
+                Attacknum++;
+            }
+        }
+        else if (currntPhase == PhaseManager.Phase.Speed_Phase && FlgFinish == false)
+        {
+
+        }
+
+        if (AddTime >= 150.0f)
+        {
+            if (FlgB)
+            {
+                // カウントダウンの開始
+                StartCoroutine("CountDownUI");
+                FlgFinish = true;
+                FlgB = false;
+            }
+        }
     }
 
     // クリックで次のページを表示させるための関数
@@ -62,7 +98,6 @@ public class Stage12UIText : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) return true;
         return false;
     }
-
     // ナレーション用のテキストを生成する関数
     public void DrawText(string text)
     {
@@ -76,58 +111,9 @@ public class Stage12UIText : MonoBehaviour
         StartCoroutine("CoDrawText", text);
     }
 
-    IEnumerator A()
-    {
-        while (true)
-        {
-            yield return null;
-            // 現在のフェイズ確認
-            currntPhase = PhaseManager.instance.GetPhase();
-            // フェイズ変更時
-            if (nextPhase != currntPhase)
-            {
-                // フラグリセット
-                FlgA = true;
-                nextPhase = currntPhase;
-            }
-            // ノーマルフェイズ
-            if (currntPhase == PhaseManager.Phase.Normal_Phase && FlgFinish == false)
-            {
-
-            }
-            // アタックフェイズ
-            else if (currntPhase == PhaseManager.Phase.Attack_Phase && FlgFinish == false)
-            {
-                if (FlgA && Attacknum < 3)
-                {
-                    // ウィンドウの開始
-                    StartCoroutine("AttackMessageUI");
-                    FlgA = false;
-                    Attacknum++;
-                }
-            }
-            else if (currntPhase == PhaseManager.Phase.Speed_Phase && FlgFinish == false)
-            {
-
-            }
-
-            if (AddTime >= 150.0f)
-            {
-                if (FlgB)
-                {
-                    // カウントダウンの開始
-                    StartCoroutine("CountDownUI");
-                    FlgFinish = true;
-                    FlgB = false;
-                }
-            }
-        }
-    }
-
     // ゲーム中のAIセリフ用
     IEnumerator AttackMessageUI()
     {
-        // 
         // ウィンドウ表示
         StartCoroutine("WindowScaleUp");
         // ボイス再生
@@ -256,6 +242,7 @@ public class Stage12UIText : MonoBehaviour
     // ウィンドウの縮小
     IEnumerator WindowScaleDown()
     {
+        DrawNameText("", "");
         Name.SetActive(false);
         Text.SetActive(false);
         for (float i = 1; i < 2; i += 0.1f)
