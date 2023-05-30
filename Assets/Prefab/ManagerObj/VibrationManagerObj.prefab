@@ -56,19 +56,19 @@ MonoBehaviour:
     TimeVibration: 3
     StepVibration: 1
   - name: Shot
-    LowFrequency: 0.75
+    LowFrequency: 0.5
     HighFrequency: 0
-    TimeVibration: 0.1
+    TimeVibration: 0.15
     StepVibration: 0
   - name: PlayerDamage
     LowFrequency: 0
-    HighFrequency: 0.1
+    HighFrequency: 0.2
     TimeVibration: 0.2
     StepVibration: 0
   - name: PlayerDeath
-    LowFrequency: 0.5
-    HighFrequency: 0.5
-    TimeVibration: 4
+    LowFrequency: 0.3
+    HighFrequency: 0.3
+    TimeVibration: 1.7
     StepVibration: 1
   - name: WeakPoint
     LowFrequency: 0.15

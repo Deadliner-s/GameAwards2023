@@ -233,6 +233,8 @@ public class PlayerHp : MonoBehaviour
             //シーン移動
             //SceneManager.LoadScene("GameOver");
             //async.allowSceneActivation = true;
+
+            VibrationManager.instance.StartCoroutine("PlayVibration", "PlayerDeath");
         }
 
 
@@ -256,7 +258,6 @@ public class PlayerHp : MonoBehaviour
             SoundManager.instance.PlaySE("PlayerDeath");
             PlayerHP = 0;
             BreakShieldFlag = true;
-            VibrationManager.instance.StartCoroutine("PlayVibration", "PlayerDeath");
         }
         // 体力が0よりも多い時
         else if (PlayerHP > 0)
