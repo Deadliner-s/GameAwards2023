@@ -161,7 +161,6 @@ public class EffectManager : MonoBehaviour
                 Blur.strength.value = BlurStrength;
                 eventEndFlame++;
             }
-            else eventFlame++;
 
             if (eventEndFlame == eventBlurEndFlame)
                 Blur.strength.value = 0.0f;
