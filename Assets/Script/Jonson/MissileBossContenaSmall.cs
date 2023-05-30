@@ -38,6 +38,10 @@ public class MissileBossContenaSmall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(BossFlg.GetComponent<MainBossHp>().BreakFlag)
+        {
+            Destroy(gameObject,0.0f);
+        }
 
         time += 0.01f * Time.timeScale;
         float u = 1f - time;

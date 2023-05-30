@@ -53,10 +53,15 @@ public class StartParticle : MonoBehaviour
         {
             if (BossFlg.GetComponent<MainBossHp>().BreakFlag)
             {
-                ExplosionParticle = Instantiate(missileExplosion);
-                ExplosionParticle.transform.position = this.transform.position;
-                ExplosionParticle.transform.rotation = this.transform.rotation;
-                ExplosionParticle.Play();
+                if(missileExplosion != null)
+                {
+                    ExplosionParticle = Instantiate(missileExplosion);
+                    ExplosionParticle.transform.position = this.transform.position;
+                    ExplosionParticle.transform.rotation = this.transform.rotation;
+                    ExplosionParticle.Play();
+                    Destroy(ExplosionParticle.gameObject, DestroyTime);
+                }
+
             }
         }        
     }

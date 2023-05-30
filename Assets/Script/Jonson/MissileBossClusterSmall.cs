@@ -58,7 +58,7 @@ public class MissileBossClusterSmall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Player&&!BossFlg.GetComponent<MainBossHp>().BreakFlag)//プレイヤーは生きている（存在する）
+        if (Player && !BossFlg.GetComponent<MainBossHp>().BreakFlag)//プレイヤーは生きている（存在する）
         {
             if (!Miss && Speed >= MinSpeed+randSpeed)
             {
