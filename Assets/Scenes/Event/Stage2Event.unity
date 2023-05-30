@@ -2760,7 +2760,7 @@ MonoBehaviour:
   inactiveObject: {fileID: 2104687373}
   targetObject: {fileID: 1196019629}
   switchInterval: 0.035
-  Delay: 4
+  Delay: 2
   LaserTime: 3
 --- !u!1001 &2074189705
 PrefabInstance:
