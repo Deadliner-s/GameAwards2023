@@ -146,6 +146,7 @@ public class MainBossHp : MonoBehaviour
         HpGauge.fillAmount -= HardDamage / BossMaxHP;
 
         SoundManager.instance.PlaySE("WeakPoint");
+        VibrationManager.instance.StartCoroutine("PlayVibration", "WeakPoint");
     }
 
     private Vector3 PerlinNoise()

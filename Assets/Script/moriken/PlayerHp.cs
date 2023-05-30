@@ -233,6 +233,8 @@ public class PlayerHp : MonoBehaviour
             //シーン移動
             //SceneManager.LoadScene("GameOver");
             //async.allowSceneActivation = true;
+
+            VibrationManager.instance.StartCoroutine("PlayVibration", "PlayerDeath");
         }
 
 
@@ -263,11 +265,13 @@ public class PlayerHp : MonoBehaviour
             if (collision.gameObject.name == "Cylinder")
             {
                 // レーザーを受けた時のSEを再生(未設定
+                VibrationManager.instance.StartCoroutine("PlayVibration", "Laser");
             }
             else
             {
                 // ダメージを受けた時のSEを再生(レーザー以外、ミサイルとかだけ
                 SoundManager.instance.PlaySE("PlayerDamage");
+                VibrationManager.instance.StartCoroutine("PlayVibration", "PlayerDamage");
             }
         }
 

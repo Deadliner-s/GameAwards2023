@@ -51,8 +51,33 @@ MonoBehaviour:
     TimeVibration: 0.3
     StepVibration: 0
   - name: HighSpeed
-    LowFrequency: 1
+    LowFrequency: 0.5
     HighFrequency: 0
-    TimeVibration: 5
+    TimeVibration: 3
+    StepVibration: 1
+  - name: Shot
+    LowFrequency: 0.5
+    HighFrequency: 0
+    TimeVibration: 0.15
+    StepVibration: 0
+  - name: PlayerDamage
+    LowFrequency: 0
+    HighFrequency: 0.2
+    TimeVibration: 0.2
+    StepVibration: 0
+  - name: PlayerDeath
+    LowFrequency: 0.3
+    HighFrequency: 0.3
+    TimeVibration: 1.7
+    StepVibration: 1
+  - name: WeakPoint
+    LowFrequency: 0.15
+    HighFrequency: 0.15
+    TimeVibration: 1
+    StepVibration: 1
+  - name: Laser
+    LowFrequency: 0
+    HighFrequency: 0.1
+    TimeVibration: 0.1
     StepVibration: 1
   isVibration: 1
