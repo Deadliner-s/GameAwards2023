@@ -21,7 +21,7 @@ public class MissileBossClusterSmall : MonoBehaviour
     Vector3 PlusY;
     //OtherScript Particle = GetComponent<StartParticle>();
 
-    bool BossFlg;
+    GameObject BossFlg;
     GameObject Player;
     Vector3 ToPos;              //発射先
     Vector3 CheckPos;
@@ -31,8 +31,8 @@ public class MissileBossClusterSmall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        BossFlg = GameObject.Find("BossManager").GetComponent<MainBossHp>();
-        if (BossFlg)
+        BossFlg = GameObject.Find("BossManager");
+        if (!BossFlg.GetComponent<MainBossHp>().BreakFlag)
         {
             if (Player = GameObject.Find("Player"))//プレイヤーは生きている（存在する）
             {
@@ -58,7 +58,7 @@ public class MissileBossClusterSmall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Player&&BossFlg)//プレイヤーは生きている（存在する）
+        if (Player && !BossFlg.GetComponent<MainBossHp>().BreakFlag)//プレイヤーは生きている（存在する）
         {
             if (!Miss && Speed >= MinSpeed+randSpeed)
             {

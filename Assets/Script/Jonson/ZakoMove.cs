@@ -17,15 +17,15 @@ public class ZakoMove : MonoBehaviour
     public float MissileDestroyTime;
     public float Accel;
     public float AccelStart;
-    bool BossFlg;
+    GameObject BossFlg;
 
     Vector3 move;
     float time;
     // Start is called before the first frame update
     void Start()
     {
-        BossFlg = GameObject.Find("BossManager").GetComponent<MainBossHp>();
-        if (BossFlg)
+        BossFlg = GameObject.Find("BossManager");
+        if (!BossFlg.GetComponent<MainBossHp>().BreakFlag)
         {
             move = new Vector3(moveX, moveY, 0.0f);
             time = 0.0f;
@@ -38,7 +38,7 @@ public class ZakoMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(BossFlg)
+        if(!BossFlg.GetComponent<MainBossHp>().BreakFlag)
         {
             time += Time.timeScale;
             if (time >= SpawnMissileTime + RandomHalf)

@@ -15,7 +15,7 @@ public class StartParticle : MonoBehaviour
 
     float DestroyTime = 1.0f;
 
-    bool BossFlg;
+    GameObject BossFlg;
 
     private void Start()
     {
@@ -28,7 +28,7 @@ public class StartParticle : MonoBehaviour
         TrailParticle.transform.position = this.transform.position;
         TrailParticle.transform.rotation = this.transform.rotation;
         TrailParticle.Play();
-        BossFlg = GameObject.Find("BossManager").GetComponent<MainBossHp>();
+        BossFlg = GameObject.Find("BossManager");
 
     }
 
@@ -49,13 +49,21 @@ public class StartParticle : MonoBehaviour
             TrailParticle.Stop();
             Destroy(TrailParticle.gameObject,DestroyTime);
         }
-        if (!BossFlg)
+        if(BossFlg != null)
         {
-            ExplosionParticle = Instantiate(missileExplosion);
-            ExplosionParticle.transform.position = this.transform.position;
-            ExplosionParticle.transform.rotation = this.transform.rotation;
-            ExplosionParticle.Play();
-        }
+            if (BossFlg.GetComponent<MainBossHp>().BreakFlag)
+            {
+                if(missileExplosion != null)
+                {
+                    ExplosionParticle = Instantiate(missileExplosion);
+                    ExplosionParticle.transform.position = this.transform.position;
+                    ExplosionParticle.transform.rotation = this.transform.rotation;
+                    ExplosionParticle.Play();
+                    Destroy(ExplosionParticle.gameObject, DestroyTime);
+                }
+
+            }
+        }        
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -10,7 +10,7 @@ public class MissileBossContenaSmall : MonoBehaviour
     Vector3 ControlPoint;
     Vector3 Move;
     Vector3 Point;
-    bool BossFlg;
+    GameObject BossFlg;
     public bool First = false;
     System.Random rand = new System.Random();
 
@@ -19,8 +19,8 @@ public class MissileBossContenaSmall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        BossFlg = GameObject.Find("BossManager").GetComponent<MainBossHp>();
-        if (BossFlg)
+        BossFlg = GameObject.Find("BossManager");
+        if (!BossFlg.GetComponent<MainBossHp>().BreakFlag)
         {
             time = 0.0f;
             ToPos = GameObject.Find("Player").transform.position;
@@ -38,13 +38,17 @@ public class MissileBossContenaSmall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(BossFlg.GetComponent<MainBossHp>().BreakFlag)
+        {
+            Destroy(gameObject,0.0f);
+        }
 
         time += 0.01f * Time.timeScale;
         float u = 1f - time;
         float uu = u * u;
         float tt = time * time;
 
-        if (time <= 0.9f && BossFlg)
+        if (time <= 0.9f && !BossFlg.GetComponent<MainBossHp>().BreakFlag)
         {
             Point = uu * StartPoint;
             Point += 2f * u * time * ControlPoint;
