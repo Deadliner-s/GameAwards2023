@@ -115,18 +115,23 @@ public class Shot : MonoBehaviour
                         {
                             case (5):
                                 SoundManager.instance.PlaySE("Shot5");
+                                VibrationManager.instance.StartCoroutine("PlayVibration", "Shot");
                                 break;
                             case (4):
                                 SoundManager.instance.PlaySE("Shot4");
+                                VibrationManager.instance.StartCoroutine("PlayVibration", "Shot");
                                 break;
                             case (3):
                                 SoundManager.instance.PlaySE("Shot3");
+                                VibrationManager.instance.StartCoroutine("PlayVibration", "Shot");
                                 break;
                             case (2):
                                 SoundManager.instance.PlaySE("Shot2");
+                                VibrationManager.instance.StartCoroutine("PlayVibration", "Shot");
                                 break;
                             case (1):
                                 SoundManager.instance.PlaySE("Shot1");
+                                VibrationManager.instance.StartCoroutine("PlayVibration", "Shot");
                                 break;
                         }
 

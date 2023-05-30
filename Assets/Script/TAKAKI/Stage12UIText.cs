@@ -34,11 +34,14 @@ public class Stage12UIText : MonoBehaviour
     [SerializeField]
     float WarningActiveTime = 13.0f;
 
+    int Attacknum = 0;
+
 
     void Start()
     {
         AddTime = 0.0f;
         FlgFinish = false;
+        Attacknum = 0;
 
         Window.SetActive(false);
         Name.SetActive(false);
@@ -95,21 +98,23 @@ public class Stage12UIText : MonoBehaviour
             // アタックフェイズ
             else if (currntPhase == PhaseManager.Phase.Attack_Phase && FlgFinish == false)
             {
-                if (FlgA)
+                if (FlgA && Attacknum < 3)
                 {
                     // ウィンドウの開始
                     StartCoroutine("AttackMessageUI");
                     FlgA = false;
+                    Attacknum++;
                 }
             }
             else if (currntPhase == PhaseManager.Phase.Speed_Phase && FlgFinish == false)
             {
 
             }
-            
+
             if (AddTime >= 150.0f)
             {
-                if (FlgB) { 
+                if (FlgB)
+                {
                     // カウントダウンの開始
                     StartCoroutine("CountDownUI");
                     FlgFinish = true;
@@ -122,12 +127,14 @@ public class Stage12UIText : MonoBehaviour
     // ゲーム中のAIセリフ用
     IEnumerator AttackMessageUI()
     {
+        // 
         // ウィンドウ表示
         StartCoroutine("WindowScaleUp");
         // ボイス再生
         SoundManager.instance.PlayVOICE("EX-1");
         // テキスト設定
         DrawNameText("≪ AI ≫", "敵内部から、多数の熱源反応を確認。\n飽和攻撃が予測されます。注意してください。");
+        // ウィンドウ表示時間
         yield return new WaitForSeconds(MessageWindowActiveTime);
         // ウィンドウ非表示
         StartCoroutine("WindowScaleDown");
@@ -140,12 +147,13 @@ public class Stage12UIText : MonoBehaviour
         SoundManager.instance.PlayVOICE("4-2");
         // テキスト設定
         DrawNameText("≪ AI ≫", "攻撃兵装へのエネルギーをカット。 メインエンジンに\nエネルギーを転換。回避行動に専念して下さい。");
+        // ウィンドウ表示時間
         yield return new WaitForSeconds(MessageWindowActiveTime);
         // ウィンドウ非表示
         StartCoroutine("WindowScaleDown");
     }
 
-    IEnumerator　CountDownUI()
+    IEnumerator CountDownUI()
     {
         // ウィンドウ表示
         StartCoroutine("WindowScaleUp");
@@ -169,7 +177,7 @@ public class Stage12UIText : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         SoundManager.instance.PlayVOICE("1-5");
-       　DrawNameText("≪ AI ≫", " 6");
+        DrawNameText("≪ AI ≫", " 6");
         yield return new WaitForSeconds(1.0f);
 
         SoundManager.instance.PlayVOICE("1-6");
@@ -202,7 +210,7 @@ public class Stage12UIText : MonoBehaviour
             SoundManager.instance.PlayVOICE("2-11");
             DrawNameText("≪ 司令官 ≫", "今度こそだ。衛星軌道砲、撃て！");
         }
-        
+
     }
 
     // テキストがヌルヌル出てくるためのコルーチン

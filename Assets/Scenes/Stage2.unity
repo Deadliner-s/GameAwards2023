@@ -2297,6 +2297,9 @@ MonoBehaviour:
   Window: {fileID: 1929612266}
   Name: {fileID: 1903856304}
   Text: {fileID: 1124990217}
+  AddTime: 0
+  MessageWindowActiveTime: 5
+  WarningActiveTime: 13
 --- !u!114 &689093586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6306,14 +6309,14 @@ MonoBehaviour:
   DurationHoming:
   - 3
   - 3
-  - 3
+  - 2
   IntervalTriggerHoming:
   - 0.5
   - 0.4
   - 0.2
   StartTimeContena:
   - 8
-  - 13
+  - 12
   - 100
   DurationContena:
   - 3
