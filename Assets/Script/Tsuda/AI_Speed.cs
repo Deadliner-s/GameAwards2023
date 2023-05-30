@@ -41,8 +41,7 @@ public class AI_Speed : MonoBehaviour
             if (timer >= Delay)
             {
                 if (!AudioFlg)
-                {
-                    //SoundManager.instance.PlayVOICE("AI_SPEED");
+                {                    
                     StartCoroutine("WarningSound");
                     AudioFlg = true;
                 }
