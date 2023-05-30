@@ -13,6 +13,8 @@ public class Stage3toE : MonoBehaviour
 
     public float startSceneTime = 4.0f;
 
+    private bool bSceneMove = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,8 +47,9 @@ public class Stage3toE : MonoBehaviour
             if (time >= startMoveTime)
             {
                 playerManager.GetComponent<MoveToInitialPosition>().enabled = true;
-                if (time > startSceneTime)
+                if (time > startSceneTime && !bSceneMove)
                 {
+                    bSceneMove = true;
                     // シーンの開始
                     sceneMoveManager.GetComponent<SceneMoveManager>().SceneLoad(SceneLoadStartUnload.SCENE_NAME.E_EPILOGUE);
                     sceneMoveManager.GetComponent<SceneMoveManager>().SceneStartUnload();
