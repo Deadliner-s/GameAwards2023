@@ -124,14 +124,16 @@ public sealed class VibrationManager : MonoBehaviour
                     // âΩïbä‘êUìÆÇ≥ÇπÇÈ
                     if (v.StepVibration == false)
                     {
+
                         gamepad.SetMotorSpeeds(v.LowFrequency, v.HighFrequency);
-                        yield return new WaitForSeconds(v.TimeVibration);
+                        yield return new WaitForSecondsRealtime(v.TimeVibration);
+                        
                     }
 
                     // timeä‘Ç©ÇØÇƒíiÅXé„Ç≠Ç»ÇÈ
                     if (v.StepVibration == true)
                     {
-                        for (float t = 0; t < v.TimeVibration; t += Time.deltaTime)
+                        for (float t = 0; t < v.TimeVibration; t += Time.unscaledDeltaTime)
                         {
                             var rate = 1.0f - t / v.TimeVibration;
                             gamepad.SetMotorSpeeds(v.LowFrequency * rate, v.HighFrequency * rate);
