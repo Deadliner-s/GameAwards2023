@@ -80,4 +80,9 @@ MonoBehaviour:
     HighFrequency: 0.1
     TimeVibration: 0.1
     StepVibration: 1
+  - name: BossDeath
+    LowFrequency: 0.5
+    HighFrequency: 0.5
+    TimeVibration: 2
+    StepVibration: 1
   isVibration: 1

@@ -9,6 +9,7 @@ public class PlayerHp : MonoBehaviour
 {
     private GameObject player;
     private GameObject playerManager;
+    private GameObject bossManager;
 
     public GameObject GaugeObj;     // プレイヤーのHPゲージオブジェクト
 
@@ -58,6 +59,7 @@ public class PlayerHp : MonoBehaviour
     {
         player = GameObject.Find("Player");
         playerManager = GameObject.Find("PlayerManager");
+        bossManager = GameObject.Find("BossManager");
 
         Canvas.SetActive(true);
         PlayerMaxHp = PlayerHP;
@@ -100,6 +102,10 @@ public class PlayerHp : MonoBehaviour
         if (playerManager == null)
         {
             playerManager = GameObject.Find("PlayerManager");
+        }
+        if (bossManager == null)
+        {
+            bossManager = GameObject.Find("BossManager");
         }
         if (hs == null)
         {
@@ -239,9 +245,13 @@ public class PlayerHp : MonoBehaviour
 
 
         HealFlag = false;
-        
+
         // "Enemy"タグがついているオブジェクトにある"PlayerDamage"変数を受けとる
-        damage = collision.gameObject.GetComponent<Damage>().PlayerDamage;
+        if (bossManager.GetComponent<MainBossHp>().BreakFlag != true)
+        {
+            damage = collision.gameObject.GetComponent<Damage>().PlayerDamage;
+        }
+
         PlayerHP -= damage * Time.timeScale;
         HpGauge.fillAmount -= damage / PlayerMaxHp;
 

@@ -125,10 +125,10 @@ public class MainBossHp : MonoBehaviour
             //シーン移動
             //SceneManager.LoadScene("GameClear");
             // SceneMoveManagerをタグ検索
-            GameObject obj = GameObject.FindGameObjectWithTag("SceneMoveManager");
-            // シーンの開始
-            obj.GetComponent<SceneMoveManager>().SceneLoad(SceneLoadStartUnload.SCENE_NAME.E_EPILOGUE);
-            obj.GetComponent<SceneMoveManager>().SceneStartUnload();
+            //GameObject obj = GameObject.FindGameObjectWithTag("SceneMoveManager");
+            //// シーンの開始
+            //obj.GetComponent<SceneMoveManager>().SceneLoad(SceneLoadStartUnload.SCENE_NAME.E_EPILOGUE);
+            //obj.GetComponent<SceneMoveManager>().SceneStartUnload();
         }
     }
 
