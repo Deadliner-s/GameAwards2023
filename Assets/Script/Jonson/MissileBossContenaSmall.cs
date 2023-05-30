@@ -10,6 +10,7 @@ public class MissileBossContenaSmall : MonoBehaviour
     Vector3 ControlPoint;
     Vector3 Move;
     Vector3 Point;
+    bool BossFlg;
     public bool First = false;
     System.Random rand = new System.Random();
 
@@ -18,26 +19,32 @@ public class MissileBossContenaSmall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        time = 0.0f;
-        ToPos = GameObject.Find("Player").transform.position;
+        BossFlg = GameObject.Find("BossManager").GetComponent<MainBossHp>();
+        if (BossFlg)
+        {
+            time = 0.0f;
+            ToPos = GameObject.Find("Player").transform.position;
 
-        StartPoint = transform.position;
-        EndPoint = ToPos;
-        ControlPoint = new Vector3(StartPoint.x - 1.0f + (rand.Next(10) * 0.2f), EndPoint.y + (rand.Next(12) * 0.1f), StartPoint.z - 0.2f -(rand.Next(10) * 0.1f) );
-       
-        if(!First)
-        EndPoint.z = ToPos.z - rand.Next(8) * 0.4f;
+            StartPoint = transform.position;
+            EndPoint = ToPos;
+            ControlPoint = new Vector3(StartPoint.x - 1.0f + (rand.Next(10) * 0.2f), EndPoint.y + (rand.Next(12) * 0.1f), StartPoint.z - 0.2f - (rand.Next(10) * 0.1f));
+
+            if (!First)
+                EndPoint.z = ToPos.z - rand.Next(8) * 0.4f;
+        }
+           
     }
 
     // Update is called once per frame
     void Update()
     {
+
         time += 0.01f * Time.timeScale;
         float u = 1f - time;
         float uu = u * u;
         float tt = time * time;
 
-        if (time <= 0.9f)
+        if (time <= 0.9f && BossFlg)
         {
             Point = uu * StartPoint;
             Point += 2f * u * time * ControlPoint;
