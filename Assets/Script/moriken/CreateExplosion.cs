@@ -60,6 +60,7 @@ public class CreateExplosion : MonoBehaviour
                 
                 GameObject InstantiateEffect
                 = GameObject.Instantiate(smallEffect, vec, Quaternion.identity);
+                VibrationManager.instance.StartCoroutine("PlayVibration", "BossDeath");
             }
         }
 
@@ -77,6 +78,7 @@ public class CreateExplosion : MonoBehaviour
 
                 GameObject InstantiateEffect
                     = GameObject.Instantiate(smallEffect, vec, Quaternion.identity);
+                VibrationManager.instance.StartCoroutine("PlayVibration", "BossDeath");
             }
         }
 
@@ -89,6 +91,7 @@ public class CreateExplosion : MonoBehaviour
 
             GameObject InstantiateEffect
                 = GameObject.Instantiate(bigEffect, vec, Quaternion.identity);
+            VibrationManager.instance.StartCoroutine("PlayVibration", "BossDeath");
         }
     }
 }
