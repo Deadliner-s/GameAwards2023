@@ -44,7 +44,6 @@ public class Stage12UIText : MonoBehaviour
         Text.SetActive(false);
 
         nextPhase = currntPhase;
-        //StartCoroutine(A());
     }
 
     void Update()
@@ -99,7 +98,6 @@ public class Stage12UIText : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) return true;
         return false;
     }
-
     // ナレーション用のテキストを生成する関数
     public void DrawText(string text)
     {
@@ -112,15 +110,6 @@ public class Stage12UIText : MonoBehaviour
         nameText.text = name;
         StartCoroutine("CoDrawText", text);
     }
-
-    //IEnumerator A()
-    //{
-    //    while (true)
-    //    {
-    //        yield return null;
-            
-    //    }
-    //}
 
     // ゲーム中のAIセリフ用
     IEnumerator AttackMessageUI()
