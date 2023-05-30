@@ -1535,7 +1535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 8354697400787843903, guid: e0db1be4d75631049b5823f43feed683, type: 3}
-  time: 27
+  time: 24
   Laser_time: 4
   TargetPos: {x: 1, y: 7, z: 5}
 --- !u!4 &941222936
@@ -1790,7 +1790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 6778060778336100350, guid: b213c1bbd85ef5b46a4fa28515264172, type: 3}
-  time: 4
+  time: 3.75
   Laser_time: 0
   TargetPos: {x: 0, y: 0, z: 0}
 --- !u!4 &1503609566
@@ -1908,7 +1908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 4498043492243987185, guid: 46be480e6bcf2cb4187c25f84ca659d0, type: 3}
-  time: 2
+  time: 1.75
   Laser_time: 3
   TargetPos: {x: 0, y: 0.5, z: 5}
 --- !u!4 &1677930028
@@ -2500,7 +2500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 2252305583018203621, guid: 95ead1f9749f5c54fa49ba6d67f16305, type: 3}
-  time: 7
+  time: 6.75
   Laser_time: 0
   TargetPos: {x: 0, y: 0, z: 0}
 --- !u!4 &2000692747
@@ -2799,7 +2799,7 @@ MonoBehaviour:
   inactiveObject: {fileID: 2098039967}
   targetObject: {fileID: 1405107804}
   switchInterval: 0.035
-  Delay: 4
+  Delay: 3.75
   LaserTime: 3
 --- !u!1 &2098039967 stripped
 GameObject:
