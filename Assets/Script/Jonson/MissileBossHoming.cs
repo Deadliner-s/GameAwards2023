@@ -17,6 +17,7 @@ public class MissileBossHoming : MonoBehaviour
     bool Miss;
     float randomX;
     float mult;
+    bool BossFlg;
     System.Random rand = new System.Random();
     Vector3 FromPos;            //発射元
     Vector3 ToPos;              //発射先
@@ -27,35 +28,39 @@ public class MissileBossHoming : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Player = GameObject.Find("Player"))
+        BossFlg = GameObject.Find("BossManager").GetComponent<MainBossHp>();
+        if (BossFlg)
         {
-            //EnemyBossという名前のものが存在する
-            FromPos = transform.position;
-            //Playerという名前のものが存在する
-            ToPos = Player.transform.position;
-            //ミサイルの初期位置を設定
-            transform.position = FromPos;
-
-            randomX = (rand.Next(2) + 1) * 0.1f;
-            HeightHalf = Height / 3.0f * 2.0f;
-            if (transform.position.x < 0.0f)
+            if (Player = GameObject.Find("Player"))
             {
-                randomX *= -1.0f;
+                //EnemyBossという名前のものが存在する
+                FromPos = transform.position;
+                //Playerという名前のものが存在する
+                ToPos = Player.transform.position;
+                //ミサイルの初期位置を設定
+                transform.position = FromPos;
+
+                randomX = (rand.Next(2) + 1) * 0.1f;
+                HeightHalf = Height / 3.0f * 2.0f;
+                if (transform.position.x < 0.0f)
+                {
+                    randomX *= -1.0f;
+                }
+                off = 0.03f;
+                Locked = false;
+                Miss = false;
+                mult = 5.0f;
             }
-            off = 0.03f;
-            Locked = false;
-            Miss = false;
-            mult = 5.0f;
-        }
-        else
-        {
-            Destroy(this, 0.0f);
-        }
+            else
+            {
+                Destroy(this, 0.0f);
+            }
+        }           
     }
     // Update is called once per frame
     void Update()
     {
-        if(Player)
+        if(Player&&BossFlg)
         {
             ToPos = Player.transform.position;
             if (transform.position.y <= FromPos.y + HeightHalf && !Locked)
@@ -107,7 +112,7 @@ public class MissileBossHoming : MonoBehaviour
         }
         else
         {
-            Destroy(this, 0.0f);
+            Destroy(this, 1.0f);
         }
     }
 }

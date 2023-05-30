@@ -24,7 +24,7 @@ public class MissileStraight : MonoBehaviour
     private Vector3 targetScreenPosition; // 目標スクリーン座標
     private Vector3 targetWorldPosition;  // 目標ワールド座標
     Vector3 NewPosFix;
-
+    bool BossFlg;
     float time = 0;
     bool instant = false;
 
@@ -36,89 +36,93 @@ public class MissileStraight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Player = GameObject.Find("Player"))//プレイヤーは生きている（存在する）
+        BossFlg = GameObject.Find("BossManager").GetComponent<MainBossHp>();
+        if (BossFlg)
         {
-            ToPos = Player.transform.position; //Player
-            mainCamera = Camera.main;                             // メインカメラを取得する
-            canvas = GameObject.Find("Canvas");                  // キャンバスを指定
-
-            //UI初期位置
-            if (transform.position.x < ToPos.x)
+            if (Player = GameObject.Find("Player"))//プレイヤーは生きている（存在する）
             {
-                targetScreenPosition.x = 1820 / -2;
+                ToPos = Player.transform.position; //Player
+                mainCamera = Camera.main;                             // メインカメラを取得する
+                canvas = GameObject.Find("Canvas");                  // キャンバスを指定
+
+                //UI初期位置
+                if (transform.position.x < ToPos.x)
+                {
+                    targetScreenPosition.x = 1820 / -2;
+                }
+                else
+                {
+                    targetScreenPosition.x = 0;
+                }
+                if (transform.position.y < ToPos.y)
+                {
+                    targetScreenPosition.y = 980 / -2;
+                }
+                else if (transform.position.y > ToPos.y)
+                {
+                    targetScreenPosition.y = 980 / 2;
+                }
+                else
+                {
+                    targetScreenPosition.y = 0;
+                }
+                targetScreenPosition.z = 2.0f;
+
+                //UI生成
+                if (!instant)
+                {
+                    //world座標をcamera座標に変換
+                    targetWorldPosition = transform.position;
+                    targetWorldPosition = mainCamera.WorldToScreenPoint(targetWorldPosition);
+                    NewPosFix = targetWorldPosition;
+                    //UIを画面外にいかないように
+                    if (NewPosFix.y >= 1030)
+                    {
+                        NewPosFix.y = 1030;
+                    }
+                    if (NewPosFix.y <= 50)
+                    {
+                        NewPosFix.y = 50;
+                    }
+                    if (NewPosFix.x >= 1870)
+                    {
+                        NewPosFix.x = 1870;
+                    }
+                    if (NewPosFix.x <= 50)
+                    {
+                        NewPosFix.x = 50;
+                    }
+                    if (GameObject.Find("Canvas"))
+                    {
+                        LightObj = Instantiate(LightObject, targetScreenPosition, transform.rotation) as GameObject;
+                        LightObj.transform.SetParent(canvas.transform, false);
+                        LightObj.GetComponent<Image>().fillAmount = 0;
+                        newObj = Instantiate(otherObject, targetScreenPosition, transform.rotation) as GameObject;  // 警告UIの生成                                                           
+                        newObj.transform.SetParent(canvas.transform, false);                                        // Canvasの子オブジェクトとして生成
+                        newObj.GetComponent<Image>().fillAmount = 0;
+                        OutsideObj = Instantiate(outsideObject, targetScreenPosition, transform.rotation) as GameObject;  // 警告UIの生成                                                           
+                        OutsideObj.transform.SetParent(canvas.transform, false);                                        // Canvasの子オブジェクトとして生成
+
+                        LightObj.transform.position = NewPosFix;    //UIの位置を更新
+                        newObj.transform.position = NewPosFix;      //UIの位置を更新
+                        OutsideObj.transform.position = NewPosFix;  //UIの位置を更新
+                    }
+                }
+                time = 0.0f;
+                Miss = false;
+                off = 0.2f;
             }
             else
             {
-                targetScreenPosition.x = 0;
+                Destroy(this, 0.0f);
             }
-            if (transform.position.y < ToPos.y)
-            {
-                targetScreenPosition.y = 980 / -2;
-            }
-            else if (transform.position.y > ToPos.y)
-            {
-                targetScreenPosition.y = 980 / 2;
-            }
-            else
-            {
-                targetScreenPosition.y = 0;
-            }
-            targetScreenPosition.z = 2.0f;
-
-            //UI生成
-            if (!instant)
-            {
-                //world座標をcamera座標に変換
-                targetWorldPosition = transform.position;
-                targetWorldPosition = mainCamera.WorldToScreenPoint(targetWorldPosition);
-                NewPosFix = targetWorldPosition;
-                //UIを画面外にいかないように
-                if (NewPosFix.y >= 1030)
-                {
-                    NewPosFix.y = 1030;
-                }
-                if (NewPosFix.y <= 50)
-                {
-                    NewPosFix.y = 50;
-                }
-                if (NewPosFix.x >= 1870)
-                {
-                    NewPosFix.x = 1870;
-                }
-                if (NewPosFix.x <= 50)
-                {
-                    NewPosFix.x = 50;
-                }
-                if (GameObject.Find("Canvas"))
-                {
-                    LightObj = Instantiate(LightObject, targetScreenPosition, transform.rotation) as GameObject;
-                    LightObj.transform.SetParent(canvas.transform, false);
-                    LightObj.GetComponent<Image>().fillAmount = 0;
-                    newObj = Instantiate(otherObject, targetScreenPosition, transform.rotation) as GameObject;  // 警告UIの生成                                                           
-                    newObj.transform.SetParent(canvas.transform, false);                                        // Canvasの子オブジェクトとして生成
-                    newObj.GetComponent<Image>().fillAmount = 0;
-                    OutsideObj = Instantiate(outsideObject, targetScreenPosition, transform.rotation) as GameObject;  // 警告UIの生成                                                           
-                    OutsideObj.transform.SetParent(canvas.transform, false);                                        // Canvasの子オブジェクトとして生成
-
-                    LightObj.transform.position = NewPosFix;    //UIの位置を更新
-                    newObj.transform.position = NewPosFix;      //UIの位置を更新
-                    OutsideObj.transform.position = NewPosFix;  //UIの位置を更新
-                }
-            }
-            time = 0.0f;
-            Miss = false;
-            off = 0.2f;
-        }
-        else
-        {
-            Destroy(this, 0.0f);
-        }
+        }            
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Player)//プレイヤーは生きている（存在する）
+        if (Player&&BossFlg)//プレイヤーは生きている（存在する）
         {
             time += Time.timeScale;
             if (time >= 120.0f)

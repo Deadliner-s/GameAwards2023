@@ -10,27 +10,38 @@ public class ZakoMissile : MonoBehaviour
     public float Accel;
     public float AccelStart;
     private float time;
-
+    bool BossFlg;
     // Start is called before the first frame update
     void Start()
     {
-        time = 0.0f;
-        Move = new Vector3(1.0f, 0.0f, 0.0f);
-        Destroy(gameObject, DestroyTime);
+        BossFlg = GameObject.Find("BossManager").GetComponent<MainBossHp>();
+        if (BossFlg)
+        {
+            time = 0.0f;
+            Move = new Vector3(1.0f, 0.0f, 0.0f);
+            Destroy(gameObject, DestroyTime);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-        if(time >= AccelStart)
+        if(BossFlg)
         {
-            Speed += Accel;
-            if (Speed >= 0.06f)
-                Speed = 0.06f;
+            time += Time.deltaTime;
+            if (time >= AccelStart)
+            {
+                Speed += Accel;
+                if (Speed >= 0.06f)
+                    Speed = 0.06f;
+            }
+            Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), Move);
+            transform.rotation = rot;
+            transform.position += Move * Speed * Time.timeScale;
         }
-        Quaternion rot = Quaternion.FromToRotation(new Vector3(0.0f, 1.0f, 0.0f), Move);
-        transform.rotation = rot;
-        transform.position += Move * Speed * Time.timeScale;
+        else
+        {
+            Destroy(this, 0.0f);
+        }
     }
 }
