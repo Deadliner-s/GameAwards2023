@@ -256,6 +256,7 @@ public class PlayerHp : MonoBehaviour
             SoundManager.instance.PlaySE("PlayerDeath");
             PlayerHP = 0;
             BreakShieldFlag = true;
+            VibrationManager.instance.StartCoroutine("PlayVibration", "PlayerDeath");
         }
         // 体力が0よりも多い時
         else if (PlayerHP > 0)
@@ -263,11 +264,13 @@ public class PlayerHp : MonoBehaviour
             if (collision.gameObject.name == "Cylinder")
             {
                 // レーザーを受けた時のSEを再生(未設定
+                VibrationManager.instance.StartCoroutine("PlayVibration", "Laser");
             }
             else
             {
                 // ダメージを受けた時のSEを再生(レーザー以外、ミサイルとかだけ
                 SoundManager.instance.PlaySE("PlayerDamage");
+                VibrationManager.instance.StartCoroutine("PlayVibration", "PlayerDamage");
             }
         }
 

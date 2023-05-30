@@ -179,6 +179,8 @@ public class Shot : MonoBehaviour
                         if (!targets.Contains(target))
                         {
                             targets.Add(target);
+
+                            VibrationManager.instance.StartCoroutine("PlayVibration", "Shot");
                         }
                     }
 
