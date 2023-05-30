@@ -74,6 +74,9 @@ public class CameraEventMove3 : MonoBehaviour
         //fade.GetComponent<Fade>().StartCoroutine("Color_FadeOut", "merge_2");
         // SceneMoveManagerをタグ検索
         GameObject obj = GameObject.FindGameObjectWithTag("SceneMoveManager");
+        // ボスのローテーションを代入する
+        GameObject boss = GameObject.FindGameObjectWithTag("BossParent");
+        BossRotationCatch.instance.fRotation = boss.transform.rotation;
         // シーンの開始
         obj.GetComponent<SceneMoveManager>().SceneStartUnload();
     }
