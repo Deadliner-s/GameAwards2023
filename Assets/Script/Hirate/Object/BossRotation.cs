@@ -18,6 +18,9 @@ public class BossRotation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // ボスのローテーションを代入する
+        gameObject.transform.rotation = BossRotationCatch.instance.fRotation;
+
         // フェーズ取得用
         try
         {
