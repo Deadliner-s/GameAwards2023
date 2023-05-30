@@ -19,7 +19,7 @@ public class MissileBossCluster : MonoBehaviour
     private Camera mainCamera;            // メインカメラ
     private Vector3 targetWorldPosition;  // 目標ワールド座標
 
-    bool BossFlg;
+    GameObject BossFlg;
     GameObject Player;
     Vector3 ToPos;              //発射先
     Vector3 Move;               //移動方向
@@ -28,8 +28,8 @@ public class MissileBossCluster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        BossFlg = GameObject.Find("BossManager").GetComponent<MainBossHp>();
-        if(BossFlg)
+        BossFlg = GameObject.Find("BossManager");
+        if(!BossFlg.GetComponent<MainBossHp>().BreakFlag)
         {
             if (Player = GameObject.Find("Player"))
             {
@@ -49,7 +49,7 @@ public class MissileBossCluster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Player && BossFlg)
+        if (Player && !BossFlg.GetComponent<MainBossHp>().BreakFlag)
         {
             ToPos = Player.transform.position;   //プレイヤーの位置
             Speed += Accel;                                         //加速度

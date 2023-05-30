@@ -24,7 +24,7 @@ public class MissileStraight : MonoBehaviour
     private Vector3 targetScreenPosition; // 目標スクリーン座標
     private Vector3 targetWorldPosition;  // 目標ワールド座標
     Vector3 NewPosFix;
-    bool BossFlg;
+    GameObject BossFlg;
     float time = 0;
     bool instant = false;
 
@@ -36,8 +36,8 @@ public class MissileStraight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        BossFlg = GameObject.Find("BossManager").GetComponent<MainBossHp>();
-        if (BossFlg)
+        BossFlg = GameObject.Find("BossManager");
+        if (!BossFlg.GetComponent<MainBossHp>().BreakFlag)
         {
             if (Player = GameObject.Find("Player"))//プレイヤーは生きている（存在する）
             {
@@ -122,7 +122,7 @@ public class MissileStraight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Player&&BossFlg)//プレイヤーは生きている（存在する）
+        if (Player&&!BossFlg.GetComponent<MainBossHp>().BreakFlag)//プレイヤーは生きている（存在する）
         {
             time += Time.timeScale;
             if (time >= 120.0f)

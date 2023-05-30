@@ -13,7 +13,7 @@ public class MissileBossContena : MonoBehaviour
     public int ContenaNumber = 15;       //分裂の数
     float off;
     bool Locked;                         //ミサイルがロックオンしているか
-    bool BossFlg;
+    GameObject BossFlg;
     public GameObject otherObject;       //生成するプレハブオブジェクト
     GameObject newObj;
     GameObject Player;
@@ -25,8 +25,8 @@ public class MissileBossContena : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        BossFlg = GameObject.Find("BossManager").GetComponent<MainBossHp>();
-        if (BossFlg)
+        BossFlg = GameObject.Find("BossManager");
+        if (!BossFlg.GetComponent<MainBossHp>().BreakFlag)
         {
             if (Player = GameObject.Find("Player"))//プレイヤーは生きている（存在する）
             {
@@ -47,7 +47,7 @@ public class MissileBossContena : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Player&&BossFlg)//プレイヤーは生きている（存在する）
+        if (Player && !BossFlg.GetComponent<MainBossHp>().BreakFlag)//プレイヤーは生きている（存在する）
         {
             ToPos = Player.transform.position;
             if (transform.position.y <= FromPos.y + Height && !Locked)
