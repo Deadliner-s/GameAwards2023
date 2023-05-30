@@ -21,21 +21,36 @@ public class Stage12UIText : MonoBehaviour
     public GameObject Name;
     public GameObject Text;
 
+    [SerializeField]
     float AddTime = 0.0f;
 
     bool FlgA = true;
     bool FlgB = true;
+    bool FlgFinish = false;
 
     private float Max_Height = 1.837893f;
+    [SerializeField]
+    float MessageWindowActiveTime = 5.0f;
+    [SerializeField]
+    float WarningActiveTime = 13.0f;
+
 
     void Start()
     {
+        AddTime = 0.0f;
+        FlgFinish = false;
+
         Window.SetActive(false);
         Name.SetActive(false);
         Text.SetActive(false);
 
         nextPhase = currntPhase;
         StartCoroutine(A());
+    }
+
+    void Update()
+    {
+        AddTime += Time.deltaTime;
     }
 
     // クリックで次のページを表示させるための関数
@@ -63,70 +78,131 @@ public class Stage12UIText : MonoBehaviour
         while (true)
         {
             yield return null;
+            // 現在のフェイズ確認
             currntPhase = PhaseManager.instance.GetPhase();
+            // フェイズ変更時
             if (nextPhase != currntPhase)
             {
+                // フラグリセット
                 FlgA = true;
-                FlgB = true;
-                //AddTime = 0.0f;
-
                 nextPhase = currntPhase;
             }
-            if (currntPhase == PhaseManager.Phase.Normal_Phase)
+            // ノーマルフェイズ
+            if (currntPhase == PhaseManager.Phase.Normal_Phase && FlgFinish == false)
             {
-                //SeFlg = false;
+
             }
-            else if (currntPhase == PhaseManager.Phase.Speed_Phase)
+            // アタックフェイズ
+            else if (currntPhase == PhaseManager.Phase.Attack_Phase && FlgFinish == false)
             {
-                AddTime = 0.0f;
-                // アタックフェイズ
                 if (FlgA)
                 {
-                    StartCoroutine("WindowScaleUp");
-                    SoundManager.instance.PlayVOICE("4-2");
-                    DrawNameText("≪ AI ≫", "攻撃兵装へのエネルギーをカット。 メインエンジンに\nエネルギーを転換。回避行動に専念して下さい。");
-                    yield return new WaitForSeconds(3.0f);
+                    // ウィンドウの開始
+                    StartCoroutine("AttackMessageUI");
                     FlgA = false;
-                }
-
-                while (FlgB)
-                {
-                    AddTime += Time.deltaTime;
-                    yield return null;
-                    if (AddTime >= 5.0f)
-                    {
-                        StartCoroutine("WindowScaleDown");
-                        FlgB = false;
-                        break;
-                    }
                 }
             }
-
-            else if (currntPhase == PhaseManager.Phase.Attack_Phase)
+            else if (currntPhase == PhaseManager.Phase.Speed_Phase && FlgFinish == false)
             {
-                AddTime = 0.0f;
-                // ハイスピードフェイズ 
-                if (FlgA)
-                {
-                    StartCoroutine("WindowScaleUp");
-                    SoundManager.instance.PlayVOICE("EX-1");
-                    DrawNameText("≪ AI ≫", "敵内部から、多数の熱源反応を確認。\n飽和攻撃が予測されます。注意してください。");
-                    yield return new WaitForSeconds(3.0f);
-                    FlgA = false;
-                }
-                while (FlgB)
-                {
-                    AddTime += Time.deltaTime;
-                    yield return null;
-                    if (AddTime >= 5.0f)
-                    {
-                        StartCoroutine("WindowScaleDown");
-                        FlgB = false;
-                        break;
-                    }
+
+            }
+            
+            if (AddTime >= 150.0f)
+            {
+                if (FlgB) { 
+                    // カウントダウンの開始
+                    StartCoroutine("CountDownUI");
+                    FlgFinish = true;
+                    FlgB = false;
                 }
             }
         }
+    }
+
+    // ゲーム中のAIセリフ用
+    IEnumerator AttackMessageUI()
+    {
+        // ウィンドウ表示
+        StartCoroutine("WindowScaleUp");
+        // ボイス再生
+        SoundManager.instance.PlayVOICE("EX-1");
+        // テキスト設定
+        DrawNameText("≪ AI ≫", "敵内部から、多数の熱源反応を確認。\n飽和攻撃が予測されます。注意してください。");
+        yield return new WaitForSeconds(MessageWindowActiveTime);
+        // ウィンドウ非表示
+        StartCoroutine("WindowScaleDown");
+
+        // アタックフェイズの間待機
+        yield return new WaitForSeconds(WarningActiveTime - MessageWindowActiveTime);
+
+        StartCoroutine("WindowScaleUp");
+        // ボイス再生
+        SoundManager.instance.PlayVOICE("4-2");
+        // テキスト設定
+        DrawNameText("≪ AI ≫", "攻撃兵装へのエネルギーをカット。 メインエンジンに\nエネルギーを転換。回避行動に専念して下さい。");
+        yield return new WaitForSeconds(MessageWindowActiveTime);
+        // ウィンドウ非表示
+        StartCoroutine("WindowScaleDown");
+    }
+
+    IEnumerator　CountDownUI()
+    {
+        // ウィンドウ表示
+        StartCoroutine("WindowScaleUp");
+
+        yield return new WaitForSeconds(1.0f);
+
+        SoundManager.instance.PlayVOICE("1-1");
+        DrawNameText("≪ AI ≫", "衛星軌道砲、エネルギー充填完了まで10秒");
+        yield return new WaitForSeconds(5.0f);
+
+        SoundManager.instance.PlayVOICE("1-2");
+        DrawNameText("≪ AI ≫", " 9");
+        yield return new WaitForSeconds(1.0f);
+
+        SoundManager.instance.PlayVOICE("1-3");
+        DrawNameText("≪ AI ≫", " 8");
+        yield return new WaitForSeconds(1.0f);
+
+        SoundManager.instance.PlayVOICE("1-4");
+        DrawNameText("≪ AI ≫", " 7");
+        yield return new WaitForSeconds(1.0f);
+
+        SoundManager.instance.PlayVOICE("1-5");
+       　DrawNameText("≪ AI ≫", " 6");
+        yield return new WaitForSeconds(1.0f);
+
+        SoundManager.instance.PlayVOICE("1-6");
+        DrawNameText("≪ AI ≫", " 5");
+        yield return new WaitForSeconds(1.0f);
+
+        SoundManager.instance.PlayVOICE("1-7");
+        DrawNameText("≪ AI ≫", " 4");
+        yield return new WaitForSeconds(1.0f);
+
+        SoundManager.instance.PlayVOICE("1-8");
+        DrawNameText("≪ AI ≫", " 3");
+        yield return new WaitForSeconds(1.0f);
+
+        SoundManager.instance.PlayVOICE("1-9");
+        DrawNameText("≪ AI ≫", " 2");
+        yield return new WaitForSeconds(1.0f);
+
+        SoundManager.instance.PlayVOICE("1-10");
+        DrawNameText("≪ AI ≫", " 1");
+        yield return new WaitForSeconds(1.0f);
+
+        if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE1)
+        {
+            SoundManager.instance.PlayVOICE("1-11");
+            DrawNameText("≪ 司令官 ≫", "衛星軌道砲、撃て！");
+        }
+        else if (SceneNowBefore.instance.sceneNowCatch == SceneLoadStartUnload.SCENE_NAME.E_STAGE2)
+        {
+            SoundManager.instance.PlayVOICE("2-11");
+            DrawNameText("≪ 司令官 ≫", "今度こそだ。衛星軌道砲、撃て！");
+        }
+        
     }
 
     // テキストがヌルヌル出てくるためのコルーチン
@@ -150,6 +226,7 @@ public class Stage12UIText : MonoBehaviour
         yield return 0;
         playing = false;
     }
+    // ウィンドウの拡大
     IEnumerator WindowScaleUp()
     {
         Window.SetActive(true);
@@ -168,6 +245,7 @@ public class Stage12UIText : MonoBehaviour
         Name.SetActive(true);
         Text.SetActive(true);
     }
+    // ウィンドウの縮小
     IEnumerator WindowScaleDown()
     {
         Name.SetActive(false);
