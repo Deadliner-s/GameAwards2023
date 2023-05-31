@@ -60,7 +60,7 @@ public class Stage3TextWriter : MonoBehaviour
         yield return new WaitForSeconds(6.0f);
 
         SoundManager.instance.PlayVOICE("2-18");
-        uitext.DrawNameText("≪ 司令官 ≫", "ヤツのバリアフィールドが破壊できた今なら、ブルーアサルトのミサイルによる破壊が可能なはずだ。");
+        uitext.DrawNameText("≪ 司令官 ≫", "ヤツのバリアフィールドが破壊できた今なら、\nブルーアサルトのミサイルによる破壊が可能なはずだ。");
         yield return new WaitForSeconds(7.0f);
 
         SoundManager.instance.PlayVOICE("2-19");
