@@ -42,6 +42,8 @@ public class CheckCursor : MonoBehaviour
 
     private float Max_Height = 3.777086f;
 
+    bool buttonflag = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,11 +54,13 @@ public class CheckCursor : MonoBehaviour
         // 初期選択を白に
         Yes_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
         No_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
+
+        buttonflag = false;
     }
 
     void Update()
     {
-        if(InputManager.instance.OnLeft())
+        if(InputManager.instance.OnLeft() && buttonflag == false)
         {
             Selected--;
             Selected = (int)Mathf.Repeat(Selected, ItemMax);
@@ -74,7 +78,7 @@ public class CheckCursor : MonoBehaviour
 
             SoundManager.instance.PlaySE("Select");
         }
-        if (InputManager.instance.OnRight())
+        if (InputManager.instance.OnRight() && buttonflag == false)
         {
             Selected--;
             Selected = (int)Mathf.Repeat(Selected, ItemMax);
@@ -91,7 +95,18 @@ public class CheckCursor : MonoBehaviour
             }
             SoundManager.instance.PlaySE("Select");
         }
-        if(InputManager.instance.OnSelect())
+        if (InputManager.instance.OnBack())
+        {
+            // No
+            // タイトルに戻る
+            Selected = 0;
+            //InputActions.Disable();
+            SoundManager.instance.PlaySE("Decision");
+            StartCoroutine("WindowScaleDown");
+            buttonflag = true;
+        }
+
+        if(InputManager.instance.OnSelect() && buttonflag == false)
         {
             switch (Selected)
             {
@@ -171,7 +186,12 @@ public class CheckCursor : MonoBehaviour
             Window.transform.localScale = scale;
             yield return new WaitForSeconds(0.01f);
         }
+
+        Selected = 0;
+        Yes_Text.GetComponent<TextMeshProUGUI>().color = Color.black;
+        No_Text.GetComponent<TextMeshProUGUI>().color = Color.white;
         this.gameObject.SetActive(false);
         Menu.SetActive(true);
+        buttonflag = false;
     }
 }
