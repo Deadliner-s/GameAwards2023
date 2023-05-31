@@ -11,14 +11,14 @@ public class PlayerHp : MonoBehaviour
     private GameObject playerManager;
     private GameObject bossManager;
 
-    public GameObject GaugeObj;     // プレイヤーのHPゲージオブジェクト
+    public GameObject GaugeObj;         // プレイヤーのHPゲージオブジェクト
 
     Image HpGauge;
-    public GameObject DamageObj;    // プレイヤーのダメージゲージオブジェクト
+    public GameObject DamageObj;        // プレイヤーのダメージゲージオブジェクト
     Image DamageGauge;
 
-    public float PlayerHP;          // プレイヤーのHP
-    private float PlayerMaxHp;              // プレイヤーのHPの最大値
+    public float PlayerHP;              // プレイヤーのHP
+    private float PlayerMaxHp;          // プレイヤーのHPの最大値
 
     [Tooltip("回復量")]
     [SerializeField] private float HealAmount;
@@ -50,9 +50,6 @@ public class PlayerHp : MonoBehaviour
     private HPGauge[] HpGaugecomponents;
 
     private SphereCollider modelCollider;
-
-    // シーン読込用
-    //    private AsyncOperation async;
 
     // Start is called before the first frame update
     void Start()
@@ -89,11 +86,6 @@ public class PlayerHp : MonoBehaviour
         HpGaugecomponents = PlayerHPGaugeTrans.GetComponentsInChildren<HPGauge>();
         // シールドオブジェクトからHexShieldコンポーネントを取得
         hs = playerManager.GetComponent<HexShield>();
-
-        // 非同期処理でシーンの遷移実行(現在実行しているシーンのバックグラウンドで次のシーンの読み込みを事前に行う)
-        //        async = SceneManager.LoadSceneAsync("GameOver");
-        // シーンを読み込み終わってもシーン遷移は行わない状態にする
-        //        async.allowSceneActivation = false;
     }
 
     // Update is called once per frame
@@ -112,12 +104,11 @@ public class PlayerHp : MonoBehaviour
             hs = playerManager.GetComponent<HexShield>();
         }
 
-
         if (player == null)
         {
             player = GameObject.Find("Player");
             modelCollider = player.GetComponent<SphereCollider>();
-            //sphereCollider = player.GetComponent<SphereCollider>();
+
             // PlayerHpコオブジェクトのHpGaugeコンポーネントを全て取得する
             HpGaugecomponents = PlayerHPGaugeTrans.GetComponentsInChildren<HPGauge>();
             // シールドオブジェクトからHexShieldコンポーネントを取得
@@ -148,6 +139,7 @@ public class PlayerHp : MonoBehaviour
         // シールドが消滅したあとの回復時間に関する処理
         if (BreakShieldFlag)
         {
+            HealFlag = false;
             // シールドが復活
             if (RepairShieldflame < flame)
             {
@@ -163,11 +155,8 @@ public class PlayerHp : MonoBehaviour
             PlayerHP += HealAmount * Time.timeScale;
             HpGauge.fillAmount = PlayerHP / PlayerMaxHp; ;
 
-            //if (hs == null)
-            //{
-            //    hs = playerManager.GetComponent<HexShield>();
-            //}
             hs.ChangeShieldColor(PlayerHP, PlayerMaxHp);
+
             foreach (HPGauge comp in HpGaugecomponents)
             {
                 comp.ChangeHpGaugeColor(PlayerHP, PlayerMaxHp);
@@ -193,7 +182,6 @@ public class PlayerHp : MonoBehaviour
         if (BreakShieldFlag)
         {
             // シールドが壊れた(PlayerHpが0になった)ら当たり判定を付ける
-            //player.GetComponent<Collider>().enabled = true;
             if (modelCollider == null)
             {
                 modelCollider = player.GetComponent<SphereCollider>();
@@ -205,7 +193,6 @@ public class PlayerHp : MonoBehaviour
         }
         else
         {
-            //player.GetComponent<Collider>().enabled = false;
             if (modelCollider == null)
             {
                 modelCollider = player.GetComponent<SphereCollider>();
@@ -217,15 +204,6 @@ public class PlayerHp : MonoBehaviour
         }
     }
 
-    //void OnCollisionEnter(Collision collision)
-    //{
-    //    // もし衝突した相手オブジェクトのタグが"Enemy"ならば中の処理を実行
-    //    if (collision.gameObject.CompareTag("Enemy"))
-    //    {
-    //        Damage(collision);
-    //    }
-    //}
-
     public void Damage(Collision collision)
     {
         // シールドが破壊されているとき
@@ -235,16 +213,9 @@ public class PlayerHp : MonoBehaviour
             BreakFlag = true;
 
             Canvas.SetActive(false);
-            //Destroy(this.gameObject);
-            //シーン移動
-            //SceneManager.LoadScene("GameOver");
-            //async.allowSceneActivation = true;
 
             VibrationManager.instance.StartCoroutine("PlayVibration", "PlayerDeath");
         }
-
-
-        HealFlag = false;
 
         // "Enemy"タグがついているオブジェクトにある"PlayerDamage"変数を受けとる
         if (bossManager.GetComponent<MainBossHp>().BreakFlag != true)
@@ -255,11 +226,10 @@ public class PlayerHp : MonoBehaviour
         PlayerHP -= damage * Time.timeScale;
         HpGauge.fillAmount -= damage / PlayerMaxHp;
 
-        DifferenceFlag = true;
-
         // フラグ管理
         HealFlag = true;
         UseFlag = true;
+        DifferenceFlag = true;
         flame = 0;
 
         // 体力が0以下になったら
@@ -285,10 +255,6 @@ public class PlayerHp : MonoBehaviour
             }
         }
 
-        //if (hs == null)
-        //{
-        //    hs = playerManager.GetComponent<HexShield>();
-        //}
         hs.ChangeShieldColor(PlayerHP, PlayerMaxHp);
 
         foreach (HPGauge comp in HpGaugecomponents)
