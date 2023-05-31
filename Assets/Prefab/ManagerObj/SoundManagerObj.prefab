@@ -289,6 +289,9 @@ MonoBehaviour:
   - name: 2-tuika
     clip: {fileID: 8300000, guid: 52ba91eca45b13844a3516748e511adb, type: 3}
     audioSource: {fileID: 0}
+  - name: tutu4
+    clip: {fileID: 8300000, guid: ad6b3152cdb93684f9a9d47ae5651a60, type: 3}
+    audioSource: {fileID: 0}
   BGM_volume: 0.5
   SE_volume: 0.5
   VOICE_volume: 0.5
