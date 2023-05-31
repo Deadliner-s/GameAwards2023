@@ -32,8 +32,8 @@ public class Stage3TextWriter : MonoBehaviour
     // 文章を表示させるコルーチン
     IEnumerator Cotest()
     {
-
-        yield return new WaitForSeconds(6.5f);
+        uitext.DrawNameText("≪ 司令官 ≫", "今度こそだ。衛星軌道砲、撃て！");
+        yield return new WaitForSeconds(7.0f);
 
         SoundManager.instance.PlayVOICE("2-12");
         uitext.DrawNameText("≪ AI ≫", "目標へ着弾。敵巨大飛行物体のバリアフィールド破壊を確認しました。");
