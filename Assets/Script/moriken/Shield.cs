@@ -13,7 +13,6 @@ public class Shield : MonoBehaviour
     void Start()
     {
         playerManager = GameObject.Find("PlayerManager");
-        //collider = gameObject.GetComponent<MeshCollider>();
         shield = GameObject.Find("hex_shield");
         MS_shield = shield.GetComponent<MeshCollider>();
         MS_shield.enabled = true;
