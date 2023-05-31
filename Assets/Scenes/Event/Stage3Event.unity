@@ -2100,7 +2100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287143583486268679, guid: 4b54ea32d2ddb254baaccb7865867164, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 8.3
       objectReference: {fileID: 0}
     - target: {fileID: 2287143583486268679, guid: 4b54ea32d2ddb254baaccb7865867164, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2108,7 +2108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4935832391151568304, guid: 4b54ea32d2ddb254baaccb7865867164, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -492
+      value: -480.9
       objectReference: {fileID: 0}
     - target: {fileID: 4935832391151568304, guid: 4b54ea32d2ddb254baaccb7865867164, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2120,7 +2120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4935832391151568306, guid: 4b54ea32d2ddb254baaccb7865867164, type: 3}
       propertyPath: m_fontSize
-      value: 34
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 4935832391151568306, guid: 4b54ea32d2ddb254baaccb7865867164, type: 3}
       propertyPath: m_margin.x
@@ -2128,7 +2128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4935832391151568306, guid: 4b54ea32d2ddb254baaccb7865867164, type: 3}
       propertyPath: m_margin.z
-      value: -850.5322
+      value: -842.06177
       objectReference: {fileID: 0}
     - target: {fileID: 4935832391151568306, guid: 4b54ea32d2ddb254baaccb7865867164, type: 3}
       propertyPath: m_fontStyle
@@ -2136,7 +2136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4935832391151568306, guid: 4b54ea32d2ddb254baaccb7865867164, type: 3}
       propertyPath: m_fontSizeBase
-      value: 34
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 4935832391151568306, guid: 4b54ea32d2ddb254baaccb7865867164, type: 3}
       propertyPath: m_HorizontalAlignment
@@ -2208,7 +2208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6353446463128085642, guid: 4b54ea32d2ddb254baaccb7865867164, type: 3}
       propertyPath: m_margin.z
-      value: 123.93103
+      value: 139.45996
       objectReference: {fileID: 0}
     - target: {fileID: 6353446463128085642, guid: 4b54ea32d2ddb254baaccb7865867164, type: 3}
       propertyPath: m_fontSizeBase
