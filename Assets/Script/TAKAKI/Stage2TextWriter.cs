@@ -32,6 +32,7 @@ public class Stage2TextWriter : MonoBehaviour
     // 文章を表示させるコルーチン
     IEnumerator Cotest()
     {
+        uitext.DrawNameText("≪ 司令官 ≫", "衛星軌道砲、撃て！");
         yield return new WaitForSeconds(5.0f);
 
         SoundManager.instance.PlayVOICE("1-12");

@@ -1303,6 +1303,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 35655319735058674, guid: 09073995e9a92364892eca996227f6d6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 139988623505003490, guid: 09073995e9a92364892eca996227f6d6, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1512,6 +1516,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4771623043948682108, guid: 09073995e9a92364892eca996227f6d6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887237170428549082, guid: 09073995e9a92364892eca996227f6d6, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -2006,6 +2014,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9149365447258464462, guid: 71f9f7f752f404b47a74168d6c53854b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179470949818942810, guid: 71f9f7f752f404b47a74168d6c53854b, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -2762,6 +2774,18 @@ MonoBehaviour:
   switchInterval: 0.035
   Delay: 2
   LaserTime: 3
+--- !u!114 &2026402970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191230796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50fb4b04542dc6f4e9c34df9725f1a5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2074189705
 PrefabInstance:
   m_ObjectHideFlags: 0
