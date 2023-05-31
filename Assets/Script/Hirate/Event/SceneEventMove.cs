@@ -20,7 +20,10 @@ public class SceneEventMove : MonoBehaviour
             GameObject obj = GameObject.FindGameObjectWithTag("SceneMoveManager");
             // ボスのローテーションを代入する
             GameObject boss = GameObject.FindGameObjectWithTag("BossParent");
-            BossRotationCatch.instance.fRotation = boss.transform.rotation;
+            if (boss != null)
+            {
+                BossRotationCatch.instance.fRotation = boss.transform.rotation;
+            }
             // シーンの開始
             obj.GetComponent<SceneMoveManager>().SceneStartUnload();
         }
