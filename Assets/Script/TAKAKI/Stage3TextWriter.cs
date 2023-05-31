@@ -55,6 +55,10 @@ public class Stage3TextWriter : MonoBehaviour
         uitext.DrawNameText("á AI â", "–Ú•W—\‘ªccUŒ‚–Ú•W‚ÍA‰q¯‹O“¹–C‚Å‚·B");
         yield return new WaitForSeconds(12.0f);
 
+        SoundManager.instance.PlayVOICE("tutu4");
+        uitext.DrawNameText(" ", " ");
+        yield return new WaitForSeconds(4.5f);
+
         SoundManager.instance.PlayVOICE("2-17");
         uitext.DrawNameText("á i—ßŠ¯ â", "‰q¯‹O“¹–C‚ª‚â‚ç‚ê‚½B‚¾‚ªAìíI—¹‚Í”F‚ß‚ç‚ê‚È‚¢B");
         yield return new WaitForSeconds(6.0f);
